@@ -28,12 +28,12 @@
         /*********
         ** Operators
         *********/
-        /// <summary>Converts a <see cref="VkBool32"/> to a <see cref="bool"/>.</summary>
+        /// <summary>Converts a <see cref="VkBool32"/> to a <see langword="bool"/>.</summary>
         /// <param name="value">The <see cref="VkBool32"/> to convert.</param>
         public static implicit operator bool(VkBool32 value) => value.Value != 0;
 
-        /// <summary>Converts a <see cref="bool"/> to a <see cref="VkBool32"/>.</summary>
-        /// <param name="value">The <see cref="bool"/> to convert.</param>
+        /// <summary>Converts a <see langword="bool"/> to a <see cref="VkBool32"/>.</summary>
+        /// <param name="value">The <see langword="bool"/> to convert.</param>
         public static implicit operator VkBool32(bool value) => new VkBool32(value);
     }
 }

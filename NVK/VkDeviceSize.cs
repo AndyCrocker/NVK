@@ -20,15 +20,15 @@
         /*********
         ** Operators
         *********/
-        /// <summary>Converts a <see cref="VkDeviceSize"/> to a <see cref="int"/>.</summary>
+        /// <summary>Converts a <see cref="VkDeviceSize"/> to a <see langword="int"/>.</summary>
         /// <param name="value">The <see cref="VkDeviceSize"/> to convert.</param>
         public static implicit operator int(VkDeviceSize value) => (int)value.Value;
 
-        /// <summary>Converts a <see cref="int"/> to a <see cref="VkDeviceSize"/>.</summary>
-        /// <param name="value">The <see cref="int"/> to convert.</param>
+        /// <summary>Converts a <see langword="int"/> to a <see cref="VkDeviceSize"/>.</summary>
+        /// <param name="value">The <see langword="int"/> to convert.</param>
         public static explicit operator VkDeviceSize(int value) => new VkDeviceSize() { Value = (ulong)value };
 
-        /// <summary>Converts a <see cref="VkDeviceSize"/> to a <see cref="uint"/>.</summary>
+        /// <summary>Converts a <see cref="VkDeviceSize"/> to a <see langword="uint"/>.</summary>
         /// <param name="value">The <see cref="VkDeviceSize"/> to convert.</param>
         public static explicit operator uint(VkDeviceSize value) => (uint)value.Value;
 
@@ -36,12 +36,12 @@
         /// <param name="value">The <see cref="uint"/> to convert.</param>
         public static implicit operator VkDeviceSize(uint value) => new VkDeviceSize() { Value = value };
 
-        /// <summary>Converts a <see cref="VkDeviceSize"/> to a <see cref="ulong"/>.</summary>
+        /// <summary>Converts a <see cref="VkDeviceSize"/> to a <see langword="ulong"/>.</summary>
         /// <param name="value">The <see cref="VkDeviceSize"/> to convert.</param>
         public static implicit operator ulong(VkDeviceSize value) => value.Value;
 
-        /// <summary>Converts a <see cref="ulong"/> to a <see cref="VkDeviceSize"/>.</summary>
-        /// <param name="value">The <see cref="ulong"/> to convert.</param>
+        /// <summary>Converts a <see langword="ulong"/> to a <see cref="VkDeviceSize"/>.</summary>
+        /// <param name="value">The <see langword="ulong"/> to convert.</param>
         public static implicit operator VkDeviceSize(ulong value) => new VkDeviceSize() { Value = value };
     }
 }
