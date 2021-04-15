@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "VulkanGeneratorTest": {
+      "commandName": "Project"
+    }
+  }
+}
