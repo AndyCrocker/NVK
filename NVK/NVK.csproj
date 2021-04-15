@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Andy Crocker</Authors>
+    <Company>Andy Crocker</Company>
+    <Description>Low-level Vulkan bindings.</Description>
+    <Copyright>Copyright © 2021 Andy Crocker</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AndyCrocker/NVK</RepositoryUrl>
+    <PackageTags>3D graphics vulkan</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
