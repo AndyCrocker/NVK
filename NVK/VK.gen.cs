@@ -483,10 +483,8 @@ namespace Vulkan
 		private unsafe delegate IntPtr GetInstancePrecedureAddressDelegate_1(VkInstance instance, string name);
 		private unsafe delegate void GetPhysicalDevicePropertiesDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties* properties);
 		private unsafe delegate void GetPhysicalDevicePropertiesDelegate_1(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceProperties properties);
-		private unsafe delegate void GetPhysicalDeviceQueueFamilyPropertiesDelegate_0(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties* queueFamilyProperties);
-		private unsafe delegate void GetPhysicalDeviceQueueFamilyPropertiesDelegate_1(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, out VkQueueFamilyProperties queueFamilyProperties);
-		private unsafe delegate void GetPhysicalDeviceQueueFamilyPropertiesDelegate_2(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, VkQueueFamilyProperties* queueFamilyProperties);
-		private unsafe delegate void GetPhysicalDeviceQueueFamilyPropertiesDelegate_3(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, out VkQueueFamilyProperties queueFamilyProperties);
+		private unsafe delegate void GetPhysicalDeviceQueueFamilyPropertiesDelegate_0(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties[] queueFamilyProperties);
+		private unsafe delegate void GetPhysicalDeviceQueueFamilyPropertiesDelegate_1(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties[] queueFamilyProperties);
 		private unsafe delegate void GetPhysicalDeviceMemoryPropertiesDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties* memoryProperties);
 		private unsafe delegate void GetPhysicalDeviceMemoryPropertiesDelegate_1(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties memoryProperties);
 		private unsafe delegate void GetPhysicalDeviceFeaturesDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures* features);
@@ -548,14 +546,10 @@ namespace Vulkan
 		private unsafe delegate void GetImageMemoryRequirementsDelegate_0(VkDevice device, VkImage image, VkMemoryRequirements* memoryRequirements);
 		private unsafe delegate void GetImageMemoryRequirementsDelegate_1(VkDevice device, VkImage image, out VkMemoryRequirements memoryRequirements);
 		private unsafe delegate VkResult BindImageMemoryDelegate_0(VkDevice device, VkImage image, VkDeviceMemory memory, VkDeviceSize memoryOffset);
-		private unsafe delegate void GetImageSparseMemoryRequirementsDelegate_0(VkDevice device, VkImage image, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements* sparseMemoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirementsDelegate_1(VkDevice device, VkImage image, uint* sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements sparseMemoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirementsDelegate_2(VkDevice device, VkImage image, ref uint sparseMemoryRequirementCount, VkSparseImageMemoryRequirements* sparseMemoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirementsDelegate_3(VkDevice device, VkImage image, ref uint sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements sparseMemoryRequirements);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatPropertiesDelegate_0(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, uint* propertyCount, VkSparseImageFormatProperties* properties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatPropertiesDelegate_1(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, uint* propertyCount, out VkSparseImageFormatProperties properties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatPropertiesDelegate_2(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, ref uint propertyCount, VkSparseImageFormatProperties* properties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatPropertiesDelegate_3(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, ref uint propertyCount, out VkSparseImageFormatProperties properties);
+		private unsafe delegate void GetImageSparseMemoryRequirementsDelegate_0(VkDevice device, VkImage image, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements[] sparseMemoryRequirements);
+		private unsafe delegate void GetImageSparseMemoryRequirementsDelegate_1(VkDevice device, VkImage image, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements[] sparseMemoryRequirements);
+		private unsafe delegate void GetPhysicalDeviceSparseImageFormatPropertiesDelegate_0(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, uint* propertyCount, [In, Out] VkSparseImageFormatProperties[] properties);
+		private unsafe delegate void GetPhysicalDeviceSparseImageFormatPropertiesDelegate_1(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties[] properties);
 		private unsafe delegate VkResult QueueBindSparseDelegate_0(VkQueue queue, uint bindInfoCount, VkBindSparseInfo* bindInfo, VkFence fence);
 		private unsafe delegate VkResult QueueBindSparseDelegate_1(VkQueue queue, uint bindInfoCount, ref VkBindSparseInfo bindInfo, VkFence fence);
 		private unsafe delegate VkResult CreateFenceDelegate_0(VkDevice device, VkFenceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkFence* fence);
@@ -882,22 +876,14 @@ namespace Vulkan
 		private unsafe delegate VkResult CreateAndroidSurfaceKHRDelegate_5(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 		private unsafe delegate VkResult CreateAndroidSurfaceKHRDelegate_6(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, VkSurfaceKHR* surface);
 		private unsafe delegate VkResult CreateAndroidSurfaceKHRDelegate_7(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPropertiesKHR* properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, uint* propertyCount, out VkDisplayPropertiesKHR properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPropertiesKHRDelegate_2(VkPhysicalDevice physicalDevice, ref uint propertyCount, VkDisplayPropertiesKHR* properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPropertiesKHRDelegate_3(VkPhysicalDevice physicalDevice, ref uint propertyCount, out VkDisplayPropertiesKHR properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPlanePropertiesKHR* properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, uint* propertyCount, out VkDisplayPlanePropertiesKHR properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_2(VkPhysicalDevice physicalDevice, ref uint propertyCount, VkDisplayPlanePropertiesKHR* properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_3(VkPhysicalDevice physicalDevice, ref uint propertyCount, out VkDisplayPlanePropertiesKHR properties);
-		private unsafe delegate VkResult GetDisplayPlaneSupportedDisplaysKHRDelegate_0(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, VkDisplayKHR* displays);
-		private unsafe delegate VkResult GetDisplayPlaneSupportedDisplaysKHRDelegate_1(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, out VkDisplayKHR displays);
-		private unsafe delegate VkResult GetDisplayPlaneSupportedDisplaysKHRDelegate_2(VkPhysicalDevice physicalDevice, uint planeIndex, ref uint displayCount, VkDisplayKHR* displays);
-		private unsafe delegate VkResult GetDisplayPlaneSupportedDisplaysKHRDelegate_3(VkPhysicalDevice physicalDevice, uint planeIndex, ref uint displayCount, out VkDisplayKHR displays);
-		private unsafe delegate VkResult GetDisplayModePropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, VkDisplayModePropertiesKHR* properties);
-		private unsafe delegate VkResult GetDisplayModePropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, out VkDisplayModePropertiesKHR properties);
-		private unsafe delegate VkResult GetDisplayModePropertiesKHRDelegate_2(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, VkDisplayModePropertiesKHR* properties);
-		private unsafe delegate VkResult GetDisplayModePropertiesKHRDelegate_3(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, out VkDisplayModePropertiesKHR properties);
+		private unsafe delegate VkResult GetPhysicalDeviceDisplayPropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPropertiesKHR[] properties);
+		private unsafe delegate VkResult GetPhysicalDeviceDisplayPropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPropertiesKHR[] properties);
+		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPlanePropertiesKHR[] properties);
+		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPlanePropertiesKHR[] properties);
+		private unsafe delegate VkResult GetDisplayPlaneSupportedDisplaysKHRDelegate_0(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, [In, Out] VkDisplayKHR[] displays);
+		private unsafe delegate VkResult GetDisplayPlaneSupportedDisplaysKHRDelegate_1(VkPhysicalDevice physicalDevice, uint planeIndex, ref uint displayCount, [In, Out] VkDisplayKHR[] displays);
+		private unsafe delegate VkResult GetDisplayModePropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, [In, Out] VkDisplayModePropertiesKHR[] properties);
+		private unsafe delegate VkResult GetDisplayModePropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, [In, Out] VkDisplayModePropertiesKHR[] properties);
 		private unsafe delegate VkResult CreateDisplayModeKHRDelegate_0(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkDisplayModeKHR* mode);
 		private unsafe delegate VkResult CreateDisplayModeKHRDelegate_1(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode);
 		private unsafe delegate VkResult CreateDisplayModeKHRDelegate_2(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, VkDisplayModeKHR* mode);
@@ -926,14 +912,10 @@ namespace Vulkan
 		private unsafe delegate VkResult GetPhysicalDeviceSurfaceSupportKHRDelegate_1(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out VkBool32 supported);
 		private unsafe delegate VkResult GetPhysicalDeviceSurfaceCapabilitiesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR* surfaceCapabilities);
 		private unsafe delegate VkResult GetPhysicalDeviceSurfaceCapabilitiesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, out VkSurfaceCapabilitiesKHR surfaceCapabilities);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormatsKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, VkSurfaceFormatKHR* surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormatsKHRDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, out VkSurfaceFormatKHR surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormatsKHRDelegate_2(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint surfaceFormatCount, VkSurfaceFormatKHR* surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormatsKHRDelegate_3(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint surfaceFormatCount, out VkSurfaceFormatKHR surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, VkPresentModeKHR* presentModes);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, out VkPresentModeKHR presentModes);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModesKHRDelegate_2(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint presentModeCount, VkPresentModeKHR* presentModes);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModesKHRDelegate_3(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint presentModeCount, out VkPresentModeKHR presentModes);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormatsKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, [In, Out] VkSurfaceFormatKHR[] surfaceFormats);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormatsKHRDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormatKHR[] surfaceFormats);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, [In, Out] VkPresentModeKHR[] presentModes);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint presentModeCount, [In, Out] VkPresentModeKHR[] presentModes);
 		private unsafe delegate VkResult CreateSwapchainKHRDelegate_0(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSwapchainKHR* swapchain);
 		private unsafe delegate VkResult CreateSwapchainKHRDelegate_1(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain);
 		private unsafe delegate VkResult CreateSwapchainKHRDelegate_2(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, VkSwapchainKHR* swapchain);
@@ -944,10 +926,8 @@ namespace Vulkan
 		private unsafe delegate VkResult CreateSwapchainKHRDelegate_7(VkDevice device, ref VkSwapchainCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchain);
 		private unsafe delegate void DestroySwapchainKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* allocator);
 		private unsafe delegate void DestroySwapchainKHRDelegate_1(VkDevice device, VkSwapchainKHR swapchain, ref VkAllocationCallbacks allocator);
-		private unsafe delegate VkResult GetSwapchainImagesKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, VkImage* swapchainImages);
-		private unsafe delegate VkResult GetSwapchainImagesKHRDelegate_1(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, out VkImage swapchainImages);
-		private unsafe delegate VkResult GetSwapchainImagesKHRDelegate_2(VkDevice device, VkSwapchainKHR swapchain, ref uint swapchainImageCount, VkImage* swapchainImages);
-		private unsafe delegate VkResult GetSwapchainImagesKHRDelegate_3(VkDevice device, VkSwapchainKHR swapchain, ref uint swapchainImageCount, out VkImage swapchainImages);
+		private unsafe delegate VkResult GetSwapchainImagesKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, [In, Out] VkImage[] swapchainImages);
+		private unsafe delegate VkResult GetSwapchainImagesKHRDelegate_1(VkDevice device, VkSwapchainKHR swapchain, ref uint swapchainImageCount, [In, Out] VkImage[] swapchainImages);
 		private unsafe delegate VkResult AcquireNextImageKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain, ulong timeout, VkSemaphore semaphore, VkFence fence, uint* imageIndex);
 		private unsafe delegate VkResult AcquireNextImageKHRDelegate_1(VkDevice device, VkSwapchainKHR swapchain, ulong timeout, VkSemaphore semaphore, VkFence fence, ref uint imageIndex);
 		private unsafe delegate VkResult QueuePresentKHRDelegate_0(VkQueue queue, VkPresentInfoKHR* presentInfo);
@@ -1027,20 +1007,14 @@ namespace Vulkan
 		private unsafe delegate VkResult GetPhysicalDeviceImageFormatProperties2Delegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2* imageFormatInfo, out VkImageFormatProperties2 imageFormatProperties);
 		private unsafe delegate VkResult GetPhysicalDeviceImageFormatProperties2Delegate_2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceImageFormatInfo2 imageFormatInfo, VkImageFormatProperties2* imageFormatProperties);
 		private unsafe delegate VkResult GetPhysicalDeviceImageFormatProperties2Delegate_3(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceImageFormatInfo2 imageFormatInfo, out VkImageFormatProperties2 imageFormatProperties);
-		private unsafe delegate void GetPhysicalDeviceQueueFamilyProperties2Delegate_0(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties2* queueFamilyProperties);
-		private unsafe delegate void GetPhysicalDeviceQueueFamilyProperties2Delegate_1(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, out VkQueueFamilyProperties2 queueFamilyProperties);
-		private unsafe delegate void GetPhysicalDeviceQueueFamilyProperties2Delegate_2(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, VkQueueFamilyProperties2* queueFamilyProperties);
-		private unsafe delegate void GetPhysicalDeviceQueueFamilyProperties2Delegate_3(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, out VkQueueFamilyProperties2 queueFamilyProperties);
+		private unsafe delegate void GetPhysicalDeviceQueueFamilyProperties2Delegate_0(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties2[] queueFamilyProperties);
+		private unsafe delegate void GetPhysicalDeviceQueueFamilyProperties2Delegate_1(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties2[] queueFamilyProperties);
 		private unsafe delegate void GetPhysicalDeviceMemoryProperties2Delegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties2* memoryProperties);
 		private unsafe delegate void GetPhysicalDeviceMemoryProperties2Delegate_1(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties2 memoryProperties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, VkSparseImageFormatProperties2* properties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, out VkSparseImageFormatProperties2 properties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, ref uint propertyCount, VkSparseImageFormatProperties2* properties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_3(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, ref uint propertyCount, out VkSparseImageFormatProperties2 properties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_4(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, uint* propertyCount, VkSparseImageFormatProperties2* properties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_5(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, uint* propertyCount, out VkSparseImageFormatProperties2 properties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_6(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, ref uint propertyCount, VkSparseImageFormatProperties2* properties);
-		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_7(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, ref uint propertyCount, out VkSparseImageFormatProperties2 properties);
+		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
+		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
+		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
+		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_3(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
 		private unsafe delegate void CommandPushDescriptorSetKHRDelegate_0(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites);
 		private unsafe delegate void CommandPushDescriptorSetKHRDelegate_1(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, ref VkWriteDescriptorSet descriptorWrites);
 		private unsafe delegate void TrimCommandPoolDelegate_0(VkDevice device, VkCommandPool commandPool, uint flags);
@@ -1134,10 +1108,8 @@ namespace Vulkan
 		private unsafe delegate VkResult AcquireNextImage2KHRDelegate_2(VkDevice device, ref VkAcquireNextImageInfoKHR acquireInfo, uint* imageIndex);
 		private unsafe delegate VkResult AcquireNextImage2KHRDelegate_3(VkDevice device, ref VkAcquireNextImageInfoKHR acquireInfo, ref uint imageIndex);
 		private unsafe delegate void CommandDispatchBaseDelegate_0(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ);
-		private unsafe delegate VkResult GetPhysicalDevicePresentRectanglesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, VkRect2D* rects);
-		private unsafe delegate VkResult GetPhysicalDevicePresentRectanglesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, out VkRect2D rects);
-		private unsafe delegate VkResult GetPhysicalDevicePresentRectanglesKHRDelegate_2(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, VkRect2D* rects);
-		private unsafe delegate VkResult GetPhysicalDevicePresentRectanglesKHRDelegate_3(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, out VkRect2D rects);
+		private unsafe delegate VkResult GetPhysicalDevicePresentRectanglesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, [In, Out] VkRect2D[] rects);
+		private unsafe delegate VkResult GetPhysicalDevicePresentRectanglesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, [In, Out] VkRect2D[] rects);
 		private unsafe delegate VkResult CreateDescriptorUpdateTemplateDelegate_0(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate);
 		private unsafe delegate VkResult CreateDescriptorUpdateTemplateDelegate_1(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate);
 		private unsafe delegate VkResult CreateDescriptorUpdateTemplateDelegate_2(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, ref VkAllocationCallbacks allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate);
@@ -1157,10 +1129,8 @@ namespace Vulkan
 		private unsafe delegate VkResult GetSwapchainStatusKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain);
 		private unsafe delegate VkResult GetRefreshCycleDurationGOOGLEDelegate_0(VkDevice device, VkSwapchainKHR swapchain, VkRefreshCycleDurationGOOGLE* displayTimingProperties);
 		private unsafe delegate VkResult GetRefreshCycleDurationGOOGLEDelegate_1(VkDevice device, VkSwapchainKHR swapchain, out VkRefreshCycleDurationGOOGLE displayTimingProperties);
-		private unsafe delegate VkResult GetPastPresentationTimingGOOGLEDelegate_0(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, VkPastPresentationTimingGOOGLE* presentationTimings);
-		private unsafe delegate VkResult GetPastPresentationTimingGOOGLEDelegate_1(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, out VkPastPresentationTimingGOOGLE presentationTimings);
-		private unsafe delegate VkResult GetPastPresentationTimingGOOGLEDelegate_2(VkDevice device, VkSwapchainKHR swapchain, ref uint presentationTimingCount, VkPastPresentationTimingGOOGLE* presentationTimings);
-		private unsafe delegate VkResult GetPastPresentationTimingGOOGLEDelegate_3(VkDevice device, VkSwapchainKHR swapchain, ref uint presentationTimingCount, out VkPastPresentationTimingGOOGLE presentationTimings);
+		private unsafe delegate VkResult GetPastPresentationTimingGOOGLEDelegate_0(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, [In, Out] VkPastPresentationTimingGOOGLE[] presentationTimings);
+		private unsafe delegate VkResult GetPastPresentationTimingGOOGLEDelegate_1(VkDevice device, VkSwapchainKHR swapchain, ref uint presentationTimingCount, [In, Out] VkPastPresentationTimingGOOGLE[] presentationTimings);
 		private unsafe delegate VkResult CreateMacOSSurfaceMVKDelegate_0(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface);
 		private unsafe delegate VkResult CreateMacOSSurfaceMVKDelegate_1(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 		private unsafe delegate VkResult CreateMacOSSurfaceMVKDelegate_2(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, ref VkAllocationCallbacks allocator, VkSurfaceKHR* surface);
@@ -1181,26 +1151,16 @@ namespace Vulkan
 		private unsafe delegate VkResult GetPhysicalDeviceSurfaceCapabilities2KHRDelegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkSurfaceCapabilities2KHR surfaceCapabilities);
 		private unsafe delegate VkResult GetPhysicalDeviceSurfaceCapabilities2KHRDelegate_2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, VkSurfaceCapabilities2KHR* surfaceCapabilities);
 		private unsafe delegate VkResult GetPhysicalDeviceSurfaceCapabilities2KHRDelegate_3(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, out VkSurfaceCapabilities2KHR surfaceCapabilities);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, VkSurfaceFormat2KHR* surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, out VkSurfaceFormat2KHR surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint surfaceFormatCount, VkSurfaceFormat2KHR* surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_3(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint surfaceFormatCount, out VkSurfaceFormat2KHR surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_4(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* surfaceFormatCount, VkSurfaceFormat2KHR* surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_5(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* surfaceFormatCount, out VkSurfaceFormat2KHR surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_6(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint surfaceFormatCount, VkSurfaceFormat2KHR* surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_7(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint surfaceFormatCount, out VkSurfaceFormat2KHR surfaceFormats);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayProperties2KHR* properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayProperties2KHRDelegate_1(VkPhysicalDevice physicalDevice, uint* propertyCount, out VkDisplayProperties2KHR properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayProperties2KHRDelegate_2(VkPhysicalDevice physicalDevice, ref uint propertyCount, VkDisplayProperties2KHR* properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayProperties2KHRDelegate_3(VkPhysicalDevice physicalDevice, ref uint propertyCount, out VkDisplayProperties2KHR properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPlaneProperties2KHR* properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_1(VkPhysicalDevice physicalDevice, uint* propertyCount, out VkDisplayPlaneProperties2KHR properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_2(VkPhysicalDevice physicalDevice, ref uint propertyCount, VkDisplayPlaneProperties2KHR* properties);
-		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_3(VkPhysicalDevice physicalDevice, ref uint propertyCount, out VkDisplayPlaneProperties2KHR properties);
-		private unsafe delegate VkResult GetDisplayModeProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, VkDisplayModeProperties2KHR* properties);
-		private unsafe delegate VkResult GetDisplayModeProperties2KHRDelegate_1(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, out VkDisplayModeProperties2KHR properties);
-		private unsafe delegate VkResult GetDisplayModeProperties2KHRDelegate_2(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, VkDisplayModeProperties2KHR* properties);
-		private unsafe delegate VkResult GetDisplayModeProperties2KHRDelegate_3(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, out VkDisplayModeProperties2KHR properties);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_3(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats);
+		private unsafe delegate VkResult GetPhysicalDeviceDisplayProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayProperties2KHR[] properties);
+		private unsafe delegate VkResult GetPhysicalDeviceDisplayProperties2KHRDelegate_1(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayProperties2KHR[] properties);
+		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPlaneProperties2KHR[] properties);
+		private unsafe delegate VkResult GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_1(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPlaneProperties2KHR[] properties);
+		private unsafe delegate VkResult GetDisplayModeProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, [In, Out] VkDisplayModeProperties2KHR[] properties);
+		private unsafe delegate VkResult GetDisplayModeProperties2KHRDelegate_1(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, [In, Out] VkDisplayModeProperties2KHR[] properties);
 		private unsafe delegate VkResult GetDisplayPlaneCapabilities2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkDisplayPlaneInfo2KHR* displayPlaneInfo, VkDisplayPlaneCapabilities2KHR* capabilities);
 		private unsafe delegate VkResult GetDisplayPlaneCapabilities2KHRDelegate_1(VkPhysicalDevice physicalDevice, VkDisplayPlaneInfo2KHR* displayPlaneInfo, out VkDisplayPlaneCapabilities2KHR capabilities);
 		private unsafe delegate VkResult GetDisplayPlaneCapabilities2KHRDelegate_2(VkPhysicalDevice physicalDevice, ref VkDisplayPlaneInfo2KHR displayPlaneInfo, VkDisplayPlaneCapabilities2KHR* capabilities);
@@ -1213,14 +1173,10 @@ namespace Vulkan
 		private unsafe delegate void GetImageMemoryRequirements2Delegate_1(VkDevice device, VkImageMemoryRequirementsInfo2* info, out VkMemoryRequirements2 memoryRequirements);
 		private unsafe delegate void GetImageMemoryRequirements2Delegate_2(VkDevice device, ref VkImageMemoryRequirementsInfo2 info, VkMemoryRequirements2* memoryRequirements);
 		private unsafe delegate void GetImageMemoryRequirements2Delegate_3(VkDevice device, ref VkImageMemoryRequirementsInfo2 info, out VkMemoryRequirements2 memoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_0(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_1(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements2 sparseMemoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, ref uint sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_3(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, ref uint sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements2 sparseMemoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_4(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_5(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, uint* sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements2 sparseMemoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_6(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, ref uint sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements);
-		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_7(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, ref uint sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements2 sparseMemoryRequirements);
+		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_0(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
+		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_1(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
+		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_2(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
+		private unsafe delegate void GetImageSparseMemoryRequirements2Delegate_3(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
 		private unsafe delegate VkResult CreateSamplerYcbcrConversionDelegate_0(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion);
 		private unsafe delegate VkResult CreateSamplerYcbcrConversionDelegate_1(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion);
 		private unsafe delegate VkResult CreateSamplerYcbcrConversionDelegate_2(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, ref VkAllocationCallbacks allocator, VkSamplerYcbcrConversion* ycbcrConversion);
@@ -1267,10 +1223,8 @@ namespace Vulkan
 		private unsafe delegate VkResult GetShaderInfoAMDDelegate_0(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info);
 		private unsafe delegate VkResult GetShaderInfoAMDDelegate_1(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, ref nuint infoSize, void* info);
 		private unsafe delegate void SetLocalDimmingAMDDelegate_0(VkDevice device, VkSwapchainKHR swapChain, VkBool32 localDimmingEnable);
-		private unsafe delegate VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_0(VkPhysicalDevice physicalDevice, uint* timeDomainCount, VkTimeDomainEXT* timeDomains);
-		private unsafe delegate VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_1(VkPhysicalDevice physicalDevice, uint* timeDomainCount, out VkTimeDomainEXT timeDomains);
-		private unsafe delegate VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_2(VkPhysicalDevice physicalDevice, ref uint timeDomainCount, VkTimeDomainEXT* timeDomains);
-		private unsafe delegate VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_3(VkPhysicalDevice physicalDevice, ref uint timeDomainCount, out VkTimeDomainEXT timeDomains);
+		private unsafe delegate VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_0(VkPhysicalDevice physicalDevice, uint* timeDomainCount, [In, Out] VkTimeDomainEXT[] timeDomains);
+		private unsafe delegate VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_1(VkPhysicalDevice physicalDevice, ref uint timeDomainCount, [In, Out] VkTimeDomainEXT[] timeDomains);
 		private unsafe delegate VkResult GetCalibratedTimestampsEXTDelegate_0(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoEXT[] timestampInfos, ulong* timestamps, ulong* maxDeviation);
 		private unsafe delegate VkResult GetCalibratedTimestampsEXTDelegate_1(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoEXT[] timestampInfos, ulong* timestamps, out ulong maxDeviation);
 		private unsafe delegate VkResult GetCalibratedTimestampsEXTDelegate_2(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoEXT[] timestampInfos, ref ulong timestamps, ulong* maxDeviation);
@@ -1339,10 +1293,8 @@ namespace Vulkan
 		private unsafe delegate void CommandDrawIndirectCountDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
 		private unsafe delegate void CommandDrawIndexedIndirectCountDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
 		private unsafe delegate void CommandSetCheckpointNVDelegate_0(VkCommandBuffer commandBuffer, void* checkpointMarker);
-		private unsafe delegate void GetQueueCheckpointDataNVDelegate_0(VkQueue queue, uint* checkpointDataCount, VkCheckpointDataNV* checkpointData);
-		private unsafe delegate void GetQueueCheckpointDataNVDelegate_1(VkQueue queue, uint* checkpointDataCount, out VkCheckpointDataNV checkpointData);
-		private unsafe delegate void GetQueueCheckpointDataNVDelegate_2(VkQueue queue, ref uint checkpointDataCount, VkCheckpointDataNV* checkpointData);
-		private unsafe delegate void GetQueueCheckpointDataNVDelegate_3(VkQueue queue, ref uint checkpointDataCount, out VkCheckpointDataNV checkpointData);
+		private unsafe delegate void GetQueueCheckpointDataNVDelegate_0(VkQueue queue, uint* checkpointDataCount, [In, Out] VkCheckpointDataNV[] checkpointData);
+		private unsafe delegate void GetQueueCheckpointDataNVDelegate_1(VkQueue queue, ref uint checkpointDataCount, [In, Out] VkCheckpointDataNV[] checkpointData);
 		private unsafe delegate void CommandBindTransformFeedbackBuffersEXTDelegate_0(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, VkDeviceSize* sizes);
 		private unsafe delegate void CommandBindTransformFeedbackBuffersEXTDelegate_1(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes);
 		private unsafe delegate void CommandBindTransformFeedbackBuffersEXTDelegate_2(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes);
@@ -1439,10 +1391,8 @@ namespace Vulkan
 		private unsafe delegate VkResult CreateRayTracingPipelinesKHRDelegate_1(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR[] createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines);
 		private unsafe delegate VkResult CreateRayTracingPipelinesKHRDelegate_2(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR[] createInfos, ref VkAllocationCallbacks allocator, VkPipeline* pipelines);
 		private unsafe delegate VkResult CreateRayTracingPipelinesKHRDelegate_3(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR[] createInfos, ref VkAllocationCallbacks allocator, out VkPipeline pipelines);
-		private unsafe delegate VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixPropertiesNV* properties);
-		private unsafe delegate VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_1(VkPhysicalDevice physicalDevice, uint* propertyCount, out VkCooperativeMatrixPropertiesNV properties);
-		private unsafe delegate VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_2(VkPhysicalDevice physicalDevice, ref uint propertyCount, VkCooperativeMatrixPropertiesNV* properties);
-		private unsafe delegate VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_3(VkPhysicalDevice physicalDevice, ref uint propertyCount, out VkCooperativeMatrixPropertiesNV properties);
+		private unsafe delegate VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkCooperativeMatrixPropertiesNV[] properties);
+		private unsafe delegate VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_1(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkCooperativeMatrixPropertiesNV[] properties);
 		private unsafe delegate void CommandTraceRaysIndirectKHRDelegate_0(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, VkDeviceAddress indirectDeviceAddress);
 		private unsafe delegate void CommandTraceRaysIndirectKHRDelegate_1(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, ref VkStridedDeviceAddressRegionKHR callableShaderBindingTable, VkDeviceAddress indirectDeviceAddress);
 		private unsafe delegate void CommandTraceRaysIndirectKHRDelegate_2(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, ref VkStridedDeviceAddressRegionKHR hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, VkDeviceAddress indirectDeviceAddress);
@@ -1469,14 +1419,10 @@ namespace Vulkan
 		private unsafe delegate uint GetImageViewHandleNVXDelegate_1(VkDevice device, out VkImageViewHandleInfoNVX info);
 		private unsafe delegate VkResult GetImageViewAddressNVXDelegate_0(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* properties);
 		private unsafe delegate VkResult GetImageViewAddressNVXDelegate_1(VkDevice device, VkImageView imageView, out VkImageViewAddressPropertiesNVX properties);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* presentModeCount, VkPresentModeKHR* presentModes);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* presentModeCount, out VkPresentModeKHR presentModes);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint presentModeCount, VkPresentModeKHR* presentModes);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_3(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint presentModeCount, out VkPresentModeKHR presentModes);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_4(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* presentModeCount, VkPresentModeKHR* presentModes);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_5(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* presentModeCount, out VkPresentModeKHR presentModes);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_6(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint presentModeCount, VkPresentModeKHR* presentModes);
-		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_7(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint presentModeCount, out VkPresentModeKHR presentModes);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* presentModeCount, [In, Out] VkPresentModeKHR[] presentModes);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint presentModeCount, [In, Out] VkPresentModeKHR[] presentModes);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* presentModeCount, [In, Out] VkPresentModeKHR[] presentModes);
+		private unsafe delegate VkResult GetPhysicalDeviceSurfacePresentModes2EXTDelegate_3(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint presentModeCount, [In, Out] VkPresentModeKHR[] presentModes);
 		private unsafe delegate VkResult GetDeviceGroupSurfacePresentModes2EXTDelegate_0(VkDevice device, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, VkDeviceGroupPresentModeFlagsKHR* modes);
 		private unsafe delegate VkResult GetDeviceGroupSurfacePresentModes2EXTDelegate_1(VkDevice device, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkDeviceGroupPresentModeFlagsKHR modes);
 		private unsafe delegate VkResult GetDeviceGroupSurfacePresentModes2EXTDelegate_2(VkDevice device, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, VkDeviceGroupPresentModeFlagsKHR* modes);
@@ -1508,10 +1454,8 @@ namespace Vulkan
 		private unsafe delegate VkResult CreateHeadlessSurfaceEXTDelegate_5(VkInstance instance, ref VkHeadlessSurfaceCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 		private unsafe delegate VkResult CreateHeadlessSurfaceEXTDelegate_6(VkInstance instance, ref VkHeadlessSurfaceCreateInfoEXT createInfo, ref VkAllocationCallbacks allocator, VkSurfaceKHR* surface);
 		private unsafe delegate VkResult CreateHeadlessSurfaceEXTDelegate_7(VkInstance instance, ref VkHeadlessSurfaceCreateInfoEXT createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
-		private unsafe delegate VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_0(VkPhysicalDevice physicalDevice, uint* combinationCount, VkFramebufferMixedSamplesCombinationNV* combinations);
-		private unsafe delegate VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_1(VkPhysicalDevice physicalDevice, uint* combinationCount, out VkFramebufferMixedSamplesCombinationNV combinations);
-		private unsafe delegate VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_2(VkPhysicalDevice physicalDevice, ref uint combinationCount, VkFramebufferMixedSamplesCombinationNV* combinations);
-		private unsafe delegate VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_3(VkPhysicalDevice physicalDevice, ref uint combinationCount, out VkFramebufferMixedSamplesCombinationNV combinations);
+		private unsafe delegate VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_0(VkPhysicalDevice physicalDevice, uint* combinationCount, [In, Out] VkFramebufferMixedSamplesCombinationNV[] combinations);
+		private unsafe delegate VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_1(VkPhysicalDevice physicalDevice, ref uint combinationCount, [In, Out] VkFramebufferMixedSamplesCombinationNV[] combinations);
 		private unsafe delegate VkResult InitializePerformanceApiINTELDelegate_0(VkDevice device, VkInitializePerformanceApiInfoINTEL* initializeInfo);
 		private unsafe delegate VkResult InitializePerformanceApiINTELDelegate_1(VkDevice device, ref VkInitializePerformanceApiInfoINTEL initializeInfo);
 		private unsafe delegate void UninitializePerformanceApiINTELDelegate_0(VkDevice device);
@@ -1531,35 +1475,21 @@ namespace Vulkan
 		private unsafe delegate VkResult GetPerformanceParameterINTELDelegate_1(VkDevice device, VkPerformanceParameterTypeINTEL parameter, out VkPerformanceValueINTEL value);
 		private unsafe delegate ulong GetDeviceMemoryOpaqueCaptureAddressDelegate_0(VkDevice device, VkDeviceMemoryOpaqueCaptureAddressInfo* info);
 		private unsafe delegate ulong GetDeviceMemoryOpaqueCaptureAddressDelegate_1(VkDevice device, out VkDeviceMemoryOpaqueCaptureAddressInfo info);
-		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_0(VkDevice device, VkPipelineInfoKHR* pipelineInfo, uint* executableCount, VkPipelineExecutablePropertiesKHR* properties);
-		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_1(VkDevice device, VkPipelineInfoKHR* pipelineInfo, uint* executableCount, out VkPipelineExecutablePropertiesKHR properties);
-		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_2(VkDevice device, VkPipelineInfoKHR* pipelineInfo, ref uint executableCount, VkPipelineExecutablePropertiesKHR* properties);
-		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_3(VkDevice device, VkPipelineInfoKHR* pipelineInfo, ref uint executableCount, out VkPipelineExecutablePropertiesKHR properties);
-		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_4(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, uint* executableCount, VkPipelineExecutablePropertiesKHR* properties);
-		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_5(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, uint* executableCount, out VkPipelineExecutablePropertiesKHR properties);
-		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_6(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, ref uint executableCount, VkPipelineExecutablePropertiesKHR* properties);
-		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_7(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, ref uint executableCount, out VkPipelineExecutablePropertiesKHR properties);
-		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_0(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* statisticCount, VkPipelineExecutableStatisticKHR* statistics);
-		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_1(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* statisticCount, out VkPipelineExecutableStatisticKHR statistics);
-		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_2(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint statisticCount, VkPipelineExecutableStatisticKHR* statistics);
-		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_3(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint statisticCount, out VkPipelineExecutableStatisticKHR statistics);
-		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_4(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* statisticCount, VkPipelineExecutableStatisticKHR* statistics);
-		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_5(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* statisticCount, out VkPipelineExecutableStatisticKHR statistics);
-		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_6(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint statisticCount, VkPipelineExecutableStatisticKHR* statistics);
-		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_7(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint statisticCount, out VkPipelineExecutableStatisticKHR statistics);
-		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_0(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* internalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* internalRepresentations);
-		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_1(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* internalRepresentationCount, out VkPipelineExecutableInternalRepresentationKHR internalRepresentations);
-		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_2(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint internalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* internalRepresentations);
-		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_3(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint internalRepresentationCount, out VkPipelineExecutableInternalRepresentationKHR internalRepresentations);
-		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_4(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* internalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* internalRepresentations);
-		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_5(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* internalRepresentationCount, out VkPipelineExecutableInternalRepresentationKHR internalRepresentations);
-		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_6(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint internalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* internalRepresentations);
-		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_7(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint internalRepresentationCount, out VkPipelineExecutableInternalRepresentationKHR internalRepresentations);
+		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_0(VkDevice device, VkPipelineInfoKHR* pipelineInfo, uint* executableCount, [In, Out] VkPipelineExecutablePropertiesKHR[] properties);
+		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_1(VkDevice device, VkPipelineInfoKHR* pipelineInfo, ref uint executableCount, [In, Out] VkPipelineExecutablePropertiesKHR[] properties);
+		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_2(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, uint* executableCount, [In, Out] VkPipelineExecutablePropertiesKHR[] properties);
+		private unsafe delegate VkResult GetPipelineExecutablePropertiesKHRDelegate_3(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, ref uint executableCount, [In, Out] VkPipelineExecutablePropertiesKHR[] properties);
+		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_0(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* statisticCount, [In, Out] VkPipelineExecutableStatisticKHR[] statistics);
+		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_1(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint statisticCount, [In, Out] VkPipelineExecutableStatisticKHR[] statistics);
+		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_2(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* statisticCount, [In, Out] VkPipelineExecutableStatisticKHR[] statistics);
+		private unsafe delegate VkResult GetPipelineExecutableStatisticsKHRDelegate_3(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint statisticCount, [In, Out] VkPipelineExecutableStatisticKHR[] statistics);
+		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_0(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations);
+		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_1(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations);
+		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_2(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations);
+		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_3(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations);
 		private unsafe delegate void CommandSetLineStippleEXTDelegate_0(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern);
-		private unsafe delegate VkResult GetPhysicalDeviceToolPropertiesEXTDelegate_0(VkPhysicalDevice physicalDevice, uint* toolCount, VkPhysicalDeviceToolPropertiesEXT* toolProperties);
-		private unsafe delegate VkResult GetPhysicalDeviceToolPropertiesEXTDelegate_1(VkPhysicalDevice physicalDevice, uint* toolCount, out VkPhysicalDeviceToolPropertiesEXT toolProperties);
-		private unsafe delegate VkResult GetPhysicalDeviceToolPropertiesEXTDelegate_2(VkPhysicalDevice physicalDevice, ref uint toolCount, VkPhysicalDeviceToolPropertiesEXT* toolProperties);
-		private unsafe delegate VkResult GetPhysicalDeviceToolPropertiesEXTDelegate_3(VkPhysicalDevice physicalDevice, ref uint toolCount, out VkPhysicalDeviceToolPropertiesEXT toolProperties);
+		private unsafe delegate VkResult GetPhysicalDeviceToolPropertiesEXTDelegate_0(VkPhysicalDevice physicalDevice, uint* toolCount, [In, Out] VkPhysicalDeviceToolPropertiesEXT[] toolProperties);
+		private unsafe delegate VkResult GetPhysicalDeviceToolPropertiesEXTDelegate_1(VkPhysicalDevice physicalDevice, ref uint toolCount, [In, Out] VkPhysicalDeviceToolPropertiesEXT[] toolProperties);
 		private unsafe delegate VkResult CreateAccelerationStructureKHRDelegate_0(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure);
 		private unsafe delegate VkResult CreateAccelerationStructureKHRDelegate_1(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkAccelerationStructureKHR accelerationStructure);
 		private unsafe delegate VkResult CreateAccelerationStructureKHRDelegate_2(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, VkAccelerationStructureKHR* accelerationStructure);
@@ -1645,19 +1575,13 @@ namespace Vulkan
 		private unsafe delegate void CommandResolveImage2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkResolveImageInfo2KHR resolveImageInfo);
 		private unsafe delegate void CommandSetFragmentShadingRateKHRDelegate_0(VkCommandBuffer commandBuffer, VkExtent2D* fragmentSize, VkFragmentShadingRateCombinerOpKHR combinerOps);
 		private unsafe delegate void CommandSetFragmentShadingRateKHRDelegate_1(VkCommandBuffer commandBuffer, ref VkExtent2D fragmentSize, VkFragmentShadingRateCombinerOpKHR combinerOps);
-		private unsafe delegate VkResult GetPhysicalDeviceFragmentShadingRatesKHRDelegate_0(VkPhysicalDevice physicalDevice, uint* fragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR* fragmentShadingRates);
-		private unsafe delegate VkResult GetPhysicalDeviceFragmentShadingRatesKHRDelegate_1(VkPhysicalDevice physicalDevice, uint* fragmentShadingRateCount, out VkPhysicalDeviceFragmentShadingRateKHR fragmentShadingRates);
-		private unsafe delegate VkResult GetPhysicalDeviceFragmentShadingRatesKHRDelegate_2(VkPhysicalDevice physicalDevice, ref uint fragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR* fragmentShadingRates);
-		private unsafe delegate VkResult GetPhysicalDeviceFragmentShadingRatesKHRDelegate_3(VkPhysicalDevice physicalDevice, ref uint fragmentShadingRateCount, out VkPhysicalDeviceFragmentShadingRateKHR fragmentShadingRates);
+		private unsafe delegate VkResult GetPhysicalDeviceFragmentShadingRatesKHRDelegate_0(VkPhysicalDevice physicalDevice, uint* fragmentShadingRateCount, [In, Out] VkPhysicalDeviceFragmentShadingRateKHR[] fragmentShadingRates);
+		private unsafe delegate VkResult GetPhysicalDeviceFragmentShadingRatesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref uint fragmentShadingRateCount, [In, Out] VkPhysicalDeviceFragmentShadingRateKHR[] fragmentShadingRates);
 		private unsafe delegate void CommandSetFragmentShadingRateEnumNVDelegate_0(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps);
-		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_0(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, uint* maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo);
-		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_1(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, uint* maxPrimitiveCounts, out VkAccelerationStructureBuildSizesInfoKHR sizeInfo);
-		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_2(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, ref uint maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo);
-		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_3(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, ref uint maxPrimitiveCounts, out VkAccelerationStructureBuildSizesInfoKHR sizeInfo);
-		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_4(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, uint* maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo);
-		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_5(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, uint* maxPrimitiveCounts, out VkAccelerationStructureBuildSizesInfoKHR sizeInfo);
-		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_6(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, ref uint maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo);
-		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_7(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, ref uint maxPrimitiveCounts, out VkAccelerationStructureBuildSizesInfoKHR sizeInfo);
+		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_0(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, uint* maxPrimitiveCounts, [In, Out] VkAccelerationStructureBuildSizesInfoKHR[] sizeInfo);
+		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_1(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, ref uint maxPrimitiveCounts, [In, Out] VkAccelerationStructureBuildSizesInfoKHR[] sizeInfo);
+		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_2(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, uint* maxPrimitiveCounts, [In, Out] VkAccelerationStructureBuildSizesInfoKHR[] sizeInfo);
+		private unsafe delegate void GetAccelerationStructureBuildSizesKHRDelegate_3(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, ref uint maxPrimitiveCounts, [In, Out] VkAccelerationStructureBuildSizesInfoKHR[] sizeInfo);
 		private unsafe delegate void CommandSetEvent2KHRDelegate_0(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfoKHR* dependencyInfo);
 		private unsafe delegate void CommandSetEvent2KHRDelegate_1(VkCommandBuffer commandBuffer, VkEvent @event, ref VkDependencyInfoKHR dependencyInfo);
 		private unsafe delegate void CommandResetEvent2KHRDelegate_0(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2KHR stageMask);
@@ -1669,10 +1593,8 @@ namespace Vulkan
 		private unsafe delegate VkResult QueueSubmit2KHRDelegate_1(VkQueue queue, uint submitCount, ref VkSubmitInfo2KHR submits, VkFence fence);
 		private unsafe delegate void CommandWriteTimestamp2KHRDelegate_0(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkQueryPool queryPool, uint query);
 		private unsafe delegate void CommandWriteBufferMarker2AMDDelegate_0(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkBuffer destinationBuffer, VkDeviceSize destinationOffset, uint marker);
-		private unsafe delegate void GetQueueCheckpointData2NVDelegate_0(VkQueue queue, uint* checkpointDataCount, VkCheckpointData2NV* checkpointData);
-		private unsafe delegate void GetQueueCheckpointData2NVDelegate_1(VkQueue queue, uint* checkpointDataCount, out VkCheckpointData2NV checkpointData);
-		private unsafe delegate void GetQueueCheckpointData2NVDelegate_2(VkQueue queue, ref uint checkpointDataCount, VkCheckpointData2NV* checkpointData);
-		private unsafe delegate void GetQueueCheckpointData2NVDelegate_3(VkQueue queue, ref uint checkpointDataCount, out VkCheckpointData2NV checkpointData);
+		private unsafe delegate void GetQueueCheckpointData2NVDelegate_0(VkQueue queue, uint* checkpointDataCount, [In, Out] VkCheckpointData2NV[] checkpointData);
+		private unsafe delegate void GetQueueCheckpointData2NVDelegate_1(VkQueue queue, ref uint checkpointDataCount, [In, Out] VkCheckpointData2NV[] checkpointData);
 		private static readonly OSVulkanLibraryBase VulkanLibrary;
 		private static IntPtr CreateInstancePointer;
 		private static CreateInstanceDelegate_0 CreateInstance_0;
@@ -1701,8 +1623,6 @@ namespace Vulkan
 		private static IntPtr GetPhysicalDeviceQueueFamilyPropertiesPointer;
 		private static GetPhysicalDeviceQueueFamilyPropertiesDelegate_0 GetPhysicalDeviceQueueFamilyProperties_0;
 		private static GetPhysicalDeviceQueueFamilyPropertiesDelegate_1 GetPhysicalDeviceQueueFamilyProperties_1;
-		private static GetPhysicalDeviceQueueFamilyPropertiesDelegate_2 GetPhysicalDeviceQueueFamilyProperties_2;
-		private static GetPhysicalDeviceQueueFamilyPropertiesDelegate_3 GetPhysicalDeviceQueueFamilyProperties_3;
 		private static IntPtr GetPhysicalDeviceMemoryPropertiesPointer;
 		private static GetPhysicalDeviceMemoryPropertiesDelegate_0 GetPhysicalDeviceMemoryProperties_0;
 		private static GetPhysicalDeviceMemoryPropertiesDelegate_1 GetPhysicalDeviceMemoryProperties_1;
@@ -1793,13 +1713,9 @@ namespace Vulkan
 		private static IntPtr GetImageSparseMemoryRequirementsPointer;
 		private static GetImageSparseMemoryRequirementsDelegate_0 GetImageSparseMemoryRequirements_0;
 		private static GetImageSparseMemoryRequirementsDelegate_1 GetImageSparseMemoryRequirements_1;
-		private static GetImageSparseMemoryRequirementsDelegate_2 GetImageSparseMemoryRequirements_2;
-		private static GetImageSparseMemoryRequirementsDelegate_3 GetImageSparseMemoryRequirements_3;
 		private static IntPtr GetPhysicalDeviceSparseImageFormatPropertiesPointer;
 		private static GetPhysicalDeviceSparseImageFormatPropertiesDelegate_0 GetPhysicalDeviceSparseImageFormatProperties_0;
 		private static GetPhysicalDeviceSparseImageFormatPropertiesDelegate_1 GetPhysicalDeviceSparseImageFormatProperties_1;
-		private static GetPhysicalDeviceSparseImageFormatPropertiesDelegate_2 GetPhysicalDeviceSparseImageFormatProperties_2;
-		private static GetPhysicalDeviceSparseImageFormatPropertiesDelegate_3 GetPhysicalDeviceSparseImageFormatProperties_3;
 		private static IntPtr QueueBindSparsePointer;
 		private static QueueBindSparseDelegate_0 QueueBindSparse_0;
 		private static QueueBindSparseDelegate_1 QueueBindSparse_1;
@@ -2236,23 +2152,15 @@ namespace Vulkan
 		private static IntPtr GetPhysicalDeviceDisplayPropertiesKHRPointer;
 		private static GetPhysicalDeviceDisplayPropertiesKHRDelegate_0 GetPhysicalDeviceDisplayPropertiesKHR_0;
 		private static GetPhysicalDeviceDisplayPropertiesKHRDelegate_1 GetPhysicalDeviceDisplayPropertiesKHR_1;
-		private static GetPhysicalDeviceDisplayPropertiesKHRDelegate_2 GetPhysicalDeviceDisplayPropertiesKHR_2;
-		private static GetPhysicalDeviceDisplayPropertiesKHRDelegate_3 GetPhysicalDeviceDisplayPropertiesKHR_3;
 		private static IntPtr GetPhysicalDeviceDisplayPlanePropertiesKHRPointer;
 		private static GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_0 GetPhysicalDeviceDisplayPlanePropertiesKHR_0;
 		private static GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_1 GetPhysicalDeviceDisplayPlanePropertiesKHR_1;
-		private static GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_2 GetPhysicalDeviceDisplayPlanePropertiesKHR_2;
-		private static GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_3 GetPhysicalDeviceDisplayPlanePropertiesKHR_3;
 		private static IntPtr GetDisplayPlaneSupportedDisplaysKHRPointer;
 		private static GetDisplayPlaneSupportedDisplaysKHRDelegate_0 GetDisplayPlaneSupportedDisplaysKHR_0;
 		private static GetDisplayPlaneSupportedDisplaysKHRDelegate_1 GetDisplayPlaneSupportedDisplaysKHR_1;
-		private static GetDisplayPlaneSupportedDisplaysKHRDelegate_2 GetDisplayPlaneSupportedDisplaysKHR_2;
-		private static GetDisplayPlaneSupportedDisplaysKHRDelegate_3 GetDisplayPlaneSupportedDisplaysKHR_3;
 		private static IntPtr GetDisplayModePropertiesKHRPointer;
 		private static GetDisplayModePropertiesKHRDelegate_0 GetDisplayModePropertiesKHR_0;
 		private static GetDisplayModePropertiesKHRDelegate_1 GetDisplayModePropertiesKHR_1;
-		private static GetDisplayModePropertiesKHRDelegate_2 GetDisplayModePropertiesKHR_2;
-		private static GetDisplayModePropertiesKHRDelegate_3 GetDisplayModePropertiesKHR_3;
 		private static IntPtr CreateDisplayModeKHRPointer;
 		private static CreateDisplayModeKHRDelegate_0 CreateDisplayModeKHR_0;
 		private static CreateDisplayModeKHRDelegate_1 CreateDisplayModeKHR_1;
@@ -2291,13 +2199,9 @@ namespace Vulkan
 		private static IntPtr GetPhysicalDeviceSurfaceFormatsKHRPointer;
 		private static GetPhysicalDeviceSurfaceFormatsKHRDelegate_0 GetPhysicalDeviceSurfaceFormatsKHR_0;
 		private static GetPhysicalDeviceSurfaceFormatsKHRDelegate_1 GetPhysicalDeviceSurfaceFormatsKHR_1;
-		private static GetPhysicalDeviceSurfaceFormatsKHRDelegate_2 GetPhysicalDeviceSurfaceFormatsKHR_2;
-		private static GetPhysicalDeviceSurfaceFormatsKHRDelegate_3 GetPhysicalDeviceSurfaceFormatsKHR_3;
 		private static IntPtr GetPhysicalDeviceSurfacePresentModesKHRPointer;
 		private static GetPhysicalDeviceSurfacePresentModesKHRDelegate_0 GetPhysicalDeviceSurfacePresentModesKHR_0;
 		private static GetPhysicalDeviceSurfacePresentModesKHRDelegate_1 GetPhysicalDeviceSurfacePresentModesKHR_1;
-		private static GetPhysicalDeviceSurfacePresentModesKHRDelegate_2 GetPhysicalDeviceSurfacePresentModesKHR_2;
-		private static GetPhysicalDeviceSurfacePresentModesKHRDelegate_3 GetPhysicalDeviceSurfacePresentModesKHR_3;
 		private static IntPtr CreateSwapchainKHRPointer;
 		private static CreateSwapchainKHRDelegate_0 CreateSwapchainKHR_0;
 		private static CreateSwapchainKHRDelegate_1 CreateSwapchainKHR_1;
@@ -2313,8 +2217,6 @@ namespace Vulkan
 		private static IntPtr GetSwapchainImagesKHRPointer;
 		private static GetSwapchainImagesKHRDelegate_0 GetSwapchainImagesKHR_0;
 		private static GetSwapchainImagesKHRDelegate_1 GetSwapchainImagesKHR_1;
-		private static GetSwapchainImagesKHRDelegate_2 GetSwapchainImagesKHR_2;
-		private static GetSwapchainImagesKHRDelegate_3 GetSwapchainImagesKHR_3;
 		private static IntPtr AcquireNextImageKHRPointer;
 		private static AcquireNextImageKHRDelegate_0 AcquireNextImageKHR_0;
 		private static AcquireNextImageKHRDelegate_1 AcquireNextImageKHR_1;
@@ -2423,8 +2325,6 @@ namespace Vulkan
 		private static IntPtr GetPhysicalDeviceQueueFamilyProperties2Pointer;
 		private static GetPhysicalDeviceQueueFamilyProperties2Delegate_0 GetPhysicalDeviceQueueFamilyProperties2_0;
 		private static GetPhysicalDeviceQueueFamilyProperties2Delegate_1 GetPhysicalDeviceQueueFamilyProperties2_1;
-		private static GetPhysicalDeviceQueueFamilyProperties2Delegate_2 GetPhysicalDeviceQueueFamilyProperties2_2;
-		private static GetPhysicalDeviceQueueFamilyProperties2Delegate_3 GetPhysicalDeviceQueueFamilyProperties2_3;
 		private static IntPtr GetPhysicalDeviceMemoryProperties2Pointer;
 		private static GetPhysicalDeviceMemoryProperties2Delegate_0 GetPhysicalDeviceMemoryProperties2_0;
 		private static GetPhysicalDeviceMemoryProperties2Delegate_1 GetPhysicalDeviceMemoryProperties2_1;
@@ -2433,10 +2333,6 @@ namespace Vulkan
 		private static GetPhysicalDeviceSparseImageFormatProperties2Delegate_1 GetPhysicalDeviceSparseImageFormatProperties2_1;
 		private static GetPhysicalDeviceSparseImageFormatProperties2Delegate_2 GetPhysicalDeviceSparseImageFormatProperties2_2;
 		private static GetPhysicalDeviceSparseImageFormatProperties2Delegate_3 GetPhysicalDeviceSparseImageFormatProperties2_3;
-		private static GetPhysicalDeviceSparseImageFormatProperties2Delegate_4 GetPhysicalDeviceSparseImageFormatProperties2_4;
-		private static GetPhysicalDeviceSparseImageFormatProperties2Delegate_5 GetPhysicalDeviceSparseImageFormatProperties2_5;
-		private static GetPhysicalDeviceSparseImageFormatProperties2Delegate_6 GetPhysicalDeviceSparseImageFormatProperties2_6;
-		private static GetPhysicalDeviceSparseImageFormatProperties2Delegate_7 GetPhysicalDeviceSparseImageFormatProperties2_7;
 		private static IntPtr CommandPushDescriptorSetKHRPointer;
 		private static CommandPushDescriptorSetKHRDelegate_0 CommandPushDescriptorSetKHR_0;
 		private static CommandPushDescriptorSetKHRDelegate_1 CommandPushDescriptorSetKHR_1;
@@ -2567,8 +2463,6 @@ namespace Vulkan
 		private static IntPtr GetPhysicalDevicePresentRectanglesKHRPointer;
 		private static GetPhysicalDevicePresentRectanglesKHRDelegate_0 GetPhysicalDevicePresentRectanglesKHR_0;
 		private static GetPhysicalDevicePresentRectanglesKHRDelegate_1 GetPhysicalDevicePresentRectanglesKHR_1;
-		private static GetPhysicalDevicePresentRectanglesKHRDelegate_2 GetPhysicalDevicePresentRectanglesKHR_2;
-		private static GetPhysicalDevicePresentRectanglesKHRDelegate_3 GetPhysicalDevicePresentRectanglesKHR_3;
 		private static IntPtr CreateDescriptorUpdateTemplatePointer;
 		private static CreateDescriptorUpdateTemplateDelegate_0 CreateDescriptorUpdateTemplate_0;
 		private static CreateDescriptorUpdateTemplateDelegate_1 CreateDescriptorUpdateTemplate_1;
@@ -2598,8 +2492,6 @@ namespace Vulkan
 		private static IntPtr GetPastPresentationTimingGOOGLEPointer;
 		private static GetPastPresentationTimingGOOGLEDelegate_0 GetPastPresentationTimingGOOGLE_0;
 		private static GetPastPresentationTimingGOOGLEDelegate_1 GetPastPresentationTimingGOOGLE_1;
-		private static GetPastPresentationTimingGOOGLEDelegate_2 GetPastPresentationTimingGOOGLE_2;
-		private static GetPastPresentationTimingGOOGLEDelegate_3 GetPastPresentationTimingGOOGLE_3;
 		private static IntPtr CreateMacOSSurfaceMVKPointer;
 		private static CreateMacOSSurfaceMVKDelegate_0 CreateMacOSSurfaceMVK_0;
 		private static CreateMacOSSurfaceMVKDelegate_1 CreateMacOSSurfaceMVK_1;
@@ -2631,25 +2523,15 @@ namespace Vulkan
 		private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_1 GetPhysicalDeviceSurfaceFormats2KHR_1;
 		private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_2 GetPhysicalDeviceSurfaceFormats2KHR_2;
 		private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_3 GetPhysicalDeviceSurfaceFormats2KHR_3;
-		private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_4 GetPhysicalDeviceSurfaceFormats2KHR_4;
-		private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_5 GetPhysicalDeviceSurfaceFormats2KHR_5;
-		private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_6 GetPhysicalDeviceSurfaceFormats2KHR_6;
-		private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_7 GetPhysicalDeviceSurfaceFormats2KHR_7;
 		private static IntPtr GetPhysicalDeviceDisplayProperties2KHRPointer;
 		private static GetPhysicalDeviceDisplayProperties2KHRDelegate_0 GetPhysicalDeviceDisplayProperties2KHR_0;
 		private static GetPhysicalDeviceDisplayProperties2KHRDelegate_1 GetPhysicalDeviceDisplayProperties2KHR_1;
-		private static GetPhysicalDeviceDisplayProperties2KHRDelegate_2 GetPhysicalDeviceDisplayProperties2KHR_2;
-		private static GetPhysicalDeviceDisplayProperties2KHRDelegate_3 GetPhysicalDeviceDisplayProperties2KHR_3;
 		private static IntPtr GetPhysicalDeviceDisplayPlaneProperties2KHRPointer;
 		private static GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_0 GetPhysicalDeviceDisplayPlaneProperties2KHR_0;
 		private static GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_1 GetPhysicalDeviceDisplayPlaneProperties2KHR_1;
-		private static GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_2 GetPhysicalDeviceDisplayPlaneProperties2KHR_2;
-		private static GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_3 GetPhysicalDeviceDisplayPlaneProperties2KHR_3;
 		private static IntPtr GetDisplayModeProperties2KHRPointer;
 		private static GetDisplayModeProperties2KHRDelegate_0 GetDisplayModeProperties2KHR_0;
 		private static GetDisplayModeProperties2KHRDelegate_1 GetDisplayModeProperties2KHR_1;
-		private static GetDisplayModeProperties2KHRDelegate_2 GetDisplayModeProperties2KHR_2;
-		private static GetDisplayModeProperties2KHRDelegate_3 GetDisplayModeProperties2KHR_3;
 		private static IntPtr GetDisplayPlaneCapabilities2KHRPointer;
 		private static GetDisplayPlaneCapabilities2KHRDelegate_0 GetDisplayPlaneCapabilities2KHR_0;
 		private static GetDisplayPlaneCapabilities2KHRDelegate_1 GetDisplayPlaneCapabilities2KHR_1;
@@ -2670,10 +2552,6 @@ namespace Vulkan
 		private static GetImageSparseMemoryRequirements2Delegate_1 GetImageSparseMemoryRequirements2_1;
 		private static GetImageSparseMemoryRequirements2Delegate_2 GetImageSparseMemoryRequirements2_2;
 		private static GetImageSparseMemoryRequirements2Delegate_3 GetImageSparseMemoryRequirements2_3;
-		private static GetImageSparseMemoryRequirements2Delegate_4 GetImageSparseMemoryRequirements2_4;
-		private static GetImageSparseMemoryRequirements2Delegate_5 GetImageSparseMemoryRequirements2_5;
-		private static GetImageSparseMemoryRequirements2Delegate_6 GetImageSparseMemoryRequirements2_6;
-		private static GetImageSparseMemoryRequirements2Delegate_7 GetImageSparseMemoryRequirements2_7;
 		private static IntPtr CreateSamplerYcbcrConversionPointer;
 		private static CreateSamplerYcbcrConversionDelegate_0 CreateSamplerYcbcrConversion_0;
 		private static CreateSamplerYcbcrConversionDelegate_1 CreateSamplerYcbcrConversion_1;
@@ -2737,8 +2615,6 @@ namespace Vulkan
 		private static IntPtr GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer;
 		private static GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_0 GetPhysicalDeviceCalibrateableTimeDomainsEXT_0;
 		private static GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_1 GetPhysicalDeviceCalibrateableTimeDomainsEXT_1;
-		private static GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_2 GetPhysicalDeviceCalibrateableTimeDomainsEXT_2;
-		private static GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_3 GetPhysicalDeviceCalibrateableTimeDomainsEXT_3;
 		private static IntPtr GetCalibratedTimestampsEXTPointer;
 		private static GetCalibratedTimestampsEXTDelegate_0 GetCalibratedTimestampsEXT_0;
 		private static GetCalibratedTimestampsEXTDelegate_1 GetCalibratedTimestampsEXT_1;
@@ -2836,8 +2712,6 @@ namespace Vulkan
 		private static IntPtr GetQueueCheckpointDataNVPointer;
 		private static GetQueueCheckpointDataNVDelegate_0 GetQueueCheckpointDataNV_0;
 		private static GetQueueCheckpointDataNVDelegate_1 GetQueueCheckpointDataNV_1;
-		private static GetQueueCheckpointDataNVDelegate_2 GetQueueCheckpointDataNV_2;
-		private static GetQueueCheckpointDataNVDelegate_3 GetQueueCheckpointDataNV_3;
 		private static IntPtr CommandBindTransformFeedbackBuffersEXTPointer;
 		private static CommandBindTransformFeedbackBuffersEXTDelegate_0 CommandBindTransformFeedbackBuffersEXT_0;
 		private static CommandBindTransformFeedbackBuffersEXTDelegate_1 CommandBindTransformFeedbackBuffersEXT_1;
@@ -2974,8 +2848,6 @@ namespace Vulkan
 		private static IntPtr GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer;
 		private static GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_0 GetPhysicalDeviceCooperativeMatrixPropertiesNV_0;
 		private static GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_1 GetPhysicalDeviceCooperativeMatrixPropertiesNV_1;
-		private static GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_2 GetPhysicalDeviceCooperativeMatrixPropertiesNV_2;
-		private static GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_3 GetPhysicalDeviceCooperativeMatrixPropertiesNV_3;
 		private static IntPtr CommandTraceRaysIndirectKHRPointer;
 		private static CommandTraceRaysIndirectKHRDelegate_0 CommandTraceRaysIndirectKHR_0;
 		private static CommandTraceRaysIndirectKHRDelegate_1 CommandTraceRaysIndirectKHR_1;
@@ -3013,10 +2885,6 @@ namespace Vulkan
 		private static GetPhysicalDeviceSurfacePresentModes2EXTDelegate_1 GetPhysicalDeviceSurfacePresentModes2EXT_1;
 		private static GetPhysicalDeviceSurfacePresentModes2EXTDelegate_2 GetPhysicalDeviceSurfacePresentModes2EXT_2;
 		private static GetPhysicalDeviceSurfacePresentModes2EXTDelegate_3 GetPhysicalDeviceSurfacePresentModes2EXT_3;
-		private static GetPhysicalDeviceSurfacePresentModes2EXTDelegate_4 GetPhysicalDeviceSurfacePresentModes2EXT_4;
-		private static GetPhysicalDeviceSurfacePresentModes2EXTDelegate_5 GetPhysicalDeviceSurfacePresentModes2EXT_5;
-		private static GetPhysicalDeviceSurfacePresentModes2EXTDelegate_6 GetPhysicalDeviceSurfacePresentModes2EXT_6;
-		private static GetPhysicalDeviceSurfacePresentModes2EXTDelegate_7 GetPhysicalDeviceSurfacePresentModes2EXT_7;
 		private static IntPtr GetDeviceGroupSurfacePresentModes2EXTPointer;
 		private static GetDeviceGroupSurfacePresentModes2EXTDelegate_0 GetDeviceGroupSurfacePresentModes2EXT_0;
 		private static GetDeviceGroupSurfacePresentModes2EXTDelegate_1 GetDeviceGroupSurfacePresentModes2EXT_1;
@@ -3062,8 +2930,6 @@ namespace Vulkan
 		private static IntPtr GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer;
 		private static GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_0 GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_0;
 		private static GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_1 GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_1;
-		private static GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_2 GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_2;
-		private static GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_3 GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_3;
 		private static IntPtr InitializePerformanceApiINTELPointer;
 		private static InitializePerformanceApiINTELDelegate_0 InitializePerformanceApiINTEL_0;
 		private static InitializePerformanceApiINTELDelegate_1 InitializePerformanceApiINTEL_1;
@@ -3098,35 +2964,21 @@ namespace Vulkan
 		private static GetPipelineExecutablePropertiesKHRDelegate_1 GetPipelineExecutablePropertiesKHR_1;
 		private static GetPipelineExecutablePropertiesKHRDelegate_2 GetPipelineExecutablePropertiesKHR_2;
 		private static GetPipelineExecutablePropertiesKHRDelegate_3 GetPipelineExecutablePropertiesKHR_3;
-		private static GetPipelineExecutablePropertiesKHRDelegate_4 GetPipelineExecutablePropertiesKHR_4;
-		private static GetPipelineExecutablePropertiesKHRDelegate_5 GetPipelineExecutablePropertiesKHR_5;
-		private static GetPipelineExecutablePropertiesKHRDelegate_6 GetPipelineExecutablePropertiesKHR_6;
-		private static GetPipelineExecutablePropertiesKHRDelegate_7 GetPipelineExecutablePropertiesKHR_7;
 		private static IntPtr GetPipelineExecutableStatisticsKHRPointer;
 		private static GetPipelineExecutableStatisticsKHRDelegate_0 GetPipelineExecutableStatisticsKHR_0;
 		private static GetPipelineExecutableStatisticsKHRDelegate_1 GetPipelineExecutableStatisticsKHR_1;
 		private static GetPipelineExecutableStatisticsKHRDelegate_2 GetPipelineExecutableStatisticsKHR_2;
 		private static GetPipelineExecutableStatisticsKHRDelegate_3 GetPipelineExecutableStatisticsKHR_3;
-		private static GetPipelineExecutableStatisticsKHRDelegate_4 GetPipelineExecutableStatisticsKHR_4;
-		private static GetPipelineExecutableStatisticsKHRDelegate_5 GetPipelineExecutableStatisticsKHR_5;
-		private static GetPipelineExecutableStatisticsKHRDelegate_6 GetPipelineExecutableStatisticsKHR_6;
-		private static GetPipelineExecutableStatisticsKHRDelegate_7 GetPipelineExecutableStatisticsKHR_7;
 		private static IntPtr GetPipelineExecutableInternalRepresentationsKHRPointer;
 		private static GetPipelineExecutableInternalRepresentationsKHRDelegate_0 GetPipelineExecutableInternalRepresentationsKHR_0;
 		private static GetPipelineExecutableInternalRepresentationsKHRDelegate_1 GetPipelineExecutableInternalRepresentationsKHR_1;
 		private static GetPipelineExecutableInternalRepresentationsKHRDelegate_2 GetPipelineExecutableInternalRepresentationsKHR_2;
 		private static GetPipelineExecutableInternalRepresentationsKHRDelegate_3 GetPipelineExecutableInternalRepresentationsKHR_3;
-		private static GetPipelineExecutableInternalRepresentationsKHRDelegate_4 GetPipelineExecutableInternalRepresentationsKHR_4;
-		private static GetPipelineExecutableInternalRepresentationsKHRDelegate_5 GetPipelineExecutableInternalRepresentationsKHR_5;
-		private static GetPipelineExecutableInternalRepresentationsKHRDelegate_6 GetPipelineExecutableInternalRepresentationsKHR_6;
-		private static GetPipelineExecutableInternalRepresentationsKHRDelegate_7 GetPipelineExecutableInternalRepresentationsKHR_7;
 		private static IntPtr CommandSetLineStippleEXTPointer;
 		private static CommandSetLineStippleEXTDelegate_0 CommandSetLineStippleEXT_0;
 		private static IntPtr GetPhysicalDeviceToolPropertiesEXTPointer;
 		private static GetPhysicalDeviceToolPropertiesEXTDelegate_0 GetPhysicalDeviceToolPropertiesEXT_0;
 		private static GetPhysicalDeviceToolPropertiesEXTDelegate_1 GetPhysicalDeviceToolPropertiesEXT_1;
-		private static GetPhysicalDeviceToolPropertiesEXTDelegate_2 GetPhysicalDeviceToolPropertiesEXT_2;
-		private static GetPhysicalDeviceToolPropertiesEXTDelegate_3 GetPhysicalDeviceToolPropertiesEXT_3;
 		private static IntPtr CreateAccelerationStructureKHRPointer;
 		private static CreateAccelerationStructureKHRDelegate_0 CreateAccelerationStructureKHR_0;
 		private static CreateAccelerationStructureKHRDelegate_1 CreateAccelerationStructureKHR_1;
@@ -3248,8 +3100,6 @@ namespace Vulkan
 		private static IntPtr GetPhysicalDeviceFragmentShadingRatesKHRPointer;
 		private static GetPhysicalDeviceFragmentShadingRatesKHRDelegate_0 GetPhysicalDeviceFragmentShadingRatesKHR_0;
 		private static GetPhysicalDeviceFragmentShadingRatesKHRDelegate_1 GetPhysicalDeviceFragmentShadingRatesKHR_1;
-		private static GetPhysicalDeviceFragmentShadingRatesKHRDelegate_2 GetPhysicalDeviceFragmentShadingRatesKHR_2;
-		private static GetPhysicalDeviceFragmentShadingRatesKHRDelegate_3 GetPhysicalDeviceFragmentShadingRatesKHR_3;
 		private static IntPtr CommandSetFragmentShadingRateEnumNVPointer;
 		private static CommandSetFragmentShadingRateEnumNVDelegate_0 CommandSetFragmentShadingRateEnumNV_0;
 		private static IntPtr GetAccelerationStructureBuildSizesKHRPointer;
@@ -3257,10 +3107,6 @@ namespace Vulkan
 		private static GetAccelerationStructureBuildSizesKHRDelegate_1 GetAccelerationStructureBuildSizesKHR_1;
 		private static GetAccelerationStructureBuildSizesKHRDelegate_2 GetAccelerationStructureBuildSizesKHR_2;
 		private static GetAccelerationStructureBuildSizesKHRDelegate_3 GetAccelerationStructureBuildSizesKHR_3;
-		private static GetAccelerationStructureBuildSizesKHRDelegate_4 GetAccelerationStructureBuildSizesKHR_4;
-		private static GetAccelerationStructureBuildSizesKHRDelegate_5 GetAccelerationStructureBuildSizesKHR_5;
-		private static GetAccelerationStructureBuildSizesKHRDelegate_6 GetAccelerationStructureBuildSizesKHR_6;
-		private static GetAccelerationStructureBuildSizesKHRDelegate_7 GetAccelerationStructureBuildSizesKHR_7;
 		private static IntPtr CommandSetEvent2KHRPointer;
 		private static CommandSetEvent2KHRDelegate_0 CommandSetEvent2KHR_0;
 		private static CommandSetEvent2KHRDelegate_1 CommandSetEvent2KHR_1;
@@ -3282,8 +3128,6 @@ namespace Vulkan
 		private static IntPtr GetQueueCheckpointData2NVPointer;
 		private static GetQueueCheckpointData2NVDelegate_0 GetQueueCheckpointData2NV_0;
 		private static GetQueueCheckpointData2NVDelegate_1 GetQueueCheckpointData2NV_1;
-		private static GetQueueCheckpointData2NVDelegate_2 GetQueueCheckpointData2NV_2;
-		private static GetQueueCheckpointData2NVDelegate_3 GetQueueCheckpointData2NV_3;
 		static VK()
 		{
 			VulkanLibrary = OSVulkanLibraryBase.CreateOSVulkanLibrary();
@@ -3343,8 +3187,6 @@ namespace Vulkan
 			{
 				GetPhysicalDeviceQueueFamilyProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyPropertiesDelegate_0>(GetPhysicalDeviceQueueFamilyPropertiesPointer);
 				GetPhysicalDeviceQueueFamilyProperties_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyPropertiesDelegate_1>(GetPhysicalDeviceQueueFamilyPropertiesPointer);
-				GetPhysicalDeviceQueueFamilyProperties_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyPropertiesDelegate_2>(GetPhysicalDeviceQueueFamilyPropertiesPointer);
-				GetPhysicalDeviceQueueFamilyProperties_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyPropertiesDelegate_3>(GetPhysicalDeviceQueueFamilyPropertiesPointer);
 			}
 			GetPhysicalDeviceMemoryPropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceMemoryProperties");
 			if (GetPhysicalDeviceMemoryPropertiesPointer != IntPtr.Zero)
@@ -3502,16 +3344,12 @@ namespace Vulkan
 			{
 				GetImageSparseMemoryRequirements_0 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirementsDelegate_0>(GetImageSparseMemoryRequirementsPointer);
 				GetImageSparseMemoryRequirements_1 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirementsDelegate_1>(GetImageSparseMemoryRequirementsPointer);
-				GetImageSparseMemoryRequirements_2 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirementsDelegate_2>(GetImageSparseMemoryRequirementsPointer);
-				GetImageSparseMemoryRequirements_3 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirementsDelegate_3>(GetImageSparseMemoryRequirementsPointer);
 			}
 			GetPhysicalDeviceSparseImageFormatPropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSparseImageFormatProperties");
 			if (GetPhysicalDeviceSparseImageFormatPropertiesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSparseImageFormatProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatPropertiesDelegate_0>(GetPhysicalDeviceSparseImageFormatPropertiesPointer);
 				GetPhysicalDeviceSparseImageFormatProperties_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatPropertiesDelegate_1>(GetPhysicalDeviceSparseImageFormatPropertiesPointer);
-				GetPhysicalDeviceSparseImageFormatProperties_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatPropertiesDelegate_2>(GetPhysicalDeviceSparseImageFormatPropertiesPointer);
-				GetPhysicalDeviceSparseImageFormatProperties_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatPropertiesDelegate_3>(GetPhysicalDeviceSparseImageFormatPropertiesPointer);
 			}
 			QueueBindSparsePointer = GetInstancePrecedureAddress(instance, "vkQueueBindSparse");
 			if (QueueBindSparsePointer != IntPtr.Zero)
@@ -4272,32 +4110,24 @@ namespace Vulkan
 			{
 				GetPhysicalDeviceDisplayPropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPropertiesKHRDelegate_0>(GetPhysicalDeviceDisplayPropertiesKHRPointer);
 				GetPhysicalDeviceDisplayPropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPropertiesKHRDelegate_1>(GetPhysicalDeviceDisplayPropertiesKHRPointer);
-				GetPhysicalDeviceDisplayPropertiesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPropertiesKHRDelegate_2>(GetPhysicalDeviceDisplayPropertiesKHRPointer);
-				GetPhysicalDeviceDisplayPropertiesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPropertiesKHRDelegate_3>(GetPhysicalDeviceDisplayPropertiesKHRPointer);
 			}
 			GetPhysicalDeviceDisplayPlanePropertiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
 			if (GetPhysicalDeviceDisplayPlanePropertiesKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceDisplayPlanePropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_0>(GetPhysicalDeviceDisplayPlanePropertiesKHRPointer);
 				GetPhysicalDeviceDisplayPlanePropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_1>(GetPhysicalDeviceDisplayPlanePropertiesKHRPointer);
-				GetPhysicalDeviceDisplayPlanePropertiesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_2>(GetPhysicalDeviceDisplayPlanePropertiesKHRPointer);
-				GetPhysicalDeviceDisplayPlanePropertiesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_3>(GetPhysicalDeviceDisplayPlanePropertiesKHRPointer);
 			}
 			GetDisplayPlaneSupportedDisplaysKHRPointer = GetInstancePrecedureAddress(instance, "vkGetDisplayPlaneSupportedDisplaysKHR");
 			if (GetDisplayPlaneSupportedDisplaysKHRPointer != IntPtr.Zero)
 			{
 				GetDisplayPlaneSupportedDisplaysKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneSupportedDisplaysKHRDelegate_0>(GetDisplayPlaneSupportedDisplaysKHRPointer);
 				GetDisplayPlaneSupportedDisplaysKHR_1 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneSupportedDisplaysKHRDelegate_1>(GetDisplayPlaneSupportedDisplaysKHRPointer);
-				GetDisplayPlaneSupportedDisplaysKHR_2 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneSupportedDisplaysKHRDelegate_2>(GetDisplayPlaneSupportedDisplaysKHRPointer);
-				GetDisplayPlaneSupportedDisplaysKHR_3 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneSupportedDisplaysKHRDelegate_3>(GetDisplayPlaneSupportedDisplaysKHRPointer);
 			}
 			GetDisplayModePropertiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetDisplayModePropertiesKHR");
 			if (GetDisplayModePropertiesKHRPointer != IntPtr.Zero)
 			{
 				GetDisplayModePropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDisplayModePropertiesKHRDelegate_0>(GetDisplayModePropertiesKHRPointer);
 				GetDisplayModePropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetDisplayModePropertiesKHRDelegate_1>(GetDisplayModePropertiesKHRPointer);
-				GetDisplayModePropertiesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetDisplayModePropertiesKHRDelegate_2>(GetDisplayModePropertiesKHRPointer);
-				GetDisplayModePropertiesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetDisplayModePropertiesKHRDelegate_3>(GetDisplayModePropertiesKHRPointer);
 			}
 			CreateDisplayModeKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateDisplayModeKHR");
 			if (CreateDisplayModeKHRPointer != IntPtr.Zero)
@@ -4360,16 +4190,12 @@ namespace Vulkan
 			{
 				GetPhysicalDeviceSurfaceFormatsKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormatsKHRDelegate_0>(GetPhysicalDeviceSurfaceFormatsKHRPointer);
 				GetPhysicalDeviceSurfaceFormatsKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormatsKHRDelegate_1>(GetPhysicalDeviceSurfaceFormatsKHRPointer);
-				GetPhysicalDeviceSurfaceFormatsKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormatsKHRDelegate_2>(GetPhysicalDeviceSurfaceFormatsKHRPointer);
-				GetPhysicalDeviceSurfaceFormatsKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormatsKHRDelegate_3>(GetPhysicalDeviceSurfaceFormatsKHRPointer);
 			}
 			GetPhysicalDeviceSurfacePresentModesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSurfacePresentModesKHR");
 			if (GetPhysicalDeviceSurfacePresentModesKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSurfacePresentModesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModesKHRDelegate_0>(GetPhysicalDeviceSurfacePresentModesKHRPointer);
 				GetPhysicalDeviceSurfacePresentModesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModesKHRDelegate_1>(GetPhysicalDeviceSurfacePresentModesKHRPointer);
-				GetPhysicalDeviceSurfacePresentModesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModesKHRDelegate_2>(GetPhysicalDeviceSurfacePresentModesKHRPointer);
-				GetPhysicalDeviceSurfacePresentModesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModesKHRDelegate_3>(GetPhysicalDeviceSurfacePresentModesKHRPointer);
 			}
 			CreateSwapchainKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateSwapchainKHR");
 			if (CreateSwapchainKHRPointer != IntPtr.Zero)
@@ -4394,8 +4220,6 @@ namespace Vulkan
 			{
 				GetSwapchainImagesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetSwapchainImagesKHRDelegate_0>(GetSwapchainImagesKHRPointer);
 				GetSwapchainImagesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetSwapchainImagesKHRDelegate_1>(GetSwapchainImagesKHRPointer);
-				GetSwapchainImagesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetSwapchainImagesKHRDelegate_2>(GetSwapchainImagesKHRPointer);
-				GetSwapchainImagesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetSwapchainImagesKHRDelegate_3>(GetSwapchainImagesKHRPointer);
 			}
 			AcquireNextImageKHRPointer = GetInstancePrecedureAddress(instance, "vkAcquireNextImageKHR");
 			if (AcquireNextImageKHRPointer != IntPtr.Zero)
@@ -4585,8 +4409,6 @@ namespace Vulkan
 			{
 				GetPhysicalDeviceQueueFamilyProperties2_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyProperties2Delegate_0>(GetPhysicalDeviceQueueFamilyProperties2Pointer);
 				GetPhysicalDeviceQueueFamilyProperties2_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyProperties2Delegate_1>(GetPhysicalDeviceQueueFamilyProperties2Pointer);
-				GetPhysicalDeviceQueueFamilyProperties2_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyProperties2Delegate_2>(GetPhysicalDeviceQueueFamilyProperties2Pointer);
-				GetPhysicalDeviceQueueFamilyProperties2_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyProperties2Delegate_3>(GetPhysicalDeviceQueueFamilyProperties2Pointer);
 			}
 			GetPhysicalDeviceMemoryProperties2Pointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceMemoryProperties2");
 			if (GetPhysicalDeviceMemoryProperties2Pointer != IntPtr.Zero)
@@ -4601,10 +4423,6 @@ namespace Vulkan
 				GetPhysicalDeviceSparseImageFormatProperties2_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2Delegate_1>(GetPhysicalDeviceSparseImageFormatProperties2Pointer);
 				GetPhysicalDeviceSparseImageFormatProperties2_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2Delegate_2>(GetPhysicalDeviceSparseImageFormatProperties2Pointer);
 				GetPhysicalDeviceSparseImageFormatProperties2_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2Delegate_3>(GetPhysicalDeviceSparseImageFormatProperties2Pointer);
-				GetPhysicalDeviceSparseImageFormatProperties2_4 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2Delegate_4>(GetPhysicalDeviceSparseImageFormatProperties2Pointer);
-				GetPhysicalDeviceSparseImageFormatProperties2_5 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2Delegate_5>(GetPhysicalDeviceSparseImageFormatProperties2Pointer);
-				GetPhysicalDeviceSparseImageFormatProperties2_6 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2Delegate_6>(GetPhysicalDeviceSparseImageFormatProperties2Pointer);
-				GetPhysicalDeviceSparseImageFormatProperties2_7 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2Delegate_7>(GetPhysicalDeviceSparseImageFormatProperties2Pointer);
 			}
 			CommandPushDescriptorSetKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdPushDescriptorSetKHR");
 			if (CommandPushDescriptorSetKHRPointer != IntPtr.Zero)
@@ -4840,8 +4658,6 @@ namespace Vulkan
 			{
 				GetPhysicalDevicePresentRectanglesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePresentRectanglesKHRDelegate_0>(GetPhysicalDevicePresentRectanglesKHRPointer);
 				GetPhysicalDevicePresentRectanglesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePresentRectanglesKHRDelegate_1>(GetPhysicalDevicePresentRectanglesKHRPointer);
-				GetPhysicalDevicePresentRectanglesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePresentRectanglesKHRDelegate_2>(GetPhysicalDevicePresentRectanglesKHRPointer);
-				GetPhysicalDevicePresentRectanglesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePresentRectanglesKHRDelegate_3>(GetPhysicalDevicePresentRectanglesKHRPointer);
 			}
 			CreateDescriptorUpdateTemplatePointer = GetInstancePrecedureAddress(instance, "vkCreateDescriptorUpdateTemplate");
 			if (CreateDescriptorUpdateTemplatePointer != IntPtr.Zero)
@@ -4895,8 +4711,6 @@ namespace Vulkan
 			{
 				GetPastPresentationTimingGOOGLE_0 = Marshal.GetDelegateForFunctionPointer<GetPastPresentationTimingGOOGLEDelegate_0>(GetPastPresentationTimingGOOGLEPointer);
 				GetPastPresentationTimingGOOGLE_1 = Marshal.GetDelegateForFunctionPointer<GetPastPresentationTimingGOOGLEDelegate_1>(GetPastPresentationTimingGOOGLEPointer);
-				GetPastPresentationTimingGOOGLE_2 = Marshal.GetDelegateForFunctionPointer<GetPastPresentationTimingGOOGLEDelegate_2>(GetPastPresentationTimingGOOGLEPointer);
-				GetPastPresentationTimingGOOGLE_3 = Marshal.GetDelegateForFunctionPointer<GetPastPresentationTimingGOOGLEDelegate_3>(GetPastPresentationTimingGOOGLEPointer);
 			}
 			CreateMacOSSurfaceMVKPointer = GetInstancePrecedureAddress(instance, "vkCreateMacOSSurfaceMVK");
 			if (CreateMacOSSurfaceMVKPointer != IntPtr.Zero)
@@ -4949,34 +4763,24 @@ namespace Vulkan
 				GetPhysicalDeviceSurfaceFormats2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormats2KHRDelegate_1>(GetPhysicalDeviceSurfaceFormats2KHRPointer);
 				GetPhysicalDeviceSurfaceFormats2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormats2KHRDelegate_2>(GetPhysicalDeviceSurfaceFormats2KHRPointer);
 				GetPhysicalDeviceSurfaceFormats2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormats2KHRDelegate_3>(GetPhysicalDeviceSurfaceFormats2KHRPointer);
-				GetPhysicalDeviceSurfaceFormats2KHR_4 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormats2KHRDelegate_4>(GetPhysicalDeviceSurfaceFormats2KHRPointer);
-				GetPhysicalDeviceSurfaceFormats2KHR_5 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormats2KHRDelegate_5>(GetPhysicalDeviceSurfaceFormats2KHRPointer);
-				GetPhysicalDeviceSurfaceFormats2KHR_6 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormats2KHRDelegate_6>(GetPhysicalDeviceSurfaceFormats2KHRPointer);
-				GetPhysicalDeviceSurfaceFormats2KHR_7 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormats2KHRDelegate_7>(GetPhysicalDeviceSurfaceFormats2KHRPointer);
 			}
 			GetPhysicalDeviceDisplayProperties2KHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceDisplayProperties2KHR");
 			if (GetPhysicalDeviceDisplayProperties2KHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceDisplayProperties2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayProperties2KHRDelegate_0>(GetPhysicalDeviceDisplayProperties2KHRPointer);
 				GetPhysicalDeviceDisplayProperties2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayProperties2KHRDelegate_1>(GetPhysicalDeviceDisplayProperties2KHRPointer);
-				GetPhysicalDeviceDisplayProperties2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayProperties2KHRDelegate_2>(GetPhysicalDeviceDisplayProperties2KHRPointer);
-				GetPhysicalDeviceDisplayProperties2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayProperties2KHRDelegate_3>(GetPhysicalDeviceDisplayProperties2KHRPointer);
 			}
 			GetPhysicalDeviceDisplayPlaneProperties2KHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
 			if (GetPhysicalDeviceDisplayPlaneProperties2KHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceDisplayPlaneProperties2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_0>(GetPhysicalDeviceDisplayPlaneProperties2KHRPointer);
 				GetPhysicalDeviceDisplayPlaneProperties2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_1>(GetPhysicalDeviceDisplayPlaneProperties2KHRPointer);
-				GetPhysicalDeviceDisplayPlaneProperties2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_2>(GetPhysicalDeviceDisplayPlaneProperties2KHRPointer);
-				GetPhysicalDeviceDisplayPlaneProperties2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_3>(GetPhysicalDeviceDisplayPlaneProperties2KHRPointer);
 			}
 			GetDisplayModeProperties2KHRPointer = GetInstancePrecedureAddress(instance, "vkGetDisplayModeProperties2KHR");
 			if (GetDisplayModeProperties2KHRPointer != IntPtr.Zero)
 			{
 				GetDisplayModeProperties2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetDisplayModeProperties2KHRDelegate_0>(GetDisplayModeProperties2KHRPointer);
 				GetDisplayModeProperties2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetDisplayModeProperties2KHRDelegate_1>(GetDisplayModeProperties2KHRPointer);
-				GetDisplayModeProperties2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetDisplayModeProperties2KHRDelegate_2>(GetDisplayModeProperties2KHRPointer);
-				GetDisplayModeProperties2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetDisplayModeProperties2KHRDelegate_3>(GetDisplayModeProperties2KHRPointer);
 			}
 			GetDisplayPlaneCapabilities2KHRPointer = GetInstancePrecedureAddress(instance, "vkGetDisplayPlaneCapabilities2KHR");
 			if (GetDisplayPlaneCapabilities2KHRPointer != IntPtr.Zero)
@@ -5009,10 +4813,6 @@ namespace Vulkan
 				GetImageSparseMemoryRequirements2_1 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2Delegate_1>(GetImageSparseMemoryRequirements2Pointer);
 				GetImageSparseMemoryRequirements2_2 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2Delegate_2>(GetImageSparseMemoryRequirements2Pointer);
 				GetImageSparseMemoryRequirements2_3 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2Delegate_3>(GetImageSparseMemoryRequirements2Pointer);
-				GetImageSparseMemoryRequirements2_4 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2Delegate_4>(GetImageSparseMemoryRequirements2Pointer);
-				GetImageSparseMemoryRequirements2_5 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2Delegate_5>(GetImageSparseMemoryRequirements2Pointer);
-				GetImageSparseMemoryRequirements2_6 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2Delegate_6>(GetImageSparseMemoryRequirements2Pointer);
-				GetImageSparseMemoryRequirements2_7 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2Delegate_7>(GetImageSparseMemoryRequirements2Pointer);
 			}
 			CreateSamplerYcbcrConversionPointer = GetInstancePrecedureAddress(instance, "vkCreateSamplerYcbcrConversion");
 			if (CreateSamplerYcbcrConversionPointer != IntPtr.Zero)
@@ -5121,8 +4921,6 @@ namespace Vulkan
 			{
 				GetPhysicalDeviceCalibrateableTimeDomainsEXT_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_0>(GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer);
 				GetPhysicalDeviceCalibrateableTimeDomainsEXT_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_1>(GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer);
-				GetPhysicalDeviceCalibrateableTimeDomainsEXT_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_2>(GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer);
-				GetPhysicalDeviceCalibrateableTimeDomainsEXT_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_3>(GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer);
 			}
 			GetCalibratedTimestampsEXTPointer = GetInstancePrecedureAddress(instance, "vkGetCalibratedTimestampsEXT");
 			if (GetCalibratedTimestampsEXTPointer != IntPtr.Zero)
@@ -5301,8 +5099,6 @@ namespace Vulkan
 			{
 				GetQueueCheckpointDataNV_0 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointDataNVDelegate_0>(GetQueueCheckpointDataNVPointer);
 				GetQueueCheckpointDataNV_1 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointDataNVDelegate_1>(GetQueueCheckpointDataNVPointer);
-				GetQueueCheckpointDataNV_2 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointDataNVDelegate_2>(GetQueueCheckpointDataNVPointer);
-				GetQueueCheckpointDataNV_3 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointDataNVDelegate_3>(GetQueueCheckpointDataNVPointer);
 			}
 			CommandBindTransformFeedbackBuffersEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdBindTransformFeedbackBuffersEXT");
 			if (CommandBindTransformFeedbackBuffersEXTPointer != IntPtr.Zero)
@@ -5553,8 +5349,6 @@ namespace Vulkan
 			{
 				GetPhysicalDeviceCooperativeMatrixPropertiesNV_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_0>(GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer);
 				GetPhysicalDeviceCooperativeMatrixPropertiesNV_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_1>(GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer);
-				GetPhysicalDeviceCooperativeMatrixPropertiesNV_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_2>(GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer);
-				GetPhysicalDeviceCooperativeMatrixPropertiesNV_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_3>(GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer);
 			}
 			CommandTraceRaysIndirectKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdTraceRaysIndirectKHR");
 			if (CommandTraceRaysIndirectKHRPointer != IntPtr.Zero)
@@ -5613,10 +5407,6 @@ namespace Vulkan
 				GetPhysicalDeviceSurfacePresentModes2EXT_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModes2EXTDelegate_1>(GetPhysicalDeviceSurfacePresentModes2EXTPointer);
 				GetPhysicalDeviceSurfacePresentModes2EXT_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModes2EXTDelegate_2>(GetPhysicalDeviceSurfacePresentModes2EXTPointer);
 				GetPhysicalDeviceSurfacePresentModes2EXT_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModes2EXTDelegate_3>(GetPhysicalDeviceSurfacePresentModes2EXTPointer);
-				GetPhysicalDeviceSurfacePresentModes2EXT_4 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModes2EXTDelegate_4>(GetPhysicalDeviceSurfacePresentModes2EXTPointer);
-				GetPhysicalDeviceSurfacePresentModes2EXT_5 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModes2EXTDelegate_5>(GetPhysicalDeviceSurfacePresentModes2EXTPointer);
-				GetPhysicalDeviceSurfacePresentModes2EXT_6 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModes2EXTDelegate_6>(GetPhysicalDeviceSurfacePresentModes2EXTPointer);
-				GetPhysicalDeviceSurfacePresentModes2EXT_7 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModes2EXTDelegate_7>(GetPhysicalDeviceSurfacePresentModes2EXTPointer);
 			}
 			GetDeviceGroupSurfacePresentModes2EXTPointer = GetInstancePrecedureAddress(instance, "vkGetDeviceGroupSurfacePresentModes2EXT");
 			if (GetDeviceGroupSurfacePresentModes2EXTPointer != IntPtr.Zero)
@@ -5698,8 +5488,6 @@ namespace Vulkan
 			{
 				GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_0>(GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer);
 				GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_1>(GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer);
-				GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_2>(GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer);
-				GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_3>(GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer);
 			}
 			InitializePerformanceApiINTELPointer = GetInstancePrecedureAddress(instance, "vkInitializePerformanceApiINTEL");
 			if (InitializePerformanceApiINTELPointer != IntPtr.Zero)
@@ -5767,10 +5555,6 @@ namespace Vulkan
 				GetPipelineExecutablePropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutablePropertiesKHRDelegate_1>(GetPipelineExecutablePropertiesKHRPointer);
 				GetPipelineExecutablePropertiesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutablePropertiesKHRDelegate_2>(GetPipelineExecutablePropertiesKHRPointer);
 				GetPipelineExecutablePropertiesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutablePropertiesKHRDelegate_3>(GetPipelineExecutablePropertiesKHRPointer);
-				GetPipelineExecutablePropertiesKHR_4 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutablePropertiesKHRDelegate_4>(GetPipelineExecutablePropertiesKHRPointer);
-				GetPipelineExecutablePropertiesKHR_5 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutablePropertiesKHRDelegate_5>(GetPipelineExecutablePropertiesKHRPointer);
-				GetPipelineExecutablePropertiesKHR_6 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutablePropertiesKHRDelegate_6>(GetPipelineExecutablePropertiesKHRPointer);
-				GetPipelineExecutablePropertiesKHR_7 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutablePropertiesKHRDelegate_7>(GetPipelineExecutablePropertiesKHRPointer);
 			}
 			GetPipelineExecutableStatisticsKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPipelineExecutableStatisticsKHR");
 			if (GetPipelineExecutableStatisticsKHRPointer != IntPtr.Zero)
@@ -5779,10 +5563,6 @@ namespace Vulkan
 				GetPipelineExecutableStatisticsKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableStatisticsKHRDelegate_1>(GetPipelineExecutableStatisticsKHRPointer);
 				GetPipelineExecutableStatisticsKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableStatisticsKHRDelegate_2>(GetPipelineExecutableStatisticsKHRPointer);
 				GetPipelineExecutableStatisticsKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableStatisticsKHRDelegate_3>(GetPipelineExecutableStatisticsKHRPointer);
-				GetPipelineExecutableStatisticsKHR_4 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableStatisticsKHRDelegate_4>(GetPipelineExecutableStatisticsKHRPointer);
-				GetPipelineExecutableStatisticsKHR_5 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableStatisticsKHRDelegate_5>(GetPipelineExecutableStatisticsKHRPointer);
-				GetPipelineExecutableStatisticsKHR_6 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableStatisticsKHRDelegate_6>(GetPipelineExecutableStatisticsKHRPointer);
-				GetPipelineExecutableStatisticsKHR_7 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableStatisticsKHRDelegate_7>(GetPipelineExecutableStatisticsKHRPointer);
 			}
 			GetPipelineExecutableInternalRepresentationsKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPipelineExecutableInternalRepresentationsKHR");
 			if (GetPipelineExecutableInternalRepresentationsKHRPointer != IntPtr.Zero)
@@ -5791,10 +5571,6 @@ namespace Vulkan
 				GetPipelineExecutableInternalRepresentationsKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_1>(GetPipelineExecutableInternalRepresentationsKHRPointer);
 				GetPipelineExecutableInternalRepresentationsKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_2>(GetPipelineExecutableInternalRepresentationsKHRPointer);
 				GetPipelineExecutableInternalRepresentationsKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_3>(GetPipelineExecutableInternalRepresentationsKHRPointer);
-				GetPipelineExecutableInternalRepresentationsKHR_4 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_4>(GetPipelineExecutableInternalRepresentationsKHRPointer);
-				GetPipelineExecutableInternalRepresentationsKHR_5 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_5>(GetPipelineExecutableInternalRepresentationsKHRPointer);
-				GetPipelineExecutableInternalRepresentationsKHR_6 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_6>(GetPipelineExecutableInternalRepresentationsKHRPointer);
-				GetPipelineExecutableInternalRepresentationsKHR_7 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_7>(GetPipelineExecutableInternalRepresentationsKHRPointer);
 			}
 			CommandSetLineStippleEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetLineStippleEXT");
 			if (CommandSetLineStippleEXTPointer != IntPtr.Zero)
@@ -5806,8 +5582,6 @@ namespace Vulkan
 			{
 				GetPhysicalDeviceToolPropertiesEXT_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceToolPropertiesEXTDelegate_0>(GetPhysicalDeviceToolPropertiesEXTPointer);
 				GetPhysicalDeviceToolPropertiesEXT_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceToolPropertiesEXTDelegate_1>(GetPhysicalDeviceToolPropertiesEXTPointer);
-				GetPhysicalDeviceToolPropertiesEXT_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceToolPropertiesEXTDelegate_2>(GetPhysicalDeviceToolPropertiesEXTPointer);
-				GetPhysicalDeviceToolPropertiesEXT_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceToolPropertiesEXTDelegate_3>(GetPhysicalDeviceToolPropertiesEXTPointer);
 			}
 			CreateAccelerationStructureKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateAccelerationStructureKHR");
 			if (CreateAccelerationStructureKHRPointer != IntPtr.Zero)
@@ -6031,8 +5805,6 @@ namespace Vulkan
 			{
 				GetPhysicalDeviceFragmentShadingRatesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFragmentShadingRatesKHRDelegate_0>(GetPhysicalDeviceFragmentShadingRatesKHRPointer);
 				GetPhysicalDeviceFragmentShadingRatesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFragmentShadingRatesKHRDelegate_1>(GetPhysicalDeviceFragmentShadingRatesKHRPointer);
-				GetPhysicalDeviceFragmentShadingRatesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFragmentShadingRatesKHRDelegate_2>(GetPhysicalDeviceFragmentShadingRatesKHRPointer);
-				GetPhysicalDeviceFragmentShadingRatesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFragmentShadingRatesKHRDelegate_3>(GetPhysicalDeviceFragmentShadingRatesKHRPointer);
 			}
 			CommandSetFragmentShadingRateEnumNVPointer = GetInstancePrecedureAddress(instance, "vkCmdSetFragmentShadingRateEnumNV");
 			if (CommandSetFragmentShadingRateEnumNVPointer != IntPtr.Zero)
@@ -6046,10 +5818,6 @@ namespace Vulkan
 				GetAccelerationStructureBuildSizesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureBuildSizesKHRDelegate_1>(GetAccelerationStructureBuildSizesKHRPointer);
 				GetAccelerationStructureBuildSizesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureBuildSizesKHRDelegate_2>(GetAccelerationStructureBuildSizesKHRPointer);
 				GetAccelerationStructureBuildSizesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureBuildSizesKHRDelegate_3>(GetAccelerationStructureBuildSizesKHRPointer);
-				GetAccelerationStructureBuildSizesKHR_4 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureBuildSizesKHRDelegate_4>(GetAccelerationStructureBuildSizesKHRPointer);
-				GetAccelerationStructureBuildSizesKHR_5 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureBuildSizesKHRDelegate_5>(GetAccelerationStructureBuildSizesKHRPointer);
-				GetAccelerationStructureBuildSizesKHR_6 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureBuildSizesKHRDelegate_6>(GetAccelerationStructureBuildSizesKHRPointer);
-				GetAccelerationStructureBuildSizesKHR_7 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureBuildSizesKHRDelegate_7>(GetAccelerationStructureBuildSizesKHRPointer);
 			}
 			CommandSetEvent2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdSetEvent2KHR");
 			if (CommandSetEvent2KHRPointer != IntPtr.Zero)
@@ -6095,8 +5863,6 @@ namespace Vulkan
 			{
 				GetQueueCheckpointData2NV_0 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointData2NVDelegate_0>(GetQueueCheckpointData2NVPointer);
 				GetQueueCheckpointData2NV_1 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointData2NVDelegate_1>(GetQueueCheckpointData2NVPointer);
-				GetQueueCheckpointData2NV_2 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointData2NVDelegate_2>(GetQueueCheckpointData2NVPointer);
-				GetQueueCheckpointData2NV_3 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointData2NVDelegate_3>(GetQueueCheckpointData2NVPointer);
 			}
 		}
 		public static unsafe VkResult CreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkInstance* instance) => CreateInstance_0(createInfo, allocator, instance);
@@ -6117,10 +5883,8 @@ namespace Vulkan
 		public static unsafe IntPtr GetInstancePrecedureAddress(VkInstance instance, string name) => GetInstancePrecedureAddress_1(instance, name);
 		public static unsafe void GetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties* properties) => GetPhysicalDeviceProperties_0(physicalDevice, properties);
 		public static unsafe void GetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceProperties properties) => GetPhysicalDeviceProperties_1(physicalDevice, out properties);
-		public static unsafe void GetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties* queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties_0(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
-		public static unsafe void GetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, out VkQueueFamilyProperties queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties_1(physicalDevice, queueFamilyPropertyCount, out queueFamilyProperties);
-		public static unsafe void GetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, VkQueueFamilyProperties* queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties_2(physicalDevice, ref queueFamilyPropertyCount, queueFamilyProperties);
-		public static unsafe void GetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, out VkQueueFamilyProperties queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties_3(physicalDevice, ref queueFamilyPropertyCount, out queueFamilyProperties);
+		public static unsafe void GetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties[] queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties_0(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
+		public static unsafe void GetPhysicalDeviceQueueFamilyProperties(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties[] queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties_1(physicalDevice, ref queueFamilyPropertyCount, queueFamilyProperties);
 		public static unsafe void GetPhysicalDeviceMemoryProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties* memoryProperties) => GetPhysicalDeviceMemoryProperties_0(physicalDevice, memoryProperties);
 		public static unsafe void GetPhysicalDeviceMemoryProperties(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties memoryProperties) => GetPhysicalDeviceMemoryProperties_1(physicalDevice, out memoryProperties);
 		public static unsafe void GetPhysicalDeviceFeatures(VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures* features) => GetPhysicalDeviceFeatures_0(physicalDevice, features);
@@ -6182,14 +5946,10 @@ namespace Vulkan
 		public static unsafe void GetImageMemoryRequirements(VkDevice device, VkImage image, VkMemoryRequirements* memoryRequirements) => GetImageMemoryRequirements_0(device, image, memoryRequirements);
 		public static unsafe void GetImageMemoryRequirements(VkDevice device, VkImage image, out VkMemoryRequirements memoryRequirements) => GetImageMemoryRequirements_1(device, image, out memoryRequirements);
 		public static unsafe VkResult BindImageMemory(VkDevice device, VkImage image, VkDeviceMemory memory, VkDeviceSize memoryOffset) => BindImageMemory_0(device, image, memory, memoryOffset);
-		public static unsafe void GetImageSparseMemoryRequirements(VkDevice device, VkImage image, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements* sparseMemoryRequirements) => GetImageSparseMemoryRequirements_0(device, image, sparseMemoryRequirementCount, sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements(VkDevice device, VkImage image, uint* sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements sparseMemoryRequirements) => GetImageSparseMemoryRequirements_1(device, image, sparseMemoryRequirementCount, out sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements(VkDevice device, VkImage image, ref uint sparseMemoryRequirementCount, VkSparseImageMemoryRequirements* sparseMemoryRequirements) => GetImageSparseMemoryRequirements_2(device, image, ref sparseMemoryRequirementCount, sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements(VkDevice device, VkImage image, ref uint sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements sparseMemoryRequirements) => GetImageSparseMemoryRequirements_3(device, image, ref sparseMemoryRequirementCount, out sparseMemoryRequirements);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, uint* propertyCount, VkSparseImageFormatProperties* properties) => GetPhysicalDeviceSparseImageFormatProperties_0(physicalDevice, format, type, samples, usage, tiling, propertyCount, properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, uint* propertyCount, out VkSparseImageFormatProperties properties) => GetPhysicalDeviceSparseImageFormatProperties_1(physicalDevice, format, type, samples, usage, tiling, propertyCount, out properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, ref uint propertyCount, VkSparseImageFormatProperties* properties) => GetPhysicalDeviceSparseImageFormatProperties_2(physicalDevice, format, type, samples, usage, tiling, ref propertyCount, properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, ref uint propertyCount, out VkSparseImageFormatProperties properties) => GetPhysicalDeviceSparseImageFormatProperties_3(physicalDevice, format, type, samples, usage, tiling, ref propertyCount, out properties);
+		public static unsafe void GetImageSparseMemoryRequirements(VkDevice device, VkImage image, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements_0(device, image, sparseMemoryRequirementCount, sparseMemoryRequirements);
+		public static unsafe void GetImageSparseMemoryRequirements(VkDevice device, VkImage image, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements_1(device, image, ref sparseMemoryRequirementCount, sparseMemoryRequirements);
+		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, uint* propertyCount, [In, Out] VkSparseImageFormatProperties[] properties) => GetPhysicalDeviceSparseImageFormatProperties_0(physicalDevice, format, type, samples, usage, tiling, propertyCount, properties);
+		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties[] properties) => GetPhysicalDeviceSparseImageFormatProperties_1(physicalDevice, format, type, samples, usage, tiling, ref propertyCount, properties);
 		public static unsafe VkResult QueueBindSparse(VkQueue queue, uint bindInfoCount, VkBindSparseInfo* bindInfo, VkFence fence) => QueueBindSparse_0(queue, bindInfoCount, bindInfo, fence);
 		public static unsafe VkResult QueueBindSparse(VkQueue queue, uint bindInfoCount, ref VkBindSparseInfo bindInfo, VkFence fence) => QueueBindSparse_1(queue, bindInfoCount, ref bindInfo, fence);
 		public static unsafe VkResult CreateFence(VkDevice device, VkFenceCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkFence* fence) => CreateFence_0(device, createInfo, allocator, fence);
@@ -6517,22 +6277,14 @@ namespace Vulkan
 		public static unsafe VkResult CreateAndroidSurfaceKHR(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateAndroidSurfaceKHR_5(instance, ref createInfo, allocator, out surface);
 		public static unsafe VkResult CreateAndroidSurfaceKHR(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, VkSurfaceKHR* surface) => CreateAndroidSurfaceKHR_6(instance, ref createInfo, ref allocator, surface);
 		public static unsafe VkResult CreateAndroidSurfaceKHR(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateAndroidSurfaceKHR_7(instance, ref createInfo, ref allocator, out surface);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPropertiesKHR* properties) => GetPhysicalDeviceDisplayPropertiesKHR_0(physicalDevice, propertyCount, properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, out VkDisplayPropertiesKHR properties) => GetPhysicalDeviceDisplayPropertiesKHR_1(physicalDevice, propertyCount, out properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, VkDisplayPropertiesKHR* properties) => GetPhysicalDeviceDisplayPropertiesKHR_2(physicalDevice, ref propertyCount, properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, out VkDisplayPropertiesKHR properties) => GetPhysicalDeviceDisplayPropertiesKHR_3(physicalDevice, ref propertyCount, out properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPlanePropertiesKHR* properties) => GetPhysicalDeviceDisplayPlanePropertiesKHR_0(physicalDevice, propertyCount, properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, out VkDisplayPlanePropertiesKHR properties) => GetPhysicalDeviceDisplayPlanePropertiesKHR_1(physicalDevice, propertyCount, out properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, VkDisplayPlanePropertiesKHR* properties) => GetPhysicalDeviceDisplayPlanePropertiesKHR_2(physicalDevice, ref propertyCount, properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, out VkDisplayPlanePropertiesKHR properties) => GetPhysicalDeviceDisplayPlanePropertiesKHR_3(physicalDevice, ref propertyCount, out properties);
-		public static unsafe VkResult GetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, VkDisplayKHR* displays) => GetDisplayPlaneSupportedDisplaysKHR_0(physicalDevice, planeIndex, displayCount, displays);
-		public static unsafe VkResult GetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, out VkDisplayKHR displays) => GetDisplayPlaneSupportedDisplaysKHR_1(physicalDevice, planeIndex, displayCount, out displays);
-		public static unsafe VkResult GetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, ref uint displayCount, VkDisplayKHR* displays) => GetDisplayPlaneSupportedDisplaysKHR_2(physicalDevice, planeIndex, ref displayCount, displays);
-		public static unsafe VkResult GetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, ref uint displayCount, out VkDisplayKHR displays) => GetDisplayPlaneSupportedDisplaysKHR_3(physicalDevice, planeIndex, ref displayCount, out displays);
-		public static unsafe VkResult GetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, VkDisplayModePropertiesKHR* properties) => GetDisplayModePropertiesKHR_0(physicalDevice, display, propertyCount, properties);
-		public static unsafe VkResult GetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, out VkDisplayModePropertiesKHR properties) => GetDisplayModePropertiesKHR_1(physicalDevice, display, propertyCount, out properties);
-		public static unsafe VkResult GetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, VkDisplayModePropertiesKHR* properties) => GetDisplayModePropertiesKHR_2(physicalDevice, display, ref propertyCount, properties);
-		public static unsafe VkResult GetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, out VkDisplayModePropertiesKHR properties) => GetDisplayModePropertiesKHR_3(physicalDevice, display, ref propertyCount, out properties);
+		public static unsafe VkResult GetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPropertiesKHR[] properties) => GetPhysicalDeviceDisplayPropertiesKHR_0(physicalDevice, propertyCount, properties);
+		public static unsafe VkResult GetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPropertiesKHR[] properties) => GetPhysicalDeviceDisplayPropertiesKHR_1(physicalDevice, ref propertyCount, properties);
+		public static unsafe VkResult GetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPlanePropertiesKHR[] properties) => GetPhysicalDeviceDisplayPlanePropertiesKHR_0(physicalDevice, propertyCount, properties);
+		public static unsafe VkResult GetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPlanePropertiesKHR[] properties) => GetPhysicalDeviceDisplayPlanePropertiesKHR_1(physicalDevice, ref propertyCount, properties);
+		public static unsafe VkResult GetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, [In, Out] VkDisplayKHR[] displays) => GetDisplayPlaneSupportedDisplaysKHR_0(physicalDevice, planeIndex, displayCount, displays);
+		public static unsafe VkResult GetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, ref uint displayCount, [In, Out] VkDisplayKHR[] displays) => GetDisplayPlaneSupportedDisplaysKHR_1(physicalDevice, planeIndex, ref displayCount, displays);
+		public static unsafe VkResult GetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, [In, Out] VkDisplayModePropertiesKHR[] properties) => GetDisplayModePropertiesKHR_0(physicalDevice, display, propertyCount, properties);
+		public static unsafe VkResult GetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, [In, Out] VkDisplayModePropertiesKHR[] properties) => GetDisplayModePropertiesKHR_1(physicalDevice, display, ref propertyCount, properties);
 		public static unsafe VkResult CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkDisplayModeKHR* mode) => CreateDisplayModeKHR_0(physicalDevice, display, createInfo, allocator, mode);
 		public static unsafe VkResult CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode) => CreateDisplayModeKHR_1(physicalDevice, display, createInfo, allocator, out mode);
 		public static unsafe VkResult CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, VkDisplayModeKHR* mode) => CreateDisplayModeKHR_2(physicalDevice, display, createInfo, ref allocator, mode);
@@ -6561,14 +6313,10 @@ namespace Vulkan
 		public static unsafe VkResult GetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out VkBool32 supported) => GetPhysicalDeviceSurfaceSupportKHR_1(physicalDevice, queueFamilyIndex, surface, out supported);
 		public static unsafe VkResult GetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR* surfaceCapabilities) => GetPhysicalDeviceSurfaceCapabilitiesKHR_0(physicalDevice, surface, surfaceCapabilities);
 		public static unsafe VkResult GetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, out VkSurfaceCapabilitiesKHR surfaceCapabilities) => GetPhysicalDeviceSurfaceCapabilitiesKHR_1(physicalDevice, surface, out surfaceCapabilities);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, VkSurfaceFormatKHR* surfaceFormats) => GetPhysicalDeviceSurfaceFormatsKHR_0(physicalDevice, surface, surfaceFormatCount, surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, out VkSurfaceFormatKHR surfaceFormats) => GetPhysicalDeviceSurfaceFormatsKHR_1(physicalDevice, surface, surfaceFormatCount, out surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint surfaceFormatCount, VkSurfaceFormatKHR* surfaceFormats) => GetPhysicalDeviceSurfaceFormatsKHR_2(physicalDevice, surface, ref surfaceFormatCount, surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint surfaceFormatCount, out VkSurfaceFormatKHR surfaceFormats) => GetPhysicalDeviceSurfaceFormatsKHR_3(physicalDevice, surface, ref surfaceFormatCount, out surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, VkPresentModeKHR* presentModes) => GetPhysicalDeviceSurfacePresentModesKHR_0(physicalDevice, surface, presentModeCount, presentModes);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, out VkPresentModeKHR presentModes) => GetPhysicalDeviceSurfacePresentModesKHR_1(physicalDevice, surface, presentModeCount, out presentModes);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint presentModeCount, VkPresentModeKHR* presentModes) => GetPhysicalDeviceSurfacePresentModesKHR_2(physicalDevice, surface, ref presentModeCount, presentModes);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint presentModeCount, out VkPresentModeKHR presentModes) => GetPhysicalDeviceSurfacePresentModesKHR_3(physicalDevice, surface, ref presentModeCount, out presentModes);
+		public static unsafe VkResult GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, [In, Out] VkSurfaceFormatKHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormatsKHR_0(physicalDevice, surface, surfaceFormatCount, surfaceFormats);
+		public static unsafe VkResult GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormatKHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormatsKHR_1(physicalDevice, surface, ref surfaceFormatCount, surfaceFormats);
+		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, [In, Out] VkPresentModeKHR[] presentModes) => GetPhysicalDeviceSurfacePresentModesKHR_0(physicalDevice, surface, presentModeCount, presentModes);
+		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint presentModeCount, [In, Out] VkPresentModeKHR[] presentModes) => GetPhysicalDeviceSurfacePresentModesKHR_1(physicalDevice, surface, ref presentModeCount, presentModes);
 		public static unsafe VkResult CreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSwapchainKHR* swapchain) => CreateSwapchainKHR_0(device, createInfo, allocator, swapchain);
 		public static unsafe VkResult CreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain) => CreateSwapchainKHR_1(device, createInfo, allocator, out swapchain);
 		public static unsafe VkResult CreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, VkSwapchainKHR* swapchain) => CreateSwapchainKHR_2(device, createInfo, ref allocator, swapchain);
@@ -6579,10 +6327,8 @@ namespace Vulkan
 		public static unsafe VkResult CreateSwapchainKHR(VkDevice device, ref VkSwapchainCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchain) => CreateSwapchainKHR_7(device, ref createInfo, ref allocator, out swapchain);
 		public static unsafe void DestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* allocator) => DestroySwapchainKHR_0(device, swapchain, allocator);
 		public static unsafe void DestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain, ref VkAllocationCallbacks allocator) => DestroySwapchainKHR_1(device, swapchain, ref allocator);
-		public static unsafe VkResult GetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, VkImage* swapchainImages) => GetSwapchainImagesKHR_0(device, swapchain, swapchainImageCount, swapchainImages);
-		public static unsafe VkResult GetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, out VkImage swapchainImages) => GetSwapchainImagesKHR_1(device, swapchain, swapchainImageCount, out swapchainImages);
-		public static unsafe VkResult GetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, ref uint swapchainImageCount, VkImage* swapchainImages) => GetSwapchainImagesKHR_2(device, swapchain, ref swapchainImageCount, swapchainImages);
-		public static unsafe VkResult GetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, ref uint swapchainImageCount, out VkImage swapchainImages) => GetSwapchainImagesKHR_3(device, swapchain, ref swapchainImageCount, out swapchainImages);
+		public static unsafe VkResult GetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, [In, Out] VkImage[] swapchainImages) => GetSwapchainImagesKHR_0(device, swapchain, swapchainImageCount, swapchainImages);
+		public static unsafe VkResult GetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, ref uint swapchainImageCount, [In, Out] VkImage[] swapchainImages) => GetSwapchainImagesKHR_1(device, swapchain, ref swapchainImageCount, swapchainImages);
 		public static unsafe VkResult AcquireNextImageKHR(VkDevice device, VkSwapchainKHR swapchain, ulong timeout, VkSemaphore semaphore, VkFence fence, uint* imageIndex) => AcquireNextImageKHR_0(device, swapchain, timeout, semaphore, fence, imageIndex);
 		public static unsafe VkResult AcquireNextImageKHR(VkDevice device, VkSwapchainKHR swapchain, ulong timeout, VkSemaphore semaphore, VkFence fence, ref uint imageIndex) => AcquireNextImageKHR_1(device, swapchain, timeout, semaphore, fence, ref imageIndex);
 		public static unsafe VkResult QueuePresentKHR(VkQueue queue, VkPresentInfoKHR* presentInfo) => QueuePresentKHR_0(queue, presentInfo);
@@ -6666,23 +6412,17 @@ namespace Vulkan
 		public static unsafe VkResult GetPhysicalDeviceImageFormatProperties2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceImageFormatInfo2 imageFormatInfo, VkImageFormatProperties2* imageFormatProperties) => GetPhysicalDeviceImageFormatProperties2_2(physicalDevice, ref imageFormatInfo, imageFormatProperties);
 		public static unsafe VkResult GetPhysicalDeviceImageFormatProperties2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceImageFormatInfo2 imageFormatInfo, out VkImageFormatProperties2 imageFormatProperties) => GetPhysicalDeviceImageFormatProperties2_3(physicalDevice, ref imageFormatInfo, out imageFormatProperties);
 		public static unsafe VkResult GetPhysicalDeviceImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2* imageFormatInfo, VkImageFormatProperties2* imageFormatProperties) => GetPhysicalDeviceImageFormatProperties2(physicalDevice, imageFormatInfo, imageFormatProperties);
-		public static unsafe void GetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties2* queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2_0(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
-		public static unsafe void GetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, out VkQueueFamilyProperties2 queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2_1(physicalDevice, queueFamilyPropertyCount, out queueFamilyProperties);
-		public static unsafe void GetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, VkQueueFamilyProperties2* queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2_2(physicalDevice, ref queueFamilyPropertyCount, queueFamilyProperties);
-		public static unsafe void GetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, out VkQueueFamilyProperties2 queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2_3(physicalDevice, ref queueFamilyPropertyCount, out queueFamilyProperties);
-		public static unsafe void GetPhysicalDeviceQueueFamilyProperties2KHR(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, VkQueueFamilyProperties2* queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
+		public static unsafe void GetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties2[] queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2_0(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
+		public static unsafe void GetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties2[] queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2_1(physicalDevice, ref queueFamilyPropertyCount, queueFamilyProperties);
+		public static unsafe void GetPhysicalDeviceQueueFamilyProperties2KHR(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties2[] queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
 		public static unsafe void GetPhysicalDeviceMemoryProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties2* memoryProperties) => GetPhysicalDeviceMemoryProperties2_0(physicalDevice, memoryProperties);
 		public static unsafe void GetPhysicalDeviceMemoryProperties2(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties2 memoryProperties) => GetPhysicalDeviceMemoryProperties2_1(physicalDevice, out memoryProperties);
 		public static unsafe void GetPhysicalDeviceMemoryProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties2* memoryProperties) => GetPhysicalDeviceMemoryProperties2(physicalDevice, memoryProperties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, VkSparseImageFormatProperties2* properties) => GetPhysicalDeviceSparseImageFormatProperties2_0(physicalDevice, formatInfo, propertyCount, properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, out VkSparseImageFormatProperties2 properties) => GetPhysicalDeviceSparseImageFormatProperties2_1(physicalDevice, formatInfo, propertyCount, out properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, ref uint propertyCount, VkSparseImageFormatProperties2* properties) => GetPhysicalDeviceSparseImageFormatProperties2_2(physicalDevice, formatInfo, ref propertyCount, properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, ref uint propertyCount, out VkSparseImageFormatProperties2 properties) => GetPhysicalDeviceSparseImageFormatProperties2_3(physicalDevice, formatInfo, ref propertyCount, out properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, uint* propertyCount, VkSparseImageFormatProperties2* properties) => GetPhysicalDeviceSparseImageFormatProperties2_4(physicalDevice, ref formatInfo, propertyCount, properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, uint* propertyCount, out VkSparseImageFormatProperties2 properties) => GetPhysicalDeviceSparseImageFormatProperties2_5(physicalDevice, ref formatInfo, propertyCount, out properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, ref uint propertyCount, VkSparseImageFormatProperties2* properties) => GetPhysicalDeviceSparseImageFormatProperties2_6(physicalDevice, ref formatInfo, ref propertyCount, properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, ref uint propertyCount, out VkSparseImageFormatProperties2 properties) => GetPhysicalDeviceSparseImageFormatProperties2_7(physicalDevice, ref formatInfo, ref propertyCount, out properties);
-		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, VkSparseImageFormatProperties2* properties) => GetPhysicalDeviceSparseImageFormatProperties2(physicalDevice, formatInfo, propertyCount, properties);
+		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2_0(physicalDevice, formatInfo, propertyCount, properties);
+		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2_1(physicalDevice, formatInfo, ref propertyCount, properties);
+		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2_2(physicalDevice, ref formatInfo, propertyCount, properties);
+		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2_3(physicalDevice, ref formatInfo, ref propertyCount, properties);
+		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2(physicalDevice, formatInfo, propertyCount, properties);
 		public static unsafe void CommandPushDescriptorSetKHR(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites) => CommandPushDescriptorSetKHR_0(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, descriptorWrites);
 		public static unsafe void CommandPushDescriptorSetKHR(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, ref VkWriteDescriptorSet descriptorWrites) => CommandPushDescriptorSetKHR_1(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, ref descriptorWrites);
 		public static unsafe void TrimCommandPool(VkDevice device, VkCommandPool commandPool, uint flags) => TrimCommandPool_0(device, commandPool, flags);
@@ -6786,10 +6526,8 @@ namespace Vulkan
 		public static unsafe VkResult AcquireNextImage2KHR(VkDevice device, ref VkAcquireNextImageInfoKHR acquireInfo, ref uint imageIndex) => AcquireNextImage2KHR_3(device, ref acquireInfo, ref imageIndex);
 		public static unsafe void CommandDispatchBase(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ) => CommandDispatchBase_0(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
 		public static unsafe void CommandDispatchBaseKHR(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ) => CommandDispatchBase(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
-		public static unsafe VkResult GetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, VkRect2D* rects) => GetPhysicalDevicePresentRectanglesKHR_0(physicalDevice, surface, rectCount, rects);
-		public static unsafe VkResult GetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, out VkRect2D rects) => GetPhysicalDevicePresentRectanglesKHR_1(physicalDevice, surface, rectCount, out rects);
-		public static unsafe VkResult GetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, VkRect2D* rects) => GetPhysicalDevicePresentRectanglesKHR_2(physicalDevice, surface, ref rectCount, rects);
-		public static unsafe VkResult GetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, out VkRect2D rects) => GetPhysicalDevicePresentRectanglesKHR_3(physicalDevice, surface, ref rectCount, out rects);
+		public static unsafe VkResult GetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, [In, Out] VkRect2D[] rects) => GetPhysicalDevicePresentRectanglesKHR_0(physicalDevice, surface, rectCount, rects);
+		public static unsafe VkResult GetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, [In, Out] VkRect2D[] rects) => GetPhysicalDevicePresentRectanglesKHR_1(physicalDevice, surface, ref rectCount, rects);
 		public static unsafe VkResult CreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate) => CreateDescriptorUpdateTemplate_0(device, createInfo, allocator, descriptorUpdateTemplate);
 		public static unsafe VkResult CreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate) => CreateDescriptorUpdateTemplate_1(device, createInfo, allocator, out descriptorUpdateTemplate);
 		public static unsafe VkResult CreateDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, ref VkAllocationCallbacks allocator, VkDescriptorUpdateTemplate* descriptorUpdateTemplate) => CreateDescriptorUpdateTemplate_2(device, createInfo, ref allocator, descriptorUpdateTemplate);
@@ -6812,10 +6550,8 @@ namespace Vulkan
 		public static unsafe VkResult GetSwapchainStatusKHR(VkDevice device, VkSwapchainKHR swapchain) => GetSwapchainStatusKHR_0(device, swapchain);
 		public static unsafe VkResult GetRefreshCycleDurationGOOGLE(VkDevice device, VkSwapchainKHR swapchain, VkRefreshCycleDurationGOOGLE* displayTimingProperties) => GetRefreshCycleDurationGOOGLE_0(device, swapchain, displayTimingProperties);
 		public static unsafe VkResult GetRefreshCycleDurationGOOGLE(VkDevice device, VkSwapchainKHR swapchain, out VkRefreshCycleDurationGOOGLE displayTimingProperties) => GetRefreshCycleDurationGOOGLE_1(device, swapchain, out displayTimingProperties);
-		public static unsafe VkResult GetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, VkPastPresentationTimingGOOGLE* presentationTimings) => GetPastPresentationTimingGOOGLE_0(device, swapchain, presentationTimingCount, presentationTimings);
-		public static unsafe VkResult GetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, out VkPastPresentationTimingGOOGLE presentationTimings) => GetPastPresentationTimingGOOGLE_1(device, swapchain, presentationTimingCount, out presentationTimings);
-		public static unsafe VkResult GetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, ref uint presentationTimingCount, VkPastPresentationTimingGOOGLE* presentationTimings) => GetPastPresentationTimingGOOGLE_2(device, swapchain, ref presentationTimingCount, presentationTimings);
-		public static unsafe VkResult GetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, ref uint presentationTimingCount, out VkPastPresentationTimingGOOGLE presentationTimings) => GetPastPresentationTimingGOOGLE_3(device, swapchain, ref presentationTimingCount, out presentationTimings);
+		public static unsafe VkResult GetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, [In, Out] VkPastPresentationTimingGOOGLE[] presentationTimings) => GetPastPresentationTimingGOOGLE_0(device, swapchain, presentationTimingCount, presentationTimings);
+		public static unsafe VkResult GetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, ref uint presentationTimingCount, [In, Out] VkPastPresentationTimingGOOGLE[] presentationTimings) => GetPastPresentationTimingGOOGLE_1(device, swapchain, ref presentationTimingCount, presentationTimings);
 		public static unsafe VkResult CreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface) => CreateMacOSSurfaceMVK_0(instance, createInfo, allocator, surface);
 		public static unsafe VkResult CreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateMacOSSurfaceMVK_1(instance, createInfo, allocator, out surface);
 		public static unsafe VkResult CreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, ref VkAllocationCallbacks allocator, VkSurfaceKHR* surface) => CreateMacOSSurfaceMVK_2(instance, createInfo, ref allocator, surface);
@@ -6836,26 +6572,16 @@ namespace Vulkan
 		public static unsafe VkResult GetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkSurfaceCapabilities2KHR surfaceCapabilities) => GetPhysicalDeviceSurfaceCapabilities2KHR_1(physicalDevice, surfaceInfo, out surfaceCapabilities);
 		public static unsafe VkResult GetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, VkSurfaceCapabilities2KHR* surfaceCapabilities) => GetPhysicalDeviceSurfaceCapabilities2KHR_2(physicalDevice, ref surfaceInfo, surfaceCapabilities);
 		public static unsafe VkResult GetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, out VkSurfaceCapabilities2KHR surfaceCapabilities) => GetPhysicalDeviceSurfaceCapabilities2KHR_3(physicalDevice, ref surfaceInfo, out surfaceCapabilities);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, VkSurfaceFormat2KHR* surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_0(physicalDevice, surfaceInfo, surfaceFormatCount, surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, out VkSurfaceFormat2KHR surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_1(physicalDevice, surfaceInfo, surfaceFormatCount, out surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint surfaceFormatCount, VkSurfaceFormat2KHR* surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_2(physicalDevice, surfaceInfo, ref surfaceFormatCount, surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint surfaceFormatCount, out VkSurfaceFormat2KHR surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_3(physicalDevice, surfaceInfo, ref surfaceFormatCount, out surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* surfaceFormatCount, VkSurfaceFormat2KHR* surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_4(physicalDevice, ref surfaceInfo, surfaceFormatCount, surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* surfaceFormatCount, out VkSurfaceFormat2KHR surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_5(physicalDevice, ref surfaceInfo, surfaceFormatCount, out surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint surfaceFormatCount, VkSurfaceFormat2KHR* surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_6(physicalDevice, ref surfaceInfo, ref surfaceFormatCount, surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint surfaceFormatCount, out VkSurfaceFormat2KHR surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_7(physicalDevice, ref surfaceInfo, ref surfaceFormatCount, out surfaceFormats);
-		public static unsafe VkResult GetPhysicalDeviceDisplayProperties2KHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayProperties2KHR* properties) => GetPhysicalDeviceDisplayProperties2KHR_0(physicalDevice, propertyCount, properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayProperties2KHR(VkPhysicalDevice physicalDevice, uint* propertyCount, out VkDisplayProperties2KHR properties) => GetPhysicalDeviceDisplayProperties2KHR_1(physicalDevice, propertyCount, out properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayProperties2KHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, VkDisplayProperties2KHR* properties) => GetPhysicalDeviceDisplayProperties2KHR_2(physicalDevice, ref propertyCount, properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayProperties2KHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, out VkDisplayProperties2KHR properties) => GetPhysicalDeviceDisplayProperties2KHR_3(physicalDevice, ref propertyCount, out properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPlaneProperties2KHR(VkPhysicalDevice physicalDevice, uint* propertyCount, VkDisplayPlaneProperties2KHR* properties) => GetPhysicalDeviceDisplayPlaneProperties2KHR_0(physicalDevice, propertyCount, properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPlaneProperties2KHR(VkPhysicalDevice physicalDevice, uint* propertyCount, out VkDisplayPlaneProperties2KHR properties) => GetPhysicalDeviceDisplayPlaneProperties2KHR_1(physicalDevice, propertyCount, out properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPlaneProperties2KHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, VkDisplayPlaneProperties2KHR* properties) => GetPhysicalDeviceDisplayPlaneProperties2KHR_2(physicalDevice, ref propertyCount, properties);
-		public static unsafe VkResult GetPhysicalDeviceDisplayPlaneProperties2KHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, out VkDisplayPlaneProperties2KHR properties) => GetPhysicalDeviceDisplayPlaneProperties2KHR_3(physicalDevice, ref propertyCount, out properties);
-		public static unsafe VkResult GetDisplayModeProperties2KHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, VkDisplayModeProperties2KHR* properties) => GetDisplayModeProperties2KHR_0(physicalDevice, display, propertyCount, properties);
-		public static unsafe VkResult GetDisplayModeProperties2KHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, out VkDisplayModeProperties2KHR properties) => GetDisplayModeProperties2KHR_1(physicalDevice, display, propertyCount, out properties);
-		public static unsafe VkResult GetDisplayModeProperties2KHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, VkDisplayModeProperties2KHR* properties) => GetDisplayModeProperties2KHR_2(physicalDevice, display, ref propertyCount, properties);
-		public static unsafe VkResult GetDisplayModeProperties2KHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, out VkDisplayModeProperties2KHR properties) => GetDisplayModeProperties2KHR_3(physicalDevice, display, ref propertyCount, out properties);
+		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_0(physicalDevice, surfaceInfo, surfaceFormatCount, surfaceFormats);
+		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_1(physicalDevice, surfaceInfo, ref surfaceFormatCount, surfaceFormats);
+		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_2(physicalDevice, ref surfaceInfo, surfaceFormatCount, surfaceFormats);
+		public static unsafe VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_3(physicalDevice, ref surfaceInfo, ref surfaceFormatCount, surfaceFormats);
+		public static unsafe VkResult GetPhysicalDeviceDisplayProperties2KHR(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayProperties2KHR[] properties) => GetPhysicalDeviceDisplayProperties2KHR_0(physicalDevice, propertyCount, properties);
+		public static unsafe VkResult GetPhysicalDeviceDisplayProperties2KHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayProperties2KHR[] properties) => GetPhysicalDeviceDisplayProperties2KHR_1(physicalDevice, ref propertyCount, properties);
+		public static unsafe VkResult GetPhysicalDeviceDisplayPlaneProperties2KHR(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPlaneProperties2KHR[] properties) => GetPhysicalDeviceDisplayPlaneProperties2KHR_0(physicalDevice, propertyCount, properties);
+		public static unsafe VkResult GetPhysicalDeviceDisplayPlaneProperties2KHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPlaneProperties2KHR[] properties) => GetPhysicalDeviceDisplayPlaneProperties2KHR_1(physicalDevice, ref propertyCount, properties);
+		public static unsafe VkResult GetDisplayModeProperties2KHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, [In, Out] VkDisplayModeProperties2KHR[] properties) => GetDisplayModeProperties2KHR_0(physicalDevice, display, propertyCount, properties);
+		public static unsafe VkResult GetDisplayModeProperties2KHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, [In, Out] VkDisplayModeProperties2KHR[] properties) => GetDisplayModeProperties2KHR_1(physicalDevice, display, ref propertyCount, properties);
 		public static unsafe VkResult GetDisplayPlaneCapabilities2KHR(VkPhysicalDevice physicalDevice, VkDisplayPlaneInfo2KHR* displayPlaneInfo, VkDisplayPlaneCapabilities2KHR* capabilities) => GetDisplayPlaneCapabilities2KHR_0(physicalDevice, displayPlaneInfo, capabilities);
 		public static unsafe VkResult GetDisplayPlaneCapabilities2KHR(VkPhysicalDevice physicalDevice, VkDisplayPlaneInfo2KHR* displayPlaneInfo, out VkDisplayPlaneCapabilities2KHR capabilities) => GetDisplayPlaneCapabilities2KHR_1(physicalDevice, displayPlaneInfo, out capabilities);
 		public static unsafe VkResult GetDisplayPlaneCapabilities2KHR(VkPhysicalDevice physicalDevice, ref VkDisplayPlaneInfo2KHR displayPlaneInfo, VkDisplayPlaneCapabilities2KHR* capabilities) => GetDisplayPlaneCapabilities2KHR_2(physicalDevice, ref displayPlaneInfo, capabilities);
@@ -6870,15 +6596,11 @@ namespace Vulkan
 		public static unsafe void GetImageMemoryRequirements2(VkDevice device, ref VkImageMemoryRequirementsInfo2 info, VkMemoryRequirements2* memoryRequirements) => GetImageMemoryRequirements2_2(device, ref info, memoryRequirements);
 		public static unsafe void GetImageMemoryRequirements2(VkDevice device, ref VkImageMemoryRequirementsInfo2 info, out VkMemoryRequirements2 memoryRequirements) => GetImageMemoryRequirements2_3(device, ref info, out memoryRequirements);
 		public static unsafe void GetImageMemoryRequirements2KHR(VkDevice device, VkImageMemoryRequirementsInfo2* info, VkMemoryRequirements2* memoryRequirements) => GetImageMemoryRequirements2(device, info, memoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_0(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements2 sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_1(device, info, sparseMemoryRequirementCount, out sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, ref uint sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_2(device, info, ref sparseMemoryRequirementCount, sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, ref uint sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements2 sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_3(device, info, ref sparseMemoryRequirementCount, out sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_4(device, ref info, sparseMemoryRequirementCount, sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, uint* sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements2 sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_5(device, ref info, sparseMemoryRequirementCount, out sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, ref uint sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_6(device, ref info, ref sparseMemoryRequirementCount, sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, ref uint sparseMemoryRequirementCount, out VkSparseImageMemoryRequirements2 sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_7(device, ref info, ref sparseMemoryRequirementCount, out sparseMemoryRequirements);
-		public static unsafe void GetImageSparseMemoryRequirements2KHR(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* sparseMemoryRequirements) => GetImageSparseMemoryRequirements2(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
+		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_0(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
+		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_1(device, info, ref sparseMemoryRequirementCount, sparseMemoryRequirements);
+		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_2(device, ref info, sparseMemoryRequirementCount, sparseMemoryRequirements);
+		public static unsafe void GetImageSparseMemoryRequirements2(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements2_3(device, ref info, ref sparseMemoryRequirementCount, sparseMemoryRequirements);
+		public static unsafe void GetImageSparseMemoryRequirements2KHR(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements2(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
 		public static unsafe VkResult CreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSamplerYcbcrConversion* ycbcrConversion) => CreateSamplerYcbcrConversion_0(device, createInfo, allocator, ycbcrConversion);
 		public static unsafe VkResult CreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion) => CreateSamplerYcbcrConversion_1(device, createInfo, allocator, out ycbcrConversion);
 		public static unsafe VkResult CreateSamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, ref VkAllocationCallbacks allocator, VkSamplerYcbcrConversion* ycbcrConversion) => CreateSamplerYcbcrConversion_2(device, createInfo, ref allocator, ycbcrConversion);
@@ -6928,10 +6650,8 @@ namespace Vulkan
 		public static unsafe VkResult GetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info) => GetShaderInfoAMD_0(device, pipeline, shaderStage, infoType, infoSize, info);
 		public static unsafe VkResult GetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, ref nuint infoSize, void* info) => GetShaderInfoAMD_1(device, pipeline, shaderStage, infoType, ref infoSize, info);
 		public static unsafe void SetLocalDimmingAMD(VkDevice device, VkSwapchainKHR swapChain, VkBool32 localDimmingEnable) => SetLocalDimmingAMD_0(device, swapChain, localDimmingEnable);
-		public static unsafe VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, uint* timeDomainCount, VkTimeDomainEXT* timeDomains) => GetPhysicalDeviceCalibrateableTimeDomainsEXT_0(physicalDevice, timeDomainCount, timeDomains);
-		public static unsafe VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, uint* timeDomainCount, out VkTimeDomainEXT timeDomains) => GetPhysicalDeviceCalibrateableTimeDomainsEXT_1(physicalDevice, timeDomainCount, out timeDomains);
-		public static unsafe VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, ref uint timeDomainCount, VkTimeDomainEXT* timeDomains) => GetPhysicalDeviceCalibrateableTimeDomainsEXT_2(physicalDevice, ref timeDomainCount, timeDomains);
-		public static unsafe VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, ref uint timeDomainCount, out VkTimeDomainEXT timeDomains) => GetPhysicalDeviceCalibrateableTimeDomainsEXT_3(physicalDevice, ref timeDomainCount, out timeDomains);
+		public static unsafe VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, uint* timeDomainCount, [In, Out] VkTimeDomainEXT[] timeDomains) => GetPhysicalDeviceCalibrateableTimeDomainsEXT_0(physicalDevice, timeDomainCount, timeDomains);
+		public static unsafe VkResult GetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, ref uint timeDomainCount, [In, Out] VkTimeDomainEXT[] timeDomains) => GetPhysicalDeviceCalibrateableTimeDomainsEXT_1(physicalDevice, ref timeDomainCount, timeDomains);
 		public static unsafe VkResult GetCalibratedTimestampsEXT(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoEXT[] timestampInfos, ulong* timestamps, ulong* maxDeviation) => GetCalibratedTimestampsEXT_0(device, timestampCount, timestampInfos, timestamps, maxDeviation);
 		public static unsafe VkResult GetCalibratedTimestampsEXT(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoEXT[] timestampInfos, ulong* timestamps, out ulong maxDeviation) => GetCalibratedTimestampsEXT_1(device, timestampCount, timestampInfos, timestamps, out maxDeviation);
 		public static unsafe VkResult GetCalibratedTimestampsEXT(VkDevice device, uint timestampCount, VkCalibratedTimestampInfoEXT[] timestampInfos, ref ulong timestamps, ulong* maxDeviation) => GetCalibratedTimestampsEXT_2(device, timestampCount, timestampInfos, ref timestamps, maxDeviation);
@@ -7011,10 +6731,8 @@ namespace Vulkan
 		public static unsafe void CommandDrawIndexedIndirectCountKHR(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride) => CommandDrawIndexedIndirectCount(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 		public static unsafe void CommandDrawIndexedIndirectCountAMD(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride) => CommandDrawIndexedIndirectCount(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 		public static unsafe void CommandSetCheckpointNV(VkCommandBuffer commandBuffer, void* checkpointMarker) => CommandSetCheckpointNV_0(commandBuffer, checkpointMarker);
-		public static unsafe void GetQueueCheckpointDataNV(VkQueue queue, uint* checkpointDataCount, VkCheckpointDataNV* checkpointData) => GetQueueCheckpointDataNV_0(queue, checkpointDataCount, checkpointData);
-		public static unsafe void GetQueueCheckpointDataNV(VkQueue queue, uint* checkpointDataCount, out VkCheckpointDataNV checkpointData) => GetQueueCheckpointDataNV_1(queue, checkpointDataCount, out checkpointData);
-		public static unsafe void GetQueueCheckpointDataNV(VkQueue queue, ref uint checkpointDataCount, VkCheckpointDataNV* checkpointData) => GetQueueCheckpointDataNV_2(queue, ref checkpointDataCount, checkpointData);
-		public static unsafe void GetQueueCheckpointDataNV(VkQueue queue, ref uint checkpointDataCount, out VkCheckpointDataNV checkpointData) => GetQueueCheckpointDataNV_3(queue, ref checkpointDataCount, out checkpointData);
+		public static unsafe void GetQueueCheckpointDataNV(VkQueue queue, uint* checkpointDataCount, [In, Out] VkCheckpointDataNV[] checkpointData) => GetQueueCheckpointDataNV_0(queue, checkpointDataCount, checkpointData);
+		public static unsafe void GetQueueCheckpointDataNV(VkQueue queue, ref uint checkpointDataCount, [In, Out] VkCheckpointDataNV[] checkpointData) => GetQueueCheckpointDataNV_1(queue, ref checkpointDataCount, checkpointData);
 		public static unsafe void CommandBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, VkDeviceSize* sizes) => CommandBindTransformFeedbackBuffersEXT_0(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes);
 		public static unsafe void CommandBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes) => CommandBindTransformFeedbackBuffersEXT_1(commandBuffer, firstBinding, bindingCount, buffers, offsets, ref sizes);
 		public static unsafe void CommandBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes) => CommandBindTransformFeedbackBuffersEXT_2(commandBuffer, firstBinding, bindingCount, buffers, ref offsets, sizes);
@@ -7112,10 +6830,8 @@ namespace Vulkan
 		public static unsafe VkResult CreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR[] createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines) => CreateRayTracingPipelinesKHR_1(device, deferredOperation, pipelineCache, createInfoCount, createInfos, allocator, out pipelines);
 		public static unsafe VkResult CreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR[] createInfos, ref VkAllocationCallbacks allocator, VkPipeline* pipelines) => CreateRayTracingPipelinesKHR_2(device, deferredOperation, pipelineCache, createInfoCount, createInfos, ref allocator, pipelines);
 		public static unsafe VkResult CreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint createInfoCount, VkRayTracingPipelineCreateInfoKHR[] createInfos, ref VkAllocationCallbacks allocator, out VkPipeline pipelines) => CreateRayTracingPipelinesKHR_3(device, deferredOperation, pipelineCache, createInfoCount, createInfos, ref allocator, out pipelines);
-		public static unsafe VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNV(VkPhysicalDevice physicalDevice, uint* propertyCount, VkCooperativeMatrixPropertiesNV* properties) => GetPhysicalDeviceCooperativeMatrixPropertiesNV_0(physicalDevice, propertyCount, properties);
-		public static unsafe VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNV(VkPhysicalDevice physicalDevice, uint* propertyCount, out VkCooperativeMatrixPropertiesNV properties) => GetPhysicalDeviceCooperativeMatrixPropertiesNV_1(physicalDevice, propertyCount, out properties);
-		public static unsafe VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNV(VkPhysicalDevice physicalDevice, ref uint propertyCount, VkCooperativeMatrixPropertiesNV* properties) => GetPhysicalDeviceCooperativeMatrixPropertiesNV_2(physicalDevice, ref propertyCount, properties);
-		public static unsafe VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNV(VkPhysicalDevice physicalDevice, ref uint propertyCount, out VkCooperativeMatrixPropertiesNV properties) => GetPhysicalDeviceCooperativeMatrixPropertiesNV_3(physicalDevice, ref propertyCount, out properties);
+		public static unsafe VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNV(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkCooperativeMatrixPropertiesNV[] properties) => GetPhysicalDeviceCooperativeMatrixPropertiesNV_0(physicalDevice, propertyCount, properties);
+		public static unsafe VkResult GetPhysicalDeviceCooperativeMatrixPropertiesNV(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkCooperativeMatrixPropertiesNV[] properties) => GetPhysicalDeviceCooperativeMatrixPropertiesNV_1(physicalDevice, ref propertyCount, properties);
 		public static unsafe void CommandTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, VkDeviceAddress indirectDeviceAddress) => CommandTraceRaysIndirectKHR_0(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, hitShaderBindingTable, callableShaderBindingTable, indirectDeviceAddress);
 		public static unsafe void CommandTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, ref VkStridedDeviceAddressRegionKHR callableShaderBindingTable, VkDeviceAddress indirectDeviceAddress) => CommandTraceRaysIndirectKHR_1(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, hitShaderBindingTable, ref callableShaderBindingTable, indirectDeviceAddress);
 		public static unsafe void CommandTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, ref VkStridedDeviceAddressRegionKHR hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, VkDeviceAddress indirectDeviceAddress) => CommandTraceRaysIndirectKHR_2(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, ref hitShaderBindingTable, callableShaderBindingTable, indirectDeviceAddress);
@@ -7142,14 +6858,10 @@ namespace Vulkan
 		public static unsafe uint GetImageViewHandleNVX(VkDevice device, out VkImageViewHandleInfoNVX info) => GetImageViewHandleNVX_1(device, out info);
 		public static unsafe VkResult GetImageViewAddressNVX(VkDevice device, VkImageView imageView, VkImageViewAddressPropertiesNVX* properties) => GetImageViewAddressNVX_0(device, imageView, properties);
 		public static unsafe VkResult GetImageViewAddressNVX(VkDevice device, VkImageView imageView, out VkImageViewAddressPropertiesNVX properties) => GetImageViewAddressNVX_1(device, imageView, out properties);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* presentModeCount, VkPresentModeKHR* presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_0(physicalDevice, surfaceInfo, presentModeCount, presentModes);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* presentModeCount, out VkPresentModeKHR presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_1(physicalDevice, surfaceInfo, presentModeCount, out presentModes);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint presentModeCount, VkPresentModeKHR* presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_2(physicalDevice, surfaceInfo, ref presentModeCount, presentModes);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint presentModeCount, out VkPresentModeKHR presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_3(physicalDevice, surfaceInfo, ref presentModeCount, out presentModes);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* presentModeCount, VkPresentModeKHR* presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_4(physicalDevice, ref surfaceInfo, presentModeCount, presentModes);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* presentModeCount, out VkPresentModeKHR presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_5(physicalDevice, ref surfaceInfo, presentModeCount, out presentModes);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint presentModeCount, VkPresentModeKHR* presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_6(physicalDevice, ref surfaceInfo, ref presentModeCount, presentModes);
-		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint presentModeCount, out VkPresentModeKHR presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_7(physicalDevice, ref surfaceInfo, ref presentModeCount, out presentModes);
+		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* presentModeCount, [In, Out] VkPresentModeKHR[] presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_0(physicalDevice, surfaceInfo, presentModeCount, presentModes);
+		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint presentModeCount, [In, Out] VkPresentModeKHR[] presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_1(physicalDevice, surfaceInfo, ref presentModeCount, presentModes);
+		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* presentModeCount, [In, Out] VkPresentModeKHR[] presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_2(physicalDevice, ref surfaceInfo, presentModeCount, presentModes);
+		public static unsafe VkResult GetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint presentModeCount, [In, Out] VkPresentModeKHR[] presentModes) => GetPhysicalDeviceSurfacePresentModes2EXT_3(physicalDevice, ref surfaceInfo, ref presentModeCount, presentModes);
 		public static unsafe VkResult GetDeviceGroupSurfacePresentModes2EXT(VkDevice device, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, VkDeviceGroupPresentModeFlagsKHR* modes) => GetDeviceGroupSurfacePresentModes2EXT_0(device, surfaceInfo, modes);
 		public static unsafe VkResult GetDeviceGroupSurfacePresentModes2EXT(VkDevice device, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkDeviceGroupPresentModeFlagsKHR modes) => GetDeviceGroupSurfacePresentModes2EXT_1(device, surfaceInfo, out modes);
 		public static unsafe VkResult GetDeviceGroupSurfacePresentModes2EXT(VkDevice device, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, VkDeviceGroupPresentModeFlagsKHR* modes) => GetDeviceGroupSurfacePresentModes2EXT_2(device, ref surfaceInfo, modes);
@@ -7184,10 +6896,8 @@ namespace Vulkan
 		public static unsafe VkResult CreateHeadlessSurfaceEXT(VkInstance instance, ref VkHeadlessSurfaceCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateHeadlessSurfaceEXT_5(instance, ref createInfo, allocator, out surface);
 		public static unsafe VkResult CreateHeadlessSurfaceEXT(VkInstance instance, ref VkHeadlessSurfaceCreateInfoEXT createInfo, ref VkAllocationCallbacks allocator, VkSurfaceKHR* surface) => CreateHeadlessSurfaceEXT_6(instance, ref createInfo, ref allocator, surface);
 		public static unsafe VkResult CreateHeadlessSurfaceEXT(VkInstance instance, ref VkHeadlessSurfaceCreateInfoEXT createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateHeadlessSurfaceEXT_7(instance, ref createInfo, ref allocator, out surface);
-		public static unsafe VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(VkPhysicalDevice physicalDevice, uint* combinationCount, VkFramebufferMixedSamplesCombinationNV* combinations) => GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_0(physicalDevice, combinationCount, combinations);
-		public static unsafe VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(VkPhysicalDevice physicalDevice, uint* combinationCount, out VkFramebufferMixedSamplesCombinationNV combinations) => GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_1(physicalDevice, combinationCount, out combinations);
-		public static unsafe VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(VkPhysicalDevice physicalDevice, ref uint combinationCount, VkFramebufferMixedSamplesCombinationNV* combinations) => GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_2(physicalDevice, ref combinationCount, combinations);
-		public static unsafe VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(VkPhysicalDevice physicalDevice, ref uint combinationCount, out VkFramebufferMixedSamplesCombinationNV combinations) => GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_3(physicalDevice, ref combinationCount, out combinations);
+		public static unsafe VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(VkPhysicalDevice physicalDevice, uint* combinationCount, [In, Out] VkFramebufferMixedSamplesCombinationNV[] combinations) => GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_0(physicalDevice, combinationCount, combinations);
+		public static unsafe VkResult GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(VkPhysicalDevice physicalDevice, ref uint combinationCount, [In, Out] VkFramebufferMixedSamplesCombinationNV[] combinations) => GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_1(physicalDevice, ref combinationCount, combinations);
 		public static unsafe VkResult InitializePerformanceApiINTEL(VkDevice device, VkInitializePerformanceApiInfoINTEL* initializeInfo) => InitializePerformanceApiINTEL_0(device, initializeInfo);
 		public static unsafe VkResult InitializePerformanceApiINTEL(VkDevice device, ref VkInitializePerformanceApiInfoINTEL initializeInfo) => InitializePerformanceApiINTEL_1(device, ref initializeInfo);
 		public static unsafe void UninitializePerformanceApiINTEL(VkDevice device) => UninitializePerformanceApiINTEL_0(device);
@@ -7208,35 +6918,21 @@ namespace Vulkan
 		public static unsafe ulong GetDeviceMemoryOpaqueCaptureAddress(VkDevice device, VkDeviceMemoryOpaqueCaptureAddressInfo* info) => GetDeviceMemoryOpaqueCaptureAddress_0(device, info);
 		public static unsafe ulong GetDeviceMemoryOpaqueCaptureAddress(VkDevice device, out VkDeviceMemoryOpaqueCaptureAddressInfo info) => GetDeviceMemoryOpaqueCaptureAddress_1(device, out info);
 		public static unsafe ulong GetDeviceMemoryOpaqueCaptureAddressKHR(VkDevice device, VkDeviceMemoryOpaqueCaptureAddressInfo* info) => GetDeviceMemoryOpaqueCaptureAddress(device, info);
-		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, VkPipelineInfoKHR* pipelineInfo, uint* executableCount, VkPipelineExecutablePropertiesKHR* properties) => GetPipelineExecutablePropertiesKHR_0(device, pipelineInfo, executableCount, properties);
-		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, VkPipelineInfoKHR* pipelineInfo, uint* executableCount, out VkPipelineExecutablePropertiesKHR properties) => GetPipelineExecutablePropertiesKHR_1(device, pipelineInfo, executableCount, out properties);
-		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, VkPipelineInfoKHR* pipelineInfo, ref uint executableCount, VkPipelineExecutablePropertiesKHR* properties) => GetPipelineExecutablePropertiesKHR_2(device, pipelineInfo, ref executableCount, properties);
-		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, VkPipelineInfoKHR* pipelineInfo, ref uint executableCount, out VkPipelineExecutablePropertiesKHR properties) => GetPipelineExecutablePropertiesKHR_3(device, pipelineInfo, ref executableCount, out properties);
-		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, uint* executableCount, VkPipelineExecutablePropertiesKHR* properties) => GetPipelineExecutablePropertiesKHR_4(device, ref pipelineInfo, executableCount, properties);
-		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, uint* executableCount, out VkPipelineExecutablePropertiesKHR properties) => GetPipelineExecutablePropertiesKHR_5(device, ref pipelineInfo, executableCount, out properties);
-		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, ref uint executableCount, VkPipelineExecutablePropertiesKHR* properties) => GetPipelineExecutablePropertiesKHR_6(device, ref pipelineInfo, ref executableCount, properties);
-		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, ref uint executableCount, out VkPipelineExecutablePropertiesKHR properties) => GetPipelineExecutablePropertiesKHR_7(device, ref pipelineInfo, ref executableCount, out properties);
-		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* statisticCount, VkPipelineExecutableStatisticKHR* statistics) => GetPipelineExecutableStatisticsKHR_0(device, executableInfo, statisticCount, statistics);
-		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* statisticCount, out VkPipelineExecutableStatisticKHR statistics) => GetPipelineExecutableStatisticsKHR_1(device, executableInfo, statisticCount, out statistics);
-		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint statisticCount, VkPipelineExecutableStatisticKHR* statistics) => GetPipelineExecutableStatisticsKHR_2(device, executableInfo, ref statisticCount, statistics);
-		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint statisticCount, out VkPipelineExecutableStatisticKHR statistics) => GetPipelineExecutableStatisticsKHR_3(device, executableInfo, ref statisticCount, out statistics);
-		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* statisticCount, VkPipelineExecutableStatisticKHR* statistics) => GetPipelineExecutableStatisticsKHR_4(device, ref executableInfo, statisticCount, statistics);
-		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* statisticCount, out VkPipelineExecutableStatisticKHR statistics) => GetPipelineExecutableStatisticsKHR_5(device, ref executableInfo, statisticCount, out statistics);
-		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint statisticCount, VkPipelineExecutableStatisticKHR* statistics) => GetPipelineExecutableStatisticsKHR_6(device, ref executableInfo, ref statisticCount, statistics);
-		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint statisticCount, out VkPipelineExecutableStatisticKHR statistics) => GetPipelineExecutableStatisticsKHR_7(device, ref executableInfo, ref statisticCount, out statistics);
-		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* internalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_0(device, executableInfo, internalRepresentationCount, internalRepresentations);
-		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* internalRepresentationCount, out VkPipelineExecutableInternalRepresentationKHR internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_1(device, executableInfo, internalRepresentationCount, out internalRepresentations);
-		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint internalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_2(device, executableInfo, ref internalRepresentationCount, internalRepresentations);
-		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint internalRepresentationCount, out VkPipelineExecutableInternalRepresentationKHR internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_3(device, executableInfo, ref internalRepresentationCount, out internalRepresentations);
-		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* internalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_4(device, ref executableInfo, internalRepresentationCount, internalRepresentations);
-		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* internalRepresentationCount, out VkPipelineExecutableInternalRepresentationKHR internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_5(device, ref executableInfo, internalRepresentationCount, out internalRepresentations);
-		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint internalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_6(device, ref executableInfo, ref internalRepresentationCount, internalRepresentations);
-		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint internalRepresentationCount, out VkPipelineExecutableInternalRepresentationKHR internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_7(device, ref executableInfo, ref internalRepresentationCount, out internalRepresentations);
+		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, VkPipelineInfoKHR* pipelineInfo, uint* executableCount, [In, Out] VkPipelineExecutablePropertiesKHR[] properties) => GetPipelineExecutablePropertiesKHR_0(device, pipelineInfo, executableCount, properties);
+		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, VkPipelineInfoKHR* pipelineInfo, ref uint executableCount, [In, Out] VkPipelineExecutablePropertiesKHR[] properties) => GetPipelineExecutablePropertiesKHR_1(device, pipelineInfo, ref executableCount, properties);
+		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, uint* executableCount, [In, Out] VkPipelineExecutablePropertiesKHR[] properties) => GetPipelineExecutablePropertiesKHR_2(device, ref pipelineInfo, executableCount, properties);
+		public static unsafe VkResult GetPipelineExecutablePropertiesKHR(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, ref uint executableCount, [In, Out] VkPipelineExecutablePropertiesKHR[] properties) => GetPipelineExecutablePropertiesKHR_3(device, ref pipelineInfo, ref executableCount, properties);
+		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* statisticCount, [In, Out] VkPipelineExecutableStatisticKHR[] statistics) => GetPipelineExecutableStatisticsKHR_0(device, executableInfo, statisticCount, statistics);
+		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint statisticCount, [In, Out] VkPipelineExecutableStatisticKHR[] statistics) => GetPipelineExecutableStatisticsKHR_1(device, executableInfo, ref statisticCount, statistics);
+		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* statisticCount, [In, Out] VkPipelineExecutableStatisticKHR[] statistics) => GetPipelineExecutableStatisticsKHR_2(device, ref executableInfo, statisticCount, statistics);
+		public static unsafe VkResult GetPipelineExecutableStatisticsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint statisticCount, [In, Out] VkPipelineExecutableStatisticKHR[] statistics) => GetPipelineExecutableStatisticsKHR_3(device, ref executableInfo, ref statisticCount, statistics);
+		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, uint* internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_0(device, executableInfo, internalRepresentationCount, internalRepresentations);
+		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, VkPipelineExecutableInfoKHR* executableInfo, ref uint internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_1(device, executableInfo, ref internalRepresentationCount, internalRepresentations);
+		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_2(device, ref executableInfo, internalRepresentationCount, internalRepresentations);
+		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_3(device, ref executableInfo, ref internalRepresentationCount, internalRepresentations);
 		public static unsafe void CommandSetLineStippleEXT(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern) => CommandSetLineStippleEXT_0(commandBuffer, lineStippleFactor, lineStipplePattern);
-		public static unsafe VkResult GetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, uint* toolCount, VkPhysicalDeviceToolPropertiesEXT* toolProperties) => GetPhysicalDeviceToolPropertiesEXT_0(physicalDevice, toolCount, toolProperties);
-		public static unsafe VkResult GetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, uint* toolCount, out VkPhysicalDeviceToolPropertiesEXT toolProperties) => GetPhysicalDeviceToolPropertiesEXT_1(physicalDevice, toolCount, out toolProperties);
-		public static unsafe VkResult GetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, ref uint toolCount, VkPhysicalDeviceToolPropertiesEXT* toolProperties) => GetPhysicalDeviceToolPropertiesEXT_2(physicalDevice, ref toolCount, toolProperties);
-		public static unsafe VkResult GetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, ref uint toolCount, out VkPhysicalDeviceToolPropertiesEXT toolProperties) => GetPhysicalDeviceToolPropertiesEXT_3(physicalDevice, ref toolCount, out toolProperties);
+		public static unsafe VkResult GetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, uint* toolCount, [In, Out] VkPhysicalDeviceToolPropertiesEXT[] toolProperties) => GetPhysicalDeviceToolPropertiesEXT_0(physicalDevice, toolCount, toolProperties);
+		public static unsafe VkResult GetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, ref uint toolCount, [In, Out] VkPhysicalDeviceToolPropertiesEXT[] toolProperties) => GetPhysicalDeviceToolPropertiesEXT_1(physicalDevice, ref toolCount, toolProperties);
 		public static unsafe VkResult CreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkAccelerationStructureKHR* accelerationStructure) => CreateAccelerationStructureKHR_0(device, createInfo, allocator, accelerationStructure);
 		public static unsafe VkResult CreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkAccelerationStructureKHR accelerationStructure) => CreateAccelerationStructureKHR_1(device, createInfo, allocator, out accelerationStructure);
 		public static unsafe VkResult CreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, VkAccelerationStructureKHR* accelerationStructure) => CreateAccelerationStructureKHR_2(device, createInfo, ref allocator, accelerationStructure);
@@ -7322,19 +7018,13 @@ namespace Vulkan
 		public static unsafe void CommandResolveImage2KHR(VkCommandBuffer commandBuffer, ref VkResolveImageInfo2KHR resolveImageInfo) => CommandResolveImage2KHR_1(commandBuffer, ref resolveImageInfo);
 		public static unsafe void CommandSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, VkExtent2D* fragmentSize, VkFragmentShadingRateCombinerOpKHR combinerOps) => CommandSetFragmentShadingRateKHR_0(commandBuffer, fragmentSize, combinerOps);
 		public static unsafe void CommandSetFragmentShadingRateKHR(VkCommandBuffer commandBuffer, ref VkExtent2D fragmentSize, VkFragmentShadingRateCombinerOpKHR combinerOps) => CommandSetFragmentShadingRateKHR_1(commandBuffer, ref fragmentSize, combinerOps);
-		public static unsafe VkResult GetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, uint* fragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR* fragmentShadingRates) => GetPhysicalDeviceFragmentShadingRatesKHR_0(physicalDevice, fragmentShadingRateCount, fragmentShadingRates);
-		public static unsafe VkResult GetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, uint* fragmentShadingRateCount, out VkPhysicalDeviceFragmentShadingRateKHR fragmentShadingRates) => GetPhysicalDeviceFragmentShadingRatesKHR_1(physicalDevice, fragmentShadingRateCount, out fragmentShadingRates);
-		public static unsafe VkResult GetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, ref uint fragmentShadingRateCount, VkPhysicalDeviceFragmentShadingRateKHR* fragmentShadingRates) => GetPhysicalDeviceFragmentShadingRatesKHR_2(physicalDevice, ref fragmentShadingRateCount, fragmentShadingRates);
-		public static unsafe VkResult GetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, ref uint fragmentShadingRateCount, out VkPhysicalDeviceFragmentShadingRateKHR fragmentShadingRates) => GetPhysicalDeviceFragmentShadingRatesKHR_3(physicalDevice, ref fragmentShadingRateCount, out fragmentShadingRates);
+		public static unsafe VkResult GetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, uint* fragmentShadingRateCount, [In, Out] VkPhysicalDeviceFragmentShadingRateKHR[] fragmentShadingRates) => GetPhysicalDeviceFragmentShadingRatesKHR_0(physicalDevice, fragmentShadingRateCount, fragmentShadingRates);
+		public static unsafe VkResult GetPhysicalDeviceFragmentShadingRatesKHR(VkPhysicalDevice physicalDevice, ref uint fragmentShadingRateCount, [In, Out] VkPhysicalDeviceFragmentShadingRateKHR[] fragmentShadingRates) => GetPhysicalDeviceFragmentShadingRatesKHR_1(physicalDevice, ref fragmentShadingRateCount, fragmentShadingRates);
 		public static unsafe void CommandSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps) => CommandSetFragmentShadingRateEnumNV_0(commandBuffer, shadingRate, combinerOps);
-		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, uint* maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo) => GetAccelerationStructureBuildSizesKHR_0(device, buildType, buildInfo, maxPrimitiveCounts, sizeInfo);
-		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, uint* maxPrimitiveCounts, out VkAccelerationStructureBuildSizesInfoKHR sizeInfo) => GetAccelerationStructureBuildSizesKHR_1(device, buildType, buildInfo, maxPrimitiveCounts, out sizeInfo);
-		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, ref uint maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo) => GetAccelerationStructureBuildSizesKHR_2(device, buildType, buildInfo, ref maxPrimitiveCounts, sizeInfo);
-		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, ref uint maxPrimitiveCounts, out VkAccelerationStructureBuildSizesInfoKHR sizeInfo) => GetAccelerationStructureBuildSizesKHR_3(device, buildType, buildInfo, ref maxPrimitiveCounts, out sizeInfo);
-		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, uint* maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo) => GetAccelerationStructureBuildSizesKHR_4(device, buildType, ref buildInfo, maxPrimitiveCounts, sizeInfo);
-		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, uint* maxPrimitiveCounts, out VkAccelerationStructureBuildSizesInfoKHR sizeInfo) => GetAccelerationStructureBuildSizesKHR_5(device, buildType, ref buildInfo, maxPrimitiveCounts, out sizeInfo);
-		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, ref uint maxPrimitiveCounts, VkAccelerationStructureBuildSizesInfoKHR* sizeInfo) => GetAccelerationStructureBuildSizesKHR_6(device, buildType, ref buildInfo, ref maxPrimitiveCounts, sizeInfo);
-		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, ref uint maxPrimitiveCounts, out VkAccelerationStructureBuildSizesInfoKHR sizeInfo) => GetAccelerationStructureBuildSizesKHR_7(device, buildType, ref buildInfo, ref maxPrimitiveCounts, out sizeInfo);
+		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, uint* maxPrimitiveCounts, [In, Out] VkAccelerationStructureBuildSizesInfoKHR[] sizeInfo) => GetAccelerationStructureBuildSizesKHR_0(device, buildType, buildInfo, maxPrimitiveCounts, sizeInfo);
+		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, VkAccelerationStructureBuildGeometryInfoKHR* buildInfo, ref uint maxPrimitiveCounts, [In, Out] VkAccelerationStructureBuildSizesInfoKHR[] sizeInfo) => GetAccelerationStructureBuildSizesKHR_1(device, buildType, buildInfo, ref maxPrimitiveCounts, sizeInfo);
+		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, uint* maxPrimitiveCounts, [In, Out] VkAccelerationStructureBuildSizesInfoKHR[] sizeInfo) => GetAccelerationStructureBuildSizesKHR_2(device, buildType, ref buildInfo, maxPrimitiveCounts, sizeInfo);
+		public static unsafe void GetAccelerationStructureBuildSizesKHR(VkDevice device, VkAccelerationStructureBuildTypeKHR buildType, ref VkAccelerationStructureBuildGeometryInfoKHR buildInfo, ref uint maxPrimitiveCounts, [In, Out] VkAccelerationStructureBuildSizesInfoKHR[] sizeInfo) => GetAccelerationStructureBuildSizesKHR_3(device, buildType, ref buildInfo, ref maxPrimitiveCounts, sizeInfo);
 		public static unsafe void CommandSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfoKHR* dependencyInfo) => CommandSetEvent2KHR_0(commandBuffer, @event, dependencyInfo);
 		public static unsafe void CommandSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, ref VkDependencyInfoKHR dependencyInfo) => CommandSetEvent2KHR_1(commandBuffer, @event, ref dependencyInfo);
 		public static unsafe void CommandResetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2KHR stageMask) => CommandResetEvent2KHR_0(commandBuffer, @event, stageMask);
@@ -7346,9 +7036,7 @@ namespace Vulkan
 		public static unsafe VkResult QueueSubmit2KHR(VkQueue queue, uint submitCount, ref VkSubmitInfo2KHR submits, VkFence fence) => QueueSubmit2KHR_1(queue, submitCount, ref submits, fence);
 		public static unsafe void CommandWriteTimestamp2KHR(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkQueryPool queryPool, uint query) => CommandWriteTimestamp2KHR_0(commandBuffer, stage, queryPool, query);
 		public static unsafe void CommandWriteBufferMarker2AMD(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkBuffer destinationBuffer, VkDeviceSize destinationOffset, uint marker) => CommandWriteBufferMarker2AMD_0(commandBuffer, stage, destinationBuffer, destinationOffset, marker);
-		public static unsafe void GetQueueCheckpointData2NV(VkQueue queue, uint* checkpointDataCount, VkCheckpointData2NV* checkpointData) => GetQueueCheckpointData2NV_0(queue, checkpointDataCount, checkpointData);
-		public static unsafe void GetQueueCheckpointData2NV(VkQueue queue, uint* checkpointDataCount, out VkCheckpointData2NV checkpointData) => GetQueueCheckpointData2NV_1(queue, checkpointDataCount, out checkpointData);
-		public static unsafe void GetQueueCheckpointData2NV(VkQueue queue, ref uint checkpointDataCount, VkCheckpointData2NV* checkpointData) => GetQueueCheckpointData2NV_2(queue, ref checkpointDataCount, checkpointData);
-		public static unsafe void GetQueueCheckpointData2NV(VkQueue queue, ref uint checkpointDataCount, out VkCheckpointData2NV checkpointData) => GetQueueCheckpointData2NV_3(queue, ref checkpointDataCount, out checkpointData);
+		public static unsafe void GetQueueCheckpointData2NV(VkQueue queue, uint* checkpointDataCount, [In, Out] VkCheckpointData2NV[] checkpointData) => GetQueueCheckpointData2NV_0(queue, checkpointDataCount, checkpointData);
+		public static unsafe void GetQueueCheckpointData2NV(VkQueue queue, ref uint checkpointDataCount, [In, Out] VkCheckpointData2NV[] checkpointData) => GetQueueCheckpointData2NV_1(queue, ref checkpointDataCount, checkpointData);
 	}
 }

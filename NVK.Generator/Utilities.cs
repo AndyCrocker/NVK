@@ -9,6 +9,14 @@ namespace NVK.Generator
     public static class Utilities
     {
         /*********
+        ** Fields
+        *********/
+        // TODO: ideally this will be determined automatically
+        /// <summary>The Vulkan methods that start with "Get" whose last paramater should be an array.</summary>
+        private static readonly string[] GetMethodsRequiringArray = new[] { "GetQueueCheckpointDataNV", "GetQueueCheckpointData2NV", "GetPhysicalDeviceSparseImageFormatProperties2KHR", "GetPhysicalDeviceSparseImageFormatProperties2", "GetPhysicalDeviceSparseImageFormatProperties", "GetPhysicalDeviceQueueFamilyProperties2KHR", "GetPhysicalDeviceQueueFamilyProperties2", "GetPhysicalDeviceQueueFamilyProperties", "GetImageSparseMemoryRequirements2KHR", "GetImageSparseMemoryRequirements2", "GetImageSparseMemoryRequirements", "GetAccelerationStructureBuildSizesKHR", "GetSwapchainImagesKHR", "GetPipelineExecutablePropertiesKHR", "GetPipelineExecutableStatisticsKHR", "GetPipelineExecutableInternalRepresentationsKHR", "GetPhysicalDeviceToolPropertiesEXT", "GetPhysicalDeviceSurfacePresentModesKHR", "GetPhysicalDeviceSurfacePresentModes2EXT", "GetPhysicalDeviceSurfaceFormatsKHR", "GetPhysicalDeviceSurfaceFormats2KHR", "GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV", "GetPhysicalDevicePresentRectanglesKHR", "GetPhysicalDeviceFragmentShadingRatesKHR", "GetPhysicalDeviceDisplayPropertiesKHR", "GetPhysicalDeviceDisplayProperties2KHR", "GetPhysicalDeviceDisplayPlanePropertiesKHR", "GetPhysicalDeviceDisplayPlaneProperties2KHR", "GetPhysicalDeviceCooperativeMatrixPropertiesNV", "GetPhysicalDeviceCalibrateableTimeDomainsEXT", "GetPastPresentationTimingGOOGLE", "GetDisplayPlaneSupportedDisplaysKHR", "GetDisplayModePropertiesKHR", "GetDisplayModeProperties2KHR" };
+
+
+        /*********
         ** Public Methods
         *********/
         /// <summary>Prettifies a constant name.</summary>
@@ -178,11 +186,11 @@ namespace NVK.Generator
             // note how the variations get set, not added. this is because having a pointer in place of an array is not necessary
             else if (parameterInfo.Name.EndsWith("Infos"))
                 parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, arrayDimensions: 1), ParameterModifier.None) };
-            else if (commandInfo.DisplayName.StartsWith("Enumerate") && commandInfo.Parameters.Last() == parameterInfo)
+            else if ((commandInfo.DisplayName.StartsWith("Enumerate") || (commandInfo.DisplayName.StartsWith("Get") && GetMethodsRequiringArray.Contains(commandInfo.DisplayName))) && commandInfo.Parameters.Last() == parameterInfo)
                 parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, arrayDimensions: 1), ParameterModifier.InOut) };
 
             // check if parameter can have 'out' version
-            else if ((commandInfo.DisplayName.StartsWith("Allocate") || commandInfo.DisplayName.StartsWith("Create") || commandInfo.DisplayName.StartsWith("Get")) && commandInfo.Parameters.Last() == parameterInfo)
+            else if ((commandInfo.DisplayName.StartsWith("Allocate") || commandInfo.DisplayName.StartsWith("Create") || (commandInfo.DisplayName.StartsWith("Get") && !GetMethodsRequiringArray.Contains(commandInfo.DisplayName))) && commandInfo.Parameters.Last() == parameterInfo)
                 parameterVariations.Add(new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Out));
 
             // otherwise create a 'ref' version
