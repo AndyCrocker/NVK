@@ -51,7 +51,7 @@ namespace NVK.Generator
                 if (fieldName.StartsWith('p'))
                     fieldName = fieldName.Substring(1);
 
-            fieldName = fieldName.Replace("PFN_vk", ""); // remove function pointer prefix
+            fieldName = fieldName.Replace("pfn", ""); // remove function pointer prefix
 
             // a single awkward case where two fields are only differentiated by the level of pointer indirection (and therefore the prefixed "p"'s that we've just removed), just suffix the second one with a '2'
             if (fieldName == "Geometries" && pointerIndirection == 2)

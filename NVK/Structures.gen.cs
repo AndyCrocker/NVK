@@ -101,11 +101,11 @@ namespace Vulkan
 	public unsafe struct VkAllocationCallbacks
 	{
 		public void* UserData;
-		public IntPtr PfnAllocation;
-		public IntPtr PfnReallocation;
-		public IntPtr PfnFree;
-		public IntPtr PfnInternalAllocation;
-		public IntPtr PfnInternalFree;
+		public IntPtr Allocation;
+		public IntPtr Reallocation;
+		public IntPtr Free;
+		public IntPtr InternalAllocation;
+		public IntPtr InternalFree;
 	}
 	public unsafe struct VkDeviceQueueCreateInfo
 	{
@@ -1288,7 +1288,7 @@ namespace Vulkan
 		public VkStructureType SType;
 		public void* Next;
 		public VkDebugReportFlagsEXT Flags;
-		public IntPtr PfnCallback;
+		public IntPtr Callback;
 		public void* UserData;
 	}
 	public unsafe struct VkValidationFlagsEXT
@@ -2796,7 +2796,7 @@ namespace Vulkan
 		public uint Flags;
 		public VkDebugUtilsMessageSeverityFlagsEXT MessageSeverity;
 		public VkDebugUtilsMessageTypeFlagsEXT MessageType;
-		public IntPtr PfnUserCallback;
+		public IntPtr UserCallback;
 		public void* UserData;
 	}
 	public unsafe struct VkDebugUtilsMessengerCallbackDataEXT
@@ -2825,7 +2825,7 @@ namespace Vulkan
 		public VkStructureType SType;
 		public void* Next;
 		public uint Flags;
-		public IntPtr PfnUserCallback;
+		public IntPtr UserCallback;
 		public void* UserData;
 	}
 	public unsafe struct VkDeviceMemoryReportCallbackDataEXT
