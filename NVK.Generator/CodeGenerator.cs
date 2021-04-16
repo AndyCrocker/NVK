@@ -318,11 +318,10 @@ namespace NVK.Generator
             {
                 // fields
                 csWriter.WriteLine($"public readonly {handleType} Handle;");
-                csWriter.WriteLine();
 
                 // accessors
+                csWriter.WriteLine($"public bool IsNull => Handle == {nullValue};");
                 csWriter.WriteLine($"public static {handleInfo.Name} Null => new({nullValue});");
-                csWriter.WriteLine();
 
                 // public methods
                 csWriter.WriteLine($"public {handleInfo.Name}({handleType} handle)");
@@ -330,6 +329,16 @@ namespace NVK.Generator
                 {
                     csWriter.WriteLine("Handle = handle;");
                 });
+                csWriter.WriteLine($"public override bool Equals(object obj) => obj is {handleInfo.Name} handle && this == handle;");
+                csWriter.WriteLine($"public override int GetHashCode() => Handle.GetHashCode();");
+
+                // operators
+                csWriter.WriteLine($"public static bool operator ==({handleInfo.Name} left, {handleInfo.Name} right) => left.Handle == right.Handle;");
+                csWriter.WriteLine($"public static bool operator !=({handleInfo.Name} left, {handleInfo.Name} right) => left.Handle != right.Handle;");
+                csWriter.WriteLine($"public static bool operator ==({handleInfo.Name} left, {handleType} right) => left.Handle == right;");
+                csWriter.WriteLine($"public static bool operator !=({handleInfo.Name} left, {handleType} right) => left.Handle != right;");
+                csWriter.WriteLine($"public static bool operator ==({handleType} left, {handleInfo.Name} right) => left == right.Handle;");
+                csWriter.WriteLine($"public static bool operator !=({handleType} left, {handleInfo.Name} right) => left != right.Handle;");
             });
         }
 
