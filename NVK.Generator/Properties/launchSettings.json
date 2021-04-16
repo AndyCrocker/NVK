@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "VulkanGeneratorTest": {
+    "NVK.Generator": {
       "commandName": "Project"
     }
   }
