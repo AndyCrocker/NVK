@@ -75,28 +75,40 @@ namespace NVK.Generator
                         csWriter.WriteScope(() =>
                         {
                             csWriter.WriteLine("VulkanLibrary = OSVulkanLibraryBase.CreateOSVulkanLibrary();");
-                            csWriter.WriteLine("CreateDelegates();");
+                            csWriter.WriteLine("InitialiseRequiredMethods();");
                         });
 
-                        // create functions
-                        csWriter.WriteLine("private static void CreateDelegates()");
+                        // create methods
+                        void PopulateDelegateOverloads(CsWriter csWriter, CommandInfo commandInfo)
+                        {
+                            var overloads = Utilities.GenerateAllOverloads(commandInfo);
+                            for (int i = 0; i < overloads.Count; i++)
+                                csWriter.WriteLine($"{commandInfo.DisplayName}_{i} = Marshal.GetDelegateForFunctionPointer<{commandInfo.DelegateDisplayName}_{i}>({commandInfo.PointerDisplayName});");
+                        }
+
+                        var requiredMethods = new[] { "vkCreateInstance", "vkEnumerateInstanceExtensionProperties", "vkEnumerateInstanceLayerProperties", "vkGetInstanceProcAddr" };
+
+                        csWriter.WriteLine("private static void InitialiseRequiredMethods()");
                         csWriter.WriteScope(() =>
                         {
-                            foreach (var commandInfo in commandInfos)
+                            foreach (var commandInfo in commandInfos.Where(commandInfo => requiredMethods.Contains(commandInfo.Name)))
+                            {
+                                csWriter.WriteLine($"{commandInfo.PointerDisplayName} = VulkanLibrary.GetFunctionPointer(\"{commandInfo.Name}\");");
+                                PopulateDelegateOverloads(csWriter, commandInfo);
+                            }
+                        });
+
+                        csWriter.WriteLine("public static void InitialiseInstanceMethods(VkInstance instance)");
+                        csWriter.WriteScope(() =>
+                        {
+                            foreach (var commandInfo in commandInfos.Where(commandInfo => !requiredMethods.Contains(commandInfo.Name)))
                             {
                                 if (commandInfo.Alias != null) // aliases don't have delegates
                                     continue;
 
-                                // get the function pointer
-                                csWriter.WriteLine($"{commandInfo.PointerDisplayName} = VulkanLibrary.GetFunctionPointer(\"{commandInfo.Name}\");");
+                                csWriter.WriteLine($"{commandInfo.PointerDisplayName} = GetInstancePrecedureAddress(instance, \"{commandInfo.Name}\");");
                                 csWriter.WriteLine($"if ({commandInfo.PointerDisplayName} != IntPtr.Zero)");
-                                csWriter.WriteScope(() =>
-                                {
-                                    // create delegates
-                                    var overloads = Utilities.GenerateAllOverloads(commandInfo);
-                                    for (int i = 0; i < overloads.Count; i++)
-                                        csWriter.WriteLine($"{commandInfo.DisplayName}_{i} = Marshal.GetDelegateForFunctionPointer<{commandInfo.DelegateDisplayName}_{i}>({commandInfo.PointerDisplayName});");
-                                });
+                                csWriter.WriteScope(() => PopulateDelegateOverloads(csWriter, commandInfo));
                             }
                         });
 
@@ -130,7 +142,7 @@ namespace NVK.Generator
                 });
             }
         }
-        
+
         /// <summary>Generates the C# file containing the Vulkan function pointers.</summary>
         /// <param name="delegateInfos">The delegates to generate.</param>
         /// <param name="file">The delegates file.</param>

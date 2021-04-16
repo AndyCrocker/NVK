@@ -3287,53 +3287,58 @@ namespace Vulkan
 		static VK()
 		{
 			VulkanLibrary = OSVulkanLibraryBase.CreateOSVulkanLibrary();
-			CreateDelegates();
+			InitialiseRequiredMethods();
 		}
-		private static void CreateDelegates()
+		private static void InitialiseRequiredMethods()
 		{
 			CreateInstancePointer = VulkanLibrary.GetFunctionPointer("vkCreateInstance");
-			if (CreateInstancePointer != IntPtr.Zero)
-			{
-				CreateInstance_0 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_0>(CreateInstancePointer);
-				CreateInstance_1 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_1>(CreateInstancePointer);
-				CreateInstance_2 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_2>(CreateInstancePointer);
-				CreateInstance_3 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_3>(CreateInstancePointer);
-				CreateInstance_4 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_4>(CreateInstancePointer);
-				CreateInstance_5 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_5>(CreateInstancePointer);
-				CreateInstance_6 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_6>(CreateInstancePointer);
-				CreateInstance_7 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_7>(CreateInstancePointer);
-			}
-			DestroyInstancePointer = VulkanLibrary.GetFunctionPointer("vkDestroyInstance");
+			CreateInstance_0 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_0>(CreateInstancePointer);
+			CreateInstance_1 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_1>(CreateInstancePointer);
+			CreateInstance_2 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_2>(CreateInstancePointer);
+			CreateInstance_3 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_3>(CreateInstancePointer);
+			CreateInstance_4 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_4>(CreateInstancePointer);
+			CreateInstance_5 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_5>(CreateInstancePointer);
+			CreateInstance_6 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_6>(CreateInstancePointer);
+			CreateInstance_7 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_7>(CreateInstancePointer);
+			GetInstancePrecedureAddressPointer = VulkanLibrary.GetFunctionPointer("vkGetInstanceProcAddr");
+			GetInstancePrecedureAddress_0 = Marshal.GetDelegateForFunctionPointer<GetInstancePrecedureAddressDelegate_0>(GetInstancePrecedureAddressPointer);
+			GetInstancePrecedureAddress_1 = Marshal.GetDelegateForFunctionPointer<GetInstancePrecedureAddressDelegate_1>(GetInstancePrecedureAddressPointer);
+			EnumerateInstanceLayerPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkEnumerateInstanceLayerProperties");
+			EnumerateInstanceLayerProperties_0 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceLayerPropertiesDelegate_0>(EnumerateInstanceLayerPropertiesPointer);
+			EnumerateInstanceLayerProperties_1 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceLayerPropertiesDelegate_1>(EnumerateInstanceLayerPropertiesPointer);
+			EnumerateInstanceExtensionPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkEnumerateInstanceExtensionProperties");
+			EnumerateInstanceExtensionProperties_0 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_0>(EnumerateInstanceExtensionPropertiesPointer);
+			EnumerateInstanceExtensionProperties_1 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_1>(EnumerateInstanceExtensionPropertiesPointer);
+			EnumerateInstanceExtensionProperties_2 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_2>(EnumerateInstanceExtensionPropertiesPointer);
+			EnumerateInstanceExtensionProperties_3 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_3>(EnumerateInstanceExtensionPropertiesPointer);
+		}
+		public static void InitialiseInstanceMethods(VkInstance instance)
+		{
+			DestroyInstancePointer = GetInstancePrecedureAddress(instance, "vkDestroyInstance");
 			if (DestroyInstancePointer != IntPtr.Zero)
 			{
 				DestroyInstance_0 = Marshal.GetDelegateForFunctionPointer<DestroyInstanceDelegate_0>(DestroyInstancePointer);
 				DestroyInstance_1 = Marshal.GetDelegateForFunctionPointer<DestroyInstanceDelegate_1>(DestroyInstancePointer);
 			}
-			EnumeratePhysicalDevicesPointer = VulkanLibrary.GetFunctionPointer("vkEnumeratePhysicalDevices");
+			EnumeratePhysicalDevicesPointer = GetInstancePrecedureAddress(instance, "vkEnumeratePhysicalDevices");
 			if (EnumeratePhysicalDevicesPointer != IntPtr.Zero)
 			{
 				EnumeratePhysicalDevices_0 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDevicesDelegate_0>(EnumeratePhysicalDevicesPointer);
 				EnumeratePhysicalDevices_1 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDevicesDelegate_1>(EnumeratePhysicalDevicesPointer);
 			}
-			GetDevicePrecedureAddressPointer = VulkanLibrary.GetFunctionPointer("vkGetDeviceProcAddr");
+			GetDevicePrecedureAddressPointer = GetInstancePrecedureAddress(instance, "vkGetDeviceProcAddr");
 			if (GetDevicePrecedureAddressPointer != IntPtr.Zero)
 			{
 				GetDevicePrecedureAddress_0 = Marshal.GetDelegateForFunctionPointer<GetDevicePrecedureAddressDelegate_0>(GetDevicePrecedureAddressPointer);
 				GetDevicePrecedureAddress_1 = Marshal.GetDelegateForFunctionPointer<GetDevicePrecedureAddressDelegate_1>(GetDevicePrecedureAddressPointer);
 			}
-			GetInstancePrecedureAddressPointer = VulkanLibrary.GetFunctionPointer("vkGetInstanceProcAddr");
-			if (GetInstancePrecedureAddressPointer != IntPtr.Zero)
-			{
-				GetInstancePrecedureAddress_0 = Marshal.GetDelegateForFunctionPointer<GetInstancePrecedureAddressDelegate_0>(GetInstancePrecedureAddressPointer);
-				GetInstancePrecedureAddress_1 = Marshal.GetDelegateForFunctionPointer<GetInstancePrecedureAddressDelegate_1>(GetInstancePrecedureAddressPointer);
-			}
-			GetPhysicalDevicePropertiesPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceProperties");
+			GetPhysicalDevicePropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceProperties");
 			if (GetPhysicalDevicePropertiesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePropertiesDelegate_0>(GetPhysicalDevicePropertiesPointer);
 				GetPhysicalDeviceProperties_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePropertiesDelegate_1>(GetPhysicalDevicePropertiesPointer);
 			}
-			GetPhysicalDeviceQueueFamilyPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceQueueFamilyProperties");
+			GetPhysicalDeviceQueueFamilyPropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceQueueFamilyProperties");
 			if (GetPhysicalDeviceQueueFamilyPropertiesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceQueueFamilyProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyPropertiesDelegate_0>(GetPhysicalDeviceQueueFamilyPropertiesPointer);
@@ -3341,31 +3346,31 @@ namespace Vulkan
 				GetPhysicalDeviceQueueFamilyProperties_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyPropertiesDelegate_2>(GetPhysicalDeviceQueueFamilyPropertiesPointer);
 				GetPhysicalDeviceQueueFamilyProperties_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyPropertiesDelegate_3>(GetPhysicalDeviceQueueFamilyPropertiesPointer);
 			}
-			GetPhysicalDeviceMemoryPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceMemoryProperties");
+			GetPhysicalDeviceMemoryPropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceMemoryProperties");
 			if (GetPhysicalDeviceMemoryPropertiesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceMemoryProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceMemoryPropertiesDelegate_0>(GetPhysicalDeviceMemoryPropertiesPointer);
 				GetPhysicalDeviceMemoryProperties_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceMemoryPropertiesDelegate_1>(GetPhysicalDeviceMemoryPropertiesPointer);
 			}
-			GetPhysicalDeviceFeaturesPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceFeatures");
+			GetPhysicalDeviceFeaturesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceFeatures");
 			if (GetPhysicalDeviceFeaturesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceFeatures_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFeaturesDelegate_0>(GetPhysicalDeviceFeaturesPointer);
 				GetPhysicalDeviceFeatures_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFeaturesDelegate_1>(GetPhysicalDeviceFeaturesPointer);
 			}
-			GetPhysicalDeviceFormatPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceFormatProperties");
+			GetPhysicalDeviceFormatPropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceFormatProperties");
 			if (GetPhysicalDeviceFormatPropertiesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceFormatProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFormatPropertiesDelegate_0>(GetPhysicalDeviceFormatPropertiesPointer);
 				GetPhysicalDeviceFormatProperties_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFormatPropertiesDelegate_1>(GetPhysicalDeviceFormatPropertiesPointer);
 			}
-			GetPhysicalDeviceImageFormatPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceImageFormatProperties");
+			GetPhysicalDeviceImageFormatPropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceImageFormatProperties");
 			if (GetPhysicalDeviceImageFormatPropertiesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceImageFormatProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceImageFormatPropertiesDelegate_0>(GetPhysicalDeviceImageFormatPropertiesPointer);
 				GetPhysicalDeviceImageFormatProperties_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceImageFormatPropertiesDelegate_1>(GetPhysicalDeviceImageFormatPropertiesPointer);
 			}
-			CreateDevicePointer = VulkanLibrary.GetFunctionPointer("vkCreateDevice");
+			CreateDevicePointer = GetInstancePrecedureAddress(instance, "vkCreateDevice");
 			if (CreateDevicePointer != IntPtr.Zero)
 			{
 				CreateDevice_0 = Marshal.GetDelegateForFunctionPointer<CreateDeviceDelegate_0>(CreateDevicePointer);
@@ -3377,38 +3382,24 @@ namespace Vulkan
 				CreateDevice_6 = Marshal.GetDelegateForFunctionPointer<CreateDeviceDelegate_6>(CreateDevicePointer);
 				CreateDevice_7 = Marshal.GetDelegateForFunctionPointer<CreateDeviceDelegate_7>(CreateDevicePointer);
 			}
-			DestroyDevicePointer = VulkanLibrary.GetFunctionPointer("vkDestroyDevice");
+			DestroyDevicePointer = GetInstancePrecedureAddress(instance, "vkDestroyDevice");
 			if (DestroyDevicePointer != IntPtr.Zero)
 			{
 				DestroyDevice_0 = Marshal.GetDelegateForFunctionPointer<DestroyDeviceDelegate_0>(DestroyDevicePointer);
 				DestroyDevice_1 = Marshal.GetDelegateForFunctionPointer<DestroyDeviceDelegate_1>(DestroyDevicePointer);
 			}
-			EnumerateInstanceVersionPointer = VulkanLibrary.GetFunctionPointer("vkEnumerateInstanceVersion");
+			EnumerateInstanceVersionPointer = GetInstancePrecedureAddress(instance, "vkEnumerateInstanceVersion");
 			if (EnumerateInstanceVersionPointer != IntPtr.Zero)
 			{
 				EnumerateInstanceVersion_0 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceVersionDelegate_0>(EnumerateInstanceVersionPointer);
 			}
-			EnumerateInstanceLayerPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkEnumerateInstanceLayerProperties");
-			if (EnumerateInstanceLayerPropertiesPointer != IntPtr.Zero)
-			{
-				EnumerateInstanceLayerProperties_0 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceLayerPropertiesDelegate_0>(EnumerateInstanceLayerPropertiesPointer);
-				EnumerateInstanceLayerProperties_1 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceLayerPropertiesDelegate_1>(EnumerateInstanceLayerPropertiesPointer);
-			}
-			EnumerateInstanceExtensionPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkEnumerateInstanceExtensionProperties");
-			if (EnumerateInstanceExtensionPropertiesPointer != IntPtr.Zero)
-			{
-				EnumerateInstanceExtensionProperties_0 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_0>(EnumerateInstanceExtensionPropertiesPointer);
-				EnumerateInstanceExtensionProperties_1 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_1>(EnumerateInstanceExtensionPropertiesPointer);
-				EnumerateInstanceExtensionProperties_2 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_2>(EnumerateInstanceExtensionPropertiesPointer);
-				EnumerateInstanceExtensionProperties_3 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_3>(EnumerateInstanceExtensionPropertiesPointer);
-			}
-			EnumerateDeviceLayerPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkEnumerateDeviceLayerProperties");
+			EnumerateDeviceLayerPropertiesPointer = GetInstancePrecedureAddress(instance, "vkEnumerateDeviceLayerProperties");
 			if (EnumerateDeviceLayerPropertiesPointer != IntPtr.Zero)
 			{
 				EnumerateDeviceLayerProperties_0 = Marshal.GetDelegateForFunctionPointer<EnumerateDeviceLayerPropertiesDelegate_0>(EnumerateDeviceLayerPropertiesPointer);
 				EnumerateDeviceLayerProperties_1 = Marshal.GetDelegateForFunctionPointer<EnumerateDeviceLayerPropertiesDelegate_1>(EnumerateDeviceLayerPropertiesPointer);
 			}
-			EnumerateDeviceExtensionPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkEnumerateDeviceExtensionProperties");
+			EnumerateDeviceExtensionPropertiesPointer = GetInstancePrecedureAddress(instance, "vkEnumerateDeviceExtensionProperties");
 			if (EnumerateDeviceExtensionPropertiesPointer != IntPtr.Zero)
 			{
 				EnumerateDeviceExtensionProperties_0 = Marshal.GetDelegateForFunctionPointer<EnumerateDeviceExtensionPropertiesDelegate_0>(EnumerateDeviceExtensionPropertiesPointer);
@@ -3416,29 +3407,29 @@ namespace Vulkan
 				EnumerateDeviceExtensionProperties_2 = Marshal.GetDelegateForFunctionPointer<EnumerateDeviceExtensionPropertiesDelegate_2>(EnumerateDeviceExtensionPropertiesPointer);
 				EnumerateDeviceExtensionProperties_3 = Marshal.GetDelegateForFunctionPointer<EnumerateDeviceExtensionPropertiesDelegate_3>(EnumerateDeviceExtensionPropertiesPointer);
 			}
-			GetDeviceQueuePointer = VulkanLibrary.GetFunctionPointer("vkGetDeviceQueue");
+			GetDeviceQueuePointer = GetInstancePrecedureAddress(instance, "vkGetDeviceQueue");
 			if (GetDeviceQueuePointer != IntPtr.Zero)
 			{
 				GetDeviceQueue_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceQueueDelegate_0>(GetDeviceQueuePointer);
 				GetDeviceQueue_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceQueueDelegate_1>(GetDeviceQueuePointer);
 			}
-			QueueSubmitPointer = VulkanLibrary.GetFunctionPointer("vkQueueSubmit");
+			QueueSubmitPointer = GetInstancePrecedureAddress(instance, "vkQueueSubmit");
 			if (QueueSubmitPointer != IntPtr.Zero)
 			{
 				QueueSubmit_0 = Marshal.GetDelegateForFunctionPointer<QueueSubmitDelegate_0>(QueueSubmitPointer);
 				QueueSubmit_1 = Marshal.GetDelegateForFunctionPointer<QueueSubmitDelegate_1>(QueueSubmitPointer);
 			}
-			QueueWaitIdlePointer = VulkanLibrary.GetFunctionPointer("vkQueueWaitIdle");
+			QueueWaitIdlePointer = GetInstancePrecedureAddress(instance, "vkQueueWaitIdle");
 			if (QueueWaitIdlePointer != IntPtr.Zero)
 			{
 				QueueWaitIdle_0 = Marshal.GetDelegateForFunctionPointer<QueueWaitIdleDelegate_0>(QueueWaitIdlePointer);
 			}
-			DeviceWaitIdlePointer = VulkanLibrary.GetFunctionPointer("vkDeviceWaitIdle");
+			DeviceWaitIdlePointer = GetInstancePrecedureAddress(instance, "vkDeviceWaitIdle");
 			if (DeviceWaitIdlePointer != IntPtr.Zero)
 			{
 				DeviceWaitIdle_0 = Marshal.GetDelegateForFunctionPointer<DeviceWaitIdleDelegate_0>(DeviceWaitIdlePointer);
 			}
-			AllocateMemoryPointer = VulkanLibrary.GetFunctionPointer("vkAllocateMemory");
+			AllocateMemoryPointer = GetInstancePrecedureAddress(instance, "vkAllocateMemory");
 			if (AllocateMemoryPointer != IntPtr.Zero)
 			{
 				AllocateMemory_0 = Marshal.GetDelegateForFunctionPointer<AllocateMemoryDelegate_0>(AllocateMemoryPointer);
@@ -3450,63 +3441,63 @@ namespace Vulkan
 				AllocateMemory_6 = Marshal.GetDelegateForFunctionPointer<AllocateMemoryDelegate_6>(AllocateMemoryPointer);
 				AllocateMemory_7 = Marshal.GetDelegateForFunctionPointer<AllocateMemoryDelegate_7>(AllocateMemoryPointer);
 			}
-			FreeMemoryPointer = VulkanLibrary.GetFunctionPointer("vkFreeMemory");
+			FreeMemoryPointer = GetInstancePrecedureAddress(instance, "vkFreeMemory");
 			if (FreeMemoryPointer != IntPtr.Zero)
 			{
 				FreeMemory_0 = Marshal.GetDelegateForFunctionPointer<FreeMemoryDelegate_0>(FreeMemoryPointer);
 				FreeMemory_1 = Marshal.GetDelegateForFunctionPointer<FreeMemoryDelegate_1>(FreeMemoryPointer);
 			}
-			MapMemoryPointer = VulkanLibrary.GetFunctionPointer("vkMapMemory");
+			MapMemoryPointer = GetInstancePrecedureAddress(instance, "vkMapMemory");
 			if (MapMemoryPointer != IntPtr.Zero)
 			{
 				MapMemory_0 = Marshal.GetDelegateForFunctionPointer<MapMemoryDelegate_0>(MapMemoryPointer);
 			}
-			UnmapMemoryPointer = VulkanLibrary.GetFunctionPointer("vkUnmapMemory");
+			UnmapMemoryPointer = GetInstancePrecedureAddress(instance, "vkUnmapMemory");
 			if (UnmapMemoryPointer != IntPtr.Zero)
 			{
 				UnmapMemory_0 = Marshal.GetDelegateForFunctionPointer<UnmapMemoryDelegate_0>(UnmapMemoryPointer);
 			}
-			FlushMappedMemoryRangesPointer = VulkanLibrary.GetFunctionPointer("vkFlushMappedMemoryRanges");
+			FlushMappedMemoryRangesPointer = GetInstancePrecedureAddress(instance, "vkFlushMappedMemoryRanges");
 			if (FlushMappedMemoryRangesPointer != IntPtr.Zero)
 			{
 				FlushMappedMemoryRanges_0 = Marshal.GetDelegateForFunctionPointer<FlushMappedMemoryRangesDelegate_0>(FlushMappedMemoryRangesPointer);
 				FlushMappedMemoryRanges_1 = Marshal.GetDelegateForFunctionPointer<FlushMappedMemoryRangesDelegate_1>(FlushMappedMemoryRangesPointer);
 			}
-			InvalidateMappedMemoryRangesPointer = VulkanLibrary.GetFunctionPointer("vkInvalidateMappedMemoryRanges");
+			InvalidateMappedMemoryRangesPointer = GetInstancePrecedureAddress(instance, "vkInvalidateMappedMemoryRanges");
 			if (InvalidateMappedMemoryRangesPointer != IntPtr.Zero)
 			{
 				InvalidateMappedMemoryRanges_0 = Marshal.GetDelegateForFunctionPointer<InvalidateMappedMemoryRangesDelegate_0>(InvalidateMappedMemoryRangesPointer);
 				InvalidateMappedMemoryRanges_1 = Marshal.GetDelegateForFunctionPointer<InvalidateMappedMemoryRangesDelegate_1>(InvalidateMappedMemoryRangesPointer);
 			}
-			GetDeviceMemoryCommitmentPointer = VulkanLibrary.GetFunctionPointer("vkGetDeviceMemoryCommitment");
+			GetDeviceMemoryCommitmentPointer = GetInstancePrecedureAddress(instance, "vkGetDeviceMemoryCommitment");
 			if (GetDeviceMemoryCommitmentPointer != IntPtr.Zero)
 			{
 				GetDeviceMemoryCommitment_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceMemoryCommitmentDelegate_0>(GetDeviceMemoryCommitmentPointer);
 				GetDeviceMemoryCommitment_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceMemoryCommitmentDelegate_1>(GetDeviceMemoryCommitmentPointer);
 			}
-			GetBufferMemoryRequirementsPointer = VulkanLibrary.GetFunctionPointer("vkGetBufferMemoryRequirements");
+			GetBufferMemoryRequirementsPointer = GetInstancePrecedureAddress(instance, "vkGetBufferMemoryRequirements");
 			if (GetBufferMemoryRequirementsPointer != IntPtr.Zero)
 			{
 				GetBufferMemoryRequirements_0 = Marshal.GetDelegateForFunctionPointer<GetBufferMemoryRequirementsDelegate_0>(GetBufferMemoryRequirementsPointer);
 				GetBufferMemoryRequirements_1 = Marshal.GetDelegateForFunctionPointer<GetBufferMemoryRequirementsDelegate_1>(GetBufferMemoryRequirementsPointer);
 			}
-			BindBufferMemoryPointer = VulkanLibrary.GetFunctionPointer("vkBindBufferMemory");
+			BindBufferMemoryPointer = GetInstancePrecedureAddress(instance, "vkBindBufferMemory");
 			if (BindBufferMemoryPointer != IntPtr.Zero)
 			{
 				BindBufferMemory_0 = Marshal.GetDelegateForFunctionPointer<BindBufferMemoryDelegate_0>(BindBufferMemoryPointer);
 			}
-			GetImageMemoryRequirementsPointer = VulkanLibrary.GetFunctionPointer("vkGetImageMemoryRequirements");
+			GetImageMemoryRequirementsPointer = GetInstancePrecedureAddress(instance, "vkGetImageMemoryRequirements");
 			if (GetImageMemoryRequirementsPointer != IntPtr.Zero)
 			{
 				GetImageMemoryRequirements_0 = Marshal.GetDelegateForFunctionPointer<GetImageMemoryRequirementsDelegate_0>(GetImageMemoryRequirementsPointer);
 				GetImageMemoryRequirements_1 = Marshal.GetDelegateForFunctionPointer<GetImageMemoryRequirementsDelegate_1>(GetImageMemoryRequirementsPointer);
 			}
-			BindImageMemoryPointer = VulkanLibrary.GetFunctionPointer("vkBindImageMemory");
+			BindImageMemoryPointer = GetInstancePrecedureAddress(instance, "vkBindImageMemory");
 			if (BindImageMemoryPointer != IntPtr.Zero)
 			{
 				BindImageMemory_0 = Marshal.GetDelegateForFunctionPointer<BindImageMemoryDelegate_0>(BindImageMemoryPointer);
 			}
-			GetImageSparseMemoryRequirementsPointer = VulkanLibrary.GetFunctionPointer("vkGetImageSparseMemoryRequirements");
+			GetImageSparseMemoryRequirementsPointer = GetInstancePrecedureAddress(instance, "vkGetImageSparseMemoryRequirements");
 			if (GetImageSparseMemoryRequirementsPointer != IntPtr.Zero)
 			{
 				GetImageSparseMemoryRequirements_0 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirementsDelegate_0>(GetImageSparseMemoryRequirementsPointer);
@@ -3514,7 +3505,7 @@ namespace Vulkan
 				GetImageSparseMemoryRequirements_2 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirementsDelegate_2>(GetImageSparseMemoryRequirementsPointer);
 				GetImageSparseMemoryRequirements_3 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirementsDelegate_3>(GetImageSparseMemoryRequirementsPointer);
 			}
-			GetPhysicalDeviceSparseImageFormatPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSparseImageFormatProperties");
+			GetPhysicalDeviceSparseImageFormatPropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSparseImageFormatProperties");
 			if (GetPhysicalDeviceSparseImageFormatPropertiesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSparseImageFormatProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatPropertiesDelegate_0>(GetPhysicalDeviceSparseImageFormatPropertiesPointer);
@@ -3522,13 +3513,13 @@ namespace Vulkan
 				GetPhysicalDeviceSparseImageFormatProperties_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatPropertiesDelegate_2>(GetPhysicalDeviceSparseImageFormatPropertiesPointer);
 				GetPhysicalDeviceSparseImageFormatProperties_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatPropertiesDelegate_3>(GetPhysicalDeviceSparseImageFormatPropertiesPointer);
 			}
-			QueueBindSparsePointer = VulkanLibrary.GetFunctionPointer("vkQueueBindSparse");
+			QueueBindSparsePointer = GetInstancePrecedureAddress(instance, "vkQueueBindSparse");
 			if (QueueBindSparsePointer != IntPtr.Zero)
 			{
 				QueueBindSparse_0 = Marshal.GetDelegateForFunctionPointer<QueueBindSparseDelegate_0>(QueueBindSparsePointer);
 				QueueBindSparse_1 = Marshal.GetDelegateForFunctionPointer<QueueBindSparseDelegate_1>(QueueBindSparsePointer);
 			}
-			CreateFencePointer = VulkanLibrary.GetFunctionPointer("vkCreateFence");
+			CreateFencePointer = GetInstancePrecedureAddress(instance, "vkCreateFence");
 			if (CreateFencePointer != IntPtr.Zero)
 			{
 				CreateFence_0 = Marshal.GetDelegateForFunctionPointer<CreateFenceDelegate_0>(CreateFencePointer);
@@ -3540,30 +3531,30 @@ namespace Vulkan
 				CreateFence_6 = Marshal.GetDelegateForFunctionPointer<CreateFenceDelegate_6>(CreateFencePointer);
 				CreateFence_7 = Marshal.GetDelegateForFunctionPointer<CreateFenceDelegate_7>(CreateFencePointer);
 			}
-			DestroyFencePointer = VulkanLibrary.GetFunctionPointer("vkDestroyFence");
+			DestroyFencePointer = GetInstancePrecedureAddress(instance, "vkDestroyFence");
 			if (DestroyFencePointer != IntPtr.Zero)
 			{
 				DestroyFence_0 = Marshal.GetDelegateForFunctionPointer<DestroyFenceDelegate_0>(DestroyFencePointer);
 				DestroyFence_1 = Marshal.GetDelegateForFunctionPointer<DestroyFenceDelegate_1>(DestroyFencePointer);
 			}
-			ResetFencesPointer = VulkanLibrary.GetFunctionPointer("vkResetFences");
+			ResetFencesPointer = GetInstancePrecedureAddress(instance, "vkResetFences");
 			if (ResetFencesPointer != IntPtr.Zero)
 			{
 				ResetFences_0 = Marshal.GetDelegateForFunctionPointer<ResetFencesDelegate_0>(ResetFencesPointer);
 				ResetFences_1 = Marshal.GetDelegateForFunctionPointer<ResetFencesDelegate_1>(ResetFencesPointer);
 			}
-			GetFenceStatusPointer = VulkanLibrary.GetFunctionPointer("vkGetFenceStatus");
+			GetFenceStatusPointer = GetInstancePrecedureAddress(instance, "vkGetFenceStatus");
 			if (GetFenceStatusPointer != IntPtr.Zero)
 			{
 				GetFenceStatus_0 = Marshal.GetDelegateForFunctionPointer<GetFenceStatusDelegate_0>(GetFenceStatusPointer);
 			}
-			WaitForFencesPointer = VulkanLibrary.GetFunctionPointer("vkWaitForFences");
+			WaitForFencesPointer = GetInstancePrecedureAddress(instance, "vkWaitForFences");
 			if (WaitForFencesPointer != IntPtr.Zero)
 			{
 				WaitForFences_0 = Marshal.GetDelegateForFunctionPointer<WaitForFencesDelegate_0>(WaitForFencesPointer);
 				WaitForFences_1 = Marshal.GetDelegateForFunctionPointer<WaitForFencesDelegate_1>(WaitForFencesPointer);
 			}
-			CreateSemaphorePointer = VulkanLibrary.GetFunctionPointer("vkCreateSemaphore");
+			CreateSemaphorePointer = GetInstancePrecedureAddress(instance, "vkCreateSemaphore");
 			if (CreateSemaphorePointer != IntPtr.Zero)
 			{
 				CreateSemaphore_0 = Marshal.GetDelegateForFunctionPointer<CreateSemaphoreDelegate_0>(CreateSemaphorePointer);
@@ -3575,13 +3566,13 @@ namespace Vulkan
 				CreateSemaphore_6 = Marshal.GetDelegateForFunctionPointer<CreateSemaphoreDelegate_6>(CreateSemaphorePointer);
 				CreateSemaphore_7 = Marshal.GetDelegateForFunctionPointer<CreateSemaphoreDelegate_7>(CreateSemaphorePointer);
 			}
-			DestroySemaphorePointer = VulkanLibrary.GetFunctionPointer("vkDestroySemaphore");
+			DestroySemaphorePointer = GetInstancePrecedureAddress(instance, "vkDestroySemaphore");
 			if (DestroySemaphorePointer != IntPtr.Zero)
 			{
 				DestroySemaphore_0 = Marshal.GetDelegateForFunctionPointer<DestroySemaphoreDelegate_0>(DestroySemaphorePointer);
 				DestroySemaphore_1 = Marshal.GetDelegateForFunctionPointer<DestroySemaphoreDelegate_1>(DestroySemaphorePointer);
 			}
-			CreateEventPointer = VulkanLibrary.GetFunctionPointer("vkCreateEvent");
+			CreateEventPointer = GetInstancePrecedureAddress(instance, "vkCreateEvent");
 			if (CreateEventPointer != IntPtr.Zero)
 			{
 				CreateEvent_0 = Marshal.GetDelegateForFunctionPointer<CreateEventDelegate_0>(CreateEventPointer);
@@ -3593,28 +3584,28 @@ namespace Vulkan
 				CreateEvent_6 = Marshal.GetDelegateForFunctionPointer<CreateEventDelegate_6>(CreateEventPointer);
 				CreateEvent_7 = Marshal.GetDelegateForFunctionPointer<CreateEventDelegate_7>(CreateEventPointer);
 			}
-			DestroyEventPointer = VulkanLibrary.GetFunctionPointer("vkDestroyEvent");
+			DestroyEventPointer = GetInstancePrecedureAddress(instance, "vkDestroyEvent");
 			if (DestroyEventPointer != IntPtr.Zero)
 			{
 				DestroyEvent_0 = Marshal.GetDelegateForFunctionPointer<DestroyEventDelegate_0>(DestroyEventPointer);
 				DestroyEvent_1 = Marshal.GetDelegateForFunctionPointer<DestroyEventDelegate_1>(DestroyEventPointer);
 			}
-			GetEventStatusPointer = VulkanLibrary.GetFunctionPointer("vkGetEventStatus");
+			GetEventStatusPointer = GetInstancePrecedureAddress(instance, "vkGetEventStatus");
 			if (GetEventStatusPointer != IntPtr.Zero)
 			{
 				GetEventStatus_0 = Marshal.GetDelegateForFunctionPointer<GetEventStatusDelegate_0>(GetEventStatusPointer);
 			}
-			SetEventPointer = VulkanLibrary.GetFunctionPointer("vkSetEvent");
+			SetEventPointer = GetInstancePrecedureAddress(instance, "vkSetEvent");
 			if (SetEventPointer != IntPtr.Zero)
 			{
 				SetEvent_0 = Marshal.GetDelegateForFunctionPointer<SetEventDelegate_0>(SetEventPointer);
 			}
-			ResetEventPointer = VulkanLibrary.GetFunctionPointer("vkResetEvent");
+			ResetEventPointer = GetInstancePrecedureAddress(instance, "vkResetEvent");
 			if (ResetEventPointer != IntPtr.Zero)
 			{
 				ResetEvent_0 = Marshal.GetDelegateForFunctionPointer<ResetEventDelegate_0>(ResetEventPointer);
 			}
-			CreateQueryPoolPointer = VulkanLibrary.GetFunctionPointer("vkCreateQueryPool");
+			CreateQueryPoolPointer = GetInstancePrecedureAddress(instance, "vkCreateQueryPool");
 			if (CreateQueryPoolPointer != IntPtr.Zero)
 			{
 				CreateQueryPool_0 = Marshal.GetDelegateForFunctionPointer<CreateQueryPoolDelegate_0>(CreateQueryPoolPointer);
@@ -3626,23 +3617,23 @@ namespace Vulkan
 				CreateQueryPool_6 = Marshal.GetDelegateForFunctionPointer<CreateQueryPoolDelegate_6>(CreateQueryPoolPointer);
 				CreateQueryPool_7 = Marshal.GetDelegateForFunctionPointer<CreateQueryPoolDelegate_7>(CreateQueryPoolPointer);
 			}
-			DestroyQueryPoolPointer = VulkanLibrary.GetFunctionPointer("vkDestroyQueryPool");
+			DestroyQueryPoolPointer = GetInstancePrecedureAddress(instance, "vkDestroyQueryPool");
 			if (DestroyQueryPoolPointer != IntPtr.Zero)
 			{
 				DestroyQueryPool_0 = Marshal.GetDelegateForFunctionPointer<DestroyQueryPoolDelegate_0>(DestroyQueryPoolPointer);
 				DestroyQueryPool_1 = Marshal.GetDelegateForFunctionPointer<DestroyQueryPoolDelegate_1>(DestroyQueryPoolPointer);
 			}
-			GetQueryPoolResultsPointer = VulkanLibrary.GetFunctionPointer("vkGetQueryPoolResults");
+			GetQueryPoolResultsPointer = GetInstancePrecedureAddress(instance, "vkGetQueryPoolResults");
 			if (GetQueryPoolResultsPointer != IntPtr.Zero)
 			{
 				GetQueryPoolResults_0 = Marshal.GetDelegateForFunctionPointer<GetQueryPoolResultsDelegate_0>(GetQueryPoolResultsPointer);
 			}
-			ResetQueryPoolPointer = VulkanLibrary.GetFunctionPointer("vkResetQueryPool");
+			ResetQueryPoolPointer = GetInstancePrecedureAddress(instance, "vkResetQueryPool");
 			if (ResetQueryPoolPointer != IntPtr.Zero)
 			{
 				ResetQueryPool_0 = Marshal.GetDelegateForFunctionPointer<ResetQueryPoolDelegate_0>(ResetQueryPoolPointer);
 			}
-			CreateBufferPointer = VulkanLibrary.GetFunctionPointer("vkCreateBuffer");
+			CreateBufferPointer = GetInstancePrecedureAddress(instance, "vkCreateBuffer");
 			if (CreateBufferPointer != IntPtr.Zero)
 			{
 				CreateBuffer_0 = Marshal.GetDelegateForFunctionPointer<CreateBufferDelegate_0>(CreateBufferPointer);
@@ -3654,13 +3645,13 @@ namespace Vulkan
 				CreateBuffer_6 = Marshal.GetDelegateForFunctionPointer<CreateBufferDelegate_6>(CreateBufferPointer);
 				CreateBuffer_7 = Marshal.GetDelegateForFunctionPointer<CreateBufferDelegate_7>(CreateBufferPointer);
 			}
-			DestroyBufferPointer = VulkanLibrary.GetFunctionPointer("vkDestroyBuffer");
+			DestroyBufferPointer = GetInstancePrecedureAddress(instance, "vkDestroyBuffer");
 			if (DestroyBufferPointer != IntPtr.Zero)
 			{
 				DestroyBuffer_0 = Marshal.GetDelegateForFunctionPointer<DestroyBufferDelegate_0>(DestroyBufferPointer);
 				DestroyBuffer_1 = Marshal.GetDelegateForFunctionPointer<DestroyBufferDelegate_1>(DestroyBufferPointer);
 			}
-			CreateBufferViewPointer = VulkanLibrary.GetFunctionPointer("vkCreateBufferView");
+			CreateBufferViewPointer = GetInstancePrecedureAddress(instance, "vkCreateBufferView");
 			if (CreateBufferViewPointer != IntPtr.Zero)
 			{
 				CreateBufferView_0 = Marshal.GetDelegateForFunctionPointer<CreateBufferViewDelegate_0>(CreateBufferViewPointer);
@@ -3672,13 +3663,13 @@ namespace Vulkan
 				CreateBufferView_6 = Marshal.GetDelegateForFunctionPointer<CreateBufferViewDelegate_6>(CreateBufferViewPointer);
 				CreateBufferView_7 = Marshal.GetDelegateForFunctionPointer<CreateBufferViewDelegate_7>(CreateBufferViewPointer);
 			}
-			DestroyBufferViewPointer = VulkanLibrary.GetFunctionPointer("vkDestroyBufferView");
+			DestroyBufferViewPointer = GetInstancePrecedureAddress(instance, "vkDestroyBufferView");
 			if (DestroyBufferViewPointer != IntPtr.Zero)
 			{
 				DestroyBufferView_0 = Marshal.GetDelegateForFunctionPointer<DestroyBufferViewDelegate_0>(DestroyBufferViewPointer);
 				DestroyBufferView_1 = Marshal.GetDelegateForFunctionPointer<DestroyBufferViewDelegate_1>(DestroyBufferViewPointer);
 			}
-			CreateImagePointer = VulkanLibrary.GetFunctionPointer("vkCreateImage");
+			CreateImagePointer = GetInstancePrecedureAddress(instance, "vkCreateImage");
 			if (CreateImagePointer != IntPtr.Zero)
 			{
 				CreateImage_0 = Marshal.GetDelegateForFunctionPointer<CreateImageDelegate_0>(CreateImagePointer);
@@ -3690,13 +3681,13 @@ namespace Vulkan
 				CreateImage_6 = Marshal.GetDelegateForFunctionPointer<CreateImageDelegate_6>(CreateImagePointer);
 				CreateImage_7 = Marshal.GetDelegateForFunctionPointer<CreateImageDelegate_7>(CreateImagePointer);
 			}
-			DestroyImagePointer = VulkanLibrary.GetFunctionPointer("vkDestroyImage");
+			DestroyImagePointer = GetInstancePrecedureAddress(instance, "vkDestroyImage");
 			if (DestroyImagePointer != IntPtr.Zero)
 			{
 				DestroyImage_0 = Marshal.GetDelegateForFunctionPointer<DestroyImageDelegate_0>(DestroyImagePointer);
 				DestroyImage_1 = Marshal.GetDelegateForFunctionPointer<DestroyImageDelegate_1>(DestroyImagePointer);
 			}
-			GetImageSubresourceLayoutPointer = VulkanLibrary.GetFunctionPointer("vkGetImageSubresourceLayout");
+			GetImageSubresourceLayoutPointer = GetInstancePrecedureAddress(instance, "vkGetImageSubresourceLayout");
 			if (GetImageSubresourceLayoutPointer != IntPtr.Zero)
 			{
 				GetImageSubresourceLayout_0 = Marshal.GetDelegateForFunctionPointer<GetImageSubresourceLayoutDelegate_0>(GetImageSubresourceLayoutPointer);
@@ -3704,7 +3695,7 @@ namespace Vulkan
 				GetImageSubresourceLayout_2 = Marshal.GetDelegateForFunctionPointer<GetImageSubresourceLayoutDelegate_2>(GetImageSubresourceLayoutPointer);
 				GetImageSubresourceLayout_3 = Marshal.GetDelegateForFunctionPointer<GetImageSubresourceLayoutDelegate_3>(GetImageSubresourceLayoutPointer);
 			}
-			CreateImageViewPointer = VulkanLibrary.GetFunctionPointer("vkCreateImageView");
+			CreateImageViewPointer = GetInstancePrecedureAddress(instance, "vkCreateImageView");
 			if (CreateImageViewPointer != IntPtr.Zero)
 			{
 				CreateImageView_0 = Marshal.GetDelegateForFunctionPointer<CreateImageViewDelegate_0>(CreateImageViewPointer);
@@ -3716,13 +3707,13 @@ namespace Vulkan
 				CreateImageView_6 = Marshal.GetDelegateForFunctionPointer<CreateImageViewDelegate_6>(CreateImageViewPointer);
 				CreateImageView_7 = Marshal.GetDelegateForFunctionPointer<CreateImageViewDelegate_7>(CreateImageViewPointer);
 			}
-			DestroyImageViewPointer = VulkanLibrary.GetFunctionPointer("vkDestroyImageView");
+			DestroyImageViewPointer = GetInstancePrecedureAddress(instance, "vkDestroyImageView");
 			if (DestroyImageViewPointer != IntPtr.Zero)
 			{
 				DestroyImageView_0 = Marshal.GetDelegateForFunctionPointer<DestroyImageViewDelegate_0>(DestroyImageViewPointer);
 				DestroyImageView_1 = Marshal.GetDelegateForFunctionPointer<DestroyImageViewDelegate_1>(DestroyImageViewPointer);
 			}
-			CreateShaderModulePointer = VulkanLibrary.GetFunctionPointer("vkCreateShaderModule");
+			CreateShaderModulePointer = GetInstancePrecedureAddress(instance, "vkCreateShaderModule");
 			if (CreateShaderModulePointer != IntPtr.Zero)
 			{
 				CreateShaderModule_0 = Marshal.GetDelegateForFunctionPointer<CreateShaderModuleDelegate_0>(CreateShaderModulePointer);
@@ -3734,13 +3725,13 @@ namespace Vulkan
 				CreateShaderModule_6 = Marshal.GetDelegateForFunctionPointer<CreateShaderModuleDelegate_6>(CreateShaderModulePointer);
 				CreateShaderModule_7 = Marshal.GetDelegateForFunctionPointer<CreateShaderModuleDelegate_7>(CreateShaderModulePointer);
 			}
-			DestroyShaderModulePointer = VulkanLibrary.GetFunctionPointer("vkDestroyShaderModule");
+			DestroyShaderModulePointer = GetInstancePrecedureAddress(instance, "vkDestroyShaderModule");
 			if (DestroyShaderModulePointer != IntPtr.Zero)
 			{
 				DestroyShaderModule_0 = Marshal.GetDelegateForFunctionPointer<DestroyShaderModuleDelegate_0>(DestroyShaderModulePointer);
 				DestroyShaderModule_1 = Marshal.GetDelegateForFunctionPointer<DestroyShaderModuleDelegate_1>(DestroyShaderModulePointer);
 			}
-			CreatePipelineCachePointer = VulkanLibrary.GetFunctionPointer("vkCreatePipelineCache");
+			CreatePipelineCachePointer = GetInstancePrecedureAddress(instance, "vkCreatePipelineCache");
 			if (CreatePipelineCachePointer != IntPtr.Zero)
 			{
 				CreatePipelineCache_0 = Marshal.GetDelegateForFunctionPointer<CreatePipelineCacheDelegate_0>(CreatePipelineCachePointer);
@@ -3752,25 +3743,25 @@ namespace Vulkan
 				CreatePipelineCache_6 = Marshal.GetDelegateForFunctionPointer<CreatePipelineCacheDelegate_6>(CreatePipelineCachePointer);
 				CreatePipelineCache_7 = Marshal.GetDelegateForFunctionPointer<CreatePipelineCacheDelegate_7>(CreatePipelineCachePointer);
 			}
-			DestroyPipelineCachePointer = VulkanLibrary.GetFunctionPointer("vkDestroyPipelineCache");
+			DestroyPipelineCachePointer = GetInstancePrecedureAddress(instance, "vkDestroyPipelineCache");
 			if (DestroyPipelineCachePointer != IntPtr.Zero)
 			{
 				DestroyPipelineCache_0 = Marshal.GetDelegateForFunctionPointer<DestroyPipelineCacheDelegate_0>(DestroyPipelineCachePointer);
 				DestroyPipelineCache_1 = Marshal.GetDelegateForFunctionPointer<DestroyPipelineCacheDelegate_1>(DestroyPipelineCachePointer);
 			}
-			GetPipelineCacheDataPointer = VulkanLibrary.GetFunctionPointer("vkGetPipelineCacheData");
+			GetPipelineCacheDataPointer = GetInstancePrecedureAddress(instance, "vkGetPipelineCacheData");
 			if (GetPipelineCacheDataPointer != IntPtr.Zero)
 			{
 				GetPipelineCacheData_0 = Marshal.GetDelegateForFunctionPointer<GetPipelineCacheDataDelegate_0>(GetPipelineCacheDataPointer);
 				GetPipelineCacheData_1 = Marshal.GetDelegateForFunctionPointer<GetPipelineCacheDataDelegate_1>(GetPipelineCacheDataPointer);
 			}
-			MergePipelineCachesPointer = VulkanLibrary.GetFunctionPointer("vkMergePipelineCaches");
+			MergePipelineCachesPointer = GetInstancePrecedureAddress(instance, "vkMergePipelineCaches");
 			if (MergePipelineCachesPointer != IntPtr.Zero)
 			{
 				MergePipelineCaches_0 = Marshal.GetDelegateForFunctionPointer<MergePipelineCachesDelegate_0>(MergePipelineCachesPointer);
 				MergePipelineCaches_1 = Marshal.GetDelegateForFunctionPointer<MergePipelineCachesDelegate_1>(MergePipelineCachesPointer);
 			}
-			CreateGraphicsPipelinesPointer = VulkanLibrary.GetFunctionPointer("vkCreateGraphicsPipelines");
+			CreateGraphicsPipelinesPointer = GetInstancePrecedureAddress(instance, "vkCreateGraphicsPipelines");
 			if (CreateGraphicsPipelinesPointer != IntPtr.Zero)
 			{
 				CreateGraphicsPipelines_0 = Marshal.GetDelegateForFunctionPointer<CreateGraphicsPipelinesDelegate_0>(CreateGraphicsPipelinesPointer);
@@ -3778,7 +3769,7 @@ namespace Vulkan
 				CreateGraphicsPipelines_2 = Marshal.GetDelegateForFunctionPointer<CreateGraphicsPipelinesDelegate_2>(CreateGraphicsPipelinesPointer);
 				CreateGraphicsPipelines_3 = Marshal.GetDelegateForFunctionPointer<CreateGraphicsPipelinesDelegate_3>(CreateGraphicsPipelinesPointer);
 			}
-			CreateComputePipelinesPointer = VulkanLibrary.GetFunctionPointer("vkCreateComputePipelines");
+			CreateComputePipelinesPointer = GetInstancePrecedureAddress(instance, "vkCreateComputePipelines");
 			if (CreateComputePipelinesPointer != IntPtr.Zero)
 			{
 				CreateComputePipelines_0 = Marshal.GetDelegateForFunctionPointer<CreateComputePipelinesDelegate_0>(CreateComputePipelinesPointer);
@@ -3786,13 +3777,13 @@ namespace Vulkan
 				CreateComputePipelines_2 = Marshal.GetDelegateForFunctionPointer<CreateComputePipelinesDelegate_2>(CreateComputePipelinesPointer);
 				CreateComputePipelines_3 = Marshal.GetDelegateForFunctionPointer<CreateComputePipelinesDelegate_3>(CreateComputePipelinesPointer);
 			}
-			DestroyPipelinePointer = VulkanLibrary.GetFunctionPointer("vkDestroyPipeline");
+			DestroyPipelinePointer = GetInstancePrecedureAddress(instance, "vkDestroyPipeline");
 			if (DestroyPipelinePointer != IntPtr.Zero)
 			{
 				DestroyPipeline_0 = Marshal.GetDelegateForFunctionPointer<DestroyPipelineDelegate_0>(DestroyPipelinePointer);
 				DestroyPipeline_1 = Marshal.GetDelegateForFunctionPointer<DestroyPipelineDelegate_1>(DestroyPipelinePointer);
 			}
-			CreatePipelineLayoutPointer = VulkanLibrary.GetFunctionPointer("vkCreatePipelineLayout");
+			CreatePipelineLayoutPointer = GetInstancePrecedureAddress(instance, "vkCreatePipelineLayout");
 			if (CreatePipelineLayoutPointer != IntPtr.Zero)
 			{
 				CreatePipelineLayout_0 = Marshal.GetDelegateForFunctionPointer<CreatePipelineLayoutDelegate_0>(CreatePipelineLayoutPointer);
@@ -3804,13 +3795,13 @@ namespace Vulkan
 				CreatePipelineLayout_6 = Marshal.GetDelegateForFunctionPointer<CreatePipelineLayoutDelegate_6>(CreatePipelineLayoutPointer);
 				CreatePipelineLayout_7 = Marshal.GetDelegateForFunctionPointer<CreatePipelineLayoutDelegate_7>(CreatePipelineLayoutPointer);
 			}
-			DestroyPipelineLayoutPointer = VulkanLibrary.GetFunctionPointer("vkDestroyPipelineLayout");
+			DestroyPipelineLayoutPointer = GetInstancePrecedureAddress(instance, "vkDestroyPipelineLayout");
 			if (DestroyPipelineLayoutPointer != IntPtr.Zero)
 			{
 				DestroyPipelineLayout_0 = Marshal.GetDelegateForFunctionPointer<DestroyPipelineLayoutDelegate_0>(DestroyPipelineLayoutPointer);
 				DestroyPipelineLayout_1 = Marshal.GetDelegateForFunctionPointer<DestroyPipelineLayoutDelegate_1>(DestroyPipelineLayoutPointer);
 			}
-			CreateSamplerPointer = VulkanLibrary.GetFunctionPointer("vkCreateSampler");
+			CreateSamplerPointer = GetInstancePrecedureAddress(instance, "vkCreateSampler");
 			if (CreateSamplerPointer != IntPtr.Zero)
 			{
 				CreateSampler_0 = Marshal.GetDelegateForFunctionPointer<CreateSamplerDelegate_0>(CreateSamplerPointer);
@@ -3822,13 +3813,13 @@ namespace Vulkan
 				CreateSampler_6 = Marshal.GetDelegateForFunctionPointer<CreateSamplerDelegate_6>(CreateSamplerPointer);
 				CreateSampler_7 = Marshal.GetDelegateForFunctionPointer<CreateSamplerDelegate_7>(CreateSamplerPointer);
 			}
-			DestroySamplerPointer = VulkanLibrary.GetFunctionPointer("vkDestroySampler");
+			DestroySamplerPointer = GetInstancePrecedureAddress(instance, "vkDestroySampler");
 			if (DestroySamplerPointer != IntPtr.Zero)
 			{
 				DestroySampler_0 = Marshal.GetDelegateForFunctionPointer<DestroySamplerDelegate_0>(DestroySamplerPointer);
 				DestroySampler_1 = Marshal.GetDelegateForFunctionPointer<DestroySamplerDelegate_1>(DestroySamplerPointer);
 			}
-			CreateDescriptorSetLayoutPointer = VulkanLibrary.GetFunctionPointer("vkCreateDescriptorSetLayout");
+			CreateDescriptorSetLayoutPointer = GetInstancePrecedureAddress(instance, "vkCreateDescriptorSetLayout");
 			if (CreateDescriptorSetLayoutPointer != IntPtr.Zero)
 			{
 				CreateDescriptorSetLayout_0 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorSetLayoutDelegate_0>(CreateDescriptorSetLayoutPointer);
@@ -3840,13 +3831,13 @@ namespace Vulkan
 				CreateDescriptorSetLayout_6 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorSetLayoutDelegate_6>(CreateDescriptorSetLayoutPointer);
 				CreateDescriptorSetLayout_7 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorSetLayoutDelegate_7>(CreateDescriptorSetLayoutPointer);
 			}
-			DestroyDescriptorSetLayoutPointer = VulkanLibrary.GetFunctionPointer("vkDestroyDescriptorSetLayout");
+			DestroyDescriptorSetLayoutPointer = GetInstancePrecedureAddress(instance, "vkDestroyDescriptorSetLayout");
 			if (DestroyDescriptorSetLayoutPointer != IntPtr.Zero)
 			{
 				DestroyDescriptorSetLayout_0 = Marshal.GetDelegateForFunctionPointer<DestroyDescriptorSetLayoutDelegate_0>(DestroyDescriptorSetLayoutPointer);
 				DestroyDescriptorSetLayout_1 = Marshal.GetDelegateForFunctionPointer<DestroyDescriptorSetLayoutDelegate_1>(DestroyDescriptorSetLayoutPointer);
 			}
-			CreateDescriptorPoolPointer = VulkanLibrary.GetFunctionPointer("vkCreateDescriptorPool");
+			CreateDescriptorPoolPointer = GetInstancePrecedureAddress(instance, "vkCreateDescriptorPool");
 			if (CreateDescriptorPoolPointer != IntPtr.Zero)
 			{
 				CreateDescriptorPool_0 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorPoolDelegate_0>(CreateDescriptorPoolPointer);
@@ -3858,18 +3849,18 @@ namespace Vulkan
 				CreateDescriptorPool_6 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorPoolDelegate_6>(CreateDescriptorPoolPointer);
 				CreateDescriptorPool_7 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorPoolDelegate_7>(CreateDescriptorPoolPointer);
 			}
-			DestroyDescriptorPoolPointer = VulkanLibrary.GetFunctionPointer("vkDestroyDescriptorPool");
+			DestroyDescriptorPoolPointer = GetInstancePrecedureAddress(instance, "vkDestroyDescriptorPool");
 			if (DestroyDescriptorPoolPointer != IntPtr.Zero)
 			{
 				DestroyDescriptorPool_0 = Marshal.GetDelegateForFunctionPointer<DestroyDescriptorPoolDelegate_0>(DestroyDescriptorPoolPointer);
 				DestroyDescriptorPool_1 = Marshal.GetDelegateForFunctionPointer<DestroyDescriptorPoolDelegate_1>(DestroyDescriptorPoolPointer);
 			}
-			ResetDescriptorPoolPointer = VulkanLibrary.GetFunctionPointer("vkResetDescriptorPool");
+			ResetDescriptorPoolPointer = GetInstancePrecedureAddress(instance, "vkResetDescriptorPool");
 			if (ResetDescriptorPoolPointer != IntPtr.Zero)
 			{
 				ResetDescriptorPool_0 = Marshal.GetDelegateForFunctionPointer<ResetDescriptorPoolDelegate_0>(ResetDescriptorPoolPointer);
 			}
-			AllocateDescriptorSetsPointer = VulkanLibrary.GetFunctionPointer("vkAllocateDescriptorSets");
+			AllocateDescriptorSetsPointer = GetInstancePrecedureAddress(instance, "vkAllocateDescriptorSets");
 			if (AllocateDescriptorSetsPointer != IntPtr.Zero)
 			{
 				AllocateDescriptorSets_0 = Marshal.GetDelegateForFunctionPointer<AllocateDescriptorSetsDelegate_0>(AllocateDescriptorSetsPointer);
@@ -3877,13 +3868,13 @@ namespace Vulkan
 				AllocateDescriptorSets_2 = Marshal.GetDelegateForFunctionPointer<AllocateDescriptorSetsDelegate_2>(AllocateDescriptorSetsPointer);
 				AllocateDescriptorSets_3 = Marshal.GetDelegateForFunctionPointer<AllocateDescriptorSetsDelegate_3>(AllocateDescriptorSetsPointer);
 			}
-			FreeDescriptorSetsPointer = VulkanLibrary.GetFunctionPointer("vkFreeDescriptorSets");
+			FreeDescriptorSetsPointer = GetInstancePrecedureAddress(instance, "vkFreeDescriptorSets");
 			if (FreeDescriptorSetsPointer != IntPtr.Zero)
 			{
 				FreeDescriptorSets_0 = Marshal.GetDelegateForFunctionPointer<FreeDescriptorSetsDelegate_0>(FreeDescriptorSetsPointer);
 				FreeDescriptorSets_1 = Marshal.GetDelegateForFunctionPointer<FreeDescriptorSetsDelegate_1>(FreeDescriptorSetsPointer);
 			}
-			UpdateDescriptorSetsPointer = VulkanLibrary.GetFunctionPointer("vkUpdateDescriptorSets");
+			UpdateDescriptorSetsPointer = GetInstancePrecedureAddress(instance, "vkUpdateDescriptorSets");
 			if (UpdateDescriptorSetsPointer != IntPtr.Zero)
 			{
 				UpdateDescriptorSets_0 = Marshal.GetDelegateForFunctionPointer<UpdateDescriptorSetsDelegate_0>(UpdateDescriptorSetsPointer);
@@ -3891,7 +3882,7 @@ namespace Vulkan
 				UpdateDescriptorSets_2 = Marshal.GetDelegateForFunctionPointer<UpdateDescriptorSetsDelegate_2>(UpdateDescriptorSetsPointer);
 				UpdateDescriptorSets_3 = Marshal.GetDelegateForFunctionPointer<UpdateDescriptorSetsDelegate_3>(UpdateDescriptorSetsPointer);
 			}
-			CreateFramebufferPointer = VulkanLibrary.GetFunctionPointer("vkCreateFramebuffer");
+			CreateFramebufferPointer = GetInstancePrecedureAddress(instance, "vkCreateFramebuffer");
 			if (CreateFramebufferPointer != IntPtr.Zero)
 			{
 				CreateFramebuffer_0 = Marshal.GetDelegateForFunctionPointer<CreateFramebufferDelegate_0>(CreateFramebufferPointer);
@@ -3903,13 +3894,13 @@ namespace Vulkan
 				CreateFramebuffer_6 = Marshal.GetDelegateForFunctionPointer<CreateFramebufferDelegate_6>(CreateFramebufferPointer);
 				CreateFramebuffer_7 = Marshal.GetDelegateForFunctionPointer<CreateFramebufferDelegate_7>(CreateFramebufferPointer);
 			}
-			DestroyFramebufferPointer = VulkanLibrary.GetFunctionPointer("vkDestroyFramebuffer");
+			DestroyFramebufferPointer = GetInstancePrecedureAddress(instance, "vkDestroyFramebuffer");
 			if (DestroyFramebufferPointer != IntPtr.Zero)
 			{
 				DestroyFramebuffer_0 = Marshal.GetDelegateForFunctionPointer<DestroyFramebufferDelegate_0>(DestroyFramebufferPointer);
 				DestroyFramebuffer_1 = Marshal.GetDelegateForFunctionPointer<DestroyFramebufferDelegate_1>(DestroyFramebufferPointer);
 			}
-			CreateRenderPassPointer = VulkanLibrary.GetFunctionPointer("vkCreateRenderPass");
+			CreateRenderPassPointer = GetInstancePrecedureAddress(instance, "vkCreateRenderPass");
 			if (CreateRenderPassPointer != IntPtr.Zero)
 			{
 				CreateRenderPass_0 = Marshal.GetDelegateForFunctionPointer<CreateRenderPassDelegate_0>(CreateRenderPassPointer);
@@ -3921,19 +3912,19 @@ namespace Vulkan
 				CreateRenderPass_6 = Marshal.GetDelegateForFunctionPointer<CreateRenderPassDelegate_6>(CreateRenderPassPointer);
 				CreateRenderPass_7 = Marshal.GetDelegateForFunctionPointer<CreateRenderPassDelegate_7>(CreateRenderPassPointer);
 			}
-			DestroyRenderPassPointer = VulkanLibrary.GetFunctionPointer("vkDestroyRenderPass");
+			DestroyRenderPassPointer = GetInstancePrecedureAddress(instance, "vkDestroyRenderPass");
 			if (DestroyRenderPassPointer != IntPtr.Zero)
 			{
 				DestroyRenderPass_0 = Marshal.GetDelegateForFunctionPointer<DestroyRenderPassDelegate_0>(DestroyRenderPassPointer);
 				DestroyRenderPass_1 = Marshal.GetDelegateForFunctionPointer<DestroyRenderPassDelegate_1>(DestroyRenderPassPointer);
 			}
-			GetRenderAreaGranularityPointer = VulkanLibrary.GetFunctionPointer("vkGetRenderAreaGranularity");
+			GetRenderAreaGranularityPointer = GetInstancePrecedureAddress(instance, "vkGetRenderAreaGranularity");
 			if (GetRenderAreaGranularityPointer != IntPtr.Zero)
 			{
 				GetRenderAreaGranularity_0 = Marshal.GetDelegateForFunctionPointer<GetRenderAreaGranularityDelegate_0>(GetRenderAreaGranularityPointer);
 				GetRenderAreaGranularity_1 = Marshal.GetDelegateForFunctionPointer<GetRenderAreaGranularityDelegate_1>(GetRenderAreaGranularityPointer);
 			}
-			CreateCommandPoolPointer = VulkanLibrary.GetFunctionPointer("vkCreateCommandPool");
+			CreateCommandPoolPointer = GetInstancePrecedureAddress(instance, "vkCreateCommandPool");
 			if (CreateCommandPoolPointer != IntPtr.Zero)
 			{
 				CreateCommandPool_0 = Marshal.GetDelegateForFunctionPointer<CreateCommandPoolDelegate_0>(CreateCommandPoolPointer);
@@ -3945,18 +3936,18 @@ namespace Vulkan
 				CreateCommandPool_6 = Marshal.GetDelegateForFunctionPointer<CreateCommandPoolDelegate_6>(CreateCommandPoolPointer);
 				CreateCommandPool_7 = Marshal.GetDelegateForFunctionPointer<CreateCommandPoolDelegate_7>(CreateCommandPoolPointer);
 			}
-			DestroyCommandPoolPointer = VulkanLibrary.GetFunctionPointer("vkDestroyCommandPool");
+			DestroyCommandPoolPointer = GetInstancePrecedureAddress(instance, "vkDestroyCommandPool");
 			if (DestroyCommandPoolPointer != IntPtr.Zero)
 			{
 				DestroyCommandPool_0 = Marshal.GetDelegateForFunctionPointer<DestroyCommandPoolDelegate_0>(DestroyCommandPoolPointer);
 				DestroyCommandPool_1 = Marshal.GetDelegateForFunctionPointer<DestroyCommandPoolDelegate_1>(DestroyCommandPoolPointer);
 			}
-			ResetCommandPoolPointer = VulkanLibrary.GetFunctionPointer("vkResetCommandPool");
+			ResetCommandPoolPointer = GetInstancePrecedureAddress(instance, "vkResetCommandPool");
 			if (ResetCommandPoolPointer != IntPtr.Zero)
 			{
 				ResetCommandPool_0 = Marshal.GetDelegateForFunctionPointer<ResetCommandPoolDelegate_0>(ResetCommandPoolPointer);
 			}
-			AllocateCommandBuffersPointer = VulkanLibrary.GetFunctionPointer("vkAllocateCommandBuffers");
+			AllocateCommandBuffersPointer = GetInstancePrecedureAddress(instance, "vkAllocateCommandBuffers");
 			if (AllocateCommandBuffersPointer != IntPtr.Zero)
 			{
 				AllocateCommandBuffers_0 = Marshal.GetDelegateForFunctionPointer<AllocateCommandBuffersDelegate_0>(AllocateCommandBuffersPointer);
@@ -3964,81 +3955,81 @@ namespace Vulkan
 				AllocateCommandBuffers_2 = Marshal.GetDelegateForFunctionPointer<AllocateCommandBuffersDelegate_2>(AllocateCommandBuffersPointer);
 				AllocateCommandBuffers_3 = Marshal.GetDelegateForFunctionPointer<AllocateCommandBuffersDelegate_3>(AllocateCommandBuffersPointer);
 			}
-			FreeCommandBuffersPointer = VulkanLibrary.GetFunctionPointer("vkFreeCommandBuffers");
+			FreeCommandBuffersPointer = GetInstancePrecedureAddress(instance, "vkFreeCommandBuffers");
 			if (FreeCommandBuffersPointer != IntPtr.Zero)
 			{
 				FreeCommandBuffers_0 = Marshal.GetDelegateForFunctionPointer<FreeCommandBuffersDelegate_0>(FreeCommandBuffersPointer);
 				FreeCommandBuffers_1 = Marshal.GetDelegateForFunctionPointer<FreeCommandBuffersDelegate_1>(FreeCommandBuffersPointer);
 			}
-			BeginCommandBufferPointer = VulkanLibrary.GetFunctionPointer("vkBeginCommandBuffer");
+			BeginCommandBufferPointer = GetInstancePrecedureAddress(instance, "vkBeginCommandBuffer");
 			if (BeginCommandBufferPointer != IntPtr.Zero)
 			{
 				BeginCommandBuffer_0 = Marshal.GetDelegateForFunctionPointer<BeginCommandBufferDelegate_0>(BeginCommandBufferPointer);
 				BeginCommandBuffer_1 = Marshal.GetDelegateForFunctionPointer<BeginCommandBufferDelegate_1>(BeginCommandBufferPointer);
 			}
-			EndCommandBufferPointer = VulkanLibrary.GetFunctionPointer("vkEndCommandBuffer");
+			EndCommandBufferPointer = GetInstancePrecedureAddress(instance, "vkEndCommandBuffer");
 			if (EndCommandBufferPointer != IntPtr.Zero)
 			{
 				EndCommandBuffer_0 = Marshal.GetDelegateForFunctionPointer<EndCommandBufferDelegate_0>(EndCommandBufferPointer);
 			}
-			ResetCommandBufferPointer = VulkanLibrary.GetFunctionPointer("vkResetCommandBuffer");
+			ResetCommandBufferPointer = GetInstancePrecedureAddress(instance, "vkResetCommandBuffer");
 			if (ResetCommandBufferPointer != IntPtr.Zero)
 			{
 				ResetCommandBuffer_0 = Marshal.GetDelegateForFunctionPointer<ResetCommandBufferDelegate_0>(ResetCommandBufferPointer);
 			}
-			CommandBindPipelinePointer = VulkanLibrary.GetFunctionPointer("vkCmdBindPipeline");
+			CommandBindPipelinePointer = GetInstancePrecedureAddress(instance, "vkCmdBindPipeline");
 			if (CommandBindPipelinePointer != IntPtr.Zero)
 			{
 				CommandBindPipeline_0 = Marshal.GetDelegateForFunctionPointer<CommandBindPipelineDelegate_0>(CommandBindPipelinePointer);
 			}
-			CommandSetViewportPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetViewport");
+			CommandSetViewportPointer = GetInstancePrecedureAddress(instance, "vkCmdSetViewport");
 			if (CommandSetViewportPointer != IntPtr.Zero)
 			{
 				CommandSetViewport_0 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportDelegate_0>(CommandSetViewportPointer);
 				CommandSetViewport_1 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportDelegate_1>(CommandSetViewportPointer);
 			}
-			CommandSetScissorPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetScissor");
+			CommandSetScissorPointer = GetInstancePrecedureAddress(instance, "vkCmdSetScissor");
 			if (CommandSetScissorPointer != IntPtr.Zero)
 			{
 				CommandSetScissor_0 = Marshal.GetDelegateForFunctionPointer<CommandSetScissorDelegate_0>(CommandSetScissorPointer);
 				CommandSetScissor_1 = Marshal.GetDelegateForFunctionPointer<CommandSetScissorDelegate_1>(CommandSetScissorPointer);
 			}
-			CommandSetLineWidthPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetLineWidth");
+			CommandSetLineWidthPointer = GetInstancePrecedureAddress(instance, "vkCmdSetLineWidth");
 			if (CommandSetLineWidthPointer != IntPtr.Zero)
 			{
 				CommandSetLineWidth_0 = Marshal.GetDelegateForFunctionPointer<CommandSetLineWidthDelegate_0>(CommandSetLineWidthPointer);
 			}
-			CommandSetDepthBiasPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetDepthBias");
+			CommandSetDepthBiasPointer = GetInstancePrecedureAddress(instance, "vkCmdSetDepthBias");
 			if (CommandSetDepthBiasPointer != IntPtr.Zero)
 			{
 				CommandSetDepthBias_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthBiasDelegate_0>(CommandSetDepthBiasPointer);
 			}
-			CommandSetBlendConstantsPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetBlendConstants");
+			CommandSetBlendConstantsPointer = GetInstancePrecedureAddress(instance, "vkCmdSetBlendConstants");
 			if (CommandSetBlendConstantsPointer != IntPtr.Zero)
 			{
 				CommandSetBlendConstants_0 = Marshal.GetDelegateForFunctionPointer<CommandSetBlendConstantsDelegate_0>(CommandSetBlendConstantsPointer);
 			}
-			CommandSetDepthBoundsPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetDepthBounds");
+			CommandSetDepthBoundsPointer = GetInstancePrecedureAddress(instance, "vkCmdSetDepthBounds");
 			if (CommandSetDepthBoundsPointer != IntPtr.Zero)
 			{
 				CommandSetDepthBounds_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthBoundsDelegate_0>(CommandSetDepthBoundsPointer);
 			}
-			CommandSetStencilCompareMaskPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetStencilCompareMask");
+			CommandSetStencilCompareMaskPointer = GetInstancePrecedureAddress(instance, "vkCmdSetStencilCompareMask");
 			if (CommandSetStencilCompareMaskPointer != IntPtr.Zero)
 			{
 				CommandSetStencilCompareMask_0 = Marshal.GetDelegateForFunctionPointer<CommandSetStencilCompareMaskDelegate_0>(CommandSetStencilCompareMaskPointer);
 			}
-			CommandSetStencilWriteMaskPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetStencilWriteMask");
+			CommandSetStencilWriteMaskPointer = GetInstancePrecedureAddress(instance, "vkCmdSetStencilWriteMask");
 			if (CommandSetStencilWriteMaskPointer != IntPtr.Zero)
 			{
 				CommandSetStencilWriteMask_0 = Marshal.GetDelegateForFunctionPointer<CommandSetStencilWriteMaskDelegate_0>(CommandSetStencilWriteMaskPointer);
 			}
-			CommandSetStencilReferencePointer = VulkanLibrary.GetFunctionPointer("vkCmdSetStencilReference");
+			CommandSetStencilReferencePointer = GetInstancePrecedureAddress(instance, "vkCmdSetStencilReference");
 			if (CommandSetStencilReferencePointer != IntPtr.Zero)
 			{
 				CommandSetStencilReference_0 = Marshal.GetDelegateForFunctionPointer<CommandSetStencilReferenceDelegate_0>(CommandSetStencilReferencePointer);
 			}
-			CommandBindDescriptorSetsPointer = VulkanLibrary.GetFunctionPointer("vkCmdBindDescriptorSets");
+			CommandBindDescriptorSetsPointer = GetInstancePrecedureAddress(instance, "vkCmdBindDescriptorSets");
 			if (CommandBindDescriptorSetsPointer != IntPtr.Zero)
 			{
 				CommandBindDescriptorSets_0 = Marshal.GetDelegateForFunctionPointer<CommandBindDescriptorSetsDelegate_0>(CommandBindDescriptorSetsPointer);
@@ -4046,12 +4037,12 @@ namespace Vulkan
 				CommandBindDescriptorSets_2 = Marshal.GetDelegateForFunctionPointer<CommandBindDescriptorSetsDelegate_2>(CommandBindDescriptorSetsPointer);
 				CommandBindDescriptorSets_3 = Marshal.GetDelegateForFunctionPointer<CommandBindDescriptorSetsDelegate_3>(CommandBindDescriptorSetsPointer);
 			}
-			CommandBindIndexBufferPointer = VulkanLibrary.GetFunctionPointer("vkCmdBindIndexBuffer");
+			CommandBindIndexBufferPointer = GetInstancePrecedureAddress(instance, "vkCmdBindIndexBuffer");
 			if (CommandBindIndexBufferPointer != IntPtr.Zero)
 			{
 				CommandBindIndexBuffer_0 = Marshal.GetDelegateForFunctionPointer<CommandBindIndexBufferDelegate_0>(CommandBindIndexBufferPointer);
 			}
-			CommandBindVertexBuffersPointer = VulkanLibrary.GetFunctionPointer("vkCmdBindVertexBuffers");
+			CommandBindVertexBuffersPointer = GetInstancePrecedureAddress(instance, "vkCmdBindVertexBuffers");
 			if (CommandBindVertexBuffersPointer != IntPtr.Zero)
 			{
 				CommandBindVertexBuffers_0 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffersDelegate_0>(CommandBindVertexBuffersPointer);
@@ -4059,77 +4050,77 @@ namespace Vulkan
 				CommandBindVertexBuffers_2 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffersDelegate_2>(CommandBindVertexBuffersPointer);
 				CommandBindVertexBuffers_3 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffersDelegate_3>(CommandBindVertexBuffersPointer);
 			}
-			CommandDrawPointer = VulkanLibrary.GetFunctionPointer("vkCmdDraw");
+			CommandDrawPointer = GetInstancePrecedureAddress(instance, "vkCmdDraw");
 			if (CommandDrawPointer != IntPtr.Zero)
 			{
 				CommandDraw_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawDelegate_0>(CommandDrawPointer);
 			}
-			CommandDrawIndexedPointer = VulkanLibrary.GetFunctionPointer("vkCmdDrawIndexed");
+			CommandDrawIndexedPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawIndexed");
 			if (CommandDrawIndexedPointer != IntPtr.Zero)
 			{
 				CommandDrawIndexed_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawIndexedDelegate_0>(CommandDrawIndexedPointer);
 			}
-			CommandDrawIndirectPointer = VulkanLibrary.GetFunctionPointer("vkCmdDrawIndirect");
+			CommandDrawIndirectPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawIndirect");
 			if (CommandDrawIndirectPointer != IntPtr.Zero)
 			{
 				CommandDrawIndirect_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawIndirectDelegate_0>(CommandDrawIndirectPointer);
 			}
-			CommandDrawIndexedIndirectPointer = VulkanLibrary.GetFunctionPointer("vkCmdDrawIndexedIndirect");
+			CommandDrawIndexedIndirectPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawIndexedIndirect");
 			if (CommandDrawIndexedIndirectPointer != IntPtr.Zero)
 			{
 				CommandDrawIndexedIndirect_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawIndexedIndirectDelegate_0>(CommandDrawIndexedIndirectPointer);
 			}
-			CommandDispatchPointer = VulkanLibrary.GetFunctionPointer("vkCmdDispatch");
+			CommandDispatchPointer = GetInstancePrecedureAddress(instance, "vkCmdDispatch");
 			if (CommandDispatchPointer != IntPtr.Zero)
 			{
 				CommandDispatch_0 = Marshal.GetDelegateForFunctionPointer<CommandDispatchDelegate_0>(CommandDispatchPointer);
 			}
-			CommandDispatchIndirectPointer = VulkanLibrary.GetFunctionPointer("vkCmdDispatchIndirect");
+			CommandDispatchIndirectPointer = GetInstancePrecedureAddress(instance, "vkCmdDispatchIndirect");
 			if (CommandDispatchIndirectPointer != IntPtr.Zero)
 			{
 				CommandDispatchIndirect_0 = Marshal.GetDelegateForFunctionPointer<CommandDispatchIndirectDelegate_0>(CommandDispatchIndirectPointer);
 			}
-			CommandCopyBufferPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyBuffer");
+			CommandCopyBufferPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyBuffer");
 			if (CommandCopyBufferPointer != IntPtr.Zero)
 			{
 				CommandCopyBuffer_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferDelegate_0>(CommandCopyBufferPointer);
 				CommandCopyBuffer_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferDelegate_1>(CommandCopyBufferPointer);
 			}
-			CommandCopyImagePointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyImage");
+			CommandCopyImagePointer = GetInstancePrecedureAddress(instance, "vkCmdCopyImage");
 			if (CommandCopyImagePointer != IntPtr.Zero)
 			{
 				CommandCopyImage_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageDelegate_0>(CommandCopyImagePointer);
 				CommandCopyImage_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageDelegate_1>(CommandCopyImagePointer);
 			}
-			CommandBlitImagePointer = VulkanLibrary.GetFunctionPointer("vkCmdBlitImage");
+			CommandBlitImagePointer = GetInstancePrecedureAddress(instance, "vkCmdBlitImage");
 			if (CommandBlitImagePointer != IntPtr.Zero)
 			{
 				CommandBlitImage_0 = Marshal.GetDelegateForFunctionPointer<CommandBlitImageDelegate_0>(CommandBlitImagePointer);
 				CommandBlitImage_1 = Marshal.GetDelegateForFunctionPointer<CommandBlitImageDelegate_1>(CommandBlitImagePointer);
 			}
-			CommandCopyBufferToImagePointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyBufferToImage");
+			CommandCopyBufferToImagePointer = GetInstancePrecedureAddress(instance, "vkCmdCopyBufferToImage");
 			if (CommandCopyBufferToImagePointer != IntPtr.Zero)
 			{
 				CommandCopyBufferToImage_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferToImageDelegate_0>(CommandCopyBufferToImagePointer);
 				CommandCopyBufferToImage_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferToImageDelegate_1>(CommandCopyBufferToImagePointer);
 			}
-			CommandCopyImageToBufferPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyImageToBuffer");
+			CommandCopyImageToBufferPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyImageToBuffer");
 			if (CommandCopyImageToBufferPointer != IntPtr.Zero)
 			{
 				CommandCopyImageToBuffer_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageToBufferDelegate_0>(CommandCopyImageToBufferPointer);
 				CommandCopyImageToBuffer_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageToBufferDelegate_1>(CommandCopyImageToBufferPointer);
 			}
-			CommandUpdateBufferPointer = VulkanLibrary.GetFunctionPointer("vkCmdUpdateBuffer");
+			CommandUpdateBufferPointer = GetInstancePrecedureAddress(instance, "vkCmdUpdateBuffer");
 			if (CommandUpdateBufferPointer != IntPtr.Zero)
 			{
 				CommandUpdateBuffer_0 = Marshal.GetDelegateForFunctionPointer<CommandUpdateBufferDelegate_0>(CommandUpdateBufferPointer);
 			}
-			CommandFillBufferPointer = VulkanLibrary.GetFunctionPointer("vkCmdFillBuffer");
+			CommandFillBufferPointer = GetInstancePrecedureAddress(instance, "vkCmdFillBuffer");
 			if (CommandFillBufferPointer != IntPtr.Zero)
 			{
 				CommandFillBuffer_0 = Marshal.GetDelegateForFunctionPointer<CommandFillBufferDelegate_0>(CommandFillBufferPointer);
 			}
-			CommandClearColorImagePointer = VulkanLibrary.GetFunctionPointer("vkCmdClearColorImage");
+			CommandClearColorImagePointer = GetInstancePrecedureAddress(instance, "vkCmdClearColorImage");
 			if (CommandClearColorImagePointer != IntPtr.Zero)
 			{
 				CommandClearColorImage_0 = Marshal.GetDelegateForFunctionPointer<CommandClearColorImageDelegate_0>(CommandClearColorImagePointer);
@@ -4137,7 +4128,7 @@ namespace Vulkan
 				CommandClearColorImage_2 = Marshal.GetDelegateForFunctionPointer<CommandClearColorImageDelegate_2>(CommandClearColorImagePointer);
 				CommandClearColorImage_3 = Marshal.GetDelegateForFunctionPointer<CommandClearColorImageDelegate_3>(CommandClearColorImagePointer);
 			}
-			CommandClearDepthStencilImagePointer = VulkanLibrary.GetFunctionPointer("vkCmdClearDepthStencilImage");
+			CommandClearDepthStencilImagePointer = GetInstancePrecedureAddress(instance, "vkCmdClearDepthStencilImage");
 			if (CommandClearDepthStencilImagePointer != IntPtr.Zero)
 			{
 				CommandClearDepthStencilImage_0 = Marshal.GetDelegateForFunctionPointer<CommandClearDepthStencilImageDelegate_0>(CommandClearDepthStencilImagePointer);
@@ -4145,7 +4136,7 @@ namespace Vulkan
 				CommandClearDepthStencilImage_2 = Marshal.GetDelegateForFunctionPointer<CommandClearDepthStencilImageDelegate_2>(CommandClearDepthStencilImagePointer);
 				CommandClearDepthStencilImage_3 = Marshal.GetDelegateForFunctionPointer<CommandClearDepthStencilImageDelegate_3>(CommandClearDepthStencilImagePointer);
 			}
-			CommandClearAttachmentsPointer = VulkanLibrary.GetFunctionPointer("vkCmdClearAttachments");
+			CommandClearAttachmentsPointer = GetInstancePrecedureAddress(instance, "vkCmdClearAttachments");
 			if (CommandClearAttachmentsPointer != IntPtr.Zero)
 			{
 				CommandClearAttachments_0 = Marshal.GetDelegateForFunctionPointer<CommandClearAttachmentsDelegate_0>(CommandClearAttachmentsPointer);
@@ -4153,23 +4144,23 @@ namespace Vulkan
 				CommandClearAttachments_2 = Marshal.GetDelegateForFunctionPointer<CommandClearAttachmentsDelegate_2>(CommandClearAttachmentsPointer);
 				CommandClearAttachments_3 = Marshal.GetDelegateForFunctionPointer<CommandClearAttachmentsDelegate_3>(CommandClearAttachmentsPointer);
 			}
-			CommandResolveImagePointer = VulkanLibrary.GetFunctionPointer("vkCmdResolveImage");
+			CommandResolveImagePointer = GetInstancePrecedureAddress(instance, "vkCmdResolveImage");
 			if (CommandResolveImagePointer != IntPtr.Zero)
 			{
 				CommandResolveImage_0 = Marshal.GetDelegateForFunctionPointer<CommandResolveImageDelegate_0>(CommandResolveImagePointer);
 				CommandResolveImage_1 = Marshal.GetDelegateForFunctionPointer<CommandResolveImageDelegate_1>(CommandResolveImagePointer);
 			}
-			CommandSetEventPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetEvent");
+			CommandSetEventPointer = GetInstancePrecedureAddress(instance, "vkCmdSetEvent");
 			if (CommandSetEventPointer != IntPtr.Zero)
 			{
 				CommandSetEvent_0 = Marshal.GetDelegateForFunctionPointer<CommandSetEventDelegate_0>(CommandSetEventPointer);
 			}
-			CommandResetEventPointer = VulkanLibrary.GetFunctionPointer("vkCmdResetEvent");
+			CommandResetEventPointer = GetInstancePrecedureAddress(instance, "vkCmdResetEvent");
 			if (CommandResetEventPointer != IntPtr.Zero)
 			{
 				CommandResetEvent_0 = Marshal.GetDelegateForFunctionPointer<CommandResetEventDelegate_0>(CommandResetEventPointer);
 			}
-			CommandWaitEventsPointer = VulkanLibrary.GetFunctionPointer("vkCmdWaitEvents");
+			CommandWaitEventsPointer = GetInstancePrecedureAddress(instance, "vkCmdWaitEvents");
 			if (CommandWaitEventsPointer != IntPtr.Zero)
 			{
 				CommandWaitEvents_0 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_0>(CommandWaitEventsPointer);
@@ -4189,7 +4180,7 @@ namespace Vulkan
 				CommandWaitEvents_14 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_14>(CommandWaitEventsPointer);
 				CommandWaitEvents_15 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_15>(CommandWaitEventsPointer);
 			}
-			CommandPipelineBarrierPointer = VulkanLibrary.GetFunctionPointer("vkCmdPipelineBarrier");
+			CommandPipelineBarrierPointer = GetInstancePrecedureAddress(instance, "vkCmdPipelineBarrier");
 			if (CommandPipelineBarrierPointer != IntPtr.Zero)
 			{
 				CommandPipelineBarrier_0 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_0>(CommandPipelineBarrierPointer);
@@ -4201,70 +4192,70 @@ namespace Vulkan
 				CommandPipelineBarrier_6 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_6>(CommandPipelineBarrierPointer);
 				CommandPipelineBarrier_7 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_7>(CommandPipelineBarrierPointer);
 			}
-			CommandBeginQueryPointer = VulkanLibrary.GetFunctionPointer("vkCmdBeginQuery");
+			CommandBeginQueryPointer = GetInstancePrecedureAddress(instance, "vkCmdBeginQuery");
 			if (CommandBeginQueryPointer != IntPtr.Zero)
 			{
 				CommandBeginQuery_0 = Marshal.GetDelegateForFunctionPointer<CommandBeginQueryDelegate_0>(CommandBeginQueryPointer);
 			}
-			CommandEndQueryPointer = VulkanLibrary.GetFunctionPointer("vkCmdEndQuery");
+			CommandEndQueryPointer = GetInstancePrecedureAddress(instance, "vkCmdEndQuery");
 			if (CommandEndQueryPointer != IntPtr.Zero)
 			{
 				CommandEndQuery_0 = Marshal.GetDelegateForFunctionPointer<CommandEndQueryDelegate_0>(CommandEndQueryPointer);
 			}
-			CommandBeginConditionalRenderingEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdBeginConditionalRenderingEXT");
+			CommandBeginConditionalRenderingEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdBeginConditionalRenderingEXT");
 			if (CommandBeginConditionalRenderingEXTPointer != IntPtr.Zero)
 			{
 				CommandBeginConditionalRenderingEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandBeginConditionalRenderingEXTDelegate_0>(CommandBeginConditionalRenderingEXTPointer);
 				CommandBeginConditionalRenderingEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandBeginConditionalRenderingEXTDelegate_1>(CommandBeginConditionalRenderingEXTPointer);
 			}
-			CommandEndConditionalRenderingEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdEndConditionalRenderingEXT");
+			CommandEndConditionalRenderingEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdEndConditionalRenderingEXT");
 			if (CommandEndConditionalRenderingEXTPointer != IntPtr.Zero)
 			{
 				CommandEndConditionalRenderingEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandEndConditionalRenderingEXTDelegate_0>(CommandEndConditionalRenderingEXTPointer);
 			}
-			CommandResetQueryPoolPointer = VulkanLibrary.GetFunctionPointer("vkCmdResetQueryPool");
+			CommandResetQueryPoolPointer = GetInstancePrecedureAddress(instance, "vkCmdResetQueryPool");
 			if (CommandResetQueryPoolPointer != IntPtr.Zero)
 			{
 				CommandResetQueryPool_0 = Marshal.GetDelegateForFunctionPointer<CommandResetQueryPoolDelegate_0>(CommandResetQueryPoolPointer);
 			}
-			CommandWriteTimestampPointer = VulkanLibrary.GetFunctionPointer("vkCmdWriteTimestamp");
+			CommandWriteTimestampPointer = GetInstancePrecedureAddress(instance, "vkCmdWriteTimestamp");
 			if (CommandWriteTimestampPointer != IntPtr.Zero)
 			{
 				CommandWriteTimestamp_0 = Marshal.GetDelegateForFunctionPointer<CommandWriteTimestampDelegate_0>(CommandWriteTimestampPointer);
 			}
-			CommandCopyQueryPoolResultsPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyQueryPoolResults");
+			CommandCopyQueryPoolResultsPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyQueryPoolResults");
 			if (CommandCopyQueryPoolResultsPointer != IntPtr.Zero)
 			{
 				CommandCopyQueryPoolResults_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyQueryPoolResultsDelegate_0>(CommandCopyQueryPoolResultsPointer);
 			}
-			CommandPushConstantsPointer = VulkanLibrary.GetFunctionPointer("vkCmdPushConstants");
+			CommandPushConstantsPointer = GetInstancePrecedureAddress(instance, "vkCmdPushConstants");
 			if (CommandPushConstantsPointer != IntPtr.Zero)
 			{
 				CommandPushConstants_0 = Marshal.GetDelegateForFunctionPointer<CommandPushConstantsDelegate_0>(CommandPushConstantsPointer);
 			}
-			CommandBeginRenderPassPointer = VulkanLibrary.GetFunctionPointer("vkCmdBeginRenderPass");
+			CommandBeginRenderPassPointer = GetInstancePrecedureAddress(instance, "vkCmdBeginRenderPass");
 			if (CommandBeginRenderPassPointer != IntPtr.Zero)
 			{
 				CommandBeginRenderPass_0 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderPassDelegate_0>(CommandBeginRenderPassPointer);
 				CommandBeginRenderPass_1 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderPassDelegate_1>(CommandBeginRenderPassPointer);
 			}
-			CommandNextSubpassPointer = VulkanLibrary.GetFunctionPointer("vkCmdNextSubpass");
+			CommandNextSubpassPointer = GetInstancePrecedureAddress(instance, "vkCmdNextSubpass");
 			if (CommandNextSubpassPointer != IntPtr.Zero)
 			{
 				CommandNextSubpass_0 = Marshal.GetDelegateForFunctionPointer<CommandNextSubpassDelegate_0>(CommandNextSubpassPointer);
 			}
-			CommandEndRenderPassPointer = VulkanLibrary.GetFunctionPointer("vkCmdEndRenderPass");
+			CommandEndRenderPassPointer = GetInstancePrecedureAddress(instance, "vkCmdEndRenderPass");
 			if (CommandEndRenderPassPointer != IntPtr.Zero)
 			{
 				CommandEndRenderPass_0 = Marshal.GetDelegateForFunctionPointer<CommandEndRenderPassDelegate_0>(CommandEndRenderPassPointer);
 			}
-			CommandExecuteCommandsPointer = VulkanLibrary.GetFunctionPointer("vkCmdExecuteCommands");
+			CommandExecuteCommandsPointer = GetInstancePrecedureAddress(instance, "vkCmdExecuteCommands");
 			if (CommandExecuteCommandsPointer != IntPtr.Zero)
 			{
 				CommandExecuteCommands_0 = Marshal.GetDelegateForFunctionPointer<CommandExecuteCommandsDelegate_0>(CommandExecuteCommandsPointer);
 				CommandExecuteCommands_1 = Marshal.GetDelegateForFunctionPointer<CommandExecuteCommandsDelegate_1>(CommandExecuteCommandsPointer);
 			}
-			CreateAndroidSurfaceKHRPointer = VulkanLibrary.GetFunctionPointer("vkCreateAndroidSurfaceKHR");
+			CreateAndroidSurfaceKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateAndroidSurfaceKHR");
 			if (CreateAndroidSurfaceKHRPointer != IntPtr.Zero)
 			{
 				CreateAndroidSurfaceKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateAndroidSurfaceKHRDelegate_0>(CreateAndroidSurfaceKHRPointer);
@@ -4276,7 +4267,7 @@ namespace Vulkan
 				CreateAndroidSurfaceKHR_6 = Marshal.GetDelegateForFunctionPointer<CreateAndroidSurfaceKHRDelegate_6>(CreateAndroidSurfaceKHRPointer);
 				CreateAndroidSurfaceKHR_7 = Marshal.GetDelegateForFunctionPointer<CreateAndroidSurfaceKHRDelegate_7>(CreateAndroidSurfaceKHRPointer);
 			}
-			GetPhysicalDeviceDisplayPropertiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceDisplayPropertiesKHR");
+			GetPhysicalDeviceDisplayPropertiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceDisplayPropertiesKHR");
 			if (GetPhysicalDeviceDisplayPropertiesKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceDisplayPropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPropertiesKHRDelegate_0>(GetPhysicalDeviceDisplayPropertiesKHRPointer);
@@ -4284,7 +4275,7 @@ namespace Vulkan
 				GetPhysicalDeviceDisplayPropertiesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPropertiesKHRDelegate_2>(GetPhysicalDeviceDisplayPropertiesKHRPointer);
 				GetPhysicalDeviceDisplayPropertiesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPropertiesKHRDelegate_3>(GetPhysicalDeviceDisplayPropertiesKHRPointer);
 			}
-			GetPhysicalDeviceDisplayPlanePropertiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
+			GetPhysicalDeviceDisplayPlanePropertiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
 			if (GetPhysicalDeviceDisplayPlanePropertiesKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceDisplayPlanePropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_0>(GetPhysicalDeviceDisplayPlanePropertiesKHRPointer);
@@ -4292,7 +4283,7 @@ namespace Vulkan
 				GetPhysicalDeviceDisplayPlanePropertiesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_2>(GetPhysicalDeviceDisplayPlanePropertiesKHRPointer);
 				GetPhysicalDeviceDisplayPlanePropertiesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_3>(GetPhysicalDeviceDisplayPlanePropertiesKHRPointer);
 			}
-			GetDisplayPlaneSupportedDisplaysKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetDisplayPlaneSupportedDisplaysKHR");
+			GetDisplayPlaneSupportedDisplaysKHRPointer = GetInstancePrecedureAddress(instance, "vkGetDisplayPlaneSupportedDisplaysKHR");
 			if (GetDisplayPlaneSupportedDisplaysKHRPointer != IntPtr.Zero)
 			{
 				GetDisplayPlaneSupportedDisplaysKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneSupportedDisplaysKHRDelegate_0>(GetDisplayPlaneSupportedDisplaysKHRPointer);
@@ -4300,7 +4291,7 @@ namespace Vulkan
 				GetDisplayPlaneSupportedDisplaysKHR_2 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneSupportedDisplaysKHRDelegate_2>(GetDisplayPlaneSupportedDisplaysKHRPointer);
 				GetDisplayPlaneSupportedDisplaysKHR_3 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneSupportedDisplaysKHRDelegate_3>(GetDisplayPlaneSupportedDisplaysKHRPointer);
 			}
-			GetDisplayModePropertiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetDisplayModePropertiesKHR");
+			GetDisplayModePropertiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetDisplayModePropertiesKHR");
 			if (GetDisplayModePropertiesKHRPointer != IntPtr.Zero)
 			{
 				GetDisplayModePropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDisplayModePropertiesKHRDelegate_0>(GetDisplayModePropertiesKHRPointer);
@@ -4308,7 +4299,7 @@ namespace Vulkan
 				GetDisplayModePropertiesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetDisplayModePropertiesKHRDelegate_2>(GetDisplayModePropertiesKHRPointer);
 				GetDisplayModePropertiesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetDisplayModePropertiesKHRDelegate_3>(GetDisplayModePropertiesKHRPointer);
 			}
-			CreateDisplayModeKHRPointer = VulkanLibrary.GetFunctionPointer("vkCreateDisplayModeKHR");
+			CreateDisplayModeKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateDisplayModeKHR");
 			if (CreateDisplayModeKHRPointer != IntPtr.Zero)
 			{
 				CreateDisplayModeKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateDisplayModeKHRDelegate_0>(CreateDisplayModeKHRPointer);
@@ -4320,13 +4311,13 @@ namespace Vulkan
 				CreateDisplayModeKHR_6 = Marshal.GetDelegateForFunctionPointer<CreateDisplayModeKHRDelegate_6>(CreateDisplayModeKHRPointer);
 				CreateDisplayModeKHR_7 = Marshal.GetDelegateForFunctionPointer<CreateDisplayModeKHRDelegate_7>(CreateDisplayModeKHRPointer);
 			}
-			GetDisplayPlaneCapabilitiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetDisplayPlaneCapabilitiesKHR");
+			GetDisplayPlaneCapabilitiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetDisplayPlaneCapabilitiesKHR");
 			if (GetDisplayPlaneCapabilitiesKHRPointer != IntPtr.Zero)
 			{
 				GetDisplayPlaneCapabilitiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneCapabilitiesKHRDelegate_0>(GetDisplayPlaneCapabilitiesKHRPointer);
 				GetDisplayPlaneCapabilitiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneCapabilitiesKHRDelegate_1>(GetDisplayPlaneCapabilitiesKHRPointer);
 			}
-			CreateDisplayPlaneSurfaceKHRPointer = VulkanLibrary.GetFunctionPointer("vkCreateDisplayPlaneSurfaceKHR");
+			CreateDisplayPlaneSurfaceKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateDisplayPlaneSurfaceKHR");
 			if (CreateDisplayPlaneSurfaceKHRPointer != IntPtr.Zero)
 			{
 				CreateDisplayPlaneSurfaceKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateDisplayPlaneSurfaceKHRDelegate_0>(CreateDisplayPlaneSurfaceKHRPointer);
@@ -4338,7 +4329,7 @@ namespace Vulkan
 				CreateDisplayPlaneSurfaceKHR_6 = Marshal.GetDelegateForFunctionPointer<CreateDisplayPlaneSurfaceKHRDelegate_6>(CreateDisplayPlaneSurfaceKHRPointer);
 				CreateDisplayPlaneSurfaceKHR_7 = Marshal.GetDelegateForFunctionPointer<CreateDisplayPlaneSurfaceKHRDelegate_7>(CreateDisplayPlaneSurfaceKHRPointer);
 			}
-			CreateSharedSwapchainsKHRPointer = VulkanLibrary.GetFunctionPointer("vkCreateSharedSwapchainsKHR");
+			CreateSharedSwapchainsKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateSharedSwapchainsKHR");
 			if (CreateSharedSwapchainsKHRPointer != IntPtr.Zero)
 			{
 				CreateSharedSwapchainsKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateSharedSwapchainsKHRDelegate_0>(CreateSharedSwapchainsKHRPointer);
@@ -4346,25 +4337,25 @@ namespace Vulkan
 				CreateSharedSwapchainsKHR_2 = Marshal.GetDelegateForFunctionPointer<CreateSharedSwapchainsKHRDelegate_2>(CreateSharedSwapchainsKHRPointer);
 				CreateSharedSwapchainsKHR_3 = Marshal.GetDelegateForFunctionPointer<CreateSharedSwapchainsKHRDelegate_3>(CreateSharedSwapchainsKHRPointer);
 			}
-			DestroySurfaceKHRPointer = VulkanLibrary.GetFunctionPointer("vkDestroySurfaceKHR");
+			DestroySurfaceKHRPointer = GetInstancePrecedureAddress(instance, "vkDestroySurfaceKHR");
 			if (DestroySurfaceKHRPointer != IntPtr.Zero)
 			{
 				DestroySurfaceKHR_0 = Marshal.GetDelegateForFunctionPointer<DestroySurfaceKHRDelegate_0>(DestroySurfaceKHRPointer);
 				DestroySurfaceKHR_1 = Marshal.GetDelegateForFunctionPointer<DestroySurfaceKHRDelegate_1>(DestroySurfaceKHRPointer);
 			}
-			GetPhysicalDeviceSurfaceSupportKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSurfaceSupportKHR");
+			GetPhysicalDeviceSurfaceSupportKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSurfaceSupportKHR");
 			if (GetPhysicalDeviceSurfaceSupportKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSurfaceSupportKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceSupportKHRDelegate_0>(GetPhysicalDeviceSurfaceSupportKHRPointer);
 				GetPhysicalDeviceSurfaceSupportKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceSupportKHRDelegate_1>(GetPhysicalDeviceSurfaceSupportKHRPointer);
 			}
-			GetPhysicalDeviceSurfaceCapabilitiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
+			GetPhysicalDeviceSurfaceCapabilitiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
 			if (GetPhysicalDeviceSurfaceCapabilitiesKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSurfaceCapabilitiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceCapabilitiesKHRDelegate_0>(GetPhysicalDeviceSurfaceCapabilitiesKHRPointer);
 				GetPhysicalDeviceSurfaceCapabilitiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceCapabilitiesKHRDelegate_1>(GetPhysicalDeviceSurfaceCapabilitiesKHRPointer);
 			}
-			GetPhysicalDeviceSurfaceFormatsKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSurfaceFormatsKHR");
+			GetPhysicalDeviceSurfaceFormatsKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSurfaceFormatsKHR");
 			if (GetPhysicalDeviceSurfaceFormatsKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSurfaceFormatsKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormatsKHRDelegate_0>(GetPhysicalDeviceSurfaceFormatsKHRPointer);
@@ -4372,7 +4363,7 @@ namespace Vulkan
 				GetPhysicalDeviceSurfaceFormatsKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormatsKHRDelegate_2>(GetPhysicalDeviceSurfaceFormatsKHRPointer);
 				GetPhysicalDeviceSurfaceFormatsKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormatsKHRDelegate_3>(GetPhysicalDeviceSurfaceFormatsKHRPointer);
 			}
-			GetPhysicalDeviceSurfacePresentModesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSurfacePresentModesKHR");
+			GetPhysicalDeviceSurfacePresentModesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSurfacePresentModesKHR");
 			if (GetPhysicalDeviceSurfacePresentModesKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSurfacePresentModesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModesKHRDelegate_0>(GetPhysicalDeviceSurfacePresentModesKHRPointer);
@@ -4380,7 +4371,7 @@ namespace Vulkan
 				GetPhysicalDeviceSurfacePresentModesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModesKHRDelegate_2>(GetPhysicalDeviceSurfacePresentModesKHRPointer);
 				GetPhysicalDeviceSurfacePresentModesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModesKHRDelegate_3>(GetPhysicalDeviceSurfacePresentModesKHRPointer);
 			}
-			CreateSwapchainKHRPointer = VulkanLibrary.GetFunctionPointer("vkCreateSwapchainKHR");
+			CreateSwapchainKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateSwapchainKHR");
 			if (CreateSwapchainKHRPointer != IntPtr.Zero)
 			{
 				CreateSwapchainKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateSwapchainKHRDelegate_0>(CreateSwapchainKHRPointer);
@@ -4392,13 +4383,13 @@ namespace Vulkan
 				CreateSwapchainKHR_6 = Marshal.GetDelegateForFunctionPointer<CreateSwapchainKHRDelegate_6>(CreateSwapchainKHRPointer);
 				CreateSwapchainKHR_7 = Marshal.GetDelegateForFunctionPointer<CreateSwapchainKHRDelegate_7>(CreateSwapchainKHRPointer);
 			}
-			DestroySwapchainKHRPointer = VulkanLibrary.GetFunctionPointer("vkDestroySwapchainKHR");
+			DestroySwapchainKHRPointer = GetInstancePrecedureAddress(instance, "vkDestroySwapchainKHR");
 			if (DestroySwapchainKHRPointer != IntPtr.Zero)
 			{
 				DestroySwapchainKHR_0 = Marshal.GetDelegateForFunctionPointer<DestroySwapchainKHRDelegate_0>(DestroySwapchainKHRPointer);
 				DestroySwapchainKHR_1 = Marshal.GetDelegateForFunctionPointer<DestroySwapchainKHRDelegate_1>(DestroySwapchainKHRPointer);
 			}
-			GetSwapchainImagesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetSwapchainImagesKHR");
+			GetSwapchainImagesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetSwapchainImagesKHR");
 			if (GetSwapchainImagesKHRPointer != IntPtr.Zero)
 			{
 				GetSwapchainImagesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetSwapchainImagesKHRDelegate_0>(GetSwapchainImagesKHRPointer);
@@ -4406,19 +4397,19 @@ namespace Vulkan
 				GetSwapchainImagesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetSwapchainImagesKHRDelegate_2>(GetSwapchainImagesKHRPointer);
 				GetSwapchainImagesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetSwapchainImagesKHRDelegate_3>(GetSwapchainImagesKHRPointer);
 			}
-			AcquireNextImageKHRPointer = VulkanLibrary.GetFunctionPointer("vkAcquireNextImageKHR");
+			AcquireNextImageKHRPointer = GetInstancePrecedureAddress(instance, "vkAcquireNextImageKHR");
 			if (AcquireNextImageKHRPointer != IntPtr.Zero)
 			{
 				AcquireNextImageKHR_0 = Marshal.GetDelegateForFunctionPointer<AcquireNextImageKHRDelegate_0>(AcquireNextImageKHRPointer);
 				AcquireNextImageKHR_1 = Marshal.GetDelegateForFunctionPointer<AcquireNextImageKHRDelegate_1>(AcquireNextImageKHRPointer);
 			}
-			QueuePresentKHRPointer = VulkanLibrary.GetFunctionPointer("vkQueuePresentKHR");
+			QueuePresentKHRPointer = GetInstancePrecedureAddress(instance, "vkQueuePresentKHR");
 			if (QueuePresentKHRPointer != IntPtr.Zero)
 			{
 				QueuePresentKHR_0 = Marshal.GetDelegateForFunctionPointer<QueuePresentKHRDelegate_0>(QueuePresentKHRPointer);
 				QueuePresentKHR_1 = Marshal.GetDelegateForFunctionPointer<QueuePresentKHRDelegate_1>(QueuePresentKHRPointer);
 			}
-			CreateWin32SurfaceKHRPointer = VulkanLibrary.GetFunctionPointer("vkCreateWin32SurfaceKHR");
+			CreateWin32SurfaceKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateWin32SurfaceKHR");
 			if (CreateWin32SurfaceKHRPointer != IntPtr.Zero)
 			{
 				CreateWin32SurfaceKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateWin32SurfaceKHRDelegate_0>(CreateWin32SurfaceKHRPointer);
@@ -4430,12 +4421,12 @@ namespace Vulkan
 				CreateWin32SurfaceKHR_6 = Marshal.GetDelegateForFunctionPointer<CreateWin32SurfaceKHRDelegate_6>(CreateWin32SurfaceKHRPointer);
 				CreateWin32SurfaceKHR_7 = Marshal.GetDelegateForFunctionPointer<CreateWin32SurfaceKHRDelegate_7>(CreateWin32SurfaceKHRPointer);
 			}
-			GetPhysicalDeviceWin32PresentationSupportKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceWin32PresentationSupportKHR");
+			GetPhysicalDeviceWin32PresentationSupportKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceWin32PresentationSupportKHR");
 			if (GetPhysicalDeviceWin32PresentationSupportKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceWin32PresentationSupportKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceWin32PresentationSupportKHRDelegate_0>(GetPhysicalDeviceWin32PresentationSupportKHRPointer);
 			}
-			CreateXlibSurfaceKHRPointer = VulkanLibrary.GetFunctionPointer("vkCreateXlibSurfaceKHR");
+			CreateXlibSurfaceKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateXlibSurfaceKHR");
 			if (CreateXlibSurfaceKHRPointer != IntPtr.Zero)
 			{
 				CreateXlibSurfaceKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateXlibSurfaceKHRDelegate_0>(CreateXlibSurfaceKHRPointer);
@@ -4447,13 +4438,13 @@ namespace Vulkan
 				CreateXlibSurfaceKHR_6 = Marshal.GetDelegateForFunctionPointer<CreateXlibSurfaceKHRDelegate_6>(CreateXlibSurfaceKHRPointer);
 				CreateXlibSurfaceKHR_7 = Marshal.GetDelegateForFunctionPointer<CreateXlibSurfaceKHRDelegate_7>(CreateXlibSurfaceKHRPointer);
 			}
-			GetPhysicalDeviceXlibPresentationSupportKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceXlibPresentationSupportKHR");
+			GetPhysicalDeviceXlibPresentationSupportKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceXlibPresentationSupportKHR");
 			if (GetPhysicalDeviceXlibPresentationSupportKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceXlibPresentationSupportKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceXlibPresentationSupportKHRDelegate_0>(GetPhysicalDeviceXlibPresentationSupportKHRPointer);
 				GetPhysicalDeviceXlibPresentationSupportKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceXlibPresentationSupportKHRDelegate_1>(GetPhysicalDeviceXlibPresentationSupportKHRPointer);
 			}
-			CreateDebugReportCallbackEXTPointer = VulkanLibrary.GetFunctionPointer("vkCreateDebugReportCallbackEXT");
+			CreateDebugReportCallbackEXTPointer = GetInstancePrecedureAddress(instance, "vkCreateDebugReportCallbackEXT");
 			if (CreateDebugReportCallbackEXTPointer != IntPtr.Zero)
 			{
 				CreateDebugReportCallbackEXT_0 = Marshal.GetDelegateForFunctionPointer<CreateDebugReportCallbackEXTDelegate_0>(CreateDebugReportCallbackEXTPointer);
@@ -4465,13 +4456,13 @@ namespace Vulkan
 				CreateDebugReportCallbackEXT_6 = Marshal.GetDelegateForFunctionPointer<CreateDebugReportCallbackEXTDelegate_6>(CreateDebugReportCallbackEXTPointer);
 				CreateDebugReportCallbackEXT_7 = Marshal.GetDelegateForFunctionPointer<CreateDebugReportCallbackEXTDelegate_7>(CreateDebugReportCallbackEXTPointer);
 			}
-			DestroyDebugReportCallbackEXTPointer = VulkanLibrary.GetFunctionPointer("vkDestroyDebugReportCallbackEXT");
+			DestroyDebugReportCallbackEXTPointer = GetInstancePrecedureAddress(instance, "vkDestroyDebugReportCallbackEXT");
 			if (DestroyDebugReportCallbackEXTPointer != IntPtr.Zero)
 			{
 				DestroyDebugReportCallbackEXT_0 = Marshal.GetDelegateForFunctionPointer<DestroyDebugReportCallbackEXTDelegate_0>(DestroyDebugReportCallbackEXTPointer);
 				DestroyDebugReportCallbackEXT_1 = Marshal.GetDelegateForFunctionPointer<DestroyDebugReportCallbackEXTDelegate_1>(DestroyDebugReportCallbackEXTPointer);
 			}
-			DebugReportMessageEXTPointer = VulkanLibrary.GetFunctionPointer("vkDebugReportMessageEXT");
+			DebugReportMessageEXTPointer = GetInstancePrecedureAddress(instance, "vkDebugReportMessageEXT");
 			if (DebugReportMessageEXTPointer != IntPtr.Zero)
 			{
 				DebugReportMessageEXT_0 = Marshal.GetDelegateForFunctionPointer<DebugReportMessageEXTDelegate_0>(DebugReportMessageEXTPointer);
@@ -4479,65 +4470,65 @@ namespace Vulkan
 				DebugReportMessageEXT_2 = Marshal.GetDelegateForFunctionPointer<DebugReportMessageEXTDelegate_2>(DebugReportMessageEXTPointer);
 				DebugReportMessageEXT_3 = Marshal.GetDelegateForFunctionPointer<DebugReportMessageEXTDelegate_3>(DebugReportMessageEXTPointer);
 			}
-			DebugMarkerSetObjectNameEXTPointer = VulkanLibrary.GetFunctionPointer("vkDebugMarkerSetObjectNameEXT");
+			DebugMarkerSetObjectNameEXTPointer = GetInstancePrecedureAddress(instance, "vkDebugMarkerSetObjectNameEXT");
 			if (DebugMarkerSetObjectNameEXTPointer != IntPtr.Zero)
 			{
 				DebugMarkerSetObjectNameEXT_0 = Marshal.GetDelegateForFunctionPointer<DebugMarkerSetObjectNameEXTDelegate_0>(DebugMarkerSetObjectNameEXTPointer);
 				DebugMarkerSetObjectNameEXT_1 = Marshal.GetDelegateForFunctionPointer<DebugMarkerSetObjectNameEXTDelegate_1>(DebugMarkerSetObjectNameEXTPointer);
 			}
-			DebugMarkerSetObjectTagEXTPointer = VulkanLibrary.GetFunctionPointer("vkDebugMarkerSetObjectTagEXT");
+			DebugMarkerSetObjectTagEXTPointer = GetInstancePrecedureAddress(instance, "vkDebugMarkerSetObjectTagEXT");
 			if (DebugMarkerSetObjectTagEXTPointer != IntPtr.Zero)
 			{
 				DebugMarkerSetObjectTagEXT_0 = Marshal.GetDelegateForFunctionPointer<DebugMarkerSetObjectTagEXTDelegate_0>(DebugMarkerSetObjectTagEXTPointer);
 				DebugMarkerSetObjectTagEXT_1 = Marshal.GetDelegateForFunctionPointer<DebugMarkerSetObjectTagEXTDelegate_1>(DebugMarkerSetObjectTagEXTPointer);
 			}
-			CommandDebugMarkerBeginEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdDebugMarkerBeginEXT");
+			CommandDebugMarkerBeginEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdDebugMarkerBeginEXT");
 			if (CommandDebugMarkerBeginEXTPointer != IntPtr.Zero)
 			{
 				CommandDebugMarkerBeginEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandDebugMarkerBeginEXTDelegate_0>(CommandDebugMarkerBeginEXTPointer);
 				CommandDebugMarkerBeginEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandDebugMarkerBeginEXTDelegate_1>(CommandDebugMarkerBeginEXTPointer);
 			}
-			CommandDebugMarkerEndEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdDebugMarkerEndEXT");
+			CommandDebugMarkerEndEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdDebugMarkerEndEXT");
 			if (CommandDebugMarkerEndEXTPointer != IntPtr.Zero)
 			{
 				CommandDebugMarkerEndEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandDebugMarkerEndEXTDelegate_0>(CommandDebugMarkerEndEXTPointer);
 			}
-			CommandDebugMarkerInsertEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdDebugMarkerInsertEXT");
+			CommandDebugMarkerInsertEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdDebugMarkerInsertEXT");
 			if (CommandDebugMarkerInsertEXTPointer != IntPtr.Zero)
 			{
 				CommandDebugMarkerInsertEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandDebugMarkerInsertEXTDelegate_0>(CommandDebugMarkerInsertEXTPointer);
 				CommandDebugMarkerInsertEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandDebugMarkerInsertEXTDelegate_1>(CommandDebugMarkerInsertEXTPointer);
 			}
-			GetPhysicalDeviceExternalImageFormatPropertiesNVPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceExternalImageFormatPropertiesNV");
+			GetPhysicalDeviceExternalImageFormatPropertiesNVPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceExternalImageFormatPropertiesNV");
 			if (GetPhysicalDeviceExternalImageFormatPropertiesNVPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceExternalImageFormatPropertiesNV_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalImageFormatPropertiesNVDelegate_0>(GetPhysicalDeviceExternalImageFormatPropertiesNVPointer);
 				GetPhysicalDeviceExternalImageFormatPropertiesNV_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalImageFormatPropertiesNVDelegate_1>(GetPhysicalDeviceExternalImageFormatPropertiesNVPointer);
 			}
-			GetMemoryWin32HandleNVPointer = VulkanLibrary.GetFunctionPointer("vkGetMemoryWin32HandleNV");
+			GetMemoryWin32HandleNVPointer = GetInstancePrecedureAddress(instance, "vkGetMemoryWin32HandleNV");
 			if (GetMemoryWin32HandleNVPointer != IntPtr.Zero)
 			{
 				GetMemoryWin32HandleNV_0 = Marshal.GetDelegateForFunctionPointer<GetMemoryWin32HandleNVDelegate_0>(GetMemoryWin32HandleNVPointer);
 				GetMemoryWin32HandleNV_1 = Marshal.GetDelegateForFunctionPointer<GetMemoryWin32HandleNVDelegate_1>(GetMemoryWin32HandleNVPointer);
 			}
-			CommandExecuteGeneratedCommandsNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdExecuteGeneratedCommandsNV");
+			CommandExecuteGeneratedCommandsNVPointer = GetInstancePrecedureAddress(instance, "vkCmdExecuteGeneratedCommandsNV");
 			if (CommandExecuteGeneratedCommandsNVPointer != IntPtr.Zero)
 			{
 				CommandExecuteGeneratedCommandsNV_0 = Marshal.GetDelegateForFunctionPointer<CommandExecuteGeneratedCommandsNVDelegate_0>(CommandExecuteGeneratedCommandsNVPointer);
 				CommandExecuteGeneratedCommandsNV_1 = Marshal.GetDelegateForFunctionPointer<CommandExecuteGeneratedCommandsNVDelegate_1>(CommandExecuteGeneratedCommandsNVPointer);
 			}
-			CommandPreprocessGeneratedCommandsNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdPreprocessGeneratedCommandsNV");
+			CommandPreprocessGeneratedCommandsNVPointer = GetInstancePrecedureAddress(instance, "vkCmdPreprocessGeneratedCommandsNV");
 			if (CommandPreprocessGeneratedCommandsNVPointer != IntPtr.Zero)
 			{
 				CommandPreprocessGeneratedCommandsNV_0 = Marshal.GetDelegateForFunctionPointer<CommandPreprocessGeneratedCommandsNVDelegate_0>(CommandPreprocessGeneratedCommandsNVPointer);
 				CommandPreprocessGeneratedCommandsNV_1 = Marshal.GetDelegateForFunctionPointer<CommandPreprocessGeneratedCommandsNVDelegate_1>(CommandPreprocessGeneratedCommandsNVPointer);
 			}
-			CommandBindPipelineShaderGroupNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdBindPipelineShaderGroupNV");
+			CommandBindPipelineShaderGroupNVPointer = GetInstancePrecedureAddress(instance, "vkCmdBindPipelineShaderGroupNV");
 			if (CommandBindPipelineShaderGroupNVPointer != IntPtr.Zero)
 			{
 				CommandBindPipelineShaderGroupNV_0 = Marshal.GetDelegateForFunctionPointer<CommandBindPipelineShaderGroupNVDelegate_0>(CommandBindPipelineShaderGroupNVPointer);
 			}
-			GetGeneratedCommandsMemoryRequirementsNVPointer = VulkanLibrary.GetFunctionPointer("vkGetGeneratedCommandsMemoryRequirementsNV");
+			GetGeneratedCommandsMemoryRequirementsNVPointer = GetInstancePrecedureAddress(instance, "vkGetGeneratedCommandsMemoryRequirementsNV");
 			if (GetGeneratedCommandsMemoryRequirementsNVPointer != IntPtr.Zero)
 			{
 				GetGeneratedCommandsMemoryRequirementsNV_0 = Marshal.GetDelegateForFunctionPointer<GetGeneratedCommandsMemoryRequirementsNVDelegate_0>(GetGeneratedCommandsMemoryRequirementsNVPointer);
@@ -4545,7 +4536,7 @@ namespace Vulkan
 				GetGeneratedCommandsMemoryRequirementsNV_2 = Marshal.GetDelegateForFunctionPointer<GetGeneratedCommandsMemoryRequirementsNVDelegate_2>(GetGeneratedCommandsMemoryRequirementsNVPointer);
 				GetGeneratedCommandsMemoryRequirementsNV_3 = Marshal.GetDelegateForFunctionPointer<GetGeneratedCommandsMemoryRequirementsNVDelegate_3>(GetGeneratedCommandsMemoryRequirementsNVPointer);
 			}
-			CreateIndirectCommandsLayoutNVPointer = VulkanLibrary.GetFunctionPointer("vkCreateIndirectCommandsLayoutNV");
+			CreateIndirectCommandsLayoutNVPointer = GetInstancePrecedureAddress(instance, "vkCreateIndirectCommandsLayoutNV");
 			if (CreateIndirectCommandsLayoutNVPointer != IntPtr.Zero)
 			{
 				CreateIndirectCommandsLayoutNV_0 = Marshal.GetDelegateForFunctionPointer<CreateIndirectCommandsLayoutNVDelegate_0>(CreateIndirectCommandsLayoutNVPointer);
@@ -4557,31 +4548,31 @@ namespace Vulkan
 				CreateIndirectCommandsLayoutNV_6 = Marshal.GetDelegateForFunctionPointer<CreateIndirectCommandsLayoutNVDelegate_6>(CreateIndirectCommandsLayoutNVPointer);
 				CreateIndirectCommandsLayoutNV_7 = Marshal.GetDelegateForFunctionPointer<CreateIndirectCommandsLayoutNVDelegate_7>(CreateIndirectCommandsLayoutNVPointer);
 			}
-			DestroyIndirectCommandsLayoutNVPointer = VulkanLibrary.GetFunctionPointer("vkDestroyIndirectCommandsLayoutNV");
+			DestroyIndirectCommandsLayoutNVPointer = GetInstancePrecedureAddress(instance, "vkDestroyIndirectCommandsLayoutNV");
 			if (DestroyIndirectCommandsLayoutNVPointer != IntPtr.Zero)
 			{
 				DestroyIndirectCommandsLayoutNV_0 = Marshal.GetDelegateForFunctionPointer<DestroyIndirectCommandsLayoutNVDelegate_0>(DestroyIndirectCommandsLayoutNVPointer);
 				DestroyIndirectCommandsLayoutNV_1 = Marshal.GetDelegateForFunctionPointer<DestroyIndirectCommandsLayoutNVDelegate_1>(DestroyIndirectCommandsLayoutNVPointer);
 			}
-			GetPhysicalDeviceFeatures2Pointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceFeatures2");
+			GetPhysicalDeviceFeatures2Pointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceFeatures2");
 			if (GetPhysicalDeviceFeatures2Pointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceFeatures2_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFeatures2Delegate_0>(GetPhysicalDeviceFeatures2Pointer);
 				GetPhysicalDeviceFeatures2_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFeatures2Delegate_1>(GetPhysicalDeviceFeatures2Pointer);
 			}
-			GetPhysicalDeviceProperties2Pointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceProperties2");
+			GetPhysicalDeviceProperties2Pointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceProperties2");
 			if (GetPhysicalDeviceProperties2Pointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceProperties2_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceProperties2Delegate_0>(GetPhysicalDeviceProperties2Pointer);
 				GetPhysicalDeviceProperties2_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceProperties2Delegate_1>(GetPhysicalDeviceProperties2Pointer);
 			}
-			GetPhysicalDeviceFormatProperties2Pointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceFormatProperties2");
+			GetPhysicalDeviceFormatProperties2Pointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceFormatProperties2");
 			if (GetPhysicalDeviceFormatProperties2Pointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceFormatProperties2_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFormatProperties2Delegate_0>(GetPhysicalDeviceFormatProperties2Pointer);
 				GetPhysicalDeviceFormatProperties2_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFormatProperties2Delegate_1>(GetPhysicalDeviceFormatProperties2Pointer);
 			}
-			GetPhysicalDeviceImageFormatProperties2Pointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceImageFormatProperties2");
+			GetPhysicalDeviceImageFormatProperties2Pointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceImageFormatProperties2");
 			if (GetPhysicalDeviceImageFormatProperties2Pointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceImageFormatProperties2_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceImageFormatProperties2Delegate_0>(GetPhysicalDeviceImageFormatProperties2Pointer);
@@ -4589,7 +4580,7 @@ namespace Vulkan
 				GetPhysicalDeviceImageFormatProperties2_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceImageFormatProperties2Delegate_2>(GetPhysicalDeviceImageFormatProperties2Pointer);
 				GetPhysicalDeviceImageFormatProperties2_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceImageFormatProperties2Delegate_3>(GetPhysicalDeviceImageFormatProperties2Pointer);
 			}
-			GetPhysicalDeviceQueueFamilyProperties2Pointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceQueueFamilyProperties2");
+			GetPhysicalDeviceQueueFamilyProperties2Pointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceQueueFamilyProperties2");
 			if (GetPhysicalDeviceQueueFamilyProperties2Pointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceQueueFamilyProperties2_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyProperties2Delegate_0>(GetPhysicalDeviceQueueFamilyProperties2Pointer);
@@ -4597,13 +4588,13 @@ namespace Vulkan
 				GetPhysicalDeviceQueueFamilyProperties2_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyProperties2Delegate_2>(GetPhysicalDeviceQueueFamilyProperties2Pointer);
 				GetPhysicalDeviceQueueFamilyProperties2_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyProperties2Delegate_3>(GetPhysicalDeviceQueueFamilyProperties2Pointer);
 			}
-			GetPhysicalDeviceMemoryProperties2Pointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceMemoryProperties2");
+			GetPhysicalDeviceMemoryProperties2Pointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceMemoryProperties2");
 			if (GetPhysicalDeviceMemoryProperties2Pointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceMemoryProperties2_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceMemoryProperties2Delegate_0>(GetPhysicalDeviceMemoryProperties2Pointer);
 				GetPhysicalDeviceMemoryProperties2_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceMemoryProperties2Delegate_1>(GetPhysicalDeviceMemoryProperties2Pointer);
 			}
-			GetPhysicalDeviceSparseImageFormatProperties2Pointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSparseImageFormatProperties2");
+			GetPhysicalDeviceSparseImageFormatProperties2Pointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSparseImageFormatProperties2");
 			if (GetPhysicalDeviceSparseImageFormatProperties2Pointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSparseImageFormatProperties2_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2Delegate_0>(GetPhysicalDeviceSparseImageFormatProperties2Pointer);
@@ -4615,18 +4606,18 @@ namespace Vulkan
 				GetPhysicalDeviceSparseImageFormatProperties2_6 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2Delegate_6>(GetPhysicalDeviceSparseImageFormatProperties2Pointer);
 				GetPhysicalDeviceSparseImageFormatProperties2_7 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2Delegate_7>(GetPhysicalDeviceSparseImageFormatProperties2Pointer);
 			}
-			CommandPushDescriptorSetKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdPushDescriptorSetKHR");
+			CommandPushDescriptorSetKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdPushDescriptorSetKHR");
 			if (CommandPushDescriptorSetKHRPointer != IntPtr.Zero)
 			{
 				CommandPushDescriptorSetKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandPushDescriptorSetKHRDelegate_0>(CommandPushDescriptorSetKHRPointer);
 				CommandPushDescriptorSetKHR_1 = Marshal.GetDelegateForFunctionPointer<CommandPushDescriptorSetKHRDelegate_1>(CommandPushDescriptorSetKHRPointer);
 			}
-			TrimCommandPoolPointer = VulkanLibrary.GetFunctionPointer("vkTrimCommandPool");
+			TrimCommandPoolPointer = GetInstancePrecedureAddress(instance, "vkTrimCommandPool");
 			if (TrimCommandPoolPointer != IntPtr.Zero)
 			{
 				TrimCommandPool_0 = Marshal.GetDelegateForFunctionPointer<TrimCommandPoolDelegate_0>(TrimCommandPoolPointer);
 			}
-			GetPhysicalDeviceExternalBufferPropertiesPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceExternalBufferProperties");
+			GetPhysicalDeviceExternalBufferPropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceExternalBufferProperties");
 			if (GetPhysicalDeviceExternalBufferPropertiesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceExternalBufferProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalBufferPropertiesDelegate_0>(GetPhysicalDeviceExternalBufferPropertiesPointer);
@@ -4634,7 +4625,7 @@ namespace Vulkan
 				GetPhysicalDeviceExternalBufferProperties_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalBufferPropertiesDelegate_2>(GetPhysicalDeviceExternalBufferPropertiesPointer);
 				GetPhysicalDeviceExternalBufferProperties_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalBufferPropertiesDelegate_3>(GetPhysicalDeviceExternalBufferPropertiesPointer);
 			}
-			GetMemoryWin32HandleKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetMemoryWin32HandleKHR");
+			GetMemoryWin32HandleKHRPointer = GetInstancePrecedureAddress(instance, "vkGetMemoryWin32HandleKHR");
 			if (GetMemoryWin32HandleKHRPointer != IntPtr.Zero)
 			{
 				GetMemoryWin32HandleKHR_0 = Marshal.GetDelegateForFunctionPointer<GetMemoryWin32HandleKHRDelegate_0>(GetMemoryWin32HandleKHRPointer);
@@ -4642,13 +4633,13 @@ namespace Vulkan
 				GetMemoryWin32HandleKHR_2 = Marshal.GetDelegateForFunctionPointer<GetMemoryWin32HandleKHRDelegate_2>(GetMemoryWin32HandleKHRPointer);
 				GetMemoryWin32HandleKHR_3 = Marshal.GetDelegateForFunctionPointer<GetMemoryWin32HandleKHRDelegate_3>(GetMemoryWin32HandleKHRPointer);
 			}
-			GetMemoryWin32HandlePropertiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetMemoryWin32HandlePropertiesKHR");
+			GetMemoryWin32HandlePropertiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetMemoryWin32HandlePropertiesKHR");
 			if (GetMemoryWin32HandlePropertiesKHRPointer != IntPtr.Zero)
 			{
 				GetMemoryWin32HandlePropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetMemoryWin32HandlePropertiesKHRDelegate_0>(GetMemoryWin32HandlePropertiesKHRPointer);
 				GetMemoryWin32HandlePropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetMemoryWin32HandlePropertiesKHRDelegate_1>(GetMemoryWin32HandlePropertiesKHRPointer);
 			}
-			GetMemoryFileDescriptorKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetMemoryFdKHR");
+			GetMemoryFileDescriptorKHRPointer = GetInstancePrecedureAddress(instance, "vkGetMemoryFdKHR");
 			if (GetMemoryFileDescriptorKHRPointer != IntPtr.Zero)
 			{
 				GetMemoryFileDescriptorKHR_0 = Marshal.GetDelegateForFunctionPointer<GetMemoryFileDescriptorKHRDelegate_0>(GetMemoryFileDescriptorKHRPointer);
@@ -4656,13 +4647,13 @@ namespace Vulkan
 				GetMemoryFileDescriptorKHR_2 = Marshal.GetDelegateForFunctionPointer<GetMemoryFileDescriptorKHRDelegate_2>(GetMemoryFileDescriptorKHRPointer);
 				GetMemoryFileDescriptorKHR_3 = Marshal.GetDelegateForFunctionPointer<GetMemoryFileDescriptorKHRDelegate_3>(GetMemoryFileDescriptorKHRPointer);
 			}
-			GetMemoryFileDescriptorPropertiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetMemoryFdPropertiesKHR");
+			GetMemoryFileDescriptorPropertiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetMemoryFdPropertiesKHR");
 			if (GetMemoryFileDescriptorPropertiesKHRPointer != IntPtr.Zero)
 			{
 				GetMemoryFileDescriptorPropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetMemoryFileDescriptorPropertiesKHRDelegate_0>(GetMemoryFileDescriptorPropertiesKHRPointer);
 				GetMemoryFileDescriptorPropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetMemoryFileDescriptorPropertiesKHRDelegate_1>(GetMemoryFileDescriptorPropertiesKHRPointer);
 			}
-			GetPhysicalDeviceExternalSemaphorePropertiesPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceExternalSemaphoreProperties");
+			GetPhysicalDeviceExternalSemaphorePropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceExternalSemaphoreProperties");
 			if (GetPhysicalDeviceExternalSemaphorePropertiesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceExternalSemaphoreProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalSemaphorePropertiesDelegate_0>(GetPhysicalDeviceExternalSemaphorePropertiesPointer);
@@ -4670,7 +4661,7 @@ namespace Vulkan
 				GetPhysicalDeviceExternalSemaphoreProperties_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalSemaphorePropertiesDelegate_2>(GetPhysicalDeviceExternalSemaphorePropertiesPointer);
 				GetPhysicalDeviceExternalSemaphoreProperties_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalSemaphorePropertiesDelegate_3>(GetPhysicalDeviceExternalSemaphorePropertiesPointer);
 			}
-			GetSemaphoreWin32HandleKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetSemaphoreWin32HandleKHR");
+			GetSemaphoreWin32HandleKHRPointer = GetInstancePrecedureAddress(instance, "vkGetSemaphoreWin32HandleKHR");
 			if (GetSemaphoreWin32HandleKHRPointer != IntPtr.Zero)
 			{
 				GetSemaphoreWin32HandleKHR_0 = Marshal.GetDelegateForFunctionPointer<GetSemaphoreWin32HandleKHRDelegate_0>(GetSemaphoreWin32HandleKHRPointer);
@@ -4678,13 +4669,13 @@ namespace Vulkan
 				GetSemaphoreWin32HandleKHR_2 = Marshal.GetDelegateForFunctionPointer<GetSemaphoreWin32HandleKHRDelegate_2>(GetSemaphoreWin32HandleKHRPointer);
 				GetSemaphoreWin32HandleKHR_3 = Marshal.GetDelegateForFunctionPointer<GetSemaphoreWin32HandleKHRDelegate_3>(GetSemaphoreWin32HandleKHRPointer);
 			}
-			ImportSemaphoreWin32HandleKHRPointer = VulkanLibrary.GetFunctionPointer("vkImportSemaphoreWin32HandleKHR");
+			ImportSemaphoreWin32HandleKHRPointer = GetInstancePrecedureAddress(instance, "vkImportSemaphoreWin32HandleKHR");
 			if (ImportSemaphoreWin32HandleKHRPointer != IntPtr.Zero)
 			{
 				ImportSemaphoreWin32HandleKHR_0 = Marshal.GetDelegateForFunctionPointer<ImportSemaphoreWin32HandleKHRDelegate_0>(ImportSemaphoreWin32HandleKHRPointer);
 				ImportSemaphoreWin32HandleKHR_1 = Marshal.GetDelegateForFunctionPointer<ImportSemaphoreWin32HandleKHRDelegate_1>(ImportSemaphoreWin32HandleKHRPointer);
 			}
-			GetSemaphoreFileDescriptorKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetSemaphoreFdKHR");
+			GetSemaphoreFileDescriptorKHRPointer = GetInstancePrecedureAddress(instance, "vkGetSemaphoreFdKHR");
 			if (GetSemaphoreFileDescriptorKHRPointer != IntPtr.Zero)
 			{
 				GetSemaphoreFileDescriptorKHR_0 = Marshal.GetDelegateForFunctionPointer<GetSemaphoreFileDescriptorKHRDelegate_0>(GetSemaphoreFileDescriptorKHRPointer);
@@ -4692,13 +4683,13 @@ namespace Vulkan
 				GetSemaphoreFileDescriptorKHR_2 = Marshal.GetDelegateForFunctionPointer<GetSemaphoreFileDescriptorKHRDelegate_2>(GetSemaphoreFileDescriptorKHRPointer);
 				GetSemaphoreFileDescriptorKHR_3 = Marshal.GetDelegateForFunctionPointer<GetSemaphoreFileDescriptorKHRDelegate_3>(GetSemaphoreFileDescriptorKHRPointer);
 			}
-			ImportSemaphoreFileDescriptorKHRPointer = VulkanLibrary.GetFunctionPointer("vkImportSemaphoreFdKHR");
+			ImportSemaphoreFileDescriptorKHRPointer = GetInstancePrecedureAddress(instance, "vkImportSemaphoreFdKHR");
 			if (ImportSemaphoreFileDescriptorKHRPointer != IntPtr.Zero)
 			{
 				ImportSemaphoreFileDescriptorKHR_0 = Marshal.GetDelegateForFunctionPointer<ImportSemaphoreFileDescriptorKHRDelegate_0>(ImportSemaphoreFileDescriptorKHRPointer);
 				ImportSemaphoreFileDescriptorKHR_1 = Marshal.GetDelegateForFunctionPointer<ImportSemaphoreFileDescriptorKHRDelegate_1>(ImportSemaphoreFileDescriptorKHRPointer);
 			}
-			GetPhysicalDeviceExternalFencePropertiesPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceExternalFenceProperties");
+			GetPhysicalDeviceExternalFencePropertiesPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceExternalFenceProperties");
 			if (GetPhysicalDeviceExternalFencePropertiesPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceExternalFenceProperties_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalFencePropertiesDelegate_0>(GetPhysicalDeviceExternalFencePropertiesPointer);
@@ -4706,7 +4697,7 @@ namespace Vulkan
 				GetPhysicalDeviceExternalFenceProperties_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalFencePropertiesDelegate_2>(GetPhysicalDeviceExternalFencePropertiesPointer);
 				GetPhysicalDeviceExternalFenceProperties_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalFencePropertiesDelegate_3>(GetPhysicalDeviceExternalFencePropertiesPointer);
 			}
-			GetFenceWin32HandleKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetFenceWin32HandleKHR");
+			GetFenceWin32HandleKHRPointer = GetInstancePrecedureAddress(instance, "vkGetFenceWin32HandleKHR");
 			if (GetFenceWin32HandleKHRPointer != IntPtr.Zero)
 			{
 				GetFenceWin32HandleKHR_0 = Marshal.GetDelegateForFunctionPointer<GetFenceWin32HandleKHRDelegate_0>(GetFenceWin32HandleKHRPointer);
@@ -4714,13 +4705,13 @@ namespace Vulkan
 				GetFenceWin32HandleKHR_2 = Marshal.GetDelegateForFunctionPointer<GetFenceWin32HandleKHRDelegate_2>(GetFenceWin32HandleKHRPointer);
 				GetFenceWin32HandleKHR_3 = Marshal.GetDelegateForFunctionPointer<GetFenceWin32HandleKHRDelegate_3>(GetFenceWin32HandleKHRPointer);
 			}
-			ImportFenceWin32HandleKHRPointer = VulkanLibrary.GetFunctionPointer("vkImportFenceWin32HandleKHR");
+			ImportFenceWin32HandleKHRPointer = GetInstancePrecedureAddress(instance, "vkImportFenceWin32HandleKHR");
 			if (ImportFenceWin32HandleKHRPointer != IntPtr.Zero)
 			{
 				ImportFenceWin32HandleKHR_0 = Marshal.GetDelegateForFunctionPointer<ImportFenceWin32HandleKHRDelegate_0>(ImportFenceWin32HandleKHRPointer);
 				ImportFenceWin32HandleKHR_1 = Marshal.GetDelegateForFunctionPointer<ImportFenceWin32HandleKHRDelegate_1>(ImportFenceWin32HandleKHRPointer);
 			}
-			GetFenceFileDescriptorKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetFenceFdKHR");
+			GetFenceFileDescriptorKHRPointer = GetInstancePrecedureAddress(instance, "vkGetFenceFdKHR");
 			if (GetFenceFileDescriptorKHRPointer != IntPtr.Zero)
 			{
 				GetFenceFileDescriptorKHR_0 = Marshal.GetDelegateForFunctionPointer<GetFenceFileDescriptorKHRDelegate_0>(GetFenceFileDescriptorKHRPointer);
@@ -4728,35 +4719,35 @@ namespace Vulkan
 				GetFenceFileDescriptorKHR_2 = Marshal.GetDelegateForFunctionPointer<GetFenceFileDescriptorKHRDelegate_2>(GetFenceFileDescriptorKHRPointer);
 				GetFenceFileDescriptorKHR_3 = Marshal.GetDelegateForFunctionPointer<GetFenceFileDescriptorKHRDelegate_3>(GetFenceFileDescriptorKHRPointer);
 			}
-			ImportFenceFileDescriptorKHRPointer = VulkanLibrary.GetFunctionPointer("vkImportFenceFdKHR");
+			ImportFenceFileDescriptorKHRPointer = GetInstancePrecedureAddress(instance, "vkImportFenceFdKHR");
 			if (ImportFenceFileDescriptorKHRPointer != IntPtr.Zero)
 			{
 				ImportFenceFileDescriptorKHR_0 = Marshal.GetDelegateForFunctionPointer<ImportFenceFileDescriptorKHRDelegate_0>(ImportFenceFileDescriptorKHRPointer);
 				ImportFenceFileDescriptorKHR_1 = Marshal.GetDelegateForFunctionPointer<ImportFenceFileDescriptorKHRDelegate_1>(ImportFenceFileDescriptorKHRPointer);
 			}
-			ReleaseDisplayEXTPointer = VulkanLibrary.GetFunctionPointer("vkReleaseDisplayEXT");
+			ReleaseDisplayEXTPointer = GetInstancePrecedureAddress(instance, "vkReleaseDisplayEXT");
 			if (ReleaseDisplayEXTPointer != IntPtr.Zero)
 			{
 				ReleaseDisplayEXT_0 = Marshal.GetDelegateForFunctionPointer<ReleaseDisplayEXTDelegate_0>(ReleaseDisplayEXTPointer);
 			}
-			AcquireWinrtDisplayNVPointer = VulkanLibrary.GetFunctionPointer("vkAcquireWinrtDisplayNV");
+			AcquireWinrtDisplayNVPointer = GetInstancePrecedureAddress(instance, "vkAcquireWinrtDisplayNV");
 			if (AcquireWinrtDisplayNVPointer != IntPtr.Zero)
 			{
 				AcquireWinrtDisplayNV_0 = Marshal.GetDelegateForFunctionPointer<AcquireWinrtDisplayNVDelegate_0>(AcquireWinrtDisplayNVPointer);
 			}
-			GetWinrtDisplayNVPointer = VulkanLibrary.GetFunctionPointer("vkGetWinrtDisplayNV");
+			GetWinrtDisplayNVPointer = GetInstancePrecedureAddress(instance, "vkGetWinrtDisplayNV");
 			if (GetWinrtDisplayNVPointer != IntPtr.Zero)
 			{
 				GetWinrtDisplayNV_0 = Marshal.GetDelegateForFunctionPointer<GetWinrtDisplayNVDelegate_0>(GetWinrtDisplayNVPointer);
 				GetWinrtDisplayNV_1 = Marshal.GetDelegateForFunctionPointer<GetWinrtDisplayNVDelegate_1>(GetWinrtDisplayNVPointer);
 			}
-			DisplayPowerControlEXTPointer = VulkanLibrary.GetFunctionPointer("vkDisplayPowerControlEXT");
+			DisplayPowerControlEXTPointer = GetInstancePrecedureAddress(instance, "vkDisplayPowerControlEXT");
 			if (DisplayPowerControlEXTPointer != IntPtr.Zero)
 			{
 				DisplayPowerControlEXT_0 = Marshal.GetDelegateForFunctionPointer<DisplayPowerControlEXTDelegate_0>(DisplayPowerControlEXTPointer);
 				DisplayPowerControlEXT_1 = Marshal.GetDelegateForFunctionPointer<DisplayPowerControlEXTDelegate_1>(DisplayPowerControlEXTPointer);
 			}
-			RegisterDeviceEventEXTPointer = VulkanLibrary.GetFunctionPointer("vkRegisterDeviceEventEXT");
+			RegisterDeviceEventEXTPointer = GetInstancePrecedureAddress(instance, "vkRegisterDeviceEventEXT");
 			if (RegisterDeviceEventEXTPointer != IntPtr.Zero)
 			{
 				RegisterDeviceEventEXT_0 = Marshal.GetDelegateForFunctionPointer<RegisterDeviceEventEXTDelegate_0>(RegisterDeviceEventEXTPointer);
@@ -4768,7 +4759,7 @@ namespace Vulkan
 				RegisterDeviceEventEXT_6 = Marshal.GetDelegateForFunctionPointer<RegisterDeviceEventEXTDelegate_6>(RegisterDeviceEventEXTPointer);
 				RegisterDeviceEventEXT_7 = Marshal.GetDelegateForFunctionPointer<RegisterDeviceEventEXTDelegate_7>(RegisterDeviceEventEXTPointer);
 			}
-			RegisterDisplayEventEXTPointer = VulkanLibrary.GetFunctionPointer("vkRegisterDisplayEventEXT");
+			RegisterDisplayEventEXTPointer = GetInstancePrecedureAddress(instance, "vkRegisterDisplayEventEXT");
 			if (RegisterDisplayEventEXTPointer != IntPtr.Zero)
 			{
 				RegisterDisplayEventEXT_0 = Marshal.GetDelegateForFunctionPointer<RegisterDisplayEventEXTDelegate_0>(RegisterDisplayEventEXTPointer);
@@ -4780,58 +4771,58 @@ namespace Vulkan
 				RegisterDisplayEventEXT_6 = Marshal.GetDelegateForFunctionPointer<RegisterDisplayEventEXTDelegate_6>(RegisterDisplayEventEXTPointer);
 				RegisterDisplayEventEXT_7 = Marshal.GetDelegateForFunctionPointer<RegisterDisplayEventEXTDelegate_7>(RegisterDisplayEventEXTPointer);
 			}
-			GetSwapchainCounterEXTPointer = VulkanLibrary.GetFunctionPointer("vkGetSwapchainCounterEXT");
+			GetSwapchainCounterEXTPointer = GetInstancePrecedureAddress(instance, "vkGetSwapchainCounterEXT");
 			if (GetSwapchainCounterEXTPointer != IntPtr.Zero)
 			{
 				GetSwapchainCounterEXT_0 = Marshal.GetDelegateForFunctionPointer<GetSwapchainCounterEXTDelegate_0>(GetSwapchainCounterEXTPointer);
 				GetSwapchainCounterEXT_1 = Marshal.GetDelegateForFunctionPointer<GetSwapchainCounterEXTDelegate_1>(GetSwapchainCounterEXTPointer);
 			}
-			GetPhysicalDeviceSurfaceCapabilities2EXTPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSurfaceCapabilities2EXT");
+			GetPhysicalDeviceSurfaceCapabilities2EXTPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSurfaceCapabilities2EXT");
 			if (GetPhysicalDeviceSurfaceCapabilities2EXTPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSurfaceCapabilities2EXT_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceCapabilities2EXTDelegate_0>(GetPhysicalDeviceSurfaceCapabilities2EXTPointer);
 				GetPhysicalDeviceSurfaceCapabilities2EXT_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceCapabilities2EXTDelegate_1>(GetPhysicalDeviceSurfaceCapabilities2EXTPointer);
 			}
-			EnumeratePhysicalDeviceGroupsPointer = VulkanLibrary.GetFunctionPointer("vkEnumeratePhysicalDeviceGroups");
+			EnumeratePhysicalDeviceGroupsPointer = GetInstancePrecedureAddress(instance, "vkEnumeratePhysicalDeviceGroups");
 			if (EnumeratePhysicalDeviceGroupsPointer != IntPtr.Zero)
 			{
 				EnumeratePhysicalDeviceGroups_0 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceGroupsDelegate_0>(EnumeratePhysicalDeviceGroupsPointer);
 				EnumeratePhysicalDeviceGroups_1 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceGroupsDelegate_1>(EnumeratePhysicalDeviceGroupsPointer);
 			}
-			GetDeviceGroupPeerMemoryFeaturesPointer = VulkanLibrary.GetFunctionPointer("vkGetDeviceGroupPeerMemoryFeatures");
+			GetDeviceGroupPeerMemoryFeaturesPointer = GetInstancePrecedureAddress(instance, "vkGetDeviceGroupPeerMemoryFeatures");
 			if (GetDeviceGroupPeerMemoryFeaturesPointer != IntPtr.Zero)
 			{
 				GetDeviceGroupPeerMemoryFeatures_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupPeerMemoryFeaturesDelegate_0>(GetDeviceGroupPeerMemoryFeaturesPointer);
 				GetDeviceGroupPeerMemoryFeatures_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupPeerMemoryFeaturesDelegate_1>(GetDeviceGroupPeerMemoryFeaturesPointer);
 			}
-			BindBufferMemory2Pointer = VulkanLibrary.GetFunctionPointer("vkBindBufferMemory2");
+			BindBufferMemory2Pointer = GetInstancePrecedureAddress(instance, "vkBindBufferMemory2");
 			if (BindBufferMemory2Pointer != IntPtr.Zero)
 			{
 				BindBufferMemory2_0 = Marshal.GetDelegateForFunctionPointer<BindBufferMemory2Delegate_0>(BindBufferMemory2Pointer);
 			}
-			BindImageMemory2Pointer = VulkanLibrary.GetFunctionPointer("vkBindImageMemory2");
+			BindImageMemory2Pointer = GetInstancePrecedureAddress(instance, "vkBindImageMemory2");
 			if (BindImageMemory2Pointer != IntPtr.Zero)
 			{
 				BindImageMemory2_0 = Marshal.GetDelegateForFunctionPointer<BindImageMemory2Delegate_0>(BindImageMemory2Pointer);
 			}
-			CommandSetDeviceMaskPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetDeviceMask");
+			CommandSetDeviceMaskPointer = GetInstancePrecedureAddress(instance, "vkCmdSetDeviceMask");
 			if (CommandSetDeviceMaskPointer != IntPtr.Zero)
 			{
 				CommandSetDeviceMask_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDeviceMaskDelegate_0>(CommandSetDeviceMaskPointer);
 			}
-			GetDeviceGroupPresentCapabilitiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetDeviceGroupPresentCapabilitiesKHR");
+			GetDeviceGroupPresentCapabilitiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetDeviceGroupPresentCapabilitiesKHR");
 			if (GetDeviceGroupPresentCapabilitiesKHRPointer != IntPtr.Zero)
 			{
 				GetDeviceGroupPresentCapabilitiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupPresentCapabilitiesKHRDelegate_0>(GetDeviceGroupPresentCapabilitiesKHRPointer);
 				GetDeviceGroupPresentCapabilitiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupPresentCapabilitiesKHRDelegate_1>(GetDeviceGroupPresentCapabilitiesKHRPointer);
 			}
-			GetDeviceGroupSurfacePresentModesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetDeviceGroupSurfacePresentModesKHR");
+			GetDeviceGroupSurfacePresentModesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetDeviceGroupSurfacePresentModesKHR");
 			if (GetDeviceGroupSurfacePresentModesKHRPointer != IntPtr.Zero)
 			{
 				GetDeviceGroupSurfacePresentModesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupSurfacePresentModesKHRDelegate_0>(GetDeviceGroupSurfacePresentModesKHRPointer);
 				GetDeviceGroupSurfacePresentModesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupSurfacePresentModesKHRDelegate_1>(GetDeviceGroupSurfacePresentModesKHRPointer);
 			}
-			AcquireNextImage2KHRPointer = VulkanLibrary.GetFunctionPointer("vkAcquireNextImage2KHR");
+			AcquireNextImage2KHRPointer = GetInstancePrecedureAddress(instance, "vkAcquireNextImage2KHR");
 			if (AcquireNextImage2KHRPointer != IntPtr.Zero)
 			{
 				AcquireNextImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<AcquireNextImage2KHRDelegate_0>(AcquireNextImage2KHRPointer);
@@ -4839,12 +4830,12 @@ namespace Vulkan
 				AcquireNextImage2KHR_2 = Marshal.GetDelegateForFunctionPointer<AcquireNextImage2KHRDelegate_2>(AcquireNextImage2KHRPointer);
 				AcquireNextImage2KHR_3 = Marshal.GetDelegateForFunctionPointer<AcquireNextImage2KHRDelegate_3>(AcquireNextImage2KHRPointer);
 			}
-			CommandDispatchBasePointer = VulkanLibrary.GetFunctionPointer("vkCmdDispatchBase");
+			CommandDispatchBasePointer = GetInstancePrecedureAddress(instance, "vkCmdDispatchBase");
 			if (CommandDispatchBasePointer != IntPtr.Zero)
 			{
 				CommandDispatchBase_0 = Marshal.GetDelegateForFunctionPointer<CommandDispatchBaseDelegate_0>(CommandDispatchBasePointer);
 			}
-			GetPhysicalDevicePresentRectanglesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDevicePresentRectanglesKHR");
+			GetPhysicalDevicePresentRectanglesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDevicePresentRectanglesKHR");
 			if (GetPhysicalDevicePresentRectanglesKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDevicePresentRectanglesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePresentRectanglesKHRDelegate_0>(GetPhysicalDevicePresentRectanglesKHRPointer);
@@ -4852,7 +4843,7 @@ namespace Vulkan
 				GetPhysicalDevicePresentRectanglesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePresentRectanglesKHRDelegate_2>(GetPhysicalDevicePresentRectanglesKHRPointer);
 				GetPhysicalDevicePresentRectanglesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePresentRectanglesKHRDelegate_3>(GetPhysicalDevicePresentRectanglesKHRPointer);
 			}
-			CreateDescriptorUpdateTemplatePointer = VulkanLibrary.GetFunctionPointer("vkCreateDescriptorUpdateTemplate");
+			CreateDescriptorUpdateTemplatePointer = GetInstancePrecedureAddress(instance, "vkCreateDescriptorUpdateTemplate");
 			if (CreateDescriptorUpdateTemplatePointer != IntPtr.Zero)
 			{
 				CreateDescriptorUpdateTemplate_0 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorUpdateTemplateDelegate_0>(CreateDescriptorUpdateTemplatePointer);
@@ -4864,23 +4855,23 @@ namespace Vulkan
 				CreateDescriptorUpdateTemplate_6 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorUpdateTemplateDelegate_6>(CreateDescriptorUpdateTemplatePointer);
 				CreateDescriptorUpdateTemplate_7 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorUpdateTemplateDelegate_7>(CreateDescriptorUpdateTemplatePointer);
 			}
-			DestroyDescriptorUpdateTemplatePointer = VulkanLibrary.GetFunctionPointer("vkDestroyDescriptorUpdateTemplate");
+			DestroyDescriptorUpdateTemplatePointer = GetInstancePrecedureAddress(instance, "vkDestroyDescriptorUpdateTemplate");
 			if (DestroyDescriptorUpdateTemplatePointer != IntPtr.Zero)
 			{
 				DestroyDescriptorUpdateTemplate_0 = Marshal.GetDelegateForFunctionPointer<DestroyDescriptorUpdateTemplateDelegate_0>(DestroyDescriptorUpdateTemplatePointer);
 				DestroyDescriptorUpdateTemplate_1 = Marshal.GetDelegateForFunctionPointer<DestroyDescriptorUpdateTemplateDelegate_1>(DestroyDescriptorUpdateTemplatePointer);
 			}
-			UpdateDescriptorSetWithTemplatePointer = VulkanLibrary.GetFunctionPointer("vkUpdateDescriptorSetWithTemplate");
+			UpdateDescriptorSetWithTemplatePointer = GetInstancePrecedureAddress(instance, "vkUpdateDescriptorSetWithTemplate");
 			if (UpdateDescriptorSetWithTemplatePointer != IntPtr.Zero)
 			{
 				UpdateDescriptorSetWithTemplate_0 = Marshal.GetDelegateForFunctionPointer<UpdateDescriptorSetWithTemplateDelegate_0>(UpdateDescriptorSetWithTemplatePointer);
 			}
-			CommandPushDescriptorSetWithTemplateKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdPushDescriptorSetWithTemplateKHR");
+			CommandPushDescriptorSetWithTemplateKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdPushDescriptorSetWithTemplateKHR");
 			if (CommandPushDescriptorSetWithTemplateKHRPointer != IntPtr.Zero)
 			{
 				CommandPushDescriptorSetWithTemplateKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandPushDescriptorSetWithTemplateKHRDelegate_0>(CommandPushDescriptorSetWithTemplateKHRPointer);
 			}
-			SetHdrMetadataEXTPointer = VulkanLibrary.GetFunctionPointer("vkSetHdrMetadataEXT");
+			SetHdrMetadataEXTPointer = GetInstancePrecedureAddress(instance, "vkSetHdrMetadataEXT");
 			if (SetHdrMetadataEXTPointer != IntPtr.Zero)
 			{
 				SetHdrMetadataEXT_0 = Marshal.GetDelegateForFunctionPointer<SetHdrMetadataEXTDelegate_0>(SetHdrMetadataEXTPointer);
@@ -4888,18 +4879,18 @@ namespace Vulkan
 				SetHdrMetadataEXT_2 = Marshal.GetDelegateForFunctionPointer<SetHdrMetadataEXTDelegate_2>(SetHdrMetadataEXTPointer);
 				SetHdrMetadataEXT_3 = Marshal.GetDelegateForFunctionPointer<SetHdrMetadataEXTDelegate_3>(SetHdrMetadataEXTPointer);
 			}
-			GetSwapchainStatusKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetSwapchainStatusKHR");
+			GetSwapchainStatusKHRPointer = GetInstancePrecedureAddress(instance, "vkGetSwapchainStatusKHR");
 			if (GetSwapchainStatusKHRPointer != IntPtr.Zero)
 			{
 				GetSwapchainStatusKHR_0 = Marshal.GetDelegateForFunctionPointer<GetSwapchainStatusKHRDelegate_0>(GetSwapchainStatusKHRPointer);
 			}
-			GetRefreshCycleDurationGOOGLEPointer = VulkanLibrary.GetFunctionPointer("vkGetRefreshCycleDurationGOOGLE");
+			GetRefreshCycleDurationGOOGLEPointer = GetInstancePrecedureAddress(instance, "vkGetRefreshCycleDurationGOOGLE");
 			if (GetRefreshCycleDurationGOOGLEPointer != IntPtr.Zero)
 			{
 				GetRefreshCycleDurationGOOGLE_0 = Marshal.GetDelegateForFunctionPointer<GetRefreshCycleDurationGOOGLEDelegate_0>(GetRefreshCycleDurationGOOGLEPointer);
 				GetRefreshCycleDurationGOOGLE_1 = Marshal.GetDelegateForFunctionPointer<GetRefreshCycleDurationGOOGLEDelegate_1>(GetRefreshCycleDurationGOOGLEPointer);
 			}
-			GetPastPresentationTimingGOOGLEPointer = VulkanLibrary.GetFunctionPointer("vkGetPastPresentationTimingGOOGLE");
+			GetPastPresentationTimingGOOGLEPointer = GetInstancePrecedureAddress(instance, "vkGetPastPresentationTimingGOOGLE");
 			if (GetPastPresentationTimingGOOGLEPointer != IntPtr.Zero)
 			{
 				GetPastPresentationTimingGOOGLE_0 = Marshal.GetDelegateForFunctionPointer<GetPastPresentationTimingGOOGLEDelegate_0>(GetPastPresentationTimingGOOGLEPointer);
@@ -4907,7 +4898,7 @@ namespace Vulkan
 				GetPastPresentationTimingGOOGLE_2 = Marshal.GetDelegateForFunctionPointer<GetPastPresentationTimingGOOGLEDelegate_2>(GetPastPresentationTimingGOOGLEPointer);
 				GetPastPresentationTimingGOOGLE_3 = Marshal.GetDelegateForFunctionPointer<GetPastPresentationTimingGOOGLEDelegate_3>(GetPastPresentationTimingGOOGLEPointer);
 			}
-			CreateMacOSSurfaceMVKPointer = VulkanLibrary.GetFunctionPointer("vkCreateMacOSSurfaceMVK");
+			CreateMacOSSurfaceMVKPointer = GetInstancePrecedureAddress(instance, "vkCreateMacOSSurfaceMVK");
 			if (CreateMacOSSurfaceMVKPointer != IntPtr.Zero)
 			{
 				CreateMacOSSurfaceMVK_0 = Marshal.GetDelegateForFunctionPointer<CreateMacOSSurfaceMVKDelegate_0>(CreateMacOSSurfaceMVKPointer);
@@ -4919,31 +4910,31 @@ namespace Vulkan
 				CreateMacOSSurfaceMVK_6 = Marshal.GetDelegateForFunctionPointer<CreateMacOSSurfaceMVKDelegate_6>(CreateMacOSSurfaceMVKPointer);
 				CreateMacOSSurfaceMVK_7 = Marshal.GetDelegateForFunctionPointer<CreateMacOSSurfaceMVKDelegate_7>(CreateMacOSSurfaceMVKPointer);
 			}
-			CommandSetViewportWScalingNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetViewportWScalingNV");
+			CommandSetViewportWScalingNVPointer = GetInstancePrecedureAddress(instance, "vkCmdSetViewportWScalingNV");
 			if (CommandSetViewportWScalingNVPointer != IntPtr.Zero)
 			{
 				CommandSetViewportWScalingNV_0 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportWScalingNVDelegate_0>(CommandSetViewportWScalingNVPointer);
 				CommandSetViewportWScalingNV_1 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportWScalingNVDelegate_1>(CommandSetViewportWScalingNVPointer);
 			}
-			CommandSetDiscardRectangleEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetDiscardRectangleEXT");
+			CommandSetDiscardRectangleEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetDiscardRectangleEXT");
 			if (CommandSetDiscardRectangleEXTPointer != IntPtr.Zero)
 			{
 				CommandSetDiscardRectangleEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDiscardRectangleEXTDelegate_0>(CommandSetDiscardRectangleEXTPointer);
 				CommandSetDiscardRectangleEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandSetDiscardRectangleEXTDelegate_1>(CommandSetDiscardRectangleEXTPointer);
 			}
-			CommandSetSampleLocationsEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetSampleLocationsEXT");
+			CommandSetSampleLocationsEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetSampleLocationsEXT");
 			if (CommandSetSampleLocationsEXTPointer != IntPtr.Zero)
 			{
 				CommandSetSampleLocationsEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetSampleLocationsEXTDelegate_0>(CommandSetSampleLocationsEXTPointer);
 				CommandSetSampleLocationsEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandSetSampleLocationsEXTDelegate_1>(CommandSetSampleLocationsEXTPointer);
 			}
-			GetPhysicalDeviceMultisamplePropertiesEXTPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceMultisamplePropertiesEXT");
+			GetPhysicalDeviceMultisamplePropertiesEXTPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceMultisamplePropertiesEXT");
 			if (GetPhysicalDeviceMultisamplePropertiesEXTPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceMultisamplePropertiesEXT_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceMultisamplePropertiesEXTDelegate_0>(GetPhysicalDeviceMultisamplePropertiesEXTPointer);
 				GetPhysicalDeviceMultisamplePropertiesEXT_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceMultisamplePropertiesEXTDelegate_1>(GetPhysicalDeviceMultisamplePropertiesEXTPointer);
 			}
-			GetPhysicalDeviceSurfaceCapabilities2KHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSurfaceCapabilities2KHR");
+			GetPhysicalDeviceSurfaceCapabilities2KHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSurfaceCapabilities2KHR");
 			if (GetPhysicalDeviceSurfaceCapabilities2KHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSurfaceCapabilities2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceCapabilities2KHRDelegate_0>(GetPhysicalDeviceSurfaceCapabilities2KHRPointer);
@@ -4951,7 +4942,7 @@ namespace Vulkan
 				GetPhysicalDeviceSurfaceCapabilities2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceCapabilities2KHRDelegate_2>(GetPhysicalDeviceSurfaceCapabilities2KHRPointer);
 				GetPhysicalDeviceSurfaceCapabilities2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceCapabilities2KHRDelegate_3>(GetPhysicalDeviceSurfaceCapabilities2KHRPointer);
 			}
-			GetPhysicalDeviceSurfaceFormats2KHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSurfaceFormats2KHR");
+			GetPhysicalDeviceSurfaceFormats2KHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSurfaceFormats2KHR");
 			if (GetPhysicalDeviceSurfaceFormats2KHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSurfaceFormats2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormats2KHRDelegate_0>(GetPhysicalDeviceSurfaceFormats2KHRPointer);
@@ -4963,7 +4954,7 @@ namespace Vulkan
 				GetPhysicalDeviceSurfaceFormats2KHR_6 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormats2KHRDelegate_6>(GetPhysicalDeviceSurfaceFormats2KHRPointer);
 				GetPhysicalDeviceSurfaceFormats2KHR_7 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfaceFormats2KHRDelegate_7>(GetPhysicalDeviceSurfaceFormats2KHRPointer);
 			}
-			GetPhysicalDeviceDisplayProperties2KHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceDisplayProperties2KHR");
+			GetPhysicalDeviceDisplayProperties2KHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceDisplayProperties2KHR");
 			if (GetPhysicalDeviceDisplayProperties2KHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceDisplayProperties2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayProperties2KHRDelegate_0>(GetPhysicalDeviceDisplayProperties2KHRPointer);
@@ -4971,7 +4962,7 @@ namespace Vulkan
 				GetPhysicalDeviceDisplayProperties2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayProperties2KHRDelegate_2>(GetPhysicalDeviceDisplayProperties2KHRPointer);
 				GetPhysicalDeviceDisplayProperties2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayProperties2KHRDelegate_3>(GetPhysicalDeviceDisplayProperties2KHRPointer);
 			}
-			GetPhysicalDeviceDisplayPlaneProperties2KHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
+			GetPhysicalDeviceDisplayPlaneProperties2KHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
 			if (GetPhysicalDeviceDisplayPlaneProperties2KHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceDisplayPlaneProperties2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_0>(GetPhysicalDeviceDisplayPlaneProperties2KHRPointer);
@@ -4979,7 +4970,7 @@ namespace Vulkan
 				GetPhysicalDeviceDisplayPlaneProperties2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_2>(GetPhysicalDeviceDisplayPlaneProperties2KHRPointer);
 				GetPhysicalDeviceDisplayPlaneProperties2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceDisplayPlaneProperties2KHRDelegate_3>(GetPhysicalDeviceDisplayPlaneProperties2KHRPointer);
 			}
-			GetDisplayModeProperties2KHRPointer = VulkanLibrary.GetFunctionPointer("vkGetDisplayModeProperties2KHR");
+			GetDisplayModeProperties2KHRPointer = GetInstancePrecedureAddress(instance, "vkGetDisplayModeProperties2KHR");
 			if (GetDisplayModeProperties2KHRPointer != IntPtr.Zero)
 			{
 				GetDisplayModeProperties2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetDisplayModeProperties2KHRDelegate_0>(GetDisplayModeProperties2KHRPointer);
@@ -4987,7 +4978,7 @@ namespace Vulkan
 				GetDisplayModeProperties2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetDisplayModeProperties2KHRDelegate_2>(GetDisplayModeProperties2KHRPointer);
 				GetDisplayModeProperties2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetDisplayModeProperties2KHRDelegate_3>(GetDisplayModeProperties2KHRPointer);
 			}
-			GetDisplayPlaneCapabilities2KHRPointer = VulkanLibrary.GetFunctionPointer("vkGetDisplayPlaneCapabilities2KHR");
+			GetDisplayPlaneCapabilities2KHRPointer = GetInstancePrecedureAddress(instance, "vkGetDisplayPlaneCapabilities2KHR");
 			if (GetDisplayPlaneCapabilities2KHRPointer != IntPtr.Zero)
 			{
 				GetDisplayPlaneCapabilities2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneCapabilities2KHRDelegate_0>(GetDisplayPlaneCapabilities2KHRPointer);
@@ -4995,7 +4986,7 @@ namespace Vulkan
 				GetDisplayPlaneCapabilities2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneCapabilities2KHRDelegate_2>(GetDisplayPlaneCapabilities2KHRPointer);
 				GetDisplayPlaneCapabilities2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetDisplayPlaneCapabilities2KHRDelegate_3>(GetDisplayPlaneCapabilities2KHRPointer);
 			}
-			GetBufferMemoryRequirements2Pointer = VulkanLibrary.GetFunctionPointer("vkGetBufferMemoryRequirements2");
+			GetBufferMemoryRequirements2Pointer = GetInstancePrecedureAddress(instance, "vkGetBufferMemoryRequirements2");
 			if (GetBufferMemoryRequirements2Pointer != IntPtr.Zero)
 			{
 				GetBufferMemoryRequirements2_0 = Marshal.GetDelegateForFunctionPointer<GetBufferMemoryRequirements2Delegate_0>(GetBufferMemoryRequirements2Pointer);
@@ -5003,7 +4994,7 @@ namespace Vulkan
 				GetBufferMemoryRequirements2_2 = Marshal.GetDelegateForFunctionPointer<GetBufferMemoryRequirements2Delegate_2>(GetBufferMemoryRequirements2Pointer);
 				GetBufferMemoryRequirements2_3 = Marshal.GetDelegateForFunctionPointer<GetBufferMemoryRequirements2Delegate_3>(GetBufferMemoryRequirements2Pointer);
 			}
-			GetImageMemoryRequirements2Pointer = VulkanLibrary.GetFunctionPointer("vkGetImageMemoryRequirements2");
+			GetImageMemoryRequirements2Pointer = GetInstancePrecedureAddress(instance, "vkGetImageMemoryRequirements2");
 			if (GetImageMemoryRequirements2Pointer != IntPtr.Zero)
 			{
 				GetImageMemoryRequirements2_0 = Marshal.GetDelegateForFunctionPointer<GetImageMemoryRequirements2Delegate_0>(GetImageMemoryRequirements2Pointer);
@@ -5011,7 +5002,7 @@ namespace Vulkan
 				GetImageMemoryRequirements2_2 = Marshal.GetDelegateForFunctionPointer<GetImageMemoryRequirements2Delegate_2>(GetImageMemoryRequirements2Pointer);
 				GetImageMemoryRequirements2_3 = Marshal.GetDelegateForFunctionPointer<GetImageMemoryRequirements2Delegate_3>(GetImageMemoryRequirements2Pointer);
 			}
-			GetImageSparseMemoryRequirements2Pointer = VulkanLibrary.GetFunctionPointer("vkGetImageSparseMemoryRequirements2");
+			GetImageSparseMemoryRequirements2Pointer = GetInstancePrecedureAddress(instance, "vkGetImageSparseMemoryRequirements2");
 			if (GetImageSparseMemoryRequirements2Pointer != IntPtr.Zero)
 			{
 				GetImageSparseMemoryRequirements2_0 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2Delegate_0>(GetImageSparseMemoryRequirements2Pointer);
@@ -5023,7 +5014,7 @@ namespace Vulkan
 				GetImageSparseMemoryRequirements2_6 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2Delegate_6>(GetImageSparseMemoryRequirements2Pointer);
 				GetImageSparseMemoryRequirements2_7 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2Delegate_7>(GetImageSparseMemoryRequirements2Pointer);
 			}
-			CreateSamplerYcbcrConversionPointer = VulkanLibrary.GetFunctionPointer("vkCreateSamplerYcbcrConversion");
+			CreateSamplerYcbcrConversionPointer = GetInstancePrecedureAddress(instance, "vkCreateSamplerYcbcrConversion");
 			if (CreateSamplerYcbcrConversionPointer != IntPtr.Zero)
 			{
 				CreateSamplerYcbcrConversion_0 = Marshal.GetDelegateForFunctionPointer<CreateSamplerYcbcrConversionDelegate_0>(CreateSamplerYcbcrConversionPointer);
@@ -5035,13 +5026,13 @@ namespace Vulkan
 				CreateSamplerYcbcrConversion_6 = Marshal.GetDelegateForFunctionPointer<CreateSamplerYcbcrConversionDelegate_6>(CreateSamplerYcbcrConversionPointer);
 				CreateSamplerYcbcrConversion_7 = Marshal.GetDelegateForFunctionPointer<CreateSamplerYcbcrConversionDelegate_7>(CreateSamplerYcbcrConversionPointer);
 			}
-			DestroySamplerYcbcrConversionPointer = VulkanLibrary.GetFunctionPointer("vkDestroySamplerYcbcrConversion");
+			DestroySamplerYcbcrConversionPointer = GetInstancePrecedureAddress(instance, "vkDestroySamplerYcbcrConversion");
 			if (DestroySamplerYcbcrConversionPointer != IntPtr.Zero)
 			{
 				DestroySamplerYcbcrConversion_0 = Marshal.GetDelegateForFunctionPointer<DestroySamplerYcbcrConversionDelegate_0>(DestroySamplerYcbcrConversionPointer);
 				DestroySamplerYcbcrConversion_1 = Marshal.GetDelegateForFunctionPointer<DestroySamplerYcbcrConversionDelegate_1>(DestroySamplerYcbcrConversionPointer);
 			}
-			GetDeviceQueue2Pointer = VulkanLibrary.GetFunctionPointer("vkGetDeviceQueue2");
+			GetDeviceQueue2Pointer = GetInstancePrecedureAddress(instance, "vkGetDeviceQueue2");
 			if (GetDeviceQueue2Pointer != IntPtr.Zero)
 			{
 				GetDeviceQueue2_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceQueue2Delegate_0>(GetDeviceQueue2Pointer);
@@ -5049,7 +5040,7 @@ namespace Vulkan
 				GetDeviceQueue2_2 = Marshal.GetDelegateForFunctionPointer<GetDeviceQueue2Delegate_2>(GetDeviceQueue2Pointer);
 				GetDeviceQueue2_3 = Marshal.GetDelegateForFunctionPointer<GetDeviceQueue2Delegate_3>(GetDeviceQueue2Pointer);
 			}
-			CreateValidationCacheEXTPointer = VulkanLibrary.GetFunctionPointer("vkCreateValidationCacheEXT");
+			CreateValidationCacheEXTPointer = GetInstancePrecedureAddress(instance, "vkCreateValidationCacheEXT");
 			if (CreateValidationCacheEXTPointer != IntPtr.Zero)
 			{
 				CreateValidationCacheEXT_0 = Marshal.GetDelegateForFunctionPointer<CreateValidationCacheEXTDelegate_0>(CreateValidationCacheEXTPointer);
@@ -5061,25 +5052,25 @@ namespace Vulkan
 				CreateValidationCacheEXT_6 = Marshal.GetDelegateForFunctionPointer<CreateValidationCacheEXTDelegate_6>(CreateValidationCacheEXTPointer);
 				CreateValidationCacheEXT_7 = Marshal.GetDelegateForFunctionPointer<CreateValidationCacheEXTDelegate_7>(CreateValidationCacheEXTPointer);
 			}
-			DestroyValidationCacheEXTPointer = VulkanLibrary.GetFunctionPointer("vkDestroyValidationCacheEXT");
+			DestroyValidationCacheEXTPointer = GetInstancePrecedureAddress(instance, "vkDestroyValidationCacheEXT");
 			if (DestroyValidationCacheEXTPointer != IntPtr.Zero)
 			{
 				DestroyValidationCacheEXT_0 = Marshal.GetDelegateForFunctionPointer<DestroyValidationCacheEXTDelegate_0>(DestroyValidationCacheEXTPointer);
 				DestroyValidationCacheEXT_1 = Marshal.GetDelegateForFunctionPointer<DestroyValidationCacheEXTDelegate_1>(DestroyValidationCacheEXTPointer);
 			}
-			GetValidationCacheDataEXTPointer = VulkanLibrary.GetFunctionPointer("vkGetValidationCacheDataEXT");
+			GetValidationCacheDataEXTPointer = GetInstancePrecedureAddress(instance, "vkGetValidationCacheDataEXT");
 			if (GetValidationCacheDataEXTPointer != IntPtr.Zero)
 			{
 				GetValidationCacheDataEXT_0 = Marshal.GetDelegateForFunctionPointer<GetValidationCacheDataEXTDelegate_0>(GetValidationCacheDataEXTPointer);
 				GetValidationCacheDataEXT_1 = Marshal.GetDelegateForFunctionPointer<GetValidationCacheDataEXTDelegate_1>(GetValidationCacheDataEXTPointer);
 			}
-			MergeValidationCachesEXTPointer = VulkanLibrary.GetFunctionPointer("vkMergeValidationCachesEXT");
+			MergeValidationCachesEXTPointer = GetInstancePrecedureAddress(instance, "vkMergeValidationCachesEXT");
 			if (MergeValidationCachesEXTPointer != IntPtr.Zero)
 			{
 				MergeValidationCachesEXT_0 = Marshal.GetDelegateForFunctionPointer<MergeValidationCachesEXTDelegate_0>(MergeValidationCachesEXTPointer);
 				MergeValidationCachesEXT_1 = Marshal.GetDelegateForFunctionPointer<MergeValidationCachesEXTDelegate_1>(MergeValidationCachesEXTPointer);
 			}
-			GetDescriptorSetLayoutSupportPointer = VulkanLibrary.GetFunctionPointer("vkGetDescriptorSetLayoutSupport");
+			GetDescriptorSetLayoutSupportPointer = GetInstancePrecedureAddress(instance, "vkGetDescriptorSetLayoutSupport");
 			if (GetDescriptorSetLayoutSupportPointer != IntPtr.Zero)
 			{
 				GetDescriptorSetLayoutSupport_0 = Marshal.GetDelegateForFunctionPointer<GetDescriptorSetLayoutSupportDelegate_0>(GetDescriptorSetLayoutSupportPointer);
@@ -5087,13 +5078,13 @@ namespace Vulkan
 				GetDescriptorSetLayoutSupport_2 = Marshal.GetDelegateForFunctionPointer<GetDescriptorSetLayoutSupportDelegate_2>(GetDescriptorSetLayoutSupportPointer);
 				GetDescriptorSetLayoutSupport_3 = Marshal.GetDelegateForFunctionPointer<GetDescriptorSetLayoutSupportDelegate_3>(GetDescriptorSetLayoutSupportPointer);
 			}
-			GetSwapchainGrallocUsageANDROIDPointer = VulkanLibrary.GetFunctionPointer("vkGetSwapchainGrallocUsageANDROID");
+			GetSwapchainGrallocUsageANDROIDPointer = GetInstancePrecedureAddress(instance, "vkGetSwapchainGrallocUsageANDROID");
 			if (GetSwapchainGrallocUsageANDROIDPointer != IntPtr.Zero)
 			{
 				GetSwapchainGrallocUsageANDROID_0 = Marshal.GetDelegateForFunctionPointer<GetSwapchainGrallocUsageANDROIDDelegate_0>(GetSwapchainGrallocUsageANDROIDPointer);
 				GetSwapchainGrallocUsageANDROID_1 = Marshal.GetDelegateForFunctionPointer<GetSwapchainGrallocUsageANDROIDDelegate_1>(GetSwapchainGrallocUsageANDROIDPointer);
 			}
-			GetSwapchainGrallocUsage2ANDROIDPointer = VulkanLibrary.GetFunctionPointer("vkGetSwapchainGrallocUsage2ANDROID");
+			GetSwapchainGrallocUsage2ANDROIDPointer = GetInstancePrecedureAddress(instance, "vkGetSwapchainGrallocUsage2ANDROID");
 			if (GetSwapchainGrallocUsage2ANDROIDPointer != IntPtr.Zero)
 			{
 				GetSwapchainGrallocUsage2ANDROID_0 = Marshal.GetDelegateForFunctionPointer<GetSwapchainGrallocUsage2ANDROIDDelegate_0>(GetSwapchainGrallocUsage2ANDROIDPointer);
@@ -5101,12 +5092,12 @@ namespace Vulkan
 				GetSwapchainGrallocUsage2ANDROID_2 = Marshal.GetDelegateForFunctionPointer<GetSwapchainGrallocUsage2ANDROIDDelegate_2>(GetSwapchainGrallocUsage2ANDROIDPointer);
 				GetSwapchainGrallocUsage2ANDROID_3 = Marshal.GetDelegateForFunctionPointer<GetSwapchainGrallocUsage2ANDROIDDelegate_3>(GetSwapchainGrallocUsage2ANDROIDPointer);
 			}
-			AcquireImageANDROIDPointer = VulkanLibrary.GetFunctionPointer("vkAcquireImageANDROID");
+			AcquireImageANDROIDPointer = GetInstancePrecedureAddress(instance, "vkAcquireImageANDROID");
 			if (AcquireImageANDROIDPointer != IntPtr.Zero)
 			{
 				AcquireImageANDROID_0 = Marshal.GetDelegateForFunctionPointer<AcquireImageANDROIDDelegate_0>(AcquireImageANDROIDPointer);
 			}
-			QueueSignalReleaseImageANDROIDPointer = VulkanLibrary.GetFunctionPointer("vkQueueSignalReleaseImageANDROID");
+			QueueSignalReleaseImageANDROIDPointer = GetInstancePrecedureAddress(instance, "vkQueueSignalReleaseImageANDROID");
 			if (QueueSignalReleaseImageANDROIDPointer != IntPtr.Zero)
 			{
 				QueueSignalReleaseImageANDROID_0 = Marshal.GetDelegateForFunctionPointer<QueueSignalReleaseImageANDROIDDelegate_0>(QueueSignalReleaseImageANDROIDPointer);
@@ -5114,18 +5105,18 @@ namespace Vulkan
 				QueueSignalReleaseImageANDROID_2 = Marshal.GetDelegateForFunctionPointer<QueueSignalReleaseImageANDROIDDelegate_2>(QueueSignalReleaseImageANDROIDPointer);
 				QueueSignalReleaseImageANDROID_3 = Marshal.GetDelegateForFunctionPointer<QueueSignalReleaseImageANDROIDDelegate_3>(QueueSignalReleaseImageANDROIDPointer);
 			}
-			GetShaderInfoAMDPointer = VulkanLibrary.GetFunctionPointer("vkGetShaderInfoAMD");
+			GetShaderInfoAMDPointer = GetInstancePrecedureAddress(instance, "vkGetShaderInfoAMD");
 			if (GetShaderInfoAMDPointer != IntPtr.Zero)
 			{
 				GetShaderInfoAMD_0 = Marshal.GetDelegateForFunctionPointer<GetShaderInfoAMDDelegate_0>(GetShaderInfoAMDPointer);
 				GetShaderInfoAMD_1 = Marshal.GetDelegateForFunctionPointer<GetShaderInfoAMDDelegate_1>(GetShaderInfoAMDPointer);
 			}
-			SetLocalDimmingAMDPointer = VulkanLibrary.GetFunctionPointer("vkSetLocalDimmingAMD");
+			SetLocalDimmingAMDPointer = GetInstancePrecedureAddress(instance, "vkSetLocalDimmingAMD");
 			if (SetLocalDimmingAMDPointer != IntPtr.Zero)
 			{
 				SetLocalDimmingAMD_0 = Marshal.GetDelegateForFunctionPointer<SetLocalDimmingAMDDelegate_0>(SetLocalDimmingAMDPointer);
 			}
-			GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceCalibrateableTimeDomainsEXT");
+			GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT");
 			if (GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceCalibrateableTimeDomainsEXT_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_0>(GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer);
@@ -5133,7 +5124,7 @@ namespace Vulkan
 				GetPhysicalDeviceCalibrateableTimeDomainsEXT_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_2>(GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer);
 				GetPhysicalDeviceCalibrateableTimeDomainsEXT_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCalibrateableTimeDomainsEXTDelegate_3>(GetPhysicalDeviceCalibrateableTimeDomainsEXTPointer);
 			}
-			GetCalibratedTimestampsEXTPointer = VulkanLibrary.GetFunctionPointer("vkGetCalibratedTimestampsEXT");
+			GetCalibratedTimestampsEXTPointer = GetInstancePrecedureAddress(instance, "vkGetCalibratedTimestampsEXT");
 			if (GetCalibratedTimestampsEXTPointer != IntPtr.Zero)
 			{
 				GetCalibratedTimestampsEXT_0 = Marshal.GetDelegateForFunctionPointer<GetCalibratedTimestampsEXTDelegate_0>(GetCalibratedTimestampsEXTPointer);
@@ -5141,53 +5132,53 @@ namespace Vulkan
 				GetCalibratedTimestampsEXT_2 = Marshal.GetDelegateForFunctionPointer<GetCalibratedTimestampsEXTDelegate_2>(GetCalibratedTimestampsEXTPointer);
 				GetCalibratedTimestampsEXT_3 = Marshal.GetDelegateForFunctionPointer<GetCalibratedTimestampsEXTDelegate_3>(GetCalibratedTimestampsEXTPointer);
 			}
-			SetDebugUtilsObjectNameEXTPointer = VulkanLibrary.GetFunctionPointer("vkSetDebugUtilsObjectNameEXT");
+			SetDebugUtilsObjectNameEXTPointer = GetInstancePrecedureAddress(instance, "vkSetDebugUtilsObjectNameEXT");
 			if (SetDebugUtilsObjectNameEXTPointer != IntPtr.Zero)
 			{
 				SetDebugUtilsObjectNameEXT_0 = Marshal.GetDelegateForFunctionPointer<SetDebugUtilsObjectNameEXTDelegate_0>(SetDebugUtilsObjectNameEXTPointer);
 				SetDebugUtilsObjectNameEXT_1 = Marshal.GetDelegateForFunctionPointer<SetDebugUtilsObjectNameEXTDelegate_1>(SetDebugUtilsObjectNameEXTPointer);
 			}
-			SetDebugUtilsObjectTagEXTPointer = VulkanLibrary.GetFunctionPointer("vkSetDebugUtilsObjectTagEXT");
+			SetDebugUtilsObjectTagEXTPointer = GetInstancePrecedureAddress(instance, "vkSetDebugUtilsObjectTagEXT");
 			if (SetDebugUtilsObjectTagEXTPointer != IntPtr.Zero)
 			{
 				SetDebugUtilsObjectTagEXT_0 = Marshal.GetDelegateForFunctionPointer<SetDebugUtilsObjectTagEXTDelegate_0>(SetDebugUtilsObjectTagEXTPointer);
 				SetDebugUtilsObjectTagEXT_1 = Marshal.GetDelegateForFunctionPointer<SetDebugUtilsObjectTagEXTDelegate_1>(SetDebugUtilsObjectTagEXTPointer);
 			}
-			QueueBeginDebugUtilsLabelEXTPointer = VulkanLibrary.GetFunctionPointer("vkQueueBeginDebugUtilsLabelEXT");
+			QueueBeginDebugUtilsLabelEXTPointer = GetInstancePrecedureAddress(instance, "vkQueueBeginDebugUtilsLabelEXT");
 			if (QueueBeginDebugUtilsLabelEXTPointer != IntPtr.Zero)
 			{
 				QueueBeginDebugUtilsLabelEXT_0 = Marshal.GetDelegateForFunctionPointer<QueueBeginDebugUtilsLabelEXTDelegate_0>(QueueBeginDebugUtilsLabelEXTPointer);
 				QueueBeginDebugUtilsLabelEXT_1 = Marshal.GetDelegateForFunctionPointer<QueueBeginDebugUtilsLabelEXTDelegate_1>(QueueBeginDebugUtilsLabelEXTPointer);
 			}
-			QueueEndDebugUtilsLabelEXTPointer = VulkanLibrary.GetFunctionPointer("vkQueueEndDebugUtilsLabelEXT");
+			QueueEndDebugUtilsLabelEXTPointer = GetInstancePrecedureAddress(instance, "vkQueueEndDebugUtilsLabelEXT");
 			if (QueueEndDebugUtilsLabelEXTPointer != IntPtr.Zero)
 			{
 				QueueEndDebugUtilsLabelEXT_0 = Marshal.GetDelegateForFunctionPointer<QueueEndDebugUtilsLabelEXTDelegate_0>(QueueEndDebugUtilsLabelEXTPointer);
 			}
-			QueueInsertDebugUtilsLabelEXTPointer = VulkanLibrary.GetFunctionPointer("vkQueueInsertDebugUtilsLabelEXT");
+			QueueInsertDebugUtilsLabelEXTPointer = GetInstancePrecedureAddress(instance, "vkQueueInsertDebugUtilsLabelEXT");
 			if (QueueInsertDebugUtilsLabelEXTPointer != IntPtr.Zero)
 			{
 				QueueInsertDebugUtilsLabelEXT_0 = Marshal.GetDelegateForFunctionPointer<QueueInsertDebugUtilsLabelEXTDelegate_0>(QueueInsertDebugUtilsLabelEXTPointer);
 				QueueInsertDebugUtilsLabelEXT_1 = Marshal.GetDelegateForFunctionPointer<QueueInsertDebugUtilsLabelEXTDelegate_1>(QueueInsertDebugUtilsLabelEXTPointer);
 			}
-			CommandBeginDebugUtilsLabelEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdBeginDebugUtilsLabelEXT");
+			CommandBeginDebugUtilsLabelEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdBeginDebugUtilsLabelEXT");
 			if (CommandBeginDebugUtilsLabelEXTPointer != IntPtr.Zero)
 			{
 				CommandBeginDebugUtilsLabelEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandBeginDebugUtilsLabelEXTDelegate_0>(CommandBeginDebugUtilsLabelEXTPointer);
 				CommandBeginDebugUtilsLabelEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandBeginDebugUtilsLabelEXTDelegate_1>(CommandBeginDebugUtilsLabelEXTPointer);
 			}
-			CommandEndDebugUtilsLabelEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdEndDebugUtilsLabelEXT");
+			CommandEndDebugUtilsLabelEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdEndDebugUtilsLabelEXT");
 			if (CommandEndDebugUtilsLabelEXTPointer != IntPtr.Zero)
 			{
 				CommandEndDebugUtilsLabelEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandEndDebugUtilsLabelEXTDelegate_0>(CommandEndDebugUtilsLabelEXTPointer);
 			}
-			CommandInsertDebugUtilsLabelEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdInsertDebugUtilsLabelEXT");
+			CommandInsertDebugUtilsLabelEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdInsertDebugUtilsLabelEXT");
 			if (CommandInsertDebugUtilsLabelEXTPointer != IntPtr.Zero)
 			{
 				CommandInsertDebugUtilsLabelEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandInsertDebugUtilsLabelEXTDelegate_0>(CommandInsertDebugUtilsLabelEXTPointer);
 				CommandInsertDebugUtilsLabelEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandInsertDebugUtilsLabelEXTDelegate_1>(CommandInsertDebugUtilsLabelEXTPointer);
 			}
-			CreateDebugUtilsMessengerEXTPointer = VulkanLibrary.GetFunctionPointer("vkCreateDebugUtilsMessengerEXT");
+			CreateDebugUtilsMessengerEXTPointer = GetInstancePrecedureAddress(instance, "vkCreateDebugUtilsMessengerEXT");
 			if (CreateDebugUtilsMessengerEXTPointer != IntPtr.Zero)
 			{
 				CreateDebugUtilsMessengerEXT_0 = Marshal.GetDelegateForFunctionPointer<CreateDebugUtilsMessengerEXTDelegate_0>(CreateDebugUtilsMessengerEXTPointer);
@@ -5199,30 +5190,30 @@ namespace Vulkan
 				CreateDebugUtilsMessengerEXT_6 = Marshal.GetDelegateForFunctionPointer<CreateDebugUtilsMessengerEXTDelegate_6>(CreateDebugUtilsMessengerEXTPointer);
 				CreateDebugUtilsMessengerEXT_7 = Marshal.GetDelegateForFunctionPointer<CreateDebugUtilsMessengerEXTDelegate_7>(CreateDebugUtilsMessengerEXTPointer);
 			}
-			DestroyDebugUtilsMessengerEXTPointer = VulkanLibrary.GetFunctionPointer("vkDestroyDebugUtilsMessengerEXT");
+			DestroyDebugUtilsMessengerEXTPointer = GetInstancePrecedureAddress(instance, "vkDestroyDebugUtilsMessengerEXT");
 			if (DestroyDebugUtilsMessengerEXTPointer != IntPtr.Zero)
 			{
 				DestroyDebugUtilsMessengerEXT_0 = Marshal.GetDelegateForFunctionPointer<DestroyDebugUtilsMessengerEXTDelegate_0>(DestroyDebugUtilsMessengerEXTPointer);
 				DestroyDebugUtilsMessengerEXT_1 = Marshal.GetDelegateForFunctionPointer<DestroyDebugUtilsMessengerEXTDelegate_1>(DestroyDebugUtilsMessengerEXTPointer);
 			}
-			SubmitDebugUtilsMessageEXTPointer = VulkanLibrary.GetFunctionPointer("vkSubmitDebugUtilsMessageEXT");
+			SubmitDebugUtilsMessageEXTPointer = GetInstancePrecedureAddress(instance, "vkSubmitDebugUtilsMessageEXT");
 			if (SubmitDebugUtilsMessageEXTPointer != IntPtr.Zero)
 			{
 				SubmitDebugUtilsMessageEXT_0 = Marshal.GetDelegateForFunctionPointer<SubmitDebugUtilsMessageEXTDelegate_0>(SubmitDebugUtilsMessageEXTPointer);
 				SubmitDebugUtilsMessageEXT_1 = Marshal.GetDelegateForFunctionPointer<SubmitDebugUtilsMessageEXTDelegate_1>(SubmitDebugUtilsMessageEXTPointer);
 			}
-			GetMemoryHostPointerPropertiesEXTPointer = VulkanLibrary.GetFunctionPointer("vkGetMemoryHostPointerPropertiesEXT");
+			GetMemoryHostPointerPropertiesEXTPointer = GetInstancePrecedureAddress(instance, "vkGetMemoryHostPointerPropertiesEXT");
 			if (GetMemoryHostPointerPropertiesEXTPointer != IntPtr.Zero)
 			{
 				GetMemoryHostPointerPropertiesEXT_0 = Marshal.GetDelegateForFunctionPointer<GetMemoryHostPointerPropertiesEXTDelegate_0>(GetMemoryHostPointerPropertiesEXTPointer);
 				GetMemoryHostPointerPropertiesEXT_1 = Marshal.GetDelegateForFunctionPointer<GetMemoryHostPointerPropertiesEXTDelegate_1>(GetMemoryHostPointerPropertiesEXTPointer);
 			}
-			CommandWriteBufferMarkerAMDPointer = VulkanLibrary.GetFunctionPointer("vkCmdWriteBufferMarkerAMD");
+			CommandWriteBufferMarkerAMDPointer = GetInstancePrecedureAddress(instance, "vkCmdWriteBufferMarkerAMD");
 			if (CommandWriteBufferMarkerAMDPointer != IntPtr.Zero)
 			{
 				CommandWriteBufferMarkerAMD_0 = Marshal.GetDelegateForFunctionPointer<CommandWriteBufferMarkerAMDDelegate_0>(CommandWriteBufferMarkerAMDPointer);
 			}
-			CreateRenderPass2Pointer = VulkanLibrary.GetFunctionPointer("vkCreateRenderPass2");
+			CreateRenderPass2Pointer = GetInstancePrecedureAddress(instance, "vkCreateRenderPass2");
 			if (CreateRenderPass2Pointer != IntPtr.Zero)
 			{
 				CreateRenderPass2_0 = Marshal.GetDelegateForFunctionPointer<CreateRenderPass2Delegate_0>(CreateRenderPass2Pointer);
@@ -5234,7 +5225,7 @@ namespace Vulkan
 				CreateRenderPass2_6 = Marshal.GetDelegateForFunctionPointer<CreateRenderPass2Delegate_6>(CreateRenderPass2Pointer);
 				CreateRenderPass2_7 = Marshal.GetDelegateForFunctionPointer<CreateRenderPass2Delegate_7>(CreateRenderPass2Pointer);
 			}
-			CommandBeginRenderPass2Pointer = VulkanLibrary.GetFunctionPointer("vkCmdBeginRenderPass2");
+			CommandBeginRenderPass2Pointer = GetInstancePrecedureAddress(instance, "vkCmdBeginRenderPass2");
 			if (CommandBeginRenderPass2Pointer != IntPtr.Zero)
 			{
 				CommandBeginRenderPass2_0 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderPass2Delegate_0>(CommandBeginRenderPass2Pointer);
@@ -5242,7 +5233,7 @@ namespace Vulkan
 				CommandBeginRenderPass2_2 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderPass2Delegate_2>(CommandBeginRenderPass2Pointer);
 				CommandBeginRenderPass2_3 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderPass2Delegate_3>(CommandBeginRenderPass2Pointer);
 			}
-			CommandNextSubpass2Pointer = VulkanLibrary.GetFunctionPointer("vkCmdNextSubpass2");
+			CommandNextSubpass2Pointer = GetInstancePrecedureAddress(instance, "vkCmdNextSubpass2");
 			if (CommandNextSubpass2Pointer != IntPtr.Zero)
 			{
 				CommandNextSubpass2_0 = Marshal.GetDelegateForFunctionPointer<CommandNextSubpass2Delegate_0>(CommandNextSubpass2Pointer);
@@ -5250,31 +5241,31 @@ namespace Vulkan
 				CommandNextSubpass2_2 = Marshal.GetDelegateForFunctionPointer<CommandNextSubpass2Delegate_2>(CommandNextSubpass2Pointer);
 				CommandNextSubpass2_3 = Marshal.GetDelegateForFunctionPointer<CommandNextSubpass2Delegate_3>(CommandNextSubpass2Pointer);
 			}
-			CommandEndRenderPass2Pointer = VulkanLibrary.GetFunctionPointer("vkCmdEndRenderPass2");
+			CommandEndRenderPass2Pointer = GetInstancePrecedureAddress(instance, "vkCmdEndRenderPass2");
 			if (CommandEndRenderPass2Pointer != IntPtr.Zero)
 			{
 				CommandEndRenderPass2_0 = Marshal.GetDelegateForFunctionPointer<CommandEndRenderPass2Delegate_0>(CommandEndRenderPass2Pointer);
 				CommandEndRenderPass2_1 = Marshal.GetDelegateForFunctionPointer<CommandEndRenderPass2Delegate_1>(CommandEndRenderPass2Pointer);
 			}
-			GetSemaphoreCounterValuePointer = VulkanLibrary.GetFunctionPointer("vkGetSemaphoreCounterValue");
+			GetSemaphoreCounterValuePointer = GetInstancePrecedureAddress(instance, "vkGetSemaphoreCounterValue");
 			if (GetSemaphoreCounterValuePointer != IntPtr.Zero)
 			{
 				GetSemaphoreCounterValue_0 = Marshal.GetDelegateForFunctionPointer<GetSemaphoreCounterValueDelegate_0>(GetSemaphoreCounterValuePointer);
 				GetSemaphoreCounterValue_1 = Marshal.GetDelegateForFunctionPointer<GetSemaphoreCounterValueDelegate_1>(GetSemaphoreCounterValuePointer);
 			}
-			WaitSemaphoresPointer = VulkanLibrary.GetFunctionPointer("vkWaitSemaphores");
+			WaitSemaphoresPointer = GetInstancePrecedureAddress(instance, "vkWaitSemaphores");
 			if (WaitSemaphoresPointer != IntPtr.Zero)
 			{
 				WaitSemaphores_0 = Marshal.GetDelegateForFunctionPointer<WaitSemaphoresDelegate_0>(WaitSemaphoresPointer);
 				WaitSemaphores_1 = Marshal.GetDelegateForFunctionPointer<WaitSemaphoresDelegate_1>(WaitSemaphoresPointer);
 			}
-			SignalSemaphorePointer = VulkanLibrary.GetFunctionPointer("vkSignalSemaphore");
+			SignalSemaphorePointer = GetInstancePrecedureAddress(instance, "vkSignalSemaphore");
 			if (SignalSemaphorePointer != IntPtr.Zero)
 			{
 				SignalSemaphore_0 = Marshal.GetDelegateForFunctionPointer<SignalSemaphoreDelegate_0>(SignalSemaphorePointer);
 				SignalSemaphore_1 = Marshal.GetDelegateForFunctionPointer<SignalSemaphoreDelegate_1>(SignalSemaphorePointer);
 			}
-			GetAndroidHardwareBufferPropertiesANDROIDPointer = VulkanLibrary.GetFunctionPointer("vkGetAndroidHardwareBufferPropertiesANDROID");
+			GetAndroidHardwareBufferPropertiesANDROIDPointer = GetInstancePrecedureAddress(instance, "vkGetAndroidHardwareBufferPropertiesANDROID");
 			if (GetAndroidHardwareBufferPropertiesANDROIDPointer != IntPtr.Zero)
 			{
 				GetAndroidHardwareBufferPropertiesANDROID_0 = Marshal.GetDelegateForFunctionPointer<GetAndroidHardwareBufferPropertiesANDROIDDelegate_0>(GetAndroidHardwareBufferPropertiesANDROIDPointer);
@@ -5282,7 +5273,7 @@ namespace Vulkan
 				GetAndroidHardwareBufferPropertiesANDROID_2 = Marshal.GetDelegateForFunctionPointer<GetAndroidHardwareBufferPropertiesANDROIDDelegate_2>(GetAndroidHardwareBufferPropertiesANDROIDPointer);
 				GetAndroidHardwareBufferPropertiesANDROID_3 = Marshal.GetDelegateForFunctionPointer<GetAndroidHardwareBufferPropertiesANDROIDDelegate_3>(GetAndroidHardwareBufferPropertiesANDROIDPointer);
 			}
-			GetMemoryAndroidHardwareBufferANDROIDPointer = VulkanLibrary.GetFunctionPointer("vkGetMemoryAndroidHardwareBufferANDROID");
+			GetMemoryAndroidHardwareBufferANDROIDPointer = GetInstancePrecedureAddress(instance, "vkGetMemoryAndroidHardwareBufferANDROID");
 			if (GetMemoryAndroidHardwareBufferANDROIDPointer != IntPtr.Zero)
 			{
 				GetMemoryAndroidHardwareBufferANDROID_0 = Marshal.GetDelegateForFunctionPointer<GetMemoryAndroidHardwareBufferANDROIDDelegate_0>(GetMemoryAndroidHardwareBufferANDROIDPointer);
@@ -5290,22 +5281,22 @@ namespace Vulkan
 				GetMemoryAndroidHardwareBufferANDROID_2 = Marshal.GetDelegateForFunctionPointer<GetMemoryAndroidHardwareBufferANDROIDDelegate_2>(GetMemoryAndroidHardwareBufferANDROIDPointer);
 				GetMemoryAndroidHardwareBufferANDROID_3 = Marshal.GetDelegateForFunctionPointer<GetMemoryAndroidHardwareBufferANDROIDDelegate_3>(GetMemoryAndroidHardwareBufferANDROIDPointer);
 			}
-			CommandDrawIndirectCountPointer = VulkanLibrary.GetFunctionPointer("vkCmdDrawIndirectCount");
+			CommandDrawIndirectCountPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawIndirectCount");
 			if (CommandDrawIndirectCountPointer != IntPtr.Zero)
 			{
 				CommandDrawIndirectCount_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawIndirectCountDelegate_0>(CommandDrawIndirectCountPointer);
 			}
-			CommandDrawIndexedIndirectCountPointer = VulkanLibrary.GetFunctionPointer("vkCmdDrawIndexedIndirectCount");
+			CommandDrawIndexedIndirectCountPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawIndexedIndirectCount");
 			if (CommandDrawIndexedIndirectCountPointer != IntPtr.Zero)
 			{
 				CommandDrawIndexedIndirectCount_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawIndexedIndirectCountDelegate_0>(CommandDrawIndexedIndirectCountPointer);
 			}
-			CommandSetCheckpointNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetCheckpointNV");
+			CommandSetCheckpointNVPointer = GetInstancePrecedureAddress(instance, "vkCmdSetCheckpointNV");
 			if (CommandSetCheckpointNVPointer != IntPtr.Zero)
 			{
 				CommandSetCheckpointNV_0 = Marshal.GetDelegateForFunctionPointer<CommandSetCheckpointNVDelegate_0>(CommandSetCheckpointNVPointer);
 			}
-			GetQueueCheckpointDataNVPointer = VulkanLibrary.GetFunctionPointer("vkGetQueueCheckpointDataNV");
+			GetQueueCheckpointDataNVPointer = GetInstancePrecedureAddress(instance, "vkGetQueueCheckpointDataNV");
 			if (GetQueueCheckpointDataNVPointer != IntPtr.Zero)
 			{
 				GetQueueCheckpointDataNV_0 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointDataNVDelegate_0>(GetQueueCheckpointDataNVPointer);
@@ -5313,7 +5304,7 @@ namespace Vulkan
 				GetQueueCheckpointDataNV_2 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointDataNVDelegate_2>(GetQueueCheckpointDataNVPointer);
 				GetQueueCheckpointDataNV_3 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointDataNVDelegate_3>(GetQueueCheckpointDataNVPointer);
 			}
-			CommandBindTransformFeedbackBuffersEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdBindTransformFeedbackBuffersEXT");
+			CommandBindTransformFeedbackBuffersEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdBindTransformFeedbackBuffersEXT");
 			if (CommandBindTransformFeedbackBuffersEXTPointer != IntPtr.Zero)
 			{
 				CommandBindTransformFeedbackBuffersEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandBindTransformFeedbackBuffersEXTDelegate_0>(CommandBindTransformFeedbackBuffersEXTPointer);
@@ -5325,7 +5316,7 @@ namespace Vulkan
 				CommandBindTransformFeedbackBuffersEXT_6 = Marshal.GetDelegateForFunctionPointer<CommandBindTransformFeedbackBuffersEXTDelegate_6>(CommandBindTransformFeedbackBuffersEXTPointer);
 				CommandBindTransformFeedbackBuffersEXT_7 = Marshal.GetDelegateForFunctionPointer<CommandBindTransformFeedbackBuffersEXTDelegate_7>(CommandBindTransformFeedbackBuffersEXTPointer);
 			}
-			CommandBeginTransformFeedbackEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdBeginTransformFeedbackEXT");
+			CommandBeginTransformFeedbackEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdBeginTransformFeedbackEXT");
 			if (CommandBeginTransformFeedbackEXTPointer != IntPtr.Zero)
 			{
 				CommandBeginTransformFeedbackEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandBeginTransformFeedbackEXTDelegate_0>(CommandBeginTransformFeedbackEXTPointer);
@@ -5333,7 +5324,7 @@ namespace Vulkan
 				CommandBeginTransformFeedbackEXT_2 = Marshal.GetDelegateForFunctionPointer<CommandBeginTransformFeedbackEXTDelegate_2>(CommandBeginTransformFeedbackEXTPointer);
 				CommandBeginTransformFeedbackEXT_3 = Marshal.GetDelegateForFunctionPointer<CommandBeginTransformFeedbackEXTDelegate_3>(CommandBeginTransformFeedbackEXTPointer);
 			}
-			CommandEndTransformFeedbackEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdEndTransformFeedbackEXT");
+			CommandEndTransformFeedbackEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdEndTransformFeedbackEXT");
 			if (CommandEndTransformFeedbackEXTPointer != IntPtr.Zero)
 			{
 				CommandEndTransformFeedbackEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandEndTransformFeedbackEXTDelegate_0>(CommandEndTransformFeedbackEXTPointer);
@@ -5341,65 +5332,65 @@ namespace Vulkan
 				CommandEndTransformFeedbackEXT_2 = Marshal.GetDelegateForFunctionPointer<CommandEndTransformFeedbackEXTDelegate_2>(CommandEndTransformFeedbackEXTPointer);
 				CommandEndTransformFeedbackEXT_3 = Marshal.GetDelegateForFunctionPointer<CommandEndTransformFeedbackEXTDelegate_3>(CommandEndTransformFeedbackEXTPointer);
 			}
-			CommandBeginQueryIndexedEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdBeginQueryIndexedEXT");
+			CommandBeginQueryIndexedEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdBeginQueryIndexedEXT");
 			if (CommandBeginQueryIndexedEXTPointer != IntPtr.Zero)
 			{
 				CommandBeginQueryIndexedEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandBeginQueryIndexedEXTDelegate_0>(CommandBeginQueryIndexedEXTPointer);
 			}
-			CommandEndQueryIndexedEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdEndQueryIndexedEXT");
+			CommandEndQueryIndexedEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdEndQueryIndexedEXT");
 			if (CommandEndQueryIndexedEXTPointer != IntPtr.Zero)
 			{
 				CommandEndQueryIndexedEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandEndQueryIndexedEXTDelegate_0>(CommandEndQueryIndexedEXTPointer);
 			}
-			CommandDrawIndirectByteCountEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdDrawIndirectByteCountEXT");
+			CommandDrawIndirectByteCountEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawIndirectByteCountEXT");
 			if (CommandDrawIndirectByteCountEXTPointer != IntPtr.Zero)
 			{
 				CommandDrawIndirectByteCountEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawIndirectByteCountEXTDelegate_0>(CommandDrawIndirectByteCountEXTPointer);
 			}
-			CommandSetExclusiveScissorNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetExclusiveScissorNV");
+			CommandSetExclusiveScissorNVPointer = GetInstancePrecedureAddress(instance, "vkCmdSetExclusiveScissorNV");
 			if (CommandSetExclusiveScissorNVPointer != IntPtr.Zero)
 			{
 				CommandSetExclusiveScissorNV_0 = Marshal.GetDelegateForFunctionPointer<CommandSetExclusiveScissorNVDelegate_0>(CommandSetExclusiveScissorNVPointer);
 				CommandSetExclusiveScissorNV_1 = Marshal.GetDelegateForFunctionPointer<CommandSetExclusiveScissorNVDelegate_1>(CommandSetExclusiveScissorNVPointer);
 			}
-			CommandBindShadingRateImageNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdBindShadingRateImageNV");
+			CommandBindShadingRateImageNVPointer = GetInstancePrecedureAddress(instance, "vkCmdBindShadingRateImageNV");
 			if (CommandBindShadingRateImageNVPointer != IntPtr.Zero)
 			{
 				CommandBindShadingRateImageNV_0 = Marshal.GetDelegateForFunctionPointer<CommandBindShadingRateImageNVDelegate_0>(CommandBindShadingRateImageNVPointer);
 			}
-			CommandSetViewportShadingRatePaletteNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetViewportShadingRatePaletteNV");
+			CommandSetViewportShadingRatePaletteNVPointer = GetInstancePrecedureAddress(instance, "vkCmdSetViewportShadingRatePaletteNV");
 			if (CommandSetViewportShadingRatePaletteNVPointer != IntPtr.Zero)
 			{
 				CommandSetViewportShadingRatePaletteNV_0 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportShadingRatePaletteNVDelegate_0>(CommandSetViewportShadingRatePaletteNVPointer);
 				CommandSetViewportShadingRatePaletteNV_1 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportShadingRatePaletteNVDelegate_1>(CommandSetViewportShadingRatePaletteNVPointer);
 			}
-			CommandSetCoarseSampleOrderNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetCoarseSampleOrderNV");
+			CommandSetCoarseSampleOrderNVPointer = GetInstancePrecedureAddress(instance, "vkCmdSetCoarseSampleOrderNV");
 			if (CommandSetCoarseSampleOrderNVPointer != IntPtr.Zero)
 			{
 				CommandSetCoarseSampleOrderNV_0 = Marshal.GetDelegateForFunctionPointer<CommandSetCoarseSampleOrderNVDelegate_0>(CommandSetCoarseSampleOrderNVPointer);
 				CommandSetCoarseSampleOrderNV_1 = Marshal.GetDelegateForFunctionPointer<CommandSetCoarseSampleOrderNVDelegate_1>(CommandSetCoarseSampleOrderNVPointer);
 			}
-			CommandDrawMeshTasksNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdDrawMeshTasksNV");
+			CommandDrawMeshTasksNVPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawMeshTasksNV");
 			if (CommandDrawMeshTasksNVPointer != IntPtr.Zero)
 			{
 				CommandDrawMeshTasksNV_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawMeshTasksNVDelegate_0>(CommandDrawMeshTasksNVPointer);
 			}
-			CommandDrawMeshTasksIndirectNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdDrawMeshTasksIndirectNV");
+			CommandDrawMeshTasksIndirectNVPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawMeshTasksIndirectNV");
 			if (CommandDrawMeshTasksIndirectNVPointer != IntPtr.Zero)
 			{
 				CommandDrawMeshTasksIndirectNV_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawMeshTasksIndirectNVDelegate_0>(CommandDrawMeshTasksIndirectNVPointer);
 			}
-			CommandDrawMeshTasksIndirectCountNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdDrawMeshTasksIndirectCountNV");
+			CommandDrawMeshTasksIndirectCountNVPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawMeshTasksIndirectCountNV");
 			if (CommandDrawMeshTasksIndirectCountNVPointer != IntPtr.Zero)
 			{
 				CommandDrawMeshTasksIndirectCountNV_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawMeshTasksIndirectCountNVDelegate_0>(CommandDrawMeshTasksIndirectCountNVPointer);
 			}
-			CompileDeferredNVPointer = VulkanLibrary.GetFunctionPointer("vkCompileDeferredNV");
+			CompileDeferredNVPointer = GetInstancePrecedureAddress(instance, "vkCompileDeferredNV");
 			if (CompileDeferredNVPointer != IntPtr.Zero)
 			{
 				CompileDeferredNV_0 = Marshal.GetDelegateForFunctionPointer<CompileDeferredNVDelegate_0>(CompileDeferredNVPointer);
 			}
-			CreateAccelerationStructureNVPointer = VulkanLibrary.GetFunctionPointer("vkCreateAccelerationStructureNV");
+			CreateAccelerationStructureNVPointer = GetInstancePrecedureAddress(instance, "vkCreateAccelerationStructureNV");
 			if (CreateAccelerationStructureNVPointer != IntPtr.Zero)
 			{
 				CreateAccelerationStructureNV_0 = Marshal.GetDelegateForFunctionPointer<CreateAccelerationStructureNVDelegate_0>(CreateAccelerationStructureNVPointer);
@@ -5411,19 +5402,19 @@ namespace Vulkan
 				CreateAccelerationStructureNV_6 = Marshal.GetDelegateForFunctionPointer<CreateAccelerationStructureNVDelegate_6>(CreateAccelerationStructureNVPointer);
 				CreateAccelerationStructureNV_7 = Marshal.GetDelegateForFunctionPointer<CreateAccelerationStructureNVDelegate_7>(CreateAccelerationStructureNVPointer);
 			}
-			DestroyAccelerationStructureKHRPointer = VulkanLibrary.GetFunctionPointer("vkDestroyAccelerationStructureKHR");
+			DestroyAccelerationStructureKHRPointer = GetInstancePrecedureAddress(instance, "vkDestroyAccelerationStructureKHR");
 			if (DestroyAccelerationStructureKHRPointer != IntPtr.Zero)
 			{
 				DestroyAccelerationStructureKHR_0 = Marshal.GetDelegateForFunctionPointer<DestroyAccelerationStructureKHRDelegate_0>(DestroyAccelerationStructureKHRPointer);
 				DestroyAccelerationStructureKHR_1 = Marshal.GetDelegateForFunctionPointer<DestroyAccelerationStructureKHRDelegate_1>(DestroyAccelerationStructureKHRPointer);
 			}
-			DestroyAccelerationStructureNVPointer = VulkanLibrary.GetFunctionPointer("vkDestroyAccelerationStructureNV");
+			DestroyAccelerationStructureNVPointer = GetInstancePrecedureAddress(instance, "vkDestroyAccelerationStructureNV");
 			if (DestroyAccelerationStructureNVPointer != IntPtr.Zero)
 			{
 				DestroyAccelerationStructureNV_0 = Marshal.GetDelegateForFunctionPointer<DestroyAccelerationStructureNVDelegate_0>(DestroyAccelerationStructureNVPointer);
 				DestroyAccelerationStructureNV_1 = Marshal.GetDelegateForFunctionPointer<DestroyAccelerationStructureNVDelegate_1>(DestroyAccelerationStructureNVPointer);
 			}
-			GetAccelerationStructureMemoryRequirementsNVPointer = VulkanLibrary.GetFunctionPointer("vkGetAccelerationStructureMemoryRequirementsNV");
+			GetAccelerationStructureMemoryRequirementsNVPointer = GetInstancePrecedureAddress(instance, "vkGetAccelerationStructureMemoryRequirementsNV");
 			if (GetAccelerationStructureMemoryRequirementsNVPointer != IntPtr.Zero)
 			{
 				GetAccelerationStructureMemoryRequirementsNV_0 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureMemoryRequirementsNVDelegate_0>(GetAccelerationStructureMemoryRequirementsNVPointer);
@@ -5431,77 +5422,77 @@ namespace Vulkan
 				GetAccelerationStructureMemoryRequirementsNV_2 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureMemoryRequirementsNVDelegate_2>(GetAccelerationStructureMemoryRequirementsNVPointer);
 				GetAccelerationStructureMemoryRequirementsNV_3 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureMemoryRequirementsNVDelegate_3>(GetAccelerationStructureMemoryRequirementsNVPointer);
 			}
-			BindAccelerationStructureMemoryNVPointer = VulkanLibrary.GetFunctionPointer("vkBindAccelerationStructureMemoryNV");
+			BindAccelerationStructureMemoryNVPointer = GetInstancePrecedureAddress(instance, "vkBindAccelerationStructureMemoryNV");
 			if (BindAccelerationStructureMemoryNVPointer != IntPtr.Zero)
 			{
 				BindAccelerationStructureMemoryNV_0 = Marshal.GetDelegateForFunctionPointer<BindAccelerationStructureMemoryNVDelegate_0>(BindAccelerationStructureMemoryNVPointer);
 			}
-			CommandCopyAccelerationStructureNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyAccelerationStructureNV");
+			CommandCopyAccelerationStructureNVPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyAccelerationStructureNV");
 			if (CommandCopyAccelerationStructureNVPointer != IntPtr.Zero)
 			{
 				CommandCopyAccelerationStructureNV_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyAccelerationStructureNVDelegate_0>(CommandCopyAccelerationStructureNVPointer);
 			}
-			CommandCopyAccelerationStructureKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyAccelerationStructureKHR");
+			CommandCopyAccelerationStructureKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyAccelerationStructureKHR");
 			if (CommandCopyAccelerationStructureKHRPointer != IntPtr.Zero)
 			{
 				CommandCopyAccelerationStructureKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyAccelerationStructureKHRDelegate_0>(CommandCopyAccelerationStructureKHRPointer);
 				CommandCopyAccelerationStructureKHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyAccelerationStructureKHRDelegate_1>(CommandCopyAccelerationStructureKHRPointer);
 			}
-			CopyAccelerationStructureKHRPointer = VulkanLibrary.GetFunctionPointer("vkCopyAccelerationStructureKHR");
+			CopyAccelerationStructureKHRPointer = GetInstancePrecedureAddress(instance, "vkCopyAccelerationStructureKHR");
 			if (CopyAccelerationStructureKHRPointer != IntPtr.Zero)
 			{
 				CopyAccelerationStructureKHR_0 = Marshal.GetDelegateForFunctionPointer<CopyAccelerationStructureKHRDelegate_0>(CopyAccelerationStructureKHRPointer);
 				CopyAccelerationStructureKHR_1 = Marshal.GetDelegateForFunctionPointer<CopyAccelerationStructureKHRDelegate_1>(CopyAccelerationStructureKHRPointer);
 			}
-			CommandCopyAccelerationStructureToMemoryKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyAccelerationStructureToMemoryKHR");
+			CommandCopyAccelerationStructureToMemoryKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyAccelerationStructureToMemoryKHR");
 			if (CommandCopyAccelerationStructureToMemoryKHRPointer != IntPtr.Zero)
 			{
 				CommandCopyAccelerationStructureToMemoryKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyAccelerationStructureToMemoryKHRDelegate_0>(CommandCopyAccelerationStructureToMemoryKHRPointer);
 				CommandCopyAccelerationStructureToMemoryKHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyAccelerationStructureToMemoryKHRDelegate_1>(CommandCopyAccelerationStructureToMemoryKHRPointer);
 			}
-			CopyAccelerationStructureToMemoryKHRPointer = VulkanLibrary.GetFunctionPointer("vkCopyAccelerationStructureToMemoryKHR");
+			CopyAccelerationStructureToMemoryKHRPointer = GetInstancePrecedureAddress(instance, "vkCopyAccelerationStructureToMemoryKHR");
 			if (CopyAccelerationStructureToMemoryKHRPointer != IntPtr.Zero)
 			{
 				CopyAccelerationStructureToMemoryKHR_0 = Marshal.GetDelegateForFunctionPointer<CopyAccelerationStructureToMemoryKHRDelegate_0>(CopyAccelerationStructureToMemoryKHRPointer);
 				CopyAccelerationStructureToMemoryKHR_1 = Marshal.GetDelegateForFunctionPointer<CopyAccelerationStructureToMemoryKHRDelegate_1>(CopyAccelerationStructureToMemoryKHRPointer);
 			}
-			CommandCopyMemoryToAccelerationStructureKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyMemoryToAccelerationStructureKHR");
+			CommandCopyMemoryToAccelerationStructureKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyMemoryToAccelerationStructureKHR");
 			if (CommandCopyMemoryToAccelerationStructureKHRPointer != IntPtr.Zero)
 			{
 				CommandCopyMemoryToAccelerationStructureKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyMemoryToAccelerationStructureKHRDelegate_0>(CommandCopyMemoryToAccelerationStructureKHRPointer);
 				CommandCopyMemoryToAccelerationStructureKHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyMemoryToAccelerationStructureKHRDelegate_1>(CommandCopyMemoryToAccelerationStructureKHRPointer);
 			}
-			CopyMemoryToAccelerationStructureKHRPointer = VulkanLibrary.GetFunctionPointer("vkCopyMemoryToAccelerationStructureKHR");
+			CopyMemoryToAccelerationStructureKHRPointer = GetInstancePrecedureAddress(instance, "vkCopyMemoryToAccelerationStructureKHR");
 			if (CopyMemoryToAccelerationStructureKHRPointer != IntPtr.Zero)
 			{
 				CopyMemoryToAccelerationStructureKHR_0 = Marshal.GetDelegateForFunctionPointer<CopyMemoryToAccelerationStructureKHRDelegate_0>(CopyMemoryToAccelerationStructureKHRPointer);
 				CopyMemoryToAccelerationStructureKHR_1 = Marshal.GetDelegateForFunctionPointer<CopyMemoryToAccelerationStructureKHRDelegate_1>(CopyMemoryToAccelerationStructureKHRPointer);
 			}
-			CommandWriteAccelerationStructuresPropertiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdWriteAccelerationStructuresPropertiesKHR");
+			CommandWriteAccelerationStructuresPropertiesKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdWriteAccelerationStructuresPropertiesKHR");
 			if (CommandWriteAccelerationStructuresPropertiesKHRPointer != IntPtr.Zero)
 			{
 				CommandWriteAccelerationStructuresPropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandWriteAccelerationStructuresPropertiesKHRDelegate_0>(CommandWriteAccelerationStructuresPropertiesKHRPointer);
 				CommandWriteAccelerationStructuresPropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<CommandWriteAccelerationStructuresPropertiesKHRDelegate_1>(CommandWriteAccelerationStructuresPropertiesKHRPointer);
 			}
-			CommandWriteAccelerationStructuresPropertiesNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdWriteAccelerationStructuresPropertiesNV");
+			CommandWriteAccelerationStructuresPropertiesNVPointer = GetInstancePrecedureAddress(instance, "vkCmdWriteAccelerationStructuresPropertiesNV");
 			if (CommandWriteAccelerationStructuresPropertiesNVPointer != IntPtr.Zero)
 			{
 				CommandWriteAccelerationStructuresPropertiesNV_0 = Marshal.GetDelegateForFunctionPointer<CommandWriteAccelerationStructuresPropertiesNVDelegate_0>(CommandWriteAccelerationStructuresPropertiesNVPointer);
 				CommandWriteAccelerationStructuresPropertiesNV_1 = Marshal.GetDelegateForFunctionPointer<CommandWriteAccelerationStructuresPropertiesNVDelegate_1>(CommandWriteAccelerationStructuresPropertiesNVPointer);
 			}
-			CommandBuildAccelerationStructureNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdBuildAccelerationStructureNV");
+			CommandBuildAccelerationStructureNVPointer = GetInstancePrecedureAddress(instance, "vkCmdBuildAccelerationStructureNV");
 			if (CommandBuildAccelerationStructureNVPointer != IntPtr.Zero)
 			{
 				CommandBuildAccelerationStructureNV_0 = Marshal.GetDelegateForFunctionPointer<CommandBuildAccelerationStructureNVDelegate_0>(CommandBuildAccelerationStructureNVPointer);
 				CommandBuildAccelerationStructureNV_1 = Marshal.GetDelegateForFunctionPointer<CommandBuildAccelerationStructureNVDelegate_1>(CommandBuildAccelerationStructureNVPointer);
 			}
-			WriteAccelerationStructuresPropertiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkWriteAccelerationStructuresPropertiesKHR");
+			WriteAccelerationStructuresPropertiesKHRPointer = GetInstancePrecedureAddress(instance, "vkWriteAccelerationStructuresPropertiesKHR");
 			if (WriteAccelerationStructuresPropertiesKHRPointer != IntPtr.Zero)
 			{
 				WriteAccelerationStructuresPropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<WriteAccelerationStructuresPropertiesKHRDelegate_0>(WriteAccelerationStructuresPropertiesKHRPointer);
 				WriteAccelerationStructuresPropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<WriteAccelerationStructuresPropertiesKHRDelegate_1>(WriteAccelerationStructuresPropertiesKHRPointer);
 			}
-			CommandTraceRaysKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdTraceRaysKHR");
+			CommandTraceRaysKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdTraceRaysKHR");
 			if (CommandTraceRaysKHRPointer != IntPtr.Zero)
 			{
 				CommandTraceRaysKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandTraceRaysKHRDelegate_0>(CommandTraceRaysKHRPointer);
@@ -5521,27 +5512,27 @@ namespace Vulkan
 				CommandTraceRaysKHR_14 = Marshal.GetDelegateForFunctionPointer<CommandTraceRaysKHRDelegate_14>(CommandTraceRaysKHRPointer);
 				CommandTraceRaysKHR_15 = Marshal.GetDelegateForFunctionPointer<CommandTraceRaysKHRDelegate_15>(CommandTraceRaysKHRPointer);
 			}
-			CommandTraceRaysNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdTraceRaysNV");
+			CommandTraceRaysNVPointer = GetInstancePrecedureAddress(instance, "vkCmdTraceRaysNV");
 			if (CommandTraceRaysNVPointer != IntPtr.Zero)
 			{
 				CommandTraceRaysNV_0 = Marshal.GetDelegateForFunctionPointer<CommandTraceRaysNVDelegate_0>(CommandTraceRaysNVPointer);
 			}
-			GetRayTracingShaderGroupHandlesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetRayTracingShaderGroupHandlesKHR");
+			GetRayTracingShaderGroupHandlesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetRayTracingShaderGroupHandlesKHR");
 			if (GetRayTracingShaderGroupHandlesKHRPointer != IntPtr.Zero)
 			{
 				GetRayTracingShaderGroupHandlesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetRayTracingShaderGroupHandlesKHRDelegate_0>(GetRayTracingShaderGroupHandlesKHRPointer);
 			}
-			GetRayTracingCaptureReplayShaderGroupHandlesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetRayTracingCaptureReplayShaderGroupHandlesKHR");
+			GetRayTracingCaptureReplayShaderGroupHandlesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetRayTracingCaptureReplayShaderGroupHandlesKHR");
 			if (GetRayTracingCaptureReplayShaderGroupHandlesKHRPointer != IntPtr.Zero)
 			{
 				GetRayTracingCaptureReplayShaderGroupHandlesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetRayTracingCaptureReplayShaderGroupHandlesKHRDelegate_0>(GetRayTracingCaptureReplayShaderGroupHandlesKHRPointer);
 			}
-			GetAccelerationStructureHandleNVPointer = VulkanLibrary.GetFunctionPointer("vkGetAccelerationStructureHandleNV");
+			GetAccelerationStructureHandleNVPointer = GetInstancePrecedureAddress(instance, "vkGetAccelerationStructureHandleNV");
 			if (GetAccelerationStructureHandleNVPointer != IntPtr.Zero)
 			{
 				GetAccelerationStructureHandleNV_0 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureHandleNVDelegate_0>(GetAccelerationStructureHandleNVPointer);
 			}
-			CreateRayTracingPipelinesNVPointer = VulkanLibrary.GetFunctionPointer("vkCreateRayTracingPipelinesNV");
+			CreateRayTracingPipelinesNVPointer = GetInstancePrecedureAddress(instance, "vkCreateRayTracingPipelinesNV");
 			if (CreateRayTracingPipelinesNVPointer != IntPtr.Zero)
 			{
 				CreateRayTracingPipelinesNV_0 = Marshal.GetDelegateForFunctionPointer<CreateRayTracingPipelinesNVDelegate_0>(CreateRayTracingPipelinesNVPointer);
@@ -5549,7 +5540,7 @@ namespace Vulkan
 				CreateRayTracingPipelinesNV_2 = Marshal.GetDelegateForFunctionPointer<CreateRayTracingPipelinesNVDelegate_2>(CreateRayTracingPipelinesNVPointer);
 				CreateRayTracingPipelinesNV_3 = Marshal.GetDelegateForFunctionPointer<CreateRayTracingPipelinesNVDelegate_3>(CreateRayTracingPipelinesNVPointer);
 			}
-			CreateRayTracingPipelinesKHRPointer = VulkanLibrary.GetFunctionPointer("vkCreateRayTracingPipelinesKHR");
+			CreateRayTracingPipelinesKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateRayTracingPipelinesKHR");
 			if (CreateRayTracingPipelinesKHRPointer != IntPtr.Zero)
 			{
 				CreateRayTracingPipelinesKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateRayTracingPipelinesKHRDelegate_0>(CreateRayTracingPipelinesKHRPointer);
@@ -5557,7 +5548,7 @@ namespace Vulkan
 				CreateRayTracingPipelinesKHR_2 = Marshal.GetDelegateForFunctionPointer<CreateRayTracingPipelinesKHRDelegate_2>(CreateRayTracingPipelinesKHRPointer);
 				CreateRayTracingPipelinesKHR_3 = Marshal.GetDelegateForFunctionPointer<CreateRayTracingPipelinesKHRDelegate_3>(CreateRayTracingPipelinesKHRPointer);
 			}
-			GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
+			GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
 			if (GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceCooperativeMatrixPropertiesNV_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_0>(GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer);
@@ -5565,7 +5556,7 @@ namespace Vulkan
 				GetPhysicalDeviceCooperativeMatrixPropertiesNV_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_2>(GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer);
 				GetPhysicalDeviceCooperativeMatrixPropertiesNV_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCooperativeMatrixPropertiesNVDelegate_3>(GetPhysicalDeviceCooperativeMatrixPropertiesNVPointer);
 			}
-			CommandTraceRaysIndirectKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdTraceRaysIndirectKHR");
+			CommandTraceRaysIndirectKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdTraceRaysIndirectKHR");
 			if (CommandTraceRaysIndirectKHRPointer != IntPtr.Zero)
 			{
 				CommandTraceRaysIndirectKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandTraceRaysIndirectKHRDelegate_0>(CommandTraceRaysIndirectKHRPointer);
@@ -5585,7 +5576,7 @@ namespace Vulkan
 				CommandTraceRaysIndirectKHR_14 = Marshal.GetDelegateForFunctionPointer<CommandTraceRaysIndirectKHRDelegate_14>(CommandTraceRaysIndirectKHRPointer);
 				CommandTraceRaysIndirectKHR_15 = Marshal.GetDelegateForFunctionPointer<CommandTraceRaysIndirectKHRDelegate_15>(CommandTraceRaysIndirectKHRPointer);
 			}
-			GetDeviceAccelerationStructureCompatibilityKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetDeviceAccelerationStructureCompatibilityKHR");
+			GetDeviceAccelerationStructureCompatibilityKHRPointer = GetInstancePrecedureAddress(instance, "vkGetDeviceAccelerationStructureCompatibilityKHR");
 			if (GetDeviceAccelerationStructureCompatibilityKHRPointer != IntPtr.Zero)
 			{
 				GetDeviceAccelerationStructureCompatibilityKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceAccelerationStructureCompatibilityKHRDelegate_0>(GetDeviceAccelerationStructureCompatibilityKHRPointer);
@@ -5593,29 +5584,29 @@ namespace Vulkan
 				GetDeviceAccelerationStructureCompatibilityKHR_2 = Marshal.GetDelegateForFunctionPointer<GetDeviceAccelerationStructureCompatibilityKHRDelegate_2>(GetDeviceAccelerationStructureCompatibilityKHRPointer);
 				GetDeviceAccelerationStructureCompatibilityKHR_3 = Marshal.GetDelegateForFunctionPointer<GetDeviceAccelerationStructureCompatibilityKHRDelegate_3>(GetDeviceAccelerationStructureCompatibilityKHRPointer);
 			}
-			GetRayTracingShaderGroupStackSizeKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetRayTracingShaderGroupStackSizeKHR");
+			GetRayTracingShaderGroupStackSizeKHRPointer = GetInstancePrecedureAddress(instance, "vkGetRayTracingShaderGroupStackSizeKHR");
 			if (GetRayTracingShaderGroupStackSizeKHRPointer != IntPtr.Zero)
 			{
 				GetRayTracingShaderGroupStackSizeKHR_0 = Marshal.GetDelegateForFunctionPointer<GetRayTracingShaderGroupStackSizeKHRDelegate_0>(GetRayTracingShaderGroupStackSizeKHRPointer);
 			}
-			CommandSetRayTracingPipelineStackSizeKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetRayTracingPipelineStackSizeKHR");
+			CommandSetRayTracingPipelineStackSizeKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdSetRayTracingPipelineStackSizeKHR");
 			if (CommandSetRayTracingPipelineStackSizeKHRPointer != IntPtr.Zero)
 			{
 				CommandSetRayTracingPipelineStackSizeKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandSetRayTracingPipelineStackSizeKHRDelegate_0>(CommandSetRayTracingPipelineStackSizeKHRPointer);
 			}
-			GetImageViewHandleNVXPointer = VulkanLibrary.GetFunctionPointer("vkGetImageViewHandleNVX");
+			GetImageViewHandleNVXPointer = GetInstancePrecedureAddress(instance, "vkGetImageViewHandleNVX");
 			if (GetImageViewHandleNVXPointer != IntPtr.Zero)
 			{
 				GetImageViewHandleNVX_0 = Marshal.GetDelegateForFunctionPointer<GetImageViewHandleNVXDelegate_0>(GetImageViewHandleNVXPointer);
 				GetImageViewHandleNVX_1 = Marshal.GetDelegateForFunctionPointer<GetImageViewHandleNVXDelegate_1>(GetImageViewHandleNVXPointer);
 			}
-			GetImageViewAddressNVXPointer = VulkanLibrary.GetFunctionPointer("vkGetImageViewAddressNVX");
+			GetImageViewAddressNVXPointer = GetInstancePrecedureAddress(instance, "vkGetImageViewAddressNVX");
 			if (GetImageViewAddressNVXPointer != IntPtr.Zero)
 			{
 				GetImageViewAddressNVX_0 = Marshal.GetDelegateForFunctionPointer<GetImageViewAddressNVXDelegate_0>(GetImageViewAddressNVXPointer);
 				GetImageViewAddressNVX_1 = Marshal.GetDelegateForFunctionPointer<GetImageViewAddressNVXDelegate_1>(GetImageViewAddressNVXPointer);
 			}
-			GetPhysicalDeviceSurfacePresentModes2EXTPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSurfacePresentModes2EXT");
+			GetPhysicalDeviceSurfacePresentModes2EXTPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSurfacePresentModes2EXT");
 			if (GetPhysicalDeviceSurfacePresentModes2EXTPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSurfacePresentModes2EXT_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModes2EXTDelegate_0>(GetPhysicalDeviceSurfacePresentModes2EXTPointer);
@@ -5627,7 +5618,7 @@ namespace Vulkan
 				GetPhysicalDeviceSurfacePresentModes2EXT_6 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModes2EXTDelegate_6>(GetPhysicalDeviceSurfacePresentModes2EXTPointer);
 				GetPhysicalDeviceSurfacePresentModes2EXT_7 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSurfacePresentModes2EXTDelegate_7>(GetPhysicalDeviceSurfacePresentModes2EXTPointer);
 			}
-			GetDeviceGroupSurfacePresentModes2EXTPointer = VulkanLibrary.GetFunctionPointer("vkGetDeviceGroupSurfacePresentModes2EXT");
+			GetDeviceGroupSurfacePresentModes2EXTPointer = GetInstancePrecedureAddress(instance, "vkGetDeviceGroupSurfacePresentModes2EXT");
 			if (GetDeviceGroupSurfacePresentModes2EXTPointer != IntPtr.Zero)
 			{
 				GetDeviceGroupSurfacePresentModes2EXT_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupSurfacePresentModes2EXTDelegate_0>(GetDeviceGroupSurfacePresentModes2EXTPointer);
@@ -5635,17 +5626,17 @@ namespace Vulkan
 				GetDeviceGroupSurfacePresentModes2EXT_2 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupSurfacePresentModes2EXTDelegate_2>(GetDeviceGroupSurfacePresentModes2EXTPointer);
 				GetDeviceGroupSurfacePresentModes2EXT_3 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupSurfacePresentModes2EXTDelegate_3>(GetDeviceGroupSurfacePresentModes2EXTPointer);
 			}
-			AcquireFullScreenExclusiveModeEXTPointer = VulkanLibrary.GetFunctionPointer("vkAcquireFullScreenExclusiveModeEXT");
+			AcquireFullScreenExclusiveModeEXTPointer = GetInstancePrecedureAddress(instance, "vkAcquireFullScreenExclusiveModeEXT");
 			if (AcquireFullScreenExclusiveModeEXTPointer != IntPtr.Zero)
 			{
 				AcquireFullScreenExclusiveModeEXT_0 = Marshal.GetDelegateForFunctionPointer<AcquireFullScreenExclusiveModeEXTDelegate_0>(AcquireFullScreenExclusiveModeEXTPointer);
 			}
-			ReleaseFullScreenExclusiveModeEXTPointer = VulkanLibrary.GetFunctionPointer("vkReleaseFullScreenExclusiveModeEXT");
+			ReleaseFullScreenExclusiveModeEXTPointer = GetInstancePrecedureAddress(instance, "vkReleaseFullScreenExclusiveModeEXT");
 			if (ReleaseFullScreenExclusiveModeEXTPointer != IntPtr.Zero)
 			{
 				ReleaseFullScreenExclusiveModeEXT_0 = Marshal.GetDelegateForFunctionPointer<ReleaseFullScreenExclusiveModeEXTDelegate_0>(ReleaseFullScreenExclusiveModeEXTPointer);
 			}
-			EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer = VulkanLibrary.GetFunctionPointer("vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR");
+			EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer = GetInstancePrecedureAddress(instance, "vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR");
 			if (EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer != IntPtr.Zero)
 			{
 				EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_0 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_0>(EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer);
@@ -5653,7 +5644,7 @@ namespace Vulkan
 				EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_2 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_2>(EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer);
 				EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_3 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_3>(EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer);
 			}
-			GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
+			GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
 			if (GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRDelegate_0>(GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRPointer);
@@ -5661,36 +5652,36 @@ namespace Vulkan
 				GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRDelegate_2>(GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRPointer);
 				GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRDelegate_3>(GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRPointer);
 			}
-			AcquireProfilingLockKHRPointer = VulkanLibrary.GetFunctionPointer("vkAcquireProfilingLockKHR");
+			AcquireProfilingLockKHRPointer = GetInstancePrecedureAddress(instance, "vkAcquireProfilingLockKHR");
 			if (AcquireProfilingLockKHRPointer != IntPtr.Zero)
 			{
 				AcquireProfilingLockKHR_0 = Marshal.GetDelegateForFunctionPointer<AcquireProfilingLockKHRDelegate_0>(AcquireProfilingLockKHRPointer);
 				AcquireProfilingLockKHR_1 = Marshal.GetDelegateForFunctionPointer<AcquireProfilingLockKHRDelegate_1>(AcquireProfilingLockKHRPointer);
 			}
-			ReleaseProfilingLockKHRPointer = VulkanLibrary.GetFunctionPointer("vkReleaseProfilingLockKHR");
+			ReleaseProfilingLockKHRPointer = GetInstancePrecedureAddress(instance, "vkReleaseProfilingLockKHR");
 			if (ReleaseProfilingLockKHRPointer != IntPtr.Zero)
 			{
 				ReleaseProfilingLockKHR_0 = Marshal.GetDelegateForFunctionPointer<ReleaseProfilingLockKHRDelegate_0>(ReleaseProfilingLockKHRPointer);
 			}
-			GetImageDrmFormatModifierPropertiesEXTPointer = VulkanLibrary.GetFunctionPointer("vkGetImageDrmFormatModifierPropertiesEXT");
+			GetImageDrmFormatModifierPropertiesEXTPointer = GetInstancePrecedureAddress(instance, "vkGetImageDrmFormatModifierPropertiesEXT");
 			if (GetImageDrmFormatModifierPropertiesEXTPointer != IntPtr.Zero)
 			{
 				GetImageDrmFormatModifierPropertiesEXT_0 = Marshal.GetDelegateForFunctionPointer<GetImageDrmFormatModifierPropertiesEXTDelegate_0>(GetImageDrmFormatModifierPropertiesEXTPointer);
 				GetImageDrmFormatModifierPropertiesEXT_1 = Marshal.GetDelegateForFunctionPointer<GetImageDrmFormatModifierPropertiesEXTDelegate_1>(GetImageDrmFormatModifierPropertiesEXTPointer);
 			}
-			GetBufferOpaqueCaptureAddressPointer = VulkanLibrary.GetFunctionPointer("vkGetBufferOpaqueCaptureAddress");
+			GetBufferOpaqueCaptureAddressPointer = GetInstancePrecedureAddress(instance, "vkGetBufferOpaqueCaptureAddress");
 			if (GetBufferOpaqueCaptureAddressPointer != IntPtr.Zero)
 			{
 				GetBufferOpaqueCaptureAddress_0 = Marshal.GetDelegateForFunctionPointer<GetBufferOpaqueCaptureAddressDelegate_0>(GetBufferOpaqueCaptureAddressPointer);
 				GetBufferOpaqueCaptureAddress_1 = Marshal.GetDelegateForFunctionPointer<GetBufferOpaqueCaptureAddressDelegate_1>(GetBufferOpaqueCaptureAddressPointer);
 			}
-			GetBufferDeviceAddressPointer = VulkanLibrary.GetFunctionPointer("vkGetBufferDeviceAddress");
+			GetBufferDeviceAddressPointer = GetInstancePrecedureAddress(instance, "vkGetBufferDeviceAddress");
 			if (GetBufferDeviceAddressPointer != IntPtr.Zero)
 			{
 				GetBufferDeviceAddress_0 = Marshal.GetDelegateForFunctionPointer<GetBufferDeviceAddressDelegate_0>(GetBufferDeviceAddressPointer);
 				GetBufferDeviceAddress_1 = Marshal.GetDelegateForFunctionPointer<GetBufferDeviceAddressDelegate_1>(GetBufferDeviceAddressPointer);
 			}
-			CreateHeadlessSurfaceEXTPointer = VulkanLibrary.GetFunctionPointer("vkCreateHeadlessSurfaceEXT");
+			CreateHeadlessSurfaceEXTPointer = GetInstancePrecedureAddress(instance, "vkCreateHeadlessSurfaceEXT");
 			if (CreateHeadlessSurfaceEXTPointer != IntPtr.Zero)
 			{
 				CreateHeadlessSurfaceEXT_0 = Marshal.GetDelegateForFunctionPointer<CreateHeadlessSurfaceEXTDelegate_0>(CreateHeadlessSurfaceEXTPointer);
@@ -5702,7 +5693,7 @@ namespace Vulkan
 				CreateHeadlessSurfaceEXT_6 = Marshal.GetDelegateForFunctionPointer<CreateHeadlessSurfaceEXTDelegate_6>(CreateHeadlessSurfaceEXTPointer);
 				CreateHeadlessSurfaceEXT_7 = Marshal.GetDelegateForFunctionPointer<CreateHeadlessSurfaceEXTDelegate_7>(CreateHeadlessSurfaceEXTPointer);
 			}
-			GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV");
+			GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV");
 			if (GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_0>(GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer);
@@ -5710,36 +5701,36 @@ namespace Vulkan
 				GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_2>(GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer);
 				GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVDelegate_3>(GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVPointer);
 			}
-			InitializePerformanceApiINTELPointer = VulkanLibrary.GetFunctionPointer("vkInitializePerformanceApiINTEL");
+			InitializePerformanceApiINTELPointer = GetInstancePrecedureAddress(instance, "vkInitializePerformanceApiINTEL");
 			if (InitializePerformanceApiINTELPointer != IntPtr.Zero)
 			{
 				InitializePerformanceApiINTEL_0 = Marshal.GetDelegateForFunctionPointer<InitializePerformanceApiINTELDelegate_0>(InitializePerformanceApiINTELPointer);
 				InitializePerformanceApiINTEL_1 = Marshal.GetDelegateForFunctionPointer<InitializePerformanceApiINTELDelegate_1>(InitializePerformanceApiINTELPointer);
 			}
-			UninitializePerformanceApiINTELPointer = VulkanLibrary.GetFunctionPointer("vkUninitializePerformanceApiINTEL");
+			UninitializePerformanceApiINTELPointer = GetInstancePrecedureAddress(instance, "vkUninitializePerformanceApiINTEL");
 			if (UninitializePerformanceApiINTELPointer != IntPtr.Zero)
 			{
 				UninitializePerformanceApiINTEL_0 = Marshal.GetDelegateForFunctionPointer<UninitializePerformanceApiINTELDelegate_0>(UninitializePerformanceApiINTELPointer);
 			}
-			CommandSetPerformanceMarkerINTELPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetPerformanceMarkerINTEL");
+			CommandSetPerformanceMarkerINTELPointer = GetInstancePrecedureAddress(instance, "vkCmdSetPerformanceMarkerINTEL");
 			if (CommandSetPerformanceMarkerINTELPointer != IntPtr.Zero)
 			{
 				CommandSetPerformanceMarkerINTEL_0 = Marshal.GetDelegateForFunctionPointer<CommandSetPerformanceMarkerINTELDelegate_0>(CommandSetPerformanceMarkerINTELPointer);
 				CommandSetPerformanceMarkerINTEL_1 = Marshal.GetDelegateForFunctionPointer<CommandSetPerformanceMarkerINTELDelegate_1>(CommandSetPerformanceMarkerINTELPointer);
 			}
-			CommandSetPerformanceStreamMarkerINTELPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetPerformanceStreamMarkerINTEL");
+			CommandSetPerformanceStreamMarkerINTELPointer = GetInstancePrecedureAddress(instance, "vkCmdSetPerformanceStreamMarkerINTEL");
 			if (CommandSetPerformanceStreamMarkerINTELPointer != IntPtr.Zero)
 			{
 				CommandSetPerformanceStreamMarkerINTEL_0 = Marshal.GetDelegateForFunctionPointer<CommandSetPerformanceStreamMarkerINTELDelegate_0>(CommandSetPerformanceStreamMarkerINTELPointer);
 				CommandSetPerformanceStreamMarkerINTEL_1 = Marshal.GetDelegateForFunctionPointer<CommandSetPerformanceStreamMarkerINTELDelegate_1>(CommandSetPerformanceStreamMarkerINTELPointer);
 			}
-			CommandSetPerformanceOverrideINTELPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetPerformanceOverrideINTEL");
+			CommandSetPerformanceOverrideINTELPointer = GetInstancePrecedureAddress(instance, "vkCmdSetPerformanceOverrideINTEL");
 			if (CommandSetPerformanceOverrideINTELPointer != IntPtr.Zero)
 			{
 				CommandSetPerformanceOverrideINTEL_0 = Marshal.GetDelegateForFunctionPointer<CommandSetPerformanceOverrideINTELDelegate_0>(CommandSetPerformanceOverrideINTELPointer);
 				CommandSetPerformanceOverrideINTEL_1 = Marshal.GetDelegateForFunctionPointer<CommandSetPerformanceOverrideINTELDelegate_1>(CommandSetPerformanceOverrideINTELPointer);
 			}
-			AcquirePerformanceConfigurationINTELPointer = VulkanLibrary.GetFunctionPointer("vkAcquirePerformanceConfigurationINTEL");
+			AcquirePerformanceConfigurationINTELPointer = GetInstancePrecedureAddress(instance, "vkAcquirePerformanceConfigurationINTEL");
 			if (AcquirePerformanceConfigurationINTELPointer != IntPtr.Zero)
 			{
 				AcquirePerformanceConfigurationINTEL_0 = Marshal.GetDelegateForFunctionPointer<AcquirePerformanceConfigurationINTELDelegate_0>(AcquirePerformanceConfigurationINTELPointer);
@@ -5747,29 +5738,29 @@ namespace Vulkan
 				AcquirePerformanceConfigurationINTEL_2 = Marshal.GetDelegateForFunctionPointer<AcquirePerformanceConfigurationINTELDelegate_2>(AcquirePerformanceConfigurationINTELPointer);
 				AcquirePerformanceConfigurationINTEL_3 = Marshal.GetDelegateForFunctionPointer<AcquirePerformanceConfigurationINTELDelegate_3>(AcquirePerformanceConfigurationINTELPointer);
 			}
-			ReleasePerformanceConfigurationINTELPointer = VulkanLibrary.GetFunctionPointer("vkReleasePerformanceConfigurationINTEL");
+			ReleasePerformanceConfigurationINTELPointer = GetInstancePrecedureAddress(instance, "vkReleasePerformanceConfigurationINTEL");
 			if (ReleasePerformanceConfigurationINTELPointer != IntPtr.Zero)
 			{
 				ReleasePerformanceConfigurationINTEL_0 = Marshal.GetDelegateForFunctionPointer<ReleasePerformanceConfigurationINTELDelegate_0>(ReleasePerformanceConfigurationINTELPointer);
 			}
-			QueueSetPerformanceConfigurationINTELPointer = VulkanLibrary.GetFunctionPointer("vkQueueSetPerformanceConfigurationINTEL");
+			QueueSetPerformanceConfigurationINTELPointer = GetInstancePrecedureAddress(instance, "vkQueueSetPerformanceConfigurationINTEL");
 			if (QueueSetPerformanceConfigurationINTELPointer != IntPtr.Zero)
 			{
 				QueueSetPerformanceConfigurationINTEL_0 = Marshal.GetDelegateForFunctionPointer<QueueSetPerformanceConfigurationINTELDelegate_0>(QueueSetPerformanceConfigurationINTELPointer);
 			}
-			GetPerformanceParameterINTELPointer = VulkanLibrary.GetFunctionPointer("vkGetPerformanceParameterINTEL");
+			GetPerformanceParameterINTELPointer = GetInstancePrecedureAddress(instance, "vkGetPerformanceParameterINTEL");
 			if (GetPerformanceParameterINTELPointer != IntPtr.Zero)
 			{
 				GetPerformanceParameterINTEL_0 = Marshal.GetDelegateForFunctionPointer<GetPerformanceParameterINTELDelegate_0>(GetPerformanceParameterINTELPointer);
 				GetPerformanceParameterINTEL_1 = Marshal.GetDelegateForFunctionPointer<GetPerformanceParameterINTELDelegate_1>(GetPerformanceParameterINTELPointer);
 			}
-			GetDeviceMemoryOpaqueCaptureAddressPointer = VulkanLibrary.GetFunctionPointer("vkGetDeviceMemoryOpaqueCaptureAddress");
+			GetDeviceMemoryOpaqueCaptureAddressPointer = GetInstancePrecedureAddress(instance, "vkGetDeviceMemoryOpaqueCaptureAddress");
 			if (GetDeviceMemoryOpaqueCaptureAddressPointer != IntPtr.Zero)
 			{
 				GetDeviceMemoryOpaqueCaptureAddress_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceMemoryOpaqueCaptureAddressDelegate_0>(GetDeviceMemoryOpaqueCaptureAddressPointer);
 				GetDeviceMemoryOpaqueCaptureAddress_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceMemoryOpaqueCaptureAddressDelegate_1>(GetDeviceMemoryOpaqueCaptureAddressPointer);
 			}
-			GetPipelineExecutablePropertiesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPipelineExecutablePropertiesKHR");
+			GetPipelineExecutablePropertiesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPipelineExecutablePropertiesKHR");
 			if (GetPipelineExecutablePropertiesKHRPointer != IntPtr.Zero)
 			{
 				GetPipelineExecutablePropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutablePropertiesKHRDelegate_0>(GetPipelineExecutablePropertiesKHRPointer);
@@ -5781,7 +5772,7 @@ namespace Vulkan
 				GetPipelineExecutablePropertiesKHR_6 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutablePropertiesKHRDelegate_6>(GetPipelineExecutablePropertiesKHRPointer);
 				GetPipelineExecutablePropertiesKHR_7 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutablePropertiesKHRDelegate_7>(GetPipelineExecutablePropertiesKHRPointer);
 			}
-			GetPipelineExecutableStatisticsKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPipelineExecutableStatisticsKHR");
+			GetPipelineExecutableStatisticsKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPipelineExecutableStatisticsKHR");
 			if (GetPipelineExecutableStatisticsKHRPointer != IntPtr.Zero)
 			{
 				GetPipelineExecutableStatisticsKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableStatisticsKHRDelegate_0>(GetPipelineExecutableStatisticsKHRPointer);
@@ -5793,7 +5784,7 @@ namespace Vulkan
 				GetPipelineExecutableStatisticsKHR_6 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableStatisticsKHRDelegate_6>(GetPipelineExecutableStatisticsKHRPointer);
 				GetPipelineExecutableStatisticsKHR_7 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableStatisticsKHRDelegate_7>(GetPipelineExecutableStatisticsKHRPointer);
 			}
-			GetPipelineExecutableInternalRepresentationsKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPipelineExecutableInternalRepresentationsKHR");
+			GetPipelineExecutableInternalRepresentationsKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPipelineExecutableInternalRepresentationsKHR");
 			if (GetPipelineExecutableInternalRepresentationsKHRPointer != IntPtr.Zero)
 			{
 				GetPipelineExecutableInternalRepresentationsKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_0>(GetPipelineExecutableInternalRepresentationsKHRPointer);
@@ -5805,12 +5796,12 @@ namespace Vulkan
 				GetPipelineExecutableInternalRepresentationsKHR_6 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_6>(GetPipelineExecutableInternalRepresentationsKHRPointer);
 				GetPipelineExecutableInternalRepresentationsKHR_7 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_7>(GetPipelineExecutableInternalRepresentationsKHRPointer);
 			}
-			CommandSetLineStippleEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetLineStippleEXT");
+			CommandSetLineStippleEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetLineStippleEXT");
 			if (CommandSetLineStippleEXTPointer != IntPtr.Zero)
 			{
 				CommandSetLineStippleEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetLineStippleEXTDelegate_0>(CommandSetLineStippleEXTPointer);
 			}
-			GetPhysicalDeviceToolPropertiesEXTPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceToolPropertiesEXT");
+			GetPhysicalDeviceToolPropertiesEXTPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceToolPropertiesEXT");
 			if (GetPhysicalDeviceToolPropertiesEXTPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceToolPropertiesEXT_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceToolPropertiesEXTDelegate_0>(GetPhysicalDeviceToolPropertiesEXTPointer);
@@ -5818,7 +5809,7 @@ namespace Vulkan
 				GetPhysicalDeviceToolPropertiesEXT_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceToolPropertiesEXTDelegate_2>(GetPhysicalDeviceToolPropertiesEXTPointer);
 				GetPhysicalDeviceToolPropertiesEXT_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceToolPropertiesEXTDelegate_3>(GetPhysicalDeviceToolPropertiesEXTPointer);
 			}
-			CreateAccelerationStructureKHRPointer = VulkanLibrary.GetFunctionPointer("vkCreateAccelerationStructureKHR");
+			CreateAccelerationStructureKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateAccelerationStructureKHR");
 			if (CreateAccelerationStructureKHRPointer != IntPtr.Zero)
 			{
 				CreateAccelerationStructureKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateAccelerationStructureKHRDelegate_0>(CreateAccelerationStructureKHRPointer);
@@ -5830,12 +5821,12 @@ namespace Vulkan
 				CreateAccelerationStructureKHR_6 = Marshal.GetDelegateForFunctionPointer<CreateAccelerationStructureKHRDelegate_6>(CreateAccelerationStructureKHRPointer);
 				CreateAccelerationStructureKHR_7 = Marshal.GetDelegateForFunctionPointer<CreateAccelerationStructureKHRDelegate_7>(CreateAccelerationStructureKHRPointer);
 			}
-			CommandBuildAccelerationStructuresKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdBuildAccelerationStructuresKHR");
+			CommandBuildAccelerationStructuresKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdBuildAccelerationStructuresKHR");
 			if (CommandBuildAccelerationStructuresKHRPointer != IntPtr.Zero)
 			{
 				CommandBuildAccelerationStructuresKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandBuildAccelerationStructuresKHRDelegate_0>(CommandBuildAccelerationStructuresKHRPointer);
 			}
-			CommandBuildAccelerationStructuresIndirectKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdBuildAccelerationStructuresIndirectKHR");
+			CommandBuildAccelerationStructuresIndirectKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdBuildAccelerationStructuresIndirectKHR");
 			if (CommandBuildAccelerationStructuresIndirectKHRPointer != IntPtr.Zero)
 			{
 				CommandBuildAccelerationStructuresIndirectKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandBuildAccelerationStructuresIndirectKHRDelegate_0>(CommandBuildAccelerationStructuresIndirectKHRPointer);
@@ -5847,18 +5838,18 @@ namespace Vulkan
 				CommandBuildAccelerationStructuresIndirectKHR_6 = Marshal.GetDelegateForFunctionPointer<CommandBuildAccelerationStructuresIndirectKHRDelegate_6>(CommandBuildAccelerationStructuresIndirectKHRPointer);
 				CommandBuildAccelerationStructuresIndirectKHR_7 = Marshal.GetDelegateForFunctionPointer<CommandBuildAccelerationStructuresIndirectKHRDelegate_7>(CommandBuildAccelerationStructuresIndirectKHRPointer);
 			}
-			BuildAccelerationStructuresKHRPointer = VulkanLibrary.GetFunctionPointer("vkBuildAccelerationStructuresKHR");
+			BuildAccelerationStructuresKHRPointer = GetInstancePrecedureAddress(instance, "vkBuildAccelerationStructuresKHR");
 			if (BuildAccelerationStructuresKHRPointer != IntPtr.Zero)
 			{
 				BuildAccelerationStructuresKHR_0 = Marshal.GetDelegateForFunctionPointer<BuildAccelerationStructuresKHRDelegate_0>(BuildAccelerationStructuresKHRPointer);
 			}
-			GetAccelerationStructureDeviceAddressKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetAccelerationStructureDeviceAddressKHR");
+			GetAccelerationStructureDeviceAddressKHRPointer = GetInstancePrecedureAddress(instance, "vkGetAccelerationStructureDeviceAddressKHR");
 			if (GetAccelerationStructureDeviceAddressKHRPointer != IntPtr.Zero)
 			{
 				GetAccelerationStructureDeviceAddressKHR_0 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureDeviceAddressKHRDelegate_0>(GetAccelerationStructureDeviceAddressKHRPointer);
 				GetAccelerationStructureDeviceAddressKHR_1 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureDeviceAddressKHRDelegate_1>(GetAccelerationStructureDeviceAddressKHRPointer);
 			}
-			CreateDeferredOperationKHRPointer = VulkanLibrary.GetFunctionPointer("vkCreateDeferredOperationKHR");
+			CreateDeferredOperationKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateDeferredOperationKHR");
 			if (CreateDeferredOperationKHRPointer != IntPtr.Zero)
 			{
 				CreateDeferredOperationKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateDeferredOperationKHRDelegate_0>(CreateDeferredOperationKHRPointer);
@@ -5866,55 +5857,55 @@ namespace Vulkan
 				CreateDeferredOperationKHR_2 = Marshal.GetDelegateForFunctionPointer<CreateDeferredOperationKHRDelegate_2>(CreateDeferredOperationKHRPointer);
 				CreateDeferredOperationKHR_3 = Marshal.GetDelegateForFunctionPointer<CreateDeferredOperationKHRDelegate_3>(CreateDeferredOperationKHRPointer);
 			}
-			DestroyDeferredOperationKHRPointer = VulkanLibrary.GetFunctionPointer("vkDestroyDeferredOperationKHR");
+			DestroyDeferredOperationKHRPointer = GetInstancePrecedureAddress(instance, "vkDestroyDeferredOperationKHR");
 			if (DestroyDeferredOperationKHRPointer != IntPtr.Zero)
 			{
 				DestroyDeferredOperationKHR_0 = Marshal.GetDelegateForFunctionPointer<DestroyDeferredOperationKHRDelegate_0>(DestroyDeferredOperationKHRPointer);
 				DestroyDeferredOperationKHR_1 = Marshal.GetDelegateForFunctionPointer<DestroyDeferredOperationKHRDelegate_1>(DestroyDeferredOperationKHRPointer);
 			}
-			GetDeferredOperationMaxConcurrencyKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetDeferredOperationMaxConcurrencyKHR");
+			GetDeferredOperationMaxConcurrencyKHRPointer = GetInstancePrecedureAddress(instance, "vkGetDeferredOperationMaxConcurrencyKHR");
 			if (GetDeferredOperationMaxConcurrencyKHRPointer != IntPtr.Zero)
 			{
 				GetDeferredOperationMaxConcurrencyKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeferredOperationMaxConcurrencyKHRDelegate_0>(GetDeferredOperationMaxConcurrencyKHRPointer);
 			}
-			GetDeferredOperationResultKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetDeferredOperationResultKHR");
+			GetDeferredOperationResultKHRPointer = GetInstancePrecedureAddress(instance, "vkGetDeferredOperationResultKHR");
 			if (GetDeferredOperationResultKHRPointer != IntPtr.Zero)
 			{
 				GetDeferredOperationResultKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeferredOperationResultKHRDelegate_0>(GetDeferredOperationResultKHRPointer);
 			}
-			DeferredOperationJoinKHRPointer = VulkanLibrary.GetFunctionPointer("vkDeferredOperationJoinKHR");
+			DeferredOperationJoinKHRPointer = GetInstancePrecedureAddress(instance, "vkDeferredOperationJoinKHR");
 			if (DeferredOperationJoinKHRPointer != IntPtr.Zero)
 			{
 				DeferredOperationJoinKHR_0 = Marshal.GetDelegateForFunctionPointer<DeferredOperationJoinKHRDelegate_0>(DeferredOperationJoinKHRPointer);
 			}
-			CommandSetCullModeEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetCullModeEXT");
+			CommandSetCullModeEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetCullModeEXT");
 			if (CommandSetCullModeEXTPointer != IntPtr.Zero)
 			{
 				CommandSetCullModeEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetCullModeEXTDelegate_0>(CommandSetCullModeEXTPointer);
 			}
-			CommandSetFrontFaceEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetFrontFaceEXT");
+			CommandSetFrontFaceEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetFrontFaceEXT");
 			if (CommandSetFrontFaceEXTPointer != IntPtr.Zero)
 			{
 				CommandSetFrontFaceEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetFrontFaceEXTDelegate_0>(CommandSetFrontFaceEXTPointer);
 			}
-			CommandSetPrimitiveTopologyEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetPrimitiveTopologyEXT");
+			CommandSetPrimitiveTopologyEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetPrimitiveTopologyEXT");
 			if (CommandSetPrimitiveTopologyEXTPointer != IntPtr.Zero)
 			{
 				CommandSetPrimitiveTopologyEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetPrimitiveTopologyEXTDelegate_0>(CommandSetPrimitiveTopologyEXTPointer);
 			}
-			CommandSetViewportWithCountEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetViewportWithCountEXT");
+			CommandSetViewportWithCountEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetViewportWithCountEXT");
 			if (CommandSetViewportWithCountEXTPointer != IntPtr.Zero)
 			{
 				CommandSetViewportWithCountEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportWithCountEXTDelegate_0>(CommandSetViewportWithCountEXTPointer);
 				CommandSetViewportWithCountEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportWithCountEXTDelegate_1>(CommandSetViewportWithCountEXTPointer);
 			}
-			CommandSetScissorWithCountEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetScissorWithCountEXT");
+			CommandSetScissorWithCountEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetScissorWithCountEXT");
 			if (CommandSetScissorWithCountEXTPointer != IntPtr.Zero)
 			{
 				CommandSetScissorWithCountEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetScissorWithCountEXTDelegate_0>(CommandSetScissorWithCountEXTPointer);
 				CommandSetScissorWithCountEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandSetScissorWithCountEXTDelegate_1>(CommandSetScissorWithCountEXTPointer);
 			}
-			CommandBindVertexBuffers2EXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdBindVertexBuffers2EXT");
+			CommandBindVertexBuffers2EXTPointer = GetInstancePrecedureAddress(instance, "vkCmdBindVertexBuffers2EXT");
 			if (CommandBindVertexBuffers2EXTPointer != IntPtr.Zero)
 			{
 				CommandBindVertexBuffers2EXT_0 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_0>(CommandBindVertexBuffers2EXTPointer);
@@ -5934,37 +5925,37 @@ namespace Vulkan
 				CommandBindVertexBuffers2EXT_14 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_14>(CommandBindVertexBuffers2EXTPointer);
 				CommandBindVertexBuffers2EXT_15 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_15>(CommandBindVertexBuffers2EXTPointer);
 			}
-			CommandSetDepthTestEnableEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetDepthTestEnableEXT");
+			CommandSetDepthTestEnableEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetDepthTestEnableEXT");
 			if (CommandSetDepthTestEnableEXTPointer != IntPtr.Zero)
 			{
 				CommandSetDepthTestEnableEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthTestEnableEXTDelegate_0>(CommandSetDepthTestEnableEXTPointer);
 			}
-			CommandSetDepthWriteEnableEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetDepthWriteEnableEXT");
+			CommandSetDepthWriteEnableEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetDepthWriteEnableEXT");
 			if (CommandSetDepthWriteEnableEXTPointer != IntPtr.Zero)
 			{
 				CommandSetDepthWriteEnableEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthWriteEnableEXTDelegate_0>(CommandSetDepthWriteEnableEXTPointer);
 			}
-			CommandSetDepthCompareOpEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetDepthCompareOpEXT");
+			CommandSetDepthCompareOpEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetDepthCompareOpEXT");
 			if (CommandSetDepthCompareOpEXTPointer != IntPtr.Zero)
 			{
 				CommandSetDepthCompareOpEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthCompareOpEXTDelegate_0>(CommandSetDepthCompareOpEXTPointer);
 			}
-			CommandSetDepthBounDestinationestEnableEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetDepthBoundsTestEnableEXT");
+			CommandSetDepthBounDestinationestEnableEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetDepthBoundsTestEnableEXT");
 			if (CommandSetDepthBounDestinationestEnableEXTPointer != IntPtr.Zero)
 			{
 				CommandSetDepthBounDestinationestEnableEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthBounDestinationestEnableEXTDelegate_0>(CommandSetDepthBounDestinationestEnableEXTPointer);
 			}
-			CommandSetStencilTestEnableEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetStencilTestEnableEXT");
+			CommandSetStencilTestEnableEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetStencilTestEnableEXT");
 			if (CommandSetStencilTestEnableEXTPointer != IntPtr.Zero)
 			{
 				CommandSetStencilTestEnableEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetStencilTestEnableEXTDelegate_0>(CommandSetStencilTestEnableEXTPointer);
 			}
-			CommandSetStencilOpEXTPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetStencilOpEXT");
+			CommandSetStencilOpEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetStencilOpEXT");
 			if (CommandSetStencilOpEXTPointer != IntPtr.Zero)
 			{
 				CommandSetStencilOpEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetStencilOpEXTDelegate_0>(CommandSetStencilOpEXTPointer);
 			}
-			CreatePrivateDataSlotEXTPointer = VulkanLibrary.GetFunctionPointer("vkCreatePrivateDataSlotEXT");
+			CreatePrivateDataSlotEXTPointer = GetInstancePrecedureAddress(instance, "vkCreatePrivateDataSlotEXT");
 			if (CreatePrivateDataSlotEXTPointer != IntPtr.Zero)
 			{
 				CreatePrivateDataSlotEXT_0 = Marshal.GetDelegateForFunctionPointer<CreatePrivateDataSlotEXTDelegate_0>(CreatePrivateDataSlotEXTPointer);
@@ -5976,66 +5967,66 @@ namespace Vulkan
 				CreatePrivateDataSlotEXT_6 = Marshal.GetDelegateForFunctionPointer<CreatePrivateDataSlotEXTDelegate_6>(CreatePrivateDataSlotEXTPointer);
 				CreatePrivateDataSlotEXT_7 = Marshal.GetDelegateForFunctionPointer<CreatePrivateDataSlotEXTDelegate_7>(CreatePrivateDataSlotEXTPointer);
 			}
-			DestroyPrivateDataSlotEXTPointer = VulkanLibrary.GetFunctionPointer("vkDestroyPrivateDataSlotEXT");
+			DestroyPrivateDataSlotEXTPointer = GetInstancePrecedureAddress(instance, "vkDestroyPrivateDataSlotEXT");
 			if (DestroyPrivateDataSlotEXTPointer != IntPtr.Zero)
 			{
 				DestroyPrivateDataSlotEXT_0 = Marshal.GetDelegateForFunctionPointer<DestroyPrivateDataSlotEXTDelegate_0>(DestroyPrivateDataSlotEXTPointer);
 				DestroyPrivateDataSlotEXT_1 = Marshal.GetDelegateForFunctionPointer<DestroyPrivateDataSlotEXTDelegate_1>(DestroyPrivateDataSlotEXTPointer);
 			}
-			SetPrivateDataEXTPointer = VulkanLibrary.GetFunctionPointer("vkSetPrivateDataEXT");
+			SetPrivateDataEXTPointer = GetInstancePrecedureAddress(instance, "vkSetPrivateDataEXT");
 			if (SetPrivateDataEXTPointer != IntPtr.Zero)
 			{
 				SetPrivateDataEXT_0 = Marshal.GetDelegateForFunctionPointer<SetPrivateDataEXTDelegate_0>(SetPrivateDataEXTPointer);
 			}
-			GetPrivateDataEXTPointer = VulkanLibrary.GetFunctionPointer("vkGetPrivateDataEXT");
+			GetPrivateDataEXTPointer = GetInstancePrecedureAddress(instance, "vkGetPrivateDataEXT");
 			if (GetPrivateDataEXTPointer != IntPtr.Zero)
 			{
 				GetPrivateDataEXT_0 = Marshal.GetDelegateForFunctionPointer<GetPrivateDataEXTDelegate_0>(GetPrivateDataEXTPointer);
 				GetPrivateDataEXT_1 = Marshal.GetDelegateForFunctionPointer<GetPrivateDataEXTDelegate_1>(GetPrivateDataEXTPointer);
 			}
-			CommandCopyBuffer2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyBuffer2KHR");
+			CommandCopyBuffer2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyBuffer2KHR");
 			if (CommandCopyBuffer2KHRPointer != IntPtr.Zero)
 			{
 				CommandCopyBuffer2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyBuffer2KHRDelegate_0>(CommandCopyBuffer2KHRPointer);
 				CommandCopyBuffer2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyBuffer2KHRDelegate_1>(CommandCopyBuffer2KHRPointer);
 			}
-			CommandCopyImage2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyImage2KHR");
+			CommandCopyImage2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyImage2KHR");
 			if (CommandCopyImage2KHRPointer != IntPtr.Zero)
 			{
 				CommandCopyImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyImage2KHRDelegate_0>(CommandCopyImage2KHRPointer);
 				CommandCopyImage2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyImage2KHRDelegate_1>(CommandCopyImage2KHRPointer);
 			}
-			CommandBlitImage2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdBlitImage2KHR");
+			CommandBlitImage2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdBlitImage2KHR");
 			if (CommandBlitImage2KHRPointer != IntPtr.Zero)
 			{
 				CommandBlitImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandBlitImage2KHRDelegate_0>(CommandBlitImage2KHRPointer);
 				CommandBlitImage2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandBlitImage2KHRDelegate_1>(CommandBlitImage2KHRPointer);
 			}
-			CommandCopyBufferToImage2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyBufferToImage2KHR");
+			CommandCopyBufferToImage2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyBufferToImage2KHR");
 			if (CommandCopyBufferToImage2KHRPointer != IntPtr.Zero)
 			{
 				CommandCopyBufferToImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferToImage2KHRDelegate_0>(CommandCopyBufferToImage2KHRPointer);
 				CommandCopyBufferToImage2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferToImage2KHRDelegate_1>(CommandCopyBufferToImage2KHRPointer);
 			}
-			CommandCopyImageToBuffer2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdCopyImageToBuffer2KHR");
+			CommandCopyImageToBuffer2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyImageToBuffer2KHR");
 			if (CommandCopyImageToBuffer2KHRPointer != IntPtr.Zero)
 			{
 				CommandCopyImageToBuffer2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageToBuffer2KHRDelegate_0>(CommandCopyImageToBuffer2KHRPointer);
 				CommandCopyImageToBuffer2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageToBuffer2KHRDelegate_1>(CommandCopyImageToBuffer2KHRPointer);
 			}
-			CommandResolveImage2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdResolveImage2KHR");
+			CommandResolveImage2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdResolveImage2KHR");
 			if (CommandResolveImage2KHRPointer != IntPtr.Zero)
 			{
 				CommandResolveImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandResolveImage2KHRDelegate_0>(CommandResolveImage2KHRPointer);
 				CommandResolveImage2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandResolveImage2KHRDelegate_1>(CommandResolveImage2KHRPointer);
 			}
-			CommandSetFragmentShadingRateKHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetFragmentShadingRateKHR");
+			CommandSetFragmentShadingRateKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdSetFragmentShadingRateKHR");
 			if (CommandSetFragmentShadingRateKHRPointer != IntPtr.Zero)
 			{
 				CommandSetFragmentShadingRateKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandSetFragmentShadingRateKHRDelegate_0>(CommandSetFragmentShadingRateKHRPointer);
 				CommandSetFragmentShadingRateKHR_1 = Marshal.GetDelegateForFunctionPointer<CommandSetFragmentShadingRateKHRDelegate_1>(CommandSetFragmentShadingRateKHRPointer);
 			}
-			GetPhysicalDeviceFragmentShadingRatesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetPhysicalDeviceFragmentShadingRatesKHR");
+			GetPhysicalDeviceFragmentShadingRatesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceFragmentShadingRatesKHR");
 			if (GetPhysicalDeviceFragmentShadingRatesKHRPointer != IntPtr.Zero)
 			{
 				GetPhysicalDeviceFragmentShadingRatesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFragmentShadingRatesKHRDelegate_0>(GetPhysicalDeviceFragmentShadingRatesKHRPointer);
@@ -6043,12 +6034,12 @@ namespace Vulkan
 				GetPhysicalDeviceFragmentShadingRatesKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFragmentShadingRatesKHRDelegate_2>(GetPhysicalDeviceFragmentShadingRatesKHRPointer);
 				GetPhysicalDeviceFragmentShadingRatesKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceFragmentShadingRatesKHRDelegate_3>(GetPhysicalDeviceFragmentShadingRatesKHRPointer);
 			}
-			CommandSetFragmentShadingRateEnumNVPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetFragmentShadingRateEnumNV");
+			CommandSetFragmentShadingRateEnumNVPointer = GetInstancePrecedureAddress(instance, "vkCmdSetFragmentShadingRateEnumNV");
 			if (CommandSetFragmentShadingRateEnumNVPointer != IntPtr.Zero)
 			{
 				CommandSetFragmentShadingRateEnumNV_0 = Marshal.GetDelegateForFunctionPointer<CommandSetFragmentShadingRateEnumNVDelegate_0>(CommandSetFragmentShadingRateEnumNVPointer);
 			}
-			GetAccelerationStructureBuildSizesKHRPointer = VulkanLibrary.GetFunctionPointer("vkGetAccelerationStructureBuildSizesKHR");
+			GetAccelerationStructureBuildSizesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetAccelerationStructureBuildSizesKHR");
 			if (GetAccelerationStructureBuildSizesKHRPointer != IntPtr.Zero)
 			{
 				GetAccelerationStructureBuildSizesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureBuildSizesKHRDelegate_0>(GetAccelerationStructureBuildSizesKHRPointer);
@@ -6060,46 +6051,46 @@ namespace Vulkan
 				GetAccelerationStructureBuildSizesKHR_6 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureBuildSizesKHRDelegate_6>(GetAccelerationStructureBuildSizesKHRPointer);
 				GetAccelerationStructureBuildSizesKHR_7 = Marshal.GetDelegateForFunctionPointer<GetAccelerationStructureBuildSizesKHRDelegate_7>(GetAccelerationStructureBuildSizesKHRPointer);
 			}
-			CommandSetEvent2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdSetEvent2KHR");
+			CommandSetEvent2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdSetEvent2KHR");
 			if (CommandSetEvent2KHRPointer != IntPtr.Zero)
 			{
 				CommandSetEvent2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandSetEvent2KHRDelegate_0>(CommandSetEvent2KHRPointer);
 				CommandSetEvent2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandSetEvent2KHRDelegate_1>(CommandSetEvent2KHRPointer);
 			}
-			CommandResetEvent2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdResetEvent2KHR");
+			CommandResetEvent2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdResetEvent2KHR");
 			if (CommandResetEvent2KHRPointer != IntPtr.Zero)
 			{
 				CommandResetEvent2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandResetEvent2KHRDelegate_0>(CommandResetEvent2KHRPointer);
 			}
-			CommandWaitEvents2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdWaitEvents2KHR");
+			CommandWaitEvents2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdWaitEvents2KHR");
 			if (CommandWaitEvents2KHRPointer != IntPtr.Zero)
 			{
 				CommandWaitEvents2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandWaitEvents2KHRDelegate_0>(CommandWaitEvents2KHRPointer);
 				CommandWaitEvents2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandWaitEvents2KHRDelegate_1>(CommandWaitEvents2KHRPointer);
 			}
-			CommandPipelineBarrier2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdPipelineBarrier2KHR");
+			CommandPipelineBarrier2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdPipelineBarrier2KHR");
 			if (CommandPipelineBarrier2KHRPointer != IntPtr.Zero)
 			{
 				CommandPipelineBarrier2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrier2KHRDelegate_0>(CommandPipelineBarrier2KHRPointer);
 				CommandPipelineBarrier2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrier2KHRDelegate_1>(CommandPipelineBarrier2KHRPointer);
 			}
-			QueueSubmit2KHRPointer = VulkanLibrary.GetFunctionPointer("vkQueueSubmit2KHR");
+			QueueSubmit2KHRPointer = GetInstancePrecedureAddress(instance, "vkQueueSubmit2KHR");
 			if (QueueSubmit2KHRPointer != IntPtr.Zero)
 			{
 				QueueSubmit2KHR_0 = Marshal.GetDelegateForFunctionPointer<QueueSubmit2KHRDelegate_0>(QueueSubmit2KHRPointer);
 				QueueSubmit2KHR_1 = Marshal.GetDelegateForFunctionPointer<QueueSubmit2KHRDelegate_1>(QueueSubmit2KHRPointer);
 			}
-			CommandWriteTimestamp2KHRPointer = VulkanLibrary.GetFunctionPointer("vkCmdWriteTimestamp2KHR");
+			CommandWriteTimestamp2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdWriteTimestamp2KHR");
 			if (CommandWriteTimestamp2KHRPointer != IntPtr.Zero)
 			{
 				CommandWriteTimestamp2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandWriteTimestamp2KHRDelegate_0>(CommandWriteTimestamp2KHRPointer);
 			}
-			CommandWriteBufferMarker2AMDPointer = VulkanLibrary.GetFunctionPointer("vkCmdWriteBufferMarker2AMD");
+			CommandWriteBufferMarker2AMDPointer = GetInstancePrecedureAddress(instance, "vkCmdWriteBufferMarker2AMD");
 			if (CommandWriteBufferMarker2AMDPointer != IntPtr.Zero)
 			{
 				CommandWriteBufferMarker2AMD_0 = Marshal.GetDelegateForFunctionPointer<CommandWriteBufferMarker2AMDDelegate_0>(CommandWriteBufferMarker2AMDPointer);
 			}
-			GetQueueCheckpointData2NVPointer = VulkanLibrary.GetFunctionPointer("vkGetQueueCheckpointData2NV");
+			GetQueueCheckpointData2NVPointer = GetInstancePrecedureAddress(instance, "vkGetQueueCheckpointData2NV");
 			if (GetQueueCheckpointData2NVPointer != IntPtr.Zero)
 			{
 				GetQueueCheckpointData2NV_0 = Marshal.GetDelegateForFunctionPointer<GetQueueCheckpointData2NVDelegate_0>(GetQueueCheckpointData2NVPointer);
