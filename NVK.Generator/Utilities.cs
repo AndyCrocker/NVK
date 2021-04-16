@@ -30,7 +30,9 @@ namespace NVK.Generator
         /// <returns>A pretty version of <paramref name="delegateName"/>.</returns>
         public static string PrettifyDelegateName(string delegateName)
         {
-            if (delegateName.StartsWith("vk")) // remove "vk" prefix
+            if (delegateName.StartsWith("PFN_vk")) // remove "PFN_vk" prefix
+                delegateName = delegateName.Substring(6);
+            else if (delegateName.StartsWith("vk")) // remove "vk" prefix
                 delegateName = delegateName.Substring(2);
 
             return delegateName.ResolveAbbreviations() + "Delegate";

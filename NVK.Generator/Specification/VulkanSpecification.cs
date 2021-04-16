@@ -21,6 +21,9 @@ namespace NVK.Generator.Specification
         /// <summary>The commands in the specification.</summary>
         public List<CommandInfo> Commands { get; }
 
+        /// <summary>The delegates in the specification.</summary>
+        public List<DelegateInfo> Delegates { get; }
+
         /// <summary>The handles in the specification.</summary>
         public List<HandleInfo> Handles { get; }
 
@@ -90,6 +93,11 @@ namespace NVK.Generator.Specification
             foreach (var commandInfo in Commands) // set the parameters of aliased commands, this is used for overload creation
                 if (commandInfo.Alias != null)
                     commandInfo.Parameters.AddRange(Commands.Single(cInfo => cInfo.Name == commandInfo.Alias).Parameters);
+
+            // delegates
+            Delegates = types.Elements("type").Where(element => element.HasAttributeWithValue("category", "funcpointer"))
+                .Select(delegateElement => new DelegateInfo(delegateElement, typeConverter))
+                .ToList();
 
             // handles
             Handles = types.Elements("type").Where(element => element.HasAttributeWithValue("category", "handle"))
