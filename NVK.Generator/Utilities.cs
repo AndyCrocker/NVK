@@ -243,16 +243,20 @@ namespace NVK.Generator
                     parameterVariations.Add(new CommandParameterInfo(parameterInfo.Name, new TypeInfo("string", arrayDimensions: 1), ParameterModifier.None));
             }
 
-            // check if parameter can have 'out' version
-            else if ((commandInfo.DisplayName.StartsWith("Allocate") || commandInfo.DisplayName.StartsWith("Create") || (commandInfo.DisplayName.StartsWith("Get") && !GetMethodsRequiringArray.Contains(commandInfo.DisplayName))) && commandInfo.Parameters.Last() == parameterInfo)
-                parameterVariations.Add(new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Out));
+            // check if parameter should be an 'out' version
+            else if (
+                (commandInfo.DisplayName.StartsWith("Allocate")                                                                     // allocate methods
+                    || commandInfo.DisplayName.StartsWith("Create")                                                                 // create methods
+                    || (commandInfo.DisplayName.StartsWith("Get") && !GetMethodsRequiringArray.Contains(commandInfo.DisplayName))   // certain get methods
+                    || commandInfo.DisplayName.StartsWith("AcquireNextImage"))                                                      // and 'AcquireNextImage(2)KHR' should all have outs
+                && commandInfo.Parameters.Last() == parameterInfo)                                                                  // on the last parameter
+                parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Out) };
 
             // otherwise create a 'ref' version
             else
                 parameterVariations.Add(new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Ref));
 
             // check if the parameter should be an array
-            // note how the variations get set, not added. this is because having a pointer in place of an array is not necessary
             if (parameterInfo.Name.EndsWith("Infos"))
                 parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, arrayDimensions: 1), ParameterModifier.None) };
             else if (
