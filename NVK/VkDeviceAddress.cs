@@ -20,11 +20,11 @@
         /*********
         ** Operators
         *********/
-        /// <summary>Converts a <see cref="VkDeviceAddress"/> to a <see langword="int"/>.</summary>
+        /// <summary>Converts a <see cref="VkDeviceAddress"/> to an <see langword="int"/>.</summary>
         /// <param name="value">The <see cref="VkDeviceAddress"/> to convert.</param>
         public static implicit operator int(VkDeviceAddress value) => (int)value.Value;
 
-        /// <summary>Converts a <see langword="int"/> to a <see cref="VkDeviceAddress"/>.</summary>
+        /// <summary>Converts an <see langword="int"/> to a <see cref="VkDeviceAddress"/>.</summary>
         /// <param name="value">The <see langword="int"/> to convert.</param>
         public static explicit operator VkDeviceAddress(int value) => new VkDeviceAddress() { Value = (ulong)value };
 
