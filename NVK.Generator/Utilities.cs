@@ -135,7 +135,7 @@ namespace NVK.Generator
                 splitEnumFieldName.Insert(0, "Count");
 
             // reconstruct the name and ensure it doesn't start with a digit (as that's not a valid C# identifier)
-            var newEnumFieldName = string.Join("", splitEnumFieldName.Select(splitName => splitName.ToLower().FirstToUpper()));
+            var newEnumFieldName = string.Join("", splitEnumFieldName.Select(splitName => CapitaliseEnumFieldNameSection(enumName, splitName)));
             if (char.IsDigit(newEnumFieldName[0]))
                 newEnumFieldName = $"_{newEnumFieldName}";
 
@@ -159,6 +159,67 @@ namespace NVK.Generator
             var parameterCombinations = GetParameterCombinations(parameterVariations);
             var temp = parameterCombinations.Select(parameterCombination => new CommandInfo(commandInfo.Name, commandInfo.ReturnType!, parameterCombination, commandInfo.Alias) { Extension = commandInfo.Extension }).ToList();
             return temp;
+        }
+
+
+        /*********
+        ** Private Methods
+        *********/
+        /// <summary>Capitalises a section of an enum field name.</summary>
+        /// <param name="enumName">The name of the enum that enum field belongs to.</param>
+        /// <param name="enumFieldNameSection">The enum field name section to capitalise.</param>
+        /// <returns>The correctly capitalised <paramref name="enumFieldNameSection"/>.</returns>
+        private static string CapitaliseEnumFieldNameSection(string enumName, string enumFieldNameSection)
+        {
+            enumFieldNameSection = enumFieldNameSection.ToLower();
+
+            // only the VkFormat enum fields have special capitalisation rules, unless it's the 'undefined' field
+            if (enumName != "VkFormat" || enumFieldNameSection == "undefined")
+                return enumFieldNameSection.FirstToUpper();
+
+            // check if section is a compression format
+            var compressionFormats = new[] { "bc", "etc", "eac", "astc", "pvrtc" };
+            if (compressionFormats.Any(compressionFormat => enumFieldNameSection.StartsWith(compressionFormat)))
+                return enumFieldNameSection.ToUpper();
+
+            // check if section is specifying bits per pixel
+            if (enumFieldNameSection.EndsWith("bpp"))
+                return enumFieldNameSection.ToUpper();
+
+            // check if the section is the format channel definitions (such as R8G8B8A8)
+            var channelCharacters = new[] { 'r', 'g', 'b', 'a', 'e' };
+            if (channelCharacters.Contains(enumFieldNameSection[0]) && char.IsDigit(enumFieldNameSection[1]))
+                return enumFieldNameSection.ToUpper();
+
+            // check if the section is a numbered pack section (such as 4PACK16)
+            if (char.IsDigit(enumFieldNameSection[0]) && enumFieldNameSection[1] == 'p')
+            {
+                // capitalise the 'p', not the number
+                var charArray = enumFieldNameSection.ToCharArray();
+                charArray[1] = char.ToUpper(charArray[1]);
+                return new string(charArray);
+            }
+
+            // check if the section has a special static capitalisation
+            var specialCapitalisationCases = new Dictionary<string, string>()
+            {
+                { "srgb", "SRGB" },
+                { "uint", "UInt" },
+                { "sint", "SInt" },
+                { "unorm", "UNorm" },
+                { "snorm", "SNorm" },
+                { "ufloat", "UFloat" },
+                { "sfloat", "SFloat" },
+                { "uscaled", "UScaled" },
+                { "sscaled", "SScaled" },
+                { "rgb", "RGB" },
+                { "rgba", "RGBA" }
+            };
+            if (specialCapitalisationCases.ContainsKey(enumFieldNameSection))
+                return specialCapitalisationCases[enumFieldNameSection];
+
+            // just capatialise it normally
+            return enumFieldNameSection.FirstToUpper();
         }
 
         /// <summary>Generates all variaties of a parameter.</summary>
