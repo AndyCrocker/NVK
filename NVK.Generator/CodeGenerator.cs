@@ -280,7 +280,7 @@ namespace NVK.Generator
 
                     var aliasedCommand = commandInfos.Single(cInfo => cInfo.Name == overload.Alias);
                     csWriter.WriteLine($"public static unsafe {aliasedCommand.ReturnType} {overload.DisplayName}({parametersString}) => {overload.AliasDisplayName}({aliasedParameterNames});");
-                    return;
+                    continue;
                 }
 
                 // create method
