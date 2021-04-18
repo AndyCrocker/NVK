@@ -23,9 +23,6 @@ namespace NVK.Generator
         /// <param name="streamWriter">The <see cref="System.IO.StreamWriter"/> to write to.</param>
         public CsWriter(StreamWriter streamWriter)
         {
-            if (streamWriter == null)
-                throw new ArgumentNullException(nameof(streamWriter));
-
             StreamWriter = streamWriter;
         }
 
