@@ -721,10 +721,8 @@ namespace Vulkan
 		private unsafe delegate void DestroyDescriptorPoolDelegate_0(VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* allocator);
 		private unsafe delegate void DestroyDescriptorPoolDelegate_1(VkDevice device, VkDescriptorPool descriptorPool, ref VkAllocationCallbacks allocator);
 		private unsafe delegate VkResult ResetDescriptorPoolDelegate_0(VkDevice device, VkDescriptorPool descriptorPool, uint flags);
-		private unsafe delegate VkResult AllocateDescriptorSetsDelegate_0(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, VkDescriptorSet* descriptorSets);
-		private unsafe delegate VkResult AllocateDescriptorSetsDelegate_1(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, out VkDescriptorSet descriptorSets);
-		private unsafe delegate VkResult AllocateDescriptorSetsDelegate_2(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, VkDescriptorSet* descriptorSets);
-		private unsafe delegate VkResult AllocateDescriptorSetsDelegate_3(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, out VkDescriptorSet descriptorSets);
+		private unsafe delegate VkResult AllocateDescriptorSetsDelegate_0(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets);
+		private unsafe delegate VkResult AllocateDescriptorSetsDelegate_1(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets);
 		private unsafe delegate VkResult FreeDescriptorSetsDelegate_0(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet* descriptorSets);
 		private unsafe delegate VkResult FreeDescriptorSetsDelegate_1(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, ref VkDescriptorSet descriptorSets);
 		private unsafe delegate void UpdateDescriptorSetsDelegate_0(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet* descriptorCopies);
@@ -764,10 +762,8 @@ namespace Vulkan
 		private unsafe delegate void DestroyCommandPoolDelegate_0(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator);
 		private unsafe delegate void DestroyCommandPoolDelegate_1(VkDevice device, VkCommandPool commandPool, ref VkAllocationCallbacks allocator);
 		private unsafe delegate VkResult ResetCommandPoolDelegate_0(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags);
-		private unsafe delegate VkResult AllocateCommandBuffersDelegate_0(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, VkCommandBuffer* commandBuffers);
-		private unsafe delegate VkResult AllocateCommandBuffersDelegate_1(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, out VkCommandBuffer commandBuffers);
-		private unsafe delegate VkResult AllocateCommandBuffersDelegate_2(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, VkCommandBuffer* commandBuffers);
-		private unsafe delegate VkResult AllocateCommandBuffersDelegate_3(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, out VkCommandBuffer commandBuffers);
+		private unsafe delegate VkResult AllocateCommandBuffersDelegate_0(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers);
+		private unsafe delegate VkResult AllocateCommandBuffersDelegate_1(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers);
 		private unsafe delegate void FreeCommandBuffersDelegate_0(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* commandBuffers);
 		private unsafe delegate void FreeCommandBuffersDelegate_1(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, ref VkCommandBuffer commandBuffers);
 		private unsafe delegate VkResult BeginCommandBufferDelegate_0(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo);
@@ -1934,8 +1930,6 @@ namespace Vulkan
 		private static IntPtr AllocateDescriptorSetsPointer;
 		private static AllocateDescriptorSetsDelegate_0 AllocateDescriptorSets_0;
 		private static AllocateDescriptorSetsDelegate_1 AllocateDescriptorSets_1;
-		private static AllocateDescriptorSetsDelegate_2 AllocateDescriptorSets_2;
-		private static AllocateDescriptorSetsDelegate_3 AllocateDescriptorSets_3;
 		private static IntPtr FreeDescriptorSetsPointer;
 		private static FreeDescriptorSetsDelegate_0 FreeDescriptorSets_0;
 		private static FreeDescriptorSetsDelegate_1 FreeDescriptorSets_1;
@@ -1988,8 +1982,6 @@ namespace Vulkan
 		private static IntPtr AllocateCommandBuffersPointer;
 		private static AllocateCommandBuffersDelegate_0 AllocateCommandBuffers_0;
 		private static AllocateCommandBuffersDelegate_1 AllocateCommandBuffers_1;
-		private static AllocateCommandBuffersDelegate_2 AllocateCommandBuffers_2;
-		private static AllocateCommandBuffersDelegate_3 AllocateCommandBuffers_3;
 		private static IntPtr FreeCommandBuffersPointer;
 		private static FreeCommandBuffersDelegate_0 FreeCommandBuffers_0;
 		private static FreeCommandBuffersDelegate_1 FreeCommandBuffers_1;
@@ -3703,8 +3695,6 @@ namespace Vulkan
 			{
 				AllocateDescriptorSets_0 = Marshal.GetDelegateForFunctionPointer<AllocateDescriptorSetsDelegate_0>(AllocateDescriptorSetsPointer);
 				AllocateDescriptorSets_1 = Marshal.GetDelegateForFunctionPointer<AllocateDescriptorSetsDelegate_1>(AllocateDescriptorSetsPointer);
-				AllocateDescriptorSets_2 = Marshal.GetDelegateForFunctionPointer<AllocateDescriptorSetsDelegate_2>(AllocateDescriptorSetsPointer);
-				AllocateDescriptorSets_3 = Marshal.GetDelegateForFunctionPointer<AllocateDescriptorSetsDelegate_3>(AllocateDescriptorSetsPointer);
 			}
 			FreeDescriptorSetsPointer = GetInstancePrecedureAddress(instance, "vkFreeDescriptorSets");
 			if (FreeDescriptorSetsPointer != IntPtr.Zero)
@@ -3790,8 +3780,6 @@ namespace Vulkan
 			{
 				AllocateCommandBuffers_0 = Marshal.GetDelegateForFunctionPointer<AllocateCommandBuffersDelegate_0>(AllocateCommandBuffersPointer);
 				AllocateCommandBuffers_1 = Marshal.GetDelegateForFunctionPointer<AllocateCommandBuffersDelegate_1>(AllocateCommandBuffersPointer);
-				AllocateCommandBuffers_2 = Marshal.GetDelegateForFunctionPointer<AllocateCommandBuffersDelegate_2>(AllocateCommandBuffersPointer);
-				AllocateCommandBuffers_3 = Marshal.GetDelegateForFunctionPointer<AllocateCommandBuffersDelegate_3>(AllocateCommandBuffersPointer);
 			}
 			FreeCommandBuffersPointer = GetInstancePrecedureAddress(instance, "vkFreeCommandBuffers");
 			if (FreeCommandBuffersPointer != IntPtr.Zero)
@@ -6122,10 +6110,8 @@ namespace Vulkan
 		public static unsafe void DestroyDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* allocator) => DestroyDescriptorPool_0(device, descriptorPool, allocator);
 		public static unsafe void DestroyDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, ref VkAllocationCallbacks allocator) => DestroyDescriptorPool_1(device, descriptorPool, ref allocator);
 		public static unsafe VkResult ResetDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, uint flags) => ResetDescriptorPool_0(device, descriptorPool, flags);
-		public static unsafe VkResult AllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, VkDescriptorSet* descriptorSets) => AllocateDescriptorSets_0(device, allocateInfo, descriptorSets);
-		public static unsafe VkResult AllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, out VkDescriptorSet descriptorSets) => AllocateDescriptorSets_1(device, allocateInfo, out descriptorSets);
-		public static unsafe VkResult AllocateDescriptorSets(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, VkDescriptorSet* descriptorSets) => AllocateDescriptorSets_2(device, ref allocateInfo, descriptorSets);
-		public static unsafe VkResult AllocateDescriptorSets(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, out VkDescriptorSet descriptorSets) => AllocateDescriptorSets_3(device, ref allocateInfo, out descriptorSets);
+		public static unsafe VkResult AllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets) => AllocateDescriptorSets_0(device, allocateInfo, descriptorSets);
+		public static unsafe VkResult AllocateDescriptorSets(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets) => AllocateDescriptorSets_1(device, ref allocateInfo, descriptorSets);
 		public static unsafe VkResult FreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet* descriptorSets) => FreeDescriptorSets_0(device, descriptorPool, descriptorSetCount, descriptorSets);
 		public static unsafe VkResult FreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, ref VkDescriptorSet descriptorSets) => FreeDescriptorSets_1(device, descriptorPool, descriptorSetCount, ref descriptorSets);
 		public static unsafe void UpdateDescriptorSets(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet* descriptorCopies) => UpdateDescriptorSets_0(device, descriptorWriteCount, descriptorWrites, descriptorCopyCount, descriptorCopies);
@@ -6165,10 +6151,8 @@ namespace Vulkan
 		public static unsafe void DestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator) => DestroyCommandPool_0(device, commandPool, allocator);
 		public static unsafe void DestroyCommandPool(VkDevice device, VkCommandPool commandPool, ref VkAllocationCallbacks allocator) => DestroyCommandPool_1(device, commandPool, ref allocator);
 		public static unsafe VkResult ResetCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags) => ResetCommandPool_0(device, commandPool, flags);
-		public static unsafe VkResult AllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, VkCommandBuffer* commandBuffers) => AllocateCommandBuffers_0(device, allocateInfo, commandBuffers);
-		public static unsafe VkResult AllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, out VkCommandBuffer commandBuffers) => AllocateCommandBuffers_1(device, allocateInfo, out commandBuffers);
-		public static unsafe VkResult AllocateCommandBuffers(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, VkCommandBuffer* commandBuffers) => AllocateCommandBuffers_2(device, ref allocateInfo, commandBuffers);
-		public static unsafe VkResult AllocateCommandBuffers(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, out VkCommandBuffer commandBuffers) => AllocateCommandBuffers_3(device, ref allocateInfo, out commandBuffers);
+		public static unsafe VkResult AllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers) => AllocateCommandBuffers_0(device, allocateInfo, commandBuffers);
+		public static unsafe VkResult AllocateCommandBuffers(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers) => AllocateCommandBuffers_1(device, ref allocateInfo, commandBuffers);
 		public static unsafe void FreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* commandBuffers) => FreeCommandBuffers_0(device, commandPool, commandBufferCount, commandBuffers);
 		public static unsafe void FreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, ref VkCommandBuffer commandBuffers) => FreeCommandBuffers_1(device, commandPool, commandBufferCount, ref commandBuffers);
 		public static unsafe VkResult BeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo) => BeginCommandBuffer_0(commandBuffer, beginInfo);

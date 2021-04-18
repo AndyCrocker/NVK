@@ -247,7 +247,11 @@ namespace NVK.Generator
             // note how the variations get set, not added. this is because having a pointer in place of an array is not necessary
             else if (parameterInfo.Name.EndsWith("Infos"))
                 parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, arrayDimensions: 1), ParameterModifier.None) };
-            else if ((commandInfo.DisplayName.StartsWith("Enumerate") || (commandInfo.DisplayName.StartsWith("Get") && GetMethodsRequiringArray.Contains(commandInfo.DisplayName))) && commandInfo.Parameters.Last() == parameterInfo)
+            else if (
+                (commandInfo.DisplayName.StartsWith("Enumerate")                                                                    // enumerate methods
+                    || (commandInfo.DisplayName.StartsWith("Get") && GetMethodsRequiringArray.Contains(commandInfo.DisplayName))    // certain get methods
+                    || (commandInfo.DisplayName.StartsWith("Allocate") && (commandInfo.DisplayName.EndsWith("s"))))                 // and certain allocate methods should all have a marshalled array
+                && commandInfo.Parameters.Last() == parameterInfo)                                                                  // on the last parameter
                 parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, arrayDimensions: 1), ParameterModifier.InOut) };
 
             // check if parameter can have 'out' version
