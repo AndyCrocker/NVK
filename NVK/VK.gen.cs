@@ -518,8 +518,7 @@ namespace Vulkan
 		private unsafe delegate VkResult EnumerateDeviceExtensionPropertiesDelegate_3(VkPhysicalDevice physicalDevice, string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties);
 		private unsafe delegate void GetDeviceQueueDelegate_0(VkDevice device, uint queueFamilyIndex, uint queueIndex, VkQueue* queue);
 		private unsafe delegate void GetDeviceQueueDelegate_1(VkDevice device, uint queueFamilyIndex, uint queueIndex, out VkQueue queue);
-		private unsafe delegate VkResult QueueSubmitDelegate_0(VkQueue queue, uint submitCount, VkSubmitInfo* submits, VkFence fence);
-		private unsafe delegate VkResult QueueSubmitDelegate_1(VkQueue queue, uint submitCount, ref VkSubmitInfo submits, VkFence fence);
+		private unsafe delegate VkResult QueueSubmitDelegate_0(VkQueue queue, uint submitCount, VkSubmitInfo[] submits, VkFence fence);
 		private unsafe delegate VkResult QueueWaitIdleDelegate_0(VkQueue queue);
 		private unsafe delegate VkResult DeviceWaitIdleDelegate_0(VkDevice device);
 		private unsafe delegate VkResult AllocateMemoryDelegate_0(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, VkDeviceMemory* memory);
@@ -534,10 +533,8 @@ namespace Vulkan
 		private unsafe delegate void FreeMemoryDelegate_1(VkDevice device, VkDeviceMemory memory, ref VkAllocationCallbacks allocator);
 		private unsafe delegate VkResult MapMemoryDelegate_0(VkDevice device, VkDeviceMemory memory, VkDeviceSize offset, VkDeviceSize size, uint flags, void** data);
 		private unsafe delegate void UnmapMemoryDelegate_0(VkDevice device, VkDeviceMemory memory);
-		private unsafe delegate VkResult FlushMappedMemoryRangesDelegate_0(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange* memoryRanges);
-		private unsafe delegate VkResult FlushMappedMemoryRangesDelegate_1(VkDevice device, uint memoryRangeCount, ref VkMappedMemoryRange memoryRanges);
-		private unsafe delegate VkResult InvalidateMappedMemoryRangesDelegate_0(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange* memoryRanges);
-		private unsafe delegate VkResult InvalidateMappedMemoryRangesDelegate_1(VkDevice device, uint memoryRangeCount, ref VkMappedMemoryRange memoryRanges);
+		private unsafe delegate VkResult FlushMappedMemoryRangesDelegate_0(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange[] memoryRanges);
+		private unsafe delegate VkResult InvalidateMappedMemoryRangesDelegate_0(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange[] memoryRanges);
 		private unsafe delegate void GetDeviceMemoryCommitmentDelegate_0(VkDevice device, VkDeviceMemory memory, VkDeviceSize* committedMemoryInBytes);
 		private unsafe delegate void GetDeviceMemoryCommitmentDelegate_1(VkDevice device, VkDeviceMemory memory, out VkDeviceSize committedMemoryInBytes);
 		private unsafe delegate void GetBufferMemoryRequirementsDelegate_0(VkDevice device, VkBuffer buffer, VkMemoryRequirements* memoryRequirements);
@@ -562,11 +559,9 @@ namespace Vulkan
 		private unsafe delegate VkResult CreateFenceDelegate_7(VkDevice device, ref VkFenceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkFence fence);
 		private unsafe delegate void DestroyFenceDelegate_0(VkDevice device, VkFence fence, VkAllocationCallbacks* allocator);
 		private unsafe delegate void DestroyFenceDelegate_1(VkDevice device, VkFence fence, ref VkAllocationCallbacks allocator);
-		private unsafe delegate VkResult ResetFencesDelegate_0(VkDevice device, uint fenceCount, VkFence* fences);
-		private unsafe delegate VkResult ResetFencesDelegate_1(VkDevice device, uint fenceCount, ref VkFence fences);
+		private unsafe delegate VkResult ResetFencesDelegate_0(VkDevice device, uint fenceCount, VkFence[] fences);
 		private unsafe delegate VkResult GetFenceStatusDelegate_0(VkDevice device, VkFence fence);
-		private unsafe delegate VkResult WaitForFencesDelegate_0(VkDevice device, uint fenceCount, VkFence* fences, VkBool32 waitAll, ulong timeout);
-		private unsafe delegate VkResult WaitForFencesDelegate_1(VkDevice device, uint fenceCount, ref VkFence fences, VkBool32 waitAll, ulong timeout);
+		private unsafe delegate VkResult WaitForFencesDelegate_0(VkDevice device, uint fenceCount, VkFence[] fences, VkBool32 waitAll, ulong timeout);
 		private unsafe delegate VkResult CreateSemaphoreDelegate_0(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSemaphore* semaphore);
 		private unsafe delegate VkResult CreateSemaphoreDelegate_1(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore);
 		private unsafe delegate VkResult CreateSemaphoreDelegate_2(VkDevice device, VkSemaphoreCreateInfo* createInfo, ref VkAllocationCallbacks allocator, VkSemaphore* semaphore);
@@ -668,8 +663,7 @@ namespace Vulkan
 		private unsafe delegate void DestroyPipelineCacheDelegate_1(VkDevice device, VkPipelineCache pipelineCache, ref VkAllocationCallbacks allocator);
 		private unsafe delegate VkResult GetPipelineCacheDataDelegate_0(VkDevice device, VkPipelineCache pipelineCache, nuint* dataSize, void* data);
 		private unsafe delegate VkResult GetPipelineCacheDataDelegate_1(VkDevice device, VkPipelineCache pipelineCache, ref nuint dataSize, void* data);
-		private unsafe delegate VkResult MergePipelineCachesDelegate_0(VkDevice device, VkPipelineCache destinationCache, uint sourceCacheCount, VkPipelineCache* sourceCaches);
-		private unsafe delegate VkResult MergePipelineCachesDelegate_1(VkDevice device, VkPipelineCache destinationCache, uint sourceCacheCount, ref VkPipelineCache sourceCaches);
+		private unsafe delegate VkResult MergePipelineCachesDelegate_0(VkDevice device, VkPipelineCache destinationCache, uint sourceCacheCount, VkPipelineCache[] sourceCaches);
 		private unsafe delegate VkResult CreateGraphicsPipelinesDelegate_0(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines);
 		private unsafe delegate VkResult CreateGraphicsPipelinesDelegate_1(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines);
 		private unsafe delegate VkResult CreateGraphicsPipelinesDelegate_2(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, ref VkAllocationCallbacks allocator, VkPipeline* pipelines);
@@ -723,12 +717,8 @@ namespace Vulkan
 		private unsafe delegate VkResult ResetDescriptorPoolDelegate_0(VkDevice device, VkDescriptorPool descriptorPool, uint flags);
 		private unsafe delegate VkResult AllocateDescriptorSetsDelegate_0(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets);
 		private unsafe delegate VkResult AllocateDescriptorSetsDelegate_1(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets);
-		private unsafe delegate VkResult FreeDescriptorSetsDelegate_0(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet* descriptorSets);
-		private unsafe delegate VkResult FreeDescriptorSetsDelegate_1(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, ref VkDescriptorSet descriptorSets);
-		private unsafe delegate void UpdateDescriptorSetsDelegate_0(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet* descriptorCopies);
-		private unsafe delegate void UpdateDescriptorSetsDelegate_1(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites, uint descriptorCopyCount, ref VkCopyDescriptorSet descriptorCopies);
-		private unsafe delegate void UpdateDescriptorSetsDelegate_2(VkDevice device, uint descriptorWriteCount, ref VkWriteDescriptorSet descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet* descriptorCopies);
-		private unsafe delegate void UpdateDescriptorSetsDelegate_3(VkDevice device, uint descriptorWriteCount, ref VkWriteDescriptorSet descriptorWrites, uint descriptorCopyCount, ref VkCopyDescriptorSet descriptorCopies);
+		private unsafe delegate VkResult FreeDescriptorSetsDelegate_0(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet[] descriptorSets);
+		private unsafe delegate void UpdateDescriptorSetsDelegate_0(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet[] descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet[] descriptorCopies);
 		private unsafe delegate VkResult CreateFramebufferDelegate_0(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkFramebuffer* framebuffer);
 		private unsafe delegate VkResult CreateFramebufferDelegate_1(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer);
 		private unsafe delegate VkResult CreateFramebufferDelegate_2(VkDevice device, VkFramebufferCreateInfo* createInfo, ref VkAllocationCallbacks allocator, VkFramebuffer* framebuffer);
@@ -764,17 +754,14 @@ namespace Vulkan
 		private unsafe delegate VkResult ResetCommandPoolDelegate_0(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags);
 		private unsafe delegate VkResult AllocateCommandBuffersDelegate_0(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers);
 		private unsafe delegate VkResult AllocateCommandBuffersDelegate_1(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers);
-		private unsafe delegate void FreeCommandBuffersDelegate_0(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* commandBuffers);
-		private unsafe delegate void FreeCommandBuffersDelegate_1(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, ref VkCommandBuffer commandBuffers);
+		private unsafe delegate void FreeCommandBuffersDelegate_0(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer[] commandBuffers);
 		private unsafe delegate VkResult BeginCommandBufferDelegate_0(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo);
 		private unsafe delegate VkResult BeginCommandBufferDelegate_1(VkCommandBuffer commandBuffer, ref VkCommandBufferBeginInfo beginInfo);
 		private unsafe delegate VkResult EndCommandBufferDelegate_0(VkCommandBuffer commandBuffer);
 		private unsafe delegate VkResult ResetCommandBufferDelegate_0(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags);
 		private unsafe delegate void CommandBindPipelineDelegate_0(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline);
-		private unsafe delegate void CommandSetViewportDelegate_0(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport* viewports);
-		private unsafe delegate void CommandSetViewportDelegate_1(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, ref VkViewport viewports);
-		private unsafe delegate void CommandSetScissorDelegate_0(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, VkRect2D* scissors);
-		private unsafe delegate void CommandSetScissorDelegate_1(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, ref VkRect2D scissors);
+		private unsafe delegate void CommandSetViewportDelegate_0(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport[] viewports);
+		private unsafe delegate void CommandSetScissorDelegate_0(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, VkRect2D[] scissors);
 		private unsafe delegate void CommandSetLineWidthDelegate_0(VkCommandBuffer commandBuffer, float lineWidth);
 		private unsafe delegate void CommandSetDepthBiasDelegate_0(VkCommandBuffer commandBuffer, float depthBiasConstantFactor, float depthBiasClamp, float depthBiasSlopeFactor);
 		private unsafe delegate void CommandSetBlendConstantsDelegate_0(VkCommandBuffer commandBuffer, float blendConstants);
@@ -782,10 +769,7 @@ namespace Vulkan
 		private unsafe delegate void CommandSetStencilCompareMaskDelegate_0(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint compareMask);
 		private unsafe delegate void CommandSetStencilWriteMaskDelegate_0(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint writeMask);
 		private unsafe delegate void CommandSetStencilReferenceDelegate_0(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint reference);
-		private unsafe delegate void CommandBindDescriptorSetsDelegate_0(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* descriptorSets, uint dynamicOffsetCount, uint* dynamicOffsets);
-		private unsafe delegate void CommandBindDescriptorSetsDelegate_1(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* descriptorSets, uint dynamicOffsetCount, ref uint dynamicOffsets);
-		private unsafe delegate void CommandBindDescriptorSetsDelegate_2(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, ref VkDescriptorSet descriptorSets, uint dynamicOffsetCount, uint* dynamicOffsets);
-		private unsafe delegate void CommandBindDescriptorSetsDelegate_3(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, ref VkDescriptorSet descriptorSets, uint dynamicOffsetCount, ref uint dynamicOffsets);
+		private unsafe delegate void CommandBindDescriptorSetsDelegate_0(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet[] descriptorSets, uint dynamicOffsetCount, uint[] dynamicOffsets);
 		private unsafe delegate void CommandBindIndexBufferDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkIndexType indexType);
 		private unsafe delegate void CommandBindVertexBuffersDelegate_0(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets);
 		private unsafe delegate void CommandBindVertexBuffersDelegate_1(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets);
@@ -797,58 +781,23 @@ namespace Vulkan
 		private unsafe delegate void CommandDrawIndexedIndirectDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, uint drawCount, uint stride);
 		private unsafe delegate void CommandDispatchDelegate_0(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ);
 		private unsafe delegate void CommandDispatchIndirectDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset);
-		private unsafe delegate void CommandCopyBufferDelegate_0(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkBuffer destinationBuffer, uint regionCount, VkBufferCopy* regions);
-		private unsafe delegate void CommandCopyBufferDelegate_1(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkBuffer destinationBuffer, uint regionCount, ref VkBufferCopy regions);
-		private unsafe delegate void CommandCopyImageDelegate_0(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageCopy* regions);
-		private unsafe delegate void CommandCopyImageDelegate_1(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, ref VkImageCopy regions);
-		private unsafe delegate void CommandBlitImageDelegate_0(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageBlit* regions, VkFilter filter);
-		private unsafe delegate void CommandBlitImageDelegate_1(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, ref VkImageBlit regions, VkFilter filter);
-		private unsafe delegate void CommandCopyBufferToImageDelegate_0(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkBufferImageCopy* regions);
-		private unsafe delegate void CommandCopyBufferToImageDelegate_1(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, ref VkBufferImageCopy regions);
-		private unsafe delegate void CommandCopyImageToBufferDelegate_0(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkBuffer destinationBuffer, uint regionCount, VkBufferImageCopy* regions);
-		private unsafe delegate void CommandCopyImageToBufferDelegate_1(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkBuffer destinationBuffer, uint regionCount, ref VkBufferImageCopy regions);
+		private unsafe delegate void CommandCopyBufferDelegate_0(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkBuffer destinationBuffer, uint regionCount, VkBufferCopy[] regions);
+		private unsafe delegate void CommandCopyImageDelegate_0(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageCopy[] regions);
+		private unsafe delegate void CommandBlitImageDelegate_0(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageBlit[] regions, VkFilter filter);
+		private unsafe delegate void CommandCopyBufferToImageDelegate_0(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkBufferImageCopy[] regions);
+		private unsafe delegate void CommandCopyImageToBufferDelegate_0(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkBuffer destinationBuffer, uint regionCount, VkBufferImageCopy[] regions);
 		private unsafe delegate void CommandUpdateBufferDelegate_0(VkCommandBuffer commandBuffer, VkBuffer destinationBuffer, VkDeviceSize destinationOffset, VkDeviceSize dataSize, void* data);
 		private unsafe delegate void CommandFillBufferDelegate_0(VkCommandBuffer commandBuffer, VkBuffer destinationBuffer, VkDeviceSize destinationOffset, VkDeviceSize size, uint data);
-		private unsafe delegate void CommandClearColorImageDelegate_0(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* color, uint rangeCount, VkImageSubresourceRange* ranges);
-		private unsafe delegate void CommandClearColorImageDelegate_1(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* color, uint rangeCount, ref VkImageSubresourceRange ranges);
-		private unsafe delegate void CommandClearColorImageDelegate_2(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearColorValue color, uint rangeCount, VkImageSubresourceRange* ranges);
-		private unsafe delegate void CommandClearColorImageDelegate_3(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearColorValue color, uint rangeCount, ref VkImageSubresourceRange ranges);
-		private unsafe delegate void CommandClearDepthStencilImageDelegate_0(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* depthStencil, uint rangeCount, VkImageSubresourceRange* ranges);
-		private unsafe delegate void CommandClearDepthStencilImageDelegate_1(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* depthStencil, uint rangeCount, ref VkImageSubresourceRange ranges);
-		private unsafe delegate void CommandClearDepthStencilImageDelegate_2(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearDepthStencilValue depthStencil, uint rangeCount, VkImageSubresourceRange* ranges);
-		private unsafe delegate void CommandClearDepthStencilImageDelegate_3(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearDepthStencilValue depthStencil, uint rangeCount, ref VkImageSubresourceRange ranges);
-		private unsafe delegate void CommandClearAttachmentsDelegate_0(VkCommandBuffer commandBuffer, uint attachmentCount, VkClearAttachment* attachments, uint rectCount, VkClearRect* rects);
-		private unsafe delegate void CommandClearAttachmentsDelegate_1(VkCommandBuffer commandBuffer, uint attachmentCount, VkClearAttachment* attachments, uint rectCount, ref VkClearRect rects);
-		private unsafe delegate void CommandClearAttachmentsDelegate_2(VkCommandBuffer commandBuffer, uint attachmentCount, ref VkClearAttachment attachments, uint rectCount, VkClearRect* rects);
-		private unsafe delegate void CommandClearAttachmentsDelegate_3(VkCommandBuffer commandBuffer, uint attachmentCount, ref VkClearAttachment attachments, uint rectCount, ref VkClearRect rects);
-		private unsafe delegate void CommandResolveImageDelegate_0(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageResolve* regions);
-		private unsafe delegate void CommandResolveImageDelegate_1(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, ref VkImageResolve regions);
+		private unsafe delegate void CommandClearColorImageDelegate_0(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* color, uint rangeCount, VkImageSubresourceRange[] ranges);
+		private unsafe delegate void CommandClearColorImageDelegate_1(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearColorValue color, uint rangeCount, VkImageSubresourceRange[] ranges);
+		private unsafe delegate void CommandClearDepthStencilImageDelegate_0(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* depthStencil, uint rangeCount, VkImageSubresourceRange[] ranges);
+		private unsafe delegate void CommandClearDepthStencilImageDelegate_1(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearDepthStencilValue depthStencil, uint rangeCount, VkImageSubresourceRange[] ranges);
+		private unsafe delegate void CommandClearAttachmentsDelegate_0(VkCommandBuffer commandBuffer, uint attachmentCount, VkClearAttachment[] attachments, uint rectCount, VkClearRect[] rects);
+		private unsafe delegate void CommandResolveImageDelegate_0(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageResolve[] regions);
 		private unsafe delegate void CommandSetEventDelegate_0(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask);
 		private unsafe delegate void CommandResetEventDelegate_0(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask);
-		private unsafe delegate void CommandWaitEventsDelegate_0(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_1(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_2(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_3(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_4(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_5(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_6(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_7(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_8(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_9(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_10(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_11(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_12(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_13(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_14(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandWaitEventsDelegate_15(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandPipelineBarrierDelegate_0(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandPipelineBarrierDelegate_1(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandPipelineBarrierDelegate_2(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandPipelineBarrierDelegate_3(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandPipelineBarrierDelegate_4(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandPipelineBarrierDelegate_5(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
-		private unsafe delegate void CommandPipelineBarrierDelegate_6(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers);
-		private unsafe delegate void CommandPipelineBarrierDelegate_7(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers);
+		private unsafe delegate void CommandWaitEventsDelegate_0(VkCommandBuffer commandBuffer, uint eventCount, VkEvent[] events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier[] memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier[] bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier[] imageMemoryBarriers);
+		private unsafe delegate void CommandPipelineBarrierDelegate_0(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier[] memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier[] bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier[] imageMemoryBarriers);
 		private unsafe delegate void CommandBeginQueryDelegate_0(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags);
 		private unsafe delegate void CommandEndQueryDelegate_0(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query);
 		private unsafe delegate void CommandBeginConditionalRenderingEXTDelegate_0(VkCommandBuffer commandBuffer, VkConditionalRenderingBeginInfoEXT* conditionalRenderingBegin);
@@ -862,8 +811,7 @@ namespace Vulkan
 		private unsafe delegate void CommandBeginRenderPassDelegate_1(VkCommandBuffer commandBuffer, ref VkRenderPassBeginInfo renderPassBegin, VkSubpassContents contents);
 		private unsafe delegate void CommandNextSubpassDelegate_0(VkCommandBuffer commandBuffer, VkSubpassContents contents);
 		private unsafe delegate void CommandEndRenderPassDelegate_0(VkCommandBuffer commandBuffer);
-		private unsafe delegate void CommandExecuteCommandsDelegate_0(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer* commandBuffers);
-		private unsafe delegate void CommandExecuteCommandsDelegate_1(VkCommandBuffer commandBuffer, uint commandBufferCount, ref VkCommandBuffer commandBuffers);
+		private unsafe delegate void CommandExecuteCommandsDelegate_0(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer[] commandBuffers);
 		private unsafe delegate VkResult CreateAndroidSurfaceKHRDelegate_0(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface);
 		private unsafe delegate VkResult CreateAndroidSurfaceKHRDelegate_1(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 		private unsafe delegate VkResult CreateAndroidSurfaceKHRDelegate_2(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, VkSurfaceKHR* surface);
@@ -1011,8 +959,7 @@ namespace Vulkan
 		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
 		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
 		private unsafe delegate void GetPhysicalDeviceSparseImageFormatProperties2Delegate_3(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
-		private unsafe delegate void CommandPushDescriptorSetKHRDelegate_0(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites);
-		private unsafe delegate void CommandPushDescriptorSetKHRDelegate_1(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, ref VkWriteDescriptorSet descriptorWrites);
+		private unsafe delegate void CommandPushDescriptorSetKHRDelegate_0(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet[] descriptorWrites);
 		private unsafe delegate void TrimCommandPoolDelegate_0(VkDevice device, VkCommandPool commandPool, uint flags);
 		private unsafe delegate void GetPhysicalDeviceExternalBufferPropertiesDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* externalBufferInfo, VkExternalBufferProperties* externalBufferProperties);
 		private unsafe delegate void GetPhysicalDeviceExternalBufferPropertiesDelegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* externalBufferInfo, out VkExternalBufferProperties externalBufferProperties);
@@ -1118,10 +1065,8 @@ namespace Vulkan
 		private unsafe delegate void DestroyDescriptorUpdateTemplateDelegate_1(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, ref VkAllocationCallbacks allocator);
 		private unsafe delegate void UpdateDescriptorSetWithTemplateDelegate_0(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* data);
 		private unsafe delegate void CommandPushDescriptorSetWithTemplateKHRDelegate_0(VkCommandBuffer commandBuffer, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkPipelineLayout layout, uint set, void* data);
-		private unsafe delegate void SetHdrMetadataEXTDelegate_0(VkDevice device, uint swapchainCount, VkSwapchainKHR* swapchains, VkHdrMetadataEXT* metadata);
-		private unsafe delegate void SetHdrMetadataEXTDelegate_1(VkDevice device, uint swapchainCount, VkSwapchainKHR* swapchains, ref VkHdrMetadataEXT metadata);
-		private unsafe delegate void SetHdrMetadataEXTDelegate_2(VkDevice device, uint swapchainCount, ref VkSwapchainKHR swapchains, VkHdrMetadataEXT* metadata);
-		private unsafe delegate void SetHdrMetadataEXTDelegate_3(VkDevice device, uint swapchainCount, ref VkSwapchainKHR swapchains, ref VkHdrMetadataEXT metadata);
+		private unsafe delegate void SetHdrMetadataEXTDelegate_0(VkDevice device, uint swapchainCount, VkSwapchainKHR[] swapchains, VkHdrMetadataEXT* metadata);
+		private unsafe delegate void SetHdrMetadataEXTDelegate_1(VkDevice device, uint swapchainCount, VkSwapchainKHR[] swapchains, ref VkHdrMetadataEXT metadata);
 		private unsafe delegate VkResult GetSwapchainStatusKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain);
 		private unsafe delegate VkResult GetRefreshCycleDurationGOOGLEDelegate_0(VkDevice device, VkSwapchainKHR swapchain, VkRefreshCycleDurationGOOGLE* displayTimingProperties);
 		private unsafe delegate VkResult GetRefreshCycleDurationGOOGLEDelegate_1(VkDevice device, VkSwapchainKHR swapchain, out VkRefreshCycleDurationGOOGLE displayTimingProperties);
@@ -1137,8 +1082,7 @@ namespace Vulkan
 		private unsafe delegate VkResult CreateMacOSSurfaceMVKDelegate_7(VkInstance instance, ref VkMacOSSurfaceCreateInfoMVK createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 		private unsafe delegate void CommandSetViewportWScalingNVDelegate_0(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewportWScalingNV* viewportWScalings);
 		private unsafe delegate void CommandSetViewportWScalingNVDelegate_1(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, ref VkViewportWScalingNV viewportWScalings);
-		private unsafe delegate void CommandSetDiscardRectangleEXTDelegate_0(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D* discardRectangles);
-		private unsafe delegate void CommandSetDiscardRectangleEXTDelegate_1(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, ref VkRect2D discardRectangles);
+		private unsafe delegate void CommandSetDiscardRectangleEXTDelegate_0(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D[] discardRectangles);
 		private unsafe delegate void CommandSetSampleLocationsEXTDelegate_0(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* sampleLocationsInfo);
 		private unsafe delegate void CommandSetSampleLocationsEXTDelegate_1(VkCommandBuffer commandBuffer, ref VkSampleLocationsInfoEXT sampleLocationsInfo);
 		private unsafe delegate void GetPhysicalDeviceMultisamplePropertiesEXTDelegate_0(VkPhysicalDevice physicalDevice, VkSampleCountFlags samples, VkMultisamplePropertiesEXT* multisampleProperties);
@@ -1199,8 +1143,7 @@ namespace Vulkan
 		private unsafe delegate void DestroyValidationCacheEXTDelegate_1(VkDevice device, VkValidationCacheEXT validationCache, ref VkAllocationCallbacks allocator);
 		private unsafe delegate VkResult GetValidationCacheDataEXTDelegate_0(VkDevice device, VkValidationCacheEXT validationCache, nuint* dataSize, void* data);
 		private unsafe delegate VkResult GetValidationCacheDataEXTDelegate_1(VkDevice device, VkValidationCacheEXT validationCache, ref nuint dataSize, void* data);
-		private unsafe delegate VkResult MergeValidationCachesEXTDelegate_0(VkDevice device, VkValidationCacheEXT destinationCache, uint sourceCacheCount, VkValidationCacheEXT* sourceCaches);
-		private unsafe delegate VkResult MergeValidationCachesEXTDelegate_1(VkDevice device, VkValidationCacheEXT destinationCache, uint sourceCacheCount, ref VkValidationCacheEXT sourceCaches);
+		private unsafe delegate VkResult MergeValidationCachesEXTDelegate_0(VkDevice device, VkValidationCacheEXT destinationCache, uint sourceCacheCount, VkValidationCacheEXT[] sourceCaches);
 		private unsafe delegate void GetDescriptorSetLayoutSupportDelegate_0(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkDescriptorSetLayoutSupport* support);
 		private unsafe delegate void GetDescriptorSetLayoutSupportDelegate_1(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, out VkDescriptorSetLayoutSupport support);
 		private unsafe delegate void GetDescriptorSetLayoutSupportDelegate_2(VkDevice device, ref VkDescriptorSetLayoutCreateInfo createInfo, VkDescriptorSetLayoutSupport* support);
@@ -1212,10 +1155,8 @@ namespace Vulkan
 		private unsafe delegate VkResult GetSwapchainGrallocUsage2ANDROIDDelegate_2(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, VkSwapchainImageUsageFlagsANDROID swapchainImageUsage, ref ulong grallocConsumerUsage, ulong* grallocProducerUsage);
 		private unsafe delegate VkResult GetSwapchainGrallocUsage2ANDROIDDelegate_3(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, VkSwapchainImageUsageFlagsANDROID swapchainImageUsage, ref ulong grallocConsumerUsage, out ulong grallocProducerUsage);
 		private unsafe delegate VkResult AcquireImageANDROIDDelegate_0(VkDevice device, VkImage image, int nativeFenceFileDescriptor, VkSemaphore semaphore, VkFence fence);
-		private unsafe delegate VkResult QueueSignalReleaseImageANDROIDDelegate_0(VkQueue queue, uint waitSemaphoreCount, VkSemaphore* waitSemaphores, VkImage image, int* nativeFenceFileDescriptor);
-		private unsafe delegate VkResult QueueSignalReleaseImageANDROIDDelegate_1(VkQueue queue, uint waitSemaphoreCount, VkSemaphore* waitSemaphores, VkImage image, ref int nativeFenceFileDescriptor);
-		private unsafe delegate VkResult QueueSignalReleaseImageANDROIDDelegate_2(VkQueue queue, uint waitSemaphoreCount, ref VkSemaphore waitSemaphores, VkImage image, int* nativeFenceFileDescriptor);
-		private unsafe delegate VkResult QueueSignalReleaseImageANDROIDDelegate_3(VkQueue queue, uint waitSemaphoreCount, ref VkSemaphore waitSemaphores, VkImage image, ref int nativeFenceFileDescriptor);
+		private unsafe delegate VkResult QueueSignalReleaseImageANDROIDDelegate_0(VkQueue queue, uint waitSemaphoreCount, VkSemaphore[] waitSemaphores, VkImage image, int* nativeFenceFileDescriptor);
+		private unsafe delegate VkResult QueueSignalReleaseImageANDROIDDelegate_1(VkQueue queue, uint waitSemaphoreCount, VkSemaphore[] waitSemaphores, VkImage image, ref int nativeFenceFileDescriptor);
 		private unsafe delegate VkResult GetShaderInfoAMDDelegate_0(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info);
 		private unsafe delegate VkResult GetShaderInfoAMDDelegate_1(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, ref nuint infoSize, void* info);
 		private unsafe delegate void SetLocalDimmingAMDDelegate_0(VkDevice device, VkSwapchainKHR swapChain, VkBool32 localDimmingEnable);
@@ -1299,24 +1240,18 @@ namespace Vulkan
 		private unsafe delegate void CommandBindTransformFeedbackBuffersEXTDelegate_5(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes);
 		private unsafe delegate void CommandBindTransformFeedbackBuffersEXTDelegate_6(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes);
 		private unsafe delegate void CommandBindTransformFeedbackBuffersEXTDelegate_7(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, ref VkDeviceSize sizes);
-		private unsafe delegate void CommandBeginTransformFeedbackEXTDelegate_0(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, VkDeviceSize* counterBufferOffsets);
-		private unsafe delegate void CommandBeginTransformFeedbackEXTDelegate_1(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, ref VkDeviceSize counterBufferOffsets);
-		private unsafe delegate void CommandBeginTransformFeedbackEXTDelegate_2(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, ref VkBuffer counterBuffers, VkDeviceSize* counterBufferOffsets);
-		private unsafe delegate void CommandBeginTransformFeedbackEXTDelegate_3(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, ref VkBuffer counterBuffers, ref VkDeviceSize counterBufferOffsets);
-		private unsafe delegate void CommandEndTransformFeedbackEXTDelegate_0(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, VkDeviceSize* counterBufferOffsets);
-		private unsafe delegate void CommandEndTransformFeedbackEXTDelegate_1(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, ref VkDeviceSize counterBufferOffsets);
-		private unsafe delegate void CommandEndTransformFeedbackEXTDelegate_2(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, ref VkBuffer counterBuffers, VkDeviceSize* counterBufferOffsets);
-		private unsafe delegate void CommandEndTransformFeedbackEXTDelegate_3(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, ref VkBuffer counterBuffers, ref VkDeviceSize counterBufferOffsets);
+		private unsafe delegate void CommandBeginTransformFeedbackEXTDelegate_0(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer[] counterBuffers, VkDeviceSize* counterBufferOffsets);
+		private unsafe delegate void CommandBeginTransformFeedbackEXTDelegate_1(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer[] counterBuffers, ref VkDeviceSize counterBufferOffsets);
+		private unsafe delegate void CommandEndTransformFeedbackEXTDelegate_0(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer[] counterBuffers, VkDeviceSize* counterBufferOffsets);
+		private unsafe delegate void CommandEndTransformFeedbackEXTDelegate_1(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer[] counterBuffers, ref VkDeviceSize counterBufferOffsets);
 		private unsafe delegate void CommandBeginQueryIndexedEXTDelegate_0(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags, uint index);
 		private unsafe delegate void CommandEndQueryIndexedEXTDelegate_0(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, uint index);
 		private unsafe delegate void CommandDrawIndirectByteCountEXTDelegate_0(VkCommandBuffer commandBuffer, uint instanceCount, uint firstInstance, VkBuffer counterBuffer, VkDeviceSize counterBufferOffset, uint counterOffset, uint vertexStride);
-		private unsafe delegate void CommandSetExclusiveScissorNVDelegate_0(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D* exclusiveScissors);
-		private unsafe delegate void CommandSetExclusiveScissorNVDelegate_1(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, ref VkRect2D exclusiveScissors);
+		private unsafe delegate void CommandSetExclusiveScissorNVDelegate_0(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D[] exclusiveScissors);
 		private unsafe delegate void CommandBindShadingRateImageNVDelegate_0(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout);
 		private unsafe delegate void CommandSetViewportShadingRatePaletteNVDelegate_0(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkShadingRatePaletteNV* shadingRatePalettes);
 		private unsafe delegate void CommandSetViewportShadingRatePaletteNVDelegate_1(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, ref VkShadingRatePaletteNV shadingRatePalettes);
-		private unsafe delegate void CommandSetCoarseSampleOrderNVDelegate_0(VkCommandBuffer commandBuffer, VkCoarseSampleOrderTypeNV sampleOrderType, uint customSampleOrderCount, VkCoarseSampleOrderCustomNV* customSampleOrders);
-		private unsafe delegate void CommandSetCoarseSampleOrderNVDelegate_1(VkCommandBuffer commandBuffer, VkCoarseSampleOrderTypeNV sampleOrderType, uint customSampleOrderCount, ref VkCoarseSampleOrderCustomNV customSampleOrders);
+		private unsafe delegate void CommandSetCoarseSampleOrderNVDelegate_0(VkCommandBuffer commandBuffer, VkCoarseSampleOrderTypeNV sampleOrderType, uint customSampleOrderCount, VkCoarseSampleOrderCustomNV[] customSampleOrders);
 		private unsafe delegate void CommandDrawMeshTasksNVDelegate_0(VkCommandBuffer commandBuffer, uint taskCount, uint firstTask);
 		private unsafe delegate void CommandDrawMeshTasksIndirectNVDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, uint drawCount, uint stride);
 		private unsafe delegate void CommandDrawMeshTasksIndirectCountNVDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
@@ -1351,14 +1286,11 @@ namespace Vulkan
 		private unsafe delegate void CommandCopyMemoryToAccelerationStructureKHRDelegate_1(VkCommandBuffer commandBuffer, ref VkCopyMemoryToAccelerationStructureInfoKHR info);
 		private unsafe delegate VkResult CopyMemoryToAccelerationStructureKHRDelegate_0(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMemoryToAccelerationStructureInfoKHR* info);
 		private unsafe delegate VkResult CopyMemoryToAccelerationStructureKHRDelegate_1(VkDevice device, VkDeferredOperationKHR deferredOperation, ref VkCopyMemoryToAccelerationStructureInfoKHR info);
-		private unsafe delegate void CommandWriteAccelerationStructuresPropertiesKHRDelegate_0(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery);
-		private unsafe delegate void CommandWriteAccelerationStructuresPropertiesKHRDelegate_1(VkCommandBuffer commandBuffer, uint accelerationStructureCount, ref VkAccelerationStructureKHR accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery);
-		private unsafe delegate void CommandWriteAccelerationStructuresPropertiesNVDelegate_0(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureNV* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery);
-		private unsafe delegate void CommandWriteAccelerationStructuresPropertiesNVDelegate_1(VkCommandBuffer commandBuffer, uint accelerationStructureCount, ref VkAccelerationStructureNV accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery);
+		private unsafe delegate void CommandWriteAccelerationStructuresPropertiesKHRDelegate_0(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR[] accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery);
+		private unsafe delegate void CommandWriteAccelerationStructuresPropertiesNVDelegate_0(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureNV[] accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery);
 		private unsafe delegate void CommandBuildAccelerationStructureNVDelegate_0(VkCommandBuffer commandBuffer, VkAccelerationStructureInfoNV* info, VkBuffer instanceData, VkDeviceSize instanceOffset, VkBool32 update, VkAccelerationStructureNV destination, VkAccelerationStructureNV source, VkBuffer scratch, VkDeviceSize scratchOffset);
 		private unsafe delegate void CommandBuildAccelerationStructureNVDelegate_1(VkCommandBuffer commandBuffer, ref VkAccelerationStructureInfoNV info, VkBuffer instanceData, VkDeviceSize instanceOffset, VkBool32 update, VkAccelerationStructureNV destination, VkAccelerationStructureNV source, VkBuffer scratch, VkDeviceSize scratchOffset);
-		private unsafe delegate VkResult WriteAccelerationStructuresPropertiesKHRDelegate_0(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride);
-		private unsafe delegate VkResult WriteAccelerationStructuresPropertiesKHRDelegate_1(VkDevice device, uint accelerationStructureCount, ref VkAccelerationStructureKHR accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride);
+		private unsafe delegate VkResult WriteAccelerationStructuresPropertiesKHRDelegate_0(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR[] accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride);
 		private unsafe delegate void CommandTraceRaysKHRDelegate_0(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, uint width, uint height, uint depth);
 		private unsafe delegate void CommandTraceRaysKHRDelegate_1(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, ref VkStridedDeviceAddressRegionKHR callableShaderBindingTable, uint width, uint height, uint depth);
 		private unsafe delegate void CommandTraceRaysKHRDelegate_2(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, ref VkStridedDeviceAddressRegionKHR hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, uint width, uint height, uint depth);
@@ -1425,10 +1357,8 @@ namespace Vulkan
 		private unsafe delegate VkResult GetDeviceGroupSurfacePresentModes2EXTDelegate_3(VkDevice device, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, out VkDeviceGroupPresentModeFlagsKHR modes);
 		private unsafe delegate VkResult AcquireFullScreenExclusiveModeEXTDelegate_0(VkDevice device, VkSwapchainKHR swapchain);
 		private unsafe delegate VkResult ReleaseFullScreenExclusiveModeEXTDelegate_0(VkDevice device, VkSwapchainKHR swapchain);
-		private unsafe delegate VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_0(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* counterCount, VkPerformanceCounterKHR* counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions);
-		private unsafe delegate VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_1(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* counterCount, ref VkPerformanceCounterKHR counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions);
-		private unsafe delegate VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_2(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, ref uint counterCount, VkPerformanceCounterKHR* counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions);
-		private unsafe delegate VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_3(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, ref uint counterCount, ref VkPerformanceCounterKHR counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions);
+		private unsafe delegate VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_0(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* counterCount, VkPerformanceCounterKHR[] counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions);
+		private unsafe delegate VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_1(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, ref uint counterCount, VkPerformanceCounterKHR[] counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions);
 		private unsafe delegate void GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkQueryPoolPerformanceCreateInfoKHR* performanceQueryCreateInfo, uint* numPasses);
 		private unsafe delegate void GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkQueryPoolPerformanceCreateInfoKHR* performanceQueryCreateInfo, out uint numPasses);
 		private unsafe delegate void GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRDelegate_2(VkPhysicalDevice physicalDevice, ref VkQueryPoolPerformanceCreateInfoKHR performanceQueryCreateInfo, uint* numPasses);
@@ -1518,10 +1448,8 @@ namespace Vulkan
 		private unsafe delegate void CommandSetCullModeEXTDelegate_0(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode);
 		private unsafe delegate void CommandSetFrontFaceEXTDelegate_0(VkCommandBuffer commandBuffer, VkFrontFace frontFace);
 		private unsafe delegate void CommandSetPrimitiveTopologyEXTDelegate_0(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology);
-		private unsafe delegate void CommandSetViewportWithCountEXTDelegate_0(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport* viewports);
-		private unsafe delegate void CommandSetViewportWithCountEXTDelegate_1(VkCommandBuffer commandBuffer, uint viewportCount, ref VkViewport viewports);
-		private unsafe delegate void CommandSetScissorWithCountEXTDelegate_0(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D* scissors);
-		private unsafe delegate void CommandSetScissorWithCountEXTDelegate_1(VkCommandBuffer commandBuffer, uint scissorCount, ref VkRect2D scissors);
+		private unsafe delegate void CommandSetViewportWithCountEXTDelegate_0(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport[] viewports);
+		private unsafe delegate void CommandSetScissorWithCountEXTDelegate_0(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D[] scissors);
 		private unsafe delegate void CommandBindVertexBuffers2EXTDelegate_0(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, VkDeviceSize* strides);
 		private unsafe delegate void CommandBindVertexBuffers2EXTDelegate_1(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, ref VkDeviceSize strides);
 		private unsafe delegate void CommandBindVertexBuffers2EXTDelegate_2(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes, VkDeviceSize* strides);
@@ -1581,12 +1509,10 @@ namespace Vulkan
 		private unsafe delegate void CommandSetEvent2KHRDelegate_0(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfoKHR* dependencyInfo);
 		private unsafe delegate void CommandSetEvent2KHRDelegate_1(VkCommandBuffer commandBuffer, VkEvent @event, ref VkDependencyInfoKHR dependencyInfo);
 		private unsafe delegate void CommandResetEvent2KHRDelegate_0(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2KHR stageMask);
-		private unsafe delegate void CommandWaitEvents2KHRDelegate_0(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkDependencyInfoKHR[] dependencyInfos);
-		private unsafe delegate void CommandWaitEvents2KHRDelegate_1(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkDependencyInfoKHR[] dependencyInfos);
+		private unsafe delegate void CommandWaitEvents2KHRDelegate_0(VkCommandBuffer commandBuffer, uint eventCount, VkEvent[] events, VkDependencyInfoKHR[] dependencyInfos);
 		private unsafe delegate void CommandPipelineBarrier2KHRDelegate_0(VkCommandBuffer commandBuffer, VkDependencyInfoKHR* dependencyInfo);
 		private unsafe delegate void CommandPipelineBarrier2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkDependencyInfoKHR dependencyInfo);
-		private unsafe delegate VkResult QueueSubmit2KHRDelegate_0(VkQueue queue, uint submitCount, VkSubmitInfo2KHR* submits, VkFence fence);
-		private unsafe delegate VkResult QueueSubmit2KHRDelegate_1(VkQueue queue, uint submitCount, ref VkSubmitInfo2KHR submits, VkFence fence);
+		private unsafe delegate VkResult QueueSubmit2KHRDelegate_0(VkQueue queue, uint submitCount, VkSubmitInfo2KHR[] submits, VkFence fence);
 		private unsafe delegate void CommandWriteTimestamp2KHRDelegate_0(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkQueryPool queryPool, uint query);
 		private unsafe delegate void CommandWriteBufferMarker2AMDDelegate_0(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkBuffer destinationBuffer, VkDeviceSize destinationOffset, uint marker);
 		private unsafe delegate void GetQueueCheckpointData2NVDelegate_0(VkQueue queue, uint* checkpointDataCount, [In, Out] VkCheckpointData2NV[] checkpointData);
@@ -1666,7 +1592,6 @@ namespace Vulkan
 		private static GetDeviceQueueDelegate_1 GetDeviceQueue_1;
 		private static IntPtr QueueSubmitPointer;
 		private static QueueSubmitDelegate_0 QueueSubmit_0;
-		private static QueueSubmitDelegate_1 QueueSubmit_1;
 		private static IntPtr QueueWaitIdlePointer;
 		private static QueueWaitIdleDelegate_0 QueueWaitIdle_0;
 		private static IntPtr DeviceWaitIdlePointer;
@@ -1689,10 +1614,8 @@ namespace Vulkan
 		private static UnmapMemoryDelegate_0 UnmapMemory_0;
 		private static IntPtr FlushMappedMemoryRangesPointer;
 		private static FlushMappedMemoryRangesDelegate_0 FlushMappedMemoryRanges_0;
-		private static FlushMappedMemoryRangesDelegate_1 FlushMappedMemoryRanges_1;
 		private static IntPtr InvalidateMappedMemoryRangesPointer;
 		private static InvalidateMappedMemoryRangesDelegate_0 InvalidateMappedMemoryRanges_0;
-		private static InvalidateMappedMemoryRangesDelegate_1 InvalidateMappedMemoryRanges_1;
 		private static IntPtr GetDeviceMemoryCommitmentPointer;
 		private static GetDeviceMemoryCommitmentDelegate_0 GetDeviceMemoryCommitment_0;
 		private static GetDeviceMemoryCommitmentDelegate_1 GetDeviceMemoryCommitment_1;
@@ -1729,12 +1652,10 @@ namespace Vulkan
 		private static DestroyFenceDelegate_1 DestroyFence_1;
 		private static IntPtr ResetFencesPointer;
 		private static ResetFencesDelegate_0 ResetFences_0;
-		private static ResetFencesDelegate_1 ResetFences_1;
 		private static IntPtr GetFenceStatusPointer;
 		private static GetFenceStatusDelegate_0 GetFenceStatus_0;
 		private static IntPtr WaitForFencesPointer;
 		private static WaitForFencesDelegate_0 WaitForFences_0;
-		private static WaitForFencesDelegate_1 WaitForFences_1;
 		private static IntPtr CreateSemaphorePointer;
 		private static CreateSemaphoreDelegate_0 CreateSemaphore_0;
 		private static CreateSemaphoreDelegate_1 CreateSemaphore_1;
@@ -1863,7 +1784,6 @@ namespace Vulkan
 		private static GetPipelineCacheDataDelegate_1 GetPipelineCacheData_1;
 		private static IntPtr MergePipelineCachesPointer;
 		private static MergePipelineCachesDelegate_0 MergePipelineCaches_0;
-		private static MergePipelineCachesDelegate_1 MergePipelineCaches_1;
 		private static IntPtr CreateGraphicsPipelinesPointer;
 		private static CreateGraphicsPipelinesDelegate_0 CreateGraphicsPipelines_0;
 		private static CreateGraphicsPipelinesDelegate_1 CreateGraphicsPipelines_1;
@@ -1932,12 +1852,8 @@ namespace Vulkan
 		private static AllocateDescriptorSetsDelegate_1 AllocateDescriptorSets_1;
 		private static IntPtr FreeDescriptorSetsPointer;
 		private static FreeDescriptorSetsDelegate_0 FreeDescriptorSets_0;
-		private static FreeDescriptorSetsDelegate_1 FreeDescriptorSets_1;
 		private static IntPtr UpdateDescriptorSetsPointer;
 		private static UpdateDescriptorSetsDelegate_0 UpdateDescriptorSets_0;
-		private static UpdateDescriptorSetsDelegate_1 UpdateDescriptorSets_1;
-		private static UpdateDescriptorSetsDelegate_2 UpdateDescriptorSets_2;
-		private static UpdateDescriptorSetsDelegate_3 UpdateDescriptorSets_3;
 		private static IntPtr CreateFramebufferPointer;
 		private static CreateFramebufferDelegate_0 CreateFramebuffer_0;
 		private static CreateFramebufferDelegate_1 CreateFramebuffer_1;
@@ -1984,7 +1900,6 @@ namespace Vulkan
 		private static AllocateCommandBuffersDelegate_1 AllocateCommandBuffers_1;
 		private static IntPtr FreeCommandBuffersPointer;
 		private static FreeCommandBuffersDelegate_0 FreeCommandBuffers_0;
-		private static FreeCommandBuffersDelegate_1 FreeCommandBuffers_1;
 		private static IntPtr BeginCommandBufferPointer;
 		private static BeginCommandBufferDelegate_0 BeginCommandBuffer_0;
 		private static BeginCommandBufferDelegate_1 BeginCommandBuffer_1;
@@ -1996,10 +1911,8 @@ namespace Vulkan
 		private static CommandBindPipelineDelegate_0 CommandBindPipeline_0;
 		private static IntPtr CommandSetViewportPointer;
 		private static CommandSetViewportDelegate_0 CommandSetViewport_0;
-		private static CommandSetViewportDelegate_1 CommandSetViewport_1;
 		private static IntPtr CommandSetScissorPointer;
 		private static CommandSetScissorDelegate_0 CommandSetScissor_0;
-		private static CommandSetScissorDelegate_1 CommandSetScissor_1;
 		private static IntPtr CommandSetLineWidthPointer;
 		private static CommandSetLineWidthDelegate_0 CommandSetLineWidth_0;
 		private static IntPtr CommandSetDepthBiasPointer;
@@ -2016,9 +1929,6 @@ namespace Vulkan
 		private static CommandSetStencilReferenceDelegate_0 CommandSetStencilReference_0;
 		private static IntPtr CommandBindDescriptorSetsPointer;
 		private static CommandBindDescriptorSetsDelegate_0 CommandBindDescriptorSets_0;
-		private static CommandBindDescriptorSetsDelegate_1 CommandBindDescriptorSets_1;
-		private static CommandBindDescriptorSetsDelegate_2 CommandBindDescriptorSets_2;
-		private static CommandBindDescriptorSetsDelegate_3 CommandBindDescriptorSets_3;
 		private static IntPtr CommandBindIndexBufferPointer;
 		private static CommandBindIndexBufferDelegate_0 CommandBindIndexBuffer_0;
 		private static IntPtr CommandBindVertexBuffersPointer;
@@ -2040,19 +1950,14 @@ namespace Vulkan
 		private static CommandDispatchIndirectDelegate_0 CommandDispatchIndirect_0;
 		private static IntPtr CommandCopyBufferPointer;
 		private static CommandCopyBufferDelegate_0 CommandCopyBuffer_0;
-		private static CommandCopyBufferDelegate_1 CommandCopyBuffer_1;
 		private static IntPtr CommandCopyImagePointer;
 		private static CommandCopyImageDelegate_0 CommandCopyImage_0;
-		private static CommandCopyImageDelegate_1 CommandCopyImage_1;
 		private static IntPtr CommandBlitImagePointer;
 		private static CommandBlitImageDelegate_0 CommandBlitImage_0;
-		private static CommandBlitImageDelegate_1 CommandBlitImage_1;
 		private static IntPtr CommandCopyBufferToImagePointer;
 		private static CommandCopyBufferToImageDelegate_0 CommandCopyBufferToImage_0;
-		private static CommandCopyBufferToImageDelegate_1 CommandCopyBufferToImage_1;
 		private static IntPtr CommandCopyImageToBufferPointer;
 		private static CommandCopyImageToBufferDelegate_0 CommandCopyImageToBuffer_0;
-		private static CommandCopyImageToBufferDelegate_1 CommandCopyImageToBuffer_1;
 		private static IntPtr CommandUpdateBufferPointer;
 		private static CommandUpdateBufferDelegate_0 CommandUpdateBuffer_0;
 		private static IntPtr CommandFillBufferPointer;
@@ -2060,51 +1965,21 @@ namespace Vulkan
 		private static IntPtr CommandClearColorImagePointer;
 		private static CommandClearColorImageDelegate_0 CommandClearColorImage_0;
 		private static CommandClearColorImageDelegate_1 CommandClearColorImage_1;
-		private static CommandClearColorImageDelegate_2 CommandClearColorImage_2;
-		private static CommandClearColorImageDelegate_3 CommandClearColorImage_3;
 		private static IntPtr CommandClearDepthStencilImagePointer;
 		private static CommandClearDepthStencilImageDelegate_0 CommandClearDepthStencilImage_0;
 		private static CommandClearDepthStencilImageDelegate_1 CommandClearDepthStencilImage_1;
-		private static CommandClearDepthStencilImageDelegate_2 CommandClearDepthStencilImage_2;
-		private static CommandClearDepthStencilImageDelegate_3 CommandClearDepthStencilImage_3;
 		private static IntPtr CommandClearAttachmentsPointer;
 		private static CommandClearAttachmentsDelegate_0 CommandClearAttachments_0;
-		private static CommandClearAttachmentsDelegate_1 CommandClearAttachments_1;
-		private static CommandClearAttachmentsDelegate_2 CommandClearAttachments_2;
-		private static CommandClearAttachmentsDelegate_3 CommandClearAttachments_3;
 		private static IntPtr CommandResolveImagePointer;
 		private static CommandResolveImageDelegate_0 CommandResolveImage_0;
-		private static CommandResolveImageDelegate_1 CommandResolveImage_1;
 		private static IntPtr CommandSetEventPointer;
 		private static CommandSetEventDelegate_0 CommandSetEvent_0;
 		private static IntPtr CommandResetEventPointer;
 		private static CommandResetEventDelegate_0 CommandResetEvent_0;
 		private static IntPtr CommandWaitEventsPointer;
 		private static CommandWaitEventsDelegate_0 CommandWaitEvents_0;
-		private static CommandWaitEventsDelegate_1 CommandWaitEvents_1;
-		private static CommandWaitEventsDelegate_2 CommandWaitEvents_2;
-		private static CommandWaitEventsDelegate_3 CommandWaitEvents_3;
-		private static CommandWaitEventsDelegate_4 CommandWaitEvents_4;
-		private static CommandWaitEventsDelegate_5 CommandWaitEvents_5;
-		private static CommandWaitEventsDelegate_6 CommandWaitEvents_6;
-		private static CommandWaitEventsDelegate_7 CommandWaitEvents_7;
-		private static CommandWaitEventsDelegate_8 CommandWaitEvents_8;
-		private static CommandWaitEventsDelegate_9 CommandWaitEvents_9;
-		private static CommandWaitEventsDelegate_10 CommandWaitEvents_10;
-		private static CommandWaitEventsDelegate_11 CommandWaitEvents_11;
-		private static CommandWaitEventsDelegate_12 CommandWaitEvents_12;
-		private static CommandWaitEventsDelegate_13 CommandWaitEvents_13;
-		private static CommandWaitEventsDelegate_14 CommandWaitEvents_14;
-		private static CommandWaitEventsDelegate_15 CommandWaitEvents_15;
 		private static IntPtr CommandPipelineBarrierPointer;
 		private static CommandPipelineBarrierDelegate_0 CommandPipelineBarrier_0;
-		private static CommandPipelineBarrierDelegate_1 CommandPipelineBarrier_1;
-		private static CommandPipelineBarrierDelegate_2 CommandPipelineBarrier_2;
-		private static CommandPipelineBarrierDelegate_3 CommandPipelineBarrier_3;
-		private static CommandPipelineBarrierDelegate_4 CommandPipelineBarrier_4;
-		private static CommandPipelineBarrierDelegate_5 CommandPipelineBarrier_5;
-		private static CommandPipelineBarrierDelegate_6 CommandPipelineBarrier_6;
-		private static CommandPipelineBarrierDelegate_7 CommandPipelineBarrier_7;
 		private static IntPtr CommandBeginQueryPointer;
 		private static CommandBeginQueryDelegate_0 CommandBeginQuery_0;
 		private static IntPtr CommandEndQueryPointer;
@@ -2131,7 +2006,6 @@ namespace Vulkan
 		private static CommandEndRenderPassDelegate_0 CommandEndRenderPass_0;
 		private static IntPtr CommandExecuteCommandsPointer;
 		private static CommandExecuteCommandsDelegate_0 CommandExecuteCommands_0;
-		private static CommandExecuteCommandsDelegate_1 CommandExecuteCommands_1;
 		private static IntPtr CreateAndroidSurfaceKHRPointer;
 		private static CreateAndroidSurfaceKHRDelegate_0 CreateAndroidSurfaceKHR_0;
 		private static CreateAndroidSurfaceKHRDelegate_1 CreateAndroidSurfaceKHR_1;
@@ -2327,7 +2201,6 @@ namespace Vulkan
 		private static GetPhysicalDeviceSparseImageFormatProperties2Delegate_3 GetPhysicalDeviceSparseImageFormatProperties2_3;
 		private static IntPtr CommandPushDescriptorSetKHRPointer;
 		private static CommandPushDescriptorSetKHRDelegate_0 CommandPushDescriptorSetKHR_0;
-		private static CommandPushDescriptorSetKHRDelegate_1 CommandPushDescriptorSetKHR_1;
 		private static IntPtr TrimCommandPoolPointer;
 		private static TrimCommandPoolDelegate_0 TrimCommandPool_0;
 		private static IntPtr GetPhysicalDeviceExternalBufferPropertiesPointer;
@@ -2474,8 +2347,6 @@ namespace Vulkan
 		private static IntPtr SetHdrMetadataEXTPointer;
 		private static SetHdrMetadataEXTDelegate_0 SetHdrMetadataEXT_0;
 		private static SetHdrMetadataEXTDelegate_1 SetHdrMetadataEXT_1;
-		private static SetHdrMetadataEXTDelegate_2 SetHdrMetadataEXT_2;
-		private static SetHdrMetadataEXTDelegate_3 SetHdrMetadataEXT_3;
 		private static IntPtr GetSwapchainStatusKHRPointer;
 		private static GetSwapchainStatusKHRDelegate_0 GetSwapchainStatusKHR_0;
 		private static IntPtr GetRefreshCycleDurationGOOGLEPointer;
@@ -2498,7 +2369,6 @@ namespace Vulkan
 		private static CommandSetViewportWScalingNVDelegate_1 CommandSetViewportWScalingNV_1;
 		private static IntPtr CommandSetDiscardRectangleEXTPointer;
 		private static CommandSetDiscardRectangleEXTDelegate_0 CommandSetDiscardRectangleEXT_0;
-		private static CommandSetDiscardRectangleEXTDelegate_1 CommandSetDiscardRectangleEXT_1;
 		private static IntPtr CommandSetSampleLocationsEXTPointer;
 		private static CommandSetSampleLocationsEXTDelegate_0 CommandSetSampleLocationsEXT_0;
 		private static CommandSetSampleLocationsEXTDelegate_1 CommandSetSampleLocationsEXT_1;
@@ -2578,7 +2448,6 @@ namespace Vulkan
 		private static GetValidationCacheDataEXTDelegate_1 GetValidationCacheDataEXT_1;
 		private static IntPtr MergeValidationCachesEXTPointer;
 		private static MergeValidationCachesEXTDelegate_0 MergeValidationCachesEXT_0;
-		private static MergeValidationCachesEXTDelegate_1 MergeValidationCachesEXT_1;
 		private static IntPtr GetDescriptorSetLayoutSupportPointer;
 		private static GetDescriptorSetLayoutSupportDelegate_0 GetDescriptorSetLayoutSupport_0;
 		private static GetDescriptorSetLayoutSupportDelegate_1 GetDescriptorSetLayoutSupport_1;
@@ -2597,8 +2466,6 @@ namespace Vulkan
 		private static IntPtr QueueSignalReleaseImageANDROIDPointer;
 		private static QueueSignalReleaseImageANDROIDDelegate_0 QueueSignalReleaseImageANDROID_0;
 		private static QueueSignalReleaseImageANDROIDDelegate_1 QueueSignalReleaseImageANDROID_1;
-		private static QueueSignalReleaseImageANDROIDDelegate_2 QueueSignalReleaseImageANDROID_2;
-		private static QueueSignalReleaseImageANDROIDDelegate_3 QueueSignalReleaseImageANDROID_3;
 		private static IntPtr GetShaderInfoAMDPointer;
 		private static GetShaderInfoAMDDelegate_0 GetShaderInfoAMD_0;
 		private static GetShaderInfoAMDDelegate_1 GetShaderInfoAMD_1;
@@ -2716,13 +2583,9 @@ namespace Vulkan
 		private static IntPtr CommandBeginTransformFeedbackEXTPointer;
 		private static CommandBeginTransformFeedbackEXTDelegate_0 CommandBeginTransformFeedbackEXT_0;
 		private static CommandBeginTransformFeedbackEXTDelegate_1 CommandBeginTransformFeedbackEXT_1;
-		private static CommandBeginTransformFeedbackEXTDelegate_2 CommandBeginTransformFeedbackEXT_2;
-		private static CommandBeginTransformFeedbackEXTDelegate_3 CommandBeginTransformFeedbackEXT_3;
 		private static IntPtr CommandEndTransformFeedbackEXTPointer;
 		private static CommandEndTransformFeedbackEXTDelegate_0 CommandEndTransformFeedbackEXT_0;
 		private static CommandEndTransformFeedbackEXTDelegate_1 CommandEndTransformFeedbackEXT_1;
-		private static CommandEndTransformFeedbackEXTDelegate_2 CommandEndTransformFeedbackEXT_2;
-		private static CommandEndTransformFeedbackEXTDelegate_3 CommandEndTransformFeedbackEXT_3;
 		private static IntPtr CommandBeginQueryIndexedEXTPointer;
 		private static CommandBeginQueryIndexedEXTDelegate_0 CommandBeginQueryIndexedEXT_0;
 		private static IntPtr CommandEndQueryIndexedEXTPointer;
@@ -2731,7 +2594,6 @@ namespace Vulkan
 		private static CommandDrawIndirectByteCountEXTDelegate_0 CommandDrawIndirectByteCountEXT_0;
 		private static IntPtr CommandSetExclusiveScissorNVPointer;
 		private static CommandSetExclusiveScissorNVDelegate_0 CommandSetExclusiveScissorNV_0;
-		private static CommandSetExclusiveScissorNVDelegate_1 CommandSetExclusiveScissorNV_1;
 		private static IntPtr CommandBindShadingRateImageNVPointer;
 		private static CommandBindShadingRateImageNVDelegate_0 CommandBindShadingRateImageNV_0;
 		private static IntPtr CommandSetViewportShadingRatePaletteNVPointer;
@@ -2739,7 +2601,6 @@ namespace Vulkan
 		private static CommandSetViewportShadingRatePaletteNVDelegate_1 CommandSetViewportShadingRatePaletteNV_1;
 		private static IntPtr CommandSetCoarseSampleOrderNVPointer;
 		private static CommandSetCoarseSampleOrderNVDelegate_0 CommandSetCoarseSampleOrderNV_0;
-		private static CommandSetCoarseSampleOrderNVDelegate_1 CommandSetCoarseSampleOrderNV_1;
 		private static IntPtr CommandDrawMeshTasksNVPointer;
 		private static CommandDrawMeshTasksNVDelegate_0 CommandDrawMeshTasksNV_0;
 		private static IntPtr CommandDrawMeshTasksIndirectNVPointer;
@@ -2792,16 +2653,13 @@ namespace Vulkan
 		private static CopyMemoryToAccelerationStructureKHRDelegate_1 CopyMemoryToAccelerationStructureKHR_1;
 		private static IntPtr CommandWriteAccelerationStructuresPropertiesKHRPointer;
 		private static CommandWriteAccelerationStructuresPropertiesKHRDelegate_0 CommandWriteAccelerationStructuresPropertiesKHR_0;
-		private static CommandWriteAccelerationStructuresPropertiesKHRDelegate_1 CommandWriteAccelerationStructuresPropertiesKHR_1;
 		private static IntPtr CommandWriteAccelerationStructuresPropertiesNVPointer;
 		private static CommandWriteAccelerationStructuresPropertiesNVDelegate_0 CommandWriteAccelerationStructuresPropertiesNV_0;
-		private static CommandWriteAccelerationStructuresPropertiesNVDelegate_1 CommandWriteAccelerationStructuresPropertiesNV_1;
 		private static IntPtr CommandBuildAccelerationStructureNVPointer;
 		private static CommandBuildAccelerationStructureNVDelegate_0 CommandBuildAccelerationStructureNV_0;
 		private static CommandBuildAccelerationStructureNVDelegate_1 CommandBuildAccelerationStructureNV_1;
 		private static IntPtr WriteAccelerationStructuresPropertiesKHRPointer;
 		private static WriteAccelerationStructuresPropertiesKHRDelegate_0 WriteAccelerationStructuresPropertiesKHR_0;
-		private static WriteAccelerationStructuresPropertiesKHRDelegate_1 WriteAccelerationStructuresPropertiesKHR_1;
 		private static IntPtr CommandTraceRaysKHRPointer;
 		private static CommandTraceRaysKHRDelegate_0 CommandTraceRaysKHR_0;
 		private static CommandTraceRaysKHRDelegate_1 CommandTraceRaysKHR_1;
@@ -2889,8 +2747,6 @@ namespace Vulkan
 		private static IntPtr EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer;
 		private static EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_0 EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_0;
 		private static EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_1 EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_1;
-		private static EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_2 EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_2;
-		private static EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_3 EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_3;
 		private static IntPtr GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRPointer;
 		private static GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRDelegate_0 GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_0;
 		private static GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRDelegate_1 GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_1;
@@ -3018,10 +2874,8 @@ namespace Vulkan
 		private static CommandSetPrimitiveTopologyEXTDelegate_0 CommandSetPrimitiveTopologyEXT_0;
 		private static IntPtr CommandSetViewportWithCountEXTPointer;
 		private static CommandSetViewportWithCountEXTDelegate_0 CommandSetViewportWithCountEXT_0;
-		private static CommandSetViewportWithCountEXTDelegate_1 CommandSetViewportWithCountEXT_1;
 		private static IntPtr CommandSetScissorWithCountEXTPointer;
 		private static CommandSetScissorWithCountEXTDelegate_0 CommandSetScissorWithCountEXT_0;
-		private static CommandSetScissorWithCountEXTDelegate_1 CommandSetScissorWithCountEXT_1;
 		private static IntPtr CommandBindVertexBuffers2EXTPointer;
 		private static CommandBindVertexBuffers2EXTDelegate_0 CommandBindVertexBuffers2EXT_0;
 		private static CommandBindVertexBuffers2EXTDelegate_1 CommandBindVertexBuffers2EXT_1;
@@ -3106,13 +2960,11 @@ namespace Vulkan
 		private static CommandResetEvent2KHRDelegate_0 CommandResetEvent2KHR_0;
 		private static IntPtr CommandWaitEvents2KHRPointer;
 		private static CommandWaitEvents2KHRDelegate_0 CommandWaitEvents2KHR_0;
-		private static CommandWaitEvents2KHRDelegate_1 CommandWaitEvents2KHR_1;
 		private static IntPtr CommandPipelineBarrier2KHRPointer;
 		private static CommandPipelineBarrier2KHRDelegate_0 CommandPipelineBarrier2KHR_0;
 		private static CommandPipelineBarrier2KHRDelegate_1 CommandPipelineBarrier2KHR_1;
 		private static IntPtr QueueSubmit2KHRPointer;
 		private static QueueSubmit2KHRDelegate_0 QueueSubmit2KHR_0;
-		private static QueueSubmit2KHRDelegate_1 QueueSubmit2KHR_1;
 		private static IntPtr CommandWriteTimestamp2KHRPointer;
 		private static CommandWriteTimestamp2KHRDelegate_0 CommandWriteTimestamp2KHR_0;
 		private static IntPtr CommandWriteBufferMarker2AMDPointer;
@@ -3251,7 +3103,6 @@ namespace Vulkan
 			if (QueueSubmitPointer != IntPtr.Zero)
 			{
 				QueueSubmit_0 = Marshal.GetDelegateForFunctionPointer<QueueSubmitDelegate_0>(QueueSubmitPointer);
-				QueueSubmit_1 = Marshal.GetDelegateForFunctionPointer<QueueSubmitDelegate_1>(QueueSubmitPointer);
 			}
 			QueueWaitIdlePointer = GetInstancePrecedureAddress(instance, "vkQueueWaitIdle");
 			if (QueueWaitIdlePointer != IntPtr.Zero)
@@ -3295,13 +3146,11 @@ namespace Vulkan
 			if (FlushMappedMemoryRangesPointer != IntPtr.Zero)
 			{
 				FlushMappedMemoryRanges_0 = Marshal.GetDelegateForFunctionPointer<FlushMappedMemoryRangesDelegate_0>(FlushMappedMemoryRangesPointer);
-				FlushMappedMemoryRanges_1 = Marshal.GetDelegateForFunctionPointer<FlushMappedMemoryRangesDelegate_1>(FlushMappedMemoryRangesPointer);
 			}
 			InvalidateMappedMemoryRangesPointer = GetInstancePrecedureAddress(instance, "vkInvalidateMappedMemoryRanges");
 			if (InvalidateMappedMemoryRangesPointer != IntPtr.Zero)
 			{
 				InvalidateMappedMemoryRanges_0 = Marshal.GetDelegateForFunctionPointer<InvalidateMappedMemoryRangesDelegate_0>(InvalidateMappedMemoryRangesPointer);
-				InvalidateMappedMemoryRanges_1 = Marshal.GetDelegateForFunctionPointer<InvalidateMappedMemoryRangesDelegate_1>(InvalidateMappedMemoryRangesPointer);
 			}
 			GetDeviceMemoryCommitmentPointer = GetInstancePrecedureAddress(instance, "vkGetDeviceMemoryCommitment");
 			if (GetDeviceMemoryCommitmentPointer != IntPtr.Zero)
@@ -3371,7 +3220,6 @@ namespace Vulkan
 			if (ResetFencesPointer != IntPtr.Zero)
 			{
 				ResetFences_0 = Marshal.GetDelegateForFunctionPointer<ResetFencesDelegate_0>(ResetFencesPointer);
-				ResetFences_1 = Marshal.GetDelegateForFunctionPointer<ResetFencesDelegate_1>(ResetFencesPointer);
 			}
 			GetFenceStatusPointer = GetInstancePrecedureAddress(instance, "vkGetFenceStatus");
 			if (GetFenceStatusPointer != IntPtr.Zero)
@@ -3382,7 +3230,6 @@ namespace Vulkan
 			if (WaitForFencesPointer != IntPtr.Zero)
 			{
 				WaitForFences_0 = Marshal.GetDelegateForFunctionPointer<WaitForFencesDelegate_0>(WaitForFencesPointer);
-				WaitForFences_1 = Marshal.GetDelegateForFunctionPointer<WaitForFencesDelegate_1>(WaitForFencesPointer);
 			}
 			CreateSemaphorePointer = GetInstancePrecedureAddress(instance, "vkCreateSemaphore");
 			if (CreateSemaphorePointer != IntPtr.Zero)
@@ -3589,7 +3436,6 @@ namespace Vulkan
 			if (MergePipelineCachesPointer != IntPtr.Zero)
 			{
 				MergePipelineCaches_0 = Marshal.GetDelegateForFunctionPointer<MergePipelineCachesDelegate_0>(MergePipelineCachesPointer);
-				MergePipelineCaches_1 = Marshal.GetDelegateForFunctionPointer<MergePipelineCachesDelegate_1>(MergePipelineCachesPointer);
 			}
 			CreateGraphicsPipelinesPointer = GetInstancePrecedureAddress(instance, "vkCreateGraphicsPipelines");
 			if (CreateGraphicsPipelinesPointer != IntPtr.Zero)
@@ -3700,15 +3546,11 @@ namespace Vulkan
 			if (FreeDescriptorSetsPointer != IntPtr.Zero)
 			{
 				FreeDescriptorSets_0 = Marshal.GetDelegateForFunctionPointer<FreeDescriptorSetsDelegate_0>(FreeDescriptorSetsPointer);
-				FreeDescriptorSets_1 = Marshal.GetDelegateForFunctionPointer<FreeDescriptorSetsDelegate_1>(FreeDescriptorSetsPointer);
 			}
 			UpdateDescriptorSetsPointer = GetInstancePrecedureAddress(instance, "vkUpdateDescriptorSets");
 			if (UpdateDescriptorSetsPointer != IntPtr.Zero)
 			{
 				UpdateDescriptorSets_0 = Marshal.GetDelegateForFunctionPointer<UpdateDescriptorSetsDelegate_0>(UpdateDescriptorSetsPointer);
-				UpdateDescriptorSets_1 = Marshal.GetDelegateForFunctionPointer<UpdateDescriptorSetsDelegate_1>(UpdateDescriptorSetsPointer);
-				UpdateDescriptorSets_2 = Marshal.GetDelegateForFunctionPointer<UpdateDescriptorSetsDelegate_2>(UpdateDescriptorSetsPointer);
-				UpdateDescriptorSets_3 = Marshal.GetDelegateForFunctionPointer<UpdateDescriptorSetsDelegate_3>(UpdateDescriptorSetsPointer);
 			}
 			CreateFramebufferPointer = GetInstancePrecedureAddress(instance, "vkCreateFramebuffer");
 			if (CreateFramebufferPointer != IntPtr.Zero)
@@ -3785,7 +3627,6 @@ namespace Vulkan
 			if (FreeCommandBuffersPointer != IntPtr.Zero)
 			{
 				FreeCommandBuffers_0 = Marshal.GetDelegateForFunctionPointer<FreeCommandBuffersDelegate_0>(FreeCommandBuffersPointer);
-				FreeCommandBuffers_1 = Marshal.GetDelegateForFunctionPointer<FreeCommandBuffersDelegate_1>(FreeCommandBuffersPointer);
 			}
 			BeginCommandBufferPointer = GetInstancePrecedureAddress(instance, "vkBeginCommandBuffer");
 			if (BeginCommandBufferPointer != IntPtr.Zero)
@@ -3812,13 +3653,11 @@ namespace Vulkan
 			if (CommandSetViewportPointer != IntPtr.Zero)
 			{
 				CommandSetViewport_0 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportDelegate_0>(CommandSetViewportPointer);
-				CommandSetViewport_1 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportDelegate_1>(CommandSetViewportPointer);
 			}
 			CommandSetScissorPointer = GetInstancePrecedureAddress(instance, "vkCmdSetScissor");
 			if (CommandSetScissorPointer != IntPtr.Zero)
 			{
 				CommandSetScissor_0 = Marshal.GetDelegateForFunctionPointer<CommandSetScissorDelegate_0>(CommandSetScissorPointer);
-				CommandSetScissor_1 = Marshal.GetDelegateForFunctionPointer<CommandSetScissorDelegate_1>(CommandSetScissorPointer);
 			}
 			CommandSetLineWidthPointer = GetInstancePrecedureAddress(instance, "vkCmdSetLineWidth");
 			if (CommandSetLineWidthPointer != IntPtr.Zero)
@@ -3859,9 +3698,6 @@ namespace Vulkan
 			if (CommandBindDescriptorSetsPointer != IntPtr.Zero)
 			{
 				CommandBindDescriptorSets_0 = Marshal.GetDelegateForFunctionPointer<CommandBindDescriptorSetsDelegate_0>(CommandBindDescriptorSetsPointer);
-				CommandBindDescriptorSets_1 = Marshal.GetDelegateForFunctionPointer<CommandBindDescriptorSetsDelegate_1>(CommandBindDescriptorSetsPointer);
-				CommandBindDescriptorSets_2 = Marshal.GetDelegateForFunctionPointer<CommandBindDescriptorSetsDelegate_2>(CommandBindDescriptorSetsPointer);
-				CommandBindDescriptorSets_3 = Marshal.GetDelegateForFunctionPointer<CommandBindDescriptorSetsDelegate_3>(CommandBindDescriptorSetsPointer);
 			}
 			CommandBindIndexBufferPointer = GetInstancePrecedureAddress(instance, "vkCmdBindIndexBuffer");
 			if (CommandBindIndexBufferPointer != IntPtr.Zero)
@@ -3910,31 +3746,26 @@ namespace Vulkan
 			if (CommandCopyBufferPointer != IntPtr.Zero)
 			{
 				CommandCopyBuffer_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferDelegate_0>(CommandCopyBufferPointer);
-				CommandCopyBuffer_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferDelegate_1>(CommandCopyBufferPointer);
 			}
 			CommandCopyImagePointer = GetInstancePrecedureAddress(instance, "vkCmdCopyImage");
 			if (CommandCopyImagePointer != IntPtr.Zero)
 			{
 				CommandCopyImage_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageDelegate_0>(CommandCopyImagePointer);
-				CommandCopyImage_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageDelegate_1>(CommandCopyImagePointer);
 			}
 			CommandBlitImagePointer = GetInstancePrecedureAddress(instance, "vkCmdBlitImage");
 			if (CommandBlitImagePointer != IntPtr.Zero)
 			{
 				CommandBlitImage_0 = Marshal.GetDelegateForFunctionPointer<CommandBlitImageDelegate_0>(CommandBlitImagePointer);
-				CommandBlitImage_1 = Marshal.GetDelegateForFunctionPointer<CommandBlitImageDelegate_1>(CommandBlitImagePointer);
 			}
 			CommandCopyBufferToImagePointer = GetInstancePrecedureAddress(instance, "vkCmdCopyBufferToImage");
 			if (CommandCopyBufferToImagePointer != IntPtr.Zero)
 			{
 				CommandCopyBufferToImage_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferToImageDelegate_0>(CommandCopyBufferToImagePointer);
-				CommandCopyBufferToImage_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferToImageDelegate_1>(CommandCopyBufferToImagePointer);
 			}
 			CommandCopyImageToBufferPointer = GetInstancePrecedureAddress(instance, "vkCmdCopyImageToBuffer");
 			if (CommandCopyImageToBufferPointer != IntPtr.Zero)
 			{
 				CommandCopyImageToBuffer_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageToBufferDelegate_0>(CommandCopyImageToBufferPointer);
-				CommandCopyImageToBuffer_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageToBufferDelegate_1>(CommandCopyImageToBufferPointer);
 			}
 			CommandUpdateBufferPointer = GetInstancePrecedureAddress(instance, "vkCmdUpdateBuffer");
 			if (CommandUpdateBufferPointer != IntPtr.Zero)
@@ -3951,30 +3782,22 @@ namespace Vulkan
 			{
 				CommandClearColorImage_0 = Marshal.GetDelegateForFunctionPointer<CommandClearColorImageDelegate_0>(CommandClearColorImagePointer);
 				CommandClearColorImage_1 = Marshal.GetDelegateForFunctionPointer<CommandClearColorImageDelegate_1>(CommandClearColorImagePointer);
-				CommandClearColorImage_2 = Marshal.GetDelegateForFunctionPointer<CommandClearColorImageDelegate_2>(CommandClearColorImagePointer);
-				CommandClearColorImage_3 = Marshal.GetDelegateForFunctionPointer<CommandClearColorImageDelegate_3>(CommandClearColorImagePointer);
 			}
 			CommandClearDepthStencilImagePointer = GetInstancePrecedureAddress(instance, "vkCmdClearDepthStencilImage");
 			if (CommandClearDepthStencilImagePointer != IntPtr.Zero)
 			{
 				CommandClearDepthStencilImage_0 = Marshal.GetDelegateForFunctionPointer<CommandClearDepthStencilImageDelegate_0>(CommandClearDepthStencilImagePointer);
 				CommandClearDepthStencilImage_1 = Marshal.GetDelegateForFunctionPointer<CommandClearDepthStencilImageDelegate_1>(CommandClearDepthStencilImagePointer);
-				CommandClearDepthStencilImage_2 = Marshal.GetDelegateForFunctionPointer<CommandClearDepthStencilImageDelegate_2>(CommandClearDepthStencilImagePointer);
-				CommandClearDepthStencilImage_3 = Marshal.GetDelegateForFunctionPointer<CommandClearDepthStencilImageDelegate_3>(CommandClearDepthStencilImagePointer);
 			}
 			CommandClearAttachmentsPointer = GetInstancePrecedureAddress(instance, "vkCmdClearAttachments");
 			if (CommandClearAttachmentsPointer != IntPtr.Zero)
 			{
 				CommandClearAttachments_0 = Marshal.GetDelegateForFunctionPointer<CommandClearAttachmentsDelegate_0>(CommandClearAttachmentsPointer);
-				CommandClearAttachments_1 = Marshal.GetDelegateForFunctionPointer<CommandClearAttachmentsDelegate_1>(CommandClearAttachmentsPointer);
-				CommandClearAttachments_2 = Marshal.GetDelegateForFunctionPointer<CommandClearAttachmentsDelegate_2>(CommandClearAttachmentsPointer);
-				CommandClearAttachments_3 = Marshal.GetDelegateForFunctionPointer<CommandClearAttachmentsDelegate_3>(CommandClearAttachmentsPointer);
 			}
 			CommandResolveImagePointer = GetInstancePrecedureAddress(instance, "vkCmdResolveImage");
 			if (CommandResolveImagePointer != IntPtr.Zero)
 			{
 				CommandResolveImage_0 = Marshal.GetDelegateForFunctionPointer<CommandResolveImageDelegate_0>(CommandResolveImagePointer);
-				CommandResolveImage_1 = Marshal.GetDelegateForFunctionPointer<CommandResolveImageDelegate_1>(CommandResolveImagePointer);
 			}
 			CommandSetEventPointer = GetInstancePrecedureAddress(instance, "vkCmdSetEvent");
 			if (CommandSetEventPointer != IntPtr.Zero)
@@ -3990,33 +3813,11 @@ namespace Vulkan
 			if (CommandWaitEventsPointer != IntPtr.Zero)
 			{
 				CommandWaitEvents_0 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_0>(CommandWaitEventsPointer);
-				CommandWaitEvents_1 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_1>(CommandWaitEventsPointer);
-				CommandWaitEvents_2 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_2>(CommandWaitEventsPointer);
-				CommandWaitEvents_3 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_3>(CommandWaitEventsPointer);
-				CommandWaitEvents_4 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_4>(CommandWaitEventsPointer);
-				CommandWaitEvents_5 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_5>(CommandWaitEventsPointer);
-				CommandWaitEvents_6 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_6>(CommandWaitEventsPointer);
-				CommandWaitEvents_7 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_7>(CommandWaitEventsPointer);
-				CommandWaitEvents_8 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_8>(CommandWaitEventsPointer);
-				CommandWaitEvents_9 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_9>(CommandWaitEventsPointer);
-				CommandWaitEvents_10 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_10>(CommandWaitEventsPointer);
-				CommandWaitEvents_11 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_11>(CommandWaitEventsPointer);
-				CommandWaitEvents_12 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_12>(CommandWaitEventsPointer);
-				CommandWaitEvents_13 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_13>(CommandWaitEventsPointer);
-				CommandWaitEvents_14 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_14>(CommandWaitEventsPointer);
-				CommandWaitEvents_15 = Marshal.GetDelegateForFunctionPointer<CommandWaitEventsDelegate_15>(CommandWaitEventsPointer);
 			}
 			CommandPipelineBarrierPointer = GetInstancePrecedureAddress(instance, "vkCmdPipelineBarrier");
 			if (CommandPipelineBarrierPointer != IntPtr.Zero)
 			{
 				CommandPipelineBarrier_0 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_0>(CommandPipelineBarrierPointer);
-				CommandPipelineBarrier_1 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_1>(CommandPipelineBarrierPointer);
-				CommandPipelineBarrier_2 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_2>(CommandPipelineBarrierPointer);
-				CommandPipelineBarrier_3 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_3>(CommandPipelineBarrierPointer);
-				CommandPipelineBarrier_4 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_4>(CommandPipelineBarrierPointer);
-				CommandPipelineBarrier_5 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_5>(CommandPipelineBarrierPointer);
-				CommandPipelineBarrier_6 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_6>(CommandPipelineBarrierPointer);
-				CommandPipelineBarrier_7 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrierDelegate_7>(CommandPipelineBarrierPointer);
 			}
 			CommandBeginQueryPointer = GetInstancePrecedureAddress(instance, "vkCmdBeginQuery");
 			if (CommandBeginQueryPointer != IntPtr.Zero)
@@ -4079,7 +3880,6 @@ namespace Vulkan
 			if (CommandExecuteCommandsPointer != IntPtr.Zero)
 			{
 				CommandExecuteCommands_0 = Marshal.GetDelegateForFunctionPointer<CommandExecuteCommandsDelegate_0>(CommandExecuteCommandsPointer);
-				CommandExecuteCommands_1 = Marshal.GetDelegateForFunctionPointer<CommandExecuteCommandsDelegate_1>(CommandExecuteCommandsPointer);
 			}
 			CreateAndroidSurfaceKHRPointer = GetInstancePrecedureAddress(instance, "vkCreateAndroidSurfaceKHR");
 			if (CreateAndroidSurfaceKHRPointer != IntPtr.Zero)
@@ -4416,7 +4216,6 @@ namespace Vulkan
 			if (CommandPushDescriptorSetKHRPointer != IntPtr.Zero)
 			{
 				CommandPushDescriptorSetKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandPushDescriptorSetKHRDelegate_0>(CommandPushDescriptorSetKHRPointer);
-				CommandPushDescriptorSetKHR_1 = Marshal.GetDelegateForFunctionPointer<CommandPushDescriptorSetKHRDelegate_1>(CommandPushDescriptorSetKHRPointer);
 			}
 			TrimCommandPoolPointer = GetInstancePrecedureAddress(instance, "vkTrimCommandPool");
 			if (TrimCommandPoolPointer != IntPtr.Zero)
@@ -4680,8 +4479,6 @@ namespace Vulkan
 			{
 				SetHdrMetadataEXT_0 = Marshal.GetDelegateForFunctionPointer<SetHdrMetadataEXTDelegate_0>(SetHdrMetadataEXTPointer);
 				SetHdrMetadataEXT_1 = Marshal.GetDelegateForFunctionPointer<SetHdrMetadataEXTDelegate_1>(SetHdrMetadataEXTPointer);
-				SetHdrMetadataEXT_2 = Marshal.GetDelegateForFunctionPointer<SetHdrMetadataEXTDelegate_2>(SetHdrMetadataEXTPointer);
-				SetHdrMetadataEXT_3 = Marshal.GetDelegateForFunctionPointer<SetHdrMetadataEXTDelegate_3>(SetHdrMetadataEXTPointer);
 			}
 			GetSwapchainStatusKHRPointer = GetInstancePrecedureAddress(instance, "vkGetSwapchainStatusKHR");
 			if (GetSwapchainStatusKHRPointer != IntPtr.Zero)
@@ -4722,7 +4519,6 @@ namespace Vulkan
 			if (CommandSetDiscardRectangleEXTPointer != IntPtr.Zero)
 			{
 				CommandSetDiscardRectangleEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDiscardRectangleEXTDelegate_0>(CommandSetDiscardRectangleEXTPointer);
-				CommandSetDiscardRectangleEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandSetDiscardRectangleEXTDelegate_1>(CommandSetDiscardRectangleEXTPointer);
 			}
 			CommandSetSampleLocationsEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetSampleLocationsEXT");
 			if (CommandSetSampleLocationsEXTPointer != IntPtr.Zero)
@@ -4856,7 +4652,6 @@ namespace Vulkan
 			if (MergeValidationCachesEXTPointer != IntPtr.Zero)
 			{
 				MergeValidationCachesEXT_0 = Marshal.GetDelegateForFunctionPointer<MergeValidationCachesEXTDelegate_0>(MergeValidationCachesEXTPointer);
-				MergeValidationCachesEXT_1 = Marshal.GetDelegateForFunctionPointer<MergeValidationCachesEXTDelegate_1>(MergeValidationCachesEXTPointer);
 			}
 			GetDescriptorSetLayoutSupportPointer = GetInstancePrecedureAddress(instance, "vkGetDescriptorSetLayoutSupport");
 			if (GetDescriptorSetLayoutSupportPointer != IntPtr.Zero)
@@ -4890,8 +4685,6 @@ namespace Vulkan
 			{
 				QueueSignalReleaseImageANDROID_0 = Marshal.GetDelegateForFunctionPointer<QueueSignalReleaseImageANDROIDDelegate_0>(QueueSignalReleaseImageANDROIDPointer);
 				QueueSignalReleaseImageANDROID_1 = Marshal.GetDelegateForFunctionPointer<QueueSignalReleaseImageANDROIDDelegate_1>(QueueSignalReleaseImageANDROIDPointer);
-				QueueSignalReleaseImageANDROID_2 = Marshal.GetDelegateForFunctionPointer<QueueSignalReleaseImageANDROIDDelegate_2>(QueueSignalReleaseImageANDROIDPointer);
-				QueueSignalReleaseImageANDROID_3 = Marshal.GetDelegateForFunctionPointer<QueueSignalReleaseImageANDROIDDelegate_3>(QueueSignalReleaseImageANDROIDPointer);
 			}
 			GetShaderInfoAMDPointer = GetInstancePrecedureAddress(instance, "vkGetShaderInfoAMD");
 			if (GetShaderInfoAMDPointer != IntPtr.Zero)
@@ -5105,16 +4898,12 @@ namespace Vulkan
 			{
 				CommandBeginTransformFeedbackEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandBeginTransformFeedbackEXTDelegate_0>(CommandBeginTransformFeedbackEXTPointer);
 				CommandBeginTransformFeedbackEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandBeginTransformFeedbackEXTDelegate_1>(CommandBeginTransformFeedbackEXTPointer);
-				CommandBeginTransformFeedbackEXT_2 = Marshal.GetDelegateForFunctionPointer<CommandBeginTransformFeedbackEXTDelegate_2>(CommandBeginTransformFeedbackEXTPointer);
-				CommandBeginTransformFeedbackEXT_3 = Marshal.GetDelegateForFunctionPointer<CommandBeginTransformFeedbackEXTDelegate_3>(CommandBeginTransformFeedbackEXTPointer);
 			}
 			CommandEndTransformFeedbackEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdEndTransformFeedbackEXT");
 			if (CommandEndTransformFeedbackEXTPointer != IntPtr.Zero)
 			{
 				CommandEndTransformFeedbackEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandEndTransformFeedbackEXTDelegate_0>(CommandEndTransformFeedbackEXTPointer);
 				CommandEndTransformFeedbackEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandEndTransformFeedbackEXTDelegate_1>(CommandEndTransformFeedbackEXTPointer);
-				CommandEndTransformFeedbackEXT_2 = Marshal.GetDelegateForFunctionPointer<CommandEndTransformFeedbackEXTDelegate_2>(CommandEndTransformFeedbackEXTPointer);
-				CommandEndTransformFeedbackEXT_3 = Marshal.GetDelegateForFunctionPointer<CommandEndTransformFeedbackEXTDelegate_3>(CommandEndTransformFeedbackEXTPointer);
 			}
 			CommandBeginQueryIndexedEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdBeginQueryIndexedEXT");
 			if (CommandBeginQueryIndexedEXTPointer != IntPtr.Zero)
@@ -5135,7 +4924,6 @@ namespace Vulkan
 			if (CommandSetExclusiveScissorNVPointer != IntPtr.Zero)
 			{
 				CommandSetExclusiveScissorNV_0 = Marshal.GetDelegateForFunctionPointer<CommandSetExclusiveScissorNVDelegate_0>(CommandSetExclusiveScissorNVPointer);
-				CommandSetExclusiveScissorNV_1 = Marshal.GetDelegateForFunctionPointer<CommandSetExclusiveScissorNVDelegate_1>(CommandSetExclusiveScissorNVPointer);
 			}
 			CommandBindShadingRateImageNVPointer = GetInstancePrecedureAddress(instance, "vkCmdBindShadingRateImageNV");
 			if (CommandBindShadingRateImageNVPointer != IntPtr.Zero)
@@ -5152,7 +4940,6 @@ namespace Vulkan
 			if (CommandSetCoarseSampleOrderNVPointer != IntPtr.Zero)
 			{
 				CommandSetCoarseSampleOrderNV_0 = Marshal.GetDelegateForFunctionPointer<CommandSetCoarseSampleOrderNVDelegate_0>(CommandSetCoarseSampleOrderNVPointer);
-				CommandSetCoarseSampleOrderNV_1 = Marshal.GetDelegateForFunctionPointer<CommandSetCoarseSampleOrderNVDelegate_1>(CommandSetCoarseSampleOrderNVPointer);
 			}
 			CommandDrawMeshTasksNVPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawMeshTasksNV");
 			if (CommandDrawMeshTasksNVPointer != IntPtr.Zero)
@@ -5256,13 +5043,11 @@ namespace Vulkan
 			if (CommandWriteAccelerationStructuresPropertiesKHRPointer != IntPtr.Zero)
 			{
 				CommandWriteAccelerationStructuresPropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandWriteAccelerationStructuresPropertiesKHRDelegate_0>(CommandWriteAccelerationStructuresPropertiesKHRPointer);
-				CommandWriteAccelerationStructuresPropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<CommandWriteAccelerationStructuresPropertiesKHRDelegate_1>(CommandWriteAccelerationStructuresPropertiesKHRPointer);
 			}
 			CommandWriteAccelerationStructuresPropertiesNVPointer = GetInstancePrecedureAddress(instance, "vkCmdWriteAccelerationStructuresPropertiesNV");
 			if (CommandWriteAccelerationStructuresPropertiesNVPointer != IntPtr.Zero)
 			{
 				CommandWriteAccelerationStructuresPropertiesNV_0 = Marshal.GetDelegateForFunctionPointer<CommandWriteAccelerationStructuresPropertiesNVDelegate_0>(CommandWriteAccelerationStructuresPropertiesNVPointer);
-				CommandWriteAccelerationStructuresPropertiesNV_1 = Marshal.GetDelegateForFunctionPointer<CommandWriteAccelerationStructuresPropertiesNVDelegate_1>(CommandWriteAccelerationStructuresPropertiesNVPointer);
 			}
 			CommandBuildAccelerationStructureNVPointer = GetInstancePrecedureAddress(instance, "vkCmdBuildAccelerationStructureNV");
 			if (CommandBuildAccelerationStructureNVPointer != IntPtr.Zero)
@@ -5274,7 +5059,6 @@ namespace Vulkan
 			if (WriteAccelerationStructuresPropertiesKHRPointer != IntPtr.Zero)
 			{
 				WriteAccelerationStructuresPropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<WriteAccelerationStructuresPropertiesKHRDelegate_0>(WriteAccelerationStructuresPropertiesKHRPointer);
-				WriteAccelerationStructuresPropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<WriteAccelerationStructuresPropertiesKHRDelegate_1>(WriteAccelerationStructuresPropertiesKHRPointer);
 			}
 			CommandTraceRaysKHRPointer = GetInstancePrecedureAddress(instance, "vkCmdTraceRaysKHR");
 			if (CommandTraceRaysKHRPointer != IntPtr.Zero)
@@ -5419,8 +5203,6 @@ namespace Vulkan
 			{
 				EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_0 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_0>(EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer);
 				EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_1 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_1>(EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer);
-				EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_2 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_2>(EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer);
-				EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_3 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRDelegate_3>(EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHRPointer);
 			}
 			GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRPointer = GetInstancePrecedureAddress(instance, "vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
 			if (GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHRPointer != IntPtr.Zero)
@@ -5659,13 +5441,11 @@ namespace Vulkan
 			if (CommandSetViewportWithCountEXTPointer != IntPtr.Zero)
 			{
 				CommandSetViewportWithCountEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportWithCountEXTDelegate_0>(CommandSetViewportWithCountEXTPointer);
-				CommandSetViewportWithCountEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandSetViewportWithCountEXTDelegate_1>(CommandSetViewportWithCountEXTPointer);
 			}
 			CommandSetScissorWithCountEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetScissorWithCountEXT");
 			if (CommandSetScissorWithCountEXTPointer != IntPtr.Zero)
 			{
 				CommandSetScissorWithCountEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetScissorWithCountEXTDelegate_0>(CommandSetScissorWithCountEXTPointer);
-				CommandSetScissorWithCountEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandSetScissorWithCountEXTDelegate_1>(CommandSetScissorWithCountEXTPointer);
 			}
 			CommandBindVertexBuffers2EXTPointer = GetInstancePrecedureAddress(instance, "vkCmdBindVertexBuffers2EXT");
 			if (CommandBindVertexBuffers2EXTPointer != IntPtr.Zero)
@@ -5822,7 +5602,6 @@ namespace Vulkan
 			if (CommandWaitEvents2KHRPointer != IntPtr.Zero)
 			{
 				CommandWaitEvents2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandWaitEvents2KHRDelegate_0>(CommandWaitEvents2KHRPointer);
-				CommandWaitEvents2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandWaitEvents2KHRDelegate_1>(CommandWaitEvents2KHRPointer);
 			}
 			CommandPipelineBarrier2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdPipelineBarrier2KHR");
 			if (CommandPipelineBarrier2KHRPointer != IntPtr.Zero)
@@ -5834,7 +5613,6 @@ namespace Vulkan
 			if (QueueSubmit2KHRPointer != IntPtr.Zero)
 			{
 				QueueSubmit2KHR_0 = Marshal.GetDelegateForFunctionPointer<QueueSubmit2KHRDelegate_0>(QueueSubmit2KHRPointer);
-				QueueSubmit2KHR_1 = Marshal.GetDelegateForFunctionPointer<QueueSubmit2KHRDelegate_1>(QueueSubmit2KHRPointer);
 			}
 			CommandWriteTimestamp2KHRPointer = GetInstancePrecedureAddress(instance, "vkCmdWriteTimestamp2KHR");
 			if (CommandWriteTimestamp2KHRPointer != IntPtr.Zero)
@@ -5906,8 +5684,7 @@ namespace Vulkan
 		public static unsafe VkResult EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateDeviceExtensionProperties_3(physicalDevice, layerName, ref propertyCount, properties);
 		public static unsafe void GetDeviceQueue(VkDevice device, uint queueFamilyIndex, uint queueIndex, VkQueue* queue) => GetDeviceQueue_0(device, queueFamilyIndex, queueIndex, queue);
 		public static unsafe void GetDeviceQueue(VkDevice device, uint queueFamilyIndex, uint queueIndex, out VkQueue queue) => GetDeviceQueue_1(device, queueFamilyIndex, queueIndex, out queue);
-		public static unsafe VkResult QueueSubmit(VkQueue queue, uint submitCount, VkSubmitInfo* submits, VkFence fence) => QueueSubmit_0(queue, submitCount, submits, fence);
-		public static unsafe VkResult QueueSubmit(VkQueue queue, uint submitCount, ref VkSubmitInfo submits, VkFence fence) => QueueSubmit_1(queue, submitCount, ref submits, fence);
+		public static unsafe VkResult QueueSubmit(VkQueue queue, uint submitCount, VkSubmitInfo[] submits, VkFence fence) => QueueSubmit_0(queue, submitCount, submits, fence);
 		public static unsafe VkResult QueueWaitIdle(VkQueue queue) => QueueWaitIdle_0(queue);
 		public static unsafe VkResult DeviceWaitIdle(VkDevice device) => DeviceWaitIdle_0(device);
 		public static unsafe VkResult AllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, VkDeviceMemory* memory) => AllocateMemory_0(device, allocateInfo, allocator, memory);
@@ -5922,10 +5699,8 @@ namespace Vulkan
 		public static unsafe void FreeMemory(VkDevice device, VkDeviceMemory memory, ref VkAllocationCallbacks allocator) => FreeMemory_1(device, memory, ref allocator);
 		public static unsafe VkResult MapMemory(VkDevice device, VkDeviceMemory memory, VkDeviceSize offset, VkDeviceSize size, uint flags, void** data) => MapMemory_0(device, memory, offset, size, flags, data);
 		public static unsafe void UnmapMemory(VkDevice device, VkDeviceMemory memory) => UnmapMemory_0(device, memory);
-		public static unsafe VkResult FlushMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange* memoryRanges) => FlushMappedMemoryRanges_0(device, memoryRangeCount, memoryRanges);
-		public static unsafe VkResult FlushMappedMemoryRanges(VkDevice device, uint memoryRangeCount, ref VkMappedMemoryRange memoryRanges) => FlushMappedMemoryRanges_1(device, memoryRangeCount, ref memoryRanges);
-		public static unsafe VkResult InvalidateMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange* memoryRanges) => InvalidateMappedMemoryRanges_0(device, memoryRangeCount, memoryRanges);
-		public static unsafe VkResult InvalidateMappedMemoryRanges(VkDevice device, uint memoryRangeCount, ref VkMappedMemoryRange memoryRanges) => InvalidateMappedMemoryRanges_1(device, memoryRangeCount, ref memoryRanges);
+		public static unsafe VkResult FlushMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange[] memoryRanges) => FlushMappedMemoryRanges_0(device, memoryRangeCount, memoryRanges);
+		public static unsafe VkResult InvalidateMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange[] memoryRanges) => InvalidateMappedMemoryRanges_0(device, memoryRangeCount, memoryRanges);
 		public static unsafe void GetDeviceMemoryCommitment(VkDevice device, VkDeviceMemory memory, VkDeviceSize* committedMemoryInBytes) => GetDeviceMemoryCommitment_0(device, memory, committedMemoryInBytes);
 		public static unsafe void GetDeviceMemoryCommitment(VkDevice device, VkDeviceMemory memory, out VkDeviceSize committedMemoryInBytes) => GetDeviceMemoryCommitment_1(device, memory, out committedMemoryInBytes);
 		public static unsafe void GetBufferMemoryRequirements(VkDevice device, VkBuffer buffer, VkMemoryRequirements* memoryRequirements) => GetBufferMemoryRequirements_0(device, buffer, memoryRequirements);
@@ -5950,11 +5725,9 @@ namespace Vulkan
 		public static unsafe VkResult CreateFence(VkDevice device, ref VkFenceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkFence fence) => CreateFence_7(device, ref createInfo, ref allocator, out fence);
 		public static unsafe void DestroyFence(VkDevice device, VkFence fence, VkAllocationCallbacks* allocator) => DestroyFence_0(device, fence, allocator);
 		public static unsafe void DestroyFence(VkDevice device, VkFence fence, ref VkAllocationCallbacks allocator) => DestroyFence_1(device, fence, ref allocator);
-		public static unsafe VkResult ResetFences(VkDevice device, uint fenceCount, VkFence* fences) => ResetFences_0(device, fenceCount, fences);
-		public static unsafe VkResult ResetFences(VkDevice device, uint fenceCount, ref VkFence fences) => ResetFences_1(device, fenceCount, ref fences);
+		public static unsafe VkResult ResetFences(VkDevice device, uint fenceCount, VkFence[] fences) => ResetFences_0(device, fenceCount, fences);
 		public static unsafe VkResult GetFenceStatus(VkDevice device, VkFence fence) => GetFenceStatus_0(device, fence);
-		public static unsafe VkResult WaitForFences(VkDevice device, uint fenceCount, VkFence* fences, VkBool32 waitAll, ulong timeout) => WaitForFences_0(device, fenceCount, fences, waitAll, timeout);
-		public static unsafe VkResult WaitForFences(VkDevice device, uint fenceCount, ref VkFence fences, VkBool32 waitAll, ulong timeout) => WaitForFences_1(device, fenceCount, ref fences, waitAll, timeout);
+		public static unsafe VkResult WaitForFences(VkDevice device, uint fenceCount, VkFence[] fences, VkBool32 waitAll, ulong timeout) => WaitForFences_0(device, fenceCount, fences, waitAll, timeout);
 		public static unsafe VkResult CreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkSemaphore* semaphore) => CreateSemaphore_0(device, createInfo, allocator, semaphore);
 		public static unsafe VkResult CreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore) => CreateSemaphore_1(device, createInfo, allocator, out semaphore);
 		public static unsafe VkResult CreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, ref VkAllocationCallbacks allocator, VkSemaphore* semaphore) => CreateSemaphore_2(device, createInfo, ref allocator, semaphore);
@@ -6057,8 +5830,7 @@ namespace Vulkan
 		public static unsafe void DestroyPipelineCache(VkDevice device, VkPipelineCache pipelineCache, ref VkAllocationCallbacks allocator) => DestroyPipelineCache_1(device, pipelineCache, ref allocator);
 		public static unsafe VkResult GetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, nuint* dataSize, void* data) => GetPipelineCacheData_0(device, pipelineCache, dataSize, data);
 		public static unsafe VkResult GetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, ref nuint dataSize, void* data) => GetPipelineCacheData_1(device, pipelineCache, ref dataSize, data);
-		public static unsafe VkResult MergePipelineCaches(VkDevice device, VkPipelineCache destinationCache, uint sourceCacheCount, VkPipelineCache* sourceCaches) => MergePipelineCaches_0(device, destinationCache, sourceCacheCount, sourceCaches);
-		public static unsafe VkResult MergePipelineCaches(VkDevice device, VkPipelineCache destinationCache, uint sourceCacheCount, ref VkPipelineCache sourceCaches) => MergePipelineCaches_1(device, destinationCache, sourceCacheCount, ref sourceCaches);
+		public static unsafe VkResult MergePipelineCaches(VkDevice device, VkPipelineCache destinationCache, uint sourceCacheCount, VkPipelineCache[] sourceCaches) => MergePipelineCaches_0(device, destinationCache, sourceCacheCount, sourceCaches);
 		public static unsafe VkResult CreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, VkAllocationCallbacks* allocator, VkPipeline* pipelines) => CreateGraphicsPipelines_0(device, pipelineCache, createInfoCount, createInfos, allocator, pipelines);
 		public static unsafe VkResult CreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines) => CreateGraphicsPipelines_1(device, pipelineCache, createInfoCount, createInfos, allocator, out pipelines);
 		public static unsafe VkResult CreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, ref VkAllocationCallbacks allocator, VkPipeline* pipelines) => CreateGraphicsPipelines_2(device, pipelineCache, createInfoCount, createInfos, ref allocator, pipelines);
@@ -6112,12 +5884,8 @@ namespace Vulkan
 		public static unsafe VkResult ResetDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, uint flags) => ResetDescriptorPool_0(device, descriptorPool, flags);
 		public static unsafe VkResult AllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets) => AllocateDescriptorSets_0(device, allocateInfo, descriptorSets);
 		public static unsafe VkResult AllocateDescriptorSets(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets) => AllocateDescriptorSets_1(device, ref allocateInfo, descriptorSets);
-		public static unsafe VkResult FreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet* descriptorSets) => FreeDescriptorSets_0(device, descriptorPool, descriptorSetCount, descriptorSets);
-		public static unsafe VkResult FreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, ref VkDescriptorSet descriptorSets) => FreeDescriptorSets_1(device, descriptorPool, descriptorSetCount, ref descriptorSets);
-		public static unsafe void UpdateDescriptorSets(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet* descriptorCopies) => UpdateDescriptorSets_0(device, descriptorWriteCount, descriptorWrites, descriptorCopyCount, descriptorCopies);
-		public static unsafe void UpdateDescriptorSets(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites, uint descriptorCopyCount, ref VkCopyDescriptorSet descriptorCopies) => UpdateDescriptorSets_1(device, descriptorWriteCount, descriptorWrites, descriptorCopyCount, ref descriptorCopies);
-		public static unsafe void UpdateDescriptorSets(VkDevice device, uint descriptorWriteCount, ref VkWriteDescriptorSet descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet* descriptorCopies) => UpdateDescriptorSets_2(device, descriptorWriteCount, ref descriptorWrites, descriptorCopyCount, descriptorCopies);
-		public static unsafe void UpdateDescriptorSets(VkDevice device, uint descriptorWriteCount, ref VkWriteDescriptorSet descriptorWrites, uint descriptorCopyCount, ref VkCopyDescriptorSet descriptorCopies) => UpdateDescriptorSets_3(device, descriptorWriteCount, ref descriptorWrites, descriptorCopyCount, ref descriptorCopies);
+		public static unsafe VkResult FreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet[] descriptorSets) => FreeDescriptorSets_0(device, descriptorPool, descriptorSetCount, descriptorSets);
+		public static unsafe void UpdateDescriptorSets(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet[] descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet[] descriptorCopies) => UpdateDescriptorSets_0(device, descriptorWriteCount, descriptorWrites, descriptorCopyCount, descriptorCopies);
 		public static unsafe VkResult CreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, VkFramebuffer* framebuffer) => CreateFramebuffer_0(device, createInfo, allocator, framebuffer);
 		public static unsafe VkResult CreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer) => CreateFramebuffer_1(device, createInfo, allocator, out framebuffer);
 		public static unsafe VkResult CreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, ref VkAllocationCallbacks allocator, VkFramebuffer* framebuffer) => CreateFramebuffer_2(device, createInfo, ref allocator, framebuffer);
@@ -6153,17 +5921,14 @@ namespace Vulkan
 		public static unsafe VkResult ResetCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags) => ResetCommandPool_0(device, commandPool, flags);
 		public static unsafe VkResult AllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers) => AllocateCommandBuffers_0(device, allocateInfo, commandBuffers);
 		public static unsafe VkResult AllocateCommandBuffers(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers) => AllocateCommandBuffers_1(device, ref allocateInfo, commandBuffers);
-		public static unsafe void FreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer* commandBuffers) => FreeCommandBuffers_0(device, commandPool, commandBufferCount, commandBuffers);
-		public static unsafe void FreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, ref VkCommandBuffer commandBuffers) => FreeCommandBuffers_1(device, commandPool, commandBufferCount, ref commandBuffers);
+		public static unsafe void FreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer[] commandBuffers) => FreeCommandBuffers_0(device, commandPool, commandBufferCount, commandBuffers);
 		public static unsafe VkResult BeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo) => BeginCommandBuffer_0(commandBuffer, beginInfo);
 		public static unsafe VkResult BeginCommandBuffer(VkCommandBuffer commandBuffer, ref VkCommandBufferBeginInfo beginInfo) => BeginCommandBuffer_1(commandBuffer, ref beginInfo);
 		public static unsafe VkResult EndCommandBuffer(VkCommandBuffer commandBuffer) => EndCommandBuffer_0(commandBuffer);
 		public static unsafe VkResult ResetCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags) => ResetCommandBuffer_0(commandBuffer, flags);
 		public static unsafe void CommandBindPipeline(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline) => CommandBindPipeline_0(commandBuffer, pipelineBindPoint, pipeline);
-		public static unsafe void CommandSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport* viewports) => CommandSetViewport_0(commandBuffer, firstViewport, viewportCount, viewports);
-		public static unsafe void CommandSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, ref VkViewport viewports) => CommandSetViewport_1(commandBuffer, firstViewport, viewportCount, ref viewports);
-		public static unsafe void CommandSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, VkRect2D* scissors) => CommandSetScissor_0(commandBuffer, firstScissor, scissorCount, scissors);
-		public static unsafe void CommandSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, ref VkRect2D scissors) => CommandSetScissor_1(commandBuffer, firstScissor, scissorCount, ref scissors);
+		public static unsafe void CommandSetViewport(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewport[] viewports) => CommandSetViewport_0(commandBuffer, firstViewport, viewportCount, viewports);
+		public static unsafe void CommandSetScissor(VkCommandBuffer commandBuffer, uint firstScissor, uint scissorCount, VkRect2D[] scissors) => CommandSetScissor_0(commandBuffer, firstScissor, scissorCount, scissors);
 		public static unsafe void CommandSetLineWidth(VkCommandBuffer commandBuffer, float lineWidth) => CommandSetLineWidth_0(commandBuffer, lineWidth);
 		public static unsafe void CommandSetDepthBias(VkCommandBuffer commandBuffer, float depthBiasConstantFactor, float depthBiasClamp, float depthBiasSlopeFactor) => CommandSetDepthBias_0(commandBuffer, depthBiasConstantFactor, depthBiasClamp, depthBiasSlopeFactor);
 		public static unsafe void CommandSetBlendConstants(VkCommandBuffer commandBuffer, float blendConstants) => CommandSetBlendConstants_0(commandBuffer, blendConstants);
@@ -6171,10 +5936,7 @@ namespace Vulkan
 		public static unsafe void CommandSetStencilCompareMask(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint compareMask) => CommandSetStencilCompareMask_0(commandBuffer, faceMask, compareMask);
 		public static unsafe void CommandSetStencilWriteMask(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint writeMask) => CommandSetStencilWriteMask_0(commandBuffer, faceMask, writeMask);
 		public static unsafe void CommandSetStencilReference(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, uint reference) => CommandSetStencilReference_0(commandBuffer, faceMask, reference);
-		public static unsafe void CommandBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* descriptorSets, uint dynamicOffsetCount, uint* dynamicOffsets) => CommandBindDescriptorSets_0(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, descriptorSets, dynamicOffsetCount, dynamicOffsets);
-		public static unsafe void CommandBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet* descriptorSets, uint dynamicOffsetCount, ref uint dynamicOffsets) => CommandBindDescriptorSets_1(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, descriptorSets, dynamicOffsetCount, ref dynamicOffsets);
-		public static unsafe void CommandBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, ref VkDescriptorSet descriptorSets, uint dynamicOffsetCount, uint* dynamicOffsets) => CommandBindDescriptorSets_2(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, ref descriptorSets, dynamicOffsetCount, dynamicOffsets);
-		public static unsafe void CommandBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, ref VkDescriptorSet descriptorSets, uint dynamicOffsetCount, ref uint dynamicOffsets) => CommandBindDescriptorSets_3(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, ref descriptorSets, dynamicOffsetCount, ref dynamicOffsets);
+		public static unsafe void CommandBindDescriptorSets(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint firstSet, uint descriptorSetCount, VkDescriptorSet[] descriptorSets, uint dynamicOffsetCount, uint[] dynamicOffsets) => CommandBindDescriptorSets_0(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, descriptorSets, dynamicOffsetCount, dynamicOffsets);
 		public static unsafe void CommandBindIndexBuffer(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkIndexType indexType) => CommandBindIndexBuffer_0(commandBuffer, buffer, offset, indexType);
 		public static unsafe void CommandBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets) => CommandBindVertexBuffers_0(commandBuffer, firstBinding, bindingCount, buffers, offsets);
 		public static unsafe void CommandBindVertexBuffers(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets) => CommandBindVertexBuffers_1(commandBuffer, firstBinding, bindingCount, buffers, ref offsets);
@@ -6186,58 +5948,23 @@ namespace Vulkan
 		public static unsafe void CommandDrawIndexedIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, uint drawCount, uint stride) => CommandDrawIndexedIndirect_0(commandBuffer, buffer, offset, drawCount, stride);
 		public static unsafe void CommandDispatch(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ) => CommandDispatch_0(commandBuffer, groupCountX, groupCountY, groupCountZ);
 		public static unsafe void CommandDispatchIndirect(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset) => CommandDispatchIndirect_0(commandBuffer, buffer, offset);
-		public static unsafe void CommandCopyBuffer(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkBuffer destinationBuffer, uint regionCount, VkBufferCopy* regions) => CommandCopyBuffer_0(commandBuffer, sourceBuffer, destinationBuffer, regionCount, regions);
-		public static unsafe void CommandCopyBuffer(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkBuffer destinationBuffer, uint regionCount, ref VkBufferCopy regions) => CommandCopyBuffer_1(commandBuffer, sourceBuffer, destinationBuffer, regionCount, ref regions);
-		public static unsafe void CommandCopyImage(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageCopy* regions) => CommandCopyImage_0(commandBuffer, sourceImage, sourceImageLayout, destinationImage, destinationImageLayout, regionCount, regions);
-		public static unsafe void CommandCopyImage(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, ref VkImageCopy regions) => CommandCopyImage_1(commandBuffer, sourceImage, sourceImageLayout, destinationImage, destinationImageLayout, regionCount, ref regions);
-		public static unsafe void CommandBlitImage(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageBlit* regions, VkFilter filter) => CommandBlitImage_0(commandBuffer, sourceImage, sourceImageLayout, destinationImage, destinationImageLayout, regionCount, regions, filter);
-		public static unsafe void CommandBlitImage(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, ref VkImageBlit regions, VkFilter filter) => CommandBlitImage_1(commandBuffer, sourceImage, sourceImageLayout, destinationImage, destinationImageLayout, regionCount, ref regions, filter);
-		public static unsafe void CommandCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkBufferImageCopy* regions) => CommandCopyBufferToImage_0(commandBuffer, sourceBuffer, destinationImage, destinationImageLayout, regionCount, regions);
-		public static unsafe void CommandCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, ref VkBufferImageCopy regions) => CommandCopyBufferToImage_1(commandBuffer, sourceBuffer, destinationImage, destinationImageLayout, regionCount, ref regions);
-		public static unsafe void CommandCopyImageToBuffer(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkBuffer destinationBuffer, uint regionCount, VkBufferImageCopy* regions) => CommandCopyImageToBuffer_0(commandBuffer, sourceImage, sourceImageLayout, destinationBuffer, regionCount, regions);
-		public static unsafe void CommandCopyImageToBuffer(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkBuffer destinationBuffer, uint regionCount, ref VkBufferImageCopy regions) => CommandCopyImageToBuffer_1(commandBuffer, sourceImage, sourceImageLayout, destinationBuffer, regionCount, ref regions);
+		public static unsafe void CommandCopyBuffer(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkBuffer destinationBuffer, uint regionCount, VkBufferCopy[] regions) => CommandCopyBuffer_0(commandBuffer, sourceBuffer, destinationBuffer, regionCount, regions);
+		public static unsafe void CommandCopyImage(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageCopy[] regions) => CommandCopyImage_0(commandBuffer, sourceImage, sourceImageLayout, destinationImage, destinationImageLayout, regionCount, regions);
+		public static unsafe void CommandBlitImage(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageBlit[] regions, VkFilter filter) => CommandBlitImage_0(commandBuffer, sourceImage, sourceImageLayout, destinationImage, destinationImageLayout, regionCount, regions, filter);
+		public static unsafe void CommandCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer sourceBuffer, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkBufferImageCopy[] regions) => CommandCopyBufferToImage_0(commandBuffer, sourceBuffer, destinationImage, destinationImageLayout, regionCount, regions);
+		public static unsafe void CommandCopyImageToBuffer(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkBuffer destinationBuffer, uint regionCount, VkBufferImageCopy[] regions) => CommandCopyImageToBuffer_0(commandBuffer, sourceImage, sourceImageLayout, destinationBuffer, regionCount, regions);
 		public static unsafe void CommandUpdateBuffer(VkCommandBuffer commandBuffer, VkBuffer destinationBuffer, VkDeviceSize destinationOffset, VkDeviceSize dataSize, void* data) => CommandUpdateBuffer_0(commandBuffer, destinationBuffer, destinationOffset, dataSize, data);
 		public static unsafe void CommandFillBuffer(VkCommandBuffer commandBuffer, VkBuffer destinationBuffer, VkDeviceSize destinationOffset, VkDeviceSize size, uint data) => CommandFillBuffer_0(commandBuffer, destinationBuffer, destinationOffset, size, data);
-		public static unsafe void CommandClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* color, uint rangeCount, VkImageSubresourceRange* ranges) => CommandClearColorImage_0(commandBuffer, image, imageLayout, color, rangeCount, ranges);
-		public static unsafe void CommandClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* color, uint rangeCount, ref VkImageSubresourceRange ranges) => CommandClearColorImage_1(commandBuffer, image, imageLayout, color, rangeCount, ref ranges);
-		public static unsafe void CommandClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearColorValue color, uint rangeCount, VkImageSubresourceRange* ranges) => CommandClearColorImage_2(commandBuffer, image, imageLayout, ref color, rangeCount, ranges);
-		public static unsafe void CommandClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearColorValue color, uint rangeCount, ref VkImageSubresourceRange ranges) => CommandClearColorImage_3(commandBuffer, image, imageLayout, ref color, rangeCount, ref ranges);
-		public static unsafe void CommandClearDepthStencilImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* depthStencil, uint rangeCount, VkImageSubresourceRange* ranges) => CommandClearDepthStencilImage_0(commandBuffer, image, imageLayout, depthStencil, rangeCount, ranges);
-		public static unsafe void CommandClearDepthStencilImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* depthStencil, uint rangeCount, ref VkImageSubresourceRange ranges) => CommandClearDepthStencilImage_1(commandBuffer, image, imageLayout, depthStencil, rangeCount, ref ranges);
-		public static unsafe void CommandClearDepthStencilImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearDepthStencilValue depthStencil, uint rangeCount, VkImageSubresourceRange* ranges) => CommandClearDepthStencilImage_2(commandBuffer, image, imageLayout, ref depthStencil, rangeCount, ranges);
-		public static unsafe void CommandClearDepthStencilImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearDepthStencilValue depthStencil, uint rangeCount, ref VkImageSubresourceRange ranges) => CommandClearDepthStencilImage_3(commandBuffer, image, imageLayout, ref depthStencil, rangeCount, ref ranges);
-		public static unsafe void CommandClearAttachments(VkCommandBuffer commandBuffer, uint attachmentCount, VkClearAttachment* attachments, uint rectCount, VkClearRect* rects) => CommandClearAttachments_0(commandBuffer, attachmentCount, attachments, rectCount, rects);
-		public static unsafe void CommandClearAttachments(VkCommandBuffer commandBuffer, uint attachmentCount, VkClearAttachment* attachments, uint rectCount, ref VkClearRect rects) => CommandClearAttachments_1(commandBuffer, attachmentCount, attachments, rectCount, ref rects);
-		public static unsafe void CommandClearAttachments(VkCommandBuffer commandBuffer, uint attachmentCount, ref VkClearAttachment attachments, uint rectCount, VkClearRect* rects) => CommandClearAttachments_2(commandBuffer, attachmentCount, ref attachments, rectCount, rects);
-		public static unsafe void CommandClearAttachments(VkCommandBuffer commandBuffer, uint attachmentCount, ref VkClearAttachment attachments, uint rectCount, ref VkClearRect rects) => CommandClearAttachments_3(commandBuffer, attachmentCount, ref attachments, rectCount, ref rects);
-		public static unsafe void CommandResolveImage(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageResolve* regions) => CommandResolveImage_0(commandBuffer, sourceImage, sourceImageLayout, destinationImage, destinationImageLayout, regionCount, regions);
-		public static unsafe void CommandResolveImage(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, ref VkImageResolve regions) => CommandResolveImage_1(commandBuffer, sourceImage, sourceImageLayout, destinationImage, destinationImageLayout, regionCount, ref regions);
+		public static unsafe void CommandClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* color, uint rangeCount, VkImageSubresourceRange[] ranges) => CommandClearColorImage_0(commandBuffer, image, imageLayout, color, rangeCount, ranges);
+		public static unsafe void CommandClearColorImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearColorValue color, uint rangeCount, VkImageSubresourceRange[] ranges) => CommandClearColorImage_1(commandBuffer, image, imageLayout, ref color, rangeCount, ranges);
+		public static unsafe void CommandClearDepthStencilImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* depthStencil, uint rangeCount, VkImageSubresourceRange[] ranges) => CommandClearDepthStencilImage_0(commandBuffer, image, imageLayout, depthStencil, rangeCount, ranges);
+		public static unsafe void CommandClearDepthStencilImage(VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, ref VkClearDepthStencilValue depthStencil, uint rangeCount, VkImageSubresourceRange[] ranges) => CommandClearDepthStencilImage_1(commandBuffer, image, imageLayout, ref depthStencil, rangeCount, ranges);
+		public static unsafe void CommandClearAttachments(VkCommandBuffer commandBuffer, uint attachmentCount, VkClearAttachment[] attachments, uint rectCount, VkClearRect[] rects) => CommandClearAttachments_0(commandBuffer, attachmentCount, attachments, rectCount, rects);
+		public static unsafe void CommandResolveImage(VkCommandBuffer commandBuffer, VkImage sourceImage, VkImageLayout sourceImageLayout, VkImage destinationImage, VkImageLayout destinationImageLayout, uint regionCount, VkImageResolve[] regions) => CommandResolveImage_0(commandBuffer, sourceImage, sourceImageLayout, destinationImage, destinationImageLayout, regionCount, regions);
 		public static unsafe void CommandSetEvent(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask) => CommandSetEvent_0(commandBuffer, @event, stageMask);
 		public static unsafe void CommandResetEvent(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags stageMask) => CommandResetEvent_0(commandBuffer, @event, stageMask);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandWaitEvents_0(commandBuffer, eventCount, events, sourceStageMask, destinationStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandWaitEvents_1(commandBuffer, eventCount, events, sourceStageMask, destinationStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandWaitEvents_2(commandBuffer, eventCount, events, sourceStageMask, destinationStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandWaitEvents_3(commandBuffer, eventCount, events, sourceStageMask, destinationStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandWaitEvents_4(commandBuffer, eventCount, events, sourceStageMask, destinationStageMask, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandWaitEvents_5(commandBuffer, eventCount, events, sourceStageMask, destinationStageMask, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandWaitEvents_6(commandBuffer, eventCount, events, sourceStageMask, destinationStageMask, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandWaitEvents_7(commandBuffer, eventCount, events, sourceStageMask, destinationStageMask, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandWaitEvents_8(commandBuffer, eventCount, ref events, sourceStageMask, destinationStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandWaitEvents_9(commandBuffer, eventCount, ref events, sourceStageMask, destinationStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandWaitEvents_10(commandBuffer, eventCount, ref events, sourceStageMask, destinationStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandWaitEvents_11(commandBuffer, eventCount, ref events, sourceStageMask, destinationStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandWaitEvents_12(commandBuffer, eventCount, ref events, sourceStageMask, destinationStageMask, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandWaitEvents_13(commandBuffer, eventCount, ref events, sourceStageMask, destinationStageMask, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandWaitEvents_14(commandBuffer, eventCount, ref events, sourceStageMask, destinationStageMask, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandWaitEvents_15(commandBuffer, eventCount, ref events, sourceStageMask, destinationStageMask, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandPipelineBarrier_0(commandBuffer, sourceStageMask, destinationStageMask, dependencyFlags, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandPipelineBarrier_1(commandBuffer, sourceStageMask, destinationStageMask, dependencyFlags, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandPipelineBarrier_2(commandBuffer, sourceStageMask, destinationStageMask, dependencyFlags, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier* memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandPipelineBarrier_3(commandBuffer, sourceStageMask, destinationStageMask, dependencyFlags, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandPipelineBarrier_4(commandBuffer, sourceStageMask, destinationStageMask, dependencyFlags, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier* bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandPipelineBarrier_5(commandBuffer, sourceStageMask, destinationStageMask, dependencyFlags, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
-		public static unsafe void CommandPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier* imageMemoryBarriers) => CommandPipelineBarrier_6(commandBuffer, sourceStageMask, destinationStageMask, dependencyFlags, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
-		public static unsafe void CommandPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, ref VkMemoryBarrier memoryBarriers, uint bufferMemoryBarrierCount, ref VkBufferMemoryBarrier bufferMemoryBarriers, uint imageMemoryBarrierCount, ref VkImageMemoryBarrier imageMemoryBarriers) => CommandPipelineBarrier_7(commandBuffer, sourceStageMask, destinationStageMask, dependencyFlags, memoryBarrierCount, ref memoryBarriers, bufferMemoryBarrierCount, ref bufferMemoryBarriers, imageMemoryBarrierCount, ref imageMemoryBarriers);
+		public static unsafe void CommandWaitEvents(VkCommandBuffer commandBuffer, uint eventCount, VkEvent[] events, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, uint memoryBarrierCount, VkMemoryBarrier[] memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier[] bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier[] imageMemoryBarriers) => CommandWaitEvents_0(commandBuffer, eventCount, events, sourceStageMask, destinationStageMask, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
+		public static unsafe void CommandPipelineBarrier(VkCommandBuffer commandBuffer, VkPipelineStageFlags sourceStageMask, VkPipelineStageFlags destinationStageMask, VkDependencyFlags dependencyFlags, uint memoryBarrierCount, VkMemoryBarrier[] memoryBarriers, uint bufferMemoryBarrierCount, VkBufferMemoryBarrier[] bufferMemoryBarriers, uint imageMemoryBarrierCount, VkImageMemoryBarrier[] imageMemoryBarriers) => CommandPipelineBarrier_0(commandBuffer, sourceStageMask, destinationStageMask, dependencyFlags, memoryBarrierCount, memoryBarriers, bufferMemoryBarrierCount, bufferMemoryBarriers, imageMemoryBarrierCount, imageMemoryBarriers);
 		public static unsafe void CommandBeginQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags) => CommandBeginQuery_0(commandBuffer, queryPool, query, flags);
 		public static unsafe void CommandEndQuery(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query) => CommandEndQuery_0(commandBuffer, queryPool, query);
 		public static unsafe void CommandBeginConditionalRenderingEXT(VkCommandBuffer commandBuffer, VkConditionalRenderingBeginInfoEXT* conditionalRenderingBegin) => CommandBeginConditionalRenderingEXT_0(commandBuffer, conditionalRenderingBegin);
@@ -6251,8 +5978,7 @@ namespace Vulkan
 		public static unsafe void CommandBeginRenderPass(VkCommandBuffer commandBuffer, ref VkRenderPassBeginInfo renderPassBegin, VkSubpassContents contents) => CommandBeginRenderPass_1(commandBuffer, ref renderPassBegin, contents);
 		public static unsafe void CommandNextSubpass(VkCommandBuffer commandBuffer, VkSubpassContents contents) => CommandNextSubpass_0(commandBuffer, contents);
 		public static unsafe void CommandEndRenderPass(VkCommandBuffer commandBuffer) => CommandEndRenderPass_0(commandBuffer);
-		public static unsafe void CommandExecuteCommands(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer* commandBuffers) => CommandExecuteCommands_0(commandBuffer, commandBufferCount, commandBuffers);
-		public static unsafe void CommandExecuteCommands(VkCommandBuffer commandBuffer, uint commandBufferCount, ref VkCommandBuffer commandBuffers) => CommandExecuteCommands_1(commandBuffer, commandBufferCount, ref commandBuffers);
+		public static unsafe void CommandExecuteCommands(VkCommandBuffer commandBuffer, uint commandBufferCount, VkCommandBuffer[] commandBuffers) => CommandExecuteCommands_0(commandBuffer, commandBufferCount, commandBuffers);
 		public static unsafe VkResult CreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, VkSurfaceKHR* surface) => CreateAndroidSurfaceKHR_0(instance, createInfo, allocator, surface);
 		public static unsafe VkResult CreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateAndroidSurfaceKHR_1(instance, createInfo, allocator, out surface);
 		public static unsafe VkResult CreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, VkSurfaceKHR* surface) => CreateAndroidSurfaceKHR_2(instance, createInfo, ref allocator, surface);
@@ -6418,8 +6144,7 @@ namespace Vulkan
 		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2(physicalDevice, formatInfo, ref propertyCount, properties);
 		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2(physicalDevice, ref formatInfo, propertyCount, properties);
 		public static unsafe void GetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2(physicalDevice, ref formatInfo, ref propertyCount, properties);
-		public static unsafe void CommandPushDescriptorSetKHR(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet* descriptorWrites) => CommandPushDescriptorSetKHR_0(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, descriptorWrites);
-		public static unsafe void CommandPushDescriptorSetKHR(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, ref VkWriteDescriptorSet descriptorWrites) => CommandPushDescriptorSetKHR_1(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, ref descriptorWrites);
+		public static unsafe void CommandPushDescriptorSetKHR(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet[] descriptorWrites) => CommandPushDescriptorSetKHR_0(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, descriptorWrites);
 		public static unsafe void TrimCommandPool(VkDevice device, VkCommandPool commandPool, uint flags) => TrimCommandPool_0(device, commandPool, flags);
 		public static unsafe void TrimCommandPoolKHR(VkDevice device, VkCommandPool commandPool, uint flags) => TrimCommandPool(device, commandPool, flags);
 		public static unsafe void GetPhysicalDeviceExternalBufferProperties(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* externalBufferInfo, VkExternalBufferProperties* externalBufferProperties) => GetPhysicalDeviceExternalBufferProperties_0(physicalDevice, externalBufferInfo, externalBufferProperties);
@@ -6557,10 +6282,8 @@ namespace Vulkan
 		public static unsafe void UpdateDescriptorSetWithTemplate(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* data) => UpdateDescriptorSetWithTemplate_0(device, descriptorSet, descriptorUpdateTemplate, data);
 		public static unsafe void UpdateDescriptorSetWithTemplateKHR(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* data) => UpdateDescriptorSetWithTemplate(device, descriptorSet, descriptorUpdateTemplate, data);
 		public static unsafe void CommandPushDescriptorSetWithTemplateKHR(VkCommandBuffer commandBuffer, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkPipelineLayout layout, uint set, void* data) => CommandPushDescriptorSetWithTemplateKHR_0(commandBuffer, descriptorUpdateTemplate, layout, set, data);
-		public static unsafe void SetHdrMetadataEXT(VkDevice device, uint swapchainCount, VkSwapchainKHR* swapchains, VkHdrMetadataEXT* metadata) => SetHdrMetadataEXT_0(device, swapchainCount, swapchains, metadata);
-		public static unsafe void SetHdrMetadataEXT(VkDevice device, uint swapchainCount, VkSwapchainKHR* swapchains, ref VkHdrMetadataEXT metadata) => SetHdrMetadataEXT_1(device, swapchainCount, swapchains, ref metadata);
-		public static unsafe void SetHdrMetadataEXT(VkDevice device, uint swapchainCount, ref VkSwapchainKHR swapchains, VkHdrMetadataEXT* metadata) => SetHdrMetadataEXT_2(device, swapchainCount, ref swapchains, metadata);
-		public static unsafe void SetHdrMetadataEXT(VkDevice device, uint swapchainCount, ref VkSwapchainKHR swapchains, ref VkHdrMetadataEXT metadata) => SetHdrMetadataEXT_3(device, swapchainCount, ref swapchains, ref metadata);
+		public static unsafe void SetHdrMetadataEXT(VkDevice device, uint swapchainCount, VkSwapchainKHR[] swapchains, VkHdrMetadataEXT* metadata) => SetHdrMetadataEXT_0(device, swapchainCount, swapchains, metadata);
+		public static unsafe void SetHdrMetadataEXT(VkDevice device, uint swapchainCount, VkSwapchainKHR[] swapchains, ref VkHdrMetadataEXT metadata) => SetHdrMetadataEXT_1(device, swapchainCount, swapchains, ref metadata);
 		public static unsafe VkResult GetSwapchainStatusKHR(VkDevice device, VkSwapchainKHR swapchain) => GetSwapchainStatusKHR_0(device, swapchain);
 		public static unsafe VkResult GetRefreshCycleDurationGOOGLE(VkDevice device, VkSwapchainKHR swapchain, VkRefreshCycleDurationGOOGLE* displayTimingProperties) => GetRefreshCycleDurationGOOGLE_0(device, swapchain, displayTimingProperties);
 		public static unsafe VkResult GetRefreshCycleDurationGOOGLE(VkDevice device, VkSwapchainKHR swapchain, out VkRefreshCycleDurationGOOGLE displayTimingProperties) => GetRefreshCycleDurationGOOGLE_1(device, swapchain, out displayTimingProperties);
@@ -6576,8 +6299,7 @@ namespace Vulkan
 		public static unsafe VkResult CreateMacOSSurfaceMVK(VkInstance instance, ref VkMacOSSurfaceCreateInfoMVK createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateMacOSSurfaceMVK_7(instance, ref createInfo, ref allocator, out surface);
 		public static unsafe void CommandSetViewportWScalingNV(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkViewportWScalingNV* viewportWScalings) => CommandSetViewportWScalingNV_0(commandBuffer, firstViewport, viewportCount, viewportWScalings);
 		public static unsafe void CommandSetViewportWScalingNV(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, ref VkViewportWScalingNV viewportWScalings) => CommandSetViewportWScalingNV_1(commandBuffer, firstViewport, viewportCount, ref viewportWScalings);
-		public static unsafe void CommandSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D* discardRectangles) => CommandSetDiscardRectangleEXT_0(commandBuffer, firstDiscardRectangle, discardRectangleCount, discardRectangles);
-		public static unsafe void CommandSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, ref VkRect2D discardRectangles) => CommandSetDiscardRectangleEXT_1(commandBuffer, firstDiscardRectangle, discardRectangleCount, ref discardRectangles);
+		public static unsafe void CommandSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D[] discardRectangles) => CommandSetDiscardRectangleEXT_0(commandBuffer, firstDiscardRectangle, discardRectangleCount, discardRectangles);
 		public static unsafe void CommandSetSampleLocationsEXT(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* sampleLocationsInfo) => CommandSetSampleLocationsEXT_0(commandBuffer, sampleLocationsInfo);
 		public static unsafe void CommandSetSampleLocationsEXT(VkCommandBuffer commandBuffer, ref VkSampleLocationsInfoEXT sampleLocationsInfo) => CommandSetSampleLocationsEXT_1(commandBuffer, ref sampleLocationsInfo);
 		public static unsafe void GetPhysicalDeviceMultisamplePropertiesEXT(VkPhysicalDevice physicalDevice, VkSampleCountFlags samples, VkMultisamplePropertiesEXT* multisampleProperties) => GetPhysicalDeviceMultisamplePropertiesEXT_0(physicalDevice, samples, multisampleProperties);
@@ -6660,8 +6382,7 @@ namespace Vulkan
 		public static unsafe void DestroyValidationCacheEXT(VkDevice device, VkValidationCacheEXT validationCache, ref VkAllocationCallbacks allocator) => DestroyValidationCacheEXT_1(device, validationCache, ref allocator);
 		public static unsafe VkResult GetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, nuint* dataSize, void* data) => GetValidationCacheDataEXT_0(device, validationCache, dataSize, data);
 		public static unsafe VkResult GetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, ref nuint dataSize, void* data) => GetValidationCacheDataEXT_1(device, validationCache, ref dataSize, data);
-		public static unsafe VkResult MergeValidationCachesEXT(VkDevice device, VkValidationCacheEXT destinationCache, uint sourceCacheCount, VkValidationCacheEXT* sourceCaches) => MergeValidationCachesEXT_0(device, destinationCache, sourceCacheCount, sourceCaches);
-		public static unsafe VkResult MergeValidationCachesEXT(VkDevice device, VkValidationCacheEXT destinationCache, uint sourceCacheCount, ref VkValidationCacheEXT sourceCaches) => MergeValidationCachesEXT_1(device, destinationCache, sourceCacheCount, ref sourceCaches);
+		public static unsafe VkResult MergeValidationCachesEXT(VkDevice device, VkValidationCacheEXT destinationCache, uint sourceCacheCount, VkValidationCacheEXT[] sourceCaches) => MergeValidationCachesEXT_0(device, destinationCache, sourceCacheCount, sourceCaches);
 		public static unsafe void GetDescriptorSetLayoutSupport(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkDescriptorSetLayoutSupport* support) => GetDescriptorSetLayoutSupport_0(device, createInfo, support);
 		public static unsafe void GetDescriptorSetLayoutSupport(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, out VkDescriptorSetLayoutSupport support) => GetDescriptorSetLayoutSupport_1(device, createInfo, out support);
 		public static unsafe void GetDescriptorSetLayoutSupport(VkDevice device, ref VkDescriptorSetLayoutCreateInfo createInfo, VkDescriptorSetLayoutSupport* support) => GetDescriptorSetLayoutSupport_2(device, ref createInfo, support);
@@ -6677,10 +6398,8 @@ namespace Vulkan
 		public static unsafe VkResult GetSwapchainGrallocUsage2ANDROID(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, VkSwapchainImageUsageFlagsANDROID swapchainImageUsage, ref ulong grallocConsumerUsage, ulong* grallocProducerUsage) => GetSwapchainGrallocUsage2ANDROID_2(device, format, imageUsage, swapchainImageUsage, ref grallocConsumerUsage, grallocProducerUsage);
 		public static unsafe VkResult GetSwapchainGrallocUsage2ANDROID(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, VkSwapchainImageUsageFlagsANDROID swapchainImageUsage, ref ulong grallocConsumerUsage, out ulong grallocProducerUsage) => GetSwapchainGrallocUsage2ANDROID_3(device, format, imageUsage, swapchainImageUsage, ref grallocConsumerUsage, out grallocProducerUsage);
 		public static unsafe VkResult AcquireImageANDROID(VkDevice device, VkImage image, int nativeFenceFileDescriptor, VkSemaphore semaphore, VkFence fence) => AcquireImageANDROID_0(device, image, nativeFenceFileDescriptor, semaphore, fence);
-		public static unsafe VkResult QueueSignalReleaseImageANDROID(VkQueue queue, uint waitSemaphoreCount, VkSemaphore* waitSemaphores, VkImage image, int* nativeFenceFileDescriptor) => QueueSignalReleaseImageANDROID_0(queue, waitSemaphoreCount, waitSemaphores, image, nativeFenceFileDescriptor);
-		public static unsafe VkResult QueueSignalReleaseImageANDROID(VkQueue queue, uint waitSemaphoreCount, VkSemaphore* waitSemaphores, VkImage image, ref int nativeFenceFileDescriptor) => QueueSignalReleaseImageANDROID_1(queue, waitSemaphoreCount, waitSemaphores, image, ref nativeFenceFileDescriptor);
-		public static unsafe VkResult QueueSignalReleaseImageANDROID(VkQueue queue, uint waitSemaphoreCount, ref VkSemaphore waitSemaphores, VkImage image, int* nativeFenceFileDescriptor) => QueueSignalReleaseImageANDROID_2(queue, waitSemaphoreCount, ref waitSemaphores, image, nativeFenceFileDescriptor);
-		public static unsafe VkResult QueueSignalReleaseImageANDROID(VkQueue queue, uint waitSemaphoreCount, ref VkSemaphore waitSemaphores, VkImage image, ref int nativeFenceFileDescriptor) => QueueSignalReleaseImageANDROID_3(queue, waitSemaphoreCount, ref waitSemaphores, image, ref nativeFenceFileDescriptor);
+		public static unsafe VkResult QueueSignalReleaseImageANDROID(VkQueue queue, uint waitSemaphoreCount, VkSemaphore[] waitSemaphores, VkImage image, int* nativeFenceFileDescriptor) => QueueSignalReleaseImageANDROID_0(queue, waitSemaphoreCount, waitSemaphores, image, nativeFenceFileDescriptor);
+		public static unsafe VkResult QueueSignalReleaseImageANDROID(VkQueue queue, uint waitSemaphoreCount, VkSemaphore[] waitSemaphores, VkImage image, ref int nativeFenceFileDescriptor) => QueueSignalReleaseImageANDROID_1(queue, waitSemaphoreCount, waitSemaphores, image, ref nativeFenceFileDescriptor);
 		public static unsafe VkResult GetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info) => GetShaderInfoAMD_0(device, pipeline, shaderStage, infoType, infoSize, info);
 		public static unsafe VkResult GetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, ref nuint infoSize, void* info) => GetShaderInfoAMD_1(device, pipeline, shaderStage, infoType, ref infoSize, info);
 		public static unsafe void SetLocalDimmingAMD(VkDevice device, VkSwapchainKHR swapChain, VkBool32 localDimmingEnable) => SetLocalDimmingAMD_0(device, swapChain, localDimmingEnable);
@@ -6792,24 +6511,18 @@ namespace Vulkan
 		public static unsafe void CommandBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes) => CommandBindTransformFeedbackBuffersEXT_5(commandBuffer, firstBinding, bindingCount, ref buffers, offsets, ref sizes);
 		public static unsafe void CommandBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes) => CommandBindTransformFeedbackBuffersEXT_6(commandBuffer, firstBinding, bindingCount, ref buffers, ref offsets, sizes);
 		public static unsafe void CommandBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, ref VkDeviceSize sizes) => CommandBindTransformFeedbackBuffersEXT_7(commandBuffer, firstBinding, bindingCount, ref buffers, ref offsets, ref sizes);
-		public static unsafe void CommandBeginTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, VkDeviceSize* counterBufferOffsets) => CommandBeginTransformFeedbackEXT_0(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, counterBufferOffsets);
-		public static unsafe void CommandBeginTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, ref VkDeviceSize counterBufferOffsets) => CommandBeginTransformFeedbackEXT_1(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, ref counterBufferOffsets);
-		public static unsafe void CommandBeginTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, ref VkBuffer counterBuffers, VkDeviceSize* counterBufferOffsets) => CommandBeginTransformFeedbackEXT_2(commandBuffer, firstCounterBuffer, counterBufferCount, ref counterBuffers, counterBufferOffsets);
-		public static unsafe void CommandBeginTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, ref VkBuffer counterBuffers, ref VkDeviceSize counterBufferOffsets) => CommandBeginTransformFeedbackEXT_3(commandBuffer, firstCounterBuffer, counterBufferCount, ref counterBuffers, ref counterBufferOffsets);
-		public static unsafe void CommandEndTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, VkDeviceSize* counterBufferOffsets) => CommandEndTransformFeedbackEXT_0(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, counterBufferOffsets);
-		public static unsafe void CommandEndTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer* counterBuffers, ref VkDeviceSize counterBufferOffsets) => CommandEndTransformFeedbackEXT_1(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, ref counterBufferOffsets);
-		public static unsafe void CommandEndTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, ref VkBuffer counterBuffers, VkDeviceSize* counterBufferOffsets) => CommandEndTransformFeedbackEXT_2(commandBuffer, firstCounterBuffer, counterBufferCount, ref counterBuffers, counterBufferOffsets);
-		public static unsafe void CommandEndTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, ref VkBuffer counterBuffers, ref VkDeviceSize counterBufferOffsets) => CommandEndTransformFeedbackEXT_3(commandBuffer, firstCounterBuffer, counterBufferCount, ref counterBuffers, ref counterBufferOffsets);
+		public static unsafe void CommandBeginTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer[] counterBuffers, VkDeviceSize* counterBufferOffsets) => CommandBeginTransformFeedbackEXT_0(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, counterBufferOffsets);
+		public static unsafe void CommandBeginTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer[] counterBuffers, ref VkDeviceSize counterBufferOffsets) => CommandBeginTransformFeedbackEXT_1(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, ref counterBufferOffsets);
+		public static unsafe void CommandEndTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer[] counterBuffers, VkDeviceSize* counterBufferOffsets) => CommandEndTransformFeedbackEXT_0(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, counterBufferOffsets);
+		public static unsafe void CommandEndTransformFeedbackEXT(VkCommandBuffer commandBuffer, uint firstCounterBuffer, uint counterBufferCount, VkBuffer[] counterBuffers, ref VkDeviceSize counterBufferOffsets) => CommandEndTransformFeedbackEXT_1(commandBuffer, firstCounterBuffer, counterBufferCount, counterBuffers, ref counterBufferOffsets);
 		public static unsafe void CommandBeginQueryIndexedEXT(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, VkQueryControlFlags flags, uint index) => CommandBeginQueryIndexedEXT_0(commandBuffer, queryPool, query, flags, index);
 		public static unsafe void CommandEndQueryIndexedEXT(VkCommandBuffer commandBuffer, VkQueryPool queryPool, uint query, uint index) => CommandEndQueryIndexedEXT_0(commandBuffer, queryPool, query, index);
 		public static unsafe void CommandDrawIndirectByteCountEXT(VkCommandBuffer commandBuffer, uint instanceCount, uint firstInstance, VkBuffer counterBuffer, VkDeviceSize counterBufferOffset, uint counterOffset, uint vertexStride) => CommandDrawIndirectByteCountEXT_0(commandBuffer, instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride);
-		public static unsafe void CommandSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D* exclusiveScissors) => CommandSetExclusiveScissorNV_0(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, exclusiveScissors);
-		public static unsafe void CommandSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, ref VkRect2D exclusiveScissors) => CommandSetExclusiveScissorNV_1(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, ref exclusiveScissors);
+		public static unsafe void CommandSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D[] exclusiveScissors) => CommandSetExclusiveScissorNV_0(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, exclusiveScissors);
 		public static unsafe void CommandBindShadingRateImageNV(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout) => CommandBindShadingRateImageNV_0(commandBuffer, imageView, imageLayout);
 		public static unsafe void CommandSetViewportShadingRatePaletteNV(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, VkShadingRatePaletteNV* shadingRatePalettes) => CommandSetViewportShadingRatePaletteNV_0(commandBuffer, firstViewport, viewportCount, shadingRatePalettes);
 		public static unsafe void CommandSetViewportShadingRatePaletteNV(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, ref VkShadingRatePaletteNV shadingRatePalettes) => CommandSetViewportShadingRatePaletteNV_1(commandBuffer, firstViewport, viewportCount, ref shadingRatePalettes);
-		public static unsafe void CommandSetCoarseSampleOrderNV(VkCommandBuffer commandBuffer, VkCoarseSampleOrderTypeNV sampleOrderType, uint customSampleOrderCount, VkCoarseSampleOrderCustomNV* customSampleOrders) => CommandSetCoarseSampleOrderNV_0(commandBuffer, sampleOrderType, customSampleOrderCount, customSampleOrders);
-		public static unsafe void CommandSetCoarseSampleOrderNV(VkCommandBuffer commandBuffer, VkCoarseSampleOrderTypeNV sampleOrderType, uint customSampleOrderCount, ref VkCoarseSampleOrderCustomNV customSampleOrders) => CommandSetCoarseSampleOrderNV_1(commandBuffer, sampleOrderType, customSampleOrderCount, ref customSampleOrders);
+		public static unsafe void CommandSetCoarseSampleOrderNV(VkCommandBuffer commandBuffer, VkCoarseSampleOrderTypeNV sampleOrderType, uint customSampleOrderCount, VkCoarseSampleOrderCustomNV[] customSampleOrders) => CommandSetCoarseSampleOrderNV_0(commandBuffer, sampleOrderType, customSampleOrderCount, customSampleOrders);
 		public static unsafe void CommandDrawMeshTasksNV(VkCommandBuffer commandBuffer, uint taskCount, uint firstTask) => CommandDrawMeshTasksNV_0(commandBuffer, taskCount, firstTask);
 		public static unsafe void CommandDrawMeshTasksIndirectNV(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, uint drawCount, uint stride) => CommandDrawMeshTasksIndirectNV_0(commandBuffer, buffer, offset, drawCount, stride);
 		public static unsafe void CommandDrawMeshTasksIndirectCountNV(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride) => CommandDrawMeshTasksIndirectCountNV_0(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
@@ -6844,14 +6557,11 @@ namespace Vulkan
 		public static unsafe void CommandCopyMemoryToAccelerationStructureKHR(VkCommandBuffer commandBuffer, ref VkCopyMemoryToAccelerationStructureInfoKHR info) => CommandCopyMemoryToAccelerationStructureKHR_1(commandBuffer, ref info);
 		public static unsafe VkResult CopyMemoryToAccelerationStructureKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkCopyMemoryToAccelerationStructureInfoKHR* info) => CopyMemoryToAccelerationStructureKHR_0(device, deferredOperation, info);
 		public static unsafe VkResult CopyMemoryToAccelerationStructureKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, ref VkCopyMemoryToAccelerationStructureInfoKHR info) => CopyMemoryToAccelerationStructureKHR_1(device, deferredOperation, ref info);
-		public static unsafe void CommandWriteAccelerationStructuresPropertiesKHR(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery) => CommandWriteAccelerationStructuresPropertiesKHR_0(commandBuffer, accelerationStructureCount, accelerationStructures, queryType, queryPool, firstQuery);
-		public static unsafe void CommandWriteAccelerationStructuresPropertiesKHR(VkCommandBuffer commandBuffer, uint accelerationStructureCount, ref VkAccelerationStructureKHR accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery) => CommandWriteAccelerationStructuresPropertiesKHR_1(commandBuffer, accelerationStructureCount, ref accelerationStructures, queryType, queryPool, firstQuery);
-		public static unsafe void CommandWriteAccelerationStructuresPropertiesNV(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureNV* accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery) => CommandWriteAccelerationStructuresPropertiesNV_0(commandBuffer, accelerationStructureCount, accelerationStructures, queryType, queryPool, firstQuery);
-		public static unsafe void CommandWriteAccelerationStructuresPropertiesNV(VkCommandBuffer commandBuffer, uint accelerationStructureCount, ref VkAccelerationStructureNV accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery) => CommandWriteAccelerationStructuresPropertiesNV_1(commandBuffer, accelerationStructureCount, ref accelerationStructures, queryType, queryPool, firstQuery);
+		public static unsafe void CommandWriteAccelerationStructuresPropertiesKHR(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureKHR[] accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery) => CommandWriteAccelerationStructuresPropertiesKHR_0(commandBuffer, accelerationStructureCount, accelerationStructures, queryType, queryPool, firstQuery);
+		public static unsafe void CommandWriteAccelerationStructuresPropertiesNV(VkCommandBuffer commandBuffer, uint accelerationStructureCount, VkAccelerationStructureNV[] accelerationStructures, VkQueryType queryType, VkQueryPool queryPool, uint firstQuery) => CommandWriteAccelerationStructuresPropertiesNV_0(commandBuffer, accelerationStructureCount, accelerationStructures, queryType, queryPool, firstQuery);
 		public static unsafe void CommandBuildAccelerationStructureNV(VkCommandBuffer commandBuffer, VkAccelerationStructureInfoNV* info, VkBuffer instanceData, VkDeviceSize instanceOffset, VkBool32 update, VkAccelerationStructureNV destination, VkAccelerationStructureNV source, VkBuffer scratch, VkDeviceSize scratchOffset) => CommandBuildAccelerationStructureNV_0(commandBuffer, info, instanceData, instanceOffset, update, destination, source, scratch, scratchOffset);
 		public static unsafe void CommandBuildAccelerationStructureNV(VkCommandBuffer commandBuffer, ref VkAccelerationStructureInfoNV info, VkBuffer instanceData, VkDeviceSize instanceOffset, VkBool32 update, VkAccelerationStructureNV destination, VkAccelerationStructureNV source, VkBuffer scratch, VkDeviceSize scratchOffset) => CommandBuildAccelerationStructureNV_1(commandBuffer, ref info, instanceData, instanceOffset, update, destination, source, scratch, scratchOffset);
-		public static unsafe VkResult WriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR* accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride) => WriteAccelerationStructuresPropertiesKHR_0(device, accelerationStructureCount, accelerationStructures, queryType, dataSize, data, stride);
-		public static unsafe VkResult WriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, ref VkAccelerationStructureKHR accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride) => WriteAccelerationStructuresPropertiesKHR_1(device, accelerationStructureCount, ref accelerationStructures, queryType, dataSize, data, stride);
+		public static unsafe VkResult WriteAccelerationStructuresPropertiesKHR(VkDevice device, uint accelerationStructureCount, VkAccelerationStructureKHR[] accelerationStructures, VkQueryType queryType, nuint dataSize, void* data, nuint stride) => WriteAccelerationStructuresPropertiesKHR_0(device, accelerationStructureCount, accelerationStructures, queryType, dataSize, data, stride);
 		public static unsafe void CommandTraceRaysKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, uint width, uint height, uint depth) => CommandTraceRaysKHR_0(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, hitShaderBindingTable, callableShaderBindingTable, width, height, depth);
 		public static unsafe void CommandTraceRaysKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, VkStridedDeviceAddressRegionKHR* hitShaderBindingTable, ref VkStridedDeviceAddressRegionKHR callableShaderBindingTable, uint width, uint height, uint depth) => CommandTraceRaysKHR_1(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, hitShaderBindingTable, ref callableShaderBindingTable, width, height, depth);
 		public static unsafe void CommandTraceRaysKHR(VkCommandBuffer commandBuffer, VkStridedDeviceAddressRegionKHR* raygenShaderBindingTable, VkStridedDeviceAddressRegionKHR* missShaderBindingTable, ref VkStridedDeviceAddressRegionKHR hitShaderBindingTable, VkStridedDeviceAddressRegionKHR* callableShaderBindingTable, uint width, uint height, uint depth) => CommandTraceRaysKHR_2(commandBuffer, raygenShaderBindingTable, missShaderBindingTable, ref hitShaderBindingTable, callableShaderBindingTable, width, height, depth);
@@ -6919,10 +6629,8 @@ namespace Vulkan
 		public static unsafe VkResult GetDeviceGroupSurfacePresentModes2EXT(VkDevice device, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, out VkDeviceGroupPresentModeFlagsKHR modes) => GetDeviceGroupSurfacePresentModes2EXT_3(device, ref surfaceInfo, out modes);
 		public static unsafe VkResult AcquireFullScreenExclusiveModeEXT(VkDevice device, VkSwapchainKHR swapchain) => AcquireFullScreenExclusiveModeEXT_0(device, swapchain);
 		public static unsafe VkResult ReleaseFullScreenExclusiveModeEXT(VkDevice device, VkSwapchainKHR swapchain) => ReleaseFullScreenExclusiveModeEXT_0(device, swapchain);
-		public static unsafe VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* counterCount, VkPerformanceCounterKHR* counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions) => EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_0(physicalDevice, queueFamilyIndex, counterCount, counters, counterDescriptions);
-		public static unsafe VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* counterCount, ref VkPerformanceCounterKHR counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions) => EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_1(physicalDevice, queueFamilyIndex, counterCount, ref counters, counterDescriptions);
-		public static unsafe VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, ref uint counterCount, VkPerformanceCounterKHR* counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions) => EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_2(physicalDevice, queueFamilyIndex, ref counterCount, counters, counterDescriptions);
-		public static unsafe VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, ref uint counterCount, ref VkPerformanceCounterKHR counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions) => EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_3(physicalDevice, queueFamilyIndex, ref counterCount, ref counters, counterDescriptions);
+		public static unsafe VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, uint* counterCount, VkPerformanceCounterKHR[] counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions) => EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_0(physicalDevice, queueFamilyIndex, counterCount, counters, counterDescriptions);
+		public static unsafe VkResult EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, ref uint counterCount, VkPerformanceCounterKHR[] counters, [In, Out] VkPerformanceCounterDescriptionKHR[] counterDescriptions) => EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR_1(physicalDevice, queueFamilyIndex, ref counterCount, counters, counterDescriptions);
 		public static unsafe void GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(VkPhysicalDevice physicalDevice, VkQueryPoolPerformanceCreateInfoKHR* performanceQueryCreateInfo, uint* numPasses) => GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_0(physicalDevice, performanceQueryCreateInfo, numPasses);
 		public static unsafe void GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(VkPhysicalDevice physicalDevice, VkQueryPoolPerformanceCreateInfoKHR* performanceQueryCreateInfo, out uint numPasses) => GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_1(physicalDevice, performanceQueryCreateInfo, out numPasses);
 		public static unsafe void GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(VkPhysicalDevice physicalDevice, ref VkQueryPoolPerformanceCreateInfoKHR performanceQueryCreateInfo, uint* numPasses) => GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR_2(physicalDevice, ref performanceQueryCreateInfo, numPasses);
@@ -7020,10 +6728,8 @@ namespace Vulkan
 		public static unsafe void CommandSetCullModeEXT(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode) => CommandSetCullModeEXT_0(commandBuffer, cullMode);
 		public static unsafe void CommandSetFrontFaceEXT(VkCommandBuffer commandBuffer, VkFrontFace frontFace) => CommandSetFrontFaceEXT_0(commandBuffer, frontFace);
 		public static unsafe void CommandSetPrimitiveTopologyEXT(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology) => CommandSetPrimitiveTopologyEXT_0(commandBuffer, primitiveTopology);
-		public static unsafe void CommandSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport* viewports) => CommandSetViewportWithCountEXT_0(commandBuffer, viewportCount, viewports);
-		public static unsafe void CommandSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, ref VkViewport viewports) => CommandSetViewportWithCountEXT_1(commandBuffer, viewportCount, ref viewports);
-		public static unsafe void CommandSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D* scissors) => CommandSetScissorWithCountEXT_0(commandBuffer, scissorCount, scissors);
-		public static unsafe void CommandSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, ref VkRect2D scissors) => CommandSetScissorWithCountEXT_1(commandBuffer, scissorCount, ref scissors);
+		public static unsafe void CommandSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport[] viewports) => CommandSetViewportWithCountEXT_0(commandBuffer, viewportCount, viewports);
+		public static unsafe void CommandSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D[] scissors) => CommandSetScissorWithCountEXT_0(commandBuffer, scissorCount, scissors);
 		public static unsafe void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, VkDeviceSize* strides) => CommandBindVertexBuffers2EXT_0(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes, strides);
 		public static unsafe void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, ref VkDeviceSize strides) => CommandBindVertexBuffers2EXT_1(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes, ref strides);
 		public static unsafe void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes, VkDeviceSize* strides) => CommandBindVertexBuffers2EXT_2(commandBuffer, firstBinding, bindingCount, buffers, offsets, ref sizes, strides);
@@ -7083,12 +6789,10 @@ namespace Vulkan
 		public static unsafe void CommandSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfoKHR* dependencyInfo) => CommandSetEvent2KHR_0(commandBuffer, @event, dependencyInfo);
 		public static unsafe void CommandSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, ref VkDependencyInfoKHR dependencyInfo) => CommandSetEvent2KHR_1(commandBuffer, @event, ref dependencyInfo);
 		public static unsafe void CommandResetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2KHR stageMask) => CommandResetEvent2KHR_0(commandBuffer, @event, stageMask);
-		public static unsafe void CommandWaitEvents2KHR(VkCommandBuffer commandBuffer, uint eventCount, VkEvent* events, VkDependencyInfoKHR[] dependencyInfos) => CommandWaitEvents2KHR_0(commandBuffer, eventCount, events, dependencyInfos);
-		public static unsafe void CommandWaitEvents2KHR(VkCommandBuffer commandBuffer, uint eventCount, ref VkEvent events, VkDependencyInfoKHR[] dependencyInfos) => CommandWaitEvents2KHR_1(commandBuffer, eventCount, ref events, dependencyInfos);
+		public static unsafe void CommandWaitEvents2KHR(VkCommandBuffer commandBuffer, uint eventCount, VkEvent[] events, VkDependencyInfoKHR[] dependencyInfos) => CommandWaitEvents2KHR_0(commandBuffer, eventCount, events, dependencyInfos);
 		public static unsafe void CommandPipelineBarrier2KHR(VkCommandBuffer commandBuffer, VkDependencyInfoKHR* dependencyInfo) => CommandPipelineBarrier2KHR_0(commandBuffer, dependencyInfo);
 		public static unsafe void CommandPipelineBarrier2KHR(VkCommandBuffer commandBuffer, ref VkDependencyInfoKHR dependencyInfo) => CommandPipelineBarrier2KHR_1(commandBuffer, ref dependencyInfo);
-		public static unsafe VkResult QueueSubmit2KHR(VkQueue queue, uint submitCount, VkSubmitInfo2KHR* submits, VkFence fence) => QueueSubmit2KHR_0(queue, submitCount, submits, fence);
-		public static unsafe VkResult QueueSubmit2KHR(VkQueue queue, uint submitCount, ref VkSubmitInfo2KHR submits, VkFence fence) => QueueSubmit2KHR_1(queue, submitCount, ref submits, fence);
+		public static unsafe VkResult QueueSubmit2KHR(VkQueue queue, uint submitCount, VkSubmitInfo2KHR[] submits, VkFence fence) => QueueSubmit2KHR_0(queue, submitCount, submits, fence);
 		public static unsafe void CommandWriteTimestamp2KHR(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkQueryPool queryPool, uint query) => CommandWriteTimestamp2KHR_0(commandBuffer, stage, queryPool, query);
 		public static unsafe void CommandWriteBufferMarker2AMD(VkCommandBuffer commandBuffer, VkPipelineStageFlags2KHR stage, VkBuffer destinationBuffer, VkDeviceSize destinationOffset, uint marker) => CommandWriteBufferMarker2AMD_0(commandBuffer, stage, destinationBuffer, destinationOffset, marker);
 		public static unsafe void GetQueueCheckpointData2NV(VkQueue queue, uint* checkpointDataCount, [In, Out] VkCheckpointData2NV[] checkpointData) => GetQueueCheckpointData2NV_0(queue, checkpointDataCount, checkpointData);

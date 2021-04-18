@@ -243,17 +243,6 @@ namespace NVK.Generator
                     parameterVariations.Add(new CommandParameterInfo(parameterInfo.Name, new TypeInfo("string", arrayDimensions: 1), ParameterModifier.None));
             }
 
-            // check if the parameter should be an array
-            // note how the variations get set, not added. this is because having a pointer in place of an array is not necessary
-            else if (parameterInfo.Name.EndsWith("Infos"))
-                parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, arrayDimensions: 1), ParameterModifier.None) };
-            else if (
-                (commandInfo.DisplayName.StartsWith("Enumerate")                                                                    // enumerate methods
-                    || (commandInfo.DisplayName.StartsWith("Get") && GetMethodsRequiringArray.Contains(commandInfo.DisplayName))    // certain get methods
-                    || (commandInfo.DisplayName.StartsWith("Allocate") && (commandInfo.DisplayName.EndsWith("s"))))                 // and certain allocate methods should all have a marshalled array
-                && commandInfo.Parameters.Last() == parameterInfo)                                                                  // on the last parameter
-                parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, arrayDimensions: 1), ParameterModifier.InOut) };
-
             // check if parameter can have 'out' version
             else if ((commandInfo.DisplayName.StartsWith("Allocate") || commandInfo.DisplayName.StartsWith("Create") || (commandInfo.DisplayName.StartsWith("Get") && !GetMethodsRequiringArray.Contains(commandInfo.DisplayName))) && commandInfo.Parameters.Last() == parameterInfo)
                 parameterVariations.Add(new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Out));
@@ -261,6 +250,30 @@ namespace NVK.Generator
             // otherwise create a 'ref' version
             else
                 parameterVariations.Add(new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Ref));
+
+            // check if the parameter should be an array
+            // note how the variations get set, not added. this is because having a pointer in place of an array is not necessary
+            if (parameterInfo.Name.EndsWith("Infos"))
+                parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, arrayDimensions: 1), ParameterModifier.None) };
+            else if (
+                (commandInfo.DisplayName.StartsWith("Enumerate")                                                                    // enumerate methods
+                    || (commandInfo.DisplayName.StartsWith("Get") && GetMethodsRequiringArray.Contains(commandInfo.DisplayName))    // certain get methods
+                    || (commandInfo.DisplayName.StartsWith("Allocate") && (commandInfo.DisplayName.EndsWith("s"))))                 // and certain allocate methods should all have a marshalled array
+                && commandInfo.Parameters.Last() == parameterInfo)                                                                  // on the last parameter
+                parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, arrayDimensions: 1), ParameterModifier.InOut) };
+            else if (parameterInfo.Name.EndsWith("s"))
+            {
+                // this will check parameter pairs for converting pointers to arrays, an example of a pair we are are looking for is: 'uint submitCount, VkSubmitInfo* submits', in this case 'submits' should be an array
+                var parameterIndex = commandInfo.Parameters.IndexOf(parameterInfo);
+                if (parameterIndex >= 1)
+                {
+                    // correct plural name differences to work with the check
+                    var fixedParameterName = parameterInfo.DisplayName.Replace("Copies", "Copys");
+                    var previousParameterName = commandInfo.Parameters[parameterIndex - 1].DisplayName;
+                    if (previousParameterName == fixedParameterName[..^1] + "Count")
+                        parameterVariations = new() { new CommandParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, arrayDimensions: 1), ParameterModifier.None) };
+                }
+            }
 
             return parameterVariations;
         }
