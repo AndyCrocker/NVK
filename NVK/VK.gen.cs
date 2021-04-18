@@ -1545,7 +1545,7 @@ namespace Vulkan
 		private unsafe delegate void CommandSetDepthTestEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable);
 		private unsafe delegate void CommandSetDepthWriteEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable);
 		private unsafe delegate void CommandSetDepthCompareOpEXTDelegate_0(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp);
-		private unsafe delegate void CommandSetDepthBounDestinationestEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 depthBounDestinationestEnable);
+		private unsafe delegate void CommandSetDepthBoundsTestEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable);
 		private unsafe delegate void CommandSetStencilTestEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable);
 		private unsafe delegate void CommandSetStencilOpEXTDelegate_0(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp);
 		private unsafe delegate VkResult CreatePrivateDataSlotEXTDelegate_0(VkDevice device, VkPrivateDataSlotCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlotEXT* privateDataSlot);
@@ -3053,8 +3053,8 @@ namespace Vulkan
 		private static CommandSetDepthWriteEnableEXTDelegate_0 CommandSetDepthWriteEnableEXT_0;
 		private static IntPtr CommandSetDepthCompareOpEXTPointer;
 		private static CommandSetDepthCompareOpEXTDelegate_0 CommandSetDepthCompareOpEXT_0;
-		private static IntPtr CommandSetDepthBounDestinationestEnableEXTPointer;
-		private static CommandSetDepthBounDestinationestEnableEXTDelegate_0 CommandSetDepthBounDestinationestEnableEXT_0;
+		private static IntPtr CommandSetDepthBoundsTestEnableEXTPointer;
+		private static CommandSetDepthBoundsTestEnableEXTDelegate_0 CommandSetDepthBoundsTestEnableEXT_0;
 		private static IntPtr CommandSetStencilTestEnableEXTPointer;
 		private static CommandSetStencilTestEnableEXTDelegate_0 CommandSetStencilTestEnableEXT_0;
 		private static IntPtr CommandSetStencilOpEXTPointer;
@@ -5714,10 +5714,10 @@ namespace Vulkan
 			{
 				CommandSetDepthCompareOpEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthCompareOpEXTDelegate_0>(CommandSetDepthCompareOpEXTPointer);
 			}
-			CommandSetDepthBounDestinationestEnableEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetDepthBoundsTestEnableEXT");
-			if (CommandSetDepthBounDestinationestEnableEXTPointer != IntPtr.Zero)
+			CommandSetDepthBoundsTestEnableEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetDepthBoundsTestEnableEXT");
+			if (CommandSetDepthBoundsTestEnableEXTPointer != IntPtr.Zero)
 			{
-				CommandSetDepthBounDestinationestEnableEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthBounDestinationestEnableEXTDelegate_0>(CommandSetDepthBounDestinationestEnableEXTPointer);
+				CommandSetDepthBoundsTestEnableEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthBoundsTestEnableEXTDelegate_0>(CommandSetDepthBoundsTestEnableEXTPointer);
 			}
 			CommandSetStencilTestEnableEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdSetStencilTestEnableEXT");
 			if (CommandSetStencilTestEnableEXTPointer != IntPtr.Zero)
@@ -7059,7 +7059,7 @@ namespace Vulkan
 		public static unsafe void CommandSetDepthTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable) => CommandSetDepthTestEnableEXT_0(commandBuffer, depthTestEnable);
 		public static unsafe void CommandSetDepthWriteEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable) => CommandSetDepthWriteEnableEXT_0(commandBuffer, depthWriteEnable);
 		public static unsafe void CommandSetDepthCompareOpEXT(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp) => CommandSetDepthCompareOpEXT_0(commandBuffer, depthCompareOp);
-		public static unsafe void CommandSetDepthBounDestinationestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBounDestinationestEnable) => CommandSetDepthBounDestinationestEnableEXT_0(commandBuffer, depthBounDestinationestEnable);
+		public static unsafe void CommandSetDepthBoundsTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable) => CommandSetDepthBoundsTestEnableEXT_0(commandBuffer, depthBoundsTestEnable);
 		public static unsafe void CommandSetStencilTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable) => CommandSetStencilTestEnableEXT_0(commandBuffer, stencilTestEnable);
 		public static unsafe void CommandSetStencilOpEXT(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp) => CommandSetStencilOpEXT_0(commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp);
 		public static unsafe VkResult CreatePrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, VkPrivateDataSlotEXT* privateDataSlot) => CreatePrivateDataSlotEXT_0(device, createInfo, allocator, privateDataSlot);

@@ -57,7 +57,11 @@ namespace NVK.Generator.Extensions
             };
 
             foreach (var abbreviation in abbreviations)
-                value = value.Replace(abbreviation.Abbreviated, abbreviation.Resolved, StringComparison.InvariantCultureIgnoreCase);
+            {
+                // completely ignoring case can't be done as it'll convert 'BlendState' to 'BlenDestinationate' among others
+                value = value.Replace(abbreviation.Abbreviated, abbreviation.Resolved);
+                value = value.Replace(abbreviation.Abbreviated.ToLower(), abbreviation.Resolved);
+            }
 
             return value;
         }

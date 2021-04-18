@@ -700,7 +700,7 @@ namespace Vulkan
 		public VkBool32 DepthTestEnable;
 		public VkBool32 DepthWriteEnable;
 		public VkCompareOp DepthCompareOp;
-		public VkBool32 DepthBounDestinationestEnable;
+		public VkBool32 DepthBoundsTestEnable;
 		public VkBool32 StencilTestEnable;
 		public VkStencilOpState Front;
 		public VkStencilOpState Back;
@@ -721,7 +721,7 @@ namespace Vulkan
 		public VkPipelineRasterizationStateCreateInfo* RasterizationState;
 		public VkPipelineMultisampleStateCreateInfo* MultisampleState;
 		public VkPipelineDepthStencilStateCreateInfo* DepthStencilState;
-		public VkPipelineColorBlendStateCreateInfo* ColorBlenDestinationate;
+		public VkPipelineColorBlendStateCreateInfo* ColorBlendState;
 		public VkPipelineDynamicStateCreateInfo* DynamicState;
 		public VkPipelineLayout Layout;
 		public VkRenderPass RenderPass;
@@ -1432,9 +1432,9 @@ namespace Vulkan
 		public void* Next;
 		public uint MaxGraphicsShaderGroupCount;
 		public uint MaxIndirectSequenceCount;
-		public uint MaxIndirectCommanDestinationokenCount;
+		public uint MaxIndirectCommandsTokenCount;
 		public uint MaxIndirectCommandsStreamCount;
-		public uint MaxIndirectCommanDestinationokenOffset;
+		public uint MaxIndirectCommandsTokenOffset;
 		public uint MaxIndirectCommandsStreamStride;
 		public uint MinSequencesCountBufferOffsetAlignment;
 		public uint MinSequencesIndexBufferOffsetAlignment;
@@ -2332,7 +2332,7 @@ namespace Vulkan
 		public VkStructureType SType;
 		public void* Next;
 		public VkBool32 StorageBuffer16BitAccess;
-		public VkBool32 UniformAnDestinationorageBuffer16BitAccess;
+		public VkBool32 UniformAndStorageBuffer16BitAccess;
 		public VkBool32 StoragePushConstant16;
 		public VkBool32 StorageInputOutput16;
 	}
@@ -2341,7 +2341,7 @@ namespace Vulkan
 		public VkStructureType SType;
 		public void* Next;
 		public uint SubgroupSize;
-		public VkShaderStageFlags SupporteDestinationages;
+		public VkShaderStageFlags SupportedStages;
 		public VkSubgroupFeatureFlags SupportedOperations;
 		public VkBool32 QuadOperationsInAllStages;
 	}
@@ -2952,18 +2952,18 @@ namespace Vulkan
 		public VkBool32 QuadDivergentImplicitLod;
 		public uint MaxPerStageDescriptorUpdateAfterBindSamplers;
 		public uint MaxPerStageDescriptorUpdateAfterBindUniformBuffers;
-		public uint MaxPerStageDescriptorUpdateAfterBinDestinationorageBuffers;
+		public uint MaxPerStageDescriptorUpdateAfterBindStorageBuffers;
 		public uint MaxPerStageDescriptorUpdateAfterBindSampledImages;
-		public uint MaxPerStageDescriptorUpdateAfterBinDestinationorageImages;
+		public uint MaxPerStageDescriptorUpdateAfterBindStorageImages;
 		public uint MaxPerStageDescriptorUpdateAfterBindInputAttachments;
 		public uint MaxPerStageUpdateAfterBindResources;
 		public uint MaxDescriptorSetUpdateAfterBindSamplers;
 		public uint MaxDescriptorSetUpdateAfterBindUniformBuffers;
 		public uint MaxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
-		public uint MaxDescriptorSetUpdateAfterBinDestinationorageBuffers;
-		public uint MaxDescriptorSetUpdateAfterBinDestinationorageBuffersDynamic;
+		public uint MaxDescriptorSetUpdateAfterBindStorageBuffers;
+		public uint MaxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
 		public uint MaxDescriptorSetUpdateAfterBindSampledImages;
-		public uint MaxDescriptorSetUpdateAfterBinDestinationorageImages;
+		public uint MaxDescriptorSetUpdateAfterBindStorageImages;
 		public uint MaxDescriptorSetUpdateAfterBindInputAttachments;
 	}
 	public unsafe struct VkDescriptorSetLayoutBindingFlagsCreateInfo
@@ -3188,7 +3188,7 @@ namespace Vulkan
 		public VkStructureType SType;
 		public void* Next;
 		public VkBool32 StorageBuffer8BitAccess;
-		public VkBool32 UniformAnDestinationorageBuffer8BitAccess;
+		public VkBool32 UniformAndStorageBuffer8BitAccess;
 		public VkBool32 StoragePushConstant8;
 	}
 	public unsafe struct VkPhysicalDeviceConditionalRenderingFeaturesEXT
@@ -3255,7 +3255,7 @@ namespace Vulkan
 		public VkStructureType SType;
 		public void* Next;
 		public VkResolveModeFlags SupportedDepthResolveModes;
-		public VkResolveModeFlags SupporteDestinationencilResolveModes;
+		public VkResolveModeFlags SupportedStencilResolveModes;
 		public VkBool32 IndependentResolveNone;
 		public VkBool32 IndependentResolve;
 	}
@@ -3926,7 +3926,7 @@ namespace Vulkan
 	{
 		public VkStructureType SType;
 		public void* Next;
-		public VkShaderStageFlags CooperativeMatrixSupporteDestinationages;
+		public VkShaderStageFlags CooperativeMatrixSupportedStages;
 	}
 	public unsafe struct VkCooperativeMatrixPropertiesNV
 	{
@@ -4356,7 +4356,7 @@ namespace Vulkan
 		public VkStructureType SType;
 		public void* Next;
 		public VkBool32 StorageBuffer16BitAccess;
-		public VkBool32 UniformAnDestinationorageBuffer16BitAccess;
+		public VkBool32 UniformAndStorageBuffer16BitAccess;
 		public VkBool32 StoragePushConstant16;
 		public VkBool32 StorageInputOutput16;
 		public VkBool32 Multiview;
@@ -4378,7 +4378,7 @@ namespace Vulkan
 		public uint DeviceNodeMask;
 		public VkBool32 DeviceLUIDValid;
 		public uint SubgroupSize;
-		public VkShaderStageFlags SubgroupSupporteDestinationages;
+		public VkShaderStageFlags SubgroupSupportedStages;
 		public VkSubgroupFeatureFlags SubgroupSupportedOperations;
 		public VkBool32 SubgroupQuadOperationsInAllStages;
 		public VkPointClippingBehavior PointClippingBehavior;
@@ -4395,7 +4395,7 @@ namespace Vulkan
 		public VkBool32 SamplerMirrorClampToEdge;
 		public VkBool32 DrawIndirectCount;
 		public VkBool32 StorageBuffer8BitAccess;
-		public VkBool32 UniformAnDestinationorageBuffer8BitAccess;
+		public VkBool32 UniformAndStorageBuffer8BitAccess;
 		public VkBool32 StoragePushConstant8;
 		public VkBool32 ShaderBufferInt64Atomics;
 		public VkBool32 ShaderSharedInt64Atomics;
@@ -4475,21 +4475,21 @@ namespace Vulkan
 		public VkBool32 QuadDivergentImplicitLod;
 		public uint MaxPerStageDescriptorUpdateAfterBindSamplers;
 		public uint MaxPerStageDescriptorUpdateAfterBindUniformBuffers;
-		public uint MaxPerStageDescriptorUpdateAfterBinDestinationorageBuffers;
+		public uint MaxPerStageDescriptorUpdateAfterBindStorageBuffers;
 		public uint MaxPerStageDescriptorUpdateAfterBindSampledImages;
-		public uint MaxPerStageDescriptorUpdateAfterBinDestinationorageImages;
+		public uint MaxPerStageDescriptorUpdateAfterBindStorageImages;
 		public uint MaxPerStageDescriptorUpdateAfterBindInputAttachments;
 		public uint MaxPerStageUpdateAfterBindResources;
 		public uint MaxDescriptorSetUpdateAfterBindSamplers;
 		public uint MaxDescriptorSetUpdateAfterBindUniformBuffers;
 		public uint MaxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
-		public uint MaxDescriptorSetUpdateAfterBinDestinationorageBuffers;
-		public uint MaxDescriptorSetUpdateAfterBinDestinationorageBuffersDynamic;
+		public uint MaxDescriptorSetUpdateAfterBindStorageBuffers;
+		public uint MaxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
 		public uint MaxDescriptorSetUpdateAfterBindSampledImages;
-		public uint MaxDescriptorSetUpdateAfterBinDestinationorageImages;
+		public uint MaxDescriptorSetUpdateAfterBindStorageImages;
 		public uint MaxDescriptorSetUpdateAfterBindInputAttachments;
 		public VkResolveModeFlags SupportedDepthResolveModes;
-		public VkResolveModeFlags SupporteDestinationencilResolveModes;
+		public VkResolveModeFlags SupportedStencilResolveModes;
 		public VkBool32 IndependentResolveNone;
 		public VkBool32 IndependentResolve;
 		public VkBool32 FilterMinmaxSingleComponentFormats;
