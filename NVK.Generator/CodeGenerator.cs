@@ -353,12 +353,30 @@ namespace NVK.Generator
             csWriter.WriteLine($"public unsafe struct {structureInfo.DisplayName}");
             csWriter.WriteScope(() =>
             {
+                // fields
                 foreach (var fieldInfo in structureInfo.Fields)
                 {
                     if (structureInfo.IsUnion)
                         csWriter.WriteLine("[FieldOffset(0)]");
                     WriteField(csWriter, fieldInfo, constantInfos);
                 }
+
+                // properties
+                if (structureInfo.DisplayName.StartsWith("VkOffset") || structureInfo.DisplayName.StartsWith("VkExtent"))
+                    csWriter.WriteLine($"public static {structureInfo.DisplayName} Zero => new();");
+                else if (structureInfo.DisplayName == "VkComponentMapping")
+                    csWriter.WriteLine("public static VkComponentMapping Identitiy => new(VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity);");
+                else
+                    return; // only the above three structures should have constructors
+
+                // constructor
+                var parametersString = string.Join(", ", structureInfo.Fields.Select(fieldInfo => $"{fieldInfo.Type} {fieldInfo.DisplayName.FirstToLower()}"));
+                csWriter.WriteLine($"public {structureInfo.DisplayName}({parametersString})");
+                csWriter.WriteScope(() =>
+                {
+                    foreach (var fieldInfo in structureInfo.Fields)
+                        csWriter.WriteLine($"{fieldInfo.DisplayName} = {fieldInfo.DisplayName.FirstToLower()};");
+                });
             });
         }
 

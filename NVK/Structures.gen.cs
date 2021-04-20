@@ -19,23 +19,49 @@ namespace Vulkan
 	{
 		public int X;
 		public int Y;
+		public static VkOffset2D Zero => new();
+		public VkOffset2D(int x, int y)
+		{
+			X = x;
+			Y = y;
+		}
 	}
 	public unsafe struct VkOffset3D
 	{
 		public int X;
 		public int Y;
 		public int Z;
+		public static VkOffset3D Zero => new();
+		public VkOffset3D(int x, int y, int z)
+		{
+			X = x;
+			Y = y;
+			Z = z;
+		}
 	}
 	public unsafe struct VkExtent2D
 	{
 		public uint Width;
 		public uint Height;
+		public static VkExtent2D Zero => new();
+		public VkExtent2D(uint width, uint height)
+		{
+			Width = width;
+			Height = height;
+		}
 	}
 	public unsafe struct VkExtent3D
 	{
 		public uint Width;
 		public uint Height;
 		public uint Depth;
+		public static VkExtent3D Zero => new();
+		public VkExtent3D(uint width, uint height, uint depth)
+		{
+			Width = width;
+			Height = height;
+			Depth = depth;
+		}
 	}
 	public unsafe struct VkViewport
 	{
@@ -63,6 +89,14 @@ namespace Vulkan
 		public VkComponentSwizzle G;
 		public VkComponentSwizzle B;
 		public VkComponentSwizzle A;
+		public static VkComponentMapping Identitiy => new(VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity);
+		public VkComponentMapping(VkComponentSwizzle r, VkComponentSwizzle g, VkComponentSwizzle b, VkComponentSwizzle a)
+		{
+			R = r;
+			G = g;
+			B = b;
+			A = a;
+		}
 	}
 	public unsafe struct VkPhysicalDeviceProperties
 	{
