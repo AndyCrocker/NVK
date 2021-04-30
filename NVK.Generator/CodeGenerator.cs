@@ -361,22 +361,54 @@ namespace NVK.Generator
                     WriteField(csWriter, fieldInfo, constantInfos);
                 }
 
+                var structuresWithConstructors = new[] { "VkOffset2D", "VkOffset3D", "VkExtent2D", "VkExtent3D", "VkRect2D", "VkComponentMapping", "VkImageSubresource", "VkImageSubresourceLayers", "VkImageSubresourceRange", "VkClearDepthStencilValue", "VkClearColorValue" };
+
                 // properties
                 if (structureInfo.DisplayName.StartsWith("VkOffset") || structureInfo.DisplayName.StartsWith("VkExtent"))
                     csWriter.WriteLine($"public static {structureInfo.DisplayName} Zero => new();");
                 else if (structureInfo.DisplayName == "VkComponentMapping")
-                    csWriter.WriteLine("public static VkComponentMapping Identitiy => new(VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity);");
-                else
-                    return; // only the above three structures should have constructors
+                    csWriter.WriteLine("public static VkComponentMapping Identity => new(VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity);");
 
-                // constructor
-                var parametersString = string.Join(", ", structureInfo.Fields.Select(fieldInfo => $"{fieldInfo.Type} {fieldInfo.DisplayName.FirstToLower()}"));
-                csWriter.WriteLine($"public {structureInfo.DisplayName}({parametersString})");
-                csWriter.WriteScope(() =>
+                // constructors
+                if (structuresWithConstructors.Contains(structureInfo.DisplayName))
                 {
-                    foreach (var fieldInfo in structureInfo.Fields)
-                        csWriter.WriteLine($"{fieldInfo.DisplayName} = {fieldInfo.DisplayName.FirstToLower()};");
-                });
+                    // special constructors
+                    if (structureInfo.DisplayName == "VkClearColorValue")
+                    {
+                        var parameterTypes = new[] { "float", "int", "uint" };
+                        foreach (var parameterType in parameterTypes)
+                        {
+                            csWriter.WriteLine($"public VkClearColorValue({parameterType} r, {parameterType} g, {parameterType} b, {parameterType} a)");
+                            csWriter.WriteScope(() =>
+                            {
+                                var fieldName = parameterType.FirstToUpper() + "32";
+                                csWriter.WriteLine($"{fieldName}[0] = r;");
+                                csWriter.WriteLine($"{fieldName}[1] = g;");
+                                csWriter.WriteLine($"{fieldName}[2] = b;");
+                                csWriter.WriteLine($"{fieldName}[3] = a;");
+                            });
+                        }
+                    }
+
+                    // auto generated constructor
+                    else
+                    {
+                        var parametersString = string.Join(", ", structureInfo.Fields.Select(fieldInfo => $"{fieldInfo.Type} {fieldInfo.DisplayName.FirstToLower()}"));
+                        csWriter.WriteLine($"public {structureInfo.DisplayName}({parametersString})");
+                        csWriter.WriteScope(() =>
+                        {
+                            foreach (var fieldInfo in structureInfo.Fields)
+                                csWriter.WriteLine($"{fieldInfo.DisplayName} = {fieldInfo.DisplayName.FirstToLower()};");
+                        });
+                    }
+                }
+
+                // operators
+                if (structureInfo.DisplayName == "VkClearValue")
+                {
+                    csWriter.WriteLine("public static implicit operator VkClearValue(VkClearColorValue colour) => new() { Color = colour };");
+                    csWriter.WriteLine("public static implicit operator VkClearValue(VkClearDepthStencilValue depthStencil) => new() { DepthStencil = depthStencil };");
+                }
             });
         }
 

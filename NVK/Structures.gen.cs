@@ -76,6 +76,11 @@ namespace Vulkan
 	{
 		public VkOffset2D Offset;
 		public VkExtent2D Extent;
+		public VkRect2D(VkOffset2D offset, VkExtent2D extent)
+		{
+			Offset = offset;
+			Extent = extent;
+		}
 	}
 	public unsafe struct VkClearRect
 	{
@@ -89,7 +94,7 @@ namespace Vulkan
 		public VkComponentSwizzle G;
 		public VkComponentSwizzle B;
 		public VkComponentSwizzle A;
-		public static VkComponentMapping Identitiy => new(VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity);
+		public static VkComponentMapping Identity => new(VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity);
 		public VkComponentMapping(VkComponentSwizzle r, VkComponentSwizzle g, VkComponentSwizzle b, VkComponentSwizzle a)
 		{
 			R = r;
@@ -356,6 +361,12 @@ namespace Vulkan
 		public VkImageAspectFlags AspectMask;
 		public uint MipLevel;
 		public uint ArrayLayer;
+		public VkImageSubresource(VkImageAspectFlags aspectMask, uint mipLevel, uint arrayLayer)
+		{
+			AspectMask = aspectMask;
+			MipLevel = mipLevel;
+			ArrayLayer = arrayLayer;
+		}
 	}
 	public unsafe struct VkImageSubresourceLayers
 	{
@@ -363,6 +374,13 @@ namespace Vulkan
 		public uint MipLevel;
 		public uint BaseArrayLayer;
 		public uint LayerCount;
+		public VkImageSubresourceLayers(VkImageAspectFlags aspectMask, uint mipLevel, uint baseArrayLayer, uint layerCount)
+		{
+			AspectMask = aspectMask;
+			MipLevel = mipLevel;
+			BaseArrayLayer = baseArrayLayer;
+			LayerCount = layerCount;
+		}
 	}
 	public unsafe struct VkImageSubresourceRange
 	{
@@ -371,6 +389,14 @@ namespace Vulkan
 		public uint LevelCount;
 		public uint BaseArrayLayer;
 		public uint LayerCount;
+		public VkImageSubresourceRange(VkImageAspectFlags aspectMask, uint baseMipLevel, uint levelCount, uint baseArrayLayer, uint layerCount)
+		{
+			AspectMask = aspectMask;
+			BaseMipLevel = baseMipLevel;
+			LevelCount = levelCount;
+			BaseArrayLayer = baseArrayLayer;
+			LayerCount = layerCount;
+		}
 	}
 	public unsafe struct VkMemoryBarrier
 	{
@@ -860,11 +886,37 @@ namespace Vulkan
 		public fixed int Int32[4];
 		[FieldOffset(0)]
 		public fixed uint Uint32[4];
+		public VkClearColorValue(float r, float g, float b, float a)
+		{
+			Float32[0] = r;
+			Float32[1] = g;
+			Float32[2] = b;
+			Float32[3] = a;
+		}
+		public VkClearColorValue(int r, int g, int b, int a)
+		{
+			Int32[0] = r;
+			Int32[1] = g;
+			Int32[2] = b;
+			Int32[3] = a;
+		}
+		public VkClearColorValue(uint r, uint g, uint b, uint a)
+		{
+			Uint32[0] = r;
+			Uint32[1] = g;
+			Uint32[2] = b;
+			Uint32[3] = a;
+		}
 	}
 	public unsafe struct VkClearDepthStencilValue
 	{
 		public float Depth;
 		public uint Stencil;
+		public VkClearDepthStencilValue(float depth, uint stencil)
+		{
+			Depth = depth;
+			Stencil = stencil;
+		}
 	}
 	[StructLayout(LayoutKind.Explicit)]
 	public unsafe struct VkClearValue
@@ -873,6 +925,8 @@ namespace Vulkan
 		public VkClearColorValue Color;
 		[FieldOffset(0)]
 		public VkClearDepthStencilValue DepthStencil;
+		public static implicit operator VkClearValue(VkClearColorValue colour) => new() { Color = colour };
+		public static implicit operator VkClearValue(VkClearDepthStencilValue depthStencil) => new() { DepthStencil = depthStencil };
 	}
 	public unsafe struct VkClearAttachment
 	{
