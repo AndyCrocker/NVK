@@ -634,6 +634,24 @@ namespace Vulkan
 		public static bool operator ==(ulong left, VkDeferredOperationKHR right) => left == right.Handle;
 		public static bool operator !=(ulong left, VkDeferredOperationKHR right) => left != right.Handle;
 	}
+	public struct VkPrivateDataSlot
+	{
+		public readonly ulong Handle;
+		public bool IsNull => Handle == 0;
+		public static VkPrivateDataSlot Null => new(0);
+		public VkPrivateDataSlot(ulong handle)
+		{
+			Handle = handle;
+		}
+		public override bool Equals(object obj) => obj is VkPrivateDataSlot handle && this == handle;
+		public override int GetHashCode() => Handle.GetHashCode();
+		public static bool operator ==(VkPrivateDataSlot left, VkPrivateDataSlot right) => left.Handle == right.Handle;
+		public static bool operator !=(VkPrivateDataSlot left, VkPrivateDataSlot right) => left.Handle != right.Handle;
+		public static bool operator ==(VkPrivateDataSlot left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkPrivateDataSlot left, ulong right) => left.Handle != right;
+		public static bool operator ==(ulong left, VkPrivateDataSlot right) => left == right.Handle;
+		public static bool operator !=(ulong left, VkPrivateDataSlot right) => left != right.Handle;
+	}
 	public struct VkPrivateDataSlotEXT
 	{
 		public readonly ulong Handle;
@@ -651,6 +669,42 @@ namespace Vulkan
 		public static bool operator !=(VkPrivateDataSlotEXT left, ulong right) => left.Handle != right;
 		public static bool operator ==(ulong left, VkPrivateDataSlotEXT right) => left == right.Handle;
 		public static bool operator !=(ulong left, VkPrivateDataSlotEXT right) => left != right.Handle;
+	}
+	public struct VkCuModuleNVX
+	{
+		public readonly ulong Handle;
+		public bool IsNull => Handle == 0;
+		public static VkCuModuleNVX Null => new(0);
+		public VkCuModuleNVX(ulong handle)
+		{
+			Handle = handle;
+		}
+		public override bool Equals(object obj) => obj is VkCuModuleNVX handle && this == handle;
+		public override int GetHashCode() => Handle.GetHashCode();
+		public static bool operator ==(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle == right.Handle;
+		public static bool operator !=(VkCuModuleNVX left, VkCuModuleNVX right) => left.Handle != right.Handle;
+		public static bool operator ==(VkCuModuleNVX left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkCuModuleNVX left, ulong right) => left.Handle != right;
+		public static bool operator ==(ulong left, VkCuModuleNVX right) => left == right.Handle;
+		public static bool operator !=(ulong left, VkCuModuleNVX right) => left != right.Handle;
+	}
+	public struct VkCuFunctionNVX
+	{
+		public readonly ulong Handle;
+		public bool IsNull => Handle == 0;
+		public static VkCuFunctionNVX Null => new(0);
+		public VkCuFunctionNVX(ulong handle)
+		{
+			Handle = handle;
+		}
+		public override bool Equals(object obj) => obj is VkCuFunctionNVX handle && this == handle;
+		public override int GetHashCode() => Handle.GetHashCode();
+		public static bool operator ==(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle == right.Handle;
+		public static bool operator !=(VkCuFunctionNVX left, VkCuFunctionNVX right) => left.Handle != right.Handle;
+		public static bool operator ==(VkCuFunctionNVX left, ulong right) => left.Handle == right;
+		public static bool operator !=(VkCuFunctionNVX left, ulong right) => left.Handle != right;
+		public static bool operator ==(ulong left, VkCuFunctionNVX right) => left == right.Handle;
+		public static bool operator !=(ulong left, VkCuFunctionNVX right) => left != right.Handle;
 	}
 	public struct VkDisplayKHR
 	{
