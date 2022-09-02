@@ -36,7 +36,7 @@ public class StructureInfo
     /// <param name="typeConverter">The type converter to use when creating the instance.</param>
     public StructureInfo(XElement element, TypeConverter typeConverter)
     {
-        Name = element.Attribute("name")?.Value ?? throw new ArgumentException("Doesn't contain a 'name' attribute.", nameof(element));
+        Name = element.Attribute("name")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'name' attribute.", nameof(element));
         Fields = element.Elements("member")
             .Select(fieldElement => new FieldInfo(fieldElement, typeConverter))
             .ToList();

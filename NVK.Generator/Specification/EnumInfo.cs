@@ -34,8 +34,8 @@ public class EnumInfo
     /// <param name="typeConverter">The type converter to use when creating the instance.</param>
     public EnumInfo(XElement element, TypeConverter typeConverter)
     {
-        Name = typeConverter.GetConvertedType(element.Attribute("name")?.Value ?? throw new ArgumentException("Doesn't contain a 'name' attribute.", nameof(element)));
-        Type = (EnumType)Enum.Parse(typeof(EnumType), element.Attribute("type")?.Value ?? throw new ArgumentException("Doesn't contain a 'type' attribute.", nameof(element)), true);
+        Name = typeConverter.GetConvertedType(element.Attribute("name")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'name' attribute.", nameof(element)));
+        Type = (EnumType)Enum.Parse(typeof(EnumType), element.Attribute("type")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'type' attribute.", nameof(element)), true);
         BitWidth = int.Parse(element.Attribute("bitwidth")?.Value ?? "32");
 
         foreach (var enumValueElement in element.Elements("enum"))

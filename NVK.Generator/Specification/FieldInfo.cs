@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NVK.Generator.Extensions;
+using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -33,10 +34,11 @@ public class FieldInfo
     /// <param name="typeConverter">The type converter to use when creating the instance.</param>
     public FieldInfo(XElement element, TypeConverter typeConverter)
     {
-        Name = element.Element("name")?.Value ?? throw new ArgumentException("Doesn't contain a 'name' element.", nameof(element));
+        Name = element.Element("name")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'name' element.", nameof(element));
 
+        var typeName = typeConverter.GetConvertedType(element.Element("type")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'type' element.", nameof(element)));
         var pointerIndirection = element.Value.Count(character => character == '*');
-        Type = new TypeInfo(typeConverter.GetConvertedType(element.Element("type")?.Value ?? throw new ArgumentException("Doesn't contain a 'type' element.", nameof(element))), pointerIndirection);
+        Type = new TypeInfo(typeName, pointerIndirection);
 
         // remove the comment element as it can sometimes contains "[]" which falsely implies an array
         element.Element("comment")?.Remove();

@@ -58,7 +58,7 @@ public class EnumFieldInfo
     public EnumFieldInfo(string enumName, XElement element)
     {
         EnumName = enumName;
-        Name = element.Attribute("name")?.Value ?? throw new ArgumentException("Doesn't contain a 'name' attribute.", nameof(element));
+        Name = element.Attribute("name")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'name' attribute.", nameof(element));
         Value = element.Attribute("value")?.Value;
         if (int.TryParse(element.Attribute("bitpos")?.Value, out var parsedBitPosition))
             BitPosition = parsedBitPosition;

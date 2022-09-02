@@ -33,12 +33,12 @@ public class HandleInfo
         Alias = element.Attribute("alias")?.Value;
         if (Alias != null)
         {
-            Name = element.Attribute("name")?.Value ?? throw new ArgumentException("Is an alias but doesn't contain a 'name' attribute.", nameof(element));
+            Name = element.Attribute("name")?.Value ?? throw new ArgumentException($"Element: {element} is an alias but doesn't contain a 'name' attribute.", nameof(element));
             return;
         }
 
         // it's not a alias, create it like normal
-        Name = element.Element("name")?.Value ?? throw new ArgumentException("Doesn't contain a 'name' element.", nameof(element));
+        Name = element.Element("name")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'name' element.", nameof(element));
         Dispatchable = element.Element("type")?.Value == "VK_DEFINE_HANDLE";
     }
 }

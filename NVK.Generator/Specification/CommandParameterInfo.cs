@@ -47,9 +47,9 @@ public class CommandParameterInfo
     /// <param name="typeConverter">The type converter to use when creating the instance.</param>
     public CommandParameterInfo(XElement element, TypeConverter typeConverter)
     {
-        Name = element.Element("name")?.Value ?? throw new ArgumentException("Doesn't contain a 'name' element.", nameof(element));
+        Name = element.Element("name")?.Value ?? throw new ArgumentException($"Element: {element } doesn't contain a 'name' element.", nameof(element));
 
-        var typeName = element.Element("type")?.Value ?? throw new ArgumentException("Doesn't contain a 'type' element.", nameof(element));
+        var typeName = element.Element("type")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'type' element.", nameof(element));
         var pointerIndirection = element.Value.Count(character => character == '*');
         Type = new TypeInfo(typeConverter.GetConvertedType(typeName), pointerIndirection);
     }

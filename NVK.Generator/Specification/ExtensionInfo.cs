@@ -40,19 +40,19 @@ public class ExtensionInfo
     /// <param name="typeConverter">The type converter to use when creating the instance.</param>
     public ExtensionInfo(XElement element, TypeConverter typeConverter)
     {
-        Name = element.Attribute("name")?.Value ?? throw new ArgumentException("Doesn't contain a 'name' attribute.", nameof(element));
+        Name = element.Attribute("name")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'name' attribute.", nameof(element));
         Platform = element.Attribute("platform")?.Value;
-        Supported = element.Attribute("supported")?.Value ?? throw new ArgumentException("Doesn't contain a 'supported' attribute.", nameof(element));
+        Supported = element.Attribute("supported")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'supported' attribute.", nameof(element));
         
         foreach (var requireElement in element.Elements("require"))
         {
             // add types
             foreach (var typeElement in requireElement.Elements("type"))
-                TypeNames.Add(typeConverter.GetConvertedType(typeElement.Attribute("name")?.Value ?? throw new ArgumentException("Child 'type' element doesn't contain a 'name' attribute.")));
+                TypeNames.Add(typeConverter.GetConvertedType(typeElement.Attribute("name")?.Value ?? throw new ArgumentException($"Child type element: {requireElement} doesn't contain a 'name' attribute.")));
 
             // add commands
             foreach (var commandElement in requireElement.Elements("command"))
-                CommandNames.Add(commandElement.Attribute("name")?.Value ?? throw new ArgumentException("Child 'command' element doesn't contain a 'name' attribute."));
+                CommandNames.Add(commandElement.Attribute("name")?.Value ?? throw new ArgumentException($"Child command element: {requireElement} doesn't contain a 'name' attribute."));
 
             // add constants and enum extensions
             foreach (var enumElement in requireElement.Elements("enum"))
@@ -64,7 +64,7 @@ public class ExtensionInfo
                 // otherwise, it's an enum extension
                 else
                 {
-                    var number = int.Parse(element.Attribute("number")?.Value ?? throw new ArgumentException("Doesn't contain a 'number' attribute.", nameof(element)));
+                    var number = int.Parse(element.Attribute("number")?.Value ?? throw new ArgumentException($"Child enum element: {enumElement} doesn't contain a 'number' attribute.", nameof(element)));
                     EnumExtensions.Add(new ExtensionEnumFieldInfo(number, enumElement, typeConverter));
                 }
             }
