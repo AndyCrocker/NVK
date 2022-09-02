@@ -51,7 +51,7 @@ public static class CodeGenerator
 
         csWriter.WriteLine($"namespace Vulkan;");
 
-        csWriter.WriteLine($"public static class VK");
+        csWriter.WriteLine($"public static unsafe class VK");
         csWriter.WriteScope(() =>
         {
             // create constants
@@ -65,7 +65,7 @@ public static class CodeGenerator
                 for (int i = 0; i < overloads.Count; i++)
                 {
                     var overload = overloads[i];
-                    csWriter.WriteLine($"private unsafe delegate {overload.ReturnType} {overload.DelegateDisplayName}_{i}({string.Join(", ", overload.Parameters.Select(parameterInfo => parameterInfo.ToString()))});");
+                    csWriter.WriteLine($"private delegate {overload.ReturnType} {overload.DelegateDisplayName}_{i}({string.Join(", ", overload.Parameters.Select(parameterInfo => parameterInfo.ToString()))});");
                 }
             }
 
@@ -133,13 +133,13 @@ public static class CodeGenerator
                         var aliasedParameterNames = string.Join(", ", overload.Parameters.Select(parameterInfo => $"{parameterInfo.Modifier.GetAttribute<UnderlyingTypeAttribute>()?.UnderlyingType}{parameterInfo.DisplayName}"));
 
                         var aliasedCommand = commandInfos.Single(cInfo => cInfo.Name == overload.Alias);
-                        csWriter.WriteLine($"public static unsafe {aliasedCommand.ReturnType} {overload.DisplayName}({parametersString}) => {overload.AliasDisplayName}({aliasedParameterNames});");
+                        csWriter.WriteLine($"public static {aliasedCommand.ReturnType} {overload.DisplayName}({parametersString}) => {overload.AliasDisplayName}({aliasedParameterNames});");
                         continue;
                     }
 
                     // create method
                     var parameterNames = string.Join(", ", overload.Parameters.Select(parameterInfo => $"{parameterInfo.Modifier.GetAttribute<UnderlyingTypeAttribute>()?.UnderlyingType}{parameterInfo.DisplayName}"));
-                    csWriter.WriteLine($"public static unsafe {overload.ReturnType} {overload.DisplayName}({parametersString}) => {overload.DisplayName}_{i}({parameterNames});");
+                    csWriter.WriteLine($"public static {overload.ReturnType} {overload.DisplayName}({parametersString}) => {overload.DisplayName}_{i}({parameterNames});");
                 }
             }
 
