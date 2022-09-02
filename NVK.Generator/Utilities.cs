@@ -31,7 +31,7 @@ public static class Utilities
     /// <summary>Prettifies a constant value.</summary>
     /// <param name="constantValue">The constant value to prettify.</param>
     /// <returns>A pretty version of <paramref name="constantValue"/>.</returns>
-    public static string PrettifyConsantValue(string constantValue) => constantValue.Trim('(', ')').Replace("LL", "L").Replace(".0f", "f");
+    public static string PrettifyConsantValue(string constantValue) => constantValue.Trim('(', ')').Replace("LL", "L").Replace(".0f", "f").Replace(".0F", "f");
 
     /// <summary>Prettifies a delegate name.</summary>
     /// <param name="delegateName">The delegate name to prettify.</param>

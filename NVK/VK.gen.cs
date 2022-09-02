@@ -14,7 +14,7 @@ public static unsafe class VK
 	public const uint MaxDescriptionSize = 256;
 	public const uint MaxMemoryTypes = 32;
 	public const uint MaxMemoryHeaps = 16;
-	public const float LodClampNone = 1000.0F;
+	public const float LodClampNone = 1000f;
 	public const uint RemainingMipLevels = ~0U;
 	public const uint RemainingArrayLayers = ~0U;
 	public const ulong WholeSize = ~0UL;
