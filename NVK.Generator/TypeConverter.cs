@@ -21,6 +21,7 @@ namespace NVK.Generator
             { "int32_t", "int" },
             { "int64_t", "long" },
             { "size_t", "nuint" },
+
             { "DWORD", "uint" },
             { "HINSTANCE", "IntPtr" },
             { "HWND", "IntPtr" },
@@ -39,8 +40,12 @@ namespace NVK.Generator
             { "ANativeWindow", "IntPtr" },
             { "AHardwareBuffer", "IntPtr" },
 
+            // edge case typedefs that aren't defined the same way as the others in the xml file
+            { "IOSurfaceRef", "IntPtr" },
+
             // aliased structures, they're used so rarely that it's just easier to manually specify them here
-            { "VkMemoryRequirements2KHR", "VkMemoryRequirements2" }
+            { "VkMemoryRequirements2KHR", "VkMemoryRequirements2" },
+            { "VkPipelineInfoEXT", "VkPipelineInfoKHR" }
         };
 
 

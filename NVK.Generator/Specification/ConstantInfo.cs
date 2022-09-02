@@ -82,7 +82,7 @@ namespace NVK.Generator.Specification
         /// <returns>The type of the value.</returns>
         private ConstantType DetermineType(string value)
         {
-            if (value.EndsWith("f"))
+            if (value.ToLower().EndsWith("f"))
                 return ConstantType.Single;
             else if (value.EndsWith("ULL)"))
                 return ConstantType.ULong;

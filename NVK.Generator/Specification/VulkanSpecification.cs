@@ -44,6 +44,7 @@ namespace NVK.Generator.Specification
             // typedefs
             var typedefs = types.Elements("type")
                 .Where(element => element.Value.StartsWith("typedef") && (element.HasAttributeWithValue("category", "bitmask") || element.HasAttributeWithValue("category", "basetype")))
+                .Where(element => !element.Value.StartsWith("typedef struct")) // an annoying edge case that's so rare it's easier to just handle manually through the TypeConverter
                 .Select(typedefElement => new TypedefInfo(typedefElement))
                 .ToList();
             // remove typedefs that have a C# type manually created for them
@@ -185,6 +186,19 @@ namespace NVK.Generator.Specification
                     var command = Commands.Single(commandInfo => commandInfo.Name == commandName);
                     command.Extension = extension.Name;
                 }
+            }
+
+            // remove edge case constants
+            // some constants have aliases that get converted to the same name for the display name, which leads to two constants with
+            // the same name being generated in VK.gen.cs
+            for (int i = 0; i < Constants.Count; i++)
+            {
+                var constant = Constants[i];
+                if (constant.Alias == null)
+                    continue;
+
+                if (Utilities.PrettifyConsantName(constant.Name) == Utilities.PrettifyConsantName(constant.Alias))
+                    Constants.RemoveAt(i--);
             }
         }
     }

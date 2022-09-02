@@ -15,7 +15,7 @@ namespace Vulkan
 		public const uint MaxDescriptionSize = 256;
 		public const uint MaxMemoryTypes = 32;
 		public const uint MaxMemoryHeaps = 16;
-		public const uint LodClampNone = 1000.0F;
+		public const float LodClampNone = 1000.0F;
 		public const uint RemainingMipLevels = ~0U;
 		public const uint RemainingArrayLayers = ~0U;
 		public const ulong WholeSize = ~0UL;
@@ -37,6 +37,7 @@ namespace Vulkan
 		public const uint ShaderUnusedNv = ShaderUnusedKhr;
 		public const uint MaxGlobalPrioritySizeKhr = 16;
 		public const uint MaxGlobalPrioritySizeExt = MaxGlobalPrioritySizeKhr;
+		public const uint MaxShaderModuleIdentifierSizeExt = 32;
 		public const uint KhrSurfaceSpecVersion = 25;
 		public const string KhrSurfaceExtensionName = "VK_KHR_surface";
 		public const uint KhrSwapchainSpecVersion = 70;
@@ -125,10 +126,10 @@ namespace Vulkan
 		public const string ExtTextureCompressionAstcHdrExtensionName = "VK_EXT_texture_compression_astc_hdr";
 		public const uint ExtAstcDecodeModeSpecVersion = 1;
 		public const string ExtAstcDecodeModeExtensionName = "VK_EXT_astc_decode_mode";
+		public const uint ExtPipelineRobustnessSpecVersion = 1;
+		public const string ExtPipelineRobustnessExtensionName = "VK_EXT_pipeline_robustness";
 		public const uint KhrMaintenance1SpecVersion = 2;
 		public const string KhrMaintenance1ExtensionName = "VK_KHR_maintenance1";
-		public const uint KhrMaintenance1SpecVersion = KhrMaintenance1SpecVersion;
-		public const uint KhrMaintenance1ExtensionName = KhrMaintenance1ExtensionName;
 		public const uint KhrDeviceGroupCreationSpecVersion = 1;
 		public const string KhrDeviceGroupCreationExtensionName = "VK_KHR_device_group_creation";
 		public const uint KhrExternalMemoryCapabilitiesSpecVersion = 1;
@@ -177,8 +178,6 @@ namespace Vulkan
 		public const string NvGeometryShaderPassthroughExtensionName = "VK_NV_geometry_shader_passthrough";
 		public const uint NvViewportArray2SpecVersion = 1;
 		public const string NvViewportArray2ExtensionName = "VK_NV_viewport_array2";
-		public const uint NvViewportArray2SpecVersion = NvViewportArray2SpecVersion;
-		public const uint NvViewportArray2ExtensionName = NvViewportArray2ExtensionName;
 		public const uint NvxMultiviewPerViewAttributesSpecVersion = 1;
 		public const string NvxMultiviewPerViewAttributesExtensionName = "VK_NVX_multiview_per_view_attributes";
 		public const uint NvViewportSwizzleSpecVersion = 1;
@@ -211,8 +210,6 @@ namespace Vulkan
 		public const string KhrPerformanceQueryExtensionName = "VK_KHR_performance_query";
 		public const uint KhrMaintenance2SpecVersion = 1;
 		public const string KhrMaintenance2ExtensionName = "VK_KHR_maintenance2";
-		public const uint KhrMaintenance2SpecVersion = KhrMaintenance2SpecVersion;
-		public const uint KhrMaintenance2ExtensionName = KhrMaintenance2ExtensionName;
 		public const uint KhrGetSurfaceCapabilities2SpecVersion = 1;
 		public const string KhrGetSurfaceCapabilities2ExtensionName = "VK_KHR_get_surface_capabilities2";
 		public const uint KhrVariablePointersSpecVersion = 1;
@@ -291,8 +288,6 @@ namespace Vulkan
 		public const string NvRepresentativeFragmentTestExtensionName = "VK_NV_representative_fragment_test";
 		public const uint KhrMaintenance3SpecVersion = 1;
 		public const string KhrMaintenance3ExtensionName = "VK_KHR_maintenance3";
-		public const uint KhrMaintenance3SpecVersion = KhrMaintenance3SpecVersion;
-		public const uint KhrMaintenance3ExtensionName = KhrMaintenance3ExtensionName;
 		public const uint KhrDrawIndirectCountSpecVersion = 1;
 		public const string KhrDrawIndirectCountExtensionName = "VK_KHR_draw_indirect_count";
 		public const uint ExtFilterCubicSpecVersion = 3;
@@ -369,8 +364,6 @@ namespace Vulkan
 		public const string ExtScalarBlockLayoutExtensionName = "VK_EXT_scalar_block_layout";
 		public const uint GoogleHlslFunctionality1SpecVersion = 1;
 		public const string GoogleHlslFunctionality1ExtensionName = "VK_GOOGLE_hlsl_functionality1";
-		public const uint GoogleHlslFunctionality1SpecVersion = GoogleHlslFunctionality1SpecVersion;
-		public const uint GoogleHlslFunctionality1ExtensionName = GoogleHlslFunctionality1ExtensionName;
 		public const uint GoogleDecorateStringSpecVersion = 1;
 		public const string GoogleDecorateStringExtensionName = "VK_GOOGLE_decorate_string";
 		public const uint ExtSubgroupSizeControlSpecVersion = 2;
@@ -449,7 +442,7 @@ namespace Vulkan
 		public const string KhrShaderIntegerDotProductExtensionName = "VK_KHR_shader_integer_dot_product";
 		public const uint ExtTexelBufferAlignmentSpecVersion = 1;
 		public const string ExtTexelBufferAlignmentExtensionName = "VK_EXT_texel_buffer_alignment";
-		public const uint QcomRenderPassTransformSpecVersion = 2;
+		public const uint QcomRenderPassTransformSpecVersion = 3;
 		public const string QcomRenderPassTransformExtensionName = "VK_QCOM_render_pass_transform";
 		public const uint ExtDeviceMemoryReportSpecVersion = 2;
 		public const string ExtDeviceMemoryReportExtensionName = "VK_EXT_device_memory_report";
@@ -491,6 +484,8 @@ namespace Vulkan
 		public const string NvFragmentShadingRateEnumsExtensionName = "VK_NV_fragment_shading_rate_enums";
 		public const uint NvRayTracingMotionBlurSpecVersion = 1;
 		public const string NvRayTracingMotionBlurExtensionName = "VK_NV_ray_tracing_motion_blur";
+		public const uint ExtMeshShaderSpecVersion = 1;
+		public const string ExtMeshShaderExtensionName = "VK_EXT_mesh_shader";
 		public const uint ExtYcbcr2plane444FormatsSpecVersion = 1;
 		public const string ExtYcbcr2plane444FormatsExtensionName = "VK_EXT_ycbcr_2plane_444_formats";
 		public const uint ExtFragmentDensityMap2SpecVersion = 1;
@@ -505,6 +500,8 @@ namespace Vulkan
 		public const string KhrCopyCommands2ExtensionName = "VK_KHR_copy_commands2";
 		public const uint ExtImageCompressionControlSpecVersion = 1;
 		public const string ExtImageCompressionControlExtensionName = "VK_EXT_image_compression_control";
+		public const uint ExtAttachmentFeedbackLoopLayoutSpecVersion = 2;
+		public const string ExtAttachmentFeedbackLoopLayoutExtensionName = "VK_EXT_attachment_feedback_loop_layout";
 		public const uint Ext4444FormatsSpecVersion = 1;
 		public const string Ext4444FormatsExtensionName = "VK_EXT_4444_formats";
 		public const uint ArmRasterizationOrderAttachmentAccessSpecVersion = 1;
@@ -523,7 +520,7 @@ namespace Vulkan
 		public const string ExtDepthClipControlExtensionName = "VK_EXT_depth_clip_control";
 		public const uint ExtPrimitiveTopologyListRestartSpecVersion = 1;
 		public const string ExtPrimitiveTopologyListRestartExtensionName = "VK_EXT_primitive_topology_list_restart";
-		public const uint KhrFormatFeatureFlags2SpecVersion = 1;
+		public const uint KhrFormatFeatureFlags2SpecVersion = 2;
 		public const string KhrFormatFeatureFlags2ExtensionName = "VK_KHR_format_feature_flags2";
 		public const uint HuaweiSubpassShadingSpecVersion = 2;
 		public const string HuaweiSubpassShadingExtensionName = "VK_HUAWEI_subpass_shading";
@@ -533,6 +530,8 @@ namespace Vulkan
 		public const string NvExternalMemoryRdmaExtensionName = "VK_NV_external_memory_rdma";
 		public const uint ExtPipelinePropertiesSpecVersion = 1;
 		public const string ExtPipelinePropertiesExtensionName = "VK_EXT_pipeline_properties";
+		public const uint ExtMultisampledRenderToSingleSampledSpecVersion = 1;
+		public const string ExtMultisampledRenderToSingleSampledExtensionName = "VK_EXT_multisampled_render_to_single_sampled";
 		public const uint ExtExtendedDynamicState2SpecVersion = 1;
 		public const string ExtExtendedDynamicState2ExtensionName = "VK_EXT_extended_dynamic_state2";
 		public const uint ExtColorWriteEnableSpecVersion = 1;
@@ -561,6 +560,10 @@ namespace Vulkan
 		public const string KhrMaintenance4ExtensionName = "VK_KHR_maintenance4";
 		public const uint ValveDescriptorSetHostMappingSpecVersion = 1;
 		public const string ValveDescriptorSetHostMappingExtensionName = "VK_VALVE_descriptor_set_host_mapping";
+		public const uint ExtDepthClampZeroOneSpecVersion = 1;
+		public const string ExtDepthClampZeroOneExtensionName = "VK_EXT_depth_clamp_zero_one";
+		public const uint ExtNonSeamlessCubeMapSpecVersion = 1;
+		public const string ExtNonSeamlessCubeMapExtensionName = "VK_EXT_non_seamless_cube_map";
 		public const uint QcomFragmentDensityMapOffsetSpecVersion = 1;
 		public const string QcomFragmentDensityMapOffsetExtensionName = "VK_QCOM_fragment_density_map_offset";
 		public const uint NvLinearColorAttachmentSpecVersion = 1;
@@ -569,8 +572,18 @@ namespace Vulkan
 		public const string GoogleSurfacelessQueryExtensionName = "VK_GOOGLE_surfaceless_query";
 		public const uint ExtImageCompressionControlSwapchainSpecVersion = 1;
 		public const string ExtImageCompressionControlSwapchainExtensionName = "VK_EXT_image_compression_control_swapchain";
-		public const uint ExtSubpassMergeFeedbackSpecVersion = 1;
+		public const uint QcomImageProcessingSpecVersion = 1;
+		public const string QcomImageProcessingExtensionName = "VK_QCOM_image_processing";
+		public const uint ExtSubpassMergeFeedbackSpecVersion = 2;
 		public const string ExtSubpassMergeFeedbackExtensionName = "VK_EXT_subpass_merge_feedback";
+		public const uint ExtShaderModuleIdentifierSpecVersion = 1;
+		public const string ExtShaderModuleIdentifierExtensionName = "VK_EXT_shader_module_identifier";
+		public const uint ExtRasterizationOrderAttachmentAccessSpecVersion = 1;
+		public const string ExtRasterizationOrderAttachmentAccessExtensionName = "VK_EXT_rasterization_order_attachment_access";
+		public const uint QcomTilePropertiesSpecVersion = 1;
+		public const string QcomTilePropertiesExtensionName = "VK_QCOM_tile_properties";
+		public const uint SecAmigoProfilingSpecVersion = 1;
+		public const string SecAmigoProfilingExtensionName = "VK_SEC_amigo_profiling";
 		private unsafe delegate VkResult CreateInstanceDelegate_0(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance);
 		private unsafe delegate VkResult CreateInstanceDelegate_1(VkInstanceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance);
 		private unsafe delegate VkResult CreateInstanceDelegate_2(ref VkInstanceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkInstance instance);
@@ -1158,6 +1171,9 @@ namespace Vulkan
 		private unsafe delegate void CommandDrawMeshTasksNVDelegate_0(VkCommandBuffer commandBuffer, uint taskCount, uint firstTask);
 		private unsafe delegate void CommandDrawMeshTasksIndirectNVDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, uint drawCount, uint stride);
 		private unsafe delegate void CommandDrawMeshTasksIndirectCountNVDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
+		private unsafe delegate void CommandDrawMeshTasksEXTDelegate_0(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ);
+		private unsafe delegate void CommandDrawMeshTasksIndirectEXTDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, uint drawCount, uint stride);
+		private unsafe delegate void CommandDrawMeshTasksIndirectCountEXTDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
 		private unsafe delegate VkResult CompileDeferredNVDelegate_0(VkDevice device, VkPipeline pipeline, uint shader);
 		private unsafe delegate VkResult CreateAccelerationStructureNVDelegate_0(VkDevice device, VkAccelerationStructureCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, out VkAccelerationStructureNV accelerationStructure);
 		private unsafe delegate VkResult CreateAccelerationStructureNVDelegate_1(VkDevice device, VkAccelerationStructureCreateInfoNV* createInfo, ref VkAllocationCallbacks allocator, out VkAccelerationStructureNV accelerationStructure);
@@ -1292,8 +1308,8 @@ namespace Vulkan
 		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_2(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations);
 		private unsafe delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_3(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations);
 		private unsafe delegate void CommandSetLineStippleEXTDelegate_0(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern);
-		private unsafe delegate VkResult GetPhysicalDeviceToolPropertiesDelegate_0(VkPhysicalDevice physicalDevice, uint* toolCount, out VkPhysicalDeviceToolProperties toolProperties);
-		private unsafe delegate VkResult GetPhysicalDeviceToolPropertiesDelegate_1(VkPhysicalDevice physicalDevice, ref uint toolCount, out VkPhysicalDeviceToolProperties toolProperties);
+		private unsafe delegate VkResult GetPhysicalDeviceToolPropertiesDelegate_0(VkPhysicalDevice physicalDevice, uint* toolCount, [In, Out] VkPhysicalDeviceToolProperties[] toolProperties);
+		private unsafe delegate VkResult GetPhysicalDeviceToolPropertiesDelegate_1(VkPhysicalDevice physicalDevice, ref uint toolCount, [In, Out] VkPhysicalDeviceToolProperties[] toolProperties);
 		private unsafe delegate VkResult CreateAccelerationStructureKHRDelegate_0(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkAccelerationStructureKHR accelerationStructure);
 		private unsafe delegate VkResult CreateAccelerationStructureKHRDelegate_1(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkAccelerationStructureKHR accelerationStructure);
 		private unsafe delegate VkResult CreateAccelerationStructureKHRDelegate_2(VkDevice device, ref VkAccelerationStructureCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkAccelerationStructureKHR accelerationStructure);
@@ -1415,10 +1431,17 @@ namespace Vulkan
 		private unsafe delegate void GetDescriptorSetLayoutHostMappingInfoVALVEDelegate_0(VkDevice device, VkDescriptorSetBindingReferenceVALVE* bindingReference, out VkDescriptorSetLayoutHostMappingInfoVALVE hostMapping);
 		private unsafe delegate void GetDescriptorSetLayoutHostMappingInfoVALVEDelegate_1(VkDevice device, ref VkDescriptorSetBindingReferenceVALVE bindingReference, out VkDescriptorSetLayoutHostMappingInfoVALVE hostMapping);
 		private unsafe delegate void GetDescriptorSetHostMappingVALVEDelegate_0(VkDevice device, VkDescriptorSet descriptorSet, void** data);
+		private unsafe delegate void GetShaderModuleIdentifierEXTDelegate_0(VkDevice device, VkShaderModule shaderModule, out VkShaderModuleIdentifierEXT identifier);
+		private unsafe delegate void GetShaderModuleCreateInfoIdentifierEXTDelegate_0(VkDevice device, VkShaderModuleCreateInfo* createInfo, out VkShaderModuleIdentifierEXT identifier);
+		private unsafe delegate void GetShaderModuleCreateInfoIdentifierEXTDelegate_1(VkDevice device, ref VkShaderModuleCreateInfo createInfo, out VkShaderModuleIdentifierEXT identifier);
 		private unsafe delegate void GetImageSubresourceLayout2EXTDelegate_0(VkDevice device, VkImage image, VkImageSubresource2EXT* subresource, out VkSubresourceLayout2EXT layout);
 		private unsafe delegate void GetImageSubresourceLayout2EXTDelegate_1(VkDevice device, VkImage image, ref VkImageSubresource2EXT subresource, out VkSubresourceLayout2EXT layout);
-		private unsafe delegate VkResult GetPipelinePropertiesEXTDelegate_0(VkDevice device, VkPipelineInfoEXT* pipelineInfo, out VkBaseOutStructure pipelineProperties);
-		private unsafe delegate VkResult GetPipelinePropertiesEXTDelegate_1(VkDevice device, ref VkPipelineInfoEXT pipelineInfo, out VkBaseOutStructure pipelineProperties);
+		private unsafe delegate VkResult GetPipelinePropertiesEXTDelegate_0(VkDevice device, VkPipelineInfoKHR* pipelineInfo, out VkBaseOutStructure pipelineProperties);
+		private unsafe delegate VkResult GetPipelinePropertiesEXTDelegate_1(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, out VkBaseOutStructure pipelineProperties);
+		private unsafe delegate VkResult GetFramebufferTilePropertiesQCOMDelegate_0(VkDevice device, VkFramebuffer framebuffer, uint* propertiesCount, out VkTilePropertiesQCOM properties);
+		private unsafe delegate VkResult GetFramebufferTilePropertiesQCOMDelegate_1(VkDevice device, VkFramebuffer framebuffer, ref uint propertiesCount, out VkTilePropertiesQCOM properties);
+		private unsafe delegate VkResult GetDynamicRenderingTilePropertiesQCOMDelegate_0(VkDevice device, VkRenderingInfo* renderingInfo, out VkTilePropertiesQCOM properties);
+		private unsafe delegate VkResult GetDynamicRenderingTilePropertiesQCOMDelegate_1(VkDevice device, ref VkRenderingInfo renderingInfo, out VkTilePropertiesQCOM properties);
 		private static readonly OSVulkanLibraryBase VulkanLibrary;
 		private static IntPtr CreateInstancePointer;
 		private static CreateInstanceDelegate_0 CreateInstance_0;
@@ -2314,6 +2337,12 @@ namespace Vulkan
 		private static CommandDrawMeshTasksIndirectNVDelegate_0 CommandDrawMeshTasksIndirectNV_0;
 		private static IntPtr CommandDrawMeshTasksIndirectCountNVPointer;
 		private static CommandDrawMeshTasksIndirectCountNVDelegate_0 CommandDrawMeshTasksIndirectCountNV_0;
+		private static IntPtr CommandDrawMeshTasksEXTPointer;
+		private static CommandDrawMeshTasksEXTDelegate_0 CommandDrawMeshTasksEXT_0;
+		private static IntPtr CommandDrawMeshTasksIndirectEXTPointer;
+		private static CommandDrawMeshTasksIndirectEXTDelegate_0 CommandDrawMeshTasksIndirectEXT_0;
+		private static IntPtr CommandDrawMeshTasksIndirectCountEXTPointer;
+		private static CommandDrawMeshTasksIndirectCountEXTDelegate_0 CommandDrawMeshTasksIndirectCountEXT_0;
 		private static IntPtr CompileDeferredNVPointer;
 		private static CompileDeferredNVDelegate_0 CompileDeferredNV_0;
 		private static IntPtr CreateAccelerationStructureNVPointer;
@@ -2696,12 +2725,23 @@ namespace Vulkan
 		private static GetDescriptorSetLayoutHostMappingInfoVALVEDelegate_1 GetDescriptorSetLayoutHostMappingInfoVALVE_1;
 		private static IntPtr GetDescriptorSetHostMappingVALVEPointer;
 		private static GetDescriptorSetHostMappingVALVEDelegate_0 GetDescriptorSetHostMappingVALVE_0;
+		private static IntPtr GetShaderModuleIdentifierEXTPointer;
+		private static GetShaderModuleIdentifierEXTDelegate_0 GetShaderModuleIdentifierEXT_0;
+		private static IntPtr GetShaderModuleCreateInfoIdentifierEXTPointer;
+		private static GetShaderModuleCreateInfoIdentifierEXTDelegate_0 GetShaderModuleCreateInfoIdentifierEXT_0;
+		private static GetShaderModuleCreateInfoIdentifierEXTDelegate_1 GetShaderModuleCreateInfoIdentifierEXT_1;
 		private static IntPtr GetImageSubresourceLayout2EXTPointer;
 		private static GetImageSubresourceLayout2EXTDelegate_0 GetImageSubresourceLayout2EXT_0;
 		private static GetImageSubresourceLayout2EXTDelegate_1 GetImageSubresourceLayout2EXT_1;
 		private static IntPtr GetPipelinePropertiesEXTPointer;
 		private static GetPipelinePropertiesEXTDelegate_0 GetPipelinePropertiesEXT_0;
 		private static GetPipelinePropertiesEXTDelegate_1 GetPipelinePropertiesEXT_1;
+		private static IntPtr GetFramebufferTilePropertiesQCOMPointer;
+		private static GetFramebufferTilePropertiesQCOMDelegate_0 GetFramebufferTilePropertiesQCOM_0;
+		private static GetFramebufferTilePropertiesQCOMDelegate_1 GetFramebufferTilePropertiesQCOM_1;
+		private static IntPtr GetDynamicRenderingTilePropertiesQCOMPointer;
+		private static GetDynamicRenderingTilePropertiesQCOMDelegate_0 GetDynamicRenderingTilePropertiesQCOM_0;
+		private static GetDynamicRenderingTilePropertiesQCOMDelegate_1 GetDynamicRenderingTilePropertiesQCOM_1;
 		static VK()
 		{
 			VulkanLibrary = OSVulkanLibraryBase.CreateOSVulkanLibrary();
@@ -4515,6 +4555,21 @@ namespace Vulkan
 			{
 				CommandDrawMeshTasksIndirectCountNV_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawMeshTasksIndirectCountNVDelegate_0>(CommandDrawMeshTasksIndirectCountNVPointer);
 			}
+			CommandDrawMeshTasksEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawMeshTasksEXT");
+			if (CommandDrawMeshTasksEXTPointer != IntPtr.Zero)
+			{
+				CommandDrawMeshTasksEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawMeshTasksEXTDelegate_0>(CommandDrawMeshTasksEXTPointer);
+			}
+			CommandDrawMeshTasksIndirectEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawMeshTasksIndirectEXT");
+			if (CommandDrawMeshTasksIndirectEXTPointer != IntPtr.Zero)
+			{
+				CommandDrawMeshTasksIndirectEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawMeshTasksIndirectEXTDelegate_0>(CommandDrawMeshTasksIndirectEXTPointer);
+			}
+			CommandDrawMeshTasksIndirectCountEXTPointer = GetInstancePrecedureAddress(instance, "vkCmdDrawMeshTasksIndirectCountEXT");
+			if (CommandDrawMeshTasksIndirectCountEXTPointer != IntPtr.Zero)
+			{
+				CommandDrawMeshTasksIndirectCountEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawMeshTasksIndirectCountEXTDelegate_0>(CommandDrawMeshTasksIndirectCountEXTPointer);
+			}
 			CompileDeferredNVPointer = GetInstancePrecedureAddress(instance, "vkCompileDeferredNV");
 			if (CompileDeferredNVPointer != IntPtr.Zero)
 			{
@@ -5272,6 +5327,17 @@ namespace Vulkan
 			{
 				GetDescriptorSetHostMappingVALVE_0 = Marshal.GetDelegateForFunctionPointer<GetDescriptorSetHostMappingVALVEDelegate_0>(GetDescriptorSetHostMappingVALVEPointer);
 			}
+			GetShaderModuleIdentifierEXTPointer = GetInstancePrecedureAddress(instance, "vkGetShaderModuleIdentifierEXT");
+			if (GetShaderModuleIdentifierEXTPointer != IntPtr.Zero)
+			{
+				GetShaderModuleIdentifierEXT_0 = Marshal.GetDelegateForFunctionPointer<GetShaderModuleIdentifierEXTDelegate_0>(GetShaderModuleIdentifierEXTPointer);
+			}
+			GetShaderModuleCreateInfoIdentifierEXTPointer = GetInstancePrecedureAddress(instance, "vkGetShaderModuleCreateInfoIdentifierEXT");
+			if (GetShaderModuleCreateInfoIdentifierEXTPointer != IntPtr.Zero)
+			{
+				GetShaderModuleCreateInfoIdentifierEXT_0 = Marshal.GetDelegateForFunctionPointer<GetShaderModuleCreateInfoIdentifierEXTDelegate_0>(GetShaderModuleCreateInfoIdentifierEXTPointer);
+				GetShaderModuleCreateInfoIdentifierEXT_1 = Marshal.GetDelegateForFunctionPointer<GetShaderModuleCreateInfoIdentifierEXTDelegate_1>(GetShaderModuleCreateInfoIdentifierEXTPointer);
+			}
 			GetImageSubresourceLayout2EXTPointer = GetInstancePrecedureAddress(instance, "vkGetImageSubresourceLayout2EXT");
 			if (GetImageSubresourceLayout2EXTPointer != IntPtr.Zero)
 			{
@@ -5283,6 +5349,18 @@ namespace Vulkan
 			{
 				GetPipelinePropertiesEXT_0 = Marshal.GetDelegateForFunctionPointer<GetPipelinePropertiesEXTDelegate_0>(GetPipelinePropertiesEXTPointer);
 				GetPipelinePropertiesEXT_1 = Marshal.GetDelegateForFunctionPointer<GetPipelinePropertiesEXTDelegate_1>(GetPipelinePropertiesEXTPointer);
+			}
+			GetFramebufferTilePropertiesQCOMPointer = GetInstancePrecedureAddress(instance, "vkGetFramebufferTilePropertiesQCOM");
+			if (GetFramebufferTilePropertiesQCOMPointer != IntPtr.Zero)
+			{
+				GetFramebufferTilePropertiesQCOM_0 = Marshal.GetDelegateForFunctionPointer<GetFramebufferTilePropertiesQCOMDelegate_0>(GetFramebufferTilePropertiesQCOMPointer);
+				GetFramebufferTilePropertiesQCOM_1 = Marshal.GetDelegateForFunctionPointer<GetFramebufferTilePropertiesQCOMDelegate_1>(GetFramebufferTilePropertiesQCOMPointer);
+			}
+			GetDynamicRenderingTilePropertiesQCOMPointer = GetInstancePrecedureAddress(instance, "vkGetDynamicRenderingTilePropertiesQCOM");
+			if (GetDynamicRenderingTilePropertiesQCOMPointer != IntPtr.Zero)
+			{
+				GetDynamicRenderingTilePropertiesQCOM_0 = Marshal.GetDelegateForFunctionPointer<GetDynamicRenderingTilePropertiesQCOMDelegate_0>(GetDynamicRenderingTilePropertiesQCOMPointer);
+				GetDynamicRenderingTilePropertiesQCOM_1 = Marshal.GetDelegateForFunctionPointer<GetDynamicRenderingTilePropertiesQCOMDelegate_1>(GetDynamicRenderingTilePropertiesQCOMPointer);
 			}
 		}
 		public static unsafe VkResult CreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance) => CreateInstance_0(createInfo, allocator, out instance);
@@ -5953,6 +6031,9 @@ namespace Vulkan
 		public static unsafe void CommandDrawMeshTasksNV(VkCommandBuffer commandBuffer, uint taskCount, uint firstTask) => CommandDrawMeshTasksNV_0(commandBuffer, taskCount, firstTask);
 		public static unsafe void CommandDrawMeshTasksIndirectNV(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, uint drawCount, uint stride) => CommandDrawMeshTasksIndirectNV_0(commandBuffer, buffer, offset, drawCount, stride);
 		public static unsafe void CommandDrawMeshTasksIndirectCountNV(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride) => CommandDrawMeshTasksIndirectCountNV_0(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+		public static unsafe void CommandDrawMeshTasksEXT(VkCommandBuffer commandBuffer, uint groupCountX, uint groupCountY, uint groupCountZ) => CommandDrawMeshTasksEXT_0(commandBuffer, groupCountX, groupCountY, groupCountZ);
+		public static unsafe void CommandDrawMeshTasksIndirectEXT(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, uint drawCount, uint stride) => CommandDrawMeshTasksIndirectEXT_0(commandBuffer, buffer, offset, drawCount, stride);
+		public static unsafe void CommandDrawMeshTasksIndirectCountEXT(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride) => CommandDrawMeshTasksIndirectCountEXT_0(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 		public static unsafe VkResult CompileDeferredNV(VkDevice device, VkPipeline pipeline, uint shader) => CompileDeferredNV_0(device, pipeline, shader);
 		public static unsafe VkResult CreateAccelerationStructureNV(VkDevice device, VkAccelerationStructureCreateInfoNV* createInfo, VkAllocationCallbacks* allocator, out VkAccelerationStructureNV accelerationStructure) => CreateAccelerationStructureNV_0(device, createInfo, allocator, out accelerationStructure);
 		public static unsafe VkResult CreateAccelerationStructureNV(VkDevice device, VkAccelerationStructureCreateInfoNV* createInfo, ref VkAllocationCallbacks allocator, out VkAccelerationStructureNV accelerationStructure) => CreateAccelerationStructureNV_1(device, createInfo, ref allocator, out accelerationStructure);
@@ -6092,8 +6173,8 @@ namespace Vulkan
 		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, uint* internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_2(device, ref executableInfo, internalRepresentationCount, internalRepresentations);
 		public static unsafe VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_3(device, ref executableInfo, ref internalRepresentationCount, internalRepresentations);
 		public static unsafe void CommandSetLineStippleEXT(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern) => CommandSetLineStippleEXT_0(commandBuffer, lineStippleFactor, lineStipplePattern);
-		public static unsafe VkResult GetPhysicalDeviceToolProperties(VkPhysicalDevice physicalDevice, uint* toolCount, out VkPhysicalDeviceToolProperties toolProperties) => GetPhysicalDeviceToolProperties_0(physicalDevice, toolCount, out toolProperties);
-		public static unsafe VkResult GetPhysicalDeviceToolProperties(VkPhysicalDevice physicalDevice, ref uint toolCount, out VkPhysicalDeviceToolProperties toolProperties) => GetPhysicalDeviceToolProperties_1(physicalDevice, ref toolCount, out toolProperties);
+		public static unsafe VkResult GetPhysicalDeviceToolProperties(VkPhysicalDevice physicalDevice, uint* toolCount, [In, Out] VkPhysicalDeviceToolProperties[] toolProperties) => GetPhysicalDeviceToolProperties_0(physicalDevice, toolCount, toolProperties);
+		public static unsafe VkResult GetPhysicalDeviceToolProperties(VkPhysicalDevice physicalDevice, ref uint toolCount, [In, Out] VkPhysicalDeviceToolProperties[] toolProperties) => GetPhysicalDeviceToolProperties_1(physicalDevice, ref toolCount, toolProperties);
 		public static unsafe VkResult GetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, uint* toolCount, [In, Out] VkPhysicalDeviceToolProperties[] toolProperties) => GetPhysicalDeviceToolProperties(physicalDevice, toolCount, toolProperties);
 		public static unsafe VkResult GetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, ref uint toolCount, [In, Out] VkPhysicalDeviceToolProperties[] toolProperties) => GetPhysicalDeviceToolProperties(physicalDevice, ref toolCount, toolProperties);
 		public static unsafe VkResult CreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkAccelerationStructureKHR accelerationStructure) => CreateAccelerationStructureKHR_0(device, createInfo, allocator, out accelerationStructure);
@@ -6278,9 +6359,16 @@ namespace Vulkan
 		public static unsafe void GetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, VkDescriptorSetBindingReferenceVALVE* bindingReference, out VkDescriptorSetLayoutHostMappingInfoVALVE hostMapping) => GetDescriptorSetLayoutHostMappingInfoVALVE_0(device, bindingReference, out hostMapping);
 		public static unsafe void GetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, ref VkDescriptorSetBindingReferenceVALVE bindingReference, out VkDescriptorSetLayoutHostMappingInfoVALVE hostMapping) => GetDescriptorSetLayoutHostMappingInfoVALVE_1(device, ref bindingReference, out hostMapping);
 		public static unsafe void GetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void** data) => GetDescriptorSetHostMappingVALVE_0(device, descriptorSet, data);
+		public static unsafe void GetShaderModuleIdentifierEXT(VkDevice device, VkShaderModule shaderModule, out VkShaderModuleIdentifierEXT identifier) => GetShaderModuleIdentifierEXT_0(device, shaderModule, out identifier);
+		public static unsafe void GetShaderModuleCreateInfoIdentifierEXT(VkDevice device, VkShaderModuleCreateInfo* createInfo, out VkShaderModuleIdentifierEXT identifier) => GetShaderModuleCreateInfoIdentifierEXT_0(device, createInfo, out identifier);
+		public static unsafe void GetShaderModuleCreateInfoIdentifierEXT(VkDevice device, ref VkShaderModuleCreateInfo createInfo, out VkShaderModuleIdentifierEXT identifier) => GetShaderModuleCreateInfoIdentifierEXT_1(device, ref createInfo, out identifier);
 		public static unsafe void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2EXT* subresource, out VkSubresourceLayout2EXT layout) => GetImageSubresourceLayout2EXT_0(device, image, subresource, out layout);
 		public static unsafe void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, ref VkImageSubresource2EXT subresource, out VkSubresourceLayout2EXT layout) => GetImageSubresourceLayout2EXT_1(device, image, ref subresource, out layout);
-		public static unsafe VkResult GetPipelinePropertiesEXT(VkDevice device, VkPipelineInfoEXT* pipelineInfo, out VkBaseOutStructure pipelineProperties) => GetPipelinePropertiesEXT_0(device, pipelineInfo, out pipelineProperties);
-		public static unsafe VkResult GetPipelinePropertiesEXT(VkDevice device, ref VkPipelineInfoEXT pipelineInfo, out VkBaseOutStructure pipelineProperties) => GetPipelinePropertiesEXT_1(device, ref pipelineInfo, out pipelineProperties);
+		public static unsafe VkResult GetPipelinePropertiesEXT(VkDevice device, VkPipelineInfoKHR* pipelineInfo, out VkBaseOutStructure pipelineProperties) => GetPipelinePropertiesEXT_0(device, pipelineInfo, out pipelineProperties);
+		public static unsafe VkResult GetPipelinePropertiesEXT(VkDevice device, ref VkPipelineInfoKHR pipelineInfo, out VkBaseOutStructure pipelineProperties) => GetPipelinePropertiesEXT_1(device, ref pipelineInfo, out pipelineProperties);
+		public static unsafe VkResult GetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, uint* propertiesCount, out VkTilePropertiesQCOM properties) => GetFramebufferTilePropertiesQCOM_0(device, framebuffer, propertiesCount, out properties);
+		public static unsafe VkResult GetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, ref uint propertiesCount, out VkTilePropertiesQCOM properties) => GetFramebufferTilePropertiesQCOM_1(device, framebuffer, ref propertiesCount, out properties);
+		public static unsafe VkResult GetDynamicRenderingTilePropertiesQCOM(VkDevice device, VkRenderingInfo* renderingInfo, out VkTilePropertiesQCOM properties) => GetDynamicRenderingTilePropertiesQCOM_0(device, renderingInfo, out properties);
+		public static unsafe VkResult GetDynamicRenderingTilePropertiesQCOM(VkDevice device, ref VkRenderingInfo renderingInfo, out VkTilePropertiesQCOM properties) => GetDynamicRenderingTilePropertiesQCOM_1(device, ref renderingInfo, out properties);
 	}
 }

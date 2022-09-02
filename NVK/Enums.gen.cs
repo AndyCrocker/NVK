@@ -36,6 +36,7 @@ namespace Vulkan
 		StencilReadOnlyOptimalKhr = StencilReadOnlyOptimal,
 		ReadOnlyOptimalKhr = ReadOnlyOptimal,
 		AttachmentOptimalKhr = AttachmentOptimal,
+		AttachmentFeedbackLoopOptimalExt = 1000339000,
 	}
 	public enum VkAttachmentLoadOp
 	{
@@ -108,6 +109,8 @@ namespace Vulkan
 		AccelerationStructureKhr = 1000150000,
 		AccelerationStructureNv = 1000165000,
 		MutableValve = 1000351000,
+		SampleWeightImageQcom = 1000440000,
+		BlockMatchImageQcom = 1000440001,
 	}
 	public enum VkQueryType
 	{
@@ -120,6 +123,7 @@ namespace Vulkan
 		AccelerationStructureSerializationSizeKhr = 1000150001,
 		AccelerationStructureCompactedSizeNv = 1000165000,
 		PerformanceQueryIntel = 1000210000,
+		MeshPrimitivesGeneratedExt = 1000328000,
 		PrimitivesGeneratedExt = 1000382000,
 		AccelerationStructureSerializationBottomLevelPointersKhr = 1000386000,
 		AccelerationStructureSizeKhr = 1000386001,
@@ -184,8 +188,8 @@ namespace Vulkan
 	{
 		Nearest = 0,
 		Linear = 1,
-		CubicImg = 1000015000,
-		CubicExt = CubicImg,
+		CubicImg = CubicExt,
+		CubicExt = 1000170000,
 	}
 	public enum VkSamplerMipmapMode
 	{
@@ -950,6 +954,9 @@ namespace Vulkan
 		PhysicalDeviceTextureCompressionAstcHdrFeaturesExt = PhysicalDeviceTextureCompressionAstcHdrFeatures,
 		ImageViewAstcDecodeModeExt = 1000067000,
 		PhysicalDeviceAstcDecodeFeaturesExt = 1000067001,
+		PipelineRobustnessCreateInfoExt = 1000068000,
+		PhysicalDevicePipelineRobustnessFeaturesExt = 1000068001,
+		PhysicalDevicePipelineRobustnessPropertiesExt = 1000068002,
 		PhysicalDeviceGroupPropertiesKhr = PhysicalDeviceGroupProperties,
 		DeviceGroupDeviceCreateInfoKhr = DeviceGroupDeviceCreateInfo,
 		PhysicalDeviceExternalImageFormatInfoKhr = PhysicalDeviceExternalImageFormatInfo,
@@ -1320,6 +1327,8 @@ namespace Vulkan
 		AccelerationStructureGeometryMotionTrianglesDataNv = 1000327000,
 		PhysicalDeviceRayTracingMotionBlurFeaturesNv = 1000327001,
 		AccelerationStructureMotionInfoNv = 1000327002,
+		PhysicalDeviceMeshShaderFeaturesExt = 1000328000,
+		PhysicalDeviceMeshShaderPropertiesExt = 1000328001,
 		PhysicalDeviceYcbcr2Plane444FormatsFeaturesExt = 1000330000,
 		PhysicalDeviceFragmentDensityMap2FeaturesExt = 1000332000,
 		PhysicalDeviceFragmentDensityMap2PropertiesExt = 1000332001,
@@ -1342,8 +1351,9 @@ namespace Vulkan
 		SubresourceLayout2Ext = 1000338002,
 		ImageSubresource2Ext = 1000338003,
 		ImageCompressionPropertiesExt = 1000338004,
+		PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesExt = 1000339000,
 		PhysicalDevice4444FormatsFeaturesExt = 1000340000,
-		PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesArm = 1000342000,
+		PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesArm = PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesExt,
 		PhysicalDeviceRgba10x6FormatsFeaturesExt = 1000344000,
 		PhysicalDeviceMutableDescriptorTypeFeaturesValve = 1000351000,
 		MutableDescriptorTypeCreateInfoValve = 1000351002,
@@ -1364,6 +1374,9 @@ namespace Vulkan
 		PipelinePropertiesIdentifierExt = 1000372000,
 		PhysicalDevicePipelinePropertiesFeaturesExt = 1000372001,
 		PipelineInfoExt = PipelineInfoKhr,
+		PhysicalDeviceMultisampledRenderToSingleSampledFeaturesExt = 1000376000,
+		SubpassResolvePerformanceQueryExt = 1000376001,
+		MultisampledRenderToSingleSampledInfoExt = 1000376002,
 		PhysicalDeviceExtendedDynamicState2FeaturesExt = 1000377000,
 		PhysicalDeviceColorWriteEnableFeaturesExt = 1000381000,
 		PipelineColorWriteCreateInfoExt = 1000381001,
@@ -1386,15 +1399,29 @@ namespace Vulkan
 		PhysicalDeviceDescriptorSetHostMappingFeaturesValve = 1000420000,
 		DescriptorSetBindingReferenceValve = 1000420001,
 		DescriptorSetLayoutHostMappingInfoValve = 1000420002,
+		PhysicalDeviceDepthClampZeroOneFeaturesExt = 1000421000,
+		PhysicalDeviceNonSeamlessCubeMapFeaturesExt = 1000422000,
 		PhysicalDeviceFragmentDensityMapOffsetFeaturesQcom = 1000425000,
 		PhysicalDeviceFragmentDensityMapOffsetPropertiesQcom = 1000425001,
 		SubpassFragmentDensityMapOffsetEndInfoQcom = 1000425002,
 		PhysicalDeviceLinearColorAttachmentFeaturesNv = 1000430000,
 		PhysicalDeviceImageCompressionControlSwapchainFeaturesExt = 1000437000,
+		PhysicalDeviceImageProcessingFeaturesQcom = 1000440000,
+		PhysicalDeviceImageProcessingPropertiesQcom = 1000440001,
+		ImageViewSampleWeightCreateInfoQcom = 1000440002,
 		PhysicalDeviceSubpassMergeFeedbackFeaturesExt = 1000458000,
 		RenderPassCreationControlExt = 1000458001,
-		RenderPassCreationFeedbackInfoExt = 1000458002,
-		RenderPassSubpassFeedbackInfoExt = 1000458003,
+		RenderPassCreationFeedbackCreateInfoExt = 1000458002,
+		RenderPassSubpassFeedbackCreateInfoExt = 1000458003,
+		PhysicalDeviceShaderModuleIdentifierFeaturesExt = 1000462000,
+		PhysicalDeviceShaderModuleIdentifierPropertiesExt = 1000462001,
+		PipelineShaderStageModuleIdentifierCreateInfoExt = 1000462002,
+		ShaderModuleIdentifierExt = 1000462003,
+		PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesExt = 1000463000,
+		PhysicalDeviceTilePropertiesFeaturesQcom = 1000484000,
+		TilePropertiesQcom = 1000484001,
+		PhysicalDeviceAmigoProfilingFeaturesSec = 1000485000,
+		AmigoProfilingSubmitInfoSec = 1000485001,
 	}
 	public enum VkSubpassContents
 	{
@@ -1702,8 +1729,10 @@ namespace Vulkan
 		MissNv = MissKhr,
 		IntersectionNv = IntersectionKhr,
 		CallableNv = CallableKhr,
-		TaskNv = 1 << 6,
-		MeshNv = 1 << 7,
+		TaskNv = TaskExt,
+		MeshNv = MeshExt,
+		TaskExt = 1 << 6,
+		MeshExt = 1 << 7,
 		SubpassShadingHuawei = 1 << 14,
 	}
 	[Flags]
@@ -1720,7 +1749,10 @@ namespace Vulkan
 		ShadingRateImageNv = FragmentShadingRateAttachmentKhr,
 		FragmentDensityMapExt = 1 << 9,
 		FragmentShadingRateAttachmentKhr = 1 << 8,
+		AttachmentFeedbackLoopExt = 1 << 19,
 		InvocationMaskHuawei = 1 << 18,
+		SampleWeightQcom = 1 << 20,
+		SampleBlockMatchQcom = 1 << 21,
 	}
 	[Flags]
 	public enum VkImageCreateFlags
@@ -1746,6 +1778,7 @@ namespace Vulkan
 		DisjointKhr = Disjoint,
 		AliasKhr = Alias,
 		SubsampledExt = 1 << 14,
+		MultisampledRenderToSingleSampledExt = 1 << 18,
 		_2dViewCompatibleExt = 1 << 17,
 		FragmentDensityMapOffsetQcom = 1 << 15,
 	}
@@ -1760,6 +1793,8 @@ namespace Vulkan
 	{
 		SubsampledExt = 1 << 0,
 		SubsampledCoarseReconstructionExt = 1 << 1,
+		NonSeamlessCubeMapExt = 1 << 2,
+		ImageProcessingQcom = 1 << 4,
 	}
 	[Flags]
 	public enum VkPipelineCreateFlags
@@ -1794,6 +1829,8 @@ namespace Vulkan
 		RetainLinkTimeOptimizationInfoExt = 1 << 23,
 		LinkTimeOptimizationExt = 1 << 10,
 		RayTracingAllowMotionNv = 1 << 20,
+		ColorAttachmentFeedbackLoopExt = 1 << 25,
+		DepthStencilAttachmentFeedbackLoopExt = 1 << 26,
 	}
 	[Flags]
 	public enum VkPipelineShaderStageCreateFlags
@@ -1846,7 +1883,7 @@ namespace Vulkan
 		Disjoint = 1 << 22,
 		CositedChromaSamples = 1 << 23,
 		SampledImageFilterMinmax = 1 << 16,
-		SampledImageFilterCubicImg = 1 << 13,
+		SampledImageFilterCubicImg = SampledImageFilterCubicExt,
 		TransferSourceKhr = TransferSource,
 		TransferDestinationKhr = TransferDestination,
 		SampledImageFilterMinmaxExt = SampledImageFilterMinmax,
@@ -1858,7 +1895,7 @@ namespace Vulkan
 		SampledImageYcbcrConversionChromaReconstructionExplicitForceableKhr = SampledImageYcbcrConversionChromaReconstructionExplicitForceable,
 		DisjointKhr = Disjoint,
 		CositedChromaSamplesKhr = CositedChromaSamples,
-		SampledImageFilterCubicExt = SampledImageFilterCubicImg,
+		SampledImageFilterCubicExt = 1 << 13,
 		FragmentDensityMapExt = 1 << 24,
 		FragmentShadingRateAttachmentKhr = 1 << 30,
 	}
@@ -1896,6 +1933,8 @@ namespace Vulkan
 		TessellationControlShaderPatches = 1 << 8,
 		TessellationEvaluationShaderInvocations = 1 << 9,
 		ComputeShaderInvocations = 1 << 10,
+		TaskShaderInvocationsExt = 1 << 11,
+		MeshShaderInvocationsExt = 1 << 12,
 	}
 	[Flags]
 	public enum VkImageAspectFlags
@@ -1957,12 +1996,14 @@ namespace Vulkan
 		ShadingRateImageNv = FragmentShadingRateAttachmentKhr,
 		RayTracingShaderNv = RayTracingShaderKhr,
 		AccelerationStructureBuildNv = AccelerationStructureBuildKhr,
-		TaskShaderNv = 1 << 19,
-		MeshShaderNv = 1 << 20,
+		TaskShaderNv = TaskShaderExt,
+		MeshShaderNv = MeshShaderExt,
 		FragmentDensityProcessExt = 1 << 23,
 		FragmentShadingRateAttachmentKhr = 1 << 22,
 		CommandPreprocessNv = 1 << 17,
 		NoneKhr = None,
+		TaskShaderExt = 1 << 19,
+		MeshShaderExt = 1 << 20,
 	}
 	[Flags]
 	public enum VkCommandPoolCreateFlags
@@ -2020,6 +2061,7 @@ namespace Vulkan
 		ViewLocal = 1 << 1,
 		ViewLocalKhr = ViewLocal,
 		DeviceGroupKhr = DeviceGroup,
+		FeedbackLoopExt = 1 << 3,
 	}
 	public enum VkSemaphoreType
 	{
@@ -2246,6 +2288,7 @@ namespace Vulkan
 		DrawIndexedNv = 5,
 		DrawNv = 6,
 		DrawTasksNv = 7,
+		DrawMeshTasksNv = 1000328000,
 	}
 	[Flags]
 	public enum VkPrivateDataSlotCreateFlagBits
@@ -2426,9 +2469,12 @@ namespace Vulkan
 		PerViewPositionXOnlyNvx = 1 << 1,
 		FragmentRegionQcom = 1 << 2,
 		ShaderResolveQcom = 1 << 3,
-		RasterizationOrderAttachmentColorAccessArm = 1 << 4,
-		RasterizationOrderAttachmentDepthAccessArm = 1 << 5,
-		RasterizationOrderAttachmentStencilAccessArm = 1 << 6,
+		RasterizationOrderAttachmentColorAccessArm = RasterizationOrderAttachmentColorAccessExt,
+		RasterizationOrderAttachmentDepthAccessArm = RasterizationOrderAttachmentDepthAccessExt,
+		RasterizationOrderAttachmentStencilAccessArm = RasterizationOrderAttachmentStencilAccessExt,
+		RasterizationOrderAttachmentColorAccessExt = 1 << 4,
+		RasterizationOrderAttachmentDepthAccessExt = 1 << 5,
+		RasterizationOrderAttachmentStencilAccessExt = 1 << 6,
 	}
 	public enum VkPointClippingBehavior
 	{
@@ -2585,6 +2631,7 @@ namespace Vulkan
 		MesaPanvk = 20,
 		SamsungProprietary = 21,
 		MesaVenus = 22,
+		MesaDozen = 23,
 		AmdProprietaryKhr = AmdProprietary,
 		AmdOpenSourceKhr = AmdOpenSource,
 		MesaRadvKhr = MesaRadv,
@@ -3093,8 +3140,10 @@ namespace Vulkan
 		_2RayTracingShaderNv = _2RayTracingShaderKhr,
 		_2AccelerationStructureBuildNv = _2AccelerationStructureBuildKhr,
 		_2FragmentDensityProcessExt = 1 << 23,
-		_2TaskShaderNv = 1 << 19,
-		_2MeshShaderNv = 1 << 20,
+		_2TaskShaderNv = _2TaskShaderExt,
+		_2MeshShaderNv = _2MeshShaderExt,
+		_2TaskShaderExt = 1 << 19,
+		_2MeshShaderExt = 1 << 20,
 		_2SubpassShadingHuawei = 1 << 39,
 		_2InvocationMaskHuawei = 1 << 40,
 		_2AccelerationStructureCopyKhr = 1 << 28,
@@ -3130,13 +3179,16 @@ namespace Vulkan
 	[Flags]
 	public enum VkPipelineColorBlendStateCreateFlags
 	{
-		RasterizationOrderAttachmentAccessArm = 1 << 0,
+		RasterizationOrderAttachmentAccessArm = RasterizationOrderAttachmentAccessExt,
+		RasterizationOrderAttachmentAccessExt = 1 << 0,
 	}
 	[Flags]
 	public enum VkPipelineDepthStencilStateCreateFlags
 	{
-		RasterizationOrderAttachmentDepthAccessArm = 1 << 0,
-		RasterizationOrderAttachmentStencilAccessArm = 1 << 1,
+		RasterizationOrderAttachmentDepthAccessArm = RasterizationOrderAttachmentDepthAccessExt,
+		RasterizationOrderAttachmentStencilAccessArm = RasterizationOrderAttachmentStencilAccessExt,
+		RasterizationOrderAttachmentDepthAccessExt = 1 << 0,
+		RasterizationOrderAttachmentStencilAccessExt = 1 << 1,
 	}
 	[Flags]
 	public enum VkGraphicsPipelineLibraryFlagsEXT
@@ -3211,6 +3263,10 @@ namespace Vulkan
 		_2FragmentDensityMapExt = 1 << 24,
 		_2FragmentShadingRateAttachmentKhr = 1 << 30,
 		_2LinearColorAttachmentNv = 1 << 38,
+		_2WeightImageQcom = 1 << 34,
+		_2WeightSampledImageQcom = 1 << 35,
+		_2BlockMatchingQcom = 1 << 36,
+		_2BoxFilterSampledQcom = 1 << 37,
 	}
 	[Flags]
 	public enum VkRenderingFlags
@@ -3263,5 +3319,19 @@ namespace Vulkan
 		_22bpcExt = 1 << 21,
 		_23bpcExt = 1 << 22,
 		_24bpcExt = 1 << 23,
+	}
+	public enum VkPipelineRobustnessBufferBehaviorEXT
+	{
+		DeviceDefaultExt = 0,
+		DisabledExt = 1,
+		RobustBufferAccessExt = 2,
+		RobustBufferAccess2Ext = 3,
+	}
+	public enum VkPipelineRobustnessImageBehaviorEXT
+	{
+		DeviceDefaultExt = 0,
+		DisabledExt = 1,
+		RobustImageAccessExt = 2,
+		RobustImageAccess2Ext = 3,
 	}
 }
