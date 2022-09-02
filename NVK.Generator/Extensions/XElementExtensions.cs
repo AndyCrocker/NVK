@@ -2,7 +2,7 @@
 
 namespace NVK.Generator.Extensions;
 
-/// <summary>Extension methods for the <see cref="XElement"/> class.</summary>
+/// <summary>Extension methods for <see cref="XElement"/>.</summary>
 public static class XElementExtensions
 {
     /*********

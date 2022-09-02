@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace NVK.Generator.Extensions;
 
-/// <summary>Extension methods for the <see langword="string"/> class.</summary>
+/// <summary>Extension methods for <see langword="string"/>.</summary>
 public static class StringExtensions
 {
     /*********

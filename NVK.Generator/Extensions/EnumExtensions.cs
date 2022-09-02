@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace NVK.Generator.Extensions;
 
-/// <summary>Extension methods for the <see cref="Enum"/> class.</summary>
+/// <summary>Extension methods for <see cref="Enum"/>.</summary>
 public static class EnumExtensions
 {
     /*********
