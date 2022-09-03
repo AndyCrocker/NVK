@@ -10,6 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="DocumentationStrings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="vk.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

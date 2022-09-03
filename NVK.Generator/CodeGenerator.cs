@@ -282,6 +282,7 @@ public static class CodeGenerator
             if (structureInfo.IsUnion)
                 csWriter.WriteLine("[StructLayout(LayoutKind.Explicit)]");
 
+            csWriter.WriteLine($"/// <summary>{DocumentationManager.GetDocumentationString($"{structureInfo.DisplayName}.summary")}</summary>");
             csWriter.WriteLine($"public unsafe struct {structureInfo.DisplayName}");
             csWriter.WriteScope(() =>
             {
@@ -292,7 +293,10 @@ public static class CodeGenerator
                         csWriter.WriteLine("[FieldOffset(0)]");
 
                     if (fieldInfo.ElementCount == null)
+                    {
+                        csWriter.WriteLine($"/// <summary>{DocumentationManager.GetDocumentationString($"{structureInfo.DisplayName}.{fieldInfo.DisplayName}.summary")}</summary>");
                         csWriter.WriteLine($"public {fieldInfo.Type} {fieldInfo.DisplayName};");
+                    }
                     else
                     {
                         int.TryParse(fieldInfo.ElementCount, out var numericArrayLength);
@@ -307,6 +311,7 @@ public static class CodeGenerator
                             if (numericArrayLength == 0) // if it's a constant (instead of a number), prefix it as such
                                 arrayLength = $"(int)VK.{Utilities.PrettifyConsantName(fieldInfo.ElementCount)}";
 
+                            csWriter.WriteLine($"/// <summary>{DocumentationManager.GetDocumentationString($"{structureInfo.DisplayName}.{fieldInfo.DisplayName}.summary")}</summary>");
                             csWriter.WriteLine($"public fixed {fieldInfo.Type} {fieldInfo.DisplayName}[{arrayLength}];");
                         }
 
@@ -318,7 +323,10 @@ public static class CodeGenerator
                                 numericArrayLength = int.Parse(constantInfos.Single(constantInfo => constantInfo.Name == fieldInfo.ElementCount).DisplayValue);
 
                             for (int i = 0; i < numericArrayLength; i++)
+                            {
+                                csWriter.WriteLine($"/// <summary>{DocumentationManager.GetDocumentationString($"{structureInfo.DisplayName}.{fieldInfo.DisplayName}{i}.summary")}</summary>");
                                 csWriter.WriteLine($"public {fieldInfo.Type} {fieldInfo.DisplayName}_{i};");
+                            }
                         }
                     }
                 }
