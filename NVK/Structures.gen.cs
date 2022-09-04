@@ -938,606 +938,606 @@ public unsafe struct VkImageResolve
 	/// <summary>The size in texels of the source image to resolve in width, height and depth.</summary>
 	public VkExtent3D Extent;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created shader module.</summary>
 public unsafe struct VkShaderModuleCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>Reserved for future use.</summary>
 	public uint Flags;
-	/// <summary></summary>
+	/// <summary>The size, in <see langword="byte"/>s, of the code pointed to by <see cref="Code"/>.</summary>
 	public nuint CodeSize;
-	/// <summary></summary>
+	/// <summary>A pointer to code that is used to create the shader module. The type and format of the code is determined from the content of the memory addressed by <see cref="Code"/>.</summary>
 	public uint* Code;
 }
-/// <summary></summary>
+/// <summary>Structure specifying a descriptor set layout binding.</summary>
 public unsafe struct VkDescriptorSetLayoutBinding
 {
-	/// <summary></summary>
+	/// <summary>The binding number of this entry and corresponds to a resource of the same binding number in the shader stages.</summary>
 	public uint Binding;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkDescriptorType"/> specifying which type of resource descriptors are used for this binding.</summary>
 	public VkDescriptorType DescriptorType;
-	/// <summary></summary>
+	/// <summary>The number of descriptors contained in the binding, accessed in a shader as an array, except if <see cref="DescriptorType"> is <see cref="VkDescriptorType.InlineUniformBlock"/> in which case <see cref="DescriptorCount"> is the size in <see langword="byte"/>s of the inline uniform block. If <see cref="DescriptorCount"> is zero this binding entry is reserved and the resource must not be accessed from any stage via this binding within any pipeline using the set layout.</summary>
 	public uint DescriptorCount;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkShaderStageFlags"/> specifying which pipeline shader stages can access a resource for this binding. <see cref="VkShaderStageFlags.All"/> is a shorthand specifying that all defined shader stages, including any additional stages defined by extensions, can access the resource.</summary>
 	public VkShaderStageFlags StageFlags;
-	/// <summary></summary>
+	/// <summary><see cref="ImmutableSamplers"/> affects initialization of samplers. If <see cref="DescriptorType"/> specifies a <see cref="VkDescriptorType.Sampler"/> or <see cref="VkDescriptorType.CombinedImageSampler"/> type descriptor, then <see cref="ImmutableSamplers"/> can be used to initialize a set of immutable samplers. Immutable samplers are permanently bound into the set layout and must not be changed; updating a <see cref="VkDescriptorType.Sampler"/> descriptor with immutable samplers is not allowed and updates to a <see cref="VkDescriptorType.CombinedImageSampler"/> descriptor with immutable samplers does not modify the samplers (the image views are updated, but the sampler updates are ignored).</summary>
 	public VkSampler* ImmutableSamplers;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created descriptor set layout.</summary>
 public unsafe struct VkDescriptorSetLayoutCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkDescriptorSetLayoutCreateFlags"/> specifying options for descriptor set layout creation.</summary>
 	public VkDescriptorSetLayoutCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>The number of elements in <see cref="Bindings"/>.</summary>
 	public uint BindingCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkDescriptorSetLayoutBinding"/> structures.</summary>
 	public VkDescriptorSetLayoutBinding* Bindings;
 }
-/// <summary></summary>
+/// <summary>Structure specifying descriptor pool size.</summary>
 public unsafe struct VkDescriptorPoolSize
 {
-	/// <summary></summary>
+	/// <summary>The type of descriptor.</summary>
 	public VkDescriptorType Type;
-	/// <summary></summary>
+	/// <summary>The number of descriptors of that type to allocate. If <see cref="Type"/> is <see cref="VkDescriptorType.InlineUniformBlock"/> then <see cref="DescriptorCount"/> is the number of <see langword="byte"/>s to allocate for descriptors of this type.</summary>
 	public uint DescriptorCount;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created descriptor pool.</summary>
 public unsafe struct VkDescriptorPoolCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkDescriptorPoolCreateFlags"/> specifying certain supported operations on the pool.</summary>
 	public VkDescriptorPoolCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>The maximum number of descriptor sets that can be allocated from the pool.</summary>
 	public uint MaxSets;
-	/// <summary></summary>
+	/// <summary>The number of elements in <see cref="PoolSizes"/>.</summary>
 	public uint PoolSizeCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkDescriptorPoolSize"/> structures, each containing a descriptor type and number of descriptors of that type to be allocated in the pool.</summary>
 	public VkDescriptorPoolSize* PoolSizes;
 }
-/// <summary></summary>
+/// <summary>Structure specifying the allocation parameters for descriptor sets.</summary>
 public unsafe struct VkDescriptorSetAllocateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>The pool which the sets will be allocated from.</summary>
 	public VkDescriptorPool DescriptorPool;
-	/// <summary></summary>
+	/// <summary>The number of descriptor sets to be allocated from the pool.</summary>
 	public uint DescriptorSetCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of descriptor set layouts, with each member specifying how the corresponding descriptor set is allocated.</summary>
 	public VkDescriptorSetLayout* SetLayouts;
 }
-/// <summary></summary>
+/// <summary>Structure specifying a specialization map entry.</summary>
 public unsafe struct VkSpecializationMapEntry
 {
-	/// <summary></summary>
+	/// <summary>The ID of the specialization constant in SPIR-V.</summary>
 	public uint ConstantID;
-	/// <summary></summary>
+	/// <summary>The <see langword="byte"/> offset of the specialization constant value within the supplied data buffer.</summary>
 	public uint Offset;
-	/// <summary></summary>
+	/// <summary>The <see langword="byte"/> size of the specialization constant value within the supplied data buffer.</summary>
 	public nuint Size;
 }
-/// <summary></summary>
+/// <summary>Structure specifying specialization information.</summary>
 public unsafe struct VkSpecializationInfo
 {
-	/// <summary></summary>
+	/// <summary>The number of entries in the <see cref="MapEntries"/> array.</summary>
 	public uint MapEntryCount;
-	/// <summary></summary>
+	/// <summary>a pointer to an array of <see cref="VkSpecializationMapEntry"/> structures which map constant IDs to offsets in <see cref="Data"/>.</summary>
 	public VkSpecializationMapEntry* MapEntries;
-	/// <summary></summary>
+	/// <summary>The <see langword="byte"/> size of the <see cref="Data"/> buffer.</summary>
 	public nuint DataSize;
-	/// <summary></summary>
+	/// <summary>The actual constant values to specialize with.</summary>
 	public void* Data;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline shader stage.</summary>
 public unsafe struct VkPipelineShaderStageCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkPipelineShaderStageCreateFlags"/> specifying how the pipeline shader stage will be generated.</summary>
 	public VkPipelineShaderStageCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkShaderStageFlags"/> value specifying a single pipeline stage.</summary>
 	public VkShaderStageFlags Stage;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkShaderModule"/> object containing the shader code for this stage.</summary>
 	public VkShaderModule Module;
-	/// <summary></summary>
+	/// <summary>A pointer to a null-terminated UTF-8 string specifying the entry point name of the shader for this stage.</summary>
 	public byte* Name;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkSpecializationInfo"/> structure or <see langword="null"/>.</summary>
 	public VkSpecializationInfo* SpecializationInfo;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created compute pipeline.</summary>
 public unsafe struct VkComputePipelineCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkPipelineCreateFlags"/> specifying how the pipeline will be generated.</summary>
 	public VkPipelineCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkPipelineShaderStageCreateInfo"/> structure describing the compute shader.</summary>
 	public VkPipelineShaderStageCreateInfo Stage;
-	/// <summary></summary>
+	/// <summary>The description of binding locations used by both the pipeline and descriptor sets used with the pipeline.</summary>
 	public VkPipelineLayout Layout;
-	/// <summary></summary>
+	/// <summary>A pipeline to derive from.</summary>
 	public VkPipeline BasePipelineHandle;
-	/// <summary></summary>
+	/// <summary>An index into the <see cref="CreateInfos"/> parameter to use as a pipeline to derive from.</summary>
 	public int BasePipelineIndex;
 }
-/// <summary></summary>
+/// <summary>Structure specifying vertex input binding description.</summary>
 public unsafe struct VkVertexInputBindingDescription
 {
-	/// <summary></summary>
+	/// <summary>The binding number that this structure describes.</summary>
 	public uint Binding;
-	/// <summary></summary>
+	/// <summary>The <see langword="byte"/> stride between consecutive elements within the buffer.</summary>
 	public uint Stride;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkVertexInputRate"/> value specifying whether vertex attribute addressing is a function of the vertex index or of the instance index.</summary>
 	public VkVertexInputRate InputRate;
 }
-/// <summary></summary>
+/// <summary>Structure specifying vertex input attribute description.</summary>
 public unsafe struct VkVertexInputAttributeDescription
 {
-	/// <summary></summary>
+	/// <summary>The shader input location number for this attribute.</summary>
 	public uint Location;
-	/// <summary></summary>
+	/// <summary>The binding number which this attribute takes its data from.</summary>
 	public uint Binding;
-	/// <summary></summary>
+	/// <summary>The size and type of the vertex attribute data.</summary>
 	public VkFormat Format;
-	/// <summary></summary>
+	/// <summary>A <see langword="byte"/> offset of this attribute relative to the start of an element in the vertex input binding.</summary>
 	public uint Offset;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline vertex input state.</summary>
 public unsafe struct VkPipelineVertexInputStateCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>Reserved for future use.</summary>
 	public uint Flags;
-	/// <summary></summary>
+	/// <summary>The number of vertex binding descriptions provided in <see cref="VertexBindingDescriptions">.</summary>
 	public uint VertexBindingDescriptionCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkVertexInputBindingDescription"/> structures.</summary>
 	public VkVertexInputBindingDescription* VertexBindingDescriptions;
-	/// <summary></summary>
+	/// <summary>The number of vertex attribute descriptions provided in <see cref="VertexAttributeDescriptions"/>.</summary>
 	public uint VertexAttributeDescriptionCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkVertexInputAttributeDescription"/> structures.</summary>
 	public VkVertexInputAttributeDescription* VertexAttributeDescriptions;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline input assembly state.</summary>
 public unsafe struct VkPipelineInputAssemblyStateCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>Reserved for future use.</summary>
 	public uint Flags;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkPrimitiveTopology"/> defining the primitive topology.</summary>
 	public VkPrimitiveTopology Topology;
-	/// <summary></summary>
+	/// <summary>Whether a special vertex index value is treated as restarting the assembly of primitives.</summary>
 	public VkBool32 PrimitiveRestartEnable;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline tessellation state.</summary>
 public unsafe struct VkPipelineTessellationStateCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>Reserved for future use.</summary>
 	public uint Flags;
-	/// <summary></summary>
+	/// <summary>The number of control points per patch.</summary>
 	public uint PatchControlPoints;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline viewport state.</summary>
 public unsafe struct VkPipelineViewportStateCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>Reserved for future use.</summary>
 	public uint Flags;
-	/// <summary></summary>
+	/// <summary>The number of viewports used by the pipeline.</summary>
 	public uint ViewportCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkViewport"/> structures, defining the viewport transforms. If the viewport state is dynamic, this member is ignored.</summary>
 	public VkViewport* Viewports;
-	/// <summary></summary>
+	/// <summary>The number of scissors, must match the number of viewports.</summary>
 	public uint ScissorCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkRect2D"/> structures defining the rectangular bounds of the scissor for the corresponding viewport. If the scissor state is dynamic, this member is ignored.</summary>
 	public VkRect2D* Scissors;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline rasterization state.</summary>
 public unsafe struct VkPipelineRasterizationStateCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>Reserved for future use.</summary>
 	public uint Flags;
-	/// <summary></summary>
+	/// <summary>Whether to clamp the fragment’s depth values.</summary>
 	public VkBool32 DepthClampEnable;
-	/// <summary></summary>
+	/// <summary>Whether primitives are discarded immediately before the rasterization stage.</summary>
 	public VkBool32 RasterizerDiscardEnable;
-	/// <summary></summary>
+	/// <summary>The triangle rendering mode.</summary>
 	public VkPolygonMode PolygonMode;
-	/// <summary></summary>
+	/// <summary>The triangle facing direction used for primitive culling.</summary>
 	public VkCullModeFlags CullMode;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkFrontFace"/> value specifying the front-facing triangle orientation to be used for culling.</summary>
 	public VkFrontFace FrontFace;
-	/// <summary></summary>
+	/// <summary>Whether to bias fragment depth values.</summary>
 	public VkBool32 DepthBiasEnable;
-	/// <summary></summary>
+	/// <summary>A scalar factor controlling the constant depth value added to each fragment.</summary>
 	public float DepthBiasConstantFactor;
-	/// <summary></summary>
+	/// <summary>The maximum (or minimum) depth bias of a fragment.</summary>
 	public float DepthBiasClamp;
-	/// <summary></summary>
+	/// <summary>A scalar factor applied to a fragment’s slope in depth bias calculations.</summary>
 	public float DepthBiasSlopeFactor;
-	/// <summary></summary>
+	/// <summary>The width of rasterized line segments.</summary>
 	public float LineWidth;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline multisample state.</summary>
 public unsafe struct VkPipelineMultisampleStateCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>Reserved for future use.</summary>
 	public uint Flags;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> value specifying the number of samples used in rasterization.</summary>
 	public VkSampleCountFlags RasterizationSamples;
-	/// <summary></summary>
+	/// <summary>can be used to enable sample shading.</summary>
 	public VkBool32 SampleShadingEnable;
-	/// <summary></summary>
+	/// <summary>A minimum fraction of sample shading if <see cref="SampleShadingEnable"/> is set to <see cref="VK.True"/>.</summary>
 	public float MinSampleShading;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkSampleMask"/> values used in the sample mask test.</summary>
 	public uint* SampleMask;
-	/// <summary></summary>
+	/// <summary>Whether a temporary coverage value is generated based on the alpha component of the fragment’s first color output.</summary>
 	public VkBool32 AlphaToCoverageEnable;
-	/// <summary></summary>
+	/// <summary>Whether the alpha component of the fragment’s first color output is replaced with one.</summary>
 	public VkBool32 AlphaToOneEnable;
 }
-/// <summary></summary>
+/// <summary>Structure specifying a pipeline color blend attachment state.</summary>
 public unsafe struct VkPipelineColorBlendAttachmentState
 {
-	/// <summary></summary>
+	/// <summary>Whether blending is enabled for the corresponding color attachment. If blending is not enabled, the source fragment’s color for that attachment is passed through unmodified.</summary>
 	public VkBool32 BlendEnable;
-	/// <summary></summary>
+	/// <summary>Selects which blend factor is used to determine the source factors (Sr,Sg,Sb).</summary>
 	public VkBlendFactor SourceColorBlendFactor;
-	/// <summary></summary>
+	/// <summary>Selects which blend factor is used to determine the destination factors (Dr,Dg,Db).</summary>
 	public VkBlendFactor DestinationColorBlendFactor;
-	/// <summary></summary>
+	/// <summary>Selects which blend operation is used to calculate the RGB values to write to the color attachment.</summary>
 	public VkBlendOp ColorBlendOp;
-	/// <summary></summary>
+	/// <summary>Selects which blend factor is used to determine the source factor Sa.</summary>
 	public VkBlendFactor SourceAlphaBlendFactor;
-	/// <summary></summary>
+	/// <summary>Selects which blend factor is used to determine the destination factor Da.</summary>
 	public VkBlendFactor DestinationAlphaBlendFactor;
-	/// <summary></summary>
+	/// <summary>Selects which blend operation is used to calculate the alpha values to write to the color attachment.</summary>
 	public VkBlendOp AlphaBlendOp;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkColorComponentFlags"/> specifying which of the R, G, B, and/or A components are enabled for writing.</summary>
 	public VkColorComponentFlags ColorWriteMask;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline color blend state.</summary>
 public unsafe struct VkPipelineColorBlendStateCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkPipelineColorBlendStateCreateFlags"/> specifying additional color blending information.</summary>
 	public VkPipelineColorBlendStateCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>Whether to apply logical operations.</summary>
 	public VkBool32 LogicOpEnable;
-	/// <summary></summary>
+	/// <summary>Selects which logical operation to apply.</summary>
 	public VkLogicOp LogicOp;
-	/// <summary></summary>
+	/// <summary>The number of <see cref="VkPipelineColorBlendAttachmentState"/> elements in <see cref="Attachments"/>.</summary>
 	public uint AttachmentCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkPipelineColorBlendAttachmentState"/> structures defining blend state for each color attachment.</summary>
 	public VkPipelineColorBlendAttachmentState* Attachments;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of four values used as the R, G, B, and A components of the blend constant that are used in blending, depending on the blend factor.</summary>
 	public fixed float BlendConstants[4];
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline dynamic state.</summary>
 public unsafe struct VkPipelineDynamicStateCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>Reserved for future use.</summary>
 	public uint Flags;
-	/// <summary></summary>
+	/// <summary>The number of elements in the <see cref="DynamicStates"/> array.</summary>
 	public uint DynamicStateCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkDynamicState"/> values specifying which pieces of pipeline state will use the values from dynamic state commands rather than from pipeline state creation information.</summary>
 	public VkDynamicState* DynamicStates;
 }
-/// <summary></summary>
+/// <summary>Structure specifying stencil operation state.</summary>
 public unsafe struct VkStencilOpState
 {
-	/// <summary></summary>
+	/// <summary>A <see cref="VkStencilOp"> value specifying the action performed on samples that fail the stencil test.</summary>
 	public VkStencilOp FailOp;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkStencilOp"/> value specifying the action performed on samples that pass both the depth and stencil tests.</summary>
 	public VkStencilOp PassOp;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkStencilOp"/> value specifying the action performed on samples that pass the stencil test and fail the depth test.</summary>
 	public VkStencilOp DepthFailOp;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkCompareOp"/> value specifying the comparison operator used in the stencil test.</summary>
 	public VkCompareOp CompareOp;
-	/// <summary></summary>
+	/// <summary>The bits of the unsigned integer stencil values participating in the stencil test.</summary>
 	public uint CompareMask;
-	/// <summary></summary>
+	/// <summary>The bits of the unsigned integer stencil values updated by the stencil test in the stencil framebuffer attachment.</summary>
 	public uint WriteMask;
-	/// <summary></summary>
+	/// <summary>An integer stencil reference value that is used in the unsigned stencil comparison.</summary>
 	public uint Reference;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline depth stencil state.</summary>
 public unsafe struct VkPipelineDepthStencilStateCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkPipelineDepthStencilStateCreateFlags"/> specifying additional depth/stencil state information.</summary>
 	public VkPipelineDepthStencilStateCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>Whether depth testing is enabled.</summary>
 	public VkBool32 DepthTestEnable;
-	/// <summary></summary>
+	/// <summary>Whether depth writes are enabled when <see cref="DepthTestEnable"/> is <see cref="VK.True"/>. Depth writes are always disabled when <see cref="DepthTestEnable"/> is <see cref="VK.False"/>.</summary>
 	public VkBool32 DepthWriteEnable;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkCompareOp"/> value specifying the comparison operator to use in the depth comparison step of the depth test.</summary>
 	public VkCompareOp DepthCompareOp;
-	/// <summary></summary>
+	/// <summary>Whether depth bounds testing is enabled.</summary>
 	public VkBool32 DepthBoundsTestEnable;
-	/// <summary></summary>
+	/// <summary>Whether stencil testing is enabled.</summary>
 	public VkBool32 StencilTestEnable;
-	/// <summary></summary>
+	/// <summary>The front parameter of the stencil test.</summary>
 	public VkStencilOpState Front;
-	/// <summary></summary>
+	/// <summary>The back parameter of the stencil test.</summary>
 	public VkStencilOpState Back;
-	/// <summary></summary>
+	/// <summary>The minimum depth bound used in the depth bounds test.</summary>
 	public float MinDepthBounds;
-	/// <summary></summary>
+	/// <summary>The maximum depth bound used in the depth bounds test.</summary>
 	public float MaxDepthBounds;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created graphics pipeline.</summary>
 public unsafe struct VkGraphicsPipelineCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkPipelineCreateFlags"/> specifying how the pipeline will be generated.</summary>
 	public VkPipelineCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>The number of entries in the <see cref="Stages"/> array.</summary>
 	public uint StageCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="StageCount"/> <see cref="VkPipelineShaderStageCreateInfo"/> structures describing the set of the shader stages to be included in the graphics pipeline.</summary>
 	public VkPipelineShaderStageCreateInfo* Stages;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see c ref="VkPipelineVertexInputStateCreateInfo"/> structure. It is ignored if the pipeline includes a mesh shader stage.</summary>
 	public VkPipelineVertexInputStateCreateInfo* VertexInputState;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkPipelineInputAssemblyStateCreateInfo"/> structure which determines input assembly behavior. It is ignored if the pipeline includes a mesh shader stage.</summary>
 	public VkPipelineInputAssemblyStateCreateInfo* InputAssemblyState;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkPipelineTessellationStateCreateInfo"/> structure defining tessellation state used by tessellation shaders.</summary>
 	public VkPipelineTessellationStateCreateInfo* TessellationState;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkPipelineViewportStateCreateInfo"/> structure defining viewport state used when rasterization is enabled.</summary>
 	public VkPipelineViewportStateCreateInfo* ViewportState;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkPipelineRasterizationStateCreateInfo"/> structure defining rasterization state.</summary>
 	public VkPipelineRasterizationStateCreateInfo* RasterizationState;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkPipelineMultisampleStateCreateInfo"/> structure defining multisample state used when rasterization is enabled.</summary>
 	public VkPipelineMultisampleStateCreateInfo* MultisampleState;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkPipelineDepthStencilStateCreateInfo"/> structure defining depth/stencil state used when rasterization is enabled for depth or stencil attachments accessed during rendering.</summary>
 	public VkPipelineDepthStencilStateCreateInfo* DepthStencilState;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkPipelineColorBlendStateCreateInfo"/> structure defining color blend state used when rasterization is enabled for any color attachments accessed during rendering.</summary>
 	public VkPipelineColorBlendStateCreateInfo* ColorBlendState;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkPipelineDynamicStateCreateInfo"/> structure defining which properties of the pipeline state object are dynamic and can be changed independently of the pipeline state. This can be <see langword="null"/>, which means no state in the pipeline is considered dynamic.</summary>
 	public VkPipelineDynamicStateCreateInfo* DynamicState;
-	/// <summary></summary>
+	/// <summary>The description of binding locations used by both the pipeline and descriptor sets used with the pipeline.</summary>
 	public VkPipelineLayout Layout;
-	/// <summary></summary>
+	/// <summary>A handle to a render pass object describing the environment in which the pipeline will be used. The pipeline must only be used with a render pass instance compatible with the one provided.</summary>
 	public VkRenderPass RenderPass;
-	/// <summary></summary>
+	/// <summary>The index of the subpass in the render pass where this pipeline will be used.</summary>
 	public uint Subpass;
-	/// <summary></summary>
+	/// <summary>A pipeline to derive from.</summary>
 	public VkPipeline BasePipelineHandle;
-	/// <summary></summary>
+	/// <summary>An index into the <see cref="CreateInfos"/> parameter to use as a pipeline to derive from.</summary>
 	public int BasePipelineIndex;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created pipeline cache.</summary>
 public unsafe struct VkPipelineCacheCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkPipelineCacheCreateFlags"/> specifying the behavior of the pipeline cache.</summary>
 	public VkPipelineCacheCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>The number of <see langword=\"byte"/>s in <see cref="InitialData"/>. If <see cref="InitialDataSize"/> is zero, the pipeline cache will initially be empty.</summary>
 	public nuint InitialDataSize;
-	/// <summary></summary>
+	/// <summary>A pointer to previously retrieved pipeline cache data. If the pipeline cache data is incompatible with the device, the pipeline cache will be initially empty. If <see cref="InitialDataSize"/> is zero, <see cref="InitialData"/> is ignored.</summary>
 	public void* InitialData;
 }
-/// <summary></summary>
+/// <summary>Structure describing the layout of the pipeline cache header.</summary>
 public unsafe struct VkPipelineCacheHeaderVersionOne
 {
-	/// <summary></summary>
+	/// <summary>The length in <see langword="byte"/>s of the pipeline cache header.</summary>
 	public uint HeaderSize;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkPipelineCacheHeaderVersion"/> enum value specifying the version of the header. A consumer of the pipeline cache should use the cache version to interpret the remainder of the cache header.</summary>
 	public VkPipelineCacheHeaderVersion HeaderVersion;
-	/// <summary></summary>
+	/// <summary>The <see cref="VkPhysicalDeviceProperties.VendorID"/> of the implementation.</summary>
 	public uint VendorID;
-	/// <summary></summary>
+	/// <summary>The <see cref="VkPhysicalDeviceProperties.DeviceID"/> of the implementation.</summary>
 	public uint DeviceID;
-	/// <summary></summary>
+	/// <summary>The <see cref="VkPhysicalDeviceProperties.PipelineCacheUUID"/> of the implementation.</summary>
 	public fixed byte PipelineCacheUUID[(int)VK.UuidSize];
 }
-/// <summary></summary>
+/// <summary>Structure specifying a push constant range.</summary>
 public unsafe struct VkPushConstantRange
 {
-	/// <summary></summary>
+	/// <summary>a set of stage flags describing the shader stages that will access a range of push constants. If a particular stage is not included in the range, then accessing members of that range of push constants from the corresponding shader stage will return undefined values.</summary>
 	public VkShaderStageFlags StageFlags;
-	/// <summary></summary>
+	/// <summary>The <see langword="byte"/> offset of the push constant, this must be a multiple of 4.</summary>
 	public uint Offset;
-	/// <summary></summary>
+	/// <summary>The size in <see langword="byte"/>s of the push constant, this must be a multiple of 4.</summary>
 	public uint Size;
 }
-/// <summary></summary>
+/// <summary>Structure specifying the parameters of a newly created pipeline layout object.</summary>
 public unsafe struct VkPipelineLayoutCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkPipelineLayoutCreateFlagBits"/> specifying options for pipeline layout creation.</summary>
 	public VkPipelineLayoutCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>The number of descriptor sets included in the pipeline layout.</summary>
 	public uint SetLayoutCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkDescriptorSetLayout"/> objects.</summary>
 	public VkDescriptorSetLayout* SetLayouts;
-	/// <summary></summary>
+	/// <summary>The number of push constant ranges included in the pipeline layout.</summary>
 	public uint PushConstantRangeCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkPushConstantRange"/> structures defining a set of push constant ranges for use in a single pipeline layout. In addition to descriptor set layouts, a pipeline layout also describes how many push constants can be accessed by each stage of the pipeline.</summary>
 	public VkPushConstantRange* PushConstantRanges;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created sampler.</summary>
 public unsafe struct VkSamplerCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkSamplerCreateFlags"/> describing additional parameters of the sampler.</summary>
 	public VkSamplerCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkFilter"/> value specifying the magnification filter to apply to lookups.</summary>
 	public VkFilter MagFilter;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkFilter"/> value specifying the minification filter to apply to lookups.</summary>
 	public VkFilter MinFilter;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSamplerMipmapMode"/> value specifying the mipmap filter to apply to lookups.</summary>
 	public VkSamplerMipmapMode MipmapMode;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSamplerAddressMode"/> value specifying the addressing mode for U coordinates outside [0,1].</summary>
 	public VkSamplerAddressMode AddressModeU;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSamplerAddressMode"/> value specifying the addressing mode for V coordinates outside [0,1].</summary>
 	public VkSamplerAddressMode AddressModeV;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSamplerAddressMode"/> value specifying the addressing mode for W coordinates outside [0,1].</summary>
 	public VkSamplerAddressMode AddressModeW;
-	/// <summary></summary>
+	/// <summary>The bias to be added to mipmap LOD (level-of-detail) calculation and bias provided by image sampling functions in SPIR-V.</summary>
 	public float MipLodBias;
-	/// <summary></summary>
+	/// <summary>Whether anisotropic filtering is enabled.</summary>
 	public VkBool32 AnisotropyEnable;
-	/// <summary></summary>
+	/// <summary>The anisotropy value clamp used by the sampler when <see cref="AnisotropyEnable"/> is <see cref="VK.True"/>. If <see cref="AnisotropyEnable"/> is <see cref="VK.False"/>, <see cref="MaxAnisotropy"/> is ignored.</summary>
 	public float MaxAnisotropy;
-	/// <summary></summary>
+	/// <summary>Whether to enable comparison against a reference value during lookups.</summary>
 	public VkBool32 CompareEnable;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkCompareOp"/> value specifying the comparison operator to apply to fetched data before filtering.</summary>
 	public VkCompareOp CompareOp;
-	/// <summary></summary>
+	/// <summary>Used to clamp the minimum of the computed LOD value.</summary>
 	public float MinLod;
-	/// <summary></summary>
+	/// <summary>Used to clamp the maximum of the computed LOD value. To avoid clamping the maximum value, set <see cref="MaxLod"/> to the constant <see cref="VK.LodClampNone"/>.</summary>
 	public float MaxLod;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkBorderColor"/> value specifying the predefined border color to use.</summary>
 	public VkBorderColor BorderColor;
-	/// <summary></summary>
+	/// <summary>Whether to use unnormalized or normalized texel coordinates to address texels of the image. When set to <see cref="VK.True"/>, the range of the image coordinates used to lookup the texel is in the range of zero to the image size in each dimension. When set to <see cref="VK.False"/> the range of image coordinates is zero to one.</summary>
 	public VkBool32 UnnormalizedCoordinates;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created command pool.</summary>
 public unsafe struct VkCommandPoolCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkCommandPoolCreateFlags"/> indicating usage behavior for the pool and command buffers allocated from it.</summary>
 	public VkCommandPoolCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>The queue family that any command buffer allocated from the pool will be submitted to.</summary>
 	public uint QueueFamilyIndex;
 }
-/// <summary></summary>
+/// <summary>Structure specifying the allocation parameters for command buffer object.</summary>
 public unsafe struct VkCommandBufferAllocateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>The command pool from which the command buffers are allocated.</summary>
 	public VkCommandPool CommandPool;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkCommandBufferLevel"/> value specifying the command buffer level.</summary>
 	public VkCommandBufferLevel Level;
-	/// <summary></summary>
+	/// <summary>The number of command buffers to allocate from the pool.</summary>
 	public uint CommandBufferCount;
 }
-/// <summary></summary>
+/// <summary>Structure specifying command buffer inheritance information.</summary>
 public unsafe struct VkCommandBufferInheritanceInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkRenderPass"/> object defining which render passes the <see cref="VkCommandBuffer"/> will be compatible with and can be executed within.</summary>
 	public VkRenderPass RenderPass;
-	/// <summary></summary>
+	/// <summary>The index of the subpass within the render pass instance that the <see cref="VkCommandBuffer"/> will be executed within.</summary>
 	public uint Subpass;
-	/// <summary></summary>
+	/// <summary>The <see cref="VkFramebuffer"/> object that the <see cref="VkCommandBuffer"/> will be rendering to if it is executed within a render pass instance. It can be <see cref="VkFramebuffer.Null"/> if the framebuffer is not known.</summary>
 	public VkFramebuffer Framebuffer;
-	/// <summary></summary>
+	/// <summary>Whether the command buffer can be executed while an occlusion query is active in the primary command buffer.</summary>
 	public VkBool32 OcclusionQueryEnable;
-	/// <summary></summary>
+	/// <summary>The query flags that can be used by an active occlusion query in the primary command buffer when this secondary command buffer is executed.</summary>
 	public VkQueryControlFlags QueryFlags;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkQueryPipelineStatisticFlags"/> specifying the set of pipeline statistics that can be counted by an active query in the primary command buffer when this secondary command buffer is executed.</summary>
 	public VkQueryPipelineStatisticFlags PipelineStatistics;
 }
-/// <summary></summary>
+/// <summary>Structure specifying a command buffer begin operation.</summary>
 public unsafe struct VkCommandBufferBeginInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkCommandBufferUsageFlags"/> specifying usage behavior for the command buffer.</summary>
 	public VkCommandBufferUsageFlags Flags;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkCommandBufferInheritanceInfo"/> structure, used if <see cref="CommandBuffer"/> is a secondary command buffer. If this is a primary command buffer, then this value is ignored.</summary>
 	public VkCommandBufferInheritanceInfo* InheritanceInfo;
 }
-/// <summary></summary>
+/// <summary>Structure specifying render pass begin information.</summary>
 public unsafe struct VkRenderPassBeginInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>The render pass to begin an instance of.</summary>
 	public VkRenderPass RenderPass;
-	/// <summary></summary>
+	/// <summary>The framebuffer containing the attachments that are used with the render pass.</summary>
 	public VkFramebuffer Framebuffer;
-	/// <summary></summary>
+	/// <summary>The render area that is affected by the render pass instance, and is described in more detail below.</summary>
 	public VkRect2D RenderArea;
-	/// <summary></summary>
+	/// <summary>The number of elements in <see cref="ClearValues"/>.</summary>
 	public uint ClearValueCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="ClearValueCount"/> <see cref="VkClearValue"/> structures containing clear values for each attachment.</summary>
 	public VkClearValue* ClearValues;
 }
 [StructLayout(LayoutKind.Explicit)]
-/// <summary></summary>
+/// <summary>Structure specifying a clear color value.</summary>
 public unsafe struct VkClearColorValue
 {
 	[FieldOffset(0)]
-	/// <summary></summary>
+	/// <summary>The color clear values when the format of the image or attachment is one of the formats other than signed integer or unsigned integer.</summary>
 	public fixed float Float32[4];
 	[FieldOffset(0)]
-	/// <summary></summary>
+	/// <summary>The color clear values when the format of the image or attachment is signed integer.</summary>
 	public fixed int Int32[4];
 	[FieldOffset(0)]
-	/// <summary></summary>
+	/// <summary>The color clear values when the format of the image or attachment is unsigned integer.</summary>
 	public fixed uint Uint32[4];
 	public VkClearColorValue(float r, float g, float b, float a)
 	{
@@ -1561,12 +1561,12 @@ public unsafe struct VkClearColorValue
 		Uint32[3] = a;
 	}
 }
-/// <summary></summary>
+/// <summary>Structure specifying a clear depth stencil value.</summary>
 public unsafe struct VkClearDepthStencilValue
 {
-	/// <summary></summary>
+	/// <summary>The clear value for the depth aspect of the depth/stencil attachment. It is a floating-point value which is automatically converted to the attachment’s format.</summary>
 	public float Depth;
-	/// <summary></summary>
+	/// <summary>The clear value for the stencil aspect of the depth/stencil attachment. It is a 32-bit integer value which is converted to the attachment’s format by taking the appropriate number of LSBs.</summary>
 	public uint Stencil;
 	public VkClearDepthStencilValue(float depth, uint stencil)
 	{
@@ -1575,140 +1575,140 @@ public unsafe struct VkClearDepthStencilValue
 	}
 }
 [StructLayout(LayoutKind.Explicit)]
-/// <summary></summary>
+/// <summary>Structure specifying a clear value.</summary>
 public unsafe struct VkClearValue
 {
 	[FieldOffset(0)]
-	/// <summary></summary>
+	/// <summary>The color image clear values to use when clearing a color image or attachment.</summary>
 	public VkClearColorValue Color;
 	[FieldOffset(0)]
-	/// <summary></summary>
+	/// <summary>The depth and stencil clear values to use when clearing a depth/stencil image or attachment.</summary>
 	public VkClearDepthStencilValue DepthStencil;
 	public static implicit operator VkClearValue(VkClearColorValue colour) => new() { Color = colour };
 	public static implicit operator VkClearValue(VkClearDepthStencilValue depthStencil) => new() { DepthStencil = depthStencil };
 }
-/// <summary></summary>
+/// <summary>Structure specifying a clear attachment.</summary>
 public unsafe struct VkClearAttachment
 {
-	/// <summary></summary>
+	/// <summary>A mask selecting the color, depth and/or stencil aspects of the attachment to be cleared.</summary>
 	public VkImageAspectFlags AspectMask;
-	/// <summary></summary>
+	/// <summary>The index into the currently bound color attachments, if <see cref="AspectMask"/> is <see cref="VkImageAspectFlags.Color"/>.</summary>
 	public uint ColorAttachment;
-	/// <summary></summary>
+	/// <summary>The color or depth/stencil value to clear the attachment to.</summary>
 	public VkClearValue ClearValue;
 }
-/// <summary></summary>
+/// <summary>Structure specifying an attachment description.</summary>
 public unsafe struct VkAttachmentDescription
 {
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkAttachmentDescriptionFlags"/> specifying additional properties of the attachment.</summary>
 	public VkAttachmentDescriptionFlags Flags;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkFormat"/> value specifying the format of the image view that will be used for the attachment.</summary>
 	public VkFormat Format;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> value specifying the number of samples of the image.</summary>
 	public VkSampleCountFlags Samples;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkAttachmentLoadOp"/> value specifying how the contents of color and depth components of the attachment are treated at the beginning of the subpass where it is first used.</summary>
 	public VkAttachmentLoadOp LoadOp;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkAttachmentStoreOp"/> value specifying how the contents of color and depth components of the attachment are treated at the end of the subpass where it is last used.</summary>
 	public VkAttachmentStoreOp StoreOp;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkAttachmentLoadOp"/> value specifying how the contents of stencil components of the attachment are treated at the beginning of the subpass where it is first used.</summary>
 	public VkAttachmentLoadOp StencilLoadOp;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkAttachmentStoreOp"/> value specifying how the contents of stencil components of the attachment are treated at the end of the last subpass where it is used.</summary>
 	public VkAttachmentStoreOp StencilStoreOp;
-	/// <summary></summary>
+	/// <summary>The layout the attachment image subresource will be in when a render pass instance begins.</summary>
 	public VkImageLayout InitialLayout;
-	/// <summary></summary>
+	/// <summary>The layout the attachment image subresource will be transitioned to when a render pass instance ends.</summary>
 	public VkImageLayout FinalLayout;
 }
-/// <summary></summary>
+/// <summary>Structure specifying an attachment reference.</summary>
 public unsafe struct VkAttachmentReference
 {
-	/// <summary></summary>
+	/// <summary>An integer value identifying an attachment at the corresponding index in <see cref="VkRenderPassCreateInfo.Attachments"/>, or <see cref="VK.AttachmentUnused"/> to signify that this attachment is not used.</summary>
 	public uint Attachment;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkImageLayout"/> value specifying the layout the attachment uses during the subpass.</summary>
 	public VkImageLayout Layout;
 }
-/// <summary></summary>
+/// <summary>Structure specifying a subpass description.</summary>
 public unsafe struct VkSubpassDescription
 {
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkSubpassDescriptionFlags"/> specifying usage of the subpass.</summary>
 	public VkSubpassDescriptionFlags Flags;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkPipelineBindPoint"/> value specifying the pipeline type supported for this subpass.</summary>
 	public VkPipelineBindPoint PipelineBindPoint;
-	/// <summary></summary>
+	/// <summary>The number of input attachments.</summary>
 	public uint InputAttachmentCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="VkAttachmentReference"/> structures defining the input attachments for this subpass and their layouts.</summary>
 	public VkAttachmentReference* InputAttachments;
-	/// <summary></summary>
+	/// <summary>The number of color attachments.</summary>
 	public uint ColorAttachmentCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="ColorAttachmentCount"/> <see cref="VkAttachmentReference"/> structures defining the color attachments for this subpass and their layouts.</summary>
 	public VkAttachmentReference* ColorAttachments;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to an array of <see cref="ColorAttachmentCount"/> <see cref="VkAttachmentReference"/> structures defining the resolve attachments for this subpass and their layouts.</summary>
 	public VkAttachmentReference* ResolveAttachments;
-	/// <summary></summary>
+	/// <summary>A pointer to a <see cref="VkAttachmentReference"/> structure specifying the depth/stencil attachment for this subpass and its layout.</summary>
 	public VkAttachmentReference* DepthStencilAttachment;
-	/// <summary></summary>
+	/// <summary>The number of preserved attachments.</summary>
 	public uint PreserveAttachmentCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="PreserveAttachmentCount"/> render pass attachment indices identifying attachments that are not used by this subpass, but whose contents must be preserved throughout the subpass.</summary>
 	public uint* PreserveAttachments;
 }
-/// <summary></summary>
+/// <summary>Structure specifying a subpass dependency.</summary>
 public unsafe struct VkSubpassDependency
 {
-	/// <summary></summary>
+	/// <summary>The subpass index of the first subpass in the dependency, or <see cref="VK.SubpassExternal"/>.</summary>
 	public uint SourceSubpass;
-	/// <summary></summary>
+	/// <summary>The subpass index of the second subpass in the dependency, or <see cref="VK.SubpassExternal"/>.</summary>
 	public uint DestinationSubpass;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkPipelineStageFlags"/> specifying the source stage mask.</summary>
 	public VkPipelineStageFlags SourceStageMask;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkPipelineStageFlags"/> specifying the destination stage mask</summary>
 	public VkPipelineStageFlags DestinationStageMask;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkAccessFlags"/> specifying a source access mask.</summary>
 	public VkAccessFlags SourceAccessMask;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkAccessFlags"/> specifying a destination access mask.</summary>
 	public VkAccessFlags DestinationAccessMask;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkDependencyFlags"/>.</summary>
 	public VkDependencyFlags DependencyFlags;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created render pass.</summary>
 public unsafe struct VkRenderPassCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkRenderPassCreateFlags"/>.</summary>
 	public VkRenderPassCreateFlags Flags;
-	/// <summary></summary>
+	/// <summary>The number of attachments used by this render pass.</summary>
 	public uint AttachmentCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="AttachmentCount"/> <see cref="VkAttachmentDescription"/> structures describing the attachments used by the render pass.</summary>
 	public VkAttachmentDescription* Attachments;
-	/// <summary></summary>
+	/// <summary>The number of subpasses to create.</summary>
 	public uint SubpassCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="SubpassCount"/> <see cref="VkSubpassDescription"/> structures describing each subpass.</summary>
 	public VkSubpassDescription* Subpasses;
-	/// <summary></summary>
+	/// <summary>The number of memory dependencies between pairs of subpasses.</summary>
 	public uint DependencyCount;
-	/// <summary></summary>
+	/// <summary>A pointer to an array of <see cref="DependencyCount"/> <see cref="VkSubpassDependency"/> structures describing dependencies between pairs of subpasses.</summary>
 	public VkSubpassDependency* Dependencies;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created event.</summary>
 public unsafe struct VkEventCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkEventCreateFlags"/> defining additional creation parameters.</summary>
 	public VkEventCreateFlags Flags;
 }
-/// <summary></summary>
+/// <summary>Structure specifying parameters of a newly created fence.</summary>
 public unsafe struct VkFenceCreateInfo
 {
-	/// <summary></summary>
+	/// <summary>The type of this structure.</summary>
 	public VkStructureType SType;
-	/// <summary></summary>
+	/// <summary><see langword="null"/> or a pointer to a structure extending this structure.</summary>
 	public void* Next;
-	/// <summary></summary>
+	/// <summary>A bitmask of <see cref="VkFenceCreateFlags"/> specifying the initial state and behavior of the fence.</summary>
 	public VkFenceCreateFlags Flags;
 }
 /// <summary></summary>
