@@ -1363,7 +1363,7 @@ public unsafe struct VkPipelineCacheCreateInfo
 	public void* Next;
 	/// <summary>A bitmask of <see cref="VkPipelineCacheCreateFlags"/> specifying the behavior of the pipeline cache.</summary>
 	public VkPipelineCacheCreateFlags Flags;
-	/// <summary>The number of <see langword=\"byte"/>s in <see cref="InitialData"/>. If <see cref="InitialDataSize"/> is zero, the pipeline cache will initially be empty.</summary>
+	/// <summary>The number of <see langword="byte"/>s in <see cref="InitialData"/>. If <see cref="InitialDataSize"/> is zero, the pipeline cache will initially be empty.</summary>
 	public nuint InitialDataSize;
 	/// <summary>A pointer to previously retrieved pipeline cache data. If the pipeline cache data is incompatible with the device, the pipeline cache will be initially empty. If <see cref="InitialDataSize"/> is zero, <see cref="InitialData"/> is ignored.</summary>
 	public void* InitialData;
