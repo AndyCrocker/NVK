@@ -23,6 +23,11 @@ internal static class DocumentationManager
         DocumentationStrings = JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText("./DocumentationStrings.json")) ?? new();
     }
 
+    /// <summary>Checks whether a documentation string exists.</summary>
+    /// <param name="documentationString">The documentation string to check.</param>
+    /// <returns><see langword="true"/>, if the documentation string exists; otherwise, <see langword="false"/>.</returns>
+    public static bool DoesDocumentationStringExist(string documentationString) => DocumentationStrings.ContainsKey(documentationString);
+
     /// <summary>Gets a documentation string.</summary>
     /// <param name="documentationStringId">The id of the documentation string.</param>
     /// <returns>The documentation string with the specified id, if documentation exists; otherwise, "ERROR: NO DOCUMENTATION EXISTS FOR <paramref name="documentationStringId"/>".</returns>
