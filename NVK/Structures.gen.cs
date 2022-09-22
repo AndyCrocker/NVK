@@ -1711,118 +1711,168 @@ public unsafe struct VkFenceCreateInfo
 	/// <summary>A bitmask of <see cref="VkFenceCreateFlags"/> specifying the initial state and behavior of the fence.</summary>
 	public VkFenceCreateFlags Flags;
 }
-/// <summary></summary>
+/// <summary>Structure describing the fine-grained features that can be supported by an implementation.</summary>
 public unsafe struct VkPhysicalDeviceFeatures
 {
-	/// <summary></summary>
+	/// <summary>Specifies that accesses to buffers are bounds-checked against the range of the buffer descriptor (as determined by <see cref="VkDescriptorBufferInfo.Range"/>, <see cref="VkBufferViewCreateInfo.Range"/>, or the size of the buffer).</summary>
+	/// <remarks>Out of bounds accesses must not cause application termination, and the effects of shader loads, stores, and atomics must conform to an implementation-dependent behavior.</remarks>
 	public VkBool32 RobustBufferAccess;
-	/// <summary></summary>
+	/// <summary>Specifies the full 32-bit range of indices is supported for indexed draw calls when using <see cref="VkIndexType.Uint32"/>.</summary>
 	public VkBool32 FullDrawIndexUint32;
-	/// <summary></summary>
+	/// <summary>Specifies whether image views with <see cref="VkImageViewType.CubeArray"/> can be created, and that the corresponding <c>SampledCubeArray</c> and <c>ImageCubeArray</c> SPIR-V capabilities can be used in shader code.</summary>
 	public VkBool32 ImageCubeArray;
-	/// <summary></summary>
+	/// <summary>Specifies whether the <see cref="VkPipelineColorBlendAttachmentState"/> settings are controlled independently per-attachment.</summary>
+	/// <remarks>If this feature is not enabled, the <see cref="VkPipelineColorBlendAttachmentState"/> settings for all color attachments must be identical. Otherwise, a different <see cref="VkPipelineColorBlendAttachmentState"/> can be provided for each bound color attachment.</remarks>
 	public VkBool32 IndependentBlend;
-	/// <summary></summary>
+	/// <summary>Specifies whether geometry shaders are supported.</summary>
+	/// <remarks>If this feature is not enabled, the <see cref="VkShaderStageFlags.Geometry"/> and <see cref="VkPipelineStageFlags.GeometryShader"/> enum values must not be used. This also specifies whether shader modules can declare the <c>Geometry</c> capability.</remarks>
 	public VkBool32 GeometryShader;
-	/// <summary></summary>
+	/// <summary>Specifies whether tessellation control and evaluation shaders are supported.</summary>
+	/// <remarks>If this feature is not enabled, the <see cref="VkShaderStageFlags.TessellationControl"/>, <see cref="VkShaderStageFlags.TessellationEvaluation"/>, <see cref="VkPipelineStageFlags.TessellationControlShader"/>, <see cref="VkPipelineStageFlags.TessellationEvaluationShader"/>, and <see cref="VkStructureType.PipelineTessellationStateCreateInfo"/> enum values must not be used. This also specifies whether shader modules can declare the <c>Tessellation</c> capability.</remarks>
 	public VkBool32 TessellationShader;
-	/// <summary></summary>
+	/// <summary>Specifies whether sample shading and multisample interpolation are supported.</summary>
+	/// <remarks>If this feature is not enabled, <see cref="VkPipelineMultisampleStateCreateInfo.SampleShadingEnable"/> must be set to <see cref="VK.False"/> and <see cref="VkPipelineMultisampleStateCreateInfo.MinSampleShading"/> is ignored. This also specifies whether shader modules can declare the <c>SampleRateShading</c> capability.</remarks>
 	public VkBool32 SampleRateShading;
-	/// <summary></summary>
+	/// <summary>Specifies whether blend operations which take two sources are supported.</summary>
+	/// <remarks>If this feature is not enabled, the <see cref="VkBlendFactor.Source1Color"/>, <see cref="VkBlendFactor.OneMinusSource1Color"/>, <see cref="VkBlendFactor.Source1Alpha"/>, and <see cref="VkBlendFactor.OneMinusSource1Alpha"/> enum values must not be used as source or destination blending factors.</remarks>
 	public VkBool32 DualSourceBlend;
-	/// <summary></summary>
+	/// <summary>Specifies whether logic operations are supported.</summary>
+	/// <remarks>If this feature is not enabled, <see cref="VkPipelineColorBlendStateCreateInfo.LogicOpEnable"/> must be set to <see cref="VK.False"/>, and <see cref="VkPipelineColorBlendStateCreateInfo.LogicOp"/> is ignored.</remarks>
 	public VkBool32 LogicOp;
-	/// <summary></summary>
+	/// <summary>Specifies whether multiple draw indirect is supported.</summary>
+	/// <remarks>If this feature is not enabled, the <c>drawCount</c> parameter to the <see cref="VK.CommandDrawIndirect"/> and <see cref="VK.CommandDrawIndexedIndirect"/> commands must be 0 or 1. <see cref="VkPhysicalDeviceLimits.MaxDrawIndirectCount"/> must also be 1 if this feature is not supported.</remarks>
 	public VkBool32 MultiDrawIndirect;
-	/// <summary></summary>
+	/// <summary>Specifies whether indirect drawing calls support the <c>firstInstance</c> parameter.</summary>
+	/// <remarks>If this feature is not enabled, the <c>firstInstance</c> member of all <see cref="VkDrawIndirectCommand"/> and <see cref="VkDrawIndexedIndirectCommand"/> structures that are provided to the <see cref="VK.CommandDrawIndirect"/> and <see cref="VK.CommandDrawIndexedIndirect"/> commands must be 0.</remarks>
 	public VkBool32 DrawIndirectFirstInstance;
-	/// <summary></summary>
+	/// <summary>Specifies whether depth clamping is supported.</summary>
+	/// <remarks>If this feature is not enabled, <see cref="VkPipelineRasterizationStateCreateInfo.DepthClampEnable"/> must be set to <see cref="VK.False"/>.</remarks>
 	public VkBool32 DepthClamp;
-	/// <summary></summary>
+	/// <summary>Specifies whether depth bias clamping is supported.</summary>
+	/// <remarks>If this feature is not enabled, <see cref="VkPipelineRasterizationStateCreateInfo.DepthBiasClamp"/> must be set to 0 unless the <see cref="VkDynamicState.DepthBias"/> dynamic state is enabled, and the <c>depthBiasClamp</c> parameter to <see cref="VK.CommandSetDepthBias"/> must be set to 0.</remarks>
 	public VkBool32 DepthBiasClamp;
-	/// <summary></summary>
+	/// <summary>Specifies whether point and wireframe fill modes are supported.</summary>
+	/// <remarks>If this feature is not enabled, the <see cref="VkPolygonMode.Point"/> and <see cref="VkPolygonMode.Line"/> enum values must not be used.</remarks>
 	public VkBool32 FillModeNonSolid;
-	/// <summary></summary>
+	/// <summary>Specifies whether depth bounds tests are supported.</summary>
+	/// <remarks>If this feature is not enabled, <see cref="VkPipelineDepthStencilStateCreateInfo.DepthBoundsTestEnable"/> must be set to <see cref="VK.False"/>. When <see cref="VkPipelineDepthStencilStateCreateInfo.DepthBoundsTestEnable"/> is set to <see cref="VK.False"/>, <see cref="VkPipelineDepthStencilStateCreateInfo.MinDepthBounds"/> and <see cref="VkPipelineDepthStencilStateCreateInfo.MaxDepthBounds"/> are ignored.</remarks>
 	public VkBool32 DepthBounds;
-	/// <summary></summary>
+	/// <summary>Specifies whether lines with width other than 1 are supported.</summary>
+	/// <remarks>If this feature is not enabled, <see cref="VkPipelineRasterizationStateCreateInfo.LineWidth"/> must be set to 1 unless the <see cref="VkDynamicState.LineWidth"/> dynamic state is enabled, and the <c>lineWidth</c> parameter to <see cref="VK.CommandSetLineWidth"/> must be set to 1.</remarks>
 	public VkBool32 WideLines;
-	/// <summary></summary>
+	/// <summary>Specifies whether points with size greater than 1 are supported.</summary>
+	/// <remarks>If this feature is not enabled, only a point size of 1 written by a shader is supported.</remarks>
 	public VkBool32 LargePoints;
-	/// <summary></summary>
+	/// <summary>Specifies whether the implementation is able to replace the alpha value of the fragment shader color output in the multisample coverage fragment operation.</summary>
+	/// <remarks>If this feature is not enabled, then <see cref="VkPipelineMultisampleStateCreateInfo.AlphaToOneEnable"/> must be set to <see cref="VK.False"/>.</remarks>
 	public VkBool32 AlphaToOne;
-	/// <summary></summary>
+	/// <summary>Specifies whether more than one viewport is supported.</summary>
+	/// <remarks>If this feature is not enabled:<list type="bullet"><item><see cref="VkPipelineViewportStateCreateInfo.ViewportCount"/> and <see cref="VkPipelineViewportStateCreateInfo.ScissorCount"/> must be set to 1.</item><item>The <c>firstViewport</c> and <c>viewportCount</c> parameters of <see cref="VK.CommandSetViewport"/> must be set to 0 and 1, respectively.</item><item>The <c>firstScissor</c> and <c>scissorCount</c> parameters of <see cref="VK.CommandSetScissor"/> must be set to 0 and 1, respectively.</item><item><see cref="VkPipelineViewportExclusiveScissorStateCreateInfoNV.ExclusiveScissorCount"/> must be set to 0 or 1.</item><item>The <c>firstExclusiveScissor</c> and <c>exclusiveScissorCount</c> parameters of <see cref="VK.CommandSetExclusiveScissorNV"/> must be set to 0 and 1, respectively.</item></list></remarks>
 	public VkBool32 MultiViewport;
-	/// <summary></summary>
+	/// <summary>Specifies whether anisotropic filtering is supported.</summary>
+	/// <remarks>If this feature is not enabled, <see cref="VkSamplerCreateInfo.AnisotropyEnable"/> must be <see cref="VK.False"/>.</remarks>
 	public VkBool32 SamplerAnisotropy;
-	/// <summary></summary>
+	/// <summary>Specifies whether all of the ETC2 and EAC compressed texture formats are supported.</summary>
+	/// <remarks>If this feature is enabled, then the <see cref="VkFormatFeatureFlags.SampledImage"/>, <see cref="VkFormatFeatureFlags.BlitSource"/> and <see cref="VkFormatFeatureFlags.SampledImageFilterLinear"/> features must be supported in <see cref="VkFormatProperties.OptimalTilingFeatures"/> for the following formats:<br/><br/><see cref="VkFormat.ETC2R8G8B8UNormBlock"/><br/><see cref="VkFormat.ETC2R8G8B8SRGBBlock"/><br/><see cref="VkFormat.ETC2R8G8B8A1UNormBlock"/><br/><see cref="VkFormat.ETC2R8G8B8A1SRGBBlock"/><br/><see cref="VkFormat.ETC2R8G8B8A8UNormBlock"/><br/><see cref="VkFormat.ETC2R8G8B8A8SRGBBlock"/><br/><see cref="VkFormat.EACR11UNormBlock"/><br/><see cref="VkFormat.EACR11SNormBlock"/><br/><see cref="VkFormat.EACR11G11UNormBlock"/><br/><see cref="VkFormat.EACR11G11SNormBlock"/><br/><br/>To query for additional properties, or if the feature is not enabled, <see cref="VK.GetPhysicalDeviceFormatProperties"/> and <see cref="VK.GetPhysicalDeviceImageFormatProperties"/> can be used to check for supported properties of individual formats as normal.</remarks>
 	public VkBool32 TextureCompressionETC2;
-	/// <summary></summary>
+	/// <summary>Specifies whether all of the ASTC LDR compressed texture formats are supported.</summary>
+	/// <remarks>If this feature is enabled, then the <see cref="VkFormatFeatureFlags.SampledImage"/>, <see cref="VkFormatFeatureFlags.BlitSource"/> and <see cref="VkFormatFeatureFlags.SampledImageFilterLinear"/> features must be supported in <see cref="VkFormatProperties.OptimalTilingFeatures"/> for the following formats:<br/><br/><see cref="VkFormat.ASTC4x4UNormBlock"/><br/><see cref="VkFormat.ASTC4x4SRGBBlock"/><br/><see cref="VkFormat.ASTC5x4UNormBlock"/><br/><see cref="VkFormat.ASTC5x4SRGBBlock"/><br/><see cref="VkFormat.ASTC5x5UNormBlock"/><br/><see cref="VkFormat.ASTC5x5SRGBBlock"/><br/><see cref="VkFormat.ASTC6x5UNormBlock"/><br/><see cref="VkFormat.ASTC6x5SRGBBlock"/><br/><see cref="VkFormat.ASTC6x6UNormBlock"/><br/><see cref="VkFormat.ASTC6x6SRGBBlock"/><br/><see cref="VkFormat.ASTC8x5UNormBlock"/><br/><see cref="VkFormat.ASTC8x5SRGBBlock"/><br/><see cref="VkFormat.ASTC8x6UNormBlock"/><br/><see cref="VkFormat.ASTC8x6SRGBBlock"/><br/><see cref="VkFormat.ASTC8x8UNormBlock"/><br/><see cref="VkFormat.ASTC8x8SRGBBlock"/><br/><see cref="VkFormat.ASTC10x5UNormBlock"/><br/><see cref="VkFormat.ASTC10x5SRGBBlock"/><br/><see cref="VkFormat.ASTC10x6UNormBlock"/><br/><see cref="VkFormat.ASTC10x6SRGBBlock"/><br/><see cref="VkFormat.ASTC10x8UNormBlock"/><br/><see cref="VkFormat.ASTC10x8SRGBBlock"/><br/><see cref="VkFormat.ASTC10x10UNormBlock"/><br/><see cref="VkFormat.ASTC10x10SRGBBlock"/><br/><see cref="VkFormat.ASTC12x10UNormBlock"/><br/><see cref="VkFormat.ASTC12x10SRGBBlock"/><br/><see cref="VkFormat.ASTC12x12UNormBlock"/><br/><see cref="VkFormat.ASTC12x12SRGBBlock"/><br/><br/>To query for additional properties, or if the feature is not enabled, <see cref="VK.GetPhysicalDeviceFormatProperties"/> and <see cref="VK.GetPhysicalDeviceImageFormatProperties"/> can be used to check for supported properties of individual formats as normal.</remarks>
 	public VkBool32 TextureCompressionASTC_LDR;
-	/// <summary></summary>
+	/// <summary>Specifies whether all of the BC compressed texture formats are supported.</summary>
+	/// <remarks>If this feature is enabled, then the <see cref="VkFormatFeatureFlags.SampledImage"/>, <see cref="VkFormatFeatureFlags.BlitSource"/> and <see cref="VkFormatFeatureFlags.SampledImageFilterLinear"/> features must be supported in <see cref="VkFormatProperties.OptimalTilingFeatures"/> for the following formats:<br/><br/><see cref="VkFormat.BC1RGBUNormBlock"/><br/><see cref="VkFormat.BC1RGBSRGBBlock"/><br/><see cref="VkFormat.BC1RGBAUNormBlock"/><br/><see cref="VkFormat.BC1RGBASRGBBlock"/><br/><see cref="VkFormat.BC2UNormBlock"/><br/><see cref="VkFormat.BC2SRGBBlock"/><br/><see cref="VkFormat.BC3UNormBlock"/><br/><see cref="VkFormat.BC3SRGBBlock"/><br/><see cref="VkFormat.BC4UNormBlock"/><br/><see cref="VkFormat.BC4SNormBlock"/><br/><see cref="VkFormat.BC5UNormBlock"/><br/><see cref="VkFormat.BC5SNormBlock"/><br/><see cref="VkFormat.BC6HUFloatBlock"/><br/><see cref="VkFormat.BC6HSFloatBlock"/><br/><see cref="VkFormat.BC7UNormBlock"/><br/><see cref="VkFormat.BC7SRGBBlock"/><br/><br/>To query for additional properties, or if the feature is not enabled, <see cref="VK.GetPhysicalDeviceFormatProperties"/> and <see cref="VK.GetPhysicalDeviceImageFormatProperties"/> can be used to check for supported properties of individual formats as normal.</remarks>
 	public VkBool32 TextureCompressionBC;
-	/// <summary></summary>
+	/// <summary>Specifies whether occlusion queries returning actual sample counts are supported. Occlusion queries are created in a <see cref="VkQueryPool"/> by specifying a <see cref="VkQueryPoolCreateInfo.QueryType"/> of <see cref="VkQueryType.Occlusion"/> which is passed to <see cref="VK.CreateQueryPool"/>. If this feature is enabled, queries of this type can enable <see cref="VkQueryControlFlags.Precise"/> in the <c>flags</c> parameter to <see cref="VK.CommandBeginQuery"/>.</summary>
+	/// <remarks>If this feature is not supported, the implementation supports only boolean occlusion queries. When any samples are passed, boolean queries will return a non-zero result value, otherwise a result value of zero is returned. When this feature is enabled and <see cref="VkQueryControlFlags.Precise"/> is set, occlusion queries will report the actual number of samples passed.</remarks>
 	public VkBool32 OcclusionQueryPrecise;
-	/// <summary></summary>
+	/// <summary>Specifies whether the pipeline statistics queries are supported.</summary>
+	/// <remarks>If this feature is not enabled, queries of type <see cref="VkQueryType.PipelineStatistics"/> cannot be created, and none of the <see cref="VkQueryPipelineStatisticFlags"/> bits can be set in the <c>pipelineStatistics</c> member of the <see cref="VkQueryPoolCreateInfo"/> structure.</remarks>
 	public VkBool32 PipelineStatisticsQuery;
-	/// <summary></summary>
+	/// <summary>Specifies whether storage buffers and images support stores and atomic operations in the vertex, tessellation, and geometry shader stages.</summary>
+	/// <remarks>If this feature is not enabled, all storage image, storage texel buffer, and storage buffer variables used by these stages in shader modules must be decorated with the <c>NonWritable</c> decoration (or the <c>readonly</c> memory qualifier in GLSL).</remarks>
 	public VkBool32 VertexPipelineStoresAndAtomics;
-	/// <summary></summary>
+	/// <summary>Specifies whether storage buffers and images support stores and atomic operations in the fragment shader stage.</summary>
+	/// <remarks>If this feature is not enabled, all storage image, storage texel buffer, and storage buffer variables used by the fragment stage in shader modules must be decorated with the <c>NonWritable</c> decoration (or the <c>readonly</c> memory qualifier in GLSL).</remarks>
 	public VkBool32 FragmentStoresAndAtomics;
-	/// <summary></summary>
+	/// <summary>Specifies whether the <c>PointSize</c> built-in decoration is available in the tessellation control, tessellation evaluation, and geometry shader stages.</summary>
+	/// <remarks>If this feature is not enabled, members decorated with the <c>PointSize</c> built-in decoration must not be read from or written to and all points written from a tessellation or geometry shader will have a size of 1. This also specifies whether shader modules can declare the <c>TessellationPointSize</c> capability for tessellation control and evaluation shaders, or if the shader modules can declare the <c>GeometryPointSize</c> capability for geometry shaders. An implementation supporting this feature must also support one or both of the <c>tessellationShader</c> or <c>geometryShader</c> features.</remarks>
 	public VkBool32 ShaderTessellationAndGeometryPointSize;
-	/// <summary></summary>
+	/// <summary>Specifies whether the extended set of image gather instructions are available in shader code.</summary>
+	/// <remarks>If this feature is not enabled, the <c>OpImage*Gather</c> instructions do not support the <c>Offset</c> and <c>ConstOffsets</c> operands. This also specifies whether shader modules can declare the <c>ImageGatherExtended</c> capability.</remarks>
 	public VkBool32 ShaderImageGatherExtended;
-	/// <summary></summary>
+	/// <summary>Specifies whether all the “storage image extended formats” below are supported.</summary>
+	/// <remarks>If this feature is supported, then the <see cref="VkFormatFeatureFlags.StorageImage"/> must be supported in <see cref="VkFormatProperties.OptimalTilingFeatures"/> for the following formats:<br/><br/><see cref="VkFormat.R16G16SFloat"/><br/><see cref="VkFormat.B10G11R11UFloatPack32"/><br/><see cref="VkFormat.R16SFloat"/><br/><see cref="VkFormat.R16G16B16A16UNorm"/><br/><see cref="VkFormat.A2B10G10R10UNormPack32"/><br/><see cref="VkFormat.R16G16UNorm"/><br/><see cref="VkFormat.R8G8Unorm"/><br/><see cref="VkFormat.R16UNorm"/><br/><see cref="VkFormat.R8UNorm"/><br/><see cref="VkFormat.R16G16B16A16SNorm"/><br/><see cref="VkFormat.R16G16SNorm"/><br/><see cref="VkFormat.R8G8SNorm"/><br/><see cref="VkFormat.R16SNorm"/><br/><see cref="VkFormat.R8SNorm"/><br/><see cref="VkFormat.R16G16SInt"/><br/><see cref="VkFormat.R8G8SInt"/><br/><see cref="VkFormat.R16SInt"/><br/><see cref="VkFormat.R8SInt"/><br/><see cref="VkFormat.A2B10G10R10UIntPack32"/><br/><see cref="VkFormat.R16G16SInt"/><br/><see cref="VkFormat.R8G8UInt"/><br/><see cref="VkFormat.R16UInt"/><br/><see cref="VkFormat.R8UInt"/><br/><br/>Note: <see cref="ShaderStorageImageExtendedFormats"/> feature only adds a guarantee of format support, which is specified for the whole physical device. Therefore enabling or disabling the feature via <see cref="VK.CreateDevice"/> has no practical effect.<br/>To query for additional properties, or if the feature is not supported, <see cref="VK.GetPhysicalDeviceFormatProperties"/> and <see cref="VK.GetPhysicalDeviceImageFormatProperties"/> can be used to check for supported properties of individual formats, as usual rules allow.<br/><see cref="VkFormat.R32G32UInt"/>, <see cref="VkFormat.R32G32SInt"/>, and <see cref="VkFormat.R32G32SFloat"/> from <c>StorageImageExtendedFormats</c> SPIR-V capability, are already covered by core Vulkan mandatory format support.</remarks>
 	public VkBool32 ShaderStorageImageExtendedFormats;
-	/// <summary></summary>
+	/// <summary>Specifies whether multisampled storage images are supported.</summary>
+	/// <remarks>If this feature is not enabled, images that are created with a <c>usage</c> that includes <see cref="VkImageUsageFlags.Storage"/> must be created with <c>samples</c> equal to <see cref="VkSampleCount.Count1"/>. This also specifies whether shader modules can declare the <c>StorageImageMultisample</c> and <c>ImageMSArray</c> capabilities.</remarks>
 	public VkBool32 ShaderStorageImageMultisample;
-	/// <summary></summary>
+	/// <summary>Specifies whether storage images require a format qualifier to be specified when reading. <see cref="ShaderStorageImageReadWithoutFormat"/> applies only to formats listed in the storage without format list.</summary>
 	public VkBool32 ShaderStorageImageReadWithoutFormat;
-	/// <summary></summary>
+	/// <summary>Specifies whether storage images require a format qualifier to be specified when writing. <see cref="ShaderStorageImageWriteWithoutFormat"/> applies only to formats listed in the storage without format list.</summary>
 	public VkBool32 ShaderStorageImageWriteWithoutFormat;
-	/// <summary></summary>
+	/// <summary>Specifies whether arrays of uniform buffers can be indexed by dynamically uniform integer expressions in shader code.</summary>
+	/// <remarks>If this feature is not enabled, resources with a descriptor type of <see cref="VkDescriptorType.UniformBuffer"/> or <see cref="VkDescriptorType.UniformBufferDynamic"/> must be indexed only by constant integral expressions when aggregated into arrays in shader code. This also specifies whether shader modules can declare the <c>UniformBufferArrayDynamicIndexing</c> capability.</remarks>
 	public VkBool32 ShaderUniformBufferArrayDynamicIndexing;
-	/// <summary></summary>
+	/// <summary>Specifies whether arrays of samplers or sampled images can be indexed by dynamically uniform integer expressions in shader code.</summary>
+	/// <remarks>If this feature is not enabled, resources with a descriptor type of <see cref="VkDescriptorType.Sampler"/>, <see cref="VkDescriptorType.CombinedImageSampler"/>, or <see cref="VkDescriptorType.SampledImage"/> must be indexed only by constant integral expressions when aggregated into arrays in shader code. This also specifies whether shader modules can declare the <c>SampledImageArrayDynamicIndexing</c> capability.</remarks>
 	public VkBool32 ShaderSampledImageArrayDynamicIndexing;
-	/// <summary></summary>
+	/// <summary>Specifies whether arrays of storage buffers can be indexed by dynamically uniform integer expressions in shader code.</summary>
+	/// <remarks>If this feature is not enabled, resources with a descriptor type of <see cref="VkDescriptorType.StorageBuffer"/> or <see cref="VkDescriptorType.StorageBufferDynamic"/> must be indexed only by constant integral expressions when aggregated into arrays in shader code. This also specifies whether shader modules can declare the <c>StorageBufferArrayDynamicIndexing</c> capability.</remarks>
 	public VkBool32 ShaderStorageBufferArrayDynamicIndexing;
-	/// <summary></summary>
+	/// <summary>Specifies whether arrays of storage images can be indexed by dynamically uniform integer expressions in shader code.</summary>
+	/// <remarks>If this feature is not enabled, resources with a descriptor type of <see cref="VkDescriptorType.StorageImage"/> must be indexed only by constant integral expressions when aggregated into arrays in shader code. This also specifies whether shader modules can declare the <c>StorageImageArrayDynamicIndexing</c> capability.</remarks>
 	public VkBool32 ShaderStorageImageArrayDynamicIndexing;
-	/// <summary></summary>
+	/// <summary>Specifies whether clip distances are supported in shader code.</summary>
+	/// <remarks>If this feature is not enabled, any members decorated with the <c>ClipDistance</c> built-in decoration must not be read from or written to in shader modules. This also specifies whether shader modules can declare the <c>ClipDistance</c> capability.</remarks>
 	public VkBool32 ShaderClipDistance;
-	/// <summary></summary>
+	/// <summary>Specifies whether cull distances are supported in shader code.</summary>
+	/// <remarks>If this feature is not enabled, any members decorated with the <c>CullDistance</c> built-in decoration must not be read from or written to in shader modules. This also specifies whether shader modules can declare the <c>CullDistance</c> capability.</remarks>
 	public VkBool32 ShaderCullDistance;
-	/// <summary></summary>
+	/// <summary>Specifies whether 64-bit floats (doubles) are supported in shader code.</summary>
+	/// <remarks>If this feature is not enabled, 64-bit floating-point types must not be used in shader code. This also specifies whether shader modules can declare the <c>Float64</c> capability. Declaring and using 64-bit floats is enabled for all storage classes that SPIR-V allows with the <c>Float64</c> capability.</remarks>
 	public VkBool32 ShaderFloat64;
-	/// <summary></summary>
+	/// <summary>Specifies whether 64-bit integers (signed and unsigned) are supported in shader code.</summary>
+	/// <remarks>If this feature is not enabled, 64-bit integer types must not be used in shader code. This also specifies whether shader modules can declare the <c>Int64</c> capability. Declaring and using 64-bit integers is enabled for all storage classes that SPIR-V allows with the <c>Int64</c> capability.</remarks>
 	public VkBool32 ShaderInt64;
-	/// <summary></summary>
+	/// <summary>Specifies whether 16-bit integers (signed and unsigned) are supported in shader code.</summary>
+	/// <remarks>If this feature is not enabled, 16-bit integer types must not be used in shader code. This also specifies whether shader modules can declare the <c>Int16</c> capability. However, this only enables a subset of the storage classes that SPIR-V allows for the <c>Int16</c> SPIR-V capability: Declaring and using 16-bit integers in the <c>Private</c>, <c>Workgroup</c> (for non-Block variables), and <c>Function</c> storage classes is enabled, while declaring them in the interface storage classes (e.g., <c>UniformConstant</c>, <c>Uniform</c>, <c>StorageBuffer</c>, <c>Input</c>, <c>Output</c>, and <c>PushConstant</c>) is not enabled.</remarks>
 	public VkBool32 ShaderInt16;
-	/// <summary></summary>
+	/// <summary>Specifies whether image operations that return resource residency information are supported in shader code.</summary>
+	/// <remarks>If this feature is not enabled, the <c>OpImageSparse*</c> instructions must not be used in shader code. This also specifies whether shader modules can declare the <c>SparseResidency</c> capability. The feature requires at least one of the <c>sparseResidency*</c> features to be supported.</remarks>
 	public VkBool32 ShaderResourceResidency;
-	/// <summary></summary>
+	/// <summary>Specifies whether image operations specifying the minimum resource LOD are supported in shader code.</summary>
+	/// <remarks>If this feature is not enabled, the <c>MinLod</c> image operand must not be used in shader code. This also specifies whether shader modules can declare the <c>MinLod</c> capability.</remarks>
 	public VkBool32 ShaderResourceMinLod;
-	/// <summary></summary>
+	/// <summary>Specifies whether resource memory can be managed at opaque sparse block level instead of at the object level.</summary>
+	/// <remarks>If this feature is not enabled, resource memory must be bound only on a per-object basis using the <see cref="VK.BindBufferMemory"/> and <see cref="VK.BindImageMemory"/> commands. In this case, buffers and images must not be created with <see cref="VkBufferCreateFlags.SparseBinding"/> and <see cref="VkImageCreateFlags.SparseBinding"/> set in <see cref="VkBufferCreateInfo.Flags"/> and <see cref="VkImageCreateInfo.Flags"/>, respectively.</remarks>
 	public VkBool32 SparseBinding;
-	/// <summary></summary>
+	/// <summary>Specifies whether the device can access partially resident buffers.</summary>
+	/// <remarks>If this feature is not enabled, buffers must not be created with <see cref="VkBufferCreateFlags.SparseResidency"/> set in <see cref="VkBufferCreateInfo.Flags"/>.</remarks>
 	public VkBool32 SparseResidencyBuffer;
-	/// <summary></summary>
+	/// <summary>Specifies whether the device can access partially resident 2D images with 1 sample per pixel.</summary>
+	/// <remarks>If this feature is not enabled, images with an <c>imageType</c> of <see cref="VkImageType._2D"/> and samples set to <see cref="VkSampleCountFlags.Count1"/> must not be created with <see cref="VkImageCreateFlags.SparseResidency"/> set in <see cref="VkImageCreateInfo.Flags"/>.</remarks>
 	public VkBool32 SparseResidencyImage2D;
-	/// <summary></summary>
+	/// <summary>Specifies whether the device can access partially resident 3D images.</summary>
+	/// <remarks>If this feature is not enabled, images with an <c>imageType</c> of <see cref="VkImageType._3D"/> must not be created with <see cref="VkImageCreateFlags.SparseResidency"/> set in <see cref="VkImageCreateInfo.Flags"/>.</remarks>
 	public VkBool32 SparseResidencyImage3D;
-	/// <summary></summary>
+	/// <summary>Specifies whether the physical device can access partially resident 2D images with 2 samples per pixel.</summary>
+	/// <remarks>If this feature is not enabled, images with an <c>imageType</c> of <see cref="VkImageType._2D"/> and samples set to <see cref="VKSampleCountFlags.Count2"/> must not be created with <see cref="VkImageCreateFlags.SparseResidency"/> set in <see cref="VkImageCreateInfo.Flags"/>.</remarks>
 	public VkBool32 SparseResidency2Samples;
-	/// <summary></summary>
+	/// <summary>Specifies whether the physical device can access partially resident 2D images with 4 samples per pixel.</summary>
+	/// <remarks>If this feature is not enabled, images with an <c>imageType</c> of <see cref="VkImageType._2D"/> and samples set to <see cref="VKSampleCountFlags.Count4"/> must not be created with <see cref="VkImageCreateFlags.SparseResidency"/> set in <see cref="VkImageCreateInfo.Flags"/>.</remarks>
 	public VkBool32 SparseResidency4Samples;
-	/// <summary></summary>
+	/// <summary>Specifies whether the physical device can access partially resident 2D images with 8 samples per pixel.</summary>
+	/// <remarks>If this feature is not enabled, images with an <c>imageType</c> of <see cref="VkImageType._2D"/> and samples set to <see cref="VKSampleCountFlags.Count8"/> must not be created with <see cref="VkImageCreateFlags.SparseResidency"/> set in <see cref="VkImageCreateInfo.Flags"/>.</remarks>
 	public VkBool32 SparseResidency8Samples;
-	/// <summary></summary>
+	/// <summary>Specifies whether the physical device can access partially resident 2D images with 16 samples per pixel.</summary>
+	/// <remarks>If this feature is not enabled, images with an <c>imageType</c> of <see cref="VkImageType._2D"/> and samples set to <see cref="VKSampleCountFlags.Count2"/> must not be created with <see cref="VkImageCreateFlags.SparseResidency"/> set in <see cref="VkImageCreateInfo.Flags"/>.</remarks>
 	public VkBool32 SparseResidency16Samples;
-	/// <summary></summary>
+	/// <summary>Specifies whether the physical device can correctly access data aliased into multiple locations.</summary>
+	/// <remarks>If this feature is not enabled, the <see cref="VkBufferCreateFlags.SparseAliased"/> and <see cref="VkImageCreateFlags.SparseAliased"/> enum values must not be used in <see cref="VkBufferCreateInfo.Flags"/> and <see cref="VkImageCreateInfo.Flags"/>, respectively.</remarks>
 	public VkBool32 SparseResidencyAliased;
-	/// <summary></summary>
+	/// <summary>Specifies whether all pipelines that will be bound to a command buffer during a subpass which uses no attachments must have the same value for <see cref="VkPipelineMultisampleStateCreateInfo.RasterizationSamples"/>.</summary>
+	/// <remarks>If set to <see cref="VK.True"/>, the implementation supports variable multisample rates in a subpass which uses no attachments. If set to <see cref="VK.False"/>, then all pipelines bound in such a subpass must have the same multisample rate. This has no effect in situations where a subpass uses any attachments.</remarks>
 	public VkBool32 VariableMultisampleRate;
-	/// <summary></summary>
+	/// <summary>Specifies whether a secondary command buffer may be executed while a query is active.</summary>
 	public VkBool32 InheritedQueries;
 }
 /// <summary></summary>

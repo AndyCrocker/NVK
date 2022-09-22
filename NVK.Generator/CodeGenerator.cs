@@ -295,6 +295,8 @@ public static class CodeGenerator
                     if (fieldInfo.ElementCount == null)
                     {
                         csWriter.WriteLine($"/// <summary>{DocumentationManager.GetDocumentationString($"{structureInfo.DisplayName}.{fieldInfo.DisplayName}.summary")}</summary>");
+                        if (DocumentationManager.DoesDocumentationStringExist($"{structureInfo.DisplayName}.{fieldInfo.DisplayName}.remarks"))
+                            csWriter.WriteLine($"/// <remarks>{DocumentationManager.GetDocumentationString($"{structureInfo.DisplayName}.{fieldInfo.DisplayName}.remarks")}</remarks>");
                         csWriter.WriteLine($"public {fieldInfo.Type} {fieldInfo.DisplayName};");
                     }
                     else
