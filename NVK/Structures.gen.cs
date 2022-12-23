@@ -1889,220 +1889,276 @@ public unsafe struct VkPhysicalDeviceSparseProperties
 	/// <summary></summary>
 	public VkBool32 ResidencyNonResidentStrict;
 }
-/// <summary></summary>
+/// <summary>Structure reporting implementation-dependent physical device limits.</summary>
 public unsafe struct VkPhysicalDeviceLimits
 {
-	/// <summary></summary>
+	/// <summary>The largest dimension (<c>width</c>) that is guaranteed to be supported for all images created with an <c>imageType</c> of <see cref="VkImageType._1d"/>.</summary>
+	/// <remarks>Some combinations of image parameters (format, usage, etc.) may allow support for larger dimensions, which can be queried using <see cref="VK.GetPhysicalDeviceImageFormatProperties"/>.</remarks>
 	public uint MaxImageDimension1D;
-	/// <summary></summary>
+	/// <summary>The largest dimension (<c>width</c> or <c>height</c>) that is guaranteed to be supported for all images created with an <c>imageType</c> of <see cref="VkImageType._2d"/> and without <see cref="VkImageCreateFlags.CubeCompatible"/> set in <c>flags</c>.</summary>
+	/// <remarks>Some combinations of image parameters (format, usage, etc.) may allow support for larger dimensions, which can be queried using <see cref="VK.GetPhysicalDeviceImageFormatProperties"/>.</remarks>
 	public uint MaxImageDimension2D;
-	/// <summary></summary>
+	/// <summary>The largest dimension (<c>width</c>, <c>height</c>, or <c>depth</c>) that is guaranteed to be supported for all images created with an <c>imageType</c> of <see cref="VkImageType._3d"/>.</summary>
+	/// <remarks>Some combinations of image parameters (format, usage, etc.) may allow support for larger dimensions, which can be queried using <see cref="VK.GetPhysicalDeviceImageFormatProperties"/>.</remarks>
 	public uint MaxImageDimension3D;
-	/// <summary></summary>
+	/// <summary>The largest dimension (<c>width</c> or <c>height</c>) that is guaranteed to be supported for all images created with an <c>imageType</c> of <see cref="VkImageType._2d"/> and with <see cref="VkImageCreateFlags.CubeCompatible"/> set in <c>flags</c>.</summary>
+	/// <remarks>Some combinations of image parameters (format, usage, etc.) may allow support for larger dimensions, which can be queried using <see cref="VK.GetPhysicalDeviceImageFormatProperties"/>.</remarks>
 	public uint MaxImageDimensionCube;
-	/// <summary></summary>
+	/// <summary>The maximum number of layers (<c>arrayLayers</c>) for an image.</summary>
 	public uint MaxImageArrayLayers;
-	/// <summary></summary>
+	/// <summary>The maximum number of addressable texels for a buffer view created on a buffer which was created with <see cref="VkBufferUsageFlags.UniformTexelBuffer"/> or <see cref="VkBufferUsageFlags.StorageTexelBuffer"/> set in <see cref="VkBufferCreateInfo.Usage"/>.</summary>
 	public uint MaxTexelBufferElements;
-	/// <summary></summary>
+	/// <summary>The maximum value that can be specified in <see cref="VkDescriptorBufferInfo.Range"/> passed to <see cref="VK.UpdateDescriptorSets"/> for descriptors of type <see cref="VkDescriptorType.UniformBuffer"/> or <see cref="VkDescriptorType.UniformBufferDynamic"/>.</summary>
 	public uint MaxUniformBufferRange;
-	/// <summary></summary>
+	/// <summary>The maximum value that can be specified in <see cref="VkDescriptorBufferInfo.Range"/> passed to <see cref="VK.UpdateDescriptorSets"/> for descriptors of type <see cref="VkDescriptorType.StorageBuffer"/> or <see cref="VkDescriptorType.StorageBufferDynamic"/>.</summary>
 	public uint MaxStorageBufferRange;
-	/// <summary></summary>
+	/// <summary>The maximum size, in <see langword="byte"/>s, of the pool of push constant memory.</summary>
+	/// <remarks>For each of the push constant ranges indicated by <see cref="VkPipelineLayoutCreateInfo.PushConstantRanges"/>, (<c>offset</c> + <c>size</c>) must be less than or equal to this limit.</remarks>
 	public uint MaxPushConstantsSize;
-	/// <summary></summary>
+	/// <summary>The maximum number of device memory allocations, as created by <see cref="VK.AllocateMemory"/>, which can simultaneously exist.</summary>
 	public uint MaxMemoryAllocationCount;
-	/// <summary></summary>
+	/// <summary>The maximum number of sampler objects, as created by <see cref="VK.CreateSampler"/>, which can simultaneously exist on a device.</summary>
 	public uint MaxSamplerAllocationCount;
-	/// <summary></summary>
+	/// <summary>The granularity, in <see langword="byte"/>s, at which buffer or linear image resources, and optimal image resources can be bound to adjacent offsets in the same <see cref="VkDeviceMemory"/> object without aliasing.</summary>
 	public VkDeviceSize BufferImageGranularity;
-	/// <summary></summary>
+	/// <summary>The total amount of address space available, in <see langword="byte"/>s, for sparse memory resources.</summary>
+	/// <remarks>This is an upper bound on the sum of the sizes of all sparse resources, regardless of whether any memory is bound to them.</remarks>
 	public VkDeviceSize SparseAddressSpaceSize;
-	/// <summary></summary>
+	/// <summary>The maximum number of descriptor sets that can be simultaneously used by a pipeline. All <c>DescriptorSet</c> decorations in shader modules must have a value less than <see cref="MaxBoundDescriptorSets"/>.</summary>
 	public uint MaxBoundDescriptorSets;
-	/// <summary></summary>
+	/// <summary>The maximum number of samplers that can be accessible to a single shader stage in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.Sampler"/> or <see cref="VkDescriptorType.CombinedImageSampler"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.<br/>A descriptor is accessible to a shader stage when <see cref="VkDescriptorSetLayoutBinding.StageFlags"/> has the bit for that shader stage set.</remarks>
 	public uint MaxPerStageDescriptorSamplers;
-	/// <summary></summary>
+	/// <summary>The maximum number of uniform buffers that can be accessible to a single shader stage in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.UniformBuffer"/> or <see cref="VkDescriptorType.UniformBufferDynamic"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.<br/>A descriptor is accessible to a shader stage when <see cref="VkDescriptorSetLayoutBinding.StageFlags"/> has the bit for that shader stage set.</remarks>
 	public uint MaxPerStageDescriptorUniformBuffers;
-	/// <summary></summary>
+	/// <summary>The maximum number of storage buffers that can be accessible to a single shader stage in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.StorageBuffer"/> or <see cref="VkDescriptorType.StorageBufferDynamic"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.<br/>A descriptor is accessible to a pipeline shader stage when <see cref="VkDescriptorSetLayoutBinding.StageFlags"/> has the bit for that shader stage set.</remarks>
 	public uint MaxPerStageDescriptorStorageBuffers;
-	/// <summary></summary>
+	/// <summary>The maximum number of sampled images that can be accessible to a single shader stage in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.ImageSampler"/>, <see cref="VkDescriptorType.SampledImage"/>, or <see cref="VkDescriptorType.UniformTexelBuffer"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.<br/>A descriptor is accessible to a pipeline shader stage when <see cref="VkDescriptorSetLayoutBinding.StageFlags"/> has the bit for that shader stage set.</remarks>
 	public uint MaxPerStageDescriptorSampledImages;
-	/// <summary></summary>
+	/// <summary>The maximum number of storage images that can be accessible to a single shader stage in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.StorageImage"/>, or <see cref="VkDescriptorType.StorageTexelBuffer"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.<br/>A descriptor is accessible to a pipeline shader stage when <see cref="VkDescriptorSetLayoutBinding.StageFlags"/> has the bit for that shader stage set.</remarks>
 	public uint MaxPerStageDescriptorStorageImages;
-	/// <summary></summary>
+	/// <summary>The maximum number of input attachments that can be accessible to a single shader stage in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.InputAttachment"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.<br/>A descriptor is accessible to a pipeline shader stage when <see cref="VkDescriptorSetLayoutBinding.StageFlags"/> has the bit for that shader stage set.<br/>These are only supported for the fragment stage.</remarks>
 	public uint MaxPerStageDescriptorInputAttachments;
-	/// <summary></summary>
+	/// <summary>The maximum number of resources that can be accessible to a single shader stage in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.CombinedImageSampler"/>, <see cref="VkDescriptorType.SampledImage"/>, <see cref="VkDescriptorType.StorageImage"/>, <see cref="VkDescriptorType.UniformTexelBuffer"/>, <see cref="VkDescriptorType.StorageTexelBuffer"/>, <see cref="VkDescriptorType.UniformBuffer"/>, <see cref="VkDescriptorType.StorageBuffer"/>, <see cref="VkDescriptorType.UniformBufferDynamic"/>, <see cref="VkDescriptorType.StorageBufferDynamic"/>, or <see cref="VkDescriptorType.InputAttachment"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.<br/>For the fragment shader stage the framebuffer color attachments also count against this limit.</remarks>
 	public uint MaxPerStageResources;
-	/// <summary></summary>
+	/// <summary>The maximum number of samplers that can be included in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.Sampler"/> or <see cref="VkDescriptorType.CombinedImageSampler"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.</remarks>
 	public uint MaxDescriptorSetSamplers;
-	/// <summary></summary>
+	/// <summary>The maximum number of uniform buffers that can be included in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.UniformBuffer"/> or <see cref="VkDescriptorType.UniformBufferDynamic"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.</remarks>
 	public uint MaxDescriptorSetUniformBuffers;
-	/// <summary></summary>
+	/// <summary>The maximum number of dynamic uniform buffers that can be included in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.UniformBufferDynamic"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.</remarks>
 	public uint MaxDescriptorSetUniformBuffersDynamic;
-	/// <summary></summary>
+	/// <summary>The maximum number of storage buffers that can be included in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.StorageBuffer"/> or <see cref="VkDescriptorType.StorageBufferDynamic"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.</remarks>
 	public uint MaxDescriptorSetStorageBuffers;
-	/// <summary></summary>
+	/// <summary>The maximum number of dynamic storage buffers that can be included in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.StorageBufferDynamic"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.</remarks>
 	public uint MaxDescriptorSetStorageBuffersDynamic;
-	/// <summary></summary>
+	/// <summary>The maximum number of sampled images that can be included in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.CombinedImageSampler"/>, <see cref="VkDescriptorType.SampledImage"/>, or <see cref="VkDescriptorType.UniformTexelBuffer"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.</remarks>
 	public uint MaxDescriptorSetSampledImages;
-	/// <summary></summary>
+	/// <summary>The maximum number of storage images that can be included in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.StorageImage"/>, or <see cref="VkDescriptorType.StorageTexelBuffer"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.</remarks>
 	public uint MaxDescriptorSetStorageImages;
-	/// <summary></summary>
+	/// <summary>The maximum number of input attachments that can be included in a pipeline layout.</summary>
+	/// <remarks>Descriptors with a type of <see cref="VkDescriptorType.InputAttachment"/> count against this limit.<br/>Only descriptors in descriptor set layouts created without the <see cref="VkDescriptorSetLayoutCreateFlags.UpdateAfterBindPool"/> bit set count against this limit.</remarks>
 	public uint MaxDescriptorSetInputAttachments;
-	/// <summary></summary>
+	/// <summary>The maximum number of vertex input attributes that can be specified for a graphics pipeline.</summary>
+	/// <remarks>These are described in the array of <see cref="VkVertexInputAttributeDescription"/>s that are provided at graphics pipeline creation time via <see cref="VkPipelineVertexInputStateCreateInfo.VertexAttributeDescriptions"/>.</remarks>
 	public uint MaxVertexInputAttributes;
-	/// <summary></summary>
+	/// <summary>The maximum number of vertex buffers that can be specified for providing vertex attributes to a graphics pipeline.</summary>
+	/// <remarks>These are described in the array of <see cref="VkVertexInputBindingDescription"/>s that are provided at graphics pipeline creation time via <see cref="VkPipelineVertexInputStateCreateInfo.VertexBindingDescriptions"/>.<br/><see cref="VkVertexInputBindingDescription.Binding"/> must be less than this limit.</remarks>
 	public uint MaxVertexInputBindings;
-	/// <summary></summary>
+	/// <summary>The maximum vertex input attribute offset that can be added to the vertex input binding stride.</summary>
+	/// <remarks><see cref="VkVertexInputAttributeDescription.Offset"/> must be less than or equal to this limit.</remarks>
 	public uint MaxVertexInputAttributeOffset;
-	/// <summary></summary>
+	/// <summary>The maximum vertex input binding stride that can be specified in a vertex input binding.</summary>
+	/// <remarks><see cref="VkVertexInputBindingDescription.Stride"/> must be less than or equal to this limit.</remarks>
 	public uint MaxVertexInputBindingStride;
-	/// <summary></summary>
+	/// <summary>The maximum number of components of output variables which can be output by a vertex shader.</summary>
 	public uint MaxVertexOutputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum tessellation generation level supported by the fixed-function tessellation primitive generator.</summary>
 	public uint MaxTessellationGenerationLevel;
-	/// <summary></summary>
+	/// <summary>The maximum patch size, in vertices, of patches that can be processed by the tessellation control shader and tessellation primitive generator.</summary>
+	/// <remarks><see cref="VkPipelineTessellationStateCreateInfo.PatchControlPoints"/> specified at pipeline creation time and the value provided in the <c>OutputVertices</c> execution mode of shader modules must be less than or equal to this limit.</remarks>
 	public uint MaxTessellationPatchSize;
-	/// <summary></summary>
+	/// <summary>The maximum number of components of input variables which can be provided as per-vertex inputs to the tessellation control shader stage.</summary>
 	public uint MaxTessellationControlPerVertexInputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum number of components of per-vertex output variables which can be output from the tessellation control shader stage.</summary>
 	public uint MaxTessellationControlPerVertexOutputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum number of components of per-patch output variables which can be output from the tessellation control shader stage.</summary>
 	public uint MaxTessellationControlPerPatchOutputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum total number of components of per-vertex and per-patch output variables which can be output from the tessellation control shader stage.</summary>
 	public uint MaxTessellationControlTotalOutputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum number of components of input variables which can be provided as per-vertex inputs to the tessellation evaluation shader stage.</summary>
 	public uint MaxTessellationEvaluationInputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum number of components of per-vertex output variables which can be output from the tessellation evaluation shader stage.</summary>
 	public uint MaxTessellationEvaluationOutputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum invocation count supported for instanced geometry shaders.</summary>
+	/// <remarks>The value provided in the <c>Invocations</c> execution mode of shader modules must be less than or equal to this limit.</remarks>
 	public uint MaxGeometryShaderInvocations;
-	/// <summary></summary>
+	/// <summary>The maximum number of components of input variables which can be provided as inputs to the geometry shader stage.</summary>
 	public uint MaxGeometryInputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum number of components of output variables which can be output from the geometry shader stage.</summary>
 	public uint MaxGeometryOutputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum number of vertices which can be emitted by any geometry shader.</summary>
 	public uint MaxGeometryOutputVertices;
-	/// <summary></summary>
+	/// <summary>The maximum total number of components of output variables, across all emitted vertices, which can be output from the geometry shader stage.</summary>
 	public uint MaxGeometryTotalOutputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum number of components of input variables which can be provided as inputs to the fragment shader stage.</summary>
 	public uint MaxFragmentInputComponents;
-	/// <summary></summary>
+	/// <summary>The maximum number of output attachments which can be written to by the fragment shader stage.</summary>
 	public uint MaxFragmentOutputAttachments;
-	/// <summary></summary>
+	/// <summary>The maximum number of output attachments which can be written to by the fragment shader stage when blending is enabled and one of the dual source blend modes is in use.</summary>
 	public uint MaxFragmentDualSourceAttachments;
-	/// <summary></summary>
+	/// <summary>The total number of storage buffers, storage images, and output Location decorated color attachments which can be used in the fragment shader stage.</summary>
 	public uint MaxFragmentCombinedOutputResources;
-	/// <summary></summary>
+	/// <summary>The maximum total storage size, in <see langword="byte"/>s, available for variables declared with the <c>Workgroup</c> storage class in shader modules (or with the <c>shared</c> storage qualifier in GLSL) in the compute shader stage.</summary>
+	/// <remarks>When variables declared with the <c>Workgroup</c> storage class are explicitly laid out (hence they are also decorated with <c>Block</c>), the amount of storage consumed is the size of the largest Block variable, not counting any padding at the end.<br/>The amount of storage consumed by the non-Block variables declared with the <c>Workgroup</c> storage class is implementation-dependent.<br/>However, the amount of storage consumed may not exceed the largest block size that would be obtained if all active non-Block variables declared with <c>Workgroup</c> storage class were assigned offsets in an arbitrary order by successively taking the smallest valid offset according to the standard storage buffer layout rules, and with <c>Boolean</c> values considered as 32-bit integer values for the purpose of this calculation. (This is equivalent to using the GLSL std430 layout rules.)</remarks>
 	public uint MaxComputeSharedMemorySize;
-	/// <summary></summary>
+	/// <summary>The maximum number of local workgroups that can be dispatched by a single dispatching command.</summary>
 	public fixed uint MaxComputeWorkGroupCount[3];
-	/// <summary></summary>
+	/// <summary>The maximum total number of compute shader invocations in a single local workgroup.</summary>
+	/// <remarks>The product of the X, Y, and Z sizes, as specified by the <c>LocalSize</c> or <c>LocalSizeId</c> execution mode in shader modules or by the object decorated by the <c>WorkgroupSize</c> decoration, must be less than or equal to this limit.</remarks>
 	public uint MaxComputeWorkGroupInvocations;
-	/// <summary></summary>
+	/// <summary>The maximum size of a local compute workgroup, per dimension.</summary>
 	public fixed uint MaxComputeWorkGroupSize[3];
-	/// <summary></summary>
+	/// <summary>The number of bits of subpixel precision in framebuffer coordinates xf and yf.</summary>
 	public uint SubPixelPrecisionBits;
-	/// <summary></summary>
+	/// <summary>The number of bits of precision in the division along an axis of an image used for minification and magnification filters.</summary>
+	/// <remarks>2 <see cref="SubTexelPrecisionBits"/> is the actual number of divisions along each axis of the image represented.<br/>Sub-texel values calculated during image sampling will snap to these locations when generating the filtered results.</remarks>
 	public uint SubTexelPrecisionBits;
-	/// <summary></summary>
+	/// <summary>The number of bits of division that the LOD calculation for mipmap fetching get snapped to when determining the contribution from each mip level to the mip filtered results.</summary>
+	/// <remarks>2 <see cref="<MipmapPrecisionBits"/> is the actual number of divisions.</remarks>
 	public uint MipmapPrecisionBits;
-	/// <summary></summary>
+	/// <summary>The maximum index value that can be used for indexed draw calls when using 32-bit indices.</summary>
+	/// <remarks>This excludes the primitive restart index value of 0xFFFFFFFF.</remarks>
 	public uint MaxDrawIndexedIndexValue;
-	/// <summary></summary>
+	/// <summary>The maximum draw count that is supported for indirect drawing calls.</summary>
 	public uint MaxDrawIndirectCount;
-	/// <summary></summary>
+	/// <summary>The maximum absolute sampler LOD bias.</summary>
+	/// <remarks>The sum of <see cref="VkSamplerCreateInfo.MipLodBias" and the <c>Bias</c> operand of image sampling operations in shader modules (or 0 if no <c>Bias</c> operand is provided to an image sampling operation) are clamped to the range [-<see cref="MaxSamplerLodBias"/>,+<see cref="MaxSamplerLodBias"/>].</remarks>
 	public float MaxSamplerLodBias;
-	/// <summary></summary>
+	/// <summary>The maximum degree of sampler anisotropy.</summary>
+	/// <remarks>The maximum degree of anisotropic filtering used for an image sampling operation is the minimum of <see cref="VkSamplerCreateInfo.MaxAnisotropy"/> and this limit.</remarks>
 	public float MaxSamplerAnisotropy;
-	/// <summary></summary>
+	/// <summary>The maximum number of active viewports.</summary>
+	/// <remarks><see cref="VkPipelineViewportStateCreateInfo.ViewportCount"/> that is provided at pipeline creation must be less than or equal to this limit.</remarks>
 	public uint MaxViewports;
-	/// <summary></summary>
+	/// <summary>The maximum viewport dimensions in the X (width) and Y (height) dimensions, respectively.</summary>
 	public fixed uint MaxViewportDimensions[2];
-	/// <summary></summary>
+	/// <summary>The [minimum, maximum] range that the corners of a viewport must be contained in.</summary>
 	public fixed float ViewportBoundsRange[2];
-	/// <summary></summary>
+	/// <summary>The number of bits of subpixel precision for viewport bounds.</summary>
+	/// <remarks>The subpixel precision that floating-point viewport bounds are interpreted at is given by this limit.</remarks>
 	public uint ViewportSubPixelBits;
-	/// <summary></summary>
+	/// <summary>The minimum required alignment, in <see langword="byte"/>s, of host visible memory allocations within the host address space.</summary>
+	/// <remarks>When mapping a memory allocation with <see cref="VK.MapMemory"/>, subtracting <c>offset</c> <see langword="byte"/>s from the returned pointer will always produce an integer multiple of this limit.<br/>The value must be a power of two.</remarks>
 	public nuint MinMemoryMapAlignment;
-	/// <summary></summary>
+	/// <summary>The minimum required alignment, in <see langword="byte"/>s, for <see cref="VkBufferViewCreateInfo.Offset"/> for texel buffers.</summary>
+	/// <remarks>The value must be a power of two.<br/>If <see cref="VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.TexelBufferAlignment"/> is enabled, this limit is equivalent to the maximum of <see cref="VkPhysicalDeviceTexelBufferAlignmentProperties.UniformTexelBufferOffsetAlignmentBytes"/> and <see cref="VkPhysicalDeviceTexelBufferAlignmentProperties.StorageTexelBufferOffsetAlignmentBytes"/>, but smaller alignment is optionally allowed by <see cref="VkPhysicalDeviceTexelBufferAlignmentProperties.StorageTexelBufferOffsetSingleTexelAlignment"/> and <see cref="VkPhysicalDeviceTexelBufferAlignmentProperties.UniformTexelBufferOffsetSingleTexelAlignment"/>.<br/>If <see cref="VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.TexelBufferAlignment"/> is not enabled, <see cref="VkBufferViewCreateInfo.Offset"/> must be a multiple of this value.</remarks>
 	public VkDeviceSize MinTexelBufferOffsetAlignment;
-	/// <summary></summary>
+	/// <summary>The minimum required alignment, in <see langword="byte"/>s, <see cref="VkDescriptorBufferInfo.Offset"/> for uniform buffers.</summary>
+	/// <remarks>When a descriptor of type <see cref="VkDescriptorType.UniformBuffer"/> or <see cref="VkDescriptorType.UniformBufferDynamic"/> is updated, the <c>offset</c> must be an integer multiple of this limit.<br/>Similarly, dynamic offsets for uniform buffers must be multiples of this limit.<br/>The value must be a power of two.</remarks>
 	public VkDeviceSize MinUniformBufferOffsetAlignment;
-	/// <summary></summary>
+	/// <summary>The minimum required alignment, in <see langword="byte"/>s, <see cref="VkDescriptorBufferInfo.Offset"/> for storage buffers.</summary>
+	/// <remarks>When a descriptor of type <see cref="VkDescriptorType.StorageBuffer"/> or <see cref="VkDescriptorType.StorageBufferDynamic"/> is updated, the <c>offset</c> must be an integer multiple of this limit.<br/>Similarly, dynamic offsets for storage buffers must be multiples of this limit.<br/>The value must be a power of two.</remarks>
 	public VkDeviceSize MinStorageBufferOffsetAlignment;
-	/// <summary></summary>
+	/// <summary>The minimum offset value for the <c>ConstOffset</c> image operand of any of the <c>OpImageSample*</c> or <c>OpImageFetch*</c> image instructions.</summary>
 	public int MinTexelOffset;
-	/// <summary></summary>
+	/// <summary>The maximum offset value for the <c>ConstOffset</c> image operand of any of the <c>OpImageSample*</c> or <c>OpImageFetch*</c> image instructions.</summary>
 	public uint MaxTexelOffset;
-	/// <summary></summary>
+	/// <summary>The minimum offset value for the <c>Offset</c>, <c>ConstOffset</c>, or <c>ConstOffsets</c> image operands of any of the <c>OpImage*Gather</c> image instructions.</summary>
 	public int MinTexelGatherOffset;
-	/// <summary></summary>
+	/// <summary>The maximum offset value for the <c>Offset</c>, <c>ConstOffset</c>, or <c>ConstOffsets</c> image operands of any of the <c>OpImage*Gather</c> image instructions.</summary>
 	public uint MaxTexelGatherOffset;
-	/// <summary></summary>
+	/// <summary>The base minimum (inclusive) negative offset value for the <c>Offset</c> operand of the <c>InterpolateAtOffset</c> extended instruction.</summary>
 	public float MinInterpolationOffset;
-	/// <summary></summary>
+	/// <summary>The base maximum (inclusive) positive offset value for the <c>Offset</c> operand of the <c>InterpolateAtOffset</c> extended instruction.</summary>
 	public float MaxInterpolationOffset;
-	/// <summary></summary>
+	/// <summary>The number of fractional bits that the <c>x</c> and <c>y</c> offsets to the <c>InterpolateAtOffset</c> extended instruction may be rounded to as fixed-point values.</summary>
 	public uint SubPixelInterpolationOffsetBits;
-	/// <summary></summary>
+	/// <summary>The maximum width for a framebuffer.</summary>
+	/// <remarks><see cref="VkFramebufferCreateInfo.Width"/> must be less than or equal to this limit.</remarks>
 	public uint MaxFramebufferWidth;
-	/// <summary></summary>
+	/// <summary>The maximum height for a framebuffer.</summary>
+	/// <remarks><see cref="VkFramebufferCreateInfo.Height"/> must be less than or equal to this limit.</remarks>
 	public uint MaxFramebufferHeight;
-	/// <summary></summary>
+	/// <summary>The maximum layer count for a layered framebuffer.</summary>
+	/// <remarks><see cref="VkFramebufferCreateInfo.Layers"/> must be less than or equal to this limit.</remarks>
 	public uint MaxFramebufferLayers;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> bitmask indicating the color sample counts that are supported for all framebuffer color attachments with floating- or fixed-point formats.</summary>
 	public VkSampleCountFlags FramebufferColorSampleCounts;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> bitmask indicating the supported depth sample counts for all framebuffer depth/stencil attachments, when the format includes a depth component.</summary>
 	public VkSampleCountFlags FramebufferDepthSampleCounts;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> bitmask indicating the supported stencil sample counts for all framebuffer depth/stencil attachments, when the format includes a stencil component.</summary>
 	public VkSampleCountFlags FramebufferStencilSampleCounts;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> bitmask indicating the supported sample counts for a subpass which uses no attachments.</summary>
 	public VkSampleCountFlags FramebufferNoAttachmentsSampleCounts;
-	/// <summary></summary>
+	/// <summary>The maximum number of color attachments that can be used by a subpass in a render pass.</summary>
+	/// <remarks><see cref="VkSubpassDescription.ColorAttachmentCount"/> or <see cref="VkSubpassDescription2.ColorAttachmentCount"/> must be less than or equal to this limit.</remarks>
 	public uint MaxColorAttachments;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> bitmask indicating the sample counts supported for all 2D images created with <see cref="VkImageTiling.Optimal"/>, <c>usage</c> containing <see cref="VkImageUsageFlags.Sampled"/>, and a non-integer color format.</summary>
 	public VkSampleCountFlags SampledImageColorSampleCounts;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> bitmask indicating the sample counts supported for all 2D images created with <see cref="VkImageTiling.Optimal"/>, <c>usage</c> containing <see cref="VkImageUsageFlags.Sampled"/>, and an integer color format.</summary>
 	public VkSampleCountFlags SampledImageIntegerSampleCounts;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> bitmask indicating the sample counts supported for all 2D images created with <see cref="VkImageTiling.Optimal"/>, <c>usage</c> containing <see cref="VkImageUsageFlags.Sampled"/>, and a depth format.</summary>
 	public VkSampleCountFlags SampledImageDepthSampleCounts;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> bitmask indicating the sample counts supported for all 2D images created with <see cref="VkImageTiling.Optimal"/>, <c>usage</c> containing <see cref="VkImageUsageFlags.Sampled"/>, and a stencil format.</summary>
 	public VkSampleCountFlags SampledImageStencilSampleCounts;
-	/// <summary></summary>
+	/// <summary>A <see cref="VkSampleCountFlags"/> bitmask indicating the sample counts supported for all 2D images created with <see cref="VkImageTiling.Optimal"/>, and <c>usage</c> containing <see cref="VkImageUsageFlags.Storage"/>.</summary>
 	public VkSampleCountFlags StorageImageSampleCounts;
-	/// <summary></summary>
+	/// <summary>The maximum number of array elements of a variable decorated with the <c>SampleMask</c> built-in decoration.</summary>
 	public uint MaxSampleMaskWords;
-	/// <summary></summary>
+	/// <summary>Specifies support for timestamps on all graphics and compute queues.</summary>
+	/// <remarks>If this limit is set to <see cref="VK.True"/>, all queues that advertise the <see cref="VKQueueFlags.Graphics"/> or <see cref="VKQueueFlags.Compute"/> in the <see cref="VkQueueFamilyProperties.QueueFlags"/> support <see cref="VkQueueFamilyProperties.TimestampValidBits"/> of at least 36.</remarks>
 	public VkBool32 TimestampComputeAndGraphics;
-	/// <summary></summary>
+	/// <summary>The number of nanoseconds required for a timestamp query to be incremented by 1.</summary>
 	public float TimestampPeriod;
-	/// <summary></summary>
+	/// <summary>The maximum number of clip distances that can be used in a single shader stage.</summary>
+	/// <remarks>The size of any array declared with the <c>ClipDistance</c> built-in decoration in a shader module must be less than or equal to this limit.</remarks>
 	public uint MaxClipDistances;
-	/// <summary></summary>
+	/// <summary>The maximum number of cull distances that can be used in a single shader stage.</summary>
+	/// <remarks>The size of any array declared with the <c>CullDistance</c> built-in decoration in a shader module must be less than or equal to this limit.</remarks>
 	public uint MaxCullDistances;
-	/// <summary></summary>
+	/// <summary>The maximum combined number of clip and cull distances that can be used in a single shader stage.</summary>
+	/// <remarks>The sum of the sizes of any pair of arrays declared with the <c>ClipDistance</c> and <c>CullDistance</c> built-in decoration used by a single shader stage in a shader module must be less than or equal to this limit.</remarks>
 	public uint MaxCombinedClipAndCullDistances;
-	/// <summary></summary>
+	/// <summary>The number of discrete priorities that can be assigned to a queue based on the value of each member of <see cref="VkDeviceQueueCreateInfo.QueuePriorities"/>.</summary>
+	/// <remarks>This must be at least 2, and levels must be spread evenly over the range, with at least one level at 1.0, and another at 0.0.</remarks>
 	public uint DiscreteQueuePriorities;
-	/// <summary></summary>
+	/// <summary>The range [<c>minimum</c>,<c>maximum</c>] of supported sizes for points.</summary>
 	public fixed float PointSizeRange[2];
-	/// <summary></summary>
+	/// <summary>The range [<c>minimum</c>,<c>maximum</c>] of supported widths for lines.</summary>
 	public fixed float LineWidthRange[2];
-	/// <summary></summary>
+	/// <summary>The granularity of supported point sizes.</summary>
+	/// <remarks>Not all point sizes in the range defined by <see cref="PointSizeRange"/> are supported.<br/>This limit specifies the granularity (or increment) between successive supported point sizes.</remarks>
 	public float PointSizeGranularity;
-	/// <summary></summary>
+	/// <summary>The granularity of supported line widths.</summary>
+	/// <remarks>Not all line widths in the range defined by <see cref="LineWidthRange"/> are supported.<br/>This limit specifies the granularity (or increment) between successive supported line widths.</remarks>
 	public float LineWidthGranularity;
-	/// <summary></summary>
+	/// <summary>Whether lines are rasterized according to the preferred method of rasterization.</summary>
+	/// <remarks>If set to <see cref="VK.False"/>, lines may be rasterized under a relaxed set of rules.<br/>If set to <see cref="VK.True"/>, lines are rasterized as per the strict definition.</remarks>
 	public VkBool32 StrictLines;
-	/// <summary></summary>
+	/// <summary>Whether rasterization uses the standard sample locations.</summary>
+	/// <remarks>If set to <see cref="VK.True"/>, the implementation uses the documented sample locations.<br/>If set to <see cref="VK.False"/>, the implementation may use different sample locations.</remarks>
 	public VkBool32 StandardSampleLocations;
-	/// <summary></summary>
+	/// <summary>The optimal buffer offset alignment in <see langword="byte"/>s for <see cref="VK.CommandCopyBufferToImage2"/>, <see cref="VK.CommandCopyBufferToImage"/>, <see cref="VK.CommandCopyImageToBuffer2"/>, and <see cref="VK.CommandCopyImageToBuffer"/>.</summary>
+	/// <remarks>The per texel alignment requirements are enforced, but applications should use the optimal alignment for optimal performance and power use.<br/>The value must be a power of two.</remarks>
 	public VkDeviceSize OptimalBufferCopyOffsetAlignment;
-	/// <summary></summary>
+	/// <summary>The optimal buffer row pitch alignment in <see langword="byte"/>s for <see cref="VK.CommandCopyBufferToImage2"/>, <see cref="VK.CommandCopyBufferToImage"/>, <see cref="VK.CommandCopyImageToBuffer2"/>, and <see cref="VK.CommandCopyImageToBuffer"/>.</summary>
+	/// <remarks>Row pitch is the number of <see cref="byte"/>s between texels with the same X coordinate in adjacent rows (Y coordinates differ by one).<br/>The per texel alignment requirements are enforced, but applications should use the optimal alignment for optimal performance and power use.<br/>The value must be a power of two.</remarks>
 	public VkDeviceSize OptimalBufferCopyRowPitchAlignment;
-	/// <summary></summary>
+	/// <summary>The size and alignment in <see cref="byte"/>s that bounds concurrent access to host-mapped device memory.</summary>
+	/// <remarks>The value must be a power of two.</remarks>
 	public VkDeviceSize NonCoherentAtomSize;
 }
 /// <summary></summary>
