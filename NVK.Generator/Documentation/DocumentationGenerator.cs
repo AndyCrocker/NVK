@@ -138,6 +138,8 @@ internal static class DocumentationGenerator
                 var delegateParameterInfo = delegateInfo.Parameters.Single(delegateParameterInfo => delegateParameterInfo.Name == parameterDocumentation.Key);
                 delegateParameterInfo.SummaryDocumentation = parameterDocumentation.Value;
             }
+
+            PrettifyDelegateDocumentation(delegateInfo);
         }
     }
 
@@ -205,4 +207,20 @@ internal static class DocumentationGenerator
 
         return documentationStrings;
     }
+
+    /// <summary>Prettifies a delegate's documentation.</summary>
+    /// <param name="delegateInfo">The delegate whose documentation to prettify.</param>
+    private static void PrettifyDelegateDocumentation(DelegateInfo delegateInfo)
+    {
+        if (delegateInfo.RemarksDocumentation != null)
+            delegateInfo.RemarksDocumentation = PrettifyDocumentation(delegateInfo.RemarksDocumentation);
+    }
+
+    /// <summary>Performs generic documentation prettifying.</summary>
+    /// <param name="documentation">The documentation string to prettify.</param>
+    /// <returns>A pretty version of <paramref name="documentation"/>.</returns>
+    /// <remarks>This won't affect context specific documentation such as paramrefs etc.</remarks>
+    private static string PrettifyDocumentation(string documentation) =>
+        documentation.Trim()
+            .Replace("<strong class=\"purple\">", "<strong>");
 }

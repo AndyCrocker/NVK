@@ -23,7 +23,7 @@ public unsafe delegate void InternalFreeNotificationDelegate(void* userData, nui
 /// <param name="size"> is the size in bytes of the requested allocation.</param>
 /// <param name="alignment"> is the requested alignment of the allocation in bytes and <strong class="purple">must</strong> be a power of two.</param>
 /// <param name="allocationScope"> is a <a href="#VkSystemAllocationScope">VkSystemAllocationScope</a> value specifying the allocation scope of the lifetime of the allocation, as described <a href="#memory-host-allocation-scope">here</a>.</param>
-/// <remarks><code>pfnReallocation</code> <strong class="purple">must</strong> return an allocation with enough space for <code>size</code> bytes, and the contents of the original allocation from bytes zero to <span class="eq">min(original size, new size) - 1</span> <strong class="purple">must</strong> be preserved in the returned allocation. If <code>size</code> is larger than the old size, the contents of the additional space are undefined. If satisfying these requirements involves creating a new allocation, then the old allocation <strong class="purple">should</strong> be freed.</remarks>
+/// <remarks><code>pfnReallocation</code> <strong>must</strong> return an allocation with enough space for <code>size</code> bytes, and the contents of the original allocation from bytes zero to <span class="eq">min(original size, new size) - 1</span> <strong>must</strong> be preserved in the returned allocation. If <code>size</code> is larger than the old size, the contents of the additional space are undefined. If satisfying these requirements involves creating a new allocation, then the old allocation <strong>should</strong> be freed.</remarks>
 public unsafe delegate void* ReallocationFunctionDelegate(void* userData, void* original, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
 
 /// <summary></summary>
@@ -36,7 +36,7 @@ public unsafe delegate void* AllocationFunctionDelegate(void* userData, nuint si
 /// <summary></summary>
 /// <param name="userData"> is the value specified for <a href="#VkAllocationCallbacks">VkAllocationCallbacks</a>::<code>pUserData</code> in the allocator specified by the application.</param>
 /// <param name="memory"> is the allocation to be freed.</param>
-/// <remarks><code>pMemory</code> <strong class="purple">may</strong> be <code>NULL</code>, which the callback <strong class="purple">must</strong> handle safely. If <code>pMemory</code> is non-<code>NULL</code>, it <strong class="purple">must</strong> be a pointer previously allocated by <code>pfnAllocation</code> or <code>pfnReallocation</code>. The application <strong class="purple">should</strong> free this memory.</remarks>
+/// <remarks><code>pMemory</code> <strong>may</strong> be <code>NULL</code>, which the callback <strong>must</strong> handle safely. If <code>pMemory</code> is non-<code>NULL</code>, it <strong>must</strong> be a pointer previously allocated by <code>pfnAllocation</code> or <code>pfnReallocation</code>. The application <strong>should</strong> free this memory.</remarks>
 public unsafe delegate void FreeFunctionDelegate(void* userData, void* memory);
 
 /// <summary></summary>
@@ -51,7 +51,7 @@ public unsafe delegate void VoidFunctionDelegate();
 /// <param name="layerPrefix"> is a null-terminated string that is an abbreviation of the name of the component making the callback. <code>pLayerPrefix</code> is only valid for the duration of the callback.</param>
 /// <param name="message"> is a null-terminated string detailing the trigger conditions. <code>pMessage</code> is only valid for the duration of the callback.</param>
 /// <param name="userData"> is the user data given when the <a href="#VkDebugReportCallbackEXT">VkDebugReportCallbackEXT</a> was created.</param>
-/// <remarks>The callback <strong class="purple">must</strong> not call <code>vkDestroyDebugReportCallbackEXT</code>.</remarks>
+/// <remarks>The callback <strong>must</strong> not call <code>vkDestroyDebugReportCallbackEXT</code>.</remarks>
 public unsafe delegate VkBool32 DebugReportCallbackEXTDelegate(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, byte* message, void* userData);
 
 /// <summary></summary>
@@ -59,12 +59,12 @@ public unsafe delegate VkBool32 DebugReportCallbackEXTDelegate(VkDebugReportFlag
 /// <param name="messageTypes"> is a bitmask of <a href="#VkDebugUtilsMessageTypeFlagBitsEXT">VkDebugUtilsMessageTypeFlagBitsEXT</a> specifying which type of event(s) triggered this callback.</param>
 /// <param name="callbackData"> contains all the callback related data in the <a href="#VkDebugUtilsMessengerCallbackDataEXT">VkDebugUtilsMessengerCallbackDataEXT</a> structure.</param>
 /// <param name="userData"> is the user data provided when the <a href="#VkDebugUtilsMessengerEXT">VkDebugUtilsMessengerEXT</a> was created.</param>
-/// <remarks>The callback returns a <a href="#VkBool32">VkBool32</a>, which is interpreted in a layer-specified manner. The application <strong class="purple">should</strong> always return <code>VK_FALSE</code>. The <code>VK_TRUE</code> value is reserved for use in layer development.</remarks>
+/// <remarks>The callback returns a <a href="#VkBool32">VkBool32</a>, which is interpreted in a layer-specified manner. The application <strong>should</strong> always return <code>VK_FALSE</code>. The <code>VK_TRUE</code> value is reserved for use in layer development.</remarks>
 public unsafe delegate VkBool32 DebugUtilsMessengerCallbackEXTDelegate(VkDebugUtilsMessageSeverityFlagsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageTypes, VkDebugUtilsMessengerCallbackDataEXT* callbackData, void* userData);
 
 /// <summary></summary>
 /// <param name="callbackData"> contains all the callback related data in the <a href="#VkDeviceMemoryReportCallbackDataEXT">VkDeviceMemoryReportCallbackDataEXT</a> structure.</param>
 /// <param name="userData"> is the user data provided when the <a href="#VkDeviceDeviceMemoryReportCreateInfoEXT">VkDeviceDeviceMemoryReportCreateInfoEXT</a> was created.</param>
-/// <remarks>The callback <strong class="purple">must</strong> not make calls to any Vulkan commands.</remarks>
+/// <remarks>The callback <strong>must</strong> not make calls to any Vulkan commands.</remarks>
 public unsafe delegate void DeviceMemoryReportCallbackEXTDelegate(VkDeviceMemoryReportCallbackDataEXT* callbackData, void* userData);
 
