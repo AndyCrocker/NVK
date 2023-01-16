@@ -23,7 +23,7 @@ public unsafe delegate void InternalFreeNotificationDelegate(void* userData, nui
 /// <param name="size"> is the size in bytes of the requested allocation.</param>
 /// <param name="alignment"> is the requested alignment of the allocation in bytes and <strong class="purple">must</strong> be a power of two.</param>
 /// <param name="allocationScope"> is a <a href="#VkSystemAllocationScope">VkSystemAllocationScope</a> value specifying the allocation scope of the lifetime of the allocation, as described <a href="#memory-host-allocation-scope">here</a>.</param>
-/// <remarks><code>pfnReallocation</code> <strong>must</strong> return an allocation with enough space for <code>size</code> bytes, and the contents of the original allocation from bytes zero to <span class="eq">min(original size, new size) - 1</span> <strong>must</strong> be preserved in the returned allocation. If <code>size</code> is larger than the old size, the contents of the additional space are undefined. If satisfying these requirements involves creating a new allocation, then the old allocation <strong>should</strong> be freed.</remarks>
+/// <remarks><code>pfnReallocation</code> <strong>must</strong> return an allocation with enough space for <paramref name="size"/> bytes, and the contents of the original allocation from bytes zero to <span class="eq">min(original size, new size) - 1</span> <strong>must</strong> be preserved in the returned allocation. If <paramref name="size"/> is larger than the old size, the contents of the additional space are undefined. If satisfying these requirements involves creating a new allocation, then the old allocation <strong>should</strong> be freed.</remarks>
 public unsafe delegate void* ReallocationFunctionDelegate(void* userData, void* original, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
 
 /// <summary></summary>
@@ -36,7 +36,7 @@ public unsafe delegate void* AllocationFunctionDelegate(void* userData, nuint si
 /// <summary></summary>
 /// <param name="userData"> is the value specified for <a href="#VkAllocationCallbacks">VkAllocationCallbacks</a>::<code>pUserData</code> in the allocator specified by the application.</param>
 /// <param name="memory"> is the allocation to be freed.</param>
-/// <remarks><code>pMemory</code> <strong>may</strong> be <code>NULL</code>, which the callback <strong>must</strong> handle safely. If <code>pMemory</code> is non-<code>NULL</code>, it <strong>must</strong> be a pointer previously allocated by <code>pfnAllocation</code> or <code>pfnReallocation</code>. The application <strong>should</strong> free this memory.</remarks>
+/// <remarks><paramref name="memory"/> <strong>may</strong> be <see langword="null"/>, which the callback <strong>must</strong> handle safely. If <paramref name="memory"/> is non-<see langword="null"/>, it <strong>must</strong> be a pointer previously allocated by <code>pfnAllocation</code> or <code>pfnReallocation</code>. The application <strong>should</strong> free this memory.</remarks>
 public unsafe delegate void FreeFunctionDelegate(void* userData, void* memory);
 
 /// <summary></summary>

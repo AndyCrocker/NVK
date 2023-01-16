@@ -6,6 +6,33 @@ internal static class StringExtensions
     /*********
     ** Public Methods
     *********/
+    /// <summary>Returns a new string in which the substring specified with an index and length has been replaced with another string.</summary>
+    /// <param name="value">The string to perform the replace on.</param>
+    /// <param name="index">The starting index of the substring to replace.</param>
+    /// <param name="length">The length of the substring to replace.</param>
+    /// <param name="newValue">The value to replace the substring with.</param>
+    /// <returns>A string with the substring specified by <paramref name="index"/> and <paramref name="length"/> replaced with <paramref name="newValue"/>.</returns>
+    /// <exception cref="IndexOutOfRangeException">Thrown if <paramref name="index"/> is less than zero, <paramref name="index"/> is outside of the string, or if <paramref name="index"/> + <paramref name="length"/> is outside of the string.</exception>
+    public static string Replace(this string value, int index, int length, string newValue)
+    {
+        if (index < 0)
+            throw new IndexOutOfRangeException($"{nameof(index)} cannot be less than zero.");
+
+        if (value.Length < index)
+            throw new IndexOutOfRangeException($"{nameof(index)} is out of range of the string.");
+
+        if (value.Length < index + length)
+            throw new IndexOutOfRangeException($"{nameof(index)} + {nameof(length)} is out of range of the string.");
+
+        var stringBuilder = new StringBuilder();
+
+        stringBuilder.Append(value, 0, index);
+        stringBuilder.Append(newValue);
+        stringBuilder.Append(value, index + length, value.Length - index - length);
+        
+        return stringBuilder.ToString();
+    }
+
     /// <summary>Splits a string on every uppercase character.</summary>
     /// <param name="value">The string to split.</param>
     /// <returns>An array whose elements contain the substrings from this instance that start with an uppercase.</returns>

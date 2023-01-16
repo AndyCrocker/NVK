@@ -213,7 +213,25 @@ internal static class DocumentationGenerator
     private static void PrettifyDelegateDocumentation(DelegateInfo delegateInfo)
     {
         if (delegateInfo.RemarksDocumentation != null)
-            delegateInfo.RemarksDocumentation = PrettifyDocumentation(delegateInfo.RemarksDocumentation);
+        {
+            var remarksDocumentation = delegateInfo.RemarksDocumentation;
+
+            // replace all <code>paramName</code> with <paramref name="paramName"/>
+            var matches = Regex.Matches(remarksDocumentation, "<code>.*?</code>").ToList();
+            for (int i = matches.Count - 1; i >= 0; i--)
+            {
+                var match = matches[i];
+
+                var parameterName = match.Value[6..^7];
+                var parameter = delegateInfo.Parameters.FirstOrDefault(parameterInfo => parameterInfo.Name == parameterName);
+                if (parameter == null)
+                    continue;
+
+                remarksDocumentation = remarksDocumentation.Replace(match.Index, match.Value.Length, $"<paramref name=\"{parameter.DisplayName}\"/>");
+            }
+
+            delegateInfo.RemarksDocumentation = PrettifyDocumentation(remarksDocumentation);
+        }
     }
 
     /// <summary>Performs generic documentation prettifying.</summary>
@@ -222,5 +240,6 @@ internal static class DocumentationGenerator
     /// <remarks>This won't affect context specific documentation such as paramrefs etc.</remarks>
     private static string PrettifyDocumentation(string documentation) =>
         documentation.Trim()
-            .Replace("<strong class=\"purple\">", "<strong>");
+            .Replace("<strong class=\"purple\">", "<strong>")
+            .Replace("<code>NULL</code>", "<see langword=\"null\"/>");
 }
