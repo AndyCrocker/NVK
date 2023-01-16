@@ -9,8 +9,14 @@ public class DelegateParameterInfo
     /// <summary>The name of the parameter.</summary>
     public string Name { get; }
 
+    /// <summary>The summary documentation of the delegate.</summary>
+    public string? SummaryDocumentation { get; set; }
+
     /// <summary>The type of the parameter.</summary>
     public TypeInfo Type { get; }
+
+    /// <summary>The name of the parameter ready for displaying.</summary>
+    public string DisplayName => Utilities.PrettifyParameterName(Name, Type.PointerIndirection);
 
 
     /*********
@@ -26,5 +32,5 @@ public class DelegateParameterInfo
     }
 
     /// <inheritdoc/>
-    public override string ToString() => $"{Type} {Utilities.PrettifyParameterName(Name, Type.PointerIndirection)}";
+    public override string ToString() => $"{Type} {DisplayName}";
 }

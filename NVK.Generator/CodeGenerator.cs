@@ -196,15 +196,21 @@ public static class CodeGenerator
         csWriter.WriteHeader();
         csWriter.WriteLine();
 
-        csWriter.WriteUsing("System");
-        csWriter.WriteLine();
-
         csWriter.WriteLine($"namespace Vulkan;");
+        csWriter.WriteLine();
 
         foreach (var delegateInfo in delegateInfos)
         {
             var parameters = string.Join(", ", delegateInfo.Parameters.Select(parameterInfo => parameterInfo.ToString()));
+
+            csWriter.WriteLine($"/// <summary></summary>");
+            foreach (var parameterInfo in delegateInfo.Parameters)
+                csWriter.WriteLine($"/// <param name=\"{parameterInfo.DisplayName}\">{parameterInfo.SummaryDocumentation}</param>");
+            if (delegateInfo.RemarksDocumentation != null)
+                csWriter.WriteLine($"/// <remarks>{delegateInfo.RemarksDocumentation}</remarks>");
+
             csWriter.WriteLine($"public unsafe delegate {delegateInfo.ReturnType} {delegateInfo.DisplayName}({parameters});");
+            csWriter.WriteLine();
         }
     }
 

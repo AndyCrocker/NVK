@@ -15,6 +15,9 @@ public class DelegateInfo
     /// <summary>The name of the delegate.</summary>
     public string Name { get; }
 
+    /// <summary>The remarks documentation of the delegate.</summary>
+    public string? RemarksDocumentation { get; set; }
+
     /// <summary>The return type of the delegate.</summary>
     public TypeInfo ReturnType { get; }
 
