@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vulkan;
+﻿namespace Vulkan;
 
 /// <summary>Specifies how the Vulkan library should be loaded/freed as well as how function pointers should be retrieved from it for Windows.</summary>
 internal class WindowsVulkanLibrary : OSVulkanLibraryBase

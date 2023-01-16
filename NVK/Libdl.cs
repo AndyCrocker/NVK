@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-namespace Vulkan;
+﻿namespace Vulkan;
 
 /// <summary>Represents the Unix dynamic library api.</summary>
 internal static class LibDl

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vulkan;
+﻿namespace Vulkan;
 
 /// <summary>Represents the base for specifying how the Vulkan library should be loaded/freed as well as how function pointers should be retrieved from it for an operating system.</summary>
 internal abstract class OSVulkanLibraryBase : IDisposable
