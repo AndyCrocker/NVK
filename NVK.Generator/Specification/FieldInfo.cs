@@ -1,10 +1,4 @@
-﻿using NVK.Generator.Extensions;
-using System;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Xml.Linq;
-
-namespace NVK.Generator.Specification;
+﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a structure field.</summary>
 public class FieldInfo

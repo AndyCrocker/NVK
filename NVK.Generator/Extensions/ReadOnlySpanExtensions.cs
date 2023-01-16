@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NVK.Generator.Extensions;
+﻿namespace NVK.Generator.Extensions;
 
 /// <summary>Extension methods for <see langword="string"/>.</summary>
 internal static class ReadOnlySpanExtensions

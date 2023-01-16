@@ -1,8 +1,4 @@
-﻿using System;
-using System.Xml.Linq;
-using NVK.Generator.Extensions;
-
-namespace NVK.Generator.Specification;
+﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents an enum field added by an extension.</summary>
 public class ExtensionEnumFieldInfo

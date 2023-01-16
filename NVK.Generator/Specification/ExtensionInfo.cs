@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
-
-namespace NVK.Generator.Specification;
+﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan extension.</summary>
 public class ExtensionInfo

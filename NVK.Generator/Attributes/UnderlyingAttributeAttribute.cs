@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NVK.Generator.Attributes;
+﻿namespace NVK.Generator.Attributes;
 
 /// <summary>An attribute used to specify the underlying attribute to an enum value.</summary>
 [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = false)]

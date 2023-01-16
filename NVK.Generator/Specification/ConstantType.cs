@@ -1,6 +1,4 @@
-﻿using NVK.Generator.Attributes;
-
-namespace NVK.Generator.Specification;
+﻿namespace NVK.Generator.Specification;
 
 /// <summary>The type of a constant.</summary>
 public enum ConstantType

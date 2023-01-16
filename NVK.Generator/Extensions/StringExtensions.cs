@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-
-namespace NVK.Generator.Extensions;
+﻿namespace NVK.Generator.Extensions;
 
 /// <summary>Extension methods for <see langword="string"/>.</summary>
 public static class StringExtensions

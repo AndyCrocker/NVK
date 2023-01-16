@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using NVK.Generator.Extensions;
-
-namespace NVK.Generator.Specification;
+﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents the Vulkan specification.</summary>
 public class VulkanSpecification

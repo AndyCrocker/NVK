@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-namespace Vulkan;
+﻿namespace Vulkan;
 
 /// <summary>Represents the Windows 'kernel32' api.</summary>
 internal static class Kernel32

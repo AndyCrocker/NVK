@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
-using NVK.Generator.Attributes;
-using NVK.Generator.Extensions;
-
-namespace NVK.Generator.Specification;
+﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan constant.</summary>
 public class ConstantInfo

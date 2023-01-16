@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-
-namespace NVK.Generator.Specification;
+﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan function pointer.</summary>
 /// <remarks>Note: this isn't used for storing info to create delegates used for interop, this is purly used for Vulkan <c>PFN_</c> types.<br/>Interop delegates are generated from <see cref="CommandInfo"/>s at <see cref="CodeGenerator.WriteDelegate(CsWriter, CommandInfo)"/>.</remarks>

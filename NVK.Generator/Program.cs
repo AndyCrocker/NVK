@@ -1,9 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Xml.Linq;
-using NVK.Generator.Specification;
-
-namespace NVK.Generator;
+﻿namespace NVK.Generator;
 
 /// <summary>The application entry point.</summary>
 public class Program

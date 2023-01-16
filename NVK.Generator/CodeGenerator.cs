@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using NVK.Generator.Attributes;
-using NVK.Generator.EqualityComparer;
-using NVK.Generator.Extensions;
-using NVK.Generator.Specification;
-
-namespace NVK.Generator;
+﻿namespace NVK.Generator;
 
 /// <summary>Handles generating C# code.</summary>
 public static class CodeGenerator

@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using NVK.Generator.Extensions;
-using NVK.Generator.Specification;
-
-namespace NVK.Generator;
+﻿namespace NVK.Generator;
 
 /// <summary>Contains useful helper methods.</summary>
 public static class Utilities

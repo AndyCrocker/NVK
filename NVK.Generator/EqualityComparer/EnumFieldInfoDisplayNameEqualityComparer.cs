@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using NVK.Generator.Specification;
-
-namespace NVK.Generator.EqualityComparer;
+﻿namespace NVK.Generator.EqualityComparer;
 
 /// <summary>Defines how two <see cref="EnumFieldInfo"/>s should be compared.</summary>
 /// <remarks>This only uses <see cref="EnumFieldInfo.DisplayName"/>.</remarks>

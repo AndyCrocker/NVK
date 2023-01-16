@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-
-namespace NVK.Generator;
+﻿namespace NVK.Generator;
 
 /// <summary>Helps writing C# files.</summary>
 public class CsWriter

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace NVK.Generator;
+﻿namespace NVK.Generator;
 
 /// <summary>Handles documentation for the generated code.</summary>
 internal static class DocumentationManager

@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace NVK.Generator.Extensions;
+﻿namespace NVK.Generator.Extensions;
 
 /// <summary>Extension methods for <see cref="XElement"/>.</summary>
 public static class XElementExtensions

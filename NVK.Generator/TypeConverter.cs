@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using NVK.Generator.Specification;
-
-namespace NVK.Generator;
+﻿namespace NVK.Generator;
 
 /// <summary>Handles converting types ready for C# generation.</summary>
 public class TypeConverter

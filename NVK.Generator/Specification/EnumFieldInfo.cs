@@ -1,7 +1,4 @@
-﻿using System;
-using System.Xml.Linq;
-
-namespace NVK.Generator.Specification;
+﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan enum field.</summary>
 public class EnumFieldInfo
