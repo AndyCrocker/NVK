@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan handle.</summary>
-public class HandleInfo
+internal class HandleInfo
 {
     /*********
     ** Accessors

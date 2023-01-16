@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator;
 
 /// <summary>Helps writing C# files.</summary>
-public class CsWriter
+internal class CsWriter
 {
     /*********
     ** Fields

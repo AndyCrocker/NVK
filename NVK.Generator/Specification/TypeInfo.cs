@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a type.</summary>
-public class TypeInfo
+internal class TypeInfo
 {
     /*********
     ** Accessors

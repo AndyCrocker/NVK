@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan typedef.</summary>
-public class TypedefInfo
+internal class TypedefInfo
 {
     /*********
     ** Accessors

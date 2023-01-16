@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>The type of a constant.</summary>
-public enum ConstantType
+internal enum ConstantType
 {
     /// <summary>An unsigned 32-bit integer.</summary>
     [UnderlyingType("uint")]

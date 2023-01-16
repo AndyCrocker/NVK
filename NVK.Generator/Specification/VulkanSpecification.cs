@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents the Vulkan specification.</summary>
-public class VulkanSpecification
+internal class VulkanSpecification
 {
     /*********
     ** Accessors

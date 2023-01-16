@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents an enum field added by an extension.</summary>
-public class ExtensionEnumFieldInfo
+internal class ExtensionEnumFieldInfo
 {
     /*********
     ** Accessors

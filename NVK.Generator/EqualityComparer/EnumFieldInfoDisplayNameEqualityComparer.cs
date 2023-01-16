@@ -2,7 +2,7 @@
 
 /// <summary>Defines how two <see cref="EnumFieldInfo"/>s should be compared.</summary>
 /// <remarks>This only uses <see cref="EnumFieldInfo.DisplayName"/>.</remarks>
-public class EnumFieldInfoDisplayNameEqualityComparer : IEqualityComparer<EnumFieldInfo>
+internal class EnumFieldInfoDisplayNameEqualityComparer : IEqualityComparer<EnumFieldInfo>
 {
     /*********
     ** Public Methods

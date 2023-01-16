@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Extensions;
 
 /// <summary>Extension methods for <see langword="string"/>.</summary>
-public static class StringExtensions
+internal static class StringExtensions
 {
     /*********
     ** Public Methods

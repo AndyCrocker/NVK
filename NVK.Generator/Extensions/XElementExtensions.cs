@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Extensions;
 
 /// <summary>Extension methods for <see cref="XElement"/>.</summary>
-public static class XElementExtensions
+internal static class XElementExtensions
 {
     /*********
     ** Public Methods

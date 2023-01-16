@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan constant.</summary>
-public class ConstantInfo
+internal class ConstantInfo
 {
     /*********
     ** Accessors

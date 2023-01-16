@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan extension.</summary>
-public class ExtensionInfo
+internal class ExtensionInfo
 {
     /*********
     ** Accessors

@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan command.</summary>
-public class CommandInfo
+internal class CommandInfo
 {
     /*********
     ** Accessors

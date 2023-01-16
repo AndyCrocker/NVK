@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan enum field.</summary>
-public class EnumFieldInfo
+internal class EnumFieldInfo
 {
     /*********
     ** Fields

@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator;
 
 /// <summary>Contains useful helper methods.</summary>
-public static class Utilities
+internal static class Utilities
 {
     /*********
     ** Fields

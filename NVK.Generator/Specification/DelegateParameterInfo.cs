@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a <see cref="DelegateInfo"/> parameter.</summary>
-public class DelegateParameterInfo
+internal class DelegateParameterInfo
 {
     /*********
     ** Accessors

@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a structure field.</summary>
-public class FieldInfo
+internal class FieldInfo
 {
     /*********
     ** Accessors

@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a <see cref="CommandInfo"/> parameter.</summary>
-public class CommandParameterInfo
+internal class CommandParameterInfo
 {
     /*********
     ** Accessors

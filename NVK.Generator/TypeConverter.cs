@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator;
 
 /// <summary>Handles converting types ready for C# generation.</summary>
-public class TypeConverter
+internal class TypeConverter
 {
     /*********
     ** Fields

@@ -2,7 +2,7 @@
 
 /// <summary>An attribute used to specify the underlying attribute to an enum value.</summary>
 [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
-public class UnderlyingAttributeAttribute : Attribute
+internal class UnderlyingAttributeAttribute : Attribute
 {
     /*********
     ** Accessors

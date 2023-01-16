@@ -3,7 +3,7 @@
 namespace NVK.Generator.Extensions;
 
 /// <summary>Extension methods for <see cref="Enum"/>.</summary>
-public static class EnumExtensions
+internal static class EnumExtensions
 {
     /*********
     ** Public Methods

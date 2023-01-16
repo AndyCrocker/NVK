@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator;
 
 /// <summary>Handles generating C# code.</summary>
-public static class CodeGenerator
+internal static class CodeGenerator
 {
     /*********
     ** Public Methods

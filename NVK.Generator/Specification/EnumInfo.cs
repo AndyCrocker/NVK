@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan enum.</summary>
-public class EnumInfo
+internal class EnumInfo
 {
     /*********
     ** Accessors

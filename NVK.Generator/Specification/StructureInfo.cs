@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>Represents a Vulkan structure.</summary>
-public class StructureInfo
+internal class StructureInfo
 {
     /*********
     ** Accessors

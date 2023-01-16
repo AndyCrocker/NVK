@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>The modifier a parameter can have.</summary>
-public enum ParameterModifier
+internal enum ParameterModifier
 {
     /// <summary>No modifier.</summary>
     None,

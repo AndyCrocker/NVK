@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
 /// <summary>The type of an enum.</summary>
-public enum EnumType
+internal enum EnumType
 {
     /// <summary>A regular enum.</summary>
     Enum,
