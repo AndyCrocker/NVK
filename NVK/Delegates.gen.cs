@@ -45,7 +45,7 @@ public unsafe delegate void VoidFunctionDelegate();
 /// <summary></summary>
 /// <param name="flags"> specifies the <a href="#VkDebugReportFlagBitsEXT">VkDebugReportFlagBitsEXT</a> that triggered this callback.</param>
 /// <param name="objectType"> is a <a href="#VkDebugReportObjectTypeEXT">VkDebugReportObjectTypeEXT</a> value specifying the type of object being used or created at the time the event was triggered.</param>
-/// <param name="@object"> is the object where the issue was detected. If <code>objectType</code> is <code>VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT</code>, <code>object</code> is undefined.</param>
+/// <param name="object"> is the object where the issue was detected. If <code>objectType</code> is <code>VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT</code>, <code>object</code> is undefined.</param>
 /// <param name="location"> is a component (layer, driver, loader) defined value specifying the <em>location</em> of the trigger. This is an <strong class="purple">optional</strong> value.</param>
 /// <param name="messageCode"> is a layer-defined value indicating what test triggered this callback.</param>
 /// <param name="layerPrefix"> is a null-terminated string that is an abbreviation of the name of the component making the callback. <code>pLayerPrefix</code> is only valid for the duration of the callback.</param>

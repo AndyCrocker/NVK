@@ -196,7 +196,14 @@ internal static class CodeGenerator
 
             csWriter.WriteLine($"/// <summary></summary>");
             foreach (var parameterInfo in delegateInfo.Parameters)
-                csWriter.WriteLine($"/// <param name=\"{parameterInfo.DisplayName}\">{parameterInfo.SummaryDocumentation}</param>");
+            {
+                // param documentation can't include the '@' if a parameter starts with it
+                var parameterName = parameterInfo.DisplayName;
+                if (parameterName[0] == '@')
+                    parameterName = parameterName.Substring(1);
+
+                csWriter.WriteLine($"/// <param name=\"{parameterName}\">{parameterInfo.SummaryDocumentation}</param>");
+            }
             if (delegateInfo.RemarksDocumentation != null)
                 csWriter.WriteLine($"/// <remarks>{delegateInfo.RemarksDocumentation}</remarks>");
 
