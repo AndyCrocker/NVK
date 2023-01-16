@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 
 namespace NVK.Generator;
 
@@ -11,18 +9,12 @@ internal static class DocumentationManager
     ** Fields
     *********/
     /// <summary>The loaded documentation strings.</summary>
-    private static readonly Dictionary<string, string> DocumentationStrings;
+    private static readonly Dictionary<string, string> DocumentationStrings = new();
 
 
     /*********
     ** Public Methods
     *********/
-    /// <summary>Initialises the class.</summary>
-    static DocumentationManager()
-    {
-        DocumentationStrings = JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText("./DocumentationStrings.json")) ?? new();
-    }
-
     /// <summary>Checks whether a documentation string exists.</summary>
     /// <param name="documentationString">The documentation string to check.</param>
     /// <returns><see langword="true"/>, if the documentation string exists; otherwise, <see langword="false"/>.</returns>
