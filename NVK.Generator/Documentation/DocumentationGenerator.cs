@@ -212,6 +212,14 @@ internal static class DocumentationGenerator
     /// <param name="delegateInfo">The delegate whose documentation to prettify.</param>
     private static void PrettifyDelegateDocumentation(DelegateInfo delegateInfo)
     {
+        foreach (var parameter in delegateInfo.Parameters)
+        {
+            if (parameter.SummaryDocumentation == null)
+                continue;
+
+            parameter.SummaryDocumentation = PrettifyDocumentation(parameter.SummaryDocumentation);
+        }
+
         if (delegateInfo.RemarksDocumentation != null)
         {
             var remarksDocumentation = delegateInfo.RemarksDocumentation;
@@ -238,8 +246,17 @@ internal static class DocumentationGenerator
     /// <param name="documentation">The documentation string to prettify.</param>
     /// <returns>A pretty version of <paramref name="documentation"/>.</returns>
     /// <remarks>This won't affect context specific documentation such as paramrefs etc.</remarks>
-    private static string PrettifyDocumentation(string documentation) =>
-        documentation.Trim()
+    private static string PrettifyDocumentation(string documentation)
+    {
+        documentation = documentation.Trim();
+
+        if (documentation.StartsWith("is "))
+            documentation = documentation[3..];
+
+        return documentation
+            .FirstToUpper()
             .Replace("<strong class=\"purple\">", "<strong>")
+            .Replace("null", "<see langword=\"null\"/>")
             .Replace("<code>NULL</code>", "<see langword=\"null\"/>");
+    }
 }
