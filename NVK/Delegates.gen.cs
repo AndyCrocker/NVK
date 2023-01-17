@@ -68,3 +68,9 @@ public unsafe delegate VkBool32 DebugUtilsMessengerCallbackEXTDelegate(VkDebugUt
 /// <remarks>The callback <strong>must</strong> not make calls to any Vulkan commands.</remarks>
 public unsafe delegate void DeviceMemoryReportCallbackEXTDelegate(VkDeviceMemoryReportCallbackDataEXT* callbackData, void* userData);
 
+/// <summary></summary>
+/// <param name="instance">A <see cref="VkInstance"/> handle.</param>
+/// <param name="name">The name of a Vulkan command.</param>
+/// <remarks>This type is compatible with the type of a pointer to the <see cref="VK.GetInstancePrecedureAddress"/> command, but is used only to specify device driver addresses in <see cref="VkDirectDriverLoadingInfoLUNARG.GetInstancePrecedureAddress"/>.</remarks>
+public unsafe delegate PFN_vkVoidFunction GetInstancePrecedureAddressLUNARGDelegate(VkInstance instance, byte* name);
+

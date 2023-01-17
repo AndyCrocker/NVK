@@ -4,6 +4,13 @@
 internal class VulkanSpecification
 {
     /*********
+    ** Constants
+    *********/
+    /// <summary>The url of the registry to parse.</summary>
+    private const string RegistryUrl = "https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/main/xml/vk.xml";
+
+
+    /*********
     ** Accessors
     *********/
     /// <summary>The type converter used in the specification.</summary>
@@ -29,12 +36,35 @@ internal class VulkanSpecification
 
 
     /*********
+    ** Constructors
+    *********/
+    /// <summary>Constructs an instance.</summary>
+    /// <param name="typeConverter">The type converter used in the specification.</param>
+    /// <param name="constants">The constants in the specification.</param>
+    /// <param name="enums">The enums in the specification.</param>
+    /// <param name="commands">The commands in the specification.</param>
+    /// <param name="delegates">The delegates in the specification.</param>
+    /// <param name="handles">The handles in the specification.</param>
+    /// <param name="structures">The structures in the specification.</param>
+    private VulkanSpecification(TypeConverter typeConverter, List<ConstantInfo> constants, List<EnumInfo> enums, List<CommandInfo> commands, List<DelegateInfo> delegates, List<HandleInfo> handles, List<StructureInfo> structures)
+    {
+        TypeConverter = typeConverter;
+        Constants = constants;
+        Enums = enums;
+        Commands = commands;
+        Delegates = delegates;
+        Handles = handles;
+        Structures = structures;
+    }
+
+
+    /*********
     ** Public Methods
     *********/
     /// <summary>Constructs an instance.</summary>
-    /// <param name="specificationDocument">The <see cref="XDocument"/> with the vulkan specification loaded.</param>
-    public VulkanSpecification(XDocument specificationDocument)
+    public static VulkanSpecification Generate()
     {
+        var specificationDocument = XDocument.Load(RegistryUrl);
         var registry = specificationDocument.Element("registry");
         var types = registry!.Elements("types");
 
@@ -50,12 +80,12 @@ internal class VulkanSpecification
             .Where(element => element.Attribute("alias") != null && (element.HasAttributeWithValue("category", "enum") || element.HasAttributeWithValue("category", "bitmask")))
             .ToDictionary(element => element.Attribute("name")!.Value, element => element.Attribute("alias")!.Value);
 
-        TypeConverter = new TypeConverter(typedefs, enumAliases);
+        var typeConverter = new TypeConverter(typedefs, enumAliases);
 
         // extensions
         var supportedPlatforms = new[] { "win32", "macos", "xlib", "android" };
         var allExtensions = registry.Element("extensions")!.Elements("extension")
-            .Select(extensionElement => new ExtensionInfo(extensionElement, TypeConverter))
+            .Select(extensionElement => new ExtensionInfo(extensionElement, typeConverter))
             .Where(extensionInfo => extensionInfo.Supported != "disabled")
             .ToList();
         var supportedExtensions = allExtensions
@@ -63,7 +93,7 @@ internal class VulkanSpecification
             .ToList();
 
         // constants
-        Constants = registry.Elements("enums").Single(element => element.Attribute("name")!.Value == "API Constants").Elements("enum")
+        var constants = registry.Elements("enums").Single(element => element.Attribute("name")!.Value == "API Constants").Elements("enum")
             .Select(constantElement => new ConstantInfo(constantElement))
             // ensure the constant isn't added by an unsupported extension
             .Where(constantInfo => !allExtensions.Any(extensionInfo => extensionInfo.Constants.Select(extensionConstantInfo => extensionConstantInfo.Name).Contains(constantInfo.Name))
@@ -71,31 +101,31 @@ internal class VulkanSpecification
             .ToList();
 
         // enums
-        Enums = registry.Elements("enums").Where(element => element.Attribute("name")!.Value != "API Constants")
-            .Select(enumsElement => new EnumInfo(enumsElement, TypeConverter))
+        var enums = registry.Elements("enums").Where(element => element.Attribute("name")!.Value != "API Constants")
+            .Select(enumsElement => new EnumInfo(enumsElement, typeConverter))
             // ensure the enum isn't added by an unsupported extension
             .Where(enumInfo => !allExtensions.SelectMany(extensionInfo => extensionInfo.TypeNames).Contains(enumInfo.Name) // ensure the enum isn't added by an unsupported extension
                 || supportedExtensions.SelectMany(extensionInfo => extensionInfo.TypeNames).Contains(enumInfo.Name))
             .ToList();
 
         // methods
-        Commands = registry.Element("commands")!.Elements("command")
-            .Select(commandElement => new CommandInfo(commandElement, TypeConverter))
+        var commands = registry.Element("commands")!.Elements("command")
+            .Select(commandElement => new CommandInfo(commandElement, typeConverter))
             // ensure the function isn't added by an unsupported extension
             .Where(commandInfo => !allExtensions.SelectMany(extensionInfo => extensionInfo.CommandNames).Contains(commandInfo.Name)
                 || supportedExtensions.SelectMany(extensionInfo => extensionInfo.CommandNames).Contains(commandInfo.Name))
             .ToList();
-        foreach (var commandInfo in Commands) // set the parameters of aliased commands, this is used for overload creation
+        foreach (var commandInfo in commands) // set the parameters of aliased commands, this is used for overload creation
             if (commandInfo.Alias != null)
-                commandInfo.Parameters.AddRange(Commands.Single(cInfo => cInfo.Name == commandInfo.Alias).Parameters);
+                commandInfo.Parameters.AddRange(commands.Single(cInfo => cInfo.Name == commandInfo.Alias).Parameters);
 
         // delegates
-        Delegates = types.Elements("type").Where(element => element.HasAttributeWithValue("category", "funcpointer"))
-            .Select(delegateElement => new DelegateInfo(delegateElement, TypeConverter))
+        var delegates = types.Elements("type").Where(element => element.HasAttributeWithValue("category", "funcpointer"))
+            .Select(delegateElement => new DelegateInfo(delegateElement, typeConverter))
             .ToList();
 
         // handles
-        Handles = types.Elements("type").Where(element => element.HasAttributeWithValue("category", "handle"))
+        var handles = types.Elements("type").Where(element => element.HasAttributeWithValue("category", "handle"))
             .Select(handleElement => new HandleInfo(handleElement))
             // ensure the handle isn't added by an unsupported extension
             .Where(handleInfo => !allExtensions.SelectMany(extensionInfo => extensionInfo.TypeNames).Contains(handleInfo.Name)
@@ -103,8 +133,8 @@ internal class VulkanSpecification
             .ToList();
 
         // structures
-        Structures = types.Elements("type").Where(element => element.HasAttributeWithValue("category", "struct") || element.HasAttributeWithValue("category", "union"))
-            .Select(structureElement => new StructureInfo(structureElement, TypeConverter))
+        var structures = types.Elements("type").Where(element => element.HasAttributeWithValue("category", "struct") || element.HasAttributeWithValue("category", "union"))
+            .Select(structureElement => new StructureInfo(structureElement, typeConverter))
             // ensure the structure isn't added by an unsupported extension
             .Where(structureInfo => !allExtensions.SelectMany(extensionInfo => extensionInfo.TypeNames).Contains(structureInfo.Name)
                 || supportedExtensions.SelectMany(extensionInfo => extensionInfo.TypeNames).Contains(structureInfo.Name))
@@ -123,8 +153,8 @@ internal class VulkanSpecification
             if (enumElement.Attribute("extends") == null)
                 continue;
 
-            var coreEnumExtension = new ExtensionEnumFieldInfo(extensionNumber, enumElement, TypeConverter);
-            var enumBeingExtended = Enums.Single(enumInfo => enumInfo.Name == coreEnumExtension.ExtendedType);
+            var coreEnumExtension = new ExtensionEnumFieldInfo(extensionNumber, enumElement, typeConverter);
+            var enumBeingExtended = enums.Single(enumInfo => enumInfo.Name == coreEnumExtension.ExtendedType);
             enumBeingExtended.Values.Add(new EnumFieldInfo(enumBeingExtended.Name, coreEnumExtension.Name, coreEnumExtension.Value, coreEnumExtension.BitPosition, coreEnumExtension.Alias));
         }
 
@@ -136,7 +166,7 @@ internal class VulkanSpecification
                 var constantInfo = extensionInfo.Constants[i];
                 if (constantInfo.Alias == null && constantInfo.Value == null)
                 {
-                    var definedConstant = Constants.Single(cInfo => cInfo.Name == constantInfo.Name);
+                    var definedConstant = constants.Single(cInfo => cInfo.Name == constantInfo.Name);
                     definedConstant.Extensions.Add(extensionInfo.Name);
                     extensionInfo.Constants.RemoveAt(i--);
                 }
@@ -149,22 +179,22 @@ internal class VulkanSpecification
             foreach (var constant in extension.Constants)
             {
                 constant.Extensions.Add(extension.Name);
-                Constants.Add(constant);
+                constants.Add(constant);
             }
 
             // add enum fields and keep note that they were added by this extension (for documentation reasons)
             foreach (var enumValue in extension.EnumExtensions)
             {
-                var enumBeingExtended = Enums.Single(enumInfo => enumInfo.Name == enumValue.ExtendedType);
+                var enumBeingExtended = enums.Single(enumInfo => enumInfo.Name == enumValue.ExtendedType);
                 enumBeingExtended.Values.Add(new EnumFieldInfo(enumBeingExtended.Name, enumValue.Name, enumValue.Value, enumValue.BitPosition, enumValue.Alias) { Extension = extension.Name });
             }
 
             // keep note of which handles, enums, and structures this extension added (for documentation reasons)
             foreach (var typeName in extension.TypeNames)
             {
-                var handleInfo = Handles.FirstOrDefault(handleInfo => handleInfo.Name == typeName);
-                var enumInfo = Enums.FirstOrDefault(enumInfo => enumInfo.Name == typeName);
-                var structureInfo = Structures.FirstOrDefault(structureInfo => structureInfo.Name == typeName);
+                var handleInfo = handles.FirstOrDefault(handleInfo => handleInfo.Name == typeName);
+                var enumInfo = enums.FirstOrDefault(enumInfo => enumInfo.Name == typeName);
+                var structureInfo = structures.FirstOrDefault(structureInfo => structureInfo.Name == typeName);
 
                 if (handleInfo != null)
                     handleInfo.Extension = extension.Name;
@@ -177,7 +207,7 @@ internal class VulkanSpecification
             // keep note of which functions this extension added (for documentation reasons)
             foreach (var commandName in extension.CommandNames)
             {
-                var command = Commands.Single(commandInfo => commandInfo.Name == commandName);
+                var command = commands.Single(commandInfo => commandInfo.Name == commandName);
                 command.Extension = extension.Name;
             }
         }
@@ -185,14 +215,16 @@ internal class VulkanSpecification
         // remove edge case constants
         // some constants have aliases that get converted to the same name for the display name, which leads to two constants with
         // the same name being generated in VK.gen.cs
-        for (int i = 0; i < Constants.Count; i++)
+        for (int i = 0; i < constants.Count; i++)
         {
-            var constant = Constants[i];
+            var constant = constants[i];
             if (constant.Alias == null)
                 continue;
 
             if (Utilities.PrettifyConsantName(constant.Name) == Utilities.PrettifyConsantName(constant.Alias))
-                Constants.RemoveAt(i--);
+                constants.RemoveAt(i--);
         }
+
+        return new(typeConverter, constants, enums, commands, delegates, handles, structures);
     }
 }

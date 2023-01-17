@@ -9,27 +9,16 @@ public class Program
     /// <summary>The application entry point.</summary>
     public static void Main()
     {
-        // ensure vk.xml exists
-        var vkXmlPath = Path.Combine(Environment.CurrentDirectory, "vk.xml");
-        if (!File.Exists(vkXmlPath))
-            throw new FileNotFoundException($"{vkXmlPath} doesn't exist");
+        Console.WriteLine("Parsing XML registry...");
+        var specification = VulkanSpecification.Generate();
+        Console.WriteLine("Parsed XML registry");
 
-        // parse xml file to specification object 
-        VulkanSpecification specification;
-        using (var fileStream = File.OpenRead(vkXmlPath))
-        {
-            try
-            {
-                specification = new VulkanSpecification(XDocument.Load(fileStream));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Failed to parse XML file to VulkanSpecification {ex}");
-                return;
-            }
-        }
+        Console.WriteLine("Parsing HTML documentation...");
+        DocumentationGenerator.Generate(specification);
+        Console.WriteLine("Parsed HTML documentation");
 
-        // generate code
+        Console.WriteLine("Generating C#...");
         CodeGenerator.GenerateCode(specification);
+        Console.WriteLine("Generated C#");
     }
 }

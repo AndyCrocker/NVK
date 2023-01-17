@@ -187,7 +187,7 @@ internal static class Utilities
             return enumFieldNameSection.ToUpper();
 
         // check if the section is a numbered pack section (such as 4PACK16)
-        if (char.IsDigit(enumFieldNameSection[0]) && enumFieldNameSection[1] == 'p')
+        if (enumFieldNameSection.Length > 1 && char.IsDigit(enumFieldNameSection[0]) && enumFieldNameSection[1] == 'p')
         {
             // capitalise the 'p', not the number
             var charArray = enumFieldNameSection.ToCharArray();

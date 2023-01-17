@@ -705,6 +705,42 @@ public struct VkCuFunctionNVX
 	public static bool operator ==(ulong left, VkCuFunctionNVX right) => left == right.Handle;
 	public static bool operator !=(ulong left, VkCuFunctionNVX right) => left != right.Handle;
 }
+public struct VkOpticalFlowSessionNV
+{
+	public readonly ulong Handle;
+	public bool IsNull => Handle == 0;
+	public static VkOpticalFlowSessionNV Null => new(0);
+	public VkOpticalFlowSessionNV(ulong handle)
+	{
+		Handle = handle;
+	}
+	public override bool Equals(object obj) => obj is VkOpticalFlowSessionNV handle && this == handle;
+	public override int GetHashCode() => Handle.GetHashCode();
+	public static bool operator ==(VkOpticalFlowSessionNV left, VkOpticalFlowSessionNV right) => left.Handle == right.Handle;
+	public static bool operator !=(VkOpticalFlowSessionNV left, VkOpticalFlowSessionNV right) => left.Handle != right.Handle;
+	public static bool operator ==(VkOpticalFlowSessionNV left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkOpticalFlowSessionNV left, ulong right) => left.Handle != right;
+	public static bool operator ==(ulong left, VkOpticalFlowSessionNV right) => left == right.Handle;
+	public static bool operator !=(ulong left, VkOpticalFlowSessionNV right) => left != right.Handle;
+}
+public struct VkMicromapEXT
+{
+	public readonly ulong Handle;
+	public bool IsNull => Handle == 0;
+	public static VkMicromapEXT Null => new(0);
+	public VkMicromapEXT(ulong handle)
+	{
+		Handle = handle;
+	}
+	public override bool Equals(object obj) => obj is VkMicromapEXT handle && this == handle;
+	public override int GetHashCode() => Handle.GetHashCode();
+	public static bool operator ==(VkMicromapEXT left, VkMicromapEXT right) => left.Handle == right.Handle;
+	public static bool operator !=(VkMicromapEXT left, VkMicromapEXT right) => left.Handle != right.Handle;
+	public static bool operator ==(VkMicromapEXT left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkMicromapEXT left, ulong right) => left.Handle != right;
+	public static bool operator ==(ulong left, VkMicromapEXT right) => left == right.Handle;
+	public static bool operator !=(ulong left, VkMicromapEXT right) => left != right.Handle;
+}
 public struct VkDisplayKHR
 {
 	public readonly ulong Handle;
@@ -812,4 +848,40 @@ public struct VkDebugUtilsMessengerEXT
 	public static bool operator !=(VkDebugUtilsMessengerEXT left, ulong right) => left.Handle != right;
 	public static bool operator ==(ulong left, VkDebugUtilsMessengerEXT right) => left == right.Handle;
 	public static bool operator !=(ulong left, VkDebugUtilsMessengerEXT right) => left != right.Handle;
+}
+public struct VkVideoSessionKHR
+{
+	public readonly ulong Handle;
+	public bool IsNull => Handle == 0;
+	public static VkVideoSessionKHR Null => new(0);
+	public VkVideoSessionKHR(ulong handle)
+	{
+		Handle = handle;
+	}
+	public override bool Equals(object obj) => obj is VkVideoSessionKHR handle && this == handle;
+	public override int GetHashCode() => Handle.GetHashCode();
+	public static bool operator ==(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkVideoSessionKHR left, VkVideoSessionKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkVideoSessionKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkVideoSessionKHR left, ulong right) => left.Handle != right;
+	public static bool operator ==(ulong left, VkVideoSessionKHR right) => left == right.Handle;
+	public static bool operator !=(ulong left, VkVideoSessionKHR right) => left != right.Handle;
+}
+public struct VkVideoSessionParametersKHR
+{
+	public readonly ulong Handle;
+	public bool IsNull => Handle == 0;
+	public static VkVideoSessionParametersKHR Null => new(0);
+	public VkVideoSessionParametersKHR(ulong handle)
+	{
+		Handle = handle;
+	}
+	public override bool Equals(object obj) => obj is VkVideoSessionParametersKHR handle && this == handle;
+	public override int GetHashCode() => Handle.GetHashCode();
+	public static bool operator ==(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle == right.Handle;
+	public static bool operator !=(VkVideoSessionParametersKHR left, VkVideoSessionParametersKHR right) => left.Handle != right.Handle;
+	public static bool operator ==(VkVideoSessionParametersKHR left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkVideoSessionParametersKHR left, ulong right) => left.Handle != right;
+	public static bool operator ==(ulong left, VkVideoSessionParametersKHR right) => left == right.Handle;
+	public static bool operator !=(ulong left, VkVideoSessionParametersKHR right) => left != right.Handle;
 }
