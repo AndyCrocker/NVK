@@ -23,7 +23,7 @@ public unsafe delegate void InternalFreeNotificationDelegate(void* userData, nui
 /// <param name="size">The size in bytes of the requested allocation.</param>
 /// <param name="alignment">The requested alignment of the allocation in bytes and <strong>must</strong> be a power of two.</param>
 /// <param name="allocationScope">A <see cref="VkSystemAllocationScope"/> value specifying the allocation scope of the lifetime of the allocation.</param>
-/// <remarks><code>pfnReallocation</code> <strong>must</strong> return an allocation with enough space for <paramref name="size"/> bytes, and the contents of the original allocation from bytes zero to <span class="eq">min(original size, new size) - 1</span> <strong>must</strong> be preserved in the returned allocation. If <paramref name="size"/> is larger than the old size, the contents of the additional space are undefined. If satisfying these requirements involves creating a new allocation, then the old allocation <strong>should</strong> be freed.</remarks>
+/// <remarks><code>pfnReallocation</code> <strong>must</strong> return an allocation with enough space for <paramref name="size"/> bytes, and the contents of the original allocation from bytes zero to <c>min(original size, new size) - 1</c> <strong>must</strong> be preserved in the returned allocation. If <paramref name="size"/> is larger than the old size, the contents of the additional space are undefined. If satisfying these requirements involves creating a new allocation, then the old allocation <strong>should</strong> be freed.</remarks>
 public unsafe delegate void* ReallocationFunctionDelegate(void* userData, void* original, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
 
 /// <summary></summary>
@@ -51,7 +51,7 @@ public unsafe delegate void VoidFunctionDelegate();
 /// <param name="layerPrefix">A <see langword="null"/>-terminated string that is an abbreviation of the name of the component making the callback. <paramref name="layerPrefix"/> is only valid for the duration of the callback.</param>
 /// <param name="message">A <see langword="null"/>-terminated string detailing the trigger conditions. <paramref name="message"/> is only valid for the duration of the callback.</param>
 /// <param name="userData">The user data given when the <see cref="VkDebugReportCallbackEXT"/> was created.</param>
-/// <remarks>The callback <strong>must</strong> not call <code>vkDestroyDebugReportCallbackEXT</code>.</remarks>
+/// <remarks>The callback <strong>must</strong> not call <see cref="VK.DestroyDebugReportCallbackEXT"/>.</remarks>
 public unsafe delegate VkBool32 DebugReportCallbackEXTDelegate(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, byte* message, void* userData);
 
 /// <summary></summary>
@@ -59,7 +59,7 @@ public unsafe delegate VkBool32 DebugReportCallbackEXTDelegate(VkDebugReportFlag
 /// <param name="messageTypes">A bitmask of <see cref="VkDebugUtilsMessageTypeFlagsEXT"/> specifying which type of event(s) triggered this callback.</param>
 /// <param name="callbackData">Contains all the callback related data in the <see cref="VkDebugUtilsMessengerCallbackDataEXT"/> structure.</param>
 /// <param name="userData">The user data provided when the <see cref="VkDebugUtilsMessengerEXT"/> was created.</param>
-/// <remarks>The callback returns a <see cref="VkBool32"/>, which is interpreted in a layer-specified manner. The application <strong>should</strong> always return <code>VK_FALSE</code>. The <code>VK_TRUE</code> value is reserved for use in layer development.</remarks>
+/// <remarks>The callback returns a <see cref="VkBool32"/>, which is interpreted in a layer-specified manner. The application <strong>should</strong> always return <see cref="VK.False"/>. The <see cref="VK.True"/> value is reserved for use in layer development.</remarks>
 public unsafe delegate VkBool32 DebugUtilsMessengerCallbackEXTDelegate(VkDebugUtilsMessageSeverityFlagsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageTypes, VkDebugUtilsMessengerCallbackDataEXT* callbackData, void* userData);
 
 /// <summary></summary>

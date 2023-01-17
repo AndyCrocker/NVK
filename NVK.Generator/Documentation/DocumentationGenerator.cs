@@ -270,8 +270,10 @@ internal static class DocumentationGenerator
         if (asDescribedHereMatch.Success)
             documentation = documentation.Replace(asDescribedHereMatch.Value, ".");
 
-        // convert references to crefs, the documentation layout for references are:
-        // <a href="#VkAllocationCallbacks">VkAllocationCallbacks</a>::<code>pUserData</code>
+        // convert references to crefs, the documentation layouts for references are:
+        // <a href="[..]">name</a>
+        // <a href="[..]">name</a>::<code>secondaryName</code>
+        // <code>name</code>
         var referenceMatches = Regex.Matches(documentation, "<a href=\".*?\">.*?</a>(?:::<code>.*?</code>)?").ToList();
         for (int i = referenceMatches.Count - 1; i >= 0; i--)
         {
@@ -280,9 +282,31 @@ internal static class DocumentationGenerator
             var name = referenceMatch.ValueSpan.Slice("\">", "</a>").ToString();
             var secondaryName = referenceMatch.Value.Contains("::") ? referenceMatch.ValueSpan.Slice("<code>", "</code>").ToString() : null;
 
-            var displayName = CalculateReferenceDisplayName(name, secondaryName);
+            TryCalculateReferenceDisplayName(name, secondaryName, out var displayName);
 
             documentation = documentation.Replace(referenceMatch.Index, referenceMatch.Length, $"<see cref=\"{displayName}\"/>");
+        }
+
+        var codeReferenceMatches = Regex.Matches(documentation, "<code>.*?</code>");
+        for (int i = codeReferenceMatches.Count - 1; i >= 0; i--)
+        {
+            var codeReferenceMatch = codeReferenceMatches[i];
+
+            var name = codeReferenceMatch.ValueSpan.Slice("<code>", "</code>").ToString();
+            if (!TryCalculateReferenceDisplayName(name, null, out var displayName))
+                continue;
+
+            documentation = documentation.Replace(codeReferenceMatch.Index, codeReferenceMatch.Length, $"<see cref=\"{displayName}\"/>");
+        }
+
+        // convert <span class="eq">[..]</span> to <c>[..]</c>
+        var inlineCodeMatches = Regex.Matches(documentation, "<span class=\"eq\">.*?</span>");
+        for (int i = inlineCodeMatches.Count - 1; i >= 0; i--)
+        {
+            var inlineCodeMatch = inlineCodeMatches[i];
+
+            var name = inlineCodeMatch.ValueSpan.Slice("\">", "</span>").ToString();
+            documentation = documentation.Replace(inlineCodeMatch.Index, inlineCodeMatch.Length, $"<c>{name}</c>");
         }
 
         return documentation
@@ -295,12 +319,23 @@ internal static class DocumentationGenerator
     /// <summary>Calculates the display name for a reference.</summary>
     /// <param name="name">The name of the reference (e.g. struct name).</param>
     /// <param name="secondaryName">The secondary name of the reference (e.g. field name).</param>
-    /// <returns>The display name of the reference, if it could be parsed; otherwise, "TODO: error(<paramref name="name"/>.<paramref name="secondaryName"/>)"</returns>
-    private static string CalculateReferenceDisplayName(string name, string? secondaryName)
+    /// <returns><see langword="true"/>, if a reference could be determined; otherwise, <see langword="false"/>.</returns>
+    /// <remarks>If <see langword="false"/> is returned, <paramref name="displayName"/> will be "TODO: error(<paramref name="name"/>.<paramref name="secondaryName"/>)".</remarks>
+    private static bool TryCalculateReferenceDisplayName(string name, string? secondaryName, out string displayName)
     {
-        var displayName = $"TODO: error({name}.{secondaryName})";
+        displayName = "";
 
         name = Specification.TypeConverter.GetConvertedType(name);
+
+        // constants
+        var constantInfo = Specification.Constants.FirstOrDefault(constantInfo => constantInfo.Name == name);
+        if (constantInfo != null)
+            displayName = $"VK.{constantInfo.DisplayName}";
+
+        // commands
+        var commandInfo = Specification.Commands.FirstOrDefault(commandInfo => commandInfo.Name == name);
+        if (commandInfo != null)
+            displayName = $"VK.{commandInfo.DisplayName}";
 
         // structures
         var structureInfo = Specification.Structures.FirstOrDefault(structureInfo => structureInfo.Name == name);
@@ -337,6 +372,10 @@ internal static class DocumentationGenerator
         if (Specification.TypeConverter.DefinedBaseTypes.Contains(name))
             displayName = name;
 
-        return displayName;
+        var referenceFound = displayName != "";
+        if (!referenceFound)
+            displayName = "TODO: error({name}.{secondaryName})";
+
+        return referenceFound;
     }
 }
