@@ -218,18 +218,32 @@ internal static class DocumentationGenerator
                 continue;
 
             var summaryDocumentation = parameter.SummaryDocumentation;
+
             summaryDocumentation = PrettifyDocumentation(summaryDocumentation);
-            parameter.SummaryDocumentation = ReplaceParameterReferences(summaryDocumentation);
+            summaryDocumentation = ReplaceParameterReferences(summaryDocumentation);
+            summaryDocumentation = ReplaceEdgecaseReferences(summaryDocumentation);
+            
+            parameter.SummaryDocumentation = summaryDocumentation;
         }
 
         if (delegateInfo.RemarksDocumentation != null)
         {
             var remarksDocumentation = delegateInfo.RemarksDocumentation;
+
             remarksDocumentation = PrettifyDocumentation(remarksDocumentation);
-            delegateInfo.RemarksDocumentation = ReplaceParameterReferences(remarksDocumentation);
+            remarksDocumentation = ReplaceParameterReferences(remarksDocumentation);
+            remarksDocumentation = ReplaceEdgecaseReferences(remarksDocumentation);
+
+            delegateInfo.RemarksDocumentation = remarksDocumentation;
         }
 
-        // Replace all <code>paramName</code> references with <paramref name="paramName"/>
+        // Replaces all edge case parameter references which refer to VkAllocationCallbacks fields
+        string ReplaceEdgecaseReferences(string documentation) =>
+            documentation
+                .Replace("<code>pfnReallocation</code>", "<see cref=\"VkAllocationCallbacks.Reallocation\"/>")
+                .Replace("<code>pfnAllocation</code>", "<see cref=\"VkAllocationCallbacks.Allocation\"/>");
+
+        // Replaces all <code>paramName</code> references with <paramref name="paramName"/>
         string ReplaceParameterReferences(string documentation)
         {
             var matches = Regex.Matches(documentation, "<code>.*?</code>").ToList();
