@@ -265,6 +265,11 @@ internal static class DocumentationGenerator
         if (documentation.StartsWith("is "))
             documentation = documentation[3..];
 
+        // remove "as describer here"
+        var asDescribedHereMatch = Regex.Match(documentation, ", as described <a href=\".*?\">here</a>.");
+        if (asDescribedHereMatch.Success)
+            documentation = documentation.Replace(asDescribedHereMatch.Value, ".");
+
         // convert references to crefs, the documentation layout for references are:
         // <a href="#VkAllocationCallbacks">VkAllocationCallbacks</a>::<code>pUserData</code>
         var referenceMatches = Regex.Matches(documentation, "<a href=\".*?\">.*?</a>(?:::<code>.*?</code>)?").ToList();

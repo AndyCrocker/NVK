@@ -6,7 +6,7 @@ namespace Vulkan;
 /// <param name="userData">The value specified for <see cref="VkAllocationCallbacks.UserData"/> in the allocator specified by the application.</param>
 /// <param name="size">The requested size of an allocation.</param>
 /// <param name="allocationType">A <see cref="VkInternalAllocationType"/> value specifying the requested type of an allocation.</param>
-/// <param name="allocationScope">A <see cref="VkSystemAllocationScope"/> value specifying the allocation scope of the lifetime of the allocation, as described <see cref="TODO: error(here.)"/>.</param>
+/// <param name="allocationScope">A <see cref="VkSystemAllocationScope"/> value specifying the allocation scope of the lifetime of the allocation.</param>
 /// <remarks>This is a purely informational callback.</remarks>
 public unsafe delegate void InternalAllocationNotificationDelegate(void* userData, nuint size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope);
 
@@ -14,7 +14,7 @@ public unsafe delegate void InternalAllocationNotificationDelegate(void* userDat
 /// <param name="userData">The value specified for <see cref="VkAllocationCallbacks.UserData"/> in the allocator specified by the application.</param>
 /// <param name="size">The requested size of an allocation.</param>
 /// <param name="allocationType">A <see cref="VkInternalAllocationType"/> value specifying the requested type of an allocation.</param>
-/// <param name="allocationScope">A <see cref="VkSystemAllocationScope"/> value specifying the allocation scope of the lifetime of the allocation, as described <see cref="TODO: error(here.)"/>.</param>
+/// <param name="allocationScope">A <see cref="VkSystemAllocationScope"/> value specifying the allocation scope of the lifetime of the allocation.</param>
 public unsafe delegate void InternalFreeNotificationDelegate(void* userData, nuint size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope);
 
 /// <summary></summary>
@@ -22,7 +22,7 @@ public unsafe delegate void InternalFreeNotificationDelegate(void* userData, nui
 /// <param name="original"><strong>must</strong> be either <see langword="null"/> or a pointer previously returned by <code>pfnReallocation</code> or <code>pfnAllocation</code> of a compatible allocator.</param>
 /// <param name="size">The size in bytes of the requested allocation.</param>
 /// <param name="alignment">The requested alignment of the allocation in bytes and <strong>must</strong> be a power of two.</param>
-/// <param name="allocationScope">A <see cref="VkSystemAllocationScope"/> value specifying the allocation scope of the lifetime of the allocation, as described <see cref="TODO: error(here.)"/>.</param>
+/// <param name="allocationScope">A <see cref="VkSystemAllocationScope"/> value specifying the allocation scope of the lifetime of the allocation.</param>
 /// <remarks><code>pfnReallocation</code> <strong>must</strong> return an allocation with enough space for <paramref name="size"/> bytes, and the contents of the original allocation from bytes zero to <span class="eq">min(original size, new size) - 1</span> <strong>must</strong> be preserved in the returned allocation. If <paramref name="size"/> is larger than the old size, the contents of the additional space are undefined. If satisfying these requirements involves creating a new allocation, then the old allocation <strong>should</strong> be freed.</remarks>
 public unsafe delegate void* ReallocationFunctionDelegate(void* userData, void* original, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
 
@@ -30,7 +30,7 @@ public unsafe delegate void* ReallocationFunctionDelegate(void* userData, void* 
 /// <param name="userData">The value specified for <see cref="VkAllocationCallbacks.UserData"/> in the allocator specified by the application.</param>
 /// <param name="size">The size in bytes of the requested allocation.</param>
 /// <param name="alignment">The requested alignment of the allocation in bytes and <strong>must</strong> be a power of two.</param>
-/// <param name="allocationScope">A <see cref="VkSystemAllocationScope"/> value specifying the allocation scope of the lifetime of the allocation, as described <see cref="TODO: error(here.)"/>.</param>
+/// <param name="allocationScope">A <see cref="VkSystemAllocationScope"/> value specifying the allocation scope of the lifetime of the allocation.</param>
 public unsafe delegate void* AllocationFunctionDelegate(void* userData, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
 
 /// <summary></summary>
