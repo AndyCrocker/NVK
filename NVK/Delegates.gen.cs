@@ -19,7 +19,7 @@ public unsafe delegate void InternalFreeNotificationDelegate(void* userData, nui
 
 /// <summary></summary>
 /// <param name="userData">The value specified for <see cref="VkAllocationCallbacks.UserData"/> in the allocator specified by the application.</param>
-/// <param name="original"><strong>must</strong> be either <see langword="null"/> or a pointer previously returned by <see cref="VkAllocationCallbacks.Reallocation"/> or <see cref="VkAllocationCallbacks.Allocation"/> of a compatible allocator.</param>
+/// <param name="original"><strong>Must</strong> be either <see langword="null"/> or a pointer previously returned by <see cref="VkAllocationCallbacks.Reallocation"/> or <see cref="VkAllocationCallbacks.Allocation"/> of a compatible allocator.</param>
 /// <param name="size">The size in bytes of the requested allocation.</param>
 /// <param name="alignment">The requested alignment of the allocation in bytes and <strong>must</strong> be a power of two.</param>
 /// <param name="allocationScope">A <see cref="VkSystemAllocationScope"/> value specifying the allocation scope of the lifetime of the allocation.</param>

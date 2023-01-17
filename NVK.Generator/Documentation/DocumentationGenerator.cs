@@ -219,10 +219,10 @@ internal static class DocumentationGenerator
 
             var summaryDocumentation = parameter.SummaryDocumentation;
 
-            summaryDocumentation = PrettifyDocumentation(summaryDocumentation);
             summaryDocumentation = ReplaceParameterReferences(summaryDocumentation);
             summaryDocumentation = ReplaceEdgecaseReferences(summaryDocumentation);
-            
+            summaryDocumentation = PrettifyDocumentation(summaryDocumentation);
+
             parameter.SummaryDocumentation = summaryDocumentation;
         }
 
@@ -230,9 +230,9 @@ internal static class DocumentationGenerator
         {
             var remarksDocumentation = delegateInfo.RemarksDocumentation;
 
-            remarksDocumentation = PrettifyDocumentation(remarksDocumentation);
             remarksDocumentation = ReplaceParameterReferences(remarksDocumentation);
             remarksDocumentation = ReplaceEdgecaseReferences(remarksDocumentation);
+            remarksDocumentation = PrettifyDocumentation(remarksDocumentation);
 
             delegateInfo.RemarksDocumentation = remarksDocumentation;
         }
@@ -246,7 +246,7 @@ internal static class DocumentationGenerator
         // Replaces all <code>paramName</code> references with <paramref name="paramName"/>
         string ReplaceParameterReferences(string documentation)
         {
-            var matches = Regex.Matches(documentation, "<code>.*?</code>").ToList();
+            var matches = Regex.Matches(documentation, "(?<!::)<code>.*?</code>").ToList(); // look behind is to not convert parameters of a non parameter reference (name::secondName)
             for (int i = matches.Count - 1; i >= 0; i--)
             {
                 var match = matches[i];
@@ -323,8 +323,13 @@ internal static class DocumentationGenerator
             documentation = documentation.Replace(inlineCodeMatch.Index, inlineCodeMatch.Length, $"<c>{name}</c>");
         }
 
+        // capitalise first character, if the first character is a '<' (meaning a tag is at the beginning) then the content should be capitalised
+        if (documentation[0] != '<')
+            documentation = documentation.FirstToUpper();
+        else
+            documentation = documentation.CharToUpper(documentation.IndexOf('>') + 1);
+
         return documentation
-            .FirstToUpper()
             .Replace("<strong class=\"purple\">", "<strong>")
             .Replace("null", "<see langword=\"null\"/>")
             .Replace("<code>NULL</code>", "<see langword=\"null\"/>");

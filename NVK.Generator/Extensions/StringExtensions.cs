@@ -64,6 +64,21 @@ internal static class StringExtensions
         return new string(charArray);
     }
 
+    /// <summary>Converts a specific character to uppercase.</summary>
+    /// <param name="value">The string whose specific character should be converted to uppercase.</param>
+    /// <param name="index">The index into the string of the character to convert to uppercase.</param>
+    /// <returns>A string with the specified character as uppercase.</returns>
+    /// <exception cref="IndexOutOfRangeException">Thrown if <paramref name="index"/> is outside of the string.</exception>
+    public static string CharToUpper(this string value, int index)
+    {
+        if (index >= value.Length)
+            throw new IndexOutOfRangeException($"{nameof(index)} is outside of string.");
+
+        var charArray = value.ToCharArray();
+        charArray[index] = char.ToUpper(charArray[index]);
+        return new string(charArray);
+    }
+
     /// <summary>Resolves all abbreviations in a string.</summary>
     /// <param name="value">The string to resolve the abbreviations of.</param>
     /// <returns>A string without abbreviations.</returns>
