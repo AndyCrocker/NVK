@@ -217,15 +217,22 @@ internal static class DocumentationGenerator
             if (parameter.SummaryDocumentation == null)
                 continue;
 
-            parameter.SummaryDocumentation = PrettifyDocumentation(parameter.SummaryDocumentation);
+            var summaryDocumentation = parameter.SummaryDocumentation;
+            summaryDocumentation = PrettifyDocumentation(summaryDocumentation);
+            parameter.SummaryDocumentation = ReplaceParameterReferences(summaryDocumentation);
         }
 
         if (delegateInfo.RemarksDocumentation != null)
         {
             var remarksDocumentation = delegateInfo.RemarksDocumentation;
+            remarksDocumentation = PrettifyDocumentation(remarksDocumentation);
+            delegateInfo.RemarksDocumentation = ReplaceParameterReferences(remarksDocumentation);
+        }
 
-            // replace all <code>paramName</code> with <paramref name="paramName"/>
-            var matches = Regex.Matches(remarksDocumentation, "<code>.*?</code>").ToList();
+        // Replace all <code>paramName</code> references with <paramref name="paramName"/>
+        string ReplaceParameterReferences(string documentation)
+        {
+            var matches = Regex.Matches(documentation, "<code>.*?</code>").ToList();
             for (int i = matches.Count - 1; i >= 0; i--)
             {
                 var match = matches[i];
@@ -235,10 +242,15 @@ internal static class DocumentationGenerator
                 if (parameter == null)
                     continue;
 
-                remarksDocumentation = remarksDocumentation.Replace(match.Index, match.Value.Length, $"<paramref name=\"{parameter.DisplayName}\"/>");
+                // paramrefs can't include the '@' if a parameter starts with it
+                parameterName = parameter.DisplayName;
+                if (parameterName.StartsWith('@'))
+                    parameterName = parameterName[1..];
+
+                documentation = documentation.Replace(match.Index, match.Value.Length, $"<paramref name=\"{parameterName}\"/>");
             }
 
-            delegateInfo.RemarksDocumentation = PrettifyDocumentation(remarksDocumentation);
+            return documentation;
         }
     }
 
