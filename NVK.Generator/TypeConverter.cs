@@ -46,6 +46,13 @@ internal class TypeConverter
 
 
     /*********
+    ** Properties
+    *********/
+    /// <summary>The Vulkan types that have been manually defined in /ToCopy.</summary>
+    public List<string> DefinedBaseTypes = new() { "VkBool32", "VkDeviceSize", "VkDeviceAddress" };
+
+
+    /*********
     ** Public Methods
     *********/
     /// <summary>Constructs an instance.</summary>
@@ -53,6 +60,9 @@ internal class TypeConverter
     /// <param name="enumAliases">The enum aliases to create the type convert for.</param>
     public TypeConverter(List<TypedefInfo> typedefs, Dictionary<string, string> enumAliases)
     {
+        // remove typedefs that have a C# type manually created for them
+        typedefs.RemoveAll(typedef => DefinedBaseTypes.Contains(typedef.Name));
+
         // add typedefs to map
         foreach (var typedef in typedefs)
             if (typedef.Requires != null)

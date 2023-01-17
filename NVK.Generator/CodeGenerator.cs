@@ -166,7 +166,7 @@ internal static class CodeGenerator
             if (enumInfo.Type == EnumType.Bitmask)
                 csWriter.WriteLine($"[Flags]");
 
-            csWriter.WriteLine($"public enum {enumInfo.Name}{((enumInfo.BitWidth == 64) ? " : long" : "")}");
+            csWriter.WriteLine($"public enum {enumInfo.DisplayName}{((enumInfo.BitWidth == 64) ? " : long" : "")}");
             csWriter.WriteScope(() =>
             {
                 foreach (var enumValue in enumInfo.Values.Distinct(new EnumFieldInfoDisplayNameEqualityComparer()))

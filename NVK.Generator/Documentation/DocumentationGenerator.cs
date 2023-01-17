@@ -253,10 +253,73 @@ internal static class DocumentationGenerator
         if (documentation.StartsWith("is "))
             documentation = documentation[3..];
 
+        // convert references to crefs, the documentation layout for references are:
+        // <a href="#VkAllocationCallbacks">VkAllocationCallbacks</a>::<code>pUserData</code>
+        var referenceMatches = Regex.Matches(documentation, "<a href=\".*?\">.*?</a>(?:::<code>.*?</code>)?").ToList();
+        for (int i = referenceMatches.Count - 1; i >= 0; i--)
+        {
+            var referenceMatch = referenceMatches[i];
+
+            var name = referenceMatch.ValueSpan.Slice("\">", "</a>").ToString();
+            var secondaryName = referenceMatch.Value.Contains("::") ? referenceMatch.ValueSpan.Slice("<code>", "</code>").ToString() : null;
+
+            var displayName = CalculateReferenceDisplayName(name, secondaryName);
+
+            documentation = documentation.Replace(referenceMatch.Index, referenceMatch.Length, $"<see cref=\"{displayName}\"/>");
+        }
+
         return documentation
             .FirstToUpper()
             .Replace("<strong class=\"purple\">", "<strong>")
             .Replace("null", "<see langword=\"null\"/>")
             .Replace("<code>NULL</code>", "<see langword=\"null\"/>");
+    }
+
+    /// <summary>Calculates the display name for a reference.</summary>
+    /// <param name="name">The name of the reference (e.g. struct name).</param>
+    /// <param name="secondaryName">The secondary name of the reference (e.g. field name).</param>
+    /// <returns>The display name of the reference, if it could be parsed; otherwise, "TODO: error(<paramref name="name"/>.<paramref name="secondaryName"/>)"</returns>
+    private static string CalculateReferenceDisplayName(string name, string? secondaryName)
+    {
+        var displayName = $"TODO: error({name}.{secondaryName})";
+
+        name = Specification.TypeConverter.GetConvertedType(name);
+
+        // structures
+        var structureInfo = Specification.Structures.FirstOrDefault(structureInfo => structureInfo.Name == name);
+        if (structureInfo != null)
+        {
+            displayName = structureInfo.DisplayName;
+
+            if (secondaryName != null)
+            {
+                var fieldInfo = structureInfo.Fields.Single(fieldInfo => fieldInfo.Name == secondaryName);
+                displayName += $".{fieldInfo.DisplayName}";
+            }
+        }
+
+        // enums
+        var enumInfo = Specification.Enums.FirstOrDefault(enumInfo => enumInfo.Name == name);
+        if (enumInfo != null)
+        {
+            displayName = enumInfo.DisplayName;
+
+            if (secondaryName != null)
+            {
+                var enumFieldInfo = enumInfo.Values.Single(enumFieldInfo => enumFieldInfo.Name == secondaryName);
+                displayName += $".{enumFieldInfo.DisplayName}";
+            }
+        }
+
+        // handles
+        var handleInfo = Specification.Handles.FirstOrDefault(handleInfo => handleInfo.Name == name);
+        if (handleInfo != null)
+            displayName = handleInfo.Name;
+
+        // predefined base types (VkBool, etc)
+        if (Specification.TypeConverter.DefinedBaseTypes.Contains(name))
+            displayName = name;
+
+        return displayName;
     }
 }

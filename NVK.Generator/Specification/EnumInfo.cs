@@ -21,6 +21,9 @@ internal class EnumInfo
     /// <summary>The extension that added this enum.</summary>
     public string? Extension { get; set; }
 
+    /// <summary>The name of the enum ready for displaying.</summary>
+    public string DisplayName => Utilities.PrettifyEnumName(Name);
+
 
     /*********
     ** Public Methods

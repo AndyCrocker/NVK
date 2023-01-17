@@ -6,6 +6,9 @@ internal class VulkanSpecification
     /*********
     ** Accessors
     *********/
+    /// <summary>The type converter used in the specification.</summary>
+    public TypeConverter TypeConverter { get; }
+
     /// <summary>The constants in the specification.</summary>
     public List<ConstantInfo> Constants { get; }
 
@@ -41,21 +44,18 @@ internal class VulkanSpecification
             .Where(element => !element.Value.StartsWith("typedef struct")) // an annoying edge case that's so rare it's easier to just handle manually through the TypeConverter
             .Select(typedefElement => new TypedefInfo(typedefElement))
             .ToList();
-        // remove typedefs that have a C# type manually created for them
-        var definedBaseTypes = new List<string> { "VkBool32", "VkDeviceSize", "VkDeviceAddress" };
-        typedefs.RemoveAll(typedef => definedBaseTypes.Contains(typedef.Name));
 
         // enum aliases
         var enumAliases = types.Elements("type")
             .Where(element => element.Attribute("alias") != null && (element.HasAttributeWithValue("category", "enum") || element.HasAttributeWithValue("category", "bitmask")))
             .ToDictionary(element => element.Attribute("name")!.Value, element => element.Attribute("alias")!.Value);
 
-        var typeConverter = new TypeConverter(typedefs, enumAliases);
+        TypeConverter = new TypeConverter(typedefs, enumAliases);
 
         // extensions
         var supportedPlatforms = new[] { "win32", "macos", "xlib", "android" };
         var allExtensions = registry.Element("extensions")!.Elements("extension")
-            .Select(extensionElement => new ExtensionInfo(extensionElement, typeConverter))
+            .Select(extensionElement => new ExtensionInfo(extensionElement, TypeConverter))
             .Where(extensionInfo => extensionInfo.Supported != "disabled")
             .ToList();
         var supportedExtensions = allExtensions
@@ -72,7 +72,7 @@ internal class VulkanSpecification
 
         // enums
         Enums = registry.Elements("enums").Where(element => element.Attribute("name")!.Value != "API Constants")
-            .Select(enumsElement => new EnumInfo(enumsElement, typeConverter))
+            .Select(enumsElement => new EnumInfo(enumsElement, TypeConverter))
             // ensure the enum isn't added by an unsupported extension
             .Where(enumInfo => !allExtensions.SelectMany(extensionInfo => extensionInfo.TypeNames).Contains(enumInfo.Name) // ensure the enum isn't added by an unsupported extension
                 || supportedExtensions.SelectMany(extensionInfo => extensionInfo.TypeNames).Contains(enumInfo.Name))
@@ -80,7 +80,7 @@ internal class VulkanSpecification
 
         // methods
         Commands = registry.Element("commands")!.Elements("command")
-            .Select(commandElement => new CommandInfo(commandElement, typeConverter))
+            .Select(commandElement => new CommandInfo(commandElement, TypeConverter))
             // ensure the function isn't added by an unsupported extension
             .Where(commandInfo => !allExtensions.SelectMany(extensionInfo => extensionInfo.CommandNames).Contains(commandInfo.Name)
                 || supportedExtensions.SelectMany(extensionInfo => extensionInfo.CommandNames).Contains(commandInfo.Name))
@@ -91,7 +91,7 @@ internal class VulkanSpecification
 
         // delegates
         Delegates = types.Elements("type").Where(element => element.HasAttributeWithValue("category", "funcpointer"))
-            .Select(delegateElement => new DelegateInfo(delegateElement, typeConverter))
+            .Select(delegateElement => new DelegateInfo(delegateElement, TypeConverter))
             .ToList();
 
         // handles
@@ -104,7 +104,7 @@ internal class VulkanSpecification
 
         // structures
         Structures = types.Elements("type").Where(element => element.HasAttributeWithValue("category", "struct") || element.HasAttributeWithValue("category", "union"))
-            .Select(structureElement => new StructureInfo(structureElement, typeConverter))
+            .Select(structureElement => new StructureInfo(structureElement, TypeConverter))
             // ensure the structure isn't added by an unsupported extension
             .Where(structureInfo => !allExtensions.SelectMany(extensionInfo => extensionInfo.TypeNames).Contains(structureInfo.Name)
                 || supportedExtensions.SelectMany(extensionInfo => extensionInfo.TypeNames).Contains(structureInfo.Name))
@@ -123,7 +123,7 @@ internal class VulkanSpecification
             if (enumElement.Attribute("extends") == null)
                 continue;
 
-            var coreEnumExtension = new ExtensionEnumFieldInfo(extensionNumber, enumElement, typeConverter);
+            var coreEnumExtension = new ExtensionEnumFieldInfo(extensionNumber, enumElement, TypeConverter);
             var enumBeingExtended = Enums.Single(enumInfo => enumInfo.Name == coreEnumExtension.ExtendedType);
             enumBeingExtended.Values.Add(new EnumFieldInfo(enumBeingExtended.Name, coreEnumExtension.Name, coreEnumExtension.Value, coreEnumExtension.BitPosition, coreEnumExtension.Alias));
         }
