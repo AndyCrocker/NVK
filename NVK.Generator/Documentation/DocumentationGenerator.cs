@@ -382,6 +382,14 @@ internal static class DocumentationGenerator
             }
         }
 
+        // enum values
+        enumInfo = Specification.Enums.FirstOrDefault(enumInfo => enumInfo.Values.Any(enumFieldInfo => enumFieldInfo.Name == name));
+        if (enumInfo != null)
+        {
+            var enumFieldInfo = enumInfo.Values.Single(enumFieldInfo => enumFieldInfo.Name == name);
+            displayName = $"{enumInfo.DisplayName}.{enumFieldInfo.DisplayName}";
+        }
+
         // handles
         var handleInfo = Specification.Handles.FirstOrDefault(handleInfo => handleInfo.Name == name);
         if (handleInfo != null)
