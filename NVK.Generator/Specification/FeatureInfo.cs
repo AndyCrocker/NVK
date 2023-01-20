@@ -82,8 +82,14 @@ internal class FeatureInfo
 
     /// <summary>Adds a constant from the specification to the feature with a specified name.</summary>
     /// <param name="name">The name of the constant to add to the feature from the specification.</param>
-    private void AddConstantByName(string name) =>
-        Constants.Add(Specification.Constants.Single(constantInfo => constantInfo.Name == name));
+    private void AddConstantByName(string name)
+    {
+        var constantInfo = Specification.Constants.Single(enumInfo => enumInfo.Name == name);
+        if (Constants.Any(cInfo => cInfo.Name == name))
+            return;
+
+        Constants.Add(constantInfo);
+    }
 
     /// <summary>Adds a type from the specification to the feature with a specified name.</summary>
     /// <param name="name">The name of the type to add to the feature from the specification.</param>
@@ -113,8 +119,15 @@ internal class FeatureInfo
                 Structures.Add(structureInfo);
 
             foreach (var fieldInfo in structureInfo.Fields)
-                if (fieldInfo.Type.Name != name) // some structs, notable VkBaseInStructure & VkBaseOutStructure fields with their own type
+            {
+                if (fieldInfo.Type.Name != name) // some structs, notable VkBaseInStructure & VkBaseOutStructure have fields with their own type
                     AddTypeByName(fieldInfo.Type.Name);
+
+                // if the field is an array whose length is determined by a constant, that constant may not be added to the feature explicitly
+                var constantInfo = Specification.Constants.SingleOrDefault(constantInfo => constantInfo.Name == fieldInfo.ArrayLength);
+                if (constantInfo != null)
+                    AddConstantByName(constantInfo.Name);
+            }
 
             return;
         }

@@ -42,6 +42,33 @@ internal class StructureInfo
         StructExtends = element.Attribute("structextends")?.Value.Split(',') ?? Array.Empty<string>();
         AllowDuplicate = element.HasAttribute("allowduplicate", "true");
         Fields = element.Elements("member")
-            .Select(structFieldElement => new StructureFieldInfo(structFieldElement)).ToList();
+            .Select(structFieldElement => new StructureFieldInfo(this, structFieldElement)).ToList();
+    }
+
+
+    /*********
+    ** Public Methods
+    *********/
+    /// <summary>Writes the structure to a C# writer.</summary>
+    /// <param name="writer">The writer to write the structure to.</param>
+    /// <param name="specification">The specification to use when writing the structure.</param>
+    public void Write(CsWriter writer, FeatureInfo specification)
+    {
+        var fieldInfos = Fields;
+        if (Alias != null)
+        {
+            writer.WriteLine($"[Obsolete(\"Use {Alias}\")]");
+            fieldInfos = specification.Structures.Single(structureInfo => structureInfo.Name == Alias).Fields;
+        }
+
+        if (IsUnion)
+            writer.WriteLine("[StructLayout(LayoutKind.Explicit)]");
+
+        writer.WriteLine($"public unsafe struct {Name}");
+        writer.WriteScope(() =>
+        {
+            foreach (var fieldInfo in fieldInfos)
+                fieldInfo.Write(writer, specification);
+        });
     }
 }

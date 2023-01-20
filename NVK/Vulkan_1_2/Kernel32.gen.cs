@@ -1,4 +1,7 @@
-﻿/// <summary>Represents the Windows 'kernel32' api.</summary>
+// This file was generated, don't manually edit
+namespace Vulkan_1_2;
+
+/// <summary>Represents the Windows 'kernel32' api.</summary>
 internal static class Kernel32
 {
     /*********

@@ -24,4 +24,12 @@ internal class TypeInfo
         Name = name;
         PointerIndirection = pointerIndirection;
     }
+
+
+    /*********
+    ** Public Methods
+    *********/
+    /// <summary>Gets a string that represents the type.</summary>
+    /// <returns>A string that represents the type.</returns>
+    public override string? ToString() => $"{Name}{new('*', PointerIndirection)}";
 }

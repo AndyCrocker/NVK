@@ -1,4 +1,7 @@
-﻿/// <summary>Specifies how the Vulkan library should be loaded/freed as well as how function pointers should be retrieved from it for Windows.</summary>
+// This file was generated, don't manually edit
+namespace Vulkan_1_1;
+
+/// <summary>Specifies how the Vulkan library should be loaded/freed as well as how function pointers should be retrieved from it for Windows.</summary>
 internal class WindowsVulkanLibrary : OSVulkanLibraryBase
 {
     /*********

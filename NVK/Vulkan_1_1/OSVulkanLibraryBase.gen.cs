@@ -1,4 +1,7 @@
-﻿/// <summary>Represents the base for specifying how the Vulkan library should be loaded/freed as well as how function pointers should be retrieved from it for an operating system.</summary>
+// This file was generated, don't manually edit
+namespace Vulkan_1_1;
+
+/// <summary>Represents the base for specifying how the Vulkan library should be loaded/freed as well as how function pointers should be retrieved from it for an operating system.</summary>
 internal abstract class OSVulkanLibraryBase : IDisposable
 {
     /*********

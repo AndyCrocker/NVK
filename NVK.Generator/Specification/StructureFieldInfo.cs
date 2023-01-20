@@ -6,6 +6,9 @@ internal class StructureFieldInfo
     /*********
     ** Properties
     *********/
+    /// <summary>The structure that this field belongs to.</summary>
+    public StructureInfo ParentStructure { get; }
+
     /// <summary>The name of the field.</summary>
     public string Name { get; }
 
@@ -26,14 +29,70 @@ internal class StructureFieldInfo
     *********/
     /// <summary>Constructs an instance.</summary>
     /// <param name="element">The &lt;member&gt; element to parse the structure field from.</param>
-    public StructureFieldInfo(XElement element)
+    public StructureFieldInfo(StructureInfo parentStructure, XElement element)
     {
+        ParentStructure = parentStructure;
         Name = element.Element("name")!.Value;
         Type = new(element.Element("type")!.Value, element.Value.Count(character => character == '*'));
         Values = element.Attribute("values")?.Value.Split(',') ?? Array.Empty<string>();
 
+        // remove the comment element as it can sometimes contains "[]" which falsely implies an array
+        element.Element("comment")?.Remove();
+
         var match = Regex.Match(element.Value, @"\[.*\]");
         if (match.Success)
             ArrayLength = match.Value[1..^1];
+    }
+
+
+    /*********
+    ** Public Methods
+    *********/
+    /// <summary>Writes the field to a C# writer.</summary>
+    /// <param name="writer">The writer to write the field to.</param>
+    /// <param name="specification">The specification to use when writing the field.</param>
+    public void Write(CsWriter writer, FeatureInfo specification)
+    {
+        if (ParentStructure.IsUnion)
+            writer.WriteLine("[FieldOffset(0)]");
+
+        if (ArrayLength == null)
+        {
+            writer.WriteLine($"public {Type} {Name};");
+            return;
+        }
+
+        var arrayLengthNumerical = 0;
+        var arrayLengthDisplay = "";
+        if (!int.TryParse(ArrayLength, out arrayLengthNumerical))
+        {
+            // some fields are an array of arrays, C# doesn't support fixed version of these, so we'll flatten them into an appropriately sized array
+            if (ArrayLength.Contains("]["))
+            {
+                arrayLengthNumerical = ArrayLength.Split("][")
+                    .Select(int.Parse)
+                    .Aggregate(1, (x, y) => x * y);
+                arrayLengthDisplay = arrayLengthNumerical.ToString();
+            }
+
+            // if it's not a numerical literal or an array of arrays, then the value is a vulkan constant
+            else
+            {
+                var constantInfo = specification.Constants.Single(constantInfo => constantInfo.Name == ArrayLength);
+                arrayLengthNumerical = int.Parse(constantInfo.Value!); // need to keep track of the numerical value incase it's an invalid type (for a fixed array) so we need to convert the array to fields
+                arrayLengthDisplay = $"VK.{constantInfo.Name}";
+            }
+        }
+
+        // C# only supports certain types as fixed length arrays, if an unsupported type is needed as a fixed length array then we'll just add a field per element instead of an array
+        var fixedArrayTypes = new[] { "sbyte", "byte", "short", "ushort", "int", "uint", "long", "ulong", "bool", "char", "float", "double" };
+        if (fixedArrayTypes.Contains(Type.Name))
+        {
+            writer.WriteLine($"public fixed {Type} {Name}[{arrayLengthDisplay}];");
+            return;
+        }
+
+        for (int i = 0; i < arrayLengthNumerical; i++)
+            writer.WriteLine($"public {Type} {Name}_{i};");
     }
 }

@@ -29,5 +29,11 @@ public class Program
             Console.WriteLine($"Parsing V{registryUrl.Version} XML registry...");
             specifications.Add((registryUrl.Version, new VulkanSpecification(registryUrl.URL)));
         }
+
+        foreach (var specification in specifications)
+        {
+            Console.WriteLine($"Generating V{specification.Version} C#...");
+            CodeGenerator.Generate(specification.Version, specification.Specification.Feature);
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿/// <summary>Specifies how the Vulkan library should be loaded/freed as well as how function pointers should be retrieved from it for Unix.</summary>
+// This file was generated, don't manually edit
+namespace Vulkan_1_2;
+
+/// <summary>Specifies how the Vulkan library should be loaded/freed as well as how function pointers should be retrieved from it for Unix.</summary>
 internal class UnixVulkanLibrary : OSVulkanLibraryBase
 {
     /*********

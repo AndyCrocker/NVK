@@ -1,4 +1,7 @@
-﻿/// <summary>Represents the Unix dynamic library api.</summary>
+// This file was generated, don't manually edit
+namespace Vulkan_1_0;
+
+/// <summary>Represents the Unix dynamic library api.</summary>
 internal static class LibDl
 {
     /*********
