@@ -6,19 +6,20 @@ internal static class XElementExtensions
     /*********
     ** Public Methods
     *********/
-    /// <summary>Gets whether the current <see cref="XElement"/> has the specified attribute with the specified value.</summary>
-    /// <param name="element">The <see cref="XElement"/> to get whether it has the attribute <paramref name="attributeName"/> with a value of <paramref name="attributeValue"/>.</param>
-    /// <param name="attributeName">The name of the attribute to check whether it contains the value of <paramref name="attributeValue"/>.</param>
-    /// <param name="attributeValue">The value that <paramref name="attributeName"/> should be.</param>
-    /// <returns><see langword="true"/> if the attribute exists and has the specified value; otherwise, <see langword="false"/>.</returns>
-    public static bool HasAttributeWithValue(this XElement element, string attributeName, string attributeValue)
+    /// <summary>Gets whether the current element has the specified attribute with a specified value.</summary>
+    /// <param name="element">The element to check whether it has the attribute <paramref name="attributeName"/> with a value in <paramref name="attributeValues"/>.</param>
+    /// <param name="attributeName">The name of the attribute to check whether it one of the values in <paramref name="attributeValues"/>.</param>
+    /// <param name="attributeValues">The values to check if the attribute has.</param>
+    /// <returns><see langword="true"/> if the attribute exists and, if <paramref name="attributeValues"/> is specified, has one of the values in <paramref name="attributeValues"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool HasAttribute(this XElement element, string attributeName, params string[] attributeValues)
     {
-        // ensure the attribute exists
         var attribute = element.Attribute(attributeName);
         if (attribute == null)
             return false;
 
-        // return whether the attribute value is correct
-        return attribute.Value == attributeValue;
+        if (!attributeValues.Any())
+            return true;
+
+        return attributeValues.Contains(attribute.Value);
     }
 }

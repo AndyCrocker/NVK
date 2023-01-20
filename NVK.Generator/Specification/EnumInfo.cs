@@ -1,13 +1,16 @@
 ﻿namespace NVK.Generator.Specification;
 
-/// <summary>Represents a Vulkan enum.</summary>
+/// <summary>Represents a parsed enum.</summary>
 internal class EnumInfo
 {
     /*********
-    ** Accessors
+    ** Properties
     *********/
     /// <summary>The name of the enum.</summary>
     public string Name { get; }
+
+    /// <summary>The name of the enum that this enum is an alias of.</summary>
+    public string? Alias { get; }
 
     /// <summary>The type of the enum.</summary>
     public EnumType Type { get; }
@@ -15,29 +18,69 @@ internal class EnumInfo
     /// <summary>The bitwidth of the enum.</summary>
     public int BitWidth { get; }
 
-    /// <summary>The values of the enum.</summary>
-    public List<EnumFieldInfo> Values { get; } = new();
-
-    /// <summary>The extension that added this enum.</summary>
-    public string? Extension { get; set; }
-
-    /// <summary>The name of the enum ready for displaying.</summary>
-    public string DisplayName => Utilities.PrettifyEnumName(Name);
+    /// <summary>The fields of the enum.</summary>
+    public List<EnumFieldInfo> Fields { get; }
 
 
     /*********
-    ** Public Methods
+    ** Constructors
     *********/
     /// <summary>Constructs an instance.</summary>
-    /// <param name="element">The enum element.</param>
-    /// <param name="typeConverter">The type converter to use when creating the instance.</param>
-    public EnumInfo(XElement element, TypeConverter typeConverter)
+    /// <param name="element">The &lt;enums&gt; element to parse the enum from.</param>
+    public EnumInfo(XElement element)
     {
-        Name = typeConverter.GetConvertedType(element.Attribute("name")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'name' attribute.", nameof(element)));
-        Type = (EnumType)Enum.Parse(typeof(EnumType), element.Attribute("type")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'type' attribute.", nameof(element)), true);
+        Name = element.Attribute("name")!.Value;
+        Type = Enum.Parse<EnumType>(element.Attribute("type")!.Value, true);
         BitWidth = int.Parse(element.Attribute("bitwidth")?.Value ?? "32");
+        Fields = element.Elements("enum")
+            .Select(enumFieldElement => new EnumFieldInfo(this, enumFieldElement)).ToList();
+    }
 
-        foreach (var enumValueElement in element.Elements("enum"))
-            Values.Add(new EnumFieldInfo(Name, enumValueElement));
+    /// <summary>Constructs an instance.</summary>
+    /// <param name="element">The &lt;type&gt; element to parse the enum from.</param>
+    /// <param name="enumDefinitions">The enum definitions to copy over data from.</param>
+    public EnumInfo(XElement element, List<EnumInfo> enumDefinitions)
+    {
+        Fields = new();
+
+        // bitmasks are declared as a typedef, while enums aren't, an couple examples or a bitmask are:
+        // <type requires="[bitsName]" category="bitmask">typedef <type>[ignored]</type> <name>[name]</name>;</type>
+        // <type                       category="bitmask" name="[name]" alias="[aliasName]"/>
+        if (element.HasAttribute("category", "bitmask"))
+        {
+            Alias = element.Attribute("alias")?.Value;
+            if (Alias != null)
+            {
+                Name = element.Attribute("name")!.Value;
+                return;
+            }
+
+            Name = element.Element("name")!.Value;
+
+            // if a bitmask doesn't have a 'requires' attribute and isn't an alias, it doesn't have any definition or extensions extending it
+            if (!element.HasAttribute("requires"))
+            {
+                BitWidth = 32;
+                return;
+            }
+        }
+        else
+        {
+            Name = element.Attribute("name")!.Value;
+            Alias = element.Attribute("alias")?.Value;
+        }
+
+        // if a definition hasn't been provided, the enum is the _Bits enum for a bitmask without any values, just use default values
+        var enumDefinition = enumDefinitions.SingleOrDefault(enumDefinition => enumDefinition.Name == (Alias ?? Name));
+        if (enumDefinition == null)
+        {
+            Type = EnumType.Bitmask;
+            BitWidth = 32;
+            return;
+        }
+
+        Type = enumDefinition.Type;
+        BitWidth = enumDefinition.BitWidth;
+        Fields = enumDefinition.Fields;
     }
 }

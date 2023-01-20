@@ -1,93 +1,60 @@
 ﻿namespace NVK.Generator.Specification;
 
-/// <summary>Represents a Vulkan enum field.</summary>
+/// <summary>Represents a parsed enum field.</summary>
 internal class EnumFieldInfo
 {
     /*********
-    ** Fields
+    ** Properties
     *********/
-    /// <summary>The name of the enum that this value belongs to.</summary>
-    private string EnumName;
+    /// <summary>The enum that this field belongs to.</summary>
+    public EnumInfo ParentEnum { get; }
 
-
-    /*********
-    ** Accessors
-    *********/
     /// <summary>The name of the enum field.</summary>
     public string Name { get; }
 
+    /// <summary>The name of the enum field that this enum field is an alias of.</summary>
+    public string? Alias { get; }
+
     /// <summary>The value of the enum field.</summary>
-    /// <remarks>This is only used if the enum has a type of <see cref="EnumType.Enum"/>.<br/>This is a <see langword="string"/> so hex numbers can be stored properly.</remarks>
+    /// <remarks>This is only used if the enum has a type of <see cref="EnumType.Enum"/>.</remarks>
     public string? Value { get; }
 
     /// <summary>The bit position of the value.</summary>
     /// <remarks>This is only used if the enum has a type of <see cref="EnumType.Bitmask"/>.</remarks>
     public int? BitPosition { get; }
 
-    /// <summary>The name of the enum field that this enum field is an alias of.</summary>
-    public string? Alias { get; }
-
-    /// <summary>The extension that added this enum field.</summary>
-    public string? Extension { get; set; }
-
-    /// <summary>The name of the enum field ready for displaying.</summary>
-    public string DisplayName => Utilities.PrettifyEnumFieldName(EnumName, Name);
-
-    /// <summary>The alias of the enum field ready for displaying.</summary>
-    public string? AliasDisplayName
-    {
-        get
-        {
-            if (Alias == null)
-                return null;
-
-            return Utilities.PrettifyEnumFieldName(EnumName, Alias);
-        }
-    }
-
 
     /*********
-    ** Public Methods
+    ** Constructors
     *********/
     /// <summary>Constructs an instance.</summary>
-    /// <param name="enumName">The name of the enum that this value belongs to.</param>
-    /// <param name="element">The enum field element.</param>
-    public EnumFieldInfo(string enumName, XElement element)
+    /// <param name="parentEnum">The enum that this field belongs to.</param>
+    /// <param name="element">The &lt;enum&gt; element to parse the enum field from.</param>
+    /// <param name="extensionNumber">The number of the extension that defines this enum field, if it was defined by an extension.</param>
+    public EnumFieldInfo(EnumInfo parentEnum, XElement element, int? extensionNumber = null)
     {
-        EnumName = enumName;
-        Name = element.Attribute("name")?.Value ?? throw new ArgumentException($"Element: {element} doesn't contain a 'name' attribute.", nameof(element));
-        Value = element.Attribute("value")?.Value;
-        if (int.TryParse(element.Attribute("bitpos")?.Value, out var parsedBitPosition))
-            BitPosition = parsedBitPosition;
+        ParentEnum = parentEnum;
+        Name = element.Attribute("name")!.Value;
         Alias = element.Attribute("alias")?.Value;
-    }
 
-    /// <summary>Constructs an instance.</summary>
-    /// <param name="enumName">The name of the enum that this value belongs to.</param>
-    /// <param name="name">The name of the enum field.</param>
-    /// <param name="value">The value of the enum field.</param>
-    /// <param name="bitPosition">The bit position of the value.</param>
-    /// <param name="alias">The name of the enum field that this enum field is an alias of.</param>
-    public EnumFieldInfo(string enumName, string name, string? value, int? bitPosition, string? alias)
-    {
-        EnumName = enumName;
-        Name = name;
-        Value = value;
-        BitPosition = bitPosition;
-        Alias = alias;
-    }
+        if (Alias != null)
+            return;
 
-    /// <inheritdoc/>
-    public override string ToString()
-    {
-        string value;
-        if (AliasDisplayName != null)
-            value = AliasDisplayName;
-        else if (BitPosition != null)
-            value = $"1 << {BitPosition}";
-        else
-            value = Value?.ToString() ?? throw new InvalidOperationException("Enum field doesn't contain a value, bit position, or alias.");
+        Value = element.Attribute("value")?.Value;
+        if (Value != null)
+            return;
 
-        return $"{DisplayName} = {value},";
+        if (element.HasAttribute("bitpos"))
+        {
+            BitPosition = int.Parse(element.Attribute("bitpos")!.Value);
+            return;
+        }
+            
+        // if the enum value isn't an alias, has a hardcoded value, or has a bit position, then it's value needs to be calculated from its extension, offset, and direction
+        extensionNumber ??= int.Parse(element.Attribute("extnumber")!.Value);
+        var offset = int.Parse(element.Attribute("offset")!.Value);
+        var direction = element.HasAttribute("dir", "-") ? -1 : 1;
+
+        Value = (direction * ((extensionNumber - 1) * 1000 + offset + 1000000000)).ToString();
     }
 }

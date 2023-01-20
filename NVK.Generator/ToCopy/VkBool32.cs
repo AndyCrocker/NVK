@@ -1,6 +1,4 @@
-﻿namespace Vulkan;
-
-/// <summary>A Boolean (<see langword="true"/> or <see langword="false"/>) value stored in a 32-bit unsigned integer.</summary>
+﻿/// <summary>A boolean (<see langword="true"/> or <see langword="false"/>) value stored in a 32-bit unsigned integer.</summary>
 public struct VkBool32
 {
     /*********
@@ -18,7 +16,7 @@ public struct VkBool32
     /// <param name="value">The underlying value.</param>
     public VkBool32(bool value)
     {
-        Value = (value) ? 1u : 0u;
+        Value = value ? 1u : 0u;
     }
 
     /// <inheritdoc/>
@@ -34,5 +32,5 @@ public struct VkBool32
 
     /// <summary>Converts a <see langword="bool"/> to a <see cref="VkBool32"/>.</summary>
     /// <param name="value">The <see langword="bool"/> to convert.</param>
-    public static implicit operator VkBool32(bool value) => new VkBool32(value);
+    public static implicit operator VkBool32(bool value) => new(value);
 }

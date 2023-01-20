@@ -1,6 +1,4 @@
-﻿namespace Vulkan;
-
-/// <summary>Contains the security descriptor for an object and specifies whether the handle retrieved by specifying this structure is inheritable.</summary>
+﻿/// <summary>Contains the security descriptor for an object and specifies whether the handle retrieved by specifying this structure is inheritable.</summary>
 public struct SecurityAttributes
 {
     /*********

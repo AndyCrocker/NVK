@@ -1,6 +1,4 @@
-﻿namespace Vulkan;
-
-/// <summary>Represents the size of a block of device memory.</summary>
+﻿/// <summary>Represents the size of a block of device memory.</summary>
 public struct VkDeviceSize
 {
     /*********

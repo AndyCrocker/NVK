@@ -1,6 +1,4 @@
-﻿namespace Vulkan;
-
-/// <summary>Represents the address of a block of device memory.</summary>
+﻿/// <summary>Represents the address of a block of device memory.</summary>
 public struct VkDeviceAddress
 {
     /*********
@@ -26,7 +24,7 @@ public struct VkDeviceAddress
 
     /// <summary>Converts an <see langword="int"/> to a <see cref="VkDeviceAddress"/>.</summary>
     /// <param name="value">The <see langword="int"/> to convert.</param>
-    public static explicit operator VkDeviceAddress(int value) => new VkDeviceAddress() { Value = (ulong)value };
+    public static explicit operator VkDeviceAddress(int value) => new() { Value = (ulong)value };
 
     /// <summary>Converts a <see cref="VkDeviceAddress"/> to a <see langword="uint"/>.</summary>
     /// <param name="value">The <see cref="VkDeviceAddress"/> to convert.</param>
@@ -34,7 +32,7 @@ public struct VkDeviceAddress
 
     /// <summary>Converts a <see langword="uint"/> to a <see cref="VkDeviceSize"/>.</summary>
     /// <param name="value">The <see langword="uint"/> to convert.</param>
-    public static implicit operator VkDeviceAddress(uint value) => new VkDeviceAddress() { Value = value };
+    public static implicit operator VkDeviceAddress(uint value) => new() { Value = value };
 
     /// <summary>Converts a <see cref="VkDeviceAddress"/> to a <see langword="ulong"/>.</summary>
     /// <param name="value">The <see cref="VkDeviceAddress"/> to convert.</param>
@@ -42,5 +40,5 @@ public struct VkDeviceAddress
 
     /// <summary>Converts a <see langword="ulong"/> to a <see cref="VkDeviceAddress"/>.</summary>
     /// <param name="value">The <see langword="ulong"/> to convert.</param>
-    public static implicit operator VkDeviceAddress(ulong value) => new VkDeviceAddress() { Value = value };
+    public static implicit operator VkDeviceAddress(ulong value) => new() { Value = value };
 }

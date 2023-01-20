@@ -1,6 +1,4 @@
-﻿namespace Vulkan;
-
-/// <summary>Represents an API version.</summary>
+﻿/// <summary>Represents an API version.</summary>
 public class VkVersion
 {
     /*********

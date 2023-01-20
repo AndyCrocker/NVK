@@ -1,9 +1,1 @@
-**NVK** is a low-level .NET6 [Vulkan](https://www.khronos.org/vulkan/) binding.
-
-## Generating Bindings
-To generate the bindings, you'll need the [.NET6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0).
-
-Compile and run the `NVK.Generator` project, this will ouput all auto-generated source files into the `Generated` directory of the output directory as well as copying over the `ToCopy` folder contents to the `NVK` project. Copy over those auto-generated files to the `NVK` project and compile the project.
-
-## Credits
-NVK's generator was based on [vk](https://github.com/mellinoe/vk)'s.
+**NVK** is a low-level .NET7 [Vulkan](https://www.khronos.org/vulkan/) binding.

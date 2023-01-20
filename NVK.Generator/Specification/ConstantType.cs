@@ -15,7 +15,7 @@ internal enum ConstantType
     [UnderlyingType("float")]
     Single,
 
-    /// <summary>Text as a sequence of UTF-16 code units</summary>
+    /// <summary>Text as a sequence of UTF-16 characters.</summary>
     [UnderlyingType("string")]
     String
 }
