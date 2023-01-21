@@ -56,6 +56,7 @@ internal static class CodeGenerator
 
         GeneratedToCopyFiles();
         GenerateStructuresFile();
+        GenerateHandlesFile();
     }
 
 
@@ -79,14 +80,33 @@ internal static class CodeGenerator
     /// <summary>Generates the file containing the structures to <see cref="OutputPath"/>.</summary>
     private static void GenerateStructuresFile()
     {
-        using var streamWriter = File.CreateText($"{OutputPath}/Structures.gen.cs");
+        using var writer = CreateFileWriter($"{OutputPath}/Structures.gen.cs");
+
+        foreach (var structureInfo in Specification.Structures)
+            structureInfo.Write(writer, Specification);
+    }
+
+    /// <summary>Generates the file containing the handles to <see cref="OutputPath"/>.</summary>
+    private static void GenerateHandlesFile()
+    {
+        using var writer = CreateFileWriter($"{OutputPath}/Handles.gen.cs");
+
+        foreach (var handleInfo in Specification.Handles)
+            handleInfo.Write(writer);
+    }
+
+    /// <summary>Creates a C# writer and writes the header to it.</summary>
+    /// <param name="fileName">The name of the file to create the writer for.</param>
+    /// <returns>The created C# writer.</returns>
+    private static CsWriter CreateFileWriter(string fileName)
+    {
+        var streamWriter = File.CreateText($"{OutputPath}/Handles.gen.cs");
         var writer = new CsWriter(streamWriter);
 
         writer.WriteLine(GeneratedWarningCode);
         writer.WriteLine(NamespaceCode);
         writer.WriteLine();
 
-        foreach (var structureInfo in Specification.Structures)
-            structureInfo.Write(writer, Specification);
+        return writer;
     }
 }

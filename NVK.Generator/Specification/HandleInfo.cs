@@ -34,4 +34,43 @@ internal class HandleInfo
         Name = element.Element("name")!.Value;
         Dispatchable = element.Element("type")!.Value == "VK_DEFINE_HANDLE";
     }
+
+
+    /*********
+    ** Public Methods
+    *********/
+    /// <summary>Writes the handle to a C# writer.</summary>
+    /// <param name="writer">The writer to write the handle to.</param>
+    public void Write(CsWriter writer)
+    {
+        var handleType = Dispatchable ? "UIntPtr" : "ulong";
+        var nullValue = Dispatchable ? "UIntPtr.Zero" : "0";
+
+        if (Alias != null)
+            writer.WriteLine($"[Obsolete(\"Use {Alias}\")]");
+
+        writer.WriteLine($"public readonly struct {Name}");
+        writer.WriteScope(() =>
+        {
+            writer.WriteLine($"public readonly {handleType} Handle;");
+
+            writer.WriteLine($"public bool IsNull => Handle == {nullValue};");
+            writer.WriteLine($"public static {Name} Null => new({nullValue});");
+
+            writer.WriteLine($"public {Name}({handleType} handle)");
+            writer.WriteScope(() =>
+            {
+                writer.WriteLine("Handle = handle;");
+            });
+            writer.WriteLine($"public override bool Equals(object obj) => obj is {Name} handle && this == handle;");
+            writer.WriteLine($"public override int GetHashCode() => Handle.GetHashCode();");
+
+            writer.WriteLine($"public static bool operator ==({Name} left, {Name} right) => left.Handle == right.Handle;");
+            writer.WriteLine($"public static bool operator !=({Name} left, {Name} right) => left.Handle != right.Handle;");
+            writer.WriteLine($"public static bool operator ==({Name} left, {handleType} right) => left.Handle == right;");
+            writer.WriteLine($"public static bool operator !=({Name} left, {handleType} right) => left.Handle != right;");
+            writer.WriteLine($"public static bool operator ==({handleType} left, {Name} right) => left == right.Handle;");
+            writer.WriteLine($"public static bool operator !=({handleType} left, {Name} right) => left != right.Handle;");
+        });
+    }
 }

@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator;
 
 /// <summary>Helps writing C# files.</summary>
-internal class CsWriter
+internal class CsWriter : IDisposable
 {
     /*********
     ** Fields
@@ -75,5 +75,11 @@ internal class CsWriter
 
         IndentationLevel--;
         WriteLine('}');
+    }
+
+    /// <summary>Releases all resources used by the <see cref="CsWriter"/> object.</summary>
+    public void Dispose()
+    {
+        StreamWriter.Dispose();
     }
 }
