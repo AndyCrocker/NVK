@@ -56,7 +56,7 @@ internal class DelegateInfo
     /// <param name="writer">The writer to write the delegate to.</param>
     public void Write(CsWriter writer)
     {
-        var parameters = string.Join(", ", Parameters.Select(parameterInfo => $"{parameterInfo.Type} {parameterInfo.Name}"));
-        writer.WriteLine($"public unsafe delegate {ReturnType} {Name}({parameters});");
+        var parametersString = string.Join(", ", Parameters.Select(parameterInfo => $"{parameterInfo.Type} {parameterInfo.Name}"));
+        writer.WriteLine($"public unsafe delegate {ReturnType} {Name}({parametersString});");
     }
 }
