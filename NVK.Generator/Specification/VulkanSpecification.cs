@@ -6,9 +6,6 @@ internal class VulkanSpecification
     /*********
     ** Properties
     *********/
-    /// <summary>The defines the specification.</summary>
-    public List<string> Defines { get; }
-
     /// <summary>The constants in the specification.</summary>
     public List<ConstantInfo> Constants { get; }
 
@@ -46,11 +43,6 @@ internal class VulkanSpecification
         var commandElements = registryElement.Elements("commands").Elements("command");
         var extensionElements = registryElement.Element("extensions")!.Elements("extension");
         var featureElements = registryElement.Elements("feature");
-
-        // defines aren't used in the C# generation, but are required as they are references in <feature> tags
-        Defines = typeElements.WithAttribute("category", "define")
-            .Select(defineElement => defineElement.Attribute("name")?.Value ?? defineElement.Element("name")!.Value).ToList();
-        Defines.Add("vk_platform"); // vk_platform is actually an include, however, it's the only include that's references in <feature> tags so it'll just be hardcoded here for now
 
         Constants = enumsElements.WithAttribute("name", "API Constants").Elements("enum")
             .Select(constantElement => new ConstantInfo(constantElement)).ToList();

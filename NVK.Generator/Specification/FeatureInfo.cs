@@ -157,26 +157,6 @@ internal class FeatureInfo
                 Delegates.Add(delegateInfo);
             return;
         }
-
-        // defines are also references in <feature> tags, we don't need them so they're ignored
-        if (Specification.Defines.Contains(name))
-            return;
-
-        // TODO: unhardcode
-        if (new[] { "VkBool32", "VkDeviceAddress", "VkDeviceSize", "VkFlags", "VkFlags64", "VkSampleMask", "void", "int32_t", "int64_t", "uint8_t", "uint32_t",
-            "uint64_t", "char", "size_t", "float", "Display", "Window", "VisualID", "xcb_connection_t", "xcb_window_t", "xcb_visualid_t", "wl_display", "wl_surface",
-            "MirConnection", "MirSurface", "ANativeWindow", "HINSTANCE", "HWND", "HANDLE", "DWORD", "LPCWSTR", "SECURITY_ATTRIBUTES", "int", "RROutput", "double",
-            "HMONITOR", "uint16_t", "AHardwareBuffer", "VkRemoteAddressNV",
-
-            "StdVideoH264ProfileIdc", "StdVideoH264LevelIdc", "StdVideoH264SequenceParameterSet",
-            "StdVideoH264PictureParameterSet", "StdVideoH264PictureParameterSet", "StdVideoDecodeH264PictureInfo",
-            "StdVideoDecodeH264ReferenceInfo", "StdVideoH265ProfileIdc", "StdVideoH265LevelIdc",
-            "StdVideoH265VideoParameterSet", "StdVideoH265SequenceParameterSet", "StdVideoH265PictureParameterSet",
-            "StdVideoH265VideoParameterSet", "StdVideoH265SequenceParameterSet", "StdVideoH265PictureParameterSet",
-            "StdVideoDecodeH265PictureInfo", "StdVideoDecodeH265ReferenceInfo" }.Contains(name))
-            return;
-
-        throw new ArgumentException($"Could find type with name '{name}'");
     }
 
     /// <summary>Adds a function from the specification to the feature with a specified name.</summary>
