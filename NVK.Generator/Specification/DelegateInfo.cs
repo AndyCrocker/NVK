@@ -47,4 +47,16 @@ internal class DelegateInfo
         for (int i = 0; i < parameters.Length; i++)
             Parameters.Add(new DelegateParameterInfo(parameterNames[i], parameterTypes[i]));
     }
+
+
+    /*********
+    ** Public Methods
+    *********/
+    /// <summary>Writes the delegate to a C# writer.</summary>
+    /// <param name="writer">The writer to write the delegate to.</param>
+    public void Write(CsWriter writer)
+    {
+        var parameters = string.Join(", ", Parameters.Select(parameterInfo => $"{parameterInfo.Type} {parameterInfo.Name}"));
+        writer.WriteLine($"public unsafe delegate {ReturnType} {Name}({parameters});");
+    }
 }
