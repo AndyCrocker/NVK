@@ -18,6 +18,18 @@ internal class ConstantInfo
     /// <summary>The type of the constant.</summary>
     public ConstantType Type { get; }
 
+    /// <summary>The display string for <see cref="Type"/>.</summary>
+    private string DisplayType => Type.GetAttribute<UnderlyingTypeAttribute>()!.UnderlyingType;
+
+    /// <summary>The display string for <see cref="Name"/>.</summary>
+    private string DisplayName => CalculateDisplayName(Name)!;
+
+    /// <summary>The display string for <see cref="Alias"/>.</summary>
+    private string? DisplayAliasName => CalculateDisplayName(Alias);
+
+    /// <summary>The display string for <see cref="Value"/>.</summary>
+    private string? DisplayValue => Value?.Trim('(', ')').Replace("LL", "L").Replace(".0F", "F", StringComparison.InvariantCultureIgnoreCase);
+
 
     /*********
     ** Constructors
@@ -44,16 +56,19 @@ internal class ConstantInfo
     public void Write(CsWriter writer)
     {
         if (Alias != null)
-            writer.WriteLine($"[Obsolete(\"Use {CalculateDisplayName(Alias)}\")]");
+            writer.WriteLine($"[Obsolete(\"Use {DisplayAliasName}\")]");
 
-        writer.WriteLine($"public const {Type} {CalculateDisplayName(Name)} = {Value ?? CalculateDisplayName(Alias!)};");
+        writer.WriteLine($"public const {DisplayType} {DisplayName} = {DisplayValue ?? DisplayAliasName};");
     }
 
     /// <summary>Calculates the display name of a constant name.</summary>
     /// <param name="name">The name to calculate the display name of.</param>
     /// <returns>The display name for a constant called <paramref name="name"/>.</returns>
-    public static string CalculateDisplayName(string name)
+    public static string? CalculateDisplayName(string? name)
     {
+        if (name == null)
+            return null;
+
         var splitConstantName = name.Split('_').Skip(1); // remove "VK_" prefix
         return string.Concat(splitConstantName.Select(splitName => splitName.ToLower().FirstToUpper()));
     }
