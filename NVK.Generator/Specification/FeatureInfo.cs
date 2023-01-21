@@ -65,7 +65,7 @@ internal class FeatureInfo
         foreach (var constantName in requireInfo.ConstantNames)
             AddConstantByName(constantName);
         foreach (var constant in requireInfo.Constants)
-            Constants.Add(constant);
+            AddConstant(constant);
 
         foreach (var functionName in requireInfo.FunctionNames)
             AddFunctionByName(functionName);
@@ -91,8 +91,20 @@ internal class FeatureInfo
     private void AddConstantByName(string name)
     {
         var constantInfo = Specification.Constants.Single(enumInfo => enumInfo.Name == name);
-        if (Constants.Any(cInfo => cInfo.Name == name))
+        AddConstant(constantInfo);
+    }
+
+    /// <summary>Adds a constant to the feature.</summary>
+    /// <param name="constantInfo">The constant to add to the feature.</param>
+    private void AddConstant(ConstantInfo constantInfo)
+    {
+        if (Constants.Any(cInfo => cInfo.Name == constantInfo.Name))
             return;
+
+        // some constants are aliased to fix incorrect formatting of underscores, these result in identical display names so we'll just ignore these constants
+        if (constantInfo.Alias != null)
+            if (ConstantInfo.CalculateDisplayName(constantInfo.Name) == ConstantInfo.CalculateDisplayName(constantInfo.Alias))
+                return;
 
         Constants.Add(constantInfo);
     }

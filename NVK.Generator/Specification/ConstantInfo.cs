@@ -44,9 +44,18 @@ internal class ConstantInfo
     public void Write(CsWriter writer)
     {
         if (Alias != null)
-            writer.WriteLine($"[Obsolete(\"Use {Alias}\")]");
+            writer.WriteLine($"[Obsolete(\"Use {CalculateDisplayName(Alias)}\")]");
 
-        writer.WriteLine($"public const {Type} {Name} = {Value ?? Alias};");
+        writer.WriteLine($"public const {Type} {CalculateDisplayName(Name)} = {Value ?? CalculateDisplayName(Alias!)};");
+    }
+
+    /// <summary>Calculates the display name of a constant name.</summary>
+    /// <param name="name">The name to calculate the display name of.</param>
+    /// <returns>The display name for a constant called <paramref name="name"/>.</returns>
+    public static string CalculateDisplayName(string name)
+    {
+        var splitConstantName = name.Split('_').Skip(1); // remove "VK_" prefix
+        return string.Concat(splitConstantName.Select(splitName => splitName.ToLower().FirstToUpper()));
     }
 
 
