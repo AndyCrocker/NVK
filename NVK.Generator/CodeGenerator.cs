@@ -80,7 +80,7 @@ internal static class CodeGenerator
     /// <summary>Generates the file containing the structures to <see cref="OutputPath"/>.</summary>
     private static void GenerateStructuresFile()
     {
-        using var writer = CreateFileWriter($"{OutputPath}/Structures.gen.cs");
+        using var writer = CreateFileWriter("Structures.gen.cs");
 
         foreach (var structureInfo in Specification.Structures)
             structureInfo.Write(writer, Specification);
@@ -89,7 +89,7 @@ internal static class CodeGenerator
     /// <summary>Generates the file containing the handles to <see cref="OutputPath"/>.</summary>
     private static void GenerateHandlesFile()
     {
-        using var writer = CreateFileWriter($"{OutputPath}/Handles.gen.cs");
+        using var writer = CreateFileWriter("Handles.gen.cs");
 
         foreach (var handleInfo in Specification.Handles)
             handleInfo.Write(writer);
@@ -100,7 +100,7 @@ internal static class CodeGenerator
     /// <returns>The created C# writer.</returns>
     private static CsWriter CreateFileWriter(string fileName)
     {
-        var streamWriter = File.CreateText($"{OutputPath}/Handles.gen.cs");
+        var streamWriter = File.CreateText($"{OutputPath}/{fileName}");
         var writer = new CsWriter(streamWriter);
 
         writer.WriteLine(GeneratedWarningCode);
