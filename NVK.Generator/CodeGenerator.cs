@@ -58,6 +58,7 @@ internal static class CodeGenerator
         GenerateStructuresFile();
         GenerateHandlesFile();
         GenerateDelegatesFile();
+        GenerateEnumsFile();
     }
 
 
@@ -103,6 +104,15 @@ internal static class CodeGenerator
 
         foreach (var delegateInfo in Specification.Delegates)
             delegateInfo.Write(writer);
+    }
+
+    /// <summary>Generates the file containing the enums to <see cref="OutputPath"/>.</summary>
+    private static void GenerateEnumsFile()
+    {
+        using var writer = CreateFileWriter("Enums.gen.cs");
+
+        foreach (var enumInfo in Specification.Enums)
+            enumInfo.Write(writer);
     }
 
     /// <summary>Creates a C# writer and writes the header to it.</summary>

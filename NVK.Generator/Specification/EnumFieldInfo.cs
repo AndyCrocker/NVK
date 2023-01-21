@@ -57,4 +57,23 @@ internal class EnumFieldInfo
 
         Value = (direction * ((extensionNumber - 1) * 1000 + offset + 1000000000)).ToString();
     }
+
+
+    /*********
+    ** Public Methods
+    *********/
+    /// <summary>Writes the enum to a C# writer.</summary>
+    /// <param name="writer">The writer to write the enum to.</param>
+    public void Write(CsWriter writer)
+    {
+        string value;
+        if (Alias != null)
+            value = Alias;
+        else if (BitPosition != null)
+            value = $"1 << {BitPosition}";
+        else
+            value = Value!;
+
+        writer.WriteLine($"{Name} = {value},");
+    }
 }

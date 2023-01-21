@@ -48,6 +48,8 @@ internal class EnumInfo
         // <type                       category="bitmask" name="[name]" alias="[aliasName]"/>
         if (element.HasAttribute("category", "bitmask"))
         {
+            Type = EnumType.Bitmask;
+
             Alias = element.Attribute("alias")?.Value;
             if (Alias != null)
             {
@@ -74,7 +76,6 @@ internal class EnumInfo
         var enumDefinition = enumDefinitions.SingleOrDefault(enumDefinition => enumDefinition.Name == (Alias ?? Name));
         if (enumDefinition == null)
         {
-            Type = EnumType.Bitmask;
             BitWidth = 32;
             return;
         }
@@ -82,5 +83,24 @@ internal class EnumInfo
         Type = enumDefinition.Type;
         BitWidth = enumDefinition.BitWidth;
         Fields = enumDefinition.Fields;
+    }
+
+
+    /*********
+    ** Public Methods
+    *********/
+    /// <summary>Writes the enum to a C# writer.</summary>
+    /// <param name="writer">The writer to write the enum to.</param>
+    public void Write(CsWriter writer)
+    {
+        if (Type == EnumType.Bitmask)
+            writer.WriteLine($"[Flags]");
+
+        writer.WriteLine($"public enum {Name}{(BitWidth == 64 ? " : long" : "")}");
+        writer.WriteScope(() =>
+        {
+            foreach (var fieldInfo in Fields)
+                fieldInfo.Write(writer);
+        });
     }
 }

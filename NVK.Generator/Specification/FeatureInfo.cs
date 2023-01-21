@@ -76,7 +76,13 @@ internal class FeatureInfo
         foreach (var enumField in requireInfo.EnumFields)
         {
             var enumInfo = Specification.Enums.Single(enumInfo => enumInfo.Name == enumField.EnumName);
-            enumInfo.Fields.Add(new(enumInfo, enumField.EnumFieldElement, enumField.ExtensionNumber));
+            var enumFieldInfo = new EnumFieldInfo(enumInfo, enumField.EnumFieldElement, enumField.ExtensionNumber);
+
+            // enum fields can be added multiple times if they are specified in different extensions, so just make sure to only add it once
+            if (enumInfo.Fields.Any(fieldInfo => fieldInfo.Name == enumFieldInfo.Name))
+                continue;
+
+            enumInfo.Fields.Add(enumFieldInfo);
         }
     }
 
