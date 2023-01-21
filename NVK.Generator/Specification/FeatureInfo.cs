@@ -44,7 +44,7 @@ internal class FeatureInfo
         Specification = specification;
 
         var requireInfos = featureElements.Elements("require")
-            .Select(requireElement => new RequireInfo(requireElement));
+            .Select(requireElement => new RequireInfo(requireElement, Specification));
 
         foreach (var requireInfo in requireInfos)
             AddRequire(requireInfo);

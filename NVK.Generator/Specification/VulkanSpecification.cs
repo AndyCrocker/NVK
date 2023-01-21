@@ -72,7 +72,7 @@ internal class VulkanSpecification
 
         var supportedPlatforms = new[] { "win32", "macos", "xlib", "xcb", "wayland", "android" };
         var allExtensions = extensionElements
-            .Select(extensionElement => new ExtensionInfo(extensionElement));
+            .Select(extensionElement => new ExtensionInfo(extensionElement, this));
         var supportedExtensions = allExtensions
             .Where(extensionInfo => extensionInfo.Supported != "disabled")
             .Where(extensionInfo => extensionInfo.Platform == null || supportedPlatforms.Contains(extensionInfo.Platform)).ToList();

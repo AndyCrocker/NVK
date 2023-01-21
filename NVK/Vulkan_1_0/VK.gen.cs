@@ -20,7 +20,6 @@ public static unsafe class VK
 	public const uint MaxDescriptionSize = 256;
 	public const uint KhrSurfaceSpecVersion = 25;
 	public const string KhrSurfaceExtensionName = "VK_KHR_surface";
-	public const uint ColorspaceSrgbNonlinearKhr = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR;
 	public const uint KhrSwapchainSpecVersion = 68;
 	public const string KhrSwapchainExtensionName = "VK_KHR_swapchain";
 	public const uint KhrDisplaySpecVersion = 21;
@@ -41,8 +40,6 @@ public static unsafe class VK
 	public const string KhrWin32SurfaceExtensionName = "VK_KHR_win32_surface";
 	public const uint ExtDebugReportSpecVersion = 9;
 	public const string ExtDebugReportExtensionName = "VK_EXT_debug_report";
-	public const uint StructureTypeDebugReportCreateInfoExt = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALBACK_CREATE_INFO_EXT;
-	public const uint DebugReportObjectTypeDebugReportExt = VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALBACK_EXT_EXT;
 	public const uint NvGlslShaderSpecVersion = 1;
 	public const string NvGlslShaderExtensionName = "VK_NV_glsl_shader";
 	public const uint ExtDepthRangeUnrestrictedSpecVersion = 1;
@@ -146,7 +143,6 @@ public static unsafe class VK
 	public const string ExtAcquireXlibDisplayExtensionName = "VK_EXT_acquire_xlib_display";
 	public const uint ExtDisplaySurfaceCounterSpecVersion = 1;
 	public const string ExtDisplaySurfaceCounterExtensionName = "VK_EXT_display_surface_counter";
-	public const uint StructureTypeSurfaceCapabilities2Ext = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT;
 	public const uint ExtDisplayControlSpecVersion = 1;
 	public const string ExtDisplayControlExtensionName = "VK_EXT_display_control";
 	public const uint GoogleDisplayTimingSpecVersion = 1;
@@ -232,7 +228,6 @@ public static unsafe class VK
 	public const string KhrBindMemory2ExtensionName = "VK_KHR_bind_memory2";
 	public const uint ExtValidationCacheSpecVersion = 1;
 	public const string ExtValidationCacheExtensionName = "VK_EXT_validation_cache";
-	public const uint DebugReportObjectTypeValidationCacheExt = VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT;
 	public const uint ExtShaderViewportIndexLayerSpecVersion = 1;
 	public const string ExtShaderViewportIndexLayerExtensionName = "VK_EXT_shader_viewport_index_layer";
 	public const uint ExtGlobalPrioritySpecVersion = 2;

@@ -16,6 +16,10 @@ internal class ExtensionEnumFieldInfo
     /// <summary>The element of the field definition.</summary>
     public XElement EnumFieldElement { get; }
 
+    /// <summary>The name of the enum field.</summary>
+    /// <remarks>This is used purely as a work around for how Vulkan 1.0 breaks the schema, for a more indepth description, see the comment above the reference.</remarks>
+    public string Name { get; }
+
 
     /*********
     ** Constructors
@@ -29,5 +33,7 @@ internal class ExtensionEnumFieldInfo
         ExtensionNumber = extensionNumber;
         EnumName = enumName;
         EnumFieldElement = enumFieldElement;
+
+        Name = enumFieldElement.Attribute("name")!.Value;
     }
 }

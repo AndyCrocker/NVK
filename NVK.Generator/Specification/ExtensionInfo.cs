@@ -21,13 +21,14 @@ internal class ExtensionInfo
     *********/
     /// <summary>Constructs an instance.</summary>
     /// <param name="element">The &lt;extension&gt; element to parse the extension from.</param>
-    public ExtensionInfo(XElement element)
+    /// <param name="specification">The specification to use when creating the extension.</param>
+    public ExtensionInfo(XElement element, VulkanSpecification specification)
 	{
         Platform = element.Attribute("platform")?.Value;
         Supported = element.Attribute("supported")!.Value;
 
         var number = int.Parse(element.Attribute("number")!.Value);
         RequireInfos = element.Elements("require")
-            .Select(requireElement => new RequireInfo(requireElement, number)).ToList();
+            .Select(requireElement => new RequireInfo(requireElement, specification, number)).ToList();
     }
 }
