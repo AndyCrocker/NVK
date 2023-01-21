@@ -37,6 +37,20 @@ internal class ConstantInfo
 
 
     /*********
+    ** Public Methods
+    *********/
+    /// <summary>Writes the constant to a C# writer.</summary>
+    /// <param name="writer">The writer to write the constant to.</param>
+    public void Write(CsWriter writer)
+    {
+        if (Alias != null)
+            writer.WriteLine($"[Obsolete(\"Use {Alias}\")]");
+
+        writer.WriteLine($"public const {Type} {Name} = {Value ?? Alias};");
+    }
+
+
+    /*********
     ** Private Methods
     *********/
     /// <summary>Calculates the type of a constant value.</summary>

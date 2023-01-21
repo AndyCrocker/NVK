@@ -59,6 +59,7 @@ internal static class CodeGenerator
         GenerateHandlesFile();
         GenerateDelegatesFile();
         GenerateEnumsFile();
+        GenerateVkFile();
     }
 
 
@@ -113,6 +114,48 @@ internal static class CodeGenerator
 
         foreach (var enumInfo in Specification.Enums)
             enumInfo.Write(writer);
+    }
+
+    /// <summary>Generates the file containing the constants and functions to <see cref="OutputPath"/>.</summary>
+    private static void GenerateVkFile()
+    {
+        using var writer = CreateFileWriter("VK.gen.cs");
+
+        writer.WriteLine("public static unsafe class VK");
+        writer.WriteScope(() =>
+        {
+            foreach (var constantInfo in Specification.Constants)
+                constantInfo.Write(writer);
+
+            foreach (var functionInfo in Specification.Functions)
+                functionInfo.Write(writer, Specification);
+
+            writer.WriteLine("private static readonly OSVulkanLibraryBase VulkanLibrary;");
+            writer.WriteLine("static VK()");
+            writer.WriteScope(() =>
+            {
+                writer.WriteLine("VulkanLibrary = OSVulkanLibraryBase.CreateOSVulkanLibrary();");
+                writer.WriteLine("InitialiseRequiredMethods();");
+            });
+
+            var requiredMethods = new[] { "vkCreateInstance", "vkEnumerateInstanceExtensionProperties", "vkEnumerateInstanceLayerProperties", "vkGetInstanceProcAddr" };
+
+            // required methods (methods that have pointers set before an instance is created)
+            writer.WriteLine("private static void InitialiseRequiredMethods()");
+            writer.WriteScope(() =>
+            {
+                foreach (var functionInfo in Specification.Functions.Where(functionInfo => requiredMethods.Contains(functionInfo.Name)))
+                    functionInfo.WriteRequiredFunction(writer);
+            });
+
+            // instance methods (methods that have pointers set after an instance is created)
+            writer.WriteLine("public static void InitialiseInstanceMethods(VkInstance instance)");
+            writer.WriteScope(() =>
+            {
+                foreach (var functionInfo in Specification.Functions.Where(commandInfo => !requiredMethods.Contains(commandInfo.Name)))
+                    functionInfo.WriteInstanceFunction(writer);
+            });
+        });
     }
 
     /// <summary>Creates a C# writer and writes the header to it.</summary>
