@@ -63,10 +63,11 @@ internal class VulkanSpecification
             .Select(delegateElement => new DelegateInfo(delegateElement)).ToList();
 
         var supportedPlatforms = new[] { "win32", "macos", "xlib", "xcb", "wayland", "android" };
+        var disallowedExtensions = new[] { "VK_KHR_mir_surface" }; // https://github.com/KhronosGroup/Vulkan-Docs/issues/814
         var allExtensions = extensionElements
             .Select(extensionElement => new ExtensionInfo(extensionElement, this));
         var supportedExtensions = allExtensions
-            .Where(extensionInfo => extensionInfo.Supported != "disabled")
+            .Where(extensionInfo => extensionInfo.Supported != "disabled" && !disallowedExtensions.Contains(extensionInfo.Name))
             .Where(extensionInfo => extensionInfo.Platform == null || supportedPlatforms.Contains(extensionInfo.Platform)).ToList();
 
         Functions = commandElements.Select(commandElement => new FunctionInfo(commandElement)).ToList();

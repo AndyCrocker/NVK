@@ -1270,14 +1270,6 @@ public unsafe struct VkWaylandSurfaceCreateInfoKHR
 	public void* display;
 	public void* surface;
 }
-public unsafe struct VkMirSurfaceCreateInfoKHR
-{
-	public VkStructureType sType;
-	public void* pNext;
-	public VkMirSurfaceCreateFlagsKHR flags;
-	public MirConnection* connection;
-	public MirSurface* mirSurface;
-}
 public unsafe struct VkAndroidSurfaceCreateInfoKHR
 {
 	public VkStructureType sType;

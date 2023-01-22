@@ -32,8 +32,6 @@ public static unsafe class VK
 	public const string KhrXcbSurfaceExtensionName = "VK_KHR_xcb_surface";
 	public const uint KhrWaylandSurfaceSpecVersion = 6;
 	public const string KhrWaylandSurfaceExtensionName = "VK_KHR_wayland_surface";
-	public const uint KhrMirSurfaceSpecVersion = 4;
-	public const string KhrMirSurfaceExtensionName = "VK_KHR_mir_surface";
 	public const uint KhrAndroidSurfaceSpecVersion = 6;
 	public const string KhrAndroidSurfaceExtensionName = "VK_KHR_android_surface";
 	public const uint KhrWin32SurfaceSpecVersion = 6;
@@ -880,14 +878,6 @@ public static unsafe class VK
 	private delegate VkBool32 vkGetPhysicalDeviceWaylandPresentationSupportKHRDelegate_0(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* display);
 	private static IntPtr vkGetPhysicalDeviceWaylandPresentationSupportKHRPointer;
 	private static vkGetPhysicalDeviceWaylandPresentationSupportKHRDelegate_0 vkGetPhysicalDeviceWaylandPresentationSupportKHR_0;
-	public static VkResult vkCreateMirSurfaceKHR(VkInstance instance, VkMirSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface) => vkCreateMirSurfaceKHR_0(instance, pCreateInfo, pAllocator, pSurface);
-	private delegate VkResult vkCreateMirSurfaceKHRDelegate_0(VkInstance instance, VkMirSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
-	private static IntPtr vkCreateMirSurfaceKHRPointer;
-	private static vkCreateMirSurfaceKHRDelegate_0 vkCreateMirSurfaceKHR_0;
-	public static VkBool32 vkGetPhysicalDeviceMirPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, MirConnection* connection) => vkGetPhysicalDeviceMirPresentationSupportKHR_0(physicalDevice, queueFamilyIndex, connection);
-	private delegate VkBool32 vkGetPhysicalDeviceMirPresentationSupportKHRDelegate_0(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, MirConnection* connection);
-	private static IntPtr vkGetPhysicalDeviceMirPresentationSupportKHRPointer;
-	private static vkGetPhysicalDeviceMirPresentationSupportKHRDelegate_0 vkGetPhysicalDeviceMirPresentationSupportKHR_0;
 	public static VkResult vkCreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface) => vkCreateAndroidSurfaceKHR_0(instance, pCreateInfo, pAllocator, pSurface);
 	private delegate VkResult vkCreateAndroidSurfaceKHRDelegate_0(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
 	private static IntPtr vkCreateAndroidSurfaceKHRPointer;
@@ -2071,16 +2061,6 @@ public static unsafe class VK
 		if (vkGetPhysicalDeviceWaylandPresentationSupportKHRPointer != IntPtr.Zero)
 		{
 			vkGetPhysicalDeviceWaylandPresentationSupportKHR_0 = Marshal.GetDelegateForFunctionPointer<vkGetPhysicalDeviceWaylandPresentationSupportKHRDelegate_0>(vkGetPhysicalDeviceWaylandPresentationSupportKHRPointer);
-		}
-		vkCreateMirSurfaceKHRPointer = vkGetInstanceProcAddr(instance, "vkCreateMirSurfaceKHR");
-		if (vkCreateMirSurfaceKHRPointer != IntPtr.Zero)
-		{
-			vkCreateMirSurfaceKHR_0 = Marshal.GetDelegateForFunctionPointer<vkCreateMirSurfaceKHRDelegate_0>(vkCreateMirSurfaceKHRPointer);
-		}
-		vkGetPhysicalDeviceMirPresentationSupportKHRPointer = vkGetInstanceProcAddr(instance, "vkGetPhysicalDeviceMirPresentationSupportKHR");
-		if (vkGetPhysicalDeviceMirPresentationSupportKHRPointer != IntPtr.Zero)
-		{
-			vkGetPhysicalDeviceMirPresentationSupportKHR_0 = Marshal.GetDelegateForFunctionPointer<vkGetPhysicalDeviceMirPresentationSupportKHRDelegate_0>(vkGetPhysicalDeviceMirPresentationSupportKHRPointer);
 		}
 		vkCreateAndroidSurfaceKHRPointer = vkGetInstanceProcAddr(instance, "vkCreateAndroidSurfaceKHR");
 		if (vkCreateAndroidSurfaceKHRPointer != IntPtr.Zero)

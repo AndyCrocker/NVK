@@ -6,6 +6,9 @@ internal class ExtensionInfo
     /*********
     ** Properties
     *********/
+    /// <summary>The name of the extension.</summary>
+    public string Name { get; }
+
     /// <summary>The platform the extension is for.</summary>
     public string? Platform { get; }
 
@@ -24,6 +27,7 @@ internal class ExtensionInfo
     /// <param name="specification">The specification to use when creating the extension.</param>
     public ExtensionInfo(XElement element, VulkanSpecification specification)
 	{
+        Name = element.Attribute("name")!.Value;
         Platform = element.Attribute("platform")?.Value;
         Supported = element.Attribute("supported")!.Value;
 
