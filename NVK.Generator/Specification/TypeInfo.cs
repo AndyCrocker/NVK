@@ -47,7 +47,8 @@ internal class TypeInfo
         ["SECURITY_ATTRIBUTES"] = "SecurityAttributes",
 
         // misc Vulkan
-        ["VkRemoteAddressNV"] = "IntPtr"
+        ["VkRemoteAddressNV"] = "IntPtr",
+        ["VkSampleMask"] = "uint"
     };
 
 

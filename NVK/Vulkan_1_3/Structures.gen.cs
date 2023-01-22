@@ -779,7 +779,7 @@ public unsafe struct VkPipelineMultisampleStateCreateInfo
 	public VkSampleCountFlagBits rasterizationSamples;
 	public VkBool32 sampleShadingEnable;
 	public float minSampleShading;
-	public VkSampleMask* pSampleMask;
+	public uint* pSampleMask;
 	public VkBool32 alphaToCoverageEnable;
 	public VkBool32 alphaToOneEnable;
 }

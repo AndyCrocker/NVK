@@ -3013,8 +3013,8 @@ public static unsafe class VK
 	private delegate void vkCmdSetRasterizationSamplesEXTDelegate_0(VkCommandBuffer commandBuffer, VkSampleCountFlagBits rasterizationSamples);
 	private static IntPtr vkCmdSetRasterizationSamplesEXTPointer;
 	private static vkCmdSetRasterizationSamplesEXTDelegate_0 vkCmdSetRasterizationSamplesEXT_0;
-	public static void vkCmdSetSampleMaskEXT(VkCommandBuffer commandBuffer, VkSampleCountFlagBits samples, VkSampleMask* pSampleMask) => vkCmdSetSampleMaskEXT_0(commandBuffer, samples, pSampleMask);
-	private delegate void vkCmdSetSampleMaskEXTDelegate_0(VkCommandBuffer commandBuffer, VkSampleCountFlagBits samples, VkSampleMask* pSampleMask);
+	public static void vkCmdSetSampleMaskEXT(VkCommandBuffer commandBuffer, VkSampleCountFlagBits samples, uint* pSampleMask) => vkCmdSetSampleMaskEXT_0(commandBuffer, samples, pSampleMask);
+	private delegate void vkCmdSetSampleMaskEXTDelegate_0(VkCommandBuffer commandBuffer, VkSampleCountFlagBits samples, uint* pSampleMask);
 	private static IntPtr vkCmdSetSampleMaskEXTPointer;
 	private static vkCmdSetSampleMaskEXTDelegate_0 vkCmdSetSampleMaskEXT_0;
 	public static void vkCmdSetAlphaToCoverageEnableEXT(VkCommandBuffer commandBuffer, VkBool32 alphaToCoverageEnable) => vkCmdSetAlphaToCoverageEnableEXT_0(commandBuffer, alphaToCoverageEnable);
