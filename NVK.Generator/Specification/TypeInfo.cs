@@ -91,8 +91,8 @@ internal class TypeInfo
     /// <returns>The display name for a type called <paramref name="name"/>.</returns>
     private static string CalculateDisplayName(string name)
     {
-        if (TypeConverter.ContainsKey(name))
-            return TypeConverter[name];
+        if (TypeConverter.TryGetValue(name, out var convertedName))
+            name = convertedName;
 
         return name;
     }
