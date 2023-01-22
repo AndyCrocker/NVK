@@ -63,7 +63,7 @@ internal class StructureFieldInfo
         }
 
         var arrayLengthNumerical = 0;
-        var arrayLengthDisplay = "";
+        var arrayLengthDisplay = (string?)null;
         if (!int.TryParse(ArrayLength, out arrayLengthNumerical))
         {
             // some fields are an array of arrays, C# doesn't support fixed version of these, so we'll flatten them into an appropriately sized array
@@ -80,9 +80,10 @@ internal class StructureFieldInfo
             {
                 var constantInfo = specification.Constants.Single(constantInfo => constantInfo.Name == ArrayLength);
                 arrayLengthNumerical = int.Parse(constantInfo.Value!); // need to keep track of the numerical value incase it's an invalid type (for a fixed array) so we need to convert the array to fields
-                arrayLengthDisplay = $"VK.{constantInfo.Name}";
+                arrayLengthDisplay = $"(int)VK.{ConstantInfo.CalculateDisplayName(constantInfo.Name)}";
             }
         }
+        arrayLengthDisplay ??= arrayLengthNumerical.ToString();
 
         // C# only supports certain types as fixed length arrays, if an unsupported type is needed as a fixed length array then we'll just add a field per element instead of an array
         var fixedArrayTypes = new[] { "sbyte", "byte", "short", "ushort", "int", "uint", "long", "ulong", "bool", "char", "float", "double" };

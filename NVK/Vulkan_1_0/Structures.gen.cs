@@ -116,8 +116,8 @@ public unsafe struct VkPhysicalDeviceProperties
 	public uint vendorID;
 	public uint deviceID;
 	public VkPhysicalDeviceType deviceType;
-	public fixed byte deviceName[VK.VK_MAX_PHYSICAL_DEVICE_NAME_SIZE];
-	public fixed byte pipelineCacheUUID[VK.VK_UUID_SIZE];
+	public fixed byte deviceName[(int)VK.MaxPhysicalDeviceNameSize];
+	public fixed byte pipelineCacheUUID[(int)VK.UuidSize];
 	public VkPhysicalDeviceLimits limits;
 	public VkPhysicalDeviceSparseProperties sparseProperties;
 }
@@ -175,9 +175,9 @@ public unsafe struct VkPhysicalDeviceLimits
 	public uint maxFragmentDualSrcAttachments;
 	public uint maxFragmentCombinedOutputResources;
 	public uint maxComputeSharedMemorySize;
-	public fixed uint maxComputeWorkGroupCount[];
+	public fixed uint maxComputeWorkGroupCount[3];
 	public uint maxComputeWorkGroupInvocations;
-	public fixed uint maxComputeWorkGroupSize[];
+	public fixed uint maxComputeWorkGroupSize[3];
 	public uint subPixelPrecisionBits;
 	public uint subTexelPrecisionBits;
 	public uint mipmapPrecisionBits;
@@ -186,8 +186,8 @@ public unsafe struct VkPhysicalDeviceLimits
 	public float maxSamplerLodBias;
 	public float maxSamplerAnisotropy;
 	public uint maxViewports;
-	public fixed uint maxViewportDimensions[];
-	public fixed float viewportBoundsRange[];
+	public fixed uint maxViewportDimensions[2];
+	public fixed float viewportBoundsRange[2];
 	public uint viewportSubPixelBits;
 	public nuint minMemoryMapAlignment;
 	public VkDeviceSize minTexelBufferOffsetAlignment;
@@ -220,8 +220,8 @@ public unsafe struct VkPhysicalDeviceLimits
 	public uint maxCullDistances;
 	public uint maxCombinedClipAndCullDistances;
 	public uint discreteQueuePriorities;
-	public fixed float pointSizeRange[];
-	public fixed float lineWidthRange[];
+	public fixed float pointSizeRange[2];
+	public fixed float lineWidthRange[2];
 	public float pointSizeGranularity;
 	public float lineWidthGranularity;
 	public VkBool32 strictLines;
@@ -332,15 +332,15 @@ public unsafe struct VkDeviceQueueCreateInfo
 }
 public unsafe struct VkExtensionProperties
 {
-	public fixed byte extensionName[VK.VK_MAX_EXTENSION_NAME_SIZE];
+	public fixed byte extensionName[(int)VK.MaxExtensionNameSize];
 	public uint specVersion;
 }
 public unsafe struct VkLayerProperties
 {
-	public fixed byte layerName[VK.VK_MAX_EXTENSION_NAME_SIZE];
+	public fixed byte layerName[(int)VK.MaxExtensionNameSize];
 	public uint specVersion;
 	public uint implementationVersion;
-	public fixed byte description[VK.VK_MAX_DESCRIPTION_SIZE];
+	public fixed byte description[(int)VK.MaxDescriptionSize];
 }
 public unsafe struct VkSubmitInfo
 {
@@ -746,7 +746,7 @@ public unsafe struct VkPipelineColorBlendStateCreateInfo
 	public VkLogicOp logicOp;
 	public uint attachmentCount;
 	public VkPipelineColorBlendAttachmentState* pAttachments;
-	public fixed float blendConstants[];
+	public fixed float blendConstants[4];
 }
 public unsafe struct VkPipelineColorBlendAttachmentState
 {
@@ -1029,11 +1029,11 @@ public unsafe struct VkBufferImageCopy
 public unsafe struct VkClearColorValue
 {
 	[FieldOffset(0)]
-	public fixed float float32[];
+	public fixed float float32[4];
 	[FieldOffset(0)]
-	public fixed int int32[];
+	public fixed int int32[4];
 	[FieldOffset(0)]
-	public fixed uint uint32[];
+	public fixed uint uint32[4];
 }
 public unsafe struct VkClearDepthStencilValue
 {
@@ -1322,7 +1322,7 @@ public unsafe struct VkDebugMarkerMarkerInfoEXT
 	public VkStructureType sType;
 	public void* pNext;
 	public byte* pMarkerName;
-	public fixed float color[];
+	public fixed float color[4];
 }
 public unsafe struct VkDedicatedAllocationImageCreateInfoNV
 {
@@ -1365,7 +1365,7 @@ public unsafe struct VkShaderStatisticsInfoAMD
 	public uint numPhysicalSgprs;
 	public uint numAvailableVgprs;
 	public uint numAvailableSgprs;
-	public fixed uint computeWorkGroupSize[];
+	public fixed uint computeWorkGroupSize[3];
 }
 public unsafe struct VkRenderPassMultiviewCreateInfoKHX
 {
@@ -1559,7 +1559,7 @@ public unsafe struct VkDeviceGroupPresentCapabilitiesKHX
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public fixed uint presentMask[VK.VK_MAX_DEVICE_GROUP_SIZE_KHX];
+	public fixed uint presentMask[(int)VK.MaxDeviceGroupSizeKhx];
 	public VkDeviceGroupPresentModeFlagsKHX modes;
 }
 public unsafe struct VkAcquireNextImageInfoKHX
@@ -1695,9 +1695,9 @@ public unsafe struct VkPhysicalDeviceIDPropertiesKHR
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public fixed byte deviceUUID[VK.VK_UUID_SIZE];
-	public fixed byte driverUUID[VK.VK_UUID_SIZE];
-	public fixed byte deviceLUID[VK.VK_LUID_SIZE_KHR];
+	public fixed byte deviceUUID[(int)VK.UuidSize];
+	public fixed byte driverUUID[(int)VK.UuidSize];
+	public fixed byte deviceLUID[(int)VK.LuidSizeKhr];
 	public uint deviceNodeMask;
 	public VkBool32 deviceLUIDValid;
 }
@@ -2387,7 +2387,7 @@ public unsafe struct VkPhysicalDeviceSampleLocationsPropertiesEXT
 	public void* pNext;
 	public VkSampleCountFlags sampleLocationSampleCounts;
 	public VkExtent2D maxSampleLocationGridSize;
-	public fixed float sampleLocationCoordinateRange[];
+	public fixed float sampleLocationCoordinateRange[2];
 	public uint sampleLocationSubPixelBits;
 	public VkBool32 variableSampleLocations;
 }
