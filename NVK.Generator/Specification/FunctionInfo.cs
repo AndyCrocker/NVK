@@ -27,13 +27,19 @@ internal class FunctionInfo
     /// <summary>The parameters of the function.</summary>
     public List<FunctionParameterInfo> Parameters { get; } = new();
 
-    /// <summary>The base name of each delegate for the function.</summary>
-    /// <remarks>Delegate in this case refers to the internal delegate for P/Invoke, not Vulkan delegates.</remarks>
-    private string DelegateName => $"{Name}Delegate";
+    /// <summary>The display string for <see cref="Name"/>.</summary>
+    private string DisplayName => CalculateDisplayName(Name)!;
 
-    /// <summary>The name of the function pointer for the function.</summary>
+    /// <summary>The display string for <see cref="Alias"/>.</summary>
+    private string? AliasDisplayName => CalculateDisplayName(Alias);
+
+    /// <summary>The display name of each delegate for the function.</summary>
+    /// <remarks>Delegate in this case refers to the internal delegate for P/Invoke, not Vulkan delegates.</remarks>
+    private string DelegateDisplayName => $"{DisplayName}Delegate";
+
+    /// <summary>The display name of the function pointer for the function.</summary>
     /// <remarks>Function pointer in this case refers to the internal function pointer for P/Invoke, not Vulkan delegates.</remarks>
-    private string PointerName => $"{Name}Pointer";
+    private string PointerDisplayName => $"{DisplayName}Pointer";
 
 
     /*********
@@ -80,36 +86,50 @@ internal class FunctionInfo
         var parameters = Parameters;
         if (Alias != null)
         {
-            writer.WriteLine($"[Obsolete(\"Use {Alias}\")]");
+            writer.WriteLine($"[Obsolete(\"Use {AliasDisplayName}\")]");
             parameters = specification.Functions.Single(functionInfo => functionInfo.Name == Alias).Parameters;
         }
 
         var parametersString = string.Join(", ", parameters.Select(parameterInfo => $"{parameterInfo.Type} {parameterInfo.Name}"));
         var calledParametersString = string.Join(", ", parameters.Select(parameterInfo => parameterInfo.Name));
-        writer.WriteLine($"public static {ReturnType} {Name}({parametersString}) => {Name}_0({calledParametersString});");
+        writer.WriteLine($"public static {ReturnType} {DisplayName}({parametersString}) => {DisplayName}_0({calledParametersString});");
 
-        writer.WriteLine($"private delegate {ReturnType} {DelegateName}_0({parametersString});");
-        writer.WriteLine($"private static IntPtr {PointerName};");
-        writer.WriteLine($"private static {DelegateName}_0 {Name}_0;");
+        writer.WriteLine($"private delegate {ReturnType} {DelegateDisplayName}_0({parametersString});");
+        writer.WriteLine($"private static IntPtr {PointerDisplayName};");
+        writer.WriteLine($"private static {DelegateDisplayName}_0 {DisplayName}_0;");
     }
 
     /// <summary>Writes the function pointer and delegates being assigned as a required function to a C# writer.</summary>
     /// <param name="writer">The writer to write the assignment to.</param>
     public void WriteRequiredFunction(CsWriter writer)
     {
-        writer.WriteLine($"{PointerName} = VulkanLibrary.GetFunctionPointer(\"{Name}\");");
-        writer.WriteLine($"{Name}_0 = Marshal.GetDelegateForFunctionPointer<{DelegateName}_0>({PointerName});");
+        writer.WriteLine($"{PointerDisplayName} = VulkanLibrary.GetFunctionPointer(\"{DisplayName}\");");
+        writer.WriteLine($"{DisplayName}_0 = Marshal.GetDelegateForFunctionPointer<{DelegateDisplayName}_0>({PointerDisplayName});");
     }
 
     /// <summary>Writes the function pointer and delegates being assigned as an instance function to a C# writer.</summary>
     /// <param name="writer">The writer to write the assignment to.</param>
     public void WriteInstanceFunction(CsWriter writer)
     {
-        writer.WriteLine($"{PointerName} = vkGetInstanceProcAddr(instance, \"{Alias ?? Name}\");");
-        writer.WriteLine($"if ({PointerName} != IntPtr.Zero)");
+        writer.WriteLine($"{PointerDisplayName} = GetInstanceProcedureAddress(instance, \"{AliasDisplayName ?? DisplayName}\");");
+        writer.WriteLine($"if ({PointerDisplayName} != IntPtr.Zero)");
         writer.WriteScope(() =>
         {
-            writer.WriteLine($"{Name}_0 = Marshal.GetDelegateForFunctionPointer<{DelegateName}_0>({PointerName});");
+            writer.WriteLine($"{DisplayName}_0 = Marshal.GetDelegateForFunctionPointer<{DelegateDisplayName}_0>({PointerDisplayName});");
         });
+    }
+
+    /// <summary>Calculates the display name of a function name.</summary>
+    /// <param name="name">The name to calculate the display name of.</param>
+    /// <returns>The display name for a function called <paramref name="name"/>.</returns>
+    public static string? CalculateDisplayName(string? name)
+    {
+        if (name == null)
+            return null;
+
+        if (name.StartsWith("vk"))
+            name = name[2..];
+
+        return name.ResolveAbbreviations();
     }
 }
