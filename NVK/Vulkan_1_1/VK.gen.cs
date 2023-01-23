@@ -457,19 +457,13 @@ public static unsafe class VK
 	private delegate void GetPhysicalDeviceMemoryPropertiesDelegate_0(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties memoryProperties);
 	private static GetPhysicalDeviceMemoryPropertiesDelegate_0 GetPhysicalDeviceMemoryProperties_0;
 	private static IntPtr GetPhysicalDeviceMemoryPropertiesPointer;
-	public static IntPtr GetInstanceProcedureAddress(VkInstance instance, byte* name) => GetInstanceProcedureAddress_0(instance, name);
-	private delegate IntPtr GetInstanceProcedureAddressDelegate_0(VkInstance instance, byte* name);
+	public static IntPtr GetInstanceProcedureAddress(VkInstance instance, string name) => GetInstanceProcedureAddress_0(instance, name);
+	private delegate IntPtr GetInstanceProcedureAddressDelegate_0(VkInstance instance, string name);
 	private static GetInstanceProcedureAddressDelegate_0 GetInstanceProcedureAddress_0;
-	public static IntPtr GetInstanceProcedureAddress(VkInstance instance, string name) => GetInstanceProcedureAddress_1(instance, name);
-	private delegate IntPtr GetInstanceProcedureAddressDelegate_1(VkInstance instance, string name);
-	private static GetInstanceProcedureAddressDelegate_1 GetInstanceProcedureAddress_1;
 	private static IntPtr GetInstanceProcedureAddressPointer;
-	public static IntPtr GetDeviceProcedureAddress(VkDevice device, byte* name) => GetDeviceProcedureAddress_0(device, name);
-	private delegate IntPtr GetDeviceProcedureAddressDelegate_0(VkDevice device, byte* name);
+	public static IntPtr GetDeviceProcedureAddress(VkDevice device, string name) => GetDeviceProcedureAddress_0(device, name);
+	private delegate IntPtr GetDeviceProcedureAddressDelegate_0(VkDevice device, string name);
 	private static GetDeviceProcedureAddressDelegate_0 GetDeviceProcedureAddress_0;
-	public static IntPtr GetDeviceProcedureAddress(VkDevice device, string name) => GetDeviceProcedureAddress_1(device, name);
-	private delegate IntPtr GetDeviceProcedureAddressDelegate_1(VkDevice device, string name);
-	private static GetDeviceProcedureAddressDelegate_1 GetDeviceProcedureAddress_1;
 	private static IntPtr GetDeviceProcedureAddressPointer;
 	public static VkResult CreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device) => CreateDevice_0(physicalDevice, createInfo, allocator, out device);
 	private delegate VkResult CreateDeviceDelegate_0(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device);
@@ -491,31 +485,19 @@ public static unsafe class VK
 	private delegate void DestroyDeviceDelegate_1(VkDevice device, ref VkAllocationCallbacks allocator);
 	private static DestroyDeviceDelegate_1 DestroyDevice_1;
 	private static IntPtr DestroyDevicePointer;
-	public static VkResult EnumerateInstanceExtensionProperties(byte* layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateInstanceExtensionProperties_0(layerName, propertyCount, properties);
-	private delegate VkResult EnumerateInstanceExtensionPropertiesDelegate_0(byte* layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties);
+	public static VkResult EnumerateInstanceExtensionProperties(string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateInstanceExtensionProperties_0(layerName, propertyCount, properties);
+	private delegate VkResult EnumerateInstanceExtensionPropertiesDelegate_0(string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties);
 	private static EnumerateInstanceExtensionPropertiesDelegate_0 EnumerateInstanceExtensionProperties_0;
-	public static VkResult EnumerateInstanceExtensionProperties(byte* layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateInstanceExtensionProperties_1(layerName, ref propertyCount, properties);
-	private delegate VkResult EnumerateInstanceExtensionPropertiesDelegate_1(byte* layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties);
+	public static VkResult EnumerateInstanceExtensionProperties(string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateInstanceExtensionProperties_1(layerName, ref propertyCount, properties);
+	private delegate VkResult EnumerateInstanceExtensionPropertiesDelegate_1(string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties);
 	private static EnumerateInstanceExtensionPropertiesDelegate_1 EnumerateInstanceExtensionProperties_1;
-	public static VkResult EnumerateInstanceExtensionProperties(string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateInstanceExtensionProperties_2(layerName, propertyCount, properties);
-	private delegate VkResult EnumerateInstanceExtensionPropertiesDelegate_2(string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties);
-	private static EnumerateInstanceExtensionPropertiesDelegate_2 EnumerateInstanceExtensionProperties_2;
-	public static VkResult EnumerateInstanceExtensionProperties(string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateInstanceExtensionProperties_3(layerName, ref propertyCount, properties);
-	private delegate VkResult EnumerateInstanceExtensionPropertiesDelegate_3(string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties);
-	private static EnumerateInstanceExtensionPropertiesDelegate_3 EnumerateInstanceExtensionProperties_3;
 	private static IntPtr EnumerateInstanceExtensionPropertiesPointer;
-	public static VkResult EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, byte* layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateDeviceExtensionProperties_0(physicalDevice, layerName, propertyCount, properties);
-	private delegate VkResult EnumerateDeviceExtensionPropertiesDelegate_0(VkPhysicalDevice physicalDevice, byte* layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties);
+	public static VkResult EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateDeviceExtensionProperties_0(physicalDevice, layerName, propertyCount, properties);
+	private delegate VkResult EnumerateDeviceExtensionPropertiesDelegate_0(VkPhysicalDevice physicalDevice, string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties);
 	private static EnumerateDeviceExtensionPropertiesDelegate_0 EnumerateDeviceExtensionProperties_0;
-	public static VkResult EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, byte* layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateDeviceExtensionProperties_1(physicalDevice, layerName, ref propertyCount, properties);
-	private delegate VkResult EnumerateDeviceExtensionPropertiesDelegate_1(VkPhysicalDevice physicalDevice, byte* layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties);
+	public static VkResult EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateDeviceExtensionProperties_1(physicalDevice, layerName, ref propertyCount, properties);
+	private delegate VkResult EnumerateDeviceExtensionPropertiesDelegate_1(VkPhysicalDevice physicalDevice, string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties);
 	private static EnumerateDeviceExtensionPropertiesDelegate_1 EnumerateDeviceExtensionProperties_1;
-	public static VkResult EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateDeviceExtensionProperties_2(physicalDevice, layerName, propertyCount, properties);
-	private delegate VkResult EnumerateDeviceExtensionPropertiesDelegate_2(VkPhysicalDevice physicalDevice, string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties);
-	private static EnumerateDeviceExtensionPropertiesDelegate_2 EnumerateDeviceExtensionProperties_2;
-	public static VkResult EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateDeviceExtensionProperties_3(physicalDevice, layerName, ref propertyCount, properties);
-	private delegate VkResult EnumerateDeviceExtensionPropertiesDelegate_3(VkPhysicalDevice physicalDevice, string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties);
-	private static EnumerateDeviceExtensionPropertiesDelegate_3 EnumerateDeviceExtensionProperties_3;
 	private static IntPtr EnumerateDeviceExtensionPropertiesPointer;
 	public static VkResult EnumerateInstanceLayerProperties(uint* propertyCount, [In, Out] VkLayerProperties[] properties) => EnumerateInstanceLayerProperties_0(propertyCount, properties);
 	private delegate VkResult EnumerateInstanceLayerPropertiesDelegate_0(uint* propertyCount, [In, Out] VkLayerProperties[] properties);
@@ -1717,18 +1699,9 @@ public static unsafe class VK
 	private delegate void DestroyDebugReportCallbackEXTDelegate_1(VkInstance instance, VkDebugReportCallbackEXT callback, ref VkAllocationCallbacks allocator);
 	private static DestroyDebugReportCallbackEXTDelegate_1 DestroyDebugReportCallbackEXT_1;
 	private static IntPtr DestroyDebugReportCallbackEXTPointer;
-	public static void DebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, byte* message) => DebugReportMessageEXT_0(instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
-	private delegate void DebugReportMessageEXTDelegate_0(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, byte* message);
+	public static void DebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, string layerPrefix, string message) => DebugReportMessageEXT_0(instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
+	private delegate void DebugReportMessageEXTDelegate_0(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, string layerPrefix, string message);
 	private static DebugReportMessageEXTDelegate_0 DebugReportMessageEXT_0;
-	public static void DebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, string message) => DebugReportMessageEXT_1(instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
-	private delegate void DebugReportMessageEXTDelegate_1(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, string message);
-	private static DebugReportMessageEXTDelegate_1 DebugReportMessageEXT_1;
-	public static void DebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, string layerPrefix, byte* message) => DebugReportMessageEXT_2(instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
-	private delegate void DebugReportMessageEXTDelegate_2(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, string layerPrefix, byte* message);
-	private static DebugReportMessageEXTDelegate_2 DebugReportMessageEXT_2;
-	public static void DebugReportMessageEXT(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, string layerPrefix, string message) => DebugReportMessageEXT_3(instance, flags, objectType, @object, location, messageCode, layerPrefix, message);
-	private delegate void DebugReportMessageEXTDelegate_3(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, string layerPrefix, string message);
-	private static DebugReportMessageEXTDelegate_3 DebugReportMessageEXT_3;
 	private static IntPtr DebugReportMessageEXTPointer;
 	public static VkResult DebugMarkerSetObjectTagEXT(VkDevice device, VkDebugMarkerObjectTagInfoEXT* tagInfo) => DebugMarkerSetObjectTagEXT_0(device, tagInfo);
 	private delegate VkResult DebugMarkerSetObjectTagEXTDelegate_0(VkDevice device, VkDebugMarkerObjectTagInfoEXT* tagInfo);
@@ -2918,12 +2891,9 @@ public static unsafe class VK
 		CreateInstance_3 = Marshal.GetDelegateForFunctionPointer<CreateInstanceDelegate_3>(CreateInstancePointer);
 		GetInstanceProcedureAddressPointer = VulkanLibrary.GetFunctionPointer("GetInstanceProcedureAddress");
 		GetInstanceProcedureAddress_0 = Marshal.GetDelegateForFunctionPointer<GetInstanceProcedureAddressDelegate_0>(GetInstanceProcedureAddressPointer);
-		GetInstanceProcedureAddress_1 = Marshal.GetDelegateForFunctionPointer<GetInstanceProcedureAddressDelegate_1>(GetInstanceProcedureAddressPointer);
 		EnumerateInstanceExtensionPropertiesPointer = VulkanLibrary.GetFunctionPointer("EnumerateInstanceExtensionProperties");
 		EnumerateInstanceExtensionProperties_0 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_0>(EnumerateInstanceExtensionPropertiesPointer);
 		EnumerateInstanceExtensionProperties_1 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_1>(EnumerateInstanceExtensionPropertiesPointer);
-		EnumerateInstanceExtensionProperties_2 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_2>(EnumerateInstanceExtensionPropertiesPointer);
-		EnumerateInstanceExtensionProperties_3 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceExtensionPropertiesDelegate_3>(EnumerateInstanceExtensionPropertiesPointer);
 		EnumerateInstanceLayerPropertiesPointer = VulkanLibrary.GetFunctionPointer("EnumerateInstanceLayerProperties");
 		EnumerateInstanceLayerProperties_0 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceLayerPropertiesDelegate_0>(EnumerateInstanceLayerPropertiesPointer);
 		EnumerateInstanceLayerProperties_1 = Marshal.GetDelegateForFunctionPointer<EnumerateInstanceLayerPropertiesDelegate_1>(EnumerateInstanceLayerPropertiesPointer);
@@ -2977,7 +2947,6 @@ public static unsafe class VK
 		if (GetDeviceProcedureAddressPointer != IntPtr.Zero)
 		{
 			GetDeviceProcedureAddress_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceProcedureAddressDelegate_0>(GetDeviceProcedureAddressPointer);
-			GetDeviceProcedureAddress_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceProcedureAddressDelegate_1>(GetDeviceProcedureAddressPointer);
 		}
 		CreateDevicePointer = GetInstanceProcedureAddress(instance, "CreateDevice");
 		if (CreateDevicePointer != IntPtr.Zero)
@@ -2998,8 +2967,6 @@ public static unsafe class VK
 		{
 			EnumerateDeviceExtensionProperties_0 = Marshal.GetDelegateForFunctionPointer<EnumerateDeviceExtensionPropertiesDelegate_0>(EnumerateDeviceExtensionPropertiesPointer);
 			EnumerateDeviceExtensionProperties_1 = Marshal.GetDelegateForFunctionPointer<EnumerateDeviceExtensionPropertiesDelegate_1>(EnumerateDeviceExtensionPropertiesPointer);
-			EnumerateDeviceExtensionProperties_2 = Marshal.GetDelegateForFunctionPointer<EnumerateDeviceExtensionPropertiesDelegate_2>(EnumerateDeviceExtensionPropertiesPointer);
-			EnumerateDeviceExtensionProperties_3 = Marshal.GetDelegateForFunctionPointer<EnumerateDeviceExtensionPropertiesDelegate_3>(EnumerateDeviceExtensionPropertiesPointer);
 		}
 		EnumerateDeviceLayerPropertiesPointer = GetInstanceProcedureAddress(instance, "EnumerateDeviceLayerProperties");
 		if (EnumerateDeviceLayerPropertiesPointer != IntPtr.Zero)
@@ -4070,9 +4037,6 @@ public static unsafe class VK
 		if (DebugReportMessageEXTPointer != IntPtr.Zero)
 		{
 			DebugReportMessageEXT_0 = Marshal.GetDelegateForFunctionPointer<DebugReportMessageEXTDelegate_0>(DebugReportMessageEXTPointer);
-			DebugReportMessageEXT_1 = Marshal.GetDelegateForFunctionPointer<DebugReportMessageEXTDelegate_1>(DebugReportMessageEXTPointer);
-			DebugReportMessageEXT_2 = Marshal.GetDelegateForFunctionPointer<DebugReportMessageEXTDelegate_2>(DebugReportMessageEXTPointer);
-			DebugReportMessageEXT_3 = Marshal.GetDelegateForFunctionPointer<DebugReportMessageEXTDelegate_3>(DebugReportMessageEXTPointer);
 		}
 		DebugMarkerSetObjectTagEXTPointer = GetInstanceProcedureAddress(instance, "DebugMarkerSetObjectTagEXT");
 		if (DebugMarkerSetObjectTagEXTPointer != IntPtr.Zero)

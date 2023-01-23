@@ -4,25 +4,6 @@
 internal class FunctionInfo
 {
     /*********
-    ** Fields
-    *********/
-    // TODO: ideally this will be determined automatically
-    /// <summary>The Vulkan methods that start with "Get" whose last paramater should be an array.</summary>
-    private static readonly string[] GetMethodsRequiringArray = new[] {
-        "GetQueueCheckpointDataNV", "GetQueueCheckpointData2NV", "GetPhysicalDeviceSparseImageFormatProperties2KHR",
-        "GetPhysicalDeviceSparseImageFormatProperties2", "GetPhysicalDeviceSparseImageFormatProperties", "GetPhysicalDeviceQueueFamilyProperties2KHR",
-        "GetPhysicalDeviceQueueFamilyProperties2", "GetPhysicalDeviceQueueFamilyProperties", "GetImageSparseMemoryRequirements2KHR",
-        "GetImageSparseMemoryRequirements2", "GetImageSparseMemoryRequirements", "GetAccelerationStructureBuildSizesKHR", "GetSwapchainImagesKHR",
-        "GetPipelineExecutablePropertiesKHR", "GetPipelineExecutableStatisticsKHR", "GetPipelineExecutableInternalRepresentationsKHR",
-        "GetPhysicalDeviceToolProperties", "GetPhysicalDeviceToolPropertiesEXT", "GetPhysicalDeviceSurfacePresentModesKHR",
-        "GetPhysicalDeviceSurfacePresentModes2EXT", "GetPhysicalDeviceSurfaceFormatsKHR", "GetPhysicalDeviceSurfaceFormats2KHR",
-        "GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV", "GetPhysicalDevicePresentRectanglesKHR", "GetPhysicalDeviceFragmentShadingRatesKHR",
-        "GetPhysicalDeviceDisplayPropertiesKHR", "GetPhysicalDeviceDisplayProperties2KHR", "GetPhysicalDeviceDisplayPlanePropertiesKHR",
-        "GetPhysicalDeviceDisplayPlaneProperties2KHR", "GetPhysicalDeviceCooperativeMatrixPropertiesNV", "GetPhysicalDeviceCalibrateableTimeDomainsEXT",
-        "GetPastPresentationTimingGOOGLE", "GetDisplayPlaneSupportedDisplaysKHR", "GetDisplayModePropertiesKHR", "GetDisplayModeProperties2KHR" };
-
-
-    /*********
     ** Properties
     *********/
     /// <summary>The name of the function.</summary>
@@ -203,58 +184,45 @@ internal class FunctionInfo
     /// <returns>The variations that <paramref name="parameterInfo"/> can have, including <paramref name="parameterInfo"/> itself.</returns>
     private List<FunctionParameterInfo> GetParameterVariations(FunctionParameterInfo parameterInfo)
     {
-        var parameterVariations = new List<FunctionParameterInfo>() { parameterInfo };
-
         // ensure parameter can have multiple variations
         if (parameterInfo.Type.PointerIndirection == 0 || parameterInfo.Type.Name == "void")
-            return parameterVariations;
+            return new() { parameterInfo };
+
+        // check if the parameter should have a single variant with an array
+        if (parameterInfo.Name.EndsWith("Infos"))
+            return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, isArray: true), ParameterModifier.None) };
+
+        var parameterIndex = Parameters.IndexOf(parameterInfo);
+        var previousParameter = parameterIndex >= 1 ? Parameters[parameterIndex - 1] : null;
+        if ((DisplayName.StartsWith("Enumerate")                                                            // enumerate methods
+                || (DisplayName.StartsWith("Allocate") && DisplayName.EndsWith("s"))                        // certain allocate methods
+                || (DisplayName.StartsWith("Get") && (previousParameter?.Name.EndsWith("Count") ?? false))) // and certain get methods should all have a marshalled array
+            && Parameters.Last() == parameterInfo)                                                          // on the last parameter
+            return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, isArray: true), ParameterModifier.InOut) };
 
         // check if parameter is a byte pointer (meaning it's actually a string)
         if (parameterInfo.Type.Name == "byte")
+            return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo("string", isArray: parameterInfo.Type.PointerIndirection == 2), ParameterModifier.None) };
+
+        // check if parameter should have a single 'out' version
+        if ((DisplayName.StartsWith("Allocate")                // allocate methods
+                || DisplayName.StartsWith("Create")            // create methods
+                || DisplayName.StartsWith("Get")               // get methods
+                || DisplayName.StartsWith("AcquireNextImage")) // and 'AcquireNextImage(2)KHR' should all have outs
+            && Parameters.Last() == parameterInfo)             // on the last parameter
+            return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Out) };
+
+        // check parameter pairs for converting pointers to arrays, an example of a pair we are are looking for is: 'uint submitCount, VkSubmitInfo* submits', in this case 'submits' should be an array
+        if (parameterInfo.Name.EndsWith("s") && previousParameter != null)
         {
-            if (parameterInfo.Type.PointerIndirection == 1) // convert byte* to string
-                parameterVariations.Add(new FunctionParameterInfo(parameterInfo.Name, new TypeInfo("string"), ParameterModifier.None));
-            else if (parameterInfo.Type.PointerIndirection == 2) // convert byte** to string[]
-                parameterVariations.Add(new FunctionParameterInfo(parameterInfo.Name, new TypeInfo("string", isArray: true), ParameterModifier.None));
+            var fixedParameterName = parameterInfo.Name.Replace("Copies", "Copys"); // correct plural name differences to work with the check
+            var previousParameterName = previousParameter.Name;
+            if (previousParameterName == fixedParameterName[..^1] + "Count")
+                return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, isArray: true), ParameterModifier.None) };
         }
 
-        // check if parameter should have an 'out' version
-        else if (
-            (DisplayName.StartsWith("Allocate")                                                       // allocate methods
-                || DisplayName.StartsWith("Create")                                                   // create methods
-                || (DisplayName.StartsWith("Get") && !GetMethodsRequiringArray.Contains(DisplayName)) // certain get methods
-                || DisplayName.StartsWith("AcquireNextImage"))                                        // and 'AcquireNextImage(2)KHR' should all have outs
-            && Parameters.Last() == parameterInfo)                                                    // on the last parameter
-            parameterVariations = new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Out) };
-
-        // otherwise create a 'ref' version
-        else
-            parameterVariations.Add(new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Ref));
-
-        // check if the parameter should be a marshalled array
-        if (parameterInfo.Name.EndsWith("Infos"))
-            parameterVariations = new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, isArray: true), ParameterModifier.None) };
-        else if (
-            (DisplayName.StartsWith("Enumerate")                                                      // enumerate methods
-                || (DisplayName.StartsWith("Get") && GetMethodsRequiringArray.Contains(DisplayName))  // certain get methods
-                || (DisplayName.StartsWith("Allocate") && (DisplayName.EndsWith("s"))))               // and certain allocate methods should all have a marshalled array
-            && Parameters.Last() == parameterInfo)                                                    // on the last parameter
-            parameterVariations = new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, isArray: true), ParameterModifier.InOut) };
-        else if (parameterInfo.Name.EndsWith("s"))
-        {
-            // this will check parameter pairs for converting pointers to arrays, an example of a pair we are are looking for is: 'uint submitCount, VkSubmitInfo* submits', in this case 'submits' should be an array
-            var parameterIndex = Parameters.IndexOf(parameterInfo);
-            if (parameterIndex >= 1)
-            {
-                // correct plural name differences to work with the check
-                var fixedParameterName = parameterInfo.Name.Replace("Copies", "Copys");
-                var previousParameterName = Parameters[parameterIndex - 1].Name;
-                if (previousParameterName == fixedParameterName[..^1] + "Count")
-                    parameterVariations = new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, isArray: true), ParameterModifier.None) };
-            }
-        }
-
-        return parameterVariations;
+        // pointer + ref version
+        return new() { parameterInfo, new(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Ref) };
     }
 
     /// <summary>Generates all combinations of parameter variations.</summary>
