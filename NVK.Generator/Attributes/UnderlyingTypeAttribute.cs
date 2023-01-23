@@ -5,7 +5,7 @@
 internal class UnderlyingTypeAttribute : Attribute
 {
     /*********
-    ** Accessors
+    ** Properties
     *********/
     /// <summary>The underlying type that the enum value represents.</summary>
     public string UnderlyingType { get; }

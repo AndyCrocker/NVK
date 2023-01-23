@@ -2,7 +2,7 @@
 internal abstract class OSVulkanLibraryBase : IDisposable
 {
     /*********
-    ** Accessors
+    ** Properties
     *********/
     /// <summary>A handle to the loaded native library.</summary>
     public IntPtr Handle { get; }
