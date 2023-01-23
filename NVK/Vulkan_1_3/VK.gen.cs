@@ -2520,13 +2520,13 @@ public static unsafe class VK
 	private static GetImageViewAddressNVXDelegate_0 GetImageViewAddressNVX_0;
 	private static IntPtr GetImageViewAddressNVXPointer;
 	[Obsolete("Use CommandDrawIndirectCount")]
-	public static void CommandDrawIndirectCountAMD() => CommandDrawIndirectCountAMD_0();
-	private delegate void CommandDrawIndirectCountAMDDelegate_0();
+	public static void CommandDrawIndirectCountAMD(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride) => CommandDrawIndirectCountAMD_0(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+	private delegate void CommandDrawIndirectCountAMDDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
 	private static CommandDrawIndirectCountAMDDelegate_0 CommandDrawIndirectCountAMD_0;
 	private static IntPtr CommandDrawIndirectCountAMDPointer;
 	[Obsolete("Use CommandDrawIndexedIndirectCount")]
-	public static void CommandDrawIndexedIndirectCountAMD() => CommandDrawIndexedIndirectCountAMD_0();
-	private delegate void CommandDrawIndexedIndirectCountAMDDelegate_0();
+	public static void CommandDrawIndexedIndirectCountAMD(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride) => CommandDrawIndexedIndirectCountAMD_0(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+	private delegate void CommandDrawIndexedIndirectCountAMDDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
 	private static CommandDrawIndexedIndirectCountAMDDelegate_0 CommandDrawIndexedIndirectCountAMD_0;
 	private static IntPtr CommandDrawIndexedIndirectCountAMDPointer;
 	public static VkResult GetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlagBits shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info) => GetShaderInfoAMD_0(device, pipeline, shaderStage, infoType, infoSize, info);
@@ -2537,13 +2537,17 @@ public static unsafe class VK
 	private static GetShaderInfoAMDDelegate_1 GetShaderInfoAMD_1;
 	private static IntPtr GetShaderInfoAMDPointer;
 	[Obsolete("Use CommandBeginRendering")]
-	public static void CommandBeginRenderingKHR() => CommandBeginRenderingKHR_0();
-	private delegate void CommandBeginRenderingKHRDelegate_0();
+	public static void CommandBeginRenderingKHR(VkCommandBuffer commandBuffer, VkRenderingInfo* renderingInfo) => CommandBeginRenderingKHR_0(commandBuffer, renderingInfo);
+	private delegate void CommandBeginRenderingKHRDelegate_0(VkCommandBuffer commandBuffer, VkRenderingInfo* renderingInfo);
 	private static CommandBeginRenderingKHRDelegate_0 CommandBeginRenderingKHR_0;
+	[Obsolete("Use CommandBeginRendering")]
+	public static void CommandBeginRenderingKHR(VkCommandBuffer commandBuffer, ref VkRenderingInfo renderingInfo) => CommandBeginRenderingKHR_1(commandBuffer, ref renderingInfo);
+	private delegate void CommandBeginRenderingKHRDelegate_1(VkCommandBuffer commandBuffer, ref VkRenderingInfo renderingInfo);
+	private static CommandBeginRenderingKHRDelegate_1 CommandBeginRenderingKHR_1;
 	private static IntPtr CommandBeginRenderingKHRPointer;
 	[Obsolete("Use CommandEndRendering")]
-	public static void CommandEndRenderingKHR() => CommandEndRenderingKHR_0();
-	private delegate void CommandEndRenderingKHRDelegate_0();
+	public static void CommandEndRenderingKHR(VkCommandBuffer commandBuffer) => CommandEndRenderingKHR_0(commandBuffer);
+	private delegate void CommandEndRenderingKHRDelegate_0(VkCommandBuffer commandBuffer);
 	private static CommandEndRenderingKHRDelegate_0 CommandEndRenderingKHR_0;
 	private static IntPtr CommandEndRenderingKHRPointer;
 	public static VkResult GetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkExternalMemoryHandleTypeFlagsNV externalHandleType, out VkExternalImageFormatPropertiesNV externalImageFormatProperties) => GetPhysicalDeviceExternalImageFormatPropertiesNV_0(physicalDevice, format, type, tiling, usage, flags, externalHandleType, out externalImageFormatProperties);
@@ -2555,53 +2559,73 @@ public static unsafe class VK
 	private static GetMemoryWin32HandleNVDelegate_0 GetMemoryWin32HandleNV_0;
 	private static IntPtr GetMemoryWin32HandleNVPointer;
 	[Obsolete("Use GetPhysicalDeviceFeatures2")]
-	public static void GetPhysicalDeviceFeatures2KHR() => GetPhysicalDeviceFeatures2KHR_0();
-	private delegate void GetPhysicalDeviceFeatures2KHRDelegate_0();
+	public static void GetPhysicalDeviceFeatures2KHR(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceFeatures2 features) => GetPhysicalDeviceFeatures2KHR_0(physicalDevice, out features);
+	private delegate void GetPhysicalDeviceFeatures2KHRDelegate_0(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceFeatures2 features);
 	private static GetPhysicalDeviceFeatures2KHRDelegate_0 GetPhysicalDeviceFeatures2KHR_0;
 	private static IntPtr GetPhysicalDeviceFeatures2KHRPointer;
 	[Obsolete("Use GetPhysicalDeviceProperties2")]
-	public static void GetPhysicalDeviceProperties2KHR() => GetPhysicalDeviceProperties2KHR_0();
-	private delegate void GetPhysicalDeviceProperties2KHRDelegate_0();
+	public static void GetPhysicalDeviceProperties2KHR(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceProperties2 properties) => GetPhysicalDeviceProperties2KHR_0(physicalDevice, out properties);
+	private delegate void GetPhysicalDeviceProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceProperties2 properties);
 	private static GetPhysicalDeviceProperties2KHRDelegate_0 GetPhysicalDeviceProperties2KHR_0;
 	private static IntPtr GetPhysicalDeviceProperties2KHRPointer;
 	[Obsolete("Use GetPhysicalDeviceFormatProperties2")]
-	public static void GetPhysicalDeviceFormatProperties2KHR() => GetPhysicalDeviceFormatProperties2KHR_0();
-	private delegate void GetPhysicalDeviceFormatProperties2KHRDelegate_0();
+	public static void GetPhysicalDeviceFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkFormat format, out VkFormatProperties2 formatProperties) => GetPhysicalDeviceFormatProperties2KHR_0(physicalDevice, format, out formatProperties);
+	private delegate void GetPhysicalDeviceFormatProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkFormat format, out VkFormatProperties2 formatProperties);
 	private static GetPhysicalDeviceFormatProperties2KHRDelegate_0 GetPhysicalDeviceFormatProperties2KHR_0;
 	private static IntPtr GetPhysicalDeviceFormatProperties2KHRPointer;
 	[Obsolete("Use GetPhysicalDeviceImageFormatProperties2")]
-	public static void GetPhysicalDeviceImageFormatProperties2KHR() => GetPhysicalDeviceImageFormatProperties2KHR_0();
-	private delegate void GetPhysicalDeviceImageFormatProperties2KHRDelegate_0();
+	public static void GetPhysicalDeviceImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2* imageFormatInfo, out VkImageFormatProperties2 imageFormatProperties) => GetPhysicalDeviceImageFormatProperties2KHR_0(physicalDevice, imageFormatInfo, out imageFormatProperties);
+	private delegate void GetPhysicalDeviceImageFormatProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2* imageFormatInfo, out VkImageFormatProperties2 imageFormatProperties);
 	private static GetPhysicalDeviceImageFormatProperties2KHRDelegate_0 GetPhysicalDeviceImageFormatProperties2KHR_0;
+	[Obsolete("Use GetPhysicalDeviceImageFormatProperties2")]
+	public static void GetPhysicalDeviceImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceImageFormatInfo2 imageFormatInfo, out VkImageFormatProperties2 imageFormatProperties) => GetPhysicalDeviceImageFormatProperties2KHR_1(physicalDevice, ref imageFormatInfo, out imageFormatProperties);
+	private delegate void GetPhysicalDeviceImageFormatProperties2KHRDelegate_1(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceImageFormatInfo2 imageFormatInfo, out VkImageFormatProperties2 imageFormatProperties);
+	private static GetPhysicalDeviceImageFormatProperties2KHRDelegate_1 GetPhysicalDeviceImageFormatProperties2KHR_1;
 	private static IntPtr GetPhysicalDeviceImageFormatProperties2KHRPointer;
 	[Obsolete("Use GetPhysicalDeviceQueueFamilyProperties2")]
-	public static void GetPhysicalDeviceQueueFamilyProperties2KHR() => GetPhysicalDeviceQueueFamilyProperties2KHR_0();
-	private delegate void GetPhysicalDeviceQueueFamilyProperties2KHRDelegate_0();
+	public static void GetPhysicalDeviceQueueFamilyProperties2KHR(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties2[] queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2KHR_0(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
+	private delegate void GetPhysicalDeviceQueueFamilyProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties2[] queueFamilyProperties);
 	private static GetPhysicalDeviceQueueFamilyProperties2KHRDelegate_0 GetPhysicalDeviceQueueFamilyProperties2KHR_0;
+	[Obsolete("Use GetPhysicalDeviceQueueFamilyProperties2")]
+	public static void GetPhysicalDeviceQueueFamilyProperties2KHR(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties2[] queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2KHR_1(physicalDevice, ref queueFamilyPropertyCount, queueFamilyProperties);
+	private delegate void GetPhysicalDeviceQueueFamilyProperties2KHRDelegate_1(VkPhysicalDevice physicalDevice, ref uint queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties2[] queueFamilyProperties);
+	private static GetPhysicalDeviceQueueFamilyProperties2KHRDelegate_1 GetPhysicalDeviceQueueFamilyProperties2KHR_1;
 	private static IntPtr GetPhysicalDeviceQueueFamilyProperties2KHRPointer;
 	[Obsolete("Use GetPhysicalDeviceMemoryProperties2")]
-	public static void GetPhysicalDeviceMemoryProperties2KHR() => GetPhysicalDeviceMemoryProperties2KHR_0();
-	private delegate void GetPhysicalDeviceMemoryProperties2KHRDelegate_0();
+	public static void GetPhysicalDeviceMemoryProperties2KHR(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties2 memoryProperties) => GetPhysicalDeviceMemoryProperties2KHR_0(physicalDevice, out memoryProperties);
+	private delegate void GetPhysicalDeviceMemoryProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties2 memoryProperties);
 	private static GetPhysicalDeviceMemoryProperties2KHRDelegate_0 GetPhysicalDeviceMemoryProperties2KHR_0;
 	private static IntPtr GetPhysicalDeviceMemoryProperties2KHRPointer;
 	[Obsolete("Use GetPhysicalDeviceSparseImageFormatProperties2")]
-	public static void GetPhysicalDeviceSparseImageFormatProperties2KHR() => GetPhysicalDeviceSparseImageFormatProperties2KHR_0();
-	private delegate void GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_0();
+	public static void GetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2KHR_0(physicalDevice, formatInfo, propertyCount, properties);
+	private delegate void GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
 	private static GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_0 GetPhysicalDeviceSparseImageFormatProperties2KHR_0;
+	[Obsolete("Use GetPhysicalDeviceSparseImageFormatProperties2")]
+	public static void GetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2KHR_1(physicalDevice, formatInfo, ref propertyCount, properties);
+	private delegate void GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
+	private static GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_1 GetPhysicalDeviceSparseImageFormatProperties2KHR_1;
+	[Obsolete("Use GetPhysicalDeviceSparseImageFormatProperties2")]
+	public static void GetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2KHR_2(physicalDevice, ref formatInfo, propertyCount, properties);
+	private delegate void GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, uint* propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
+	private static GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_2 GetPhysicalDeviceSparseImageFormatProperties2KHR_2;
+	[Obsolete("Use GetPhysicalDeviceSparseImageFormatProperties2")]
+	public static void GetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties) => GetPhysicalDeviceSparseImageFormatProperties2KHR_3(physicalDevice, ref formatInfo, ref propertyCount, properties);
+	private delegate void GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_3(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSparseImageFormatInfo2 formatInfo, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties2[] properties);
+	private static GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_3 GetPhysicalDeviceSparseImageFormatProperties2KHR_3;
 	private static IntPtr GetPhysicalDeviceSparseImageFormatProperties2KHRPointer;
 	[Obsolete("Use GetDeviceGroupPeerMemoryFeatures")]
-	public static void GetDeviceGroupPeerMemoryFeaturesKHR() => GetDeviceGroupPeerMemoryFeaturesKHR_0();
-	private delegate void GetDeviceGroupPeerMemoryFeaturesKHRDelegate_0();
+	public static void GetDeviceGroupPeerMemoryFeaturesKHR(VkDevice device, uint heapIndex, uint localDeviceIndex, uint remoteDeviceIndex, out VkPeerMemoryFeatureFlags peerMemoryFeatures) => GetDeviceGroupPeerMemoryFeaturesKHR_0(device, heapIndex, localDeviceIndex, remoteDeviceIndex, out peerMemoryFeatures);
+	private delegate void GetDeviceGroupPeerMemoryFeaturesKHRDelegate_0(VkDevice device, uint heapIndex, uint localDeviceIndex, uint remoteDeviceIndex, out VkPeerMemoryFeatureFlags peerMemoryFeatures);
 	private static GetDeviceGroupPeerMemoryFeaturesKHRDelegate_0 GetDeviceGroupPeerMemoryFeaturesKHR_0;
 	private static IntPtr GetDeviceGroupPeerMemoryFeaturesKHRPointer;
 	[Obsolete("Use CommandSetDeviceMask")]
-	public static void CommandSetDeviceMaskKHR() => CommandSetDeviceMaskKHR_0();
-	private delegate void CommandSetDeviceMaskKHRDelegate_0();
+	public static void CommandSetDeviceMaskKHR(VkCommandBuffer commandBuffer, uint deviceMask) => CommandSetDeviceMaskKHR_0(commandBuffer, deviceMask);
+	private delegate void CommandSetDeviceMaskKHRDelegate_0(VkCommandBuffer commandBuffer, uint deviceMask);
 	private static CommandSetDeviceMaskKHRDelegate_0 CommandSetDeviceMaskKHR_0;
 	private static IntPtr CommandSetDeviceMaskKHRPointer;
 	[Obsolete("Use CommandDispatchBase")]
-	public static void CommandDispatchBaseKHR() => CommandDispatchBaseKHR_0();
-	private delegate void CommandDispatchBaseKHRDelegate_0();
+	public static void CommandDispatchBaseKHR(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ) => CommandDispatchBaseKHR_0(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ);
+	private delegate void CommandDispatchBaseKHRDelegate_0(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ);
 	private static CommandDispatchBaseKHRDelegate_0 CommandDispatchBaseKHR_0;
 	private static IntPtr CommandDispatchBaseKHRPointer;
 	public static VkResult GetDeviceGroupPresentCapabilitiesKHR(VkDevice device, out VkDeviceGroupPresentCapabilitiesKHR deviceGroupPresentCapabilities) => GetDeviceGroupPresentCapabilitiesKHR_0(device, out deviceGroupPresentCapabilities);
@@ -2627,19 +2651,27 @@ public static unsafe class VK
 	private static AcquireNextImage2KHRDelegate_1 AcquireNextImage2KHR_1;
 	private static IntPtr AcquireNextImage2KHRPointer;
 	[Obsolete("Use TrimCommandPool")]
-	public static void TrimCommandPoolKHR() => TrimCommandPoolKHR_0();
-	private delegate void TrimCommandPoolKHRDelegate_0();
+	public static void TrimCommandPoolKHR(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags) => TrimCommandPoolKHR_0(device, commandPool, flags);
+	private delegate void TrimCommandPoolKHRDelegate_0(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags);
 	private static TrimCommandPoolKHRDelegate_0 TrimCommandPoolKHR_0;
 	private static IntPtr TrimCommandPoolKHRPointer;
 	[Obsolete("Use EnumeratePhysicalDeviceGroups")]
-	public static void EnumeratePhysicalDeviceGroupsKHR() => EnumeratePhysicalDeviceGroupsKHR_0();
-	private delegate void EnumeratePhysicalDeviceGroupsKHRDelegate_0();
+	public static void EnumeratePhysicalDeviceGroupsKHR(VkInstance instance, uint* physicalDeviceGroupCount, [In, Out] VkPhysicalDeviceGroupProperties[] physicalDeviceGroupProperties) => EnumeratePhysicalDeviceGroupsKHR_0(instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
+	private delegate void EnumeratePhysicalDeviceGroupsKHRDelegate_0(VkInstance instance, uint* physicalDeviceGroupCount, [In, Out] VkPhysicalDeviceGroupProperties[] physicalDeviceGroupProperties);
 	private static EnumeratePhysicalDeviceGroupsKHRDelegate_0 EnumeratePhysicalDeviceGroupsKHR_0;
+	[Obsolete("Use EnumeratePhysicalDeviceGroups")]
+	public static void EnumeratePhysicalDeviceGroupsKHR(VkInstance instance, ref uint physicalDeviceGroupCount, [In, Out] VkPhysicalDeviceGroupProperties[] physicalDeviceGroupProperties) => EnumeratePhysicalDeviceGroupsKHR_1(instance, ref physicalDeviceGroupCount, physicalDeviceGroupProperties);
+	private delegate void EnumeratePhysicalDeviceGroupsKHRDelegate_1(VkInstance instance, ref uint physicalDeviceGroupCount, [In, Out] VkPhysicalDeviceGroupProperties[] physicalDeviceGroupProperties);
+	private static EnumeratePhysicalDeviceGroupsKHRDelegate_1 EnumeratePhysicalDeviceGroupsKHR_1;
 	private static IntPtr EnumeratePhysicalDeviceGroupsKHRPointer;
 	[Obsolete("Use GetPhysicalDeviceExternalBufferProperties")]
-	public static void GetPhysicalDeviceExternalBufferPropertiesKHR() => GetPhysicalDeviceExternalBufferPropertiesKHR_0();
-	private delegate void GetPhysicalDeviceExternalBufferPropertiesKHRDelegate_0();
+	public static void GetPhysicalDeviceExternalBufferPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* externalBufferInfo, out VkExternalBufferProperties externalBufferProperties) => GetPhysicalDeviceExternalBufferPropertiesKHR_0(physicalDevice, externalBufferInfo, out externalBufferProperties);
+	private delegate void GetPhysicalDeviceExternalBufferPropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* externalBufferInfo, out VkExternalBufferProperties externalBufferProperties);
 	private static GetPhysicalDeviceExternalBufferPropertiesKHRDelegate_0 GetPhysicalDeviceExternalBufferPropertiesKHR_0;
+	[Obsolete("Use GetPhysicalDeviceExternalBufferProperties")]
+	public static void GetPhysicalDeviceExternalBufferPropertiesKHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceExternalBufferInfo externalBufferInfo, out VkExternalBufferProperties externalBufferProperties) => GetPhysicalDeviceExternalBufferPropertiesKHR_1(physicalDevice, ref externalBufferInfo, out externalBufferProperties);
+	private delegate void GetPhysicalDeviceExternalBufferPropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceExternalBufferInfo externalBufferInfo, out VkExternalBufferProperties externalBufferProperties);
+	private static GetPhysicalDeviceExternalBufferPropertiesKHRDelegate_1 GetPhysicalDeviceExternalBufferPropertiesKHR_1;
 	private static IntPtr GetPhysicalDeviceExternalBufferPropertiesKHRPointer;
 	public static VkResult GetMemoryWin32HandleKHR(VkDevice device, VkMemoryGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle) => GetMemoryWin32HandleKHR_0(device, getWin32HandleInfo, out handle);
 	private delegate VkResult GetMemoryWin32HandleKHRDelegate_0(VkDevice device, VkMemoryGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle);
@@ -2664,9 +2696,13 @@ public static unsafe class VK
 	private static GetMemoryFileDescriptorPropertiesKHRDelegate_0 GetMemoryFileDescriptorPropertiesKHR_0;
 	private static IntPtr GetMemoryFileDescriptorPropertiesKHRPointer;
 	[Obsolete("Use GetPhysicalDeviceExternalSemaphoreProperties")]
-	public static void GetPhysicalDeviceExternalSemaphorePropertiesKHR() => GetPhysicalDeviceExternalSemaphorePropertiesKHR_0();
-	private delegate void GetPhysicalDeviceExternalSemaphorePropertiesKHRDelegate_0();
+	public static void GetPhysicalDeviceExternalSemaphorePropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* externalSemaphoreInfo, out VkExternalSemaphoreProperties externalSemaphoreProperties) => GetPhysicalDeviceExternalSemaphorePropertiesKHR_0(physicalDevice, externalSemaphoreInfo, out externalSemaphoreProperties);
+	private delegate void GetPhysicalDeviceExternalSemaphorePropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* externalSemaphoreInfo, out VkExternalSemaphoreProperties externalSemaphoreProperties);
 	private static GetPhysicalDeviceExternalSemaphorePropertiesKHRDelegate_0 GetPhysicalDeviceExternalSemaphorePropertiesKHR_0;
+	[Obsolete("Use GetPhysicalDeviceExternalSemaphoreProperties")]
+	public static void GetPhysicalDeviceExternalSemaphorePropertiesKHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceExternalSemaphoreInfo externalSemaphoreInfo, out VkExternalSemaphoreProperties externalSemaphoreProperties) => GetPhysicalDeviceExternalSemaphorePropertiesKHR_1(physicalDevice, ref externalSemaphoreInfo, out externalSemaphoreProperties);
+	private delegate void GetPhysicalDeviceExternalSemaphorePropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceExternalSemaphoreInfo externalSemaphoreInfo, out VkExternalSemaphoreProperties externalSemaphoreProperties);
+	private static GetPhysicalDeviceExternalSemaphorePropertiesKHRDelegate_1 GetPhysicalDeviceExternalSemaphorePropertiesKHR_1;
 	private static IntPtr GetPhysicalDeviceExternalSemaphorePropertiesKHRPointer;
 	public static VkResult ImportSemaphoreWin32HandleKHR(VkDevice device, VkImportSemaphoreWin32HandleInfoKHR* importSemaphoreWin32HandleInfo) => ImportSemaphoreWin32HandleKHR_0(device, importSemaphoreWin32HandleInfo);
 	private delegate VkResult ImportSemaphoreWin32HandleKHRDelegate_0(VkDevice device, VkImportSemaphoreWin32HandleInfoKHR* importSemaphoreWin32HandleInfo);
@@ -2720,18 +2756,34 @@ public static unsafe class VK
 	private static CommandEndConditionalRenderingEXTDelegate_0 CommandEndConditionalRenderingEXT_0;
 	private static IntPtr CommandEndConditionalRenderingEXTPointer;
 	[Obsolete("Use CreateDescriptorUpdateTemplate")]
-	public static void CreateDescriptorUpdateTemplateKHR() => CreateDescriptorUpdateTemplateKHR_0();
-	private delegate void CreateDescriptorUpdateTemplateKHRDelegate_0();
+	public static void CreateDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate) => CreateDescriptorUpdateTemplateKHR_0(device, createInfo, allocator, out descriptorUpdateTemplate);
+	private delegate void CreateDescriptorUpdateTemplateKHRDelegate_0(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate);
 	private static CreateDescriptorUpdateTemplateKHRDelegate_0 CreateDescriptorUpdateTemplateKHR_0;
+	[Obsolete("Use CreateDescriptorUpdateTemplate")]
+	public static void CreateDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate) => CreateDescriptorUpdateTemplateKHR_1(device, createInfo, ref allocator, out descriptorUpdateTemplate);
+	private delegate void CreateDescriptorUpdateTemplateKHRDelegate_1(VkDevice device, VkDescriptorUpdateTemplateCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate);
+	private static CreateDescriptorUpdateTemplateKHRDelegate_1 CreateDescriptorUpdateTemplateKHR_1;
+	[Obsolete("Use CreateDescriptorUpdateTemplate")]
+	public static void CreateDescriptorUpdateTemplateKHR(VkDevice device, ref VkDescriptorUpdateTemplateCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate) => CreateDescriptorUpdateTemplateKHR_2(device, ref createInfo, allocator, out descriptorUpdateTemplate);
+	private delegate void CreateDescriptorUpdateTemplateKHRDelegate_2(VkDevice device, ref VkDescriptorUpdateTemplateCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate);
+	private static CreateDescriptorUpdateTemplateKHRDelegate_2 CreateDescriptorUpdateTemplateKHR_2;
+	[Obsolete("Use CreateDescriptorUpdateTemplate")]
+	public static void CreateDescriptorUpdateTemplateKHR(VkDevice device, ref VkDescriptorUpdateTemplateCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate) => CreateDescriptorUpdateTemplateKHR_3(device, ref createInfo, ref allocator, out descriptorUpdateTemplate);
+	private delegate void CreateDescriptorUpdateTemplateKHRDelegate_3(VkDevice device, ref VkDescriptorUpdateTemplateCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorUpdateTemplate descriptorUpdateTemplate);
+	private static CreateDescriptorUpdateTemplateKHRDelegate_3 CreateDescriptorUpdateTemplateKHR_3;
 	private static IntPtr CreateDescriptorUpdateTemplateKHRPointer;
 	[Obsolete("Use DestroyDescriptorUpdateTemplate")]
-	public static void DestroyDescriptorUpdateTemplateKHR() => DestroyDescriptorUpdateTemplateKHR_0();
-	private delegate void DestroyDescriptorUpdateTemplateKHRDelegate_0();
+	public static void DestroyDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator) => DestroyDescriptorUpdateTemplateKHR_0(device, descriptorUpdateTemplate, allocator);
+	private delegate void DestroyDescriptorUpdateTemplateKHRDelegate_0(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* allocator);
 	private static DestroyDescriptorUpdateTemplateKHRDelegate_0 DestroyDescriptorUpdateTemplateKHR_0;
+	[Obsolete("Use DestroyDescriptorUpdateTemplate")]
+	public static void DestroyDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, ref VkAllocationCallbacks allocator) => DestroyDescriptorUpdateTemplateKHR_1(device, descriptorUpdateTemplate, ref allocator);
+	private delegate void DestroyDescriptorUpdateTemplateKHRDelegate_1(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, ref VkAllocationCallbacks allocator);
+	private static DestroyDescriptorUpdateTemplateKHRDelegate_1 DestroyDescriptorUpdateTemplateKHR_1;
 	private static IntPtr DestroyDescriptorUpdateTemplateKHRPointer;
 	[Obsolete("Use UpdateDescriptorSetWithTemplate")]
-	public static void UpdateDescriptorSetWithTemplateKHR() => UpdateDescriptorSetWithTemplateKHR_0();
-	private delegate void UpdateDescriptorSetWithTemplateKHRDelegate_0();
+	public static void UpdateDescriptorSetWithTemplateKHR(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* data) => UpdateDescriptorSetWithTemplateKHR_0(device, descriptorSet, descriptorUpdateTemplate, data);
+	private delegate void UpdateDescriptorSetWithTemplateKHRDelegate_0(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* data);
 	private static UpdateDescriptorSetWithTemplateKHRDelegate_0 UpdateDescriptorSetWithTemplateKHR_0;
 	private static IntPtr UpdateDescriptorSetWithTemplateKHRPointer;
 	public static void CommandPushDescriptorSetWithTemplateKHR(VkCommandBuffer commandBuffer, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkPipelineLayout layout, uint set, void* data) => CommandPushDescriptorSetWithTemplateKHR_0(commandBuffer, descriptorUpdateTemplate, layout, set, data);
@@ -2837,33 +2889,77 @@ public static unsafe class VK
 	private static SetHdrMetadataEXTDelegate_1 SetHdrMetadataEXT_1;
 	private static IntPtr SetHdrMetadataEXTPointer;
 	[Obsolete("Use CreateRenderPass2")]
-	public static void CreateRenderPass2KHR() => CreateRenderPass2KHR_0();
-	private delegate void CreateRenderPass2KHRDelegate_0();
+	public static void CreateRenderPass2KHR(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass) => CreateRenderPass2KHR_0(device, createInfo, allocator, out renderPass);
+	private delegate void CreateRenderPass2KHRDelegate_0(VkDevice device, VkRenderPassCreateInfo2* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass);
 	private static CreateRenderPass2KHRDelegate_0 CreateRenderPass2KHR_0;
+	[Obsolete("Use CreateRenderPass2")]
+	public static void CreateRenderPass2KHR(VkDevice device, VkRenderPassCreateInfo2* createInfo, ref VkAllocationCallbacks allocator, out VkRenderPass renderPass) => CreateRenderPass2KHR_1(device, createInfo, ref allocator, out renderPass);
+	private delegate void CreateRenderPass2KHRDelegate_1(VkDevice device, VkRenderPassCreateInfo2* createInfo, ref VkAllocationCallbacks allocator, out VkRenderPass renderPass);
+	private static CreateRenderPass2KHRDelegate_1 CreateRenderPass2KHR_1;
+	[Obsolete("Use CreateRenderPass2")]
+	public static void CreateRenderPass2KHR(VkDevice device, ref VkRenderPassCreateInfo2 createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass) => CreateRenderPass2KHR_2(device, ref createInfo, allocator, out renderPass);
+	private delegate void CreateRenderPass2KHRDelegate_2(VkDevice device, ref VkRenderPassCreateInfo2 createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass);
+	private static CreateRenderPass2KHRDelegate_2 CreateRenderPass2KHR_2;
+	[Obsolete("Use CreateRenderPass2")]
+	public static void CreateRenderPass2KHR(VkDevice device, ref VkRenderPassCreateInfo2 createInfo, ref VkAllocationCallbacks allocator, out VkRenderPass renderPass) => CreateRenderPass2KHR_3(device, ref createInfo, ref allocator, out renderPass);
+	private delegate void CreateRenderPass2KHRDelegate_3(VkDevice device, ref VkRenderPassCreateInfo2 createInfo, ref VkAllocationCallbacks allocator, out VkRenderPass renderPass);
+	private static CreateRenderPass2KHRDelegate_3 CreateRenderPass2KHR_3;
 	private static IntPtr CreateRenderPass2KHRPointer;
 	[Obsolete("Use CommandBeginRenderPass2")]
-	public static void CommandBeginRenderPass2KHR() => CommandBeginRenderPass2KHR_0();
-	private delegate void CommandBeginRenderPass2KHRDelegate_0();
+	public static void CommandBeginRenderPass2KHR(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, VkSubpassBeginInfo* subpassBeginInfo) => CommandBeginRenderPass2KHR_0(commandBuffer, renderPassBegin, subpassBeginInfo);
+	private delegate void CommandBeginRenderPass2KHRDelegate_0(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, VkSubpassBeginInfo* subpassBeginInfo);
 	private static CommandBeginRenderPass2KHRDelegate_0 CommandBeginRenderPass2KHR_0;
+	[Obsolete("Use CommandBeginRenderPass2")]
+	public static void CommandBeginRenderPass2KHR(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, ref VkSubpassBeginInfo subpassBeginInfo) => CommandBeginRenderPass2KHR_1(commandBuffer, renderPassBegin, ref subpassBeginInfo);
+	private delegate void CommandBeginRenderPass2KHRDelegate_1(VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* renderPassBegin, ref VkSubpassBeginInfo subpassBeginInfo);
+	private static CommandBeginRenderPass2KHRDelegate_1 CommandBeginRenderPass2KHR_1;
+	[Obsolete("Use CommandBeginRenderPass2")]
+	public static void CommandBeginRenderPass2KHR(VkCommandBuffer commandBuffer, ref VkRenderPassBeginInfo renderPassBegin, VkSubpassBeginInfo* subpassBeginInfo) => CommandBeginRenderPass2KHR_2(commandBuffer, ref renderPassBegin, subpassBeginInfo);
+	private delegate void CommandBeginRenderPass2KHRDelegate_2(VkCommandBuffer commandBuffer, ref VkRenderPassBeginInfo renderPassBegin, VkSubpassBeginInfo* subpassBeginInfo);
+	private static CommandBeginRenderPass2KHRDelegate_2 CommandBeginRenderPass2KHR_2;
+	[Obsolete("Use CommandBeginRenderPass2")]
+	public static void CommandBeginRenderPass2KHR(VkCommandBuffer commandBuffer, ref VkRenderPassBeginInfo renderPassBegin, ref VkSubpassBeginInfo subpassBeginInfo) => CommandBeginRenderPass2KHR_3(commandBuffer, ref renderPassBegin, ref subpassBeginInfo);
+	private delegate void CommandBeginRenderPass2KHRDelegate_3(VkCommandBuffer commandBuffer, ref VkRenderPassBeginInfo renderPassBegin, ref VkSubpassBeginInfo subpassBeginInfo);
+	private static CommandBeginRenderPass2KHRDelegate_3 CommandBeginRenderPass2KHR_3;
 	private static IntPtr CommandBeginRenderPass2KHRPointer;
 	[Obsolete("Use CommandNextSubpass2")]
-	public static void CommandNextSubpass2KHR() => CommandNextSubpass2KHR_0();
-	private delegate void CommandNextSubpass2KHRDelegate_0();
+	public static void CommandNextSubpass2KHR(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* subpassBeginInfo, VkSubpassEndInfo* subpassEndInfo) => CommandNextSubpass2KHR_0(commandBuffer, subpassBeginInfo, subpassEndInfo);
+	private delegate void CommandNextSubpass2KHRDelegate_0(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* subpassBeginInfo, VkSubpassEndInfo* subpassEndInfo);
 	private static CommandNextSubpass2KHRDelegate_0 CommandNextSubpass2KHR_0;
+	[Obsolete("Use CommandNextSubpass2")]
+	public static void CommandNextSubpass2KHR(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* subpassBeginInfo, ref VkSubpassEndInfo subpassEndInfo) => CommandNextSubpass2KHR_1(commandBuffer, subpassBeginInfo, ref subpassEndInfo);
+	private delegate void CommandNextSubpass2KHRDelegate_1(VkCommandBuffer commandBuffer, VkSubpassBeginInfo* subpassBeginInfo, ref VkSubpassEndInfo subpassEndInfo);
+	private static CommandNextSubpass2KHRDelegate_1 CommandNextSubpass2KHR_1;
+	[Obsolete("Use CommandNextSubpass2")]
+	public static void CommandNextSubpass2KHR(VkCommandBuffer commandBuffer, ref VkSubpassBeginInfo subpassBeginInfo, VkSubpassEndInfo* subpassEndInfo) => CommandNextSubpass2KHR_2(commandBuffer, ref subpassBeginInfo, subpassEndInfo);
+	private delegate void CommandNextSubpass2KHRDelegate_2(VkCommandBuffer commandBuffer, ref VkSubpassBeginInfo subpassBeginInfo, VkSubpassEndInfo* subpassEndInfo);
+	private static CommandNextSubpass2KHRDelegate_2 CommandNextSubpass2KHR_2;
+	[Obsolete("Use CommandNextSubpass2")]
+	public static void CommandNextSubpass2KHR(VkCommandBuffer commandBuffer, ref VkSubpassBeginInfo subpassBeginInfo, ref VkSubpassEndInfo subpassEndInfo) => CommandNextSubpass2KHR_3(commandBuffer, ref subpassBeginInfo, ref subpassEndInfo);
+	private delegate void CommandNextSubpass2KHRDelegate_3(VkCommandBuffer commandBuffer, ref VkSubpassBeginInfo subpassBeginInfo, ref VkSubpassEndInfo subpassEndInfo);
+	private static CommandNextSubpass2KHRDelegate_3 CommandNextSubpass2KHR_3;
 	private static IntPtr CommandNextSubpass2KHRPointer;
 	[Obsolete("Use CommandEndRenderPass2")]
-	public static void CommandEndRenderPass2KHR() => CommandEndRenderPass2KHR_0();
-	private delegate void CommandEndRenderPass2KHRDelegate_0();
+	public static void CommandEndRenderPass2KHR(VkCommandBuffer commandBuffer, VkSubpassEndInfo* subpassEndInfo) => CommandEndRenderPass2KHR_0(commandBuffer, subpassEndInfo);
+	private delegate void CommandEndRenderPass2KHRDelegate_0(VkCommandBuffer commandBuffer, VkSubpassEndInfo* subpassEndInfo);
 	private static CommandEndRenderPass2KHRDelegate_0 CommandEndRenderPass2KHR_0;
+	[Obsolete("Use CommandEndRenderPass2")]
+	public static void CommandEndRenderPass2KHR(VkCommandBuffer commandBuffer, ref VkSubpassEndInfo subpassEndInfo) => CommandEndRenderPass2KHR_1(commandBuffer, ref subpassEndInfo);
+	private delegate void CommandEndRenderPass2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkSubpassEndInfo subpassEndInfo);
+	private static CommandEndRenderPass2KHRDelegate_1 CommandEndRenderPass2KHR_1;
 	private static IntPtr CommandEndRenderPass2KHRPointer;
 	public static VkResult GetSwapchainStatusKHR(VkDevice device, VkSwapchainKHR swapchain) => GetSwapchainStatusKHR_0(device, swapchain);
 	private delegate VkResult GetSwapchainStatusKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain);
 	private static GetSwapchainStatusKHRDelegate_0 GetSwapchainStatusKHR_0;
 	private static IntPtr GetSwapchainStatusKHRPointer;
 	[Obsolete("Use GetPhysicalDeviceExternalFenceProperties")]
-	public static void GetPhysicalDeviceExternalFencePropertiesKHR() => GetPhysicalDeviceExternalFencePropertiesKHR_0();
-	private delegate void GetPhysicalDeviceExternalFencePropertiesKHRDelegate_0();
+	public static void GetPhysicalDeviceExternalFencePropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* externalFenceInfo, out VkExternalFenceProperties externalFenceProperties) => GetPhysicalDeviceExternalFencePropertiesKHR_0(physicalDevice, externalFenceInfo, out externalFenceProperties);
+	private delegate void GetPhysicalDeviceExternalFencePropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* externalFenceInfo, out VkExternalFenceProperties externalFenceProperties);
 	private static GetPhysicalDeviceExternalFencePropertiesKHRDelegate_0 GetPhysicalDeviceExternalFencePropertiesKHR_0;
+	[Obsolete("Use GetPhysicalDeviceExternalFenceProperties")]
+	public static void GetPhysicalDeviceExternalFencePropertiesKHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceExternalFenceInfo externalFenceInfo, out VkExternalFenceProperties externalFenceProperties) => GetPhysicalDeviceExternalFencePropertiesKHR_1(physicalDevice, ref externalFenceInfo, out externalFenceProperties);
+	private delegate void GetPhysicalDeviceExternalFencePropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceExternalFenceInfo externalFenceInfo, out VkExternalFenceProperties externalFenceProperties);
+	private static GetPhysicalDeviceExternalFencePropertiesKHRDelegate_1 GetPhysicalDeviceExternalFencePropertiesKHR_1;
 	private static IntPtr GetPhysicalDeviceExternalFencePropertiesKHRPointer;
 	public static VkResult ImportFenceWin32HandleKHR(VkDevice device, VkImportFenceWin32HandleInfoKHR* importFenceWin32HandleInfo) => ImportFenceWin32HandleKHR_0(device, importFenceWin32HandleInfo);
 	private delegate VkResult ImportFenceWin32HandleKHRDelegate_0(VkDevice device, VkImportFenceWin32HandleInfoKHR* importFenceWin32HandleInfo);
@@ -3079,19 +3175,39 @@ public static unsafe class VK
 	private static GetPhysicalDeviceMultisamplePropertiesEXTDelegate_0 GetPhysicalDeviceMultisamplePropertiesEXT_0;
 	private static IntPtr GetPhysicalDeviceMultisamplePropertiesEXTPointer;
 	[Obsolete("Use GetImageMemoryRequirements2")]
-	public static void GetImageMemoryRequirements2KHR() => GetImageMemoryRequirements2KHR_0();
-	private delegate void GetImageMemoryRequirements2KHRDelegate_0();
+	public static void GetImageMemoryRequirements2KHR(VkDevice device, VkImageMemoryRequirementsInfo2* info, out VkMemoryRequirements2 memoryRequirements) => GetImageMemoryRequirements2KHR_0(device, info, out memoryRequirements);
+	private delegate void GetImageMemoryRequirements2KHRDelegate_0(VkDevice device, VkImageMemoryRequirementsInfo2* info, out VkMemoryRequirements2 memoryRequirements);
 	private static GetImageMemoryRequirements2KHRDelegate_0 GetImageMemoryRequirements2KHR_0;
+	[Obsolete("Use GetImageMemoryRequirements2")]
+	public static void GetImageMemoryRequirements2KHR(VkDevice device, ref VkImageMemoryRequirementsInfo2 info, out VkMemoryRequirements2 memoryRequirements) => GetImageMemoryRequirements2KHR_1(device, ref info, out memoryRequirements);
+	private delegate void GetImageMemoryRequirements2KHRDelegate_1(VkDevice device, ref VkImageMemoryRequirementsInfo2 info, out VkMemoryRequirements2 memoryRequirements);
+	private static GetImageMemoryRequirements2KHRDelegate_1 GetImageMemoryRequirements2KHR_1;
 	private static IntPtr GetImageMemoryRequirements2KHRPointer;
 	[Obsolete("Use GetBufferMemoryRequirements2")]
-	public static void GetBufferMemoryRequirements2KHR() => GetBufferMemoryRequirements2KHR_0();
-	private delegate void GetBufferMemoryRequirements2KHRDelegate_0();
+	public static void GetBufferMemoryRequirements2KHR(VkDevice device, VkBufferMemoryRequirementsInfo2* info, out VkMemoryRequirements2 memoryRequirements) => GetBufferMemoryRequirements2KHR_0(device, info, out memoryRequirements);
+	private delegate void GetBufferMemoryRequirements2KHRDelegate_0(VkDevice device, VkBufferMemoryRequirementsInfo2* info, out VkMemoryRequirements2 memoryRequirements);
 	private static GetBufferMemoryRequirements2KHRDelegate_0 GetBufferMemoryRequirements2KHR_0;
+	[Obsolete("Use GetBufferMemoryRequirements2")]
+	public static void GetBufferMemoryRequirements2KHR(VkDevice device, ref VkBufferMemoryRequirementsInfo2 info, out VkMemoryRequirements2 memoryRequirements) => GetBufferMemoryRequirements2KHR_1(device, ref info, out memoryRequirements);
+	private delegate void GetBufferMemoryRequirements2KHRDelegate_1(VkDevice device, ref VkBufferMemoryRequirementsInfo2 info, out VkMemoryRequirements2 memoryRequirements);
+	private static GetBufferMemoryRequirements2KHRDelegate_1 GetBufferMemoryRequirements2KHR_1;
 	private static IntPtr GetBufferMemoryRequirements2KHRPointer;
 	[Obsolete("Use GetImageSparseMemoryRequirements2")]
-	public static void GetImageSparseMemoryRequirements2KHR() => GetImageSparseMemoryRequirements2KHR_0();
-	private delegate void GetImageSparseMemoryRequirements2KHRDelegate_0();
+	public static void GetImageSparseMemoryRequirements2KHR(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements2KHR_0(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
+	private delegate void GetImageSparseMemoryRequirements2KHRDelegate_0(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
 	private static GetImageSparseMemoryRequirements2KHRDelegate_0 GetImageSparseMemoryRequirements2KHR_0;
+	[Obsolete("Use GetImageSparseMemoryRequirements2")]
+	public static void GetImageSparseMemoryRequirements2KHR(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements2KHR_1(device, info, ref sparseMemoryRequirementCount, sparseMemoryRequirements);
+	private delegate void GetImageSparseMemoryRequirements2KHRDelegate_1(VkDevice device, VkImageSparseMemoryRequirementsInfo2* info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
+	private static GetImageSparseMemoryRequirements2KHRDelegate_1 GetImageSparseMemoryRequirements2KHR_1;
+	[Obsolete("Use GetImageSparseMemoryRequirements2")]
+	public static void GetImageSparseMemoryRequirements2KHR(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements2KHR_2(device, ref info, sparseMemoryRequirementCount, sparseMemoryRequirements);
+	private delegate void GetImageSparseMemoryRequirements2KHRDelegate_2(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
+	private static GetImageSparseMemoryRequirements2KHRDelegate_2 GetImageSparseMemoryRequirements2KHR_2;
+	[Obsolete("Use GetImageSparseMemoryRequirements2")]
+	public static void GetImageSparseMemoryRequirements2KHR(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetImageSparseMemoryRequirements2KHR_3(device, ref info, ref sparseMemoryRequirementCount, sparseMemoryRequirements);
+	private delegate void GetImageSparseMemoryRequirements2KHRDelegate_3(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2 info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
+	private static GetImageSparseMemoryRequirements2KHRDelegate_3 GetImageSparseMemoryRequirements2KHR_3;
 	private static IntPtr GetImageSparseMemoryRequirements2KHRPointer;
 	public static VkResult CreateAccelerationStructureKHR(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkAccelerationStructureKHR accelerationStructure) => CreateAccelerationStructureKHR_0(device, createInfo, allocator, out accelerationStructure);
 	private delegate VkResult CreateAccelerationStructureKHRDelegate_0(VkDevice device, VkAccelerationStructureCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkAccelerationStructureKHR accelerationStructure);
@@ -3342,23 +3458,39 @@ public static unsafe class VK
 	private static CommandSetRayTracingPipelineStackSizeKHRDelegate_0 CommandSetRayTracingPipelineStackSizeKHR_0;
 	private static IntPtr CommandSetRayTracingPipelineStackSizeKHRPointer;
 	[Obsolete("Use CreateSamplerYcbcrConversion")]
-	public static void CreateSamplerYcbcrConversionKHR() => CreateSamplerYcbcrConversionKHR_0();
-	private delegate void CreateSamplerYcbcrConversionKHRDelegate_0();
+	public static void CreateSamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion) => CreateSamplerYcbcrConversionKHR_0(device, createInfo, allocator, out ycbcrConversion);
+	private delegate void CreateSamplerYcbcrConversionKHRDelegate_0(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion);
 	private static CreateSamplerYcbcrConversionKHRDelegate_0 CreateSamplerYcbcrConversionKHR_0;
+	[Obsolete("Use CreateSamplerYcbcrConversion")]
+	public static void CreateSamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkSamplerYcbcrConversion ycbcrConversion) => CreateSamplerYcbcrConversionKHR_1(device, createInfo, ref allocator, out ycbcrConversion);
+	private delegate void CreateSamplerYcbcrConversionKHRDelegate_1(VkDevice device, VkSamplerYcbcrConversionCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkSamplerYcbcrConversion ycbcrConversion);
+	private static CreateSamplerYcbcrConversionKHRDelegate_1 CreateSamplerYcbcrConversionKHR_1;
+	[Obsolete("Use CreateSamplerYcbcrConversion")]
+	public static void CreateSamplerYcbcrConversionKHR(VkDevice device, ref VkSamplerYcbcrConversionCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion) => CreateSamplerYcbcrConversionKHR_2(device, ref createInfo, allocator, out ycbcrConversion);
+	private delegate void CreateSamplerYcbcrConversionKHRDelegate_2(VkDevice device, ref VkSamplerYcbcrConversionCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversion ycbcrConversion);
+	private static CreateSamplerYcbcrConversionKHRDelegate_2 CreateSamplerYcbcrConversionKHR_2;
+	[Obsolete("Use CreateSamplerYcbcrConversion")]
+	public static void CreateSamplerYcbcrConversionKHR(VkDevice device, ref VkSamplerYcbcrConversionCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkSamplerYcbcrConversion ycbcrConversion) => CreateSamplerYcbcrConversionKHR_3(device, ref createInfo, ref allocator, out ycbcrConversion);
+	private delegate void CreateSamplerYcbcrConversionKHRDelegate_3(VkDevice device, ref VkSamplerYcbcrConversionCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkSamplerYcbcrConversion ycbcrConversion);
+	private static CreateSamplerYcbcrConversionKHRDelegate_3 CreateSamplerYcbcrConversionKHR_3;
 	private static IntPtr CreateSamplerYcbcrConversionKHRPointer;
 	[Obsolete("Use DestroySamplerYcbcrConversion")]
-	public static void DestroySamplerYcbcrConversionKHR() => DestroySamplerYcbcrConversionKHR_0();
-	private delegate void DestroySamplerYcbcrConversionKHRDelegate_0();
+	public static void DestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator) => DestroySamplerYcbcrConversionKHR_0(device, ycbcrConversion, allocator);
+	private delegate void DestroySamplerYcbcrConversionKHRDelegate_0(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* allocator);
 	private static DestroySamplerYcbcrConversionKHRDelegate_0 DestroySamplerYcbcrConversionKHR_0;
+	[Obsolete("Use DestroySamplerYcbcrConversion")]
+	public static void DestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, ref VkAllocationCallbacks allocator) => DestroySamplerYcbcrConversionKHR_1(device, ycbcrConversion, ref allocator);
+	private delegate void DestroySamplerYcbcrConversionKHRDelegate_1(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, ref VkAllocationCallbacks allocator);
+	private static DestroySamplerYcbcrConversionKHRDelegate_1 DestroySamplerYcbcrConversionKHR_1;
 	private static IntPtr DestroySamplerYcbcrConversionKHRPointer;
 	[Obsolete("Use BindBufferMemory2")]
-	public static void BindBufferMemory2KHR() => BindBufferMemory2KHR_0();
-	private delegate void BindBufferMemory2KHRDelegate_0();
+	public static void BindBufferMemory2KHR(VkDevice device, uint bindInfoCount, VkBindBufferMemoryInfo[] bindInfos) => BindBufferMemory2KHR_0(device, bindInfoCount, bindInfos);
+	private delegate void BindBufferMemory2KHRDelegate_0(VkDevice device, uint bindInfoCount, VkBindBufferMemoryInfo[] bindInfos);
 	private static BindBufferMemory2KHRDelegate_0 BindBufferMemory2KHR_0;
 	private static IntPtr BindBufferMemory2KHRPointer;
 	[Obsolete("Use BindImageMemory2")]
-	public static void BindImageMemory2KHR() => BindImageMemory2KHR_0();
-	private delegate void BindImageMemory2KHRDelegate_0();
+	public static void BindImageMemory2KHR(VkDevice device, uint bindInfoCount, VkBindImageMemoryInfo[] bindInfos) => BindImageMemory2KHR_0(device, bindInfoCount, bindInfos);
+	private delegate void BindImageMemory2KHRDelegate_0(VkDevice device, uint bindInfoCount, VkBindImageMemoryInfo[] bindInfos);
 	private static BindImageMemory2KHRDelegate_0 BindImageMemory2KHR_0;
 	private static IntPtr BindImageMemory2KHRPointer;
 	public static VkResult GetImageDrmFormatModifierPropertiesEXT(VkDevice device, VkImage image, out VkImageDrmFormatModifierPropertiesEXT properties) => GetImageDrmFormatModifierPropertiesEXT_0(device, image, out properties);
@@ -3465,8 +3597,8 @@ public static unsafe class VK
 	private static CreateRayTracingPipelinesNVDelegate_1 CreateRayTracingPipelinesNV_1;
 	private static IntPtr CreateRayTracingPipelinesNVPointer;
 	[Obsolete("Use GetRayTracingShaderGroupHandlesKHR")]
-	public static void GetRayTracingShaderGroupHandlesNV() => GetRayTracingShaderGroupHandlesNV_0();
-	private delegate void GetRayTracingShaderGroupHandlesNVDelegate_0();
+	public static void GetRayTracingShaderGroupHandlesNV(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data) => GetRayTracingShaderGroupHandlesNV_0(device, pipeline, firstGroup, groupCount, dataSize, data);
+	private delegate void GetRayTracingShaderGroupHandlesNVDelegate_0(VkDevice device, VkPipeline pipeline, uint firstGroup, uint groupCount, nuint dataSize, void* data);
 	private static GetRayTracingShaderGroupHandlesNVDelegate_0 GetRayTracingShaderGroupHandlesNV_0;
 	private static IntPtr GetRayTracingShaderGroupHandlesNVPointer;
 	public static VkResult GetAccelerationStructureHandleNV(VkDevice device, VkAccelerationStructureNV accelerationStructure, nuint dataSize, void* data) => GetAccelerationStructureHandleNV_0(device, accelerationStructure, dataSize, data);
@@ -3482,18 +3614,22 @@ public static unsafe class VK
 	private static CompileDeferredNVDelegate_0 CompileDeferredNV_0;
 	private static IntPtr CompileDeferredNVPointer;
 	[Obsolete("Use GetDescriptorSetLayoutSupport")]
-	public static void GetDescriptorSetLayoutSupportKHR() => GetDescriptorSetLayoutSupportKHR_0();
-	private delegate void GetDescriptorSetLayoutSupportKHRDelegate_0();
+	public static void GetDescriptorSetLayoutSupportKHR(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, out VkDescriptorSetLayoutSupport support) => GetDescriptorSetLayoutSupportKHR_0(device, createInfo, out support);
+	private delegate void GetDescriptorSetLayoutSupportKHRDelegate_0(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, out VkDescriptorSetLayoutSupport support);
 	private static GetDescriptorSetLayoutSupportKHRDelegate_0 GetDescriptorSetLayoutSupportKHR_0;
+	[Obsolete("Use GetDescriptorSetLayoutSupport")]
+	public static void GetDescriptorSetLayoutSupportKHR(VkDevice device, ref VkDescriptorSetLayoutCreateInfo createInfo, out VkDescriptorSetLayoutSupport support) => GetDescriptorSetLayoutSupportKHR_1(device, ref createInfo, out support);
+	private delegate void GetDescriptorSetLayoutSupportKHRDelegate_1(VkDevice device, ref VkDescriptorSetLayoutCreateInfo createInfo, out VkDescriptorSetLayoutSupport support);
+	private static GetDescriptorSetLayoutSupportKHRDelegate_1 GetDescriptorSetLayoutSupportKHR_1;
 	private static IntPtr GetDescriptorSetLayoutSupportKHRPointer;
 	[Obsolete("Use CommandDrawIndirectCount")]
-	public static void CommandDrawIndirectCountKHR() => CommandDrawIndirectCountKHR_0();
-	private delegate void CommandDrawIndirectCountKHRDelegate_0();
+	public static void CommandDrawIndirectCountKHR(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride) => CommandDrawIndirectCountKHR_0(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+	private delegate void CommandDrawIndirectCountKHRDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
 	private static CommandDrawIndirectCountKHRDelegate_0 CommandDrawIndirectCountKHR_0;
 	private static IntPtr CommandDrawIndirectCountKHRPointer;
 	[Obsolete("Use CommandDrawIndexedIndirectCount")]
-	public static void CommandDrawIndexedIndirectCountKHR() => CommandDrawIndexedIndirectCountKHR_0();
-	private delegate void CommandDrawIndexedIndirectCountKHRDelegate_0();
+	public static void CommandDrawIndexedIndirectCountKHR(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride) => CommandDrawIndexedIndirectCountKHR_0(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+	private delegate void CommandDrawIndexedIndirectCountKHRDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
 	private static CommandDrawIndexedIndirectCountKHRDelegate_0 CommandDrawIndexedIndirectCountKHR_0;
 	private static IntPtr CommandDrawIndexedIndirectCountKHRPointer;
 	public static VkResult GetMemoryHostPointerPropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, void* hostPointer, out VkMemoryHostPointerPropertiesEXT memoryHostPointerProperties) => GetMemoryHostPointerPropertiesEXT_0(device, handleType, hostPointer, out memoryHostPointerProperties);
@@ -3546,19 +3682,27 @@ public static unsafe class VK
 	private static GetQueueCheckpointDataNVDelegate_1 GetQueueCheckpointDataNV_1;
 	private static IntPtr GetQueueCheckpointDataNVPointer;
 	[Obsolete("Use GetSemaphoreCounterValue")]
-	public static void GetSemaphoreCounterValueKHR() => GetSemaphoreCounterValueKHR_0();
-	private delegate void GetSemaphoreCounterValueKHRDelegate_0();
+	public static void GetSemaphoreCounterValueKHR(VkDevice device, VkSemaphore semaphore, out ulong value) => GetSemaphoreCounterValueKHR_0(device, semaphore, out value);
+	private delegate void GetSemaphoreCounterValueKHRDelegate_0(VkDevice device, VkSemaphore semaphore, out ulong value);
 	private static GetSemaphoreCounterValueKHRDelegate_0 GetSemaphoreCounterValueKHR_0;
 	private static IntPtr GetSemaphoreCounterValueKHRPointer;
 	[Obsolete("Use WaitSemaphores")]
-	public static void WaitSemaphoresKHR() => WaitSemaphoresKHR_0();
-	private delegate void WaitSemaphoresKHRDelegate_0();
+	public static void WaitSemaphoresKHR(VkDevice device, VkSemaphoreWaitInfo* waitInfo, ulong timeout) => WaitSemaphoresKHR_0(device, waitInfo, timeout);
+	private delegate void WaitSemaphoresKHRDelegate_0(VkDevice device, VkSemaphoreWaitInfo* waitInfo, ulong timeout);
 	private static WaitSemaphoresKHRDelegate_0 WaitSemaphoresKHR_0;
+	[Obsolete("Use WaitSemaphores")]
+	public static void WaitSemaphoresKHR(VkDevice device, ref VkSemaphoreWaitInfo waitInfo, ulong timeout) => WaitSemaphoresKHR_1(device, ref waitInfo, timeout);
+	private delegate void WaitSemaphoresKHRDelegate_1(VkDevice device, ref VkSemaphoreWaitInfo waitInfo, ulong timeout);
+	private static WaitSemaphoresKHRDelegate_1 WaitSemaphoresKHR_1;
 	private static IntPtr WaitSemaphoresKHRPointer;
 	[Obsolete("Use SignalSemaphore")]
-	public static void SignalSemaphoreKHR() => SignalSemaphoreKHR_0();
-	private delegate void SignalSemaphoreKHRDelegate_0();
+	public static void SignalSemaphoreKHR(VkDevice device, VkSemaphoreSignalInfo* signalInfo) => SignalSemaphoreKHR_0(device, signalInfo);
+	private delegate void SignalSemaphoreKHRDelegate_0(VkDevice device, VkSemaphoreSignalInfo* signalInfo);
 	private static SignalSemaphoreKHRDelegate_0 SignalSemaphoreKHR_0;
+	[Obsolete("Use SignalSemaphore")]
+	public static void SignalSemaphoreKHR(VkDevice device, ref VkSemaphoreSignalInfo signalInfo) => SignalSemaphoreKHR_1(device, ref signalInfo);
+	private delegate void SignalSemaphoreKHRDelegate_1(VkDevice device, ref VkSemaphoreSignalInfo signalInfo);
+	private static SignalSemaphoreKHRDelegate_1 SignalSemaphoreKHR_1;
 	private static IntPtr SignalSemaphoreKHRPointer;
 	public static VkResult InitializePerformanceApiINTEL(VkDevice device, VkInitializePerformanceApiInfoINTEL* initializeInfo) => InitializePerformanceApiINTEL_0(device, initializeInfo);
 	private delegate VkResult InitializePerformanceApiINTELDelegate_0(VkDevice device, VkInitializePerformanceApiInfoINTEL* initializeInfo);
@@ -3636,14 +3780,18 @@ public static unsafe class VK
 	private static CommandSetFragmentShadingRateKHRDelegate_1 CommandSetFragmentShadingRateKHR_1;
 	private static IntPtr CommandSetFragmentShadingRateKHRPointer;
 	[Obsolete("Use GetBufferDeviceAddress")]
-	public static void GetBufferDeviceAddressEXT() => GetBufferDeviceAddressEXT_0();
-	private delegate void GetBufferDeviceAddressEXTDelegate_0();
+	public static void GetBufferDeviceAddressEXT(VkDevice device, out VkBufferDeviceAddressInfo info) => GetBufferDeviceAddressEXT_0(device, out info);
+	private delegate void GetBufferDeviceAddressEXTDelegate_0(VkDevice device, out VkBufferDeviceAddressInfo info);
 	private static GetBufferDeviceAddressEXTDelegate_0 GetBufferDeviceAddressEXT_0;
 	private static IntPtr GetBufferDeviceAddressEXTPointer;
 	[Obsolete("Use GetPhysicalDeviceToolProperties")]
-	public static void GetPhysicalDeviceToolPropertiesEXT() => GetPhysicalDeviceToolPropertiesEXT_0();
-	private delegate void GetPhysicalDeviceToolPropertiesEXTDelegate_0();
+	public static void GetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, uint* toolCount, [In, Out] VkPhysicalDeviceToolProperties[] toolProperties) => GetPhysicalDeviceToolPropertiesEXT_0(physicalDevice, toolCount, toolProperties);
+	private delegate void GetPhysicalDeviceToolPropertiesEXTDelegate_0(VkPhysicalDevice physicalDevice, uint* toolCount, [In, Out] VkPhysicalDeviceToolProperties[] toolProperties);
 	private static GetPhysicalDeviceToolPropertiesEXTDelegate_0 GetPhysicalDeviceToolPropertiesEXT_0;
+	[Obsolete("Use GetPhysicalDeviceToolProperties")]
+	public static void GetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, ref uint toolCount, [In, Out] VkPhysicalDeviceToolProperties[] toolProperties) => GetPhysicalDeviceToolPropertiesEXT_1(physicalDevice, ref toolCount, toolProperties);
+	private delegate void GetPhysicalDeviceToolPropertiesEXTDelegate_1(VkPhysicalDevice physicalDevice, ref uint toolCount, [In, Out] VkPhysicalDeviceToolProperties[] toolProperties);
+	private static GetPhysicalDeviceToolPropertiesEXTDelegate_1 GetPhysicalDeviceToolPropertiesEXT_1;
 	private static IntPtr GetPhysicalDeviceToolPropertiesEXTPointer;
 	public static VkResult WaitForPresentKHR(VkDevice device, VkSwapchainKHR swapchain, ulong presentId, ulong timeout) => WaitForPresentKHR_0(device, swapchain, presentId, timeout);
 	private delegate VkResult WaitForPresentKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain, ulong presentId, ulong timeout);
@@ -3712,18 +3860,18 @@ public static unsafe class VK
 	private static CreateHeadlessSurfaceEXTDelegate_3 CreateHeadlessSurfaceEXT_3;
 	private static IntPtr CreateHeadlessSurfaceEXTPointer;
 	[Obsolete("Use GetBufferDeviceAddress")]
-	public static void GetBufferDeviceAddressKHR() => GetBufferDeviceAddressKHR_0();
-	private delegate void GetBufferDeviceAddressKHRDelegate_0();
+	public static void GetBufferDeviceAddressKHR(VkDevice device, out VkBufferDeviceAddressInfo info) => GetBufferDeviceAddressKHR_0(device, out info);
+	private delegate void GetBufferDeviceAddressKHRDelegate_0(VkDevice device, out VkBufferDeviceAddressInfo info);
 	private static GetBufferDeviceAddressKHRDelegate_0 GetBufferDeviceAddressKHR_0;
 	private static IntPtr GetBufferDeviceAddressKHRPointer;
 	[Obsolete("Use GetBufferOpaqueCaptureAddress")]
-	public static void GetBufferOpaqueCaptureAddressKHR() => GetBufferOpaqueCaptureAddressKHR_0();
-	private delegate void GetBufferOpaqueCaptureAddressKHRDelegate_0();
+	public static void GetBufferOpaqueCaptureAddressKHR(VkDevice device, out VkBufferDeviceAddressInfo info) => GetBufferOpaqueCaptureAddressKHR_0(device, out info);
+	private delegate void GetBufferOpaqueCaptureAddressKHRDelegate_0(VkDevice device, out VkBufferDeviceAddressInfo info);
 	private static GetBufferOpaqueCaptureAddressKHRDelegate_0 GetBufferOpaqueCaptureAddressKHR_0;
 	private static IntPtr GetBufferOpaqueCaptureAddressKHRPointer;
 	[Obsolete("Use GetDeviceMemoryOpaqueCaptureAddress")]
-	public static void GetDeviceMemoryOpaqueCaptureAddressKHR() => GetDeviceMemoryOpaqueCaptureAddressKHR_0();
-	private delegate void GetDeviceMemoryOpaqueCaptureAddressKHRDelegate_0();
+	public static void GetDeviceMemoryOpaqueCaptureAddressKHR(VkDevice device, out VkDeviceMemoryOpaqueCaptureAddressInfo info) => GetDeviceMemoryOpaqueCaptureAddressKHR_0(device, out info);
+	private delegate void GetDeviceMemoryOpaqueCaptureAddressKHRDelegate_0(VkDevice device, out VkDeviceMemoryOpaqueCaptureAddressInfo info);
 	private static GetDeviceMemoryOpaqueCaptureAddressKHRDelegate_0 GetDeviceMemoryOpaqueCaptureAddressKHR_0;
 	private static IntPtr GetDeviceMemoryOpaqueCaptureAddressKHRPointer;
 	public static void CommandSetLineStippleEXT(VkCommandBuffer commandBuffer, uint lineStippleFactor, ushort lineStipplePattern) => CommandSetLineStippleEXT_0(commandBuffer, lineStippleFactor, lineStipplePattern);
@@ -3731,68 +3879,128 @@ public static unsafe class VK
 	private static CommandSetLineStippleEXTDelegate_0 CommandSetLineStippleEXT_0;
 	private static IntPtr CommandSetLineStippleEXTPointer;
 	[Obsolete("Use ResetQueryPool")]
-	public static void ResetQueryPoolEXT() => ResetQueryPoolEXT_0();
-	private delegate void ResetQueryPoolEXTDelegate_0();
+	public static void ResetQueryPoolEXT(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount) => ResetQueryPoolEXT_0(device, queryPool, firstQuery, queryCount);
+	private delegate void ResetQueryPoolEXTDelegate_0(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount);
 	private static ResetQueryPoolEXTDelegate_0 ResetQueryPoolEXT_0;
 	private static IntPtr ResetQueryPoolEXTPointer;
 	[Obsolete("Use CommandSetCullMode")]
-	public static void CommandSetCullModeEXT() => CommandSetCullModeEXT_0();
-	private delegate void CommandSetCullModeEXTDelegate_0();
+	public static void CommandSetCullModeEXT(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode) => CommandSetCullModeEXT_0(commandBuffer, cullMode);
+	private delegate void CommandSetCullModeEXTDelegate_0(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode);
 	private static CommandSetCullModeEXTDelegate_0 CommandSetCullModeEXT_0;
 	private static IntPtr CommandSetCullModeEXTPointer;
 	[Obsolete("Use CommandSetFrontFace")]
-	public static void CommandSetFrontFaceEXT() => CommandSetFrontFaceEXT_0();
-	private delegate void CommandSetFrontFaceEXTDelegate_0();
+	public static void CommandSetFrontFaceEXT(VkCommandBuffer commandBuffer, VkFrontFace frontFace) => CommandSetFrontFaceEXT_0(commandBuffer, frontFace);
+	private delegate void CommandSetFrontFaceEXTDelegate_0(VkCommandBuffer commandBuffer, VkFrontFace frontFace);
 	private static CommandSetFrontFaceEXTDelegate_0 CommandSetFrontFaceEXT_0;
 	private static IntPtr CommandSetFrontFaceEXTPointer;
 	[Obsolete("Use CommandSetPrimitiveTopology")]
-	public static void CommandSetPrimitiveTopologyEXT() => CommandSetPrimitiveTopologyEXT_0();
-	private delegate void CommandSetPrimitiveTopologyEXTDelegate_0();
+	public static void CommandSetPrimitiveTopologyEXT(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology) => CommandSetPrimitiveTopologyEXT_0(commandBuffer, primitiveTopology);
+	private delegate void CommandSetPrimitiveTopologyEXTDelegate_0(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology);
 	private static CommandSetPrimitiveTopologyEXTDelegate_0 CommandSetPrimitiveTopologyEXT_0;
 	private static IntPtr CommandSetPrimitiveTopologyEXTPointer;
 	[Obsolete("Use CommandSetViewportWithCount")]
-	public static void CommandSetViewportWithCountEXT() => CommandSetViewportWithCountEXT_0();
-	private delegate void CommandSetViewportWithCountEXTDelegate_0();
+	public static void CommandSetViewportWithCountEXT(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport[] viewports) => CommandSetViewportWithCountEXT_0(commandBuffer, viewportCount, viewports);
+	private delegate void CommandSetViewportWithCountEXTDelegate_0(VkCommandBuffer commandBuffer, uint viewportCount, VkViewport[] viewports);
 	private static CommandSetViewportWithCountEXTDelegate_0 CommandSetViewportWithCountEXT_0;
 	private static IntPtr CommandSetViewportWithCountEXTPointer;
 	[Obsolete("Use CommandSetScissorWithCount")]
-	public static void CommandSetScissorWithCountEXT() => CommandSetScissorWithCountEXT_0();
-	private delegate void CommandSetScissorWithCountEXTDelegate_0();
+	public static void CommandSetScissorWithCountEXT(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D[] scissors) => CommandSetScissorWithCountEXT_0(commandBuffer, scissorCount, scissors);
+	private delegate void CommandSetScissorWithCountEXTDelegate_0(VkCommandBuffer commandBuffer, uint scissorCount, VkRect2D[] scissors);
 	private static CommandSetScissorWithCountEXTDelegate_0 CommandSetScissorWithCountEXT_0;
 	private static IntPtr CommandSetScissorWithCountEXTPointer;
 	[Obsolete("Use CommandBindVertexBuffers2")]
-	public static void CommandBindVertexBuffers2EXT() => CommandBindVertexBuffers2EXT_0();
-	private delegate void CommandBindVertexBuffers2EXTDelegate_0();
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, VkDeviceSize* strides) => CommandBindVertexBuffers2EXT_0(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes, strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_0(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, VkDeviceSize* strides);
 	private static CommandBindVertexBuffers2EXTDelegate_0 CommandBindVertexBuffers2EXT_0;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, ref VkDeviceSize strides) => CommandBindVertexBuffers2EXT_1(commandBuffer, firstBinding, bindingCount, buffers, offsets, sizes, ref strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_1(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, ref VkDeviceSize strides);
+	private static CommandBindVertexBuffers2EXTDelegate_1 CommandBindVertexBuffers2EXT_1;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes, VkDeviceSize* strides) => CommandBindVertexBuffers2EXT_2(commandBuffer, firstBinding, bindingCount, buffers, offsets, ref sizes, strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_2(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes, VkDeviceSize* strides);
+	private static CommandBindVertexBuffers2EXTDelegate_2 CommandBindVertexBuffers2EXT_2;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes, ref VkDeviceSize strides) => CommandBindVertexBuffers2EXT_3(commandBuffer, firstBinding, bindingCount, buffers, offsets, ref sizes, ref strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_3(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes, ref VkDeviceSize strides);
+	private static CommandBindVertexBuffers2EXTDelegate_3 CommandBindVertexBuffers2EXT_3;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes, VkDeviceSize* strides) => CommandBindVertexBuffers2EXT_4(commandBuffer, firstBinding, bindingCount, buffers, ref offsets, sizes, strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_4(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes, VkDeviceSize* strides);
+	private static CommandBindVertexBuffers2EXTDelegate_4 CommandBindVertexBuffers2EXT_4;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes, ref VkDeviceSize strides) => CommandBindVertexBuffers2EXT_5(commandBuffer, firstBinding, bindingCount, buffers, ref offsets, sizes, ref strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_5(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes, ref VkDeviceSize strides);
+	private static CommandBindVertexBuffers2EXTDelegate_5 CommandBindVertexBuffers2EXT_5;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets, ref VkDeviceSize sizes, VkDeviceSize* strides) => CommandBindVertexBuffers2EXT_6(commandBuffer, firstBinding, bindingCount, buffers, ref offsets, ref sizes, strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_6(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets, ref VkDeviceSize sizes, VkDeviceSize* strides);
+	private static CommandBindVertexBuffers2EXTDelegate_6 CommandBindVertexBuffers2EXT_6;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets, ref VkDeviceSize sizes, ref VkDeviceSize strides) => CommandBindVertexBuffers2EXT_7(commandBuffer, firstBinding, bindingCount, buffers, ref offsets, ref sizes, ref strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_7(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, VkBuffer* buffers, ref VkDeviceSize offsets, ref VkDeviceSize sizes, ref VkDeviceSize strides);
+	private static CommandBindVertexBuffers2EXTDelegate_7 CommandBindVertexBuffers2EXT_7;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, VkDeviceSize* strides) => CommandBindVertexBuffers2EXT_8(commandBuffer, firstBinding, bindingCount, ref buffers, offsets, sizes, strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_8(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, VkDeviceSize* strides);
+	private static CommandBindVertexBuffers2EXTDelegate_8 CommandBindVertexBuffers2EXT_8;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, ref VkDeviceSize strides) => CommandBindVertexBuffers2EXT_9(commandBuffer, firstBinding, bindingCount, ref buffers, offsets, sizes, ref strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_9(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, VkDeviceSize* offsets, VkDeviceSize* sizes, ref VkDeviceSize strides);
+	private static CommandBindVertexBuffers2EXTDelegate_9 CommandBindVertexBuffers2EXT_9;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes, VkDeviceSize* strides) => CommandBindVertexBuffers2EXT_10(commandBuffer, firstBinding, bindingCount, ref buffers, offsets, ref sizes, strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_10(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes, VkDeviceSize* strides);
+	private static CommandBindVertexBuffers2EXTDelegate_10 CommandBindVertexBuffers2EXT_10;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes, ref VkDeviceSize strides) => CommandBindVertexBuffers2EXT_11(commandBuffer, firstBinding, bindingCount, ref buffers, offsets, ref sizes, ref strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_11(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, VkDeviceSize* offsets, ref VkDeviceSize sizes, ref VkDeviceSize strides);
+	private static CommandBindVertexBuffers2EXTDelegate_11 CommandBindVertexBuffers2EXT_11;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes, VkDeviceSize* strides) => CommandBindVertexBuffers2EXT_12(commandBuffer, firstBinding, bindingCount, ref buffers, ref offsets, sizes, strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_12(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes, VkDeviceSize* strides);
+	private static CommandBindVertexBuffers2EXTDelegate_12 CommandBindVertexBuffers2EXT_12;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes, ref VkDeviceSize strides) => CommandBindVertexBuffers2EXT_13(commandBuffer, firstBinding, bindingCount, ref buffers, ref offsets, sizes, ref strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_13(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, VkDeviceSize* sizes, ref VkDeviceSize strides);
+	private static CommandBindVertexBuffers2EXTDelegate_13 CommandBindVertexBuffers2EXT_13;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, ref VkDeviceSize sizes, VkDeviceSize* strides) => CommandBindVertexBuffers2EXT_14(commandBuffer, firstBinding, bindingCount, ref buffers, ref offsets, ref sizes, strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_14(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, ref VkDeviceSize sizes, VkDeviceSize* strides);
+	private static CommandBindVertexBuffers2EXTDelegate_14 CommandBindVertexBuffers2EXT_14;
+	[Obsolete("Use CommandBindVertexBuffers2")]
+	public static void CommandBindVertexBuffers2EXT(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, ref VkDeviceSize sizes, ref VkDeviceSize strides) => CommandBindVertexBuffers2EXT_15(commandBuffer, firstBinding, bindingCount, ref buffers, ref offsets, ref sizes, ref strides);
+	private delegate void CommandBindVertexBuffers2EXTDelegate_15(VkCommandBuffer commandBuffer, uint firstBinding, uint bindingCount, ref VkBuffer buffers, ref VkDeviceSize offsets, ref VkDeviceSize sizes, ref VkDeviceSize strides);
+	private static CommandBindVertexBuffers2EXTDelegate_15 CommandBindVertexBuffers2EXT_15;
 	private static IntPtr CommandBindVertexBuffers2EXTPointer;
 	[Obsolete("Use CommandSetDepthTestEnable")]
-	public static void CommandSetDepthTestEnableEXT() => CommandSetDepthTestEnableEXT_0();
-	private delegate void CommandSetDepthTestEnableEXTDelegate_0();
+	public static void CommandSetDepthTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable) => CommandSetDepthTestEnableEXT_0(commandBuffer, depthTestEnable);
+	private delegate void CommandSetDepthTestEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable);
 	private static CommandSetDepthTestEnableEXTDelegate_0 CommandSetDepthTestEnableEXT_0;
 	private static IntPtr CommandSetDepthTestEnableEXTPointer;
 	[Obsolete("Use CommandSetDepthWriteEnable")]
-	public static void CommandSetDepthWriteEnableEXT() => CommandSetDepthWriteEnableEXT_0();
-	private delegate void CommandSetDepthWriteEnableEXTDelegate_0();
+	public static void CommandSetDepthWriteEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable) => CommandSetDepthWriteEnableEXT_0(commandBuffer, depthWriteEnable);
+	private delegate void CommandSetDepthWriteEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable);
 	private static CommandSetDepthWriteEnableEXTDelegate_0 CommandSetDepthWriteEnableEXT_0;
 	private static IntPtr CommandSetDepthWriteEnableEXTPointer;
 	[Obsolete("Use CommandSetDepthCompareOp")]
-	public static void CommandSetDepthCompareOpEXT() => CommandSetDepthCompareOpEXT_0();
-	private delegate void CommandSetDepthCompareOpEXTDelegate_0();
+	public static void CommandSetDepthCompareOpEXT(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp) => CommandSetDepthCompareOpEXT_0(commandBuffer, depthCompareOp);
+	private delegate void CommandSetDepthCompareOpEXTDelegate_0(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp);
 	private static CommandSetDepthCompareOpEXTDelegate_0 CommandSetDepthCompareOpEXT_0;
 	private static IntPtr CommandSetDepthCompareOpEXTPointer;
 	[Obsolete("Use CommandSetDepthBoundsTestEnable")]
-	public static void CommandSetDepthBoundsTestEnableEXT() => CommandSetDepthBoundsTestEnableEXT_0();
-	private delegate void CommandSetDepthBoundsTestEnableEXTDelegate_0();
+	public static void CommandSetDepthBoundsTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable) => CommandSetDepthBoundsTestEnableEXT_0(commandBuffer, depthBoundsTestEnable);
+	private delegate void CommandSetDepthBoundsTestEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable);
 	private static CommandSetDepthBoundsTestEnableEXTDelegate_0 CommandSetDepthBoundsTestEnableEXT_0;
 	private static IntPtr CommandSetDepthBoundsTestEnableEXTPointer;
 	[Obsolete("Use CommandSetStencilTestEnable")]
-	public static void CommandSetStencilTestEnableEXT() => CommandSetStencilTestEnableEXT_0();
-	private delegate void CommandSetStencilTestEnableEXTDelegate_0();
+	public static void CommandSetStencilTestEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable) => CommandSetStencilTestEnableEXT_0(commandBuffer, stencilTestEnable);
+	private delegate void CommandSetStencilTestEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable);
 	private static CommandSetStencilTestEnableEXTDelegate_0 CommandSetStencilTestEnableEXT_0;
 	private static IntPtr CommandSetStencilTestEnableEXTPointer;
 	[Obsolete("Use CommandSetStencilOp")]
-	public static void CommandSetStencilOpEXT() => CommandSetStencilOpEXT_0();
-	private delegate void CommandSetStencilOpEXTDelegate_0();
+	public static void CommandSetStencilOpEXT(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp) => CommandSetStencilOpEXT_0(commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp);
+	private delegate void CommandSetStencilOpEXTDelegate_0(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp);
 	private static CommandSetStencilOpEXTDelegate_0 CommandSetStencilOpEXT_0;
 	private static IntPtr CommandSetStencilOpEXTPointer;
 	public static VkResult CreateDeferredOperationKHR(VkDevice device, VkAllocationCallbacks* allocator, out VkDeferredOperationKHR deferredOperation) => CreateDeferredOperationKHR_0(device, allocator, out deferredOperation);
@@ -3921,53 +4129,77 @@ public static unsafe class VK
 	private static GetDrmDisplayEXTDelegate_0 GetDrmDisplayEXT_0;
 	private static IntPtr GetDrmDisplayEXTPointer;
 	[Obsolete("Use CreatePrivateDataSlot")]
-	public static void CreatePrivateDataSlotEXT() => CreatePrivateDataSlotEXT_0();
-	private delegate void CreatePrivateDataSlotEXTDelegate_0();
+	public static void CreatePrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPrivateDataSlot privateDataSlot) => CreatePrivateDataSlotEXT_0(device, createInfo, allocator, out privateDataSlot);
+	private delegate void CreatePrivateDataSlotEXTDelegate_0(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPrivateDataSlot privateDataSlot);
 	private static CreatePrivateDataSlotEXTDelegate_0 CreatePrivateDataSlotEXT_0;
+	[Obsolete("Use CreatePrivateDataSlot")]
+	public static void CreatePrivateDataSlotEXT(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkPrivateDataSlot privateDataSlot) => CreatePrivateDataSlotEXT_1(device, createInfo, ref allocator, out privateDataSlot);
+	private delegate void CreatePrivateDataSlotEXTDelegate_1(VkDevice device, VkPrivateDataSlotCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkPrivateDataSlot privateDataSlot);
+	private static CreatePrivateDataSlotEXTDelegate_1 CreatePrivateDataSlotEXT_1;
+	[Obsolete("Use CreatePrivateDataSlot")]
+	public static void CreatePrivateDataSlotEXT(VkDevice device, ref VkPrivateDataSlotCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkPrivateDataSlot privateDataSlot) => CreatePrivateDataSlotEXT_2(device, ref createInfo, allocator, out privateDataSlot);
+	private delegate void CreatePrivateDataSlotEXTDelegate_2(VkDevice device, ref VkPrivateDataSlotCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkPrivateDataSlot privateDataSlot);
+	private static CreatePrivateDataSlotEXTDelegate_2 CreatePrivateDataSlotEXT_2;
+	[Obsolete("Use CreatePrivateDataSlot")]
+	public static void CreatePrivateDataSlotEXT(VkDevice device, ref VkPrivateDataSlotCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkPrivateDataSlot privateDataSlot) => CreatePrivateDataSlotEXT_3(device, ref createInfo, ref allocator, out privateDataSlot);
+	private delegate void CreatePrivateDataSlotEXTDelegate_3(VkDevice device, ref VkPrivateDataSlotCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkPrivateDataSlot privateDataSlot);
+	private static CreatePrivateDataSlotEXTDelegate_3 CreatePrivateDataSlotEXT_3;
 	private static IntPtr CreatePrivateDataSlotEXTPointer;
 	[Obsolete("Use DestroyPrivateDataSlot")]
-	public static void DestroyPrivateDataSlotEXT() => DestroyPrivateDataSlotEXT_0();
-	private delegate void DestroyPrivateDataSlotEXTDelegate_0();
+	public static void DestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator) => DestroyPrivateDataSlotEXT_0(device, privateDataSlot, allocator);
+	private delegate void DestroyPrivateDataSlotEXTDelegate_0(VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* allocator);
 	private static DestroyPrivateDataSlotEXTDelegate_0 DestroyPrivateDataSlotEXT_0;
+	[Obsolete("Use DestroyPrivateDataSlot")]
+	public static void DestroyPrivateDataSlotEXT(VkDevice device, VkPrivateDataSlot privateDataSlot, ref VkAllocationCallbacks allocator) => DestroyPrivateDataSlotEXT_1(device, privateDataSlot, ref allocator);
+	private delegate void DestroyPrivateDataSlotEXTDelegate_1(VkDevice device, VkPrivateDataSlot privateDataSlot, ref VkAllocationCallbacks allocator);
+	private static DestroyPrivateDataSlotEXTDelegate_1 DestroyPrivateDataSlotEXT_1;
 	private static IntPtr DestroyPrivateDataSlotEXTPointer;
 	[Obsolete("Use SetPrivateData")]
-	public static void SetPrivateDataEXT() => SetPrivateDataEXT_0();
-	private delegate void SetPrivateDataEXTDelegate_0();
+	public static void SetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlot privateDataSlot, ulong data) => SetPrivateDataEXT_0(device, objectType, objectHandle, privateDataSlot, data);
+	private delegate void SetPrivateDataEXTDelegate_0(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlot privateDataSlot, ulong data);
 	private static SetPrivateDataEXTDelegate_0 SetPrivateDataEXT_0;
 	private static IntPtr SetPrivateDataEXTPointer;
 	[Obsolete("Use GetPrivateData")]
-	public static void GetPrivateDataEXT() => GetPrivateDataEXT_0();
-	private delegate void GetPrivateDataEXTDelegate_0();
+	public static void GetPrivateDataEXT(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlot privateDataSlot, out ulong data) => GetPrivateDataEXT_0(device, objectType, objectHandle, privateDataSlot, out data);
+	private delegate void GetPrivateDataEXTDelegate_0(VkDevice device, VkObjectType objectType, ulong objectHandle, VkPrivateDataSlot privateDataSlot, out ulong data);
 	private static GetPrivateDataEXTDelegate_0 GetPrivateDataEXT_0;
 	private static IntPtr GetPrivateDataEXTPointer;
 	[Obsolete("Use CommandSetEvent2")]
-	public static void CommandSetEvent2KHR() => CommandSetEvent2KHR_0();
-	private delegate void CommandSetEvent2KHRDelegate_0();
+	public static void CommandSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfo* dependencyInfo) => CommandSetEvent2KHR_0(commandBuffer, @event, dependencyInfo);
+	private delegate void CommandSetEvent2KHRDelegate_0(VkCommandBuffer commandBuffer, VkEvent @event, VkDependencyInfo* dependencyInfo);
 	private static CommandSetEvent2KHRDelegate_0 CommandSetEvent2KHR_0;
+	[Obsolete("Use CommandSetEvent2")]
+	public static void CommandSetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, ref VkDependencyInfo dependencyInfo) => CommandSetEvent2KHR_1(commandBuffer, @event, ref dependencyInfo);
+	private delegate void CommandSetEvent2KHRDelegate_1(VkCommandBuffer commandBuffer, VkEvent @event, ref VkDependencyInfo dependencyInfo);
+	private static CommandSetEvent2KHRDelegate_1 CommandSetEvent2KHR_1;
 	private static IntPtr CommandSetEvent2KHRPointer;
 	[Obsolete("Use CommandResetEvent2")]
-	public static void CommandResetEvent2KHR() => CommandResetEvent2KHR_0();
-	private delegate void CommandResetEvent2KHRDelegate_0();
+	public static void CommandResetEvent2KHR(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2 stageMask) => CommandResetEvent2KHR_0(commandBuffer, @event, stageMask);
+	private delegate void CommandResetEvent2KHRDelegate_0(VkCommandBuffer commandBuffer, VkEvent @event, VkPipelineStageFlags2 stageMask);
 	private static CommandResetEvent2KHRDelegate_0 CommandResetEvent2KHR_0;
 	private static IntPtr CommandResetEvent2KHRPointer;
 	[Obsolete("Use CommandWaitEvents2")]
-	public static void CommandWaitEvents2KHR() => CommandWaitEvents2KHR_0();
-	private delegate void CommandWaitEvents2KHRDelegate_0();
+	public static void CommandWaitEvents2KHR(VkCommandBuffer commandBuffer, uint eventCount, VkEvent[] events, VkDependencyInfo[] dependencyInfos) => CommandWaitEvents2KHR_0(commandBuffer, eventCount, events, dependencyInfos);
+	private delegate void CommandWaitEvents2KHRDelegate_0(VkCommandBuffer commandBuffer, uint eventCount, VkEvent[] events, VkDependencyInfo[] dependencyInfos);
 	private static CommandWaitEvents2KHRDelegate_0 CommandWaitEvents2KHR_0;
 	private static IntPtr CommandWaitEvents2KHRPointer;
 	[Obsolete("Use CommandPipelineBarrier2")]
-	public static void CommandPipelineBarrier2KHR() => CommandPipelineBarrier2KHR_0();
-	private delegate void CommandPipelineBarrier2KHRDelegate_0();
+	public static void CommandPipelineBarrier2KHR(VkCommandBuffer commandBuffer, VkDependencyInfo* dependencyInfo) => CommandPipelineBarrier2KHR_0(commandBuffer, dependencyInfo);
+	private delegate void CommandPipelineBarrier2KHRDelegate_0(VkCommandBuffer commandBuffer, VkDependencyInfo* dependencyInfo);
 	private static CommandPipelineBarrier2KHRDelegate_0 CommandPipelineBarrier2KHR_0;
+	[Obsolete("Use CommandPipelineBarrier2")]
+	public static void CommandPipelineBarrier2KHR(VkCommandBuffer commandBuffer, ref VkDependencyInfo dependencyInfo) => CommandPipelineBarrier2KHR_1(commandBuffer, ref dependencyInfo);
+	private delegate void CommandPipelineBarrier2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkDependencyInfo dependencyInfo);
+	private static CommandPipelineBarrier2KHRDelegate_1 CommandPipelineBarrier2KHR_1;
 	private static IntPtr CommandPipelineBarrier2KHRPointer;
 	[Obsolete("Use CommandWriteTimestamp2")]
-	public static void CommandWriteTimestamp2KHR() => CommandWriteTimestamp2KHR_0();
-	private delegate void CommandWriteTimestamp2KHRDelegate_0();
+	public static void CommandWriteTimestamp2KHR(VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkQueryPool queryPool, uint query) => CommandWriteTimestamp2KHR_0(commandBuffer, stage, queryPool, query);
+	private delegate void CommandWriteTimestamp2KHRDelegate_0(VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkQueryPool queryPool, uint query);
 	private static CommandWriteTimestamp2KHRDelegate_0 CommandWriteTimestamp2KHR_0;
 	private static IntPtr CommandWriteTimestamp2KHRPointer;
 	[Obsolete("Use QueueSubmit2")]
-	public static void QueueSubmit2KHR() => QueueSubmit2KHR_0();
-	private delegate void QueueSubmit2KHRDelegate_0();
+	public static void QueueSubmit2KHR(VkQueue queue, uint submitCount, VkSubmitInfo2[] submits, VkFence fence) => QueueSubmit2KHR_0(queue, submitCount, submits, fence);
+	private delegate void QueueSubmit2KHRDelegate_0(VkQueue queue, uint submitCount, VkSubmitInfo2[] submits, VkFence fence);
 	private static QueueSubmit2KHRDelegate_0 QueueSubmit2KHR_0;
 	private static IntPtr QueueSubmit2KHRPointer;
 	public static void CommandWriteBufferMarker2AMD(VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkBuffer destinationBuffer, VkDeviceSize destinationOffset, uint marker) => CommandWriteBufferMarker2AMD_0(commandBuffer, stage, destinationBuffer, destinationOffset, marker);
@@ -4069,34 +4301,58 @@ public static unsafe class VK
 	private static CommandDrawMeshTasksIndirectCountEXTDelegate_0 CommandDrawMeshTasksIndirectCountEXT_0;
 	private static IntPtr CommandDrawMeshTasksIndirectCountEXTPointer;
 	[Obsolete("Use CommandCopyBuffer2")]
-	public static void CommandCopyBuffer2KHR() => CommandCopyBuffer2KHR_0();
-	private delegate void CommandCopyBuffer2KHRDelegate_0();
+	public static void CommandCopyBuffer2KHR(VkCommandBuffer commandBuffer, VkCopyBufferInfo2* copyBufferInfo) => CommandCopyBuffer2KHR_0(commandBuffer, copyBufferInfo);
+	private delegate void CommandCopyBuffer2KHRDelegate_0(VkCommandBuffer commandBuffer, VkCopyBufferInfo2* copyBufferInfo);
 	private static CommandCopyBuffer2KHRDelegate_0 CommandCopyBuffer2KHR_0;
+	[Obsolete("Use CommandCopyBuffer2")]
+	public static void CommandCopyBuffer2KHR(VkCommandBuffer commandBuffer, ref VkCopyBufferInfo2 copyBufferInfo) => CommandCopyBuffer2KHR_1(commandBuffer, ref copyBufferInfo);
+	private delegate void CommandCopyBuffer2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkCopyBufferInfo2 copyBufferInfo);
+	private static CommandCopyBuffer2KHRDelegate_1 CommandCopyBuffer2KHR_1;
 	private static IntPtr CommandCopyBuffer2KHRPointer;
 	[Obsolete("Use CommandCopyImage2")]
-	public static void CommandCopyImage2KHR() => CommandCopyImage2KHR_0();
-	private delegate void CommandCopyImage2KHRDelegate_0();
+	public static void CommandCopyImage2KHR(VkCommandBuffer commandBuffer, VkCopyImageInfo2* copyImageInfo) => CommandCopyImage2KHR_0(commandBuffer, copyImageInfo);
+	private delegate void CommandCopyImage2KHRDelegate_0(VkCommandBuffer commandBuffer, VkCopyImageInfo2* copyImageInfo);
 	private static CommandCopyImage2KHRDelegate_0 CommandCopyImage2KHR_0;
+	[Obsolete("Use CommandCopyImage2")]
+	public static void CommandCopyImage2KHR(VkCommandBuffer commandBuffer, ref VkCopyImageInfo2 copyImageInfo) => CommandCopyImage2KHR_1(commandBuffer, ref copyImageInfo);
+	private delegate void CommandCopyImage2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkCopyImageInfo2 copyImageInfo);
+	private static CommandCopyImage2KHRDelegate_1 CommandCopyImage2KHR_1;
 	private static IntPtr CommandCopyImage2KHRPointer;
 	[Obsolete("Use CommandCopyBufferToImage2")]
-	public static void CommandCopyBufferToImage2KHR() => CommandCopyBufferToImage2KHR_0();
-	private delegate void CommandCopyBufferToImage2KHRDelegate_0();
+	public static void CommandCopyBufferToImage2KHR(VkCommandBuffer commandBuffer, VkCopyBufferToImageInfo2* copyBufferToImageInfo) => CommandCopyBufferToImage2KHR_0(commandBuffer, copyBufferToImageInfo);
+	private delegate void CommandCopyBufferToImage2KHRDelegate_0(VkCommandBuffer commandBuffer, VkCopyBufferToImageInfo2* copyBufferToImageInfo);
 	private static CommandCopyBufferToImage2KHRDelegate_0 CommandCopyBufferToImage2KHR_0;
+	[Obsolete("Use CommandCopyBufferToImage2")]
+	public static void CommandCopyBufferToImage2KHR(VkCommandBuffer commandBuffer, ref VkCopyBufferToImageInfo2 copyBufferToImageInfo) => CommandCopyBufferToImage2KHR_1(commandBuffer, ref copyBufferToImageInfo);
+	private delegate void CommandCopyBufferToImage2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkCopyBufferToImageInfo2 copyBufferToImageInfo);
+	private static CommandCopyBufferToImage2KHRDelegate_1 CommandCopyBufferToImage2KHR_1;
 	private static IntPtr CommandCopyBufferToImage2KHRPointer;
 	[Obsolete("Use CommandCopyImageToBuffer2")]
-	public static void CommandCopyImageToBuffer2KHR() => CommandCopyImageToBuffer2KHR_0();
-	private delegate void CommandCopyImageToBuffer2KHRDelegate_0();
+	public static void CommandCopyImageToBuffer2KHR(VkCommandBuffer commandBuffer, VkCopyImageToBufferInfo2* copyImageToBufferInfo) => CommandCopyImageToBuffer2KHR_0(commandBuffer, copyImageToBufferInfo);
+	private delegate void CommandCopyImageToBuffer2KHRDelegate_0(VkCommandBuffer commandBuffer, VkCopyImageToBufferInfo2* copyImageToBufferInfo);
 	private static CommandCopyImageToBuffer2KHRDelegate_0 CommandCopyImageToBuffer2KHR_0;
+	[Obsolete("Use CommandCopyImageToBuffer2")]
+	public static void CommandCopyImageToBuffer2KHR(VkCommandBuffer commandBuffer, ref VkCopyImageToBufferInfo2 copyImageToBufferInfo) => CommandCopyImageToBuffer2KHR_1(commandBuffer, ref copyImageToBufferInfo);
+	private delegate void CommandCopyImageToBuffer2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkCopyImageToBufferInfo2 copyImageToBufferInfo);
+	private static CommandCopyImageToBuffer2KHRDelegate_1 CommandCopyImageToBuffer2KHR_1;
 	private static IntPtr CommandCopyImageToBuffer2KHRPointer;
 	[Obsolete("Use CommandBlitImage2")]
-	public static void CommandBlitImage2KHR() => CommandBlitImage2KHR_0();
-	private delegate void CommandBlitImage2KHRDelegate_0();
+	public static void CommandBlitImage2KHR(VkCommandBuffer commandBuffer, VkBlitImageInfo2* blitImageInfo) => CommandBlitImage2KHR_0(commandBuffer, blitImageInfo);
+	private delegate void CommandBlitImage2KHRDelegate_0(VkCommandBuffer commandBuffer, VkBlitImageInfo2* blitImageInfo);
 	private static CommandBlitImage2KHRDelegate_0 CommandBlitImage2KHR_0;
+	[Obsolete("Use CommandBlitImage2")]
+	public static void CommandBlitImage2KHR(VkCommandBuffer commandBuffer, ref VkBlitImageInfo2 blitImageInfo) => CommandBlitImage2KHR_1(commandBuffer, ref blitImageInfo);
+	private delegate void CommandBlitImage2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkBlitImageInfo2 blitImageInfo);
+	private static CommandBlitImage2KHRDelegate_1 CommandBlitImage2KHR_1;
 	private static IntPtr CommandBlitImage2KHRPointer;
 	[Obsolete("Use CommandResolveImage2")]
-	public static void CommandResolveImage2KHR() => CommandResolveImage2KHR_0();
-	private delegate void CommandResolveImage2KHRDelegate_0();
+	public static void CommandResolveImage2KHR(VkCommandBuffer commandBuffer, VkResolveImageInfo2* resolveImageInfo) => CommandResolveImage2KHR_0(commandBuffer, resolveImageInfo);
+	private delegate void CommandResolveImage2KHRDelegate_0(VkCommandBuffer commandBuffer, VkResolveImageInfo2* resolveImageInfo);
 	private static CommandResolveImage2KHRDelegate_0 CommandResolveImage2KHR_0;
+	[Obsolete("Use CommandResolveImage2")]
+	public static void CommandResolveImage2KHR(VkCommandBuffer commandBuffer, ref VkResolveImageInfo2 resolveImageInfo) => CommandResolveImage2KHR_1(commandBuffer, ref resolveImageInfo);
+	private delegate void CommandResolveImage2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkResolveImageInfo2 resolveImageInfo);
+	private static CommandResolveImage2KHRDelegate_1 CommandResolveImage2KHR_1;
 	private static IntPtr CommandResolveImage2KHRPointer;
 	public static void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2EXT* subresource, out VkSubresourceLayout2EXT layout) => GetImageSubresourceLayout2EXT_0(device, image, subresource, out layout);
 	private delegate void GetImageSubresourceLayout2EXTDelegate_0(VkDevice device, VkImage image, VkImageSubresource2EXT* subresource, out VkSubresourceLayout2EXT layout);
@@ -4155,13 +4411,13 @@ public static unsafe class VK
 	private static CommandSetPatchControlPointsEXTDelegate_0 CommandSetPatchControlPointsEXT_0;
 	private static IntPtr CommandSetPatchControlPointsEXTPointer;
 	[Obsolete("Use CommandSetRasterizerDiscardEnable")]
-	public static void CommandSetRasterizerDiscardEnableEXT() => CommandSetRasterizerDiscardEnableEXT_0();
-	private delegate void CommandSetRasterizerDiscardEnableEXTDelegate_0();
+	public static void CommandSetRasterizerDiscardEnableEXT(VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable) => CommandSetRasterizerDiscardEnableEXT_0(commandBuffer, rasterizerDiscardEnable);
+	private delegate void CommandSetRasterizerDiscardEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable);
 	private static CommandSetRasterizerDiscardEnableEXTDelegate_0 CommandSetRasterizerDiscardEnableEXT_0;
 	private static IntPtr CommandSetRasterizerDiscardEnableEXTPointer;
 	[Obsolete("Use CommandSetDepthBiasEnable")]
-	public static void CommandSetDepthBiasEnableEXT() => CommandSetDepthBiasEnableEXT_0();
-	private delegate void CommandSetDepthBiasEnableEXTDelegate_0();
+	public static void CommandSetDepthBiasEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBiasEnable) => CommandSetDepthBiasEnableEXT_0(commandBuffer, depthBiasEnable);
+	private delegate void CommandSetDepthBiasEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 depthBiasEnable);
 	private static CommandSetDepthBiasEnableEXTDelegate_0 CommandSetDepthBiasEnableEXT_0;
 	private static IntPtr CommandSetDepthBiasEnableEXTPointer;
 	public static void CommandSetLogicOpEXT(VkCommandBuffer commandBuffer, VkLogicOp logicOp) => CommandSetLogicOpEXT_0(commandBuffer, logicOp);
@@ -4169,8 +4425,8 @@ public static unsafe class VK
 	private static CommandSetLogicOpEXTDelegate_0 CommandSetLogicOpEXT_0;
 	private static IntPtr CommandSetLogicOpEXTPointer;
 	[Obsolete("Use CommandSetPrimitiveRestartEnable")]
-	public static void CommandSetPrimitiveRestartEnableEXT() => CommandSetPrimitiveRestartEnableEXT_0();
-	private delegate void CommandSetPrimitiveRestartEnableEXTDelegate_0();
+	public static void CommandSetPrimitiveRestartEnableEXT(VkCommandBuffer commandBuffer, VkBool32 primitiveRestartEnable) => CommandSetPrimitiveRestartEnableEXT_0(commandBuffer, primitiveRestartEnable);
+	private delegate void CommandSetPrimitiveRestartEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 primitiveRestartEnable);
 	private static CommandSetPrimitiveRestartEnableEXTDelegate_0 CommandSetPrimitiveRestartEnableEXT_0;
 	private static IntPtr CommandSetPrimitiveRestartEnableEXTPointer;
 	public static void CommandSetColorWriteEnableEXT(VkCommandBuffer commandBuffer, uint attachmentCount, VkBool32* colorWriteEnables) => CommandSetColorWriteEnableEXT_0(commandBuffer, attachmentCount, colorWriteEnables);
@@ -4309,19 +4565,39 @@ public static unsafe class VK
 	private static SetDeviceMemoryPriorityEXTDelegate_0 SetDeviceMemoryPriorityEXT_0;
 	private static IntPtr SetDeviceMemoryPriorityEXTPointer;
 	[Obsolete("Use GetDeviceBufferMemoryRequirements")]
-	public static void GetDeviceBufferMemoryRequirementsKHR() => GetDeviceBufferMemoryRequirementsKHR_0();
-	private delegate void GetDeviceBufferMemoryRequirementsKHRDelegate_0();
+	public static void GetDeviceBufferMemoryRequirementsKHR(VkDevice device, VkDeviceBufferMemoryRequirements* info, out VkMemoryRequirements2 memoryRequirements) => GetDeviceBufferMemoryRequirementsKHR_0(device, info, out memoryRequirements);
+	private delegate void GetDeviceBufferMemoryRequirementsKHRDelegate_0(VkDevice device, VkDeviceBufferMemoryRequirements* info, out VkMemoryRequirements2 memoryRequirements);
 	private static GetDeviceBufferMemoryRequirementsKHRDelegate_0 GetDeviceBufferMemoryRequirementsKHR_0;
+	[Obsolete("Use GetDeviceBufferMemoryRequirements")]
+	public static void GetDeviceBufferMemoryRequirementsKHR(VkDevice device, ref VkDeviceBufferMemoryRequirements info, out VkMemoryRequirements2 memoryRequirements) => GetDeviceBufferMemoryRequirementsKHR_1(device, ref info, out memoryRequirements);
+	private delegate void GetDeviceBufferMemoryRequirementsKHRDelegate_1(VkDevice device, ref VkDeviceBufferMemoryRequirements info, out VkMemoryRequirements2 memoryRequirements);
+	private static GetDeviceBufferMemoryRequirementsKHRDelegate_1 GetDeviceBufferMemoryRequirementsKHR_1;
 	private static IntPtr GetDeviceBufferMemoryRequirementsKHRPointer;
 	[Obsolete("Use GetDeviceImageMemoryRequirements")]
-	public static void GetDeviceImageMemoryRequirementsKHR() => GetDeviceImageMemoryRequirementsKHR_0();
-	private delegate void GetDeviceImageMemoryRequirementsKHRDelegate_0();
+	public static void GetDeviceImageMemoryRequirementsKHR(VkDevice device, VkDeviceImageMemoryRequirements* info, out VkMemoryRequirements2 memoryRequirements) => GetDeviceImageMemoryRequirementsKHR_0(device, info, out memoryRequirements);
+	private delegate void GetDeviceImageMemoryRequirementsKHRDelegate_0(VkDevice device, VkDeviceImageMemoryRequirements* info, out VkMemoryRequirements2 memoryRequirements);
 	private static GetDeviceImageMemoryRequirementsKHRDelegate_0 GetDeviceImageMemoryRequirementsKHR_0;
+	[Obsolete("Use GetDeviceImageMemoryRequirements")]
+	public static void GetDeviceImageMemoryRequirementsKHR(VkDevice device, ref VkDeviceImageMemoryRequirements info, out VkMemoryRequirements2 memoryRequirements) => GetDeviceImageMemoryRequirementsKHR_1(device, ref info, out memoryRequirements);
+	private delegate void GetDeviceImageMemoryRequirementsKHRDelegate_1(VkDevice device, ref VkDeviceImageMemoryRequirements info, out VkMemoryRequirements2 memoryRequirements);
+	private static GetDeviceImageMemoryRequirementsKHRDelegate_1 GetDeviceImageMemoryRequirementsKHR_1;
 	private static IntPtr GetDeviceImageMemoryRequirementsKHRPointer;
 	[Obsolete("Use GetDeviceImageSparseMemoryRequirements")]
-	public static void GetDeviceImageSparseMemoryRequirementsKHR() => GetDeviceImageSparseMemoryRequirementsKHR_0();
-	private delegate void GetDeviceImageSparseMemoryRequirementsKHRDelegate_0();
+	public static void GetDeviceImageSparseMemoryRequirementsKHR(VkDevice device, VkDeviceImageMemoryRequirements* info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetDeviceImageSparseMemoryRequirementsKHR_0(device, info, sparseMemoryRequirementCount, sparseMemoryRequirements);
+	private delegate void GetDeviceImageSparseMemoryRequirementsKHRDelegate_0(VkDevice device, VkDeviceImageMemoryRequirements* info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
 	private static GetDeviceImageSparseMemoryRequirementsKHRDelegate_0 GetDeviceImageSparseMemoryRequirementsKHR_0;
+	[Obsolete("Use GetDeviceImageSparseMemoryRequirements")]
+	public static void GetDeviceImageSparseMemoryRequirementsKHR(VkDevice device, VkDeviceImageMemoryRequirements* info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetDeviceImageSparseMemoryRequirementsKHR_1(device, info, ref sparseMemoryRequirementCount, sparseMemoryRequirements);
+	private delegate void GetDeviceImageSparseMemoryRequirementsKHRDelegate_1(VkDevice device, VkDeviceImageMemoryRequirements* info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
+	private static GetDeviceImageSparseMemoryRequirementsKHRDelegate_1 GetDeviceImageSparseMemoryRequirementsKHR_1;
+	[Obsolete("Use GetDeviceImageSparseMemoryRequirements")]
+	public static void GetDeviceImageSparseMemoryRequirementsKHR(VkDevice device, ref VkDeviceImageMemoryRequirements info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetDeviceImageSparseMemoryRequirementsKHR_2(device, ref info, sparseMemoryRequirementCount, sparseMemoryRequirements);
+	private delegate void GetDeviceImageSparseMemoryRequirementsKHRDelegate_2(VkDevice device, ref VkDeviceImageMemoryRequirements info, uint* sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
+	private static GetDeviceImageSparseMemoryRequirementsKHRDelegate_2 GetDeviceImageSparseMemoryRequirementsKHR_2;
+	[Obsolete("Use GetDeviceImageSparseMemoryRequirements")]
+	public static void GetDeviceImageSparseMemoryRequirementsKHR(VkDevice device, ref VkDeviceImageMemoryRequirements info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements) => GetDeviceImageSparseMemoryRequirementsKHR_3(device, ref info, ref sparseMemoryRequirementCount, sparseMemoryRequirements);
+	private delegate void GetDeviceImageSparseMemoryRequirementsKHRDelegate_3(VkDevice device, ref VkDeviceImageMemoryRequirements info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2[] sparseMemoryRequirements);
+	private static GetDeviceImageSparseMemoryRequirementsKHRDelegate_3 GetDeviceImageSparseMemoryRequirementsKHR_3;
 	private static IntPtr GetDeviceImageSparseMemoryRequirementsKHRPointer;
 	public static void GetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, VkDescriptorSetBindingReferenceVALVE* bindingReference, out VkDescriptorSetLayoutHostMappingInfoVALVE hostMapping) => GetDescriptorSetLayoutHostMappingInfoVALVE_0(device, bindingReference, out hostMapping);
 	private delegate void GetDescriptorSetLayoutHostMappingInfoVALVEDelegate_0(VkDevice device, VkDescriptorSetBindingReferenceVALVE* bindingReference, out VkDescriptorSetLayoutHostMappingInfoVALVE hostMapping);
@@ -6243,6 +6519,7 @@ public static unsafe class VK
 		if (CommandBeginRenderingKHRPointer != IntPtr.Zero)
 		{
 			CommandBeginRenderingKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderingKHRDelegate_0>(CommandBeginRenderingKHRPointer);
+			CommandBeginRenderingKHR_1 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderingKHRDelegate_1>(CommandBeginRenderingKHRPointer);
 		}
 		CommandEndRenderingKHRPointer = GetInstanceProcedureAddress(instance, "CommandEndRendering");
 		if (CommandEndRenderingKHRPointer != IntPtr.Zero)
@@ -6278,11 +6555,13 @@ public static unsafe class VK
 		if (GetPhysicalDeviceImageFormatProperties2KHRPointer != IntPtr.Zero)
 		{
 			GetPhysicalDeviceImageFormatProperties2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceImageFormatProperties2KHRDelegate_0>(GetPhysicalDeviceImageFormatProperties2KHRPointer);
+			GetPhysicalDeviceImageFormatProperties2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceImageFormatProperties2KHRDelegate_1>(GetPhysicalDeviceImageFormatProperties2KHRPointer);
 		}
 		GetPhysicalDeviceQueueFamilyProperties2KHRPointer = GetInstanceProcedureAddress(instance, "GetPhysicalDeviceQueueFamilyProperties2");
 		if (GetPhysicalDeviceQueueFamilyProperties2KHRPointer != IntPtr.Zero)
 		{
 			GetPhysicalDeviceQueueFamilyProperties2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyProperties2KHRDelegate_0>(GetPhysicalDeviceQueueFamilyProperties2KHRPointer);
+			GetPhysicalDeviceQueueFamilyProperties2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceQueueFamilyProperties2KHRDelegate_1>(GetPhysicalDeviceQueueFamilyProperties2KHRPointer);
 		}
 		GetPhysicalDeviceMemoryProperties2KHRPointer = GetInstanceProcedureAddress(instance, "GetPhysicalDeviceMemoryProperties2");
 		if (GetPhysicalDeviceMemoryProperties2KHRPointer != IntPtr.Zero)
@@ -6293,6 +6572,9 @@ public static unsafe class VK
 		if (GetPhysicalDeviceSparseImageFormatProperties2KHRPointer != IntPtr.Zero)
 		{
 			GetPhysicalDeviceSparseImageFormatProperties2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_0>(GetPhysicalDeviceSparseImageFormatProperties2KHRPointer);
+			GetPhysicalDeviceSparseImageFormatProperties2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_1>(GetPhysicalDeviceSparseImageFormatProperties2KHRPointer);
+			GetPhysicalDeviceSparseImageFormatProperties2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_2>(GetPhysicalDeviceSparseImageFormatProperties2KHRPointer);
+			GetPhysicalDeviceSparseImageFormatProperties2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceSparseImageFormatProperties2KHRDelegate_3>(GetPhysicalDeviceSparseImageFormatProperties2KHRPointer);
 		}
 		GetDeviceGroupPeerMemoryFeaturesKHRPointer = GetInstanceProcedureAddress(instance, "GetDeviceGroupPeerMemoryFeatures");
 		if (GetDeviceGroupPeerMemoryFeaturesKHRPointer != IntPtr.Zero)
@@ -6340,11 +6622,13 @@ public static unsafe class VK
 		if (EnumeratePhysicalDeviceGroupsKHRPointer != IntPtr.Zero)
 		{
 			EnumeratePhysicalDeviceGroupsKHR_0 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceGroupsKHRDelegate_0>(EnumeratePhysicalDeviceGroupsKHRPointer);
+			EnumeratePhysicalDeviceGroupsKHR_1 = Marshal.GetDelegateForFunctionPointer<EnumeratePhysicalDeviceGroupsKHRDelegate_1>(EnumeratePhysicalDeviceGroupsKHRPointer);
 		}
 		GetPhysicalDeviceExternalBufferPropertiesKHRPointer = GetInstanceProcedureAddress(instance, "GetPhysicalDeviceExternalBufferProperties");
 		if (GetPhysicalDeviceExternalBufferPropertiesKHRPointer != IntPtr.Zero)
 		{
 			GetPhysicalDeviceExternalBufferPropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalBufferPropertiesKHRDelegate_0>(GetPhysicalDeviceExternalBufferPropertiesKHRPointer);
+			GetPhysicalDeviceExternalBufferPropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalBufferPropertiesKHRDelegate_1>(GetPhysicalDeviceExternalBufferPropertiesKHRPointer);
 		}
 		GetMemoryWin32HandleKHRPointer = GetInstanceProcedureAddress(instance, "GetMemoryWin32HandleKHR");
 		if (GetMemoryWin32HandleKHRPointer != IntPtr.Zero)
@@ -6372,6 +6656,7 @@ public static unsafe class VK
 		if (GetPhysicalDeviceExternalSemaphorePropertiesKHRPointer != IntPtr.Zero)
 		{
 			GetPhysicalDeviceExternalSemaphorePropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalSemaphorePropertiesKHRDelegate_0>(GetPhysicalDeviceExternalSemaphorePropertiesKHRPointer);
+			GetPhysicalDeviceExternalSemaphorePropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalSemaphorePropertiesKHRDelegate_1>(GetPhysicalDeviceExternalSemaphorePropertiesKHRPointer);
 		}
 		ImportSemaphoreWin32HandleKHRPointer = GetInstanceProcedureAddress(instance, "ImportSemaphoreWin32HandleKHR");
 		if (ImportSemaphoreWin32HandleKHRPointer != IntPtr.Zero)
@@ -6427,11 +6712,15 @@ public static unsafe class VK
 		if (CreateDescriptorUpdateTemplateKHRPointer != IntPtr.Zero)
 		{
 			CreateDescriptorUpdateTemplateKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorUpdateTemplateKHRDelegate_0>(CreateDescriptorUpdateTemplateKHRPointer);
+			CreateDescriptorUpdateTemplateKHR_1 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorUpdateTemplateKHRDelegate_1>(CreateDescriptorUpdateTemplateKHRPointer);
+			CreateDescriptorUpdateTemplateKHR_2 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorUpdateTemplateKHRDelegate_2>(CreateDescriptorUpdateTemplateKHRPointer);
+			CreateDescriptorUpdateTemplateKHR_3 = Marshal.GetDelegateForFunctionPointer<CreateDescriptorUpdateTemplateKHRDelegate_3>(CreateDescriptorUpdateTemplateKHRPointer);
 		}
 		DestroyDescriptorUpdateTemplateKHRPointer = GetInstanceProcedureAddress(instance, "DestroyDescriptorUpdateTemplate");
 		if (DestroyDescriptorUpdateTemplateKHRPointer != IntPtr.Zero)
 		{
 			DestroyDescriptorUpdateTemplateKHR_0 = Marshal.GetDelegateForFunctionPointer<DestroyDescriptorUpdateTemplateKHRDelegate_0>(DestroyDescriptorUpdateTemplateKHRPointer);
+			DestroyDescriptorUpdateTemplateKHR_1 = Marshal.GetDelegateForFunctionPointer<DestroyDescriptorUpdateTemplateKHRDelegate_1>(DestroyDescriptorUpdateTemplateKHRPointer);
 		}
 		UpdateDescriptorSetWithTemplateKHRPointer = GetInstanceProcedureAddress(instance, "UpdateDescriptorSetWithTemplate");
 		if (UpdateDescriptorSetWithTemplateKHRPointer != IntPtr.Zero)
@@ -6520,21 +6809,31 @@ public static unsafe class VK
 		if (CreateRenderPass2KHRPointer != IntPtr.Zero)
 		{
 			CreateRenderPass2KHR_0 = Marshal.GetDelegateForFunctionPointer<CreateRenderPass2KHRDelegate_0>(CreateRenderPass2KHRPointer);
+			CreateRenderPass2KHR_1 = Marshal.GetDelegateForFunctionPointer<CreateRenderPass2KHRDelegate_1>(CreateRenderPass2KHRPointer);
+			CreateRenderPass2KHR_2 = Marshal.GetDelegateForFunctionPointer<CreateRenderPass2KHRDelegate_2>(CreateRenderPass2KHRPointer);
+			CreateRenderPass2KHR_3 = Marshal.GetDelegateForFunctionPointer<CreateRenderPass2KHRDelegate_3>(CreateRenderPass2KHRPointer);
 		}
 		CommandBeginRenderPass2KHRPointer = GetInstanceProcedureAddress(instance, "CommandBeginRenderPass2");
 		if (CommandBeginRenderPass2KHRPointer != IntPtr.Zero)
 		{
 			CommandBeginRenderPass2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderPass2KHRDelegate_0>(CommandBeginRenderPass2KHRPointer);
+			CommandBeginRenderPass2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderPass2KHRDelegate_1>(CommandBeginRenderPass2KHRPointer);
+			CommandBeginRenderPass2KHR_2 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderPass2KHRDelegate_2>(CommandBeginRenderPass2KHRPointer);
+			CommandBeginRenderPass2KHR_3 = Marshal.GetDelegateForFunctionPointer<CommandBeginRenderPass2KHRDelegate_3>(CommandBeginRenderPass2KHRPointer);
 		}
 		CommandNextSubpass2KHRPointer = GetInstanceProcedureAddress(instance, "CommandNextSubpass2");
 		if (CommandNextSubpass2KHRPointer != IntPtr.Zero)
 		{
 			CommandNextSubpass2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandNextSubpass2KHRDelegate_0>(CommandNextSubpass2KHRPointer);
+			CommandNextSubpass2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandNextSubpass2KHRDelegate_1>(CommandNextSubpass2KHRPointer);
+			CommandNextSubpass2KHR_2 = Marshal.GetDelegateForFunctionPointer<CommandNextSubpass2KHRDelegate_2>(CommandNextSubpass2KHRPointer);
+			CommandNextSubpass2KHR_3 = Marshal.GetDelegateForFunctionPointer<CommandNextSubpass2KHRDelegate_3>(CommandNextSubpass2KHRPointer);
 		}
 		CommandEndRenderPass2KHRPointer = GetInstanceProcedureAddress(instance, "CommandEndRenderPass2");
 		if (CommandEndRenderPass2KHRPointer != IntPtr.Zero)
 		{
 			CommandEndRenderPass2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandEndRenderPass2KHRDelegate_0>(CommandEndRenderPass2KHRPointer);
+			CommandEndRenderPass2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandEndRenderPass2KHRDelegate_1>(CommandEndRenderPass2KHRPointer);
 		}
 		GetSwapchainStatusKHRPointer = GetInstanceProcedureAddress(instance, "GetSwapchainStatusKHR");
 		if (GetSwapchainStatusKHRPointer != IntPtr.Zero)
@@ -6545,6 +6844,7 @@ public static unsafe class VK
 		if (GetPhysicalDeviceExternalFencePropertiesKHRPointer != IntPtr.Zero)
 		{
 			GetPhysicalDeviceExternalFencePropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalFencePropertiesKHRDelegate_0>(GetPhysicalDeviceExternalFencePropertiesKHRPointer);
+			GetPhysicalDeviceExternalFencePropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceExternalFencePropertiesKHRDelegate_1>(GetPhysicalDeviceExternalFencePropertiesKHRPointer);
 		}
 		ImportFenceWin32HandleKHRPointer = GetInstanceProcedureAddress(instance, "ImportFenceWin32HandleKHR");
 		if (ImportFenceWin32HandleKHRPointer != IntPtr.Zero)
@@ -6731,16 +7031,21 @@ public static unsafe class VK
 		if (GetImageMemoryRequirements2KHRPointer != IntPtr.Zero)
 		{
 			GetImageMemoryRequirements2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetImageMemoryRequirements2KHRDelegate_0>(GetImageMemoryRequirements2KHRPointer);
+			GetImageMemoryRequirements2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetImageMemoryRequirements2KHRDelegate_1>(GetImageMemoryRequirements2KHRPointer);
 		}
 		GetBufferMemoryRequirements2KHRPointer = GetInstanceProcedureAddress(instance, "GetBufferMemoryRequirements2");
 		if (GetBufferMemoryRequirements2KHRPointer != IntPtr.Zero)
 		{
 			GetBufferMemoryRequirements2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetBufferMemoryRequirements2KHRDelegate_0>(GetBufferMemoryRequirements2KHRPointer);
+			GetBufferMemoryRequirements2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetBufferMemoryRequirements2KHRDelegate_1>(GetBufferMemoryRequirements2KHRPointer);
 		}
 		GetImageSparseMemoryRequirements2KHRPointer = GetInstanceProcedureAddress(instance, "GetImageSparseMemoryRequirements2");
 		if (GetImageSparseMemoryRequirements2KHRPointer != IntPtr.Zero)
 		{
 			GetImageSparseMemoryRequirements2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2KHRDelegate_0>(GetImageSparseMemoryRequirements2KHRPointer);
+			GetImageSparseMemoryRequirements2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2KHRDelegate_1>(GetImageSparseMemoryRequirements2KHRPointer);
+			GetImageSparseMemoryRequirements2KHR_2 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2KHRDelegate_2>(GetImageSparseMemoryRequirements2KHRPointer);
+			GetImageSparseMemoryRequirements2KHR_3 = Marshal.GetDelegateForFunctionPointer<GetImageSparseMemoryRequirements2KHRDelegate_3>(GetImageSparseMemoryRequirements2KHRPointer);
 		}
 		CreateAccelerationStructureKHRPointer = GetInstanceProcedureAddress(instance, "CreateAccelerationStructureKHR");
 		if (CreateAccelerationStructureKHRPointer != IntPtr.Zero)
@@ -6913,11 +7218,15 @@ public static unsafe class VK
 		if (CreateSamplerYcbcrConversionKHRPointer != IntPtr.Zero)
 		{
 			CreateSamplerYcbcrConversionKHR_0 = Marshal.GetDelegateForFunctionPointer<CreateSamplerYcbcrConversionKHRDelegate_0>(CreateSamplerYcbcrConversionKHRPointer);
+			CreateSamplerYcbcrConversionKHR_1 = Marshal.GetDelegateForFunctionPointer<CreateSamplerYcbcrConversionKHRDelegate_1>(CreateSamplerYcbcrConversionKHRPointer);
+			CreateSamplerYcbcrConversionKHR_2 = Marshal.GetDelegateForFunctionPointer<CreateSamplerYcbcrConversionKHRDelegate_2>(CreateSamplerYcbcrConversionKHRPointer);
+			CreateSamplerYcbcrConversionKHR_3 = Marshal.GetDelegateForFunctionPointer<CreateSamplerYcbcrConversionKHRDelegate_3>(CreateSamplerYcbcrConversionKHRPointer);
 		}
 		DestroySamplerYcbcrConversionKHRPointer = GetInstanceProcedureAddress(instance, "DestroySamplerYcbcrConversion");
 		if (DestroySamplerYcbcrConversionKHRPointer != IntPtr.Zero)
 		{
 			DestroySamplerYcbcrConversionKHR_0 = Marshal.GetDelegateForFunctionPointer<DestroySamplerYcbcrConversionKHRDelegate_0>(DestroySamplerYcbcrConversionKHRPointer);
+			DestroySamplerYcbcrConversionKHR_1 = Marshal.GetDelegateForFunctionPointer<DestroySamplerYcbcrConversionKHRDelegate_1>(DestroySamplerYcbcrConversionKHRPointer);
 		}
 		BindBufferMemory2KHRPointer = GetInstanceProcedureAddress(instance, "BindBufferMemory2");
 		if (BindBufferMemory2KHRPointer != IntPtr.Zero)
@@ -7046,6 +7355,7 @@ public static unsafe class VK
 		if (GetDescriptorSetLayoutSupportKHRPointer != IntPtr.Zero)
 		{
 			GetDescriptorSetLayoutSupportKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDescriptorSetLayoutSupportKHRDelegate_0>(GetDescriptorSetLayoutSupportKHRPointer);
+			GetDescriptorSetLayoutSupportKHR_1 = Marshal.GetDelegateForFunctionPointer<GetDescriptorSetLayoutSupportKHRDelegate_1>(GetDescriptorSetLayoutSupportKHRPointer);
 		}
 		CommandDrawIndirectCountKHRPointer = GetInstanceProcedureAddress(instance, "CommandDrawIndirectCount");
 		if (CommandDrawIndirectCountKHRPointer != IntPtr.Zero)
@@ -7119,11 +7429,13 @@ public static unsafe class VK
 		if (WaitSemaphoresKHRPointer != IntPtr.Zero)
 		{
 			WaitSemaphoresKHR_0 = Marshal.GetDelegateForFunctionPointer<WaitSemaphoresKHRDelegate_0>(WaitSemaphoresKHRPointer);
+			WaitSemaphoresKHR_1 = Marshal.GetDelegateForFunctionPointer<WaitSemaphoresKHRDelegate_1>(WaitSemaphoresKHRPointer);
 		}
 		SignalSemaphoreKHRPointer = GetInstanceProcedureAddress(instance, "SignalSemaphore");
 		if (SignalSemaphoreKHRPointer != IntPtr.Zero)
 		{
 			SignalSemaphoreKHR_0 = Marshal.GetDelegateForFunctionPointer<SignalSemaphoreKHRDelegate_0>(SignalSemaphoreKHRPointer);
+			SignalSemaphoreKHR_1 = Marshal.GetDelegateForFunctionPointer<SignalSemaphoreKHRDelegate_1>(SignalSemaphoreKHRPointer);
 		}
 		InitializePerformanceApiINTELPointer = GetInstanceProcedureAddress(instance, "InitializePerformanceApiINTEL");
 		if (InitializePerformanceApiINTELPointer != IntPtr.Zero)
@@ -7203,6 +7515,7 @@ public static unsafe class VK
 		if (GetPhysicalDeviceToolPropertiesEXTPointer != IntPtr.Zero)
 		{
 			GetPhysicalDeviceToolPropertiesEXT_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceToolPropertiesEXTDelegate_0>(GetPhysicalDeviceToolPropertiesEXTPointer);
+			GetPhysicalDeviceToolPropertiesEXT_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceToolPropertiesEXTDelegate_1>(GetPhysicalDeviceToolPropertiesEXTPointer);
 		}
 		WaitForPresentKHRPointer = GetInstanceProcedureAddress(instance, "WaitForPresentKHR");
 		if (WaitForPresentKHRPointer != IntPtr.Zero)
@@ -7313,6 +7626,21 @@ public static unsafe class VK
 		if (CommandBindVertexBuffers2EXTPointer != IntPtr.Zero)
 		{
 			CommandBindVertexBuffers2EXT_0 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_0>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_1 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_1>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_2 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_2>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_3 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_3>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_4 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_4>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_5 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_5>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_6 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_6>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_7 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_7>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_8 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_8>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_9 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_9>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_10 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_10>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_11 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_11>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_12 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_12>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_13 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_13>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_14 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_14>(CommandBindVertexBuffers2EXTPointer);
+			CommandBindVertexBuffers2EXT_15 = Marshal.GetDelegateForFunctionPointer<CommandBindVertexBuffers2EXTDelegate_15>(CommandBindVertexBuffers2EXTPointer);
 		}
 		CommandSetDepthTestEnableEXTPointer = GetInstanceProcedureAddress(instance, "CommandSetDepthTestEnable");
 		if (CommandSetDepthTestEnableEXTPointer != IntPtr.Zero)
@@ -7452,11 +7780,15 @@ public static unsafe class VK
 		if (CreatePrivateDataSlotEXTPointer != IntPtr.Zero)
 		{
 			CreatePrivateDataSlotEXT_0 = Marshal.GetDelegateForFunctionPointer<CreatePrivateDataSlotEXTDelegate_0>(CreatePrivateDataSlotEXTPointer);
+			CreatePrivateDataSlotEXT_1 = Marshal.GetDelegateForFunctionPointer<CreatePrivateDataSlotEXTDelegate_1>(CreatePrivateDataSlotEXTPointer);
+			CreatePrivateDataSlotEXT_2 = Marshal.GetDelegateForFunctionPointer<CreatePrivateDataSlotEXTDelegate_2>(CreatePrivateDataSlotEXTPointer);
+			CreatePrivateDataSlotEXT_3 = Marshal.GetDelegateForFunctionPointer<CreatePrivateDataSlotEXTDelegate_3>(CreatePrivateDataSlotEXTPointer);
 		}
 		DestroyPrivateDataSlotEXTPointer = GetInstanceProcedureAddress(instance, "DestroyPrivateDataSlot");
 		if (DestroyPrivateDataSlotEXTPointer != IntPtr.Zero)
 		{
 			DestroyPrivateDataSlotEXT_0 = Marshal.GetDelegateForFunctionPointer<DestroyPrivateDataSlotEXTDelegate_0>(DestroyPrivateDataSlotEXTPointer);
+			DestroyPrivateDataSlotEXT_1 = Marshal.GetDelegateForFunctionPointer<DestroyPrivateDataSlotEXTDelegate_1>(DestroyPrivateDataSlotEXTPointer);
 		}
 		SetPrivateDataEXTPointer = GetInstanceProcedureAddress(instance, "SetPrivateData");
 		if (SetPrivateDataEXTPointer != IntPtr.Zero)
@@ -7472,6 +7804,7 @@ public static unsafe class VK
 		if (CommandSetEvent2KHRPointer != IntPtr.Zero)
 		{
 			CommandSetEvent2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandSetEvent2KHRDelegate_0>(CommandSetEvent2KHRPointer);
+			CommandSetEvent2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandSetEvent2KHRDelegate_1>(CommandSetEvent2KHRPointer);
 		}
 		CommandResetEvent2KHRPointer = GetInstanceProcedureAddress(instance, "CommandResetEvent2");
 		if (CommandResetEvent2KHRPointer != IntPtr.Zero)
@@ -7487,6 +7820,7 @@ public static unsafe class VK
 		if (CommandPipelineBarrier2KHRPointer != IntPtr.Zero)
 		{
 			CommandPipelineBarrier2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrier2KHRDelegate_0>(CommandPipelineBarrier2KHRPointer);
+			CommandPipelineBarrier2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandPipelineBarrier2KHRDelegate_1>(CommandPipelineBarrier2KHRPointer);
 		}
 		CommandWriteTimestamp2KHRPointer = GetInstanceProcedureAddress(instance, "CommandWriteTimestamp2");
 		if (CommandWriteTimestamp2KHRPointer != IntPtr.Zero)
@@ -7597,31 +7931,37 @@ public static unsafe class VK
 		if (CommandCopyBuffer2KHRPointer != IntPtr.Zero)
 		{
 			CommandCopyBuffer2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyBuffer2KHRDelegate_0>(CommandCopyBuffer2KHRPointer);
+			CommandCopyBuffer2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyBuffer2KHRDelegate_1>(CommandCopyBuffer2KHRPointer);
 		}
 		CommandCopyImage2KHRPointer = GetInstanceProcedureAddress(instance, "CommandCopyImage2");
 		if (CommandCopyImage2KHRPointer != IntPtr.Zero)
 		{
 			CommandCopyImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyImage2KHRDelegate_0>(CommandCopyImage2KHRPointer);
+			CommandCopyImage2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyImage2KHRDelegate_1>(CommandCopyImage2KHRPointer);
 		}
 		CommandCopyBufferToImage2KHRPointer = GetInstanceProcedureAddress(instance, "CommandCopyBufferToImage2");
 		if (CommandCopyBufferToImage2KHRPointer != IntPtr.Zero)
 		{
 			CommandCopyBufferToImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferToImage2KHRDelegate_0>(CommandCopyBufferToImage2KHRPointer);
+			CommandCopyBufferToImage2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyBufferToImage2KHRDelegate_1>(CommandCopyBufferToImage2KHRPointer);
 		}
 		CommandCopyImageToBuffer2KHRPointer = GetInstanceProcedureAddress(instance, "CommandCopyImageToBuffer2");
 		if (CommandCopyImageToBuffer2KHRPointer != IntPtr.Zero)
 		{
 			CommandCopyImageToBuffer2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageToBuffer2KHRDelegate_0>(CommandCopyImageToBuffer2KHRPointer);
+			CommandCopyImageToBuffer2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandCopyImageToBuffer2KHRDelegate_1>(CommandCopyImageToBuffer2KHRPointer);
 		}
 		CommandBlitImage2KHRPointer = GetInstanceProcedureAddress(instance, "CommandBlitImage2");
 		if (CommandBlitImage2KHRPointer != IntPtr.Zero)
 		{
 			CommandBlitImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandBlitImage2KHRDelegate_0>(CommandBlitImage2KHRPointer);
+			CommandBlitImage2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandBlitImage2KHRDelegate_1>(CommandBlitImage2KHRPointer);
 		}
 		CommandResolveImage2KHRPointer = GetInstanceProcedureAddress(instance, "CommandResolveImage2");
 		if (CommandResolveImage2KHRPointer != IntPtr.Zero)
 		{
 			CommandResolveImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandResolveImage2KHRDelegate_0>(CommandResolveImage2KHRPointer);
+			CommandResolveImage2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandResolveImage2KHRDelegate_1>(CommandResolveImage2KHRPointer);
 		}
 		GetImageSubresourceLayout2EXTPointer = GetInstanceProcedureAddress(instance, "GetImageSubresourceLayout2EXT");
 		if (GetImageSubresourceLayout2EXTPointer != IntPtr.Zero)
@@ -7828,16 +8168,21 @@ public static unsafe class VK
 		if (GetDeviceBufferMemoryRequirementsKHRPointer != IntPtr.Zero)
 		{
 			GetDeviceBufferMemoryRequirementsKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceBufferMemoryRequirementsKHRDelegate_0>(GetDeviceBufferMemoryRequirementsKHRPointer);
+			GetDeviceBufferMemoryRequirementsKHR_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceBufferMemoryRequirementsKHRDelegate_1>(GetDeviceBufferMemoryRequirementsKHRPointer);
 		}
 		GetDeviceImageMemoryRequirementsKHRPointer = GetInstanceProcedureAddress(instance, "GetDeviceImageMemoryRequirements");
 		if (GetDeviceImageMemoryRequirementsKHRPointer != IntPtr.Zero)
 		{
 			GetDeviceImageMemoryRequirementsKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceImageMemoryRequirementsKHRDelegate_0>(GetDeviceImageMemoryRequirementsKHRPointer);
+			GetDeviceImageMemoryRequirementsKHR_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceImageMemoryRequirementsKHRDelegate_1>(GetDeviceImageMemoryRequirementsKHRPointer);
 		}
 		GetDeviceImageSparseMemoryRequirementsKHRPointer = GetInstanceProcedureAddress(instance, "GetDeviceImageSparseMemoryRequirements");
 		if (GetDeviceImageSparseMemoryRequirementsKHRPointer != IntPtr.Zero)
 		{
 			GetDeviceImageSparseMemoryRequirementsKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceImageSparseMemoryRequirementsKHRDelegate_0>(GetDeviceImageSparseMemoryRequirementsKHRPointer);
+			GetDeviceImageSparseMemoryRequirementsKHR_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceImageSparseMemoryRequirementsKHRDelegate_1>(GetDeviceImageSparseMemoryRequirementsKHRPointer);
+			GetDeviceImageSparseMemoryRequirementsKHR_2 = Marshal.GetDelegateForFunctionPointer<GetDeviceImageSparseMemoryRequirementsKHRDelegate_2>(GetDeviceImageSparseMemoryRequirementsKHRPointer);
+			GetDeviceImageSparseMemoryRequirementsKHR_3 = Marshal.GetDelegateForFunctionPointer<GetDeviceImageSparseMemoryRequirementsKHRDelegate_3>(GetDeviceImageSparseMemoryRequirementsKHRPointer);
 		}
 		GetDescriptorSetLayoutHostMappingInfoVALVEPointer = GetInstanceProcedureAddress(instance, "GetDescriptorSetLayoutHostMappingInfoVALVE");
 		if (GetDescriptorSetLayoutHostMappingInfoVALVEPointer != IntPtr.Zero)

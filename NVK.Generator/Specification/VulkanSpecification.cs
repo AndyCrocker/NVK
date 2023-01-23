@@ -70,7 +70,7 @@ internal class VulkanSpecification
             .Where(extensionInfo => extensionInfo.Supported != "disabled" && !disallowedExtensions.Contains(extensionInfo.Name))
             .Where(extensionInfo => extensionInfo.Platform == null || supportedPlatforms.Contains(extensionInfo.Platform)).ToList();
 
-        Functions = commandElements.Select(commandElement => new FunctionInfo(commandElement)).ToList();
+        Functions = commandElements.Select(commandElement => new FunctionInfo(commandElement, this)).ToList();
 
         Feature = new FeatureInfo(featureElements, supportedExtensions, this);
     }

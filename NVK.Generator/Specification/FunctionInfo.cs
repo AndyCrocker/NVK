@@ -4,6 +4,13 @@
 internal class FunctionInfo
 {
     /*********
+    ** Fields
+    *********/
+    /// <summary>The specification the function was parsed from.</summary>
+    private VulkanSpecification Specification { get; }
+
+
+    /*********
     ** Properties
     *********/
     /// <summary>The name of the function.</summary>
@@ -47,8 +54,11 @@ internal class FunctionInfo
     *********/
     /// <summary>Constructs an instance.</summary>
     /// <param name="element">The &lt;command&gt; element to parse the function from.</param>
-    public FunctionInfo(XElement element)
+    /// <param name="specification">The specification to use when parsing the function.</param>
+    public FunctionInfo(XElement element, VulkanSpecification specification)
     {
+        Specification = specification;
+
         // if the function is an alias, the name is stored as an attribute instead of a child element
         Alias = element.Attribute("alias")?.Value;
         if (Alias != null)
@@ -75,12 +85,14 @@ internal class FunctionInfo
     }
 
     /// <summary>Constructs an instance.</summary>
+    /// <param name="specification">The specification the function was parsed from.</param>
     /// <param name="name">The name of the function.</param>
     /// <param name="returnType">The return type of the function.</param>
     /// <param name="parameters">The parameters of the function.</param>
     /// <param name="alias">The name of the function that this function is an alias of.</param>
-    public FunctionInfo(string name, TypeInfo returnType, List<FunctionParameterInfo> parameters, string? alias)
+    private FunctionInfo(VulkanSpecification specification, string name, TypeInfo returnType, List<FunctionParameterInfo> parameters, string? alias)
     {
+        Specification = specification;
         Name = name;
         ReturnType = returnType;
         Parameters = parameters;
@@ -165,24 +177,24 @@ internal class FunctionInfo
     /// <returns>All the overloads that the function can have.</returns>
     private List<FunctionInfo> GenerateAllOverloads()
     {
-        // TODO: TEMP
-        if (Parameters.Count == 0)
-            return new() { this };
+        var parameters = Parameters;
+        if (Alias != null)
+            parameters = Specification.Functions.Single(functionInfo => functionInfo.Name == Alias).Parameters;
 
         // get all the version each parameter can be
         var parameterVariations = new List<List<FunctionParameterInfo>>();
-        for (int i = 0; i < Parameters.Count; i++)
-            parameterVariations.Add(GetParameterVariations(Parameters[i]));
+        for (int i = 0; i < parameters.Count; i++)
+            parameterVariations.Add(GetParameterVariations(parameters[i], parameters));
 
         // get all parameter variations
         var parameterCombinations = GetParameterCombinations(parameterVariations);
-        return parameterCombinations.Select(parameterCombination => new FunctionInfo(Name, ReturnType, parameterCombination, Alias)).ToList();
+        return parameterCombinations.Select(parameterCombination => new FunctionInfo(Specification, Name, ReturnType, parameterCombination, Alias)).ToList();
     }
 
     /// <summary>Generates all varieties of a parameter.</summary>
     /// <param name="parameterInfo">The parameter to generate the variations of.</param>
     /// <returns>The variations that <paramref name="parameterInfo"/> can have, including <paramref name="parameterInfo"/> itself.</returns>
-    private List<FunctionParameterInfo> GetParameterVariations(FunctionParameterInfo parameterInfo)
+    private List<FunctionParameterInfo> GetParameterVariations(FunctionParameterInfo parameterInfo, List<FunctionParameterInfo> parameterInfos)
     {
         // ensure parameter can have multiple variations
         if (parameterInfo.Type.PointerIndirection == 0 || parameterInfo.Type.Name == "void")
@@ -192,12 +204,12 @@ internal class FunctionInfo
         if (parameterInfo.Name.EndsWith("Infos"))
             return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, isArray: true), ParameterModifier.None) };
 
-        var parameterIndex = Parameters.IndexOf(parameterInfo);
-        var previousParameter = parameterIndex >= 1 ? Parameters[parameterIndex - 1] : null;
+        var parameterIndex = parameterInfos.IndexOf(parameterInfo);
+        var previousParameter = parameterIndex >= 1 ? parameterInfos[parameterIndex - 1] : null;
         if ((DisplayName.StartsWith("Enumerate")                                                            // enumerate methods
                 || (DisplayName.StartsWith("Allocate") && DisplayName.EndsWith("s"))                        // certain allocate methods
                 || (DisplayName.StartsWith("Get") && (previousParameter?.Name.EndsWith("Count") ?? false))) // and certain get methods should all have a marshalled array
-            && Parameters.Last() == parameterInfo)                                                          // on the last parameter
+            && parameterInfos.Last() == parameterInfo)                                                          // on the last parameter
             return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, isArray: true), ParameterModifier.InOut) };
 
         // check if parameter is a byte pointer (meaning it's actually a string)
@@ -209,7 +221,7 @@ internal class FunctionInfo
                 || DisplayName.StartsWith("Create")            // create methods
                 || DisplayName.StartsWith("Get")               // get methods
                 || DisplayName.StartsWith("AcquireNextImage")) // and 'AcquireNextImage(2)KHR' should all have outs
-            && Parameters.Last() == parameterInfo)             // on the last parameter
+            && parameterInfos.Last() == parameterInfo)             // on the last parameter
             return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Out) };
 
         // check parameter pairs for converting pointers to arrays, an example of a pair we are are looking for is: 'uint submitCount, VkSubmitInfo* submits', in this case 'submits' should be an array
