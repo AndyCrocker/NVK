@@ -150,10 +150,10 @@ internal class FeatureInfo
             return;
         }
 
-        var delegateInfo = Specification.Delegates.SingleOrDefault(delegateInfo => delegateInfo.Name == name);
+        var delegateInfo = Specification.Delegates.SingleOrDefault(delegateInfo => delegateInfo.DisplayName == name);
         if (delegateInfo != null)
         {
-            if (!Delegates.Any(delegateInfo => delegateInfo.Name == name)) // types may potentially get duplicated as some specs list required types explicitly while others don't
+            if (!Delegates.Any(delegateInfo => delegateInfo.DisplayName == name)) // types may potentially get duplicated as some specs list required types explicitly while others don't
                 Delegates.Add(delegateInfo);
             return;
         }

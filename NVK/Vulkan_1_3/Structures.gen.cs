@@ -131,11 +131,11 @@ public unsafe struct VkApplicationInfo
 public unsafe struct VkAllocationCallbacks
 {
 	public void* pUserData;
-	public PFN_vkAllocationFunction pfnAllocation;
-	public PFN_vkReallocationFunction pfnReallocation;
-	public PFN_vkFreeFunction pfnFree;
-	public PFN_vkInternalAllocationNotification pfnInternalAllocation;
-	public PFN_vkInternalFreeNotification pfnInternalFree;
+	public AllocationFunctionDelegate pfnAllocation;
+	public ReallocationFunctionDelegate pfnReallocation;
+	public FreeFunctionDelegate pfnFree;
+	public InternalAllocationNotificationDelegate pfnInternalAllocation;
+	public InternalFreeNotificationDelegate pfnInternalFree;
 }
 public unsafe struct VkPhysicalDeviceFeatures
 {
@@ -2972,7 +2972,7 @@ public unsafe struct VkDebugReportCallbackCreateInfoEXT
 	public VkStructureType sType;
 	public void* pNext;
 	public VkDebugReportFlagsEXT flags;
-	public PFN_vkDebugReportCallbackEXT pfnCallback;
+	public DebugReportCallbackEXTDelegate pfnCallback;
 	public void* pUserData;
 }
 public unsafe struct VkPipelineRasterizationStateRasterizationOrderAMD
@@ -4621,7 +4621,7 @@ public unsafe struct VkDebugUtilsMessengerCreateInfoEXT
 	public VkDebugUtilsMessengerCreateFlagsEXT flags;
 	public VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
 	public VkDebugUtilsMessageTypeFlagsEXT messageType;
-	public PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback;
+	public DebugUtilsMessengerCallbackEXTDelegate pfnUserCallback;
 	public void* pUserData;
 }
 public unsafe struct VkDebugUtilsMessengerCallbackDataEXT
@@ -6972,7 +6972,7 @@ public unsafe struct VkDeviceDeviceMemoryReportCreateInfoEXT
 	public VkStructureType sType;
 	public void* pNext;
 	public VkDeviceMemoryReportFlagsEXT flags;
-	public PFN_vkDeviceMemoryReportCallbackEXT pfnUserCallback;
+	public DeviceMemoryReportCallbackEXTDelegate pfnUserCallback;
 	public void* pUserData;
 }
 public unsafe struct VkDeviceMemoryReportCallbackDataEXT
@@ -8516,7 +8516,7 @@ public unsafe struct VkDirectDriverLoadingInfoLUNARG
 	public VkStructureType sType;
 	public void* pNext;
 	public VkDirectDriverLoadingFlagsLUNARG flags;
-	public PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr;
+	public GetInstanceProcedureAddressLUNARGDelegate pfnGetInstanceProcAddr;
 }
 public unsafe struct VkDirectDriverLoadingListLUNARG
 {

@@ -15,6 +15,9 @@ internal class DelegateInfo
     /// <summary>The parameters of the delegate.</summary>
     public List<DelegateParameterInfo> Parameters { get; } = new();
 
+    /// <summary>The display string for <see cref="Name"/>.</summary>
+    public string DisplayName => CalculateDisplayName(Name);
+
 
     /*********
     ** Constructors
@@ -56,7 +59,12 @@ internal class DelegateInfo
     /// <param name="writer">The writer to write the delegate to.</param>
     public void Write(CsWriter writer)
     {
-        var parametersString = string.Join(", ", Parameters.Select(parameterInfo => $"{parameterInfo.Type} {parameterInfo.Name}"));
-        writer.WriteLine($"public unsafe delegate {ReturnType} {Name}({parametersString});");
+        var parametersString = string.Join(", ", Parameters.Select(parameterInfo => $"{parameterInfo.Type} {FunctionParameterInfo.CalculateDisplayName(parameterInfo.Name, parameterInfo.Type.PointerIndirection)}"));
+        writer.WriteLine($"public unsafe delegate {ReturnType} {DisplayName}({parametersString});");
     }
+
+    /// <summary>Calculates the display name of a delegate name.</summary>
+    /// <param name="name">The name to calculate the display name of.</param>
+    /// <returns>The display name for a delegate called <paramref name="name"/>.</returns>
+    public static string CalculateDisplayName(string name) => $"{name[6..].ResolveAbbreviations()}Delegate"; // first 6 characters is the PFN_vk prefix
 }

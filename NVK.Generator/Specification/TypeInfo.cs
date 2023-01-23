@@ -100,6 +100,9 @@ internal class TypeInfo
         if (TypeConverter.TryGetValue(name, out var convertedName))
             name = convertedName;
 
+        if (name.StartsWith("PFN_vk"))
+            return DelegateInfo.CalculateDisplayName(name);
+
         return name;
     }
 }

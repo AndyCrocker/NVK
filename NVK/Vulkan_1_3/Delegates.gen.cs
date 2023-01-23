@@ -1,13 +1,12 @@
 // This file was generated, don't manually edit
 namespace Vulkan_1_3;
 
-public unsafe delegate void* PFN_vkAllocationFunction(void* pUserData, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
-public unsafe delegate void* PFN_vkReallocationFunction(void* pUserData, void* pOriginal, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
-public unsafe delegate void PFN_vkFreeFunction(void* pUserData, void* pMemory);
-public unsafe delegate void PFN_vkInternalAllocationNotification(void* pUserData, nuint size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope);
-public unsafe delegate void PFN_vkInternalFreeNotification(void* pUserData, nuint size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope);
-public unsafe delegate void PFN_vkVoidFunction();
-public unsafe delegate VkBool32 PFN_vkDebugReportCallbackEXT(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong object, nuint location, int messageCode, byte* pLayerPrefix, byte* pMessage, void* pUserData);
-public unsafe delegate VkBool32 PFN_vkDebugUtilsMessengerCallbackEXT(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageTypes, VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData);
-public unsafe delegate void PFN_vkDeviceMemoryReportCallbackEXT(VkDeviceMemoryReportCallbackDataEXT* pCallbackData, void* pUserData);
-public unsafe delegate IntPtr PFN_vkGetInstanceProcAddrLUNARG(VkInstance instance, byte* pName);
+public unsafe delegate void* AllocationFunctionDelegate(void* userData, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
+public unsafe delegate void* ReallocationFunctionDelegate(void* userData, void* original, nuint size, nuint alignment, VkSystemAllocationScope allocationScope);
+public unsafe delegate void FreeFunctionDelegate(void* userData, void* memory);
+public unsafe delegate void InternalAllocationNotificationDelegate(void* userData, nuint size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope);
+public unsafe delegate void InternalFreeNotificationDelegate(void* userData, nuint size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope);
+public unsafe delegate VkBool32 DebugReportCallbackEXTDelegate(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, byte* layerPrefix, byte* message, void* userData);
+public unsafe delegate VkBool32 DebugUtilsMessengerCallbackEXTDelegate(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageTypes, VkDebugUtilsMessengerCallbackDataEXT* callbackData, void* userData);
+public unsafe delegate void DeviceMemoryReportCallbackEXTDelegate(VkDeviceMemoryReportCallbackDataEXT* callbackData, void* userData);
+public unsafe delegate IntPtr GetInstanceProcedureAddressLUNARGDelegate(VkInstance instance, byte* name);
