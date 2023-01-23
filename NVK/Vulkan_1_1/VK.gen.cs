@@ -1885,28 +1885,6 @@ public static unsafe class VK
 	private delegate void CommandDispatchBaseKHRDelegate_0(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ);
 	private static CommandDispatchBaseKHRDelegate_0 CommandDispatchBaseKHR_0;
 	private static IntPtr CommandDispatchBaseKHRPointer;
-	public static VkResult GetDeviceGroupPresentCapabilitiesKHR(VkDevice device, out VkDeviceGroupPresentCapabilitiesKHR deviceGroupPresentCapabilities) => GetDeviceGroupPresentCapabilitiesKHR_0(device, out deviceGroupPresentCapabilities);
-	private delegate VkResult GetDeviceGroupPresentCapabilitiesKHRDelegate_0(VkDevice device, out VkDeviceGroupPresentCapabilitiesKHR deviceGroupPresentCapabilities);
-	private static GetDeviceGroupPresentCapabilitiesKHRDelegate_0 GetDeviceGroupPresentCapabilitiesKHR_0;
-	private static IntPtr GetDeviceGroupPresentCapabilitiesKHRPointer;
-	public static VkResult GetDeviceGroupSurfacePresentModesKHR(VkDevice device, VkSurfaceKHR surface, out VkDeviceGroupPresentModeFlagsKHR modes) => GetDeviceGroupSurfacePresentModesKHR_0(device, surface, out modes);
-	private delegate VkResult GetDeviceGroupSurfacePresentModesKHRDelegate_0(VkDevice device, VkSurfaceKHR surface, out VkDeviceGroupPresentModeFlagsKHR modes);
-	private static GetDeviceGroupSurfacePresentModesKHRDelegate_0 GetDeviceGroupSurfacePresentModesKHR_0;
-	private static IntPtr GetDeviceGroupSurfacePresentModesKHRPointer;
-	public static VkResult GetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, [In, Out] VkRect2D[] rects) => GetPhysicalDevicePresentRectanglesKHR_0(physicalDevice, surface, rectCount, rects);
-	private delegate VkResult GetPhysicalDevicePresentRectanglesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, [In, Out] VkRect2D[] rects);
-	private static GetPhysicalDevicePresentRectanglesKHRDelegate_0 GetPhysicalDevicePresentRectanglesKHR_0;
-	public static VkResult GetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, [In, Out] VkRect2D[] rects) => GetPhysicalDevicePresentRectanglesKHR_1(physicalDevice, surface, ref rectCount, rects);
-	private delegate VkResult GetPhysicalDevicePresentRectanglesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, [In, Out] VkRect2D[] rects);
-	private static GetPhysicalDevicePresentRectanglesKHRDelegate_1 GetPhysicalDevicePresentRectanglesKHR_1;
-	private static IntPtr GetPhysicalDevicePresentRectanglesKHRPointer;
-	public static VkResult AcquireNextImage2KHR(VkDevice device, VkAcquireNextImageInfoKHR* acquireInfo, out uint imageIndex) => AcquireNextImage2KHR_0(device, acquireInfo, out imageIndex);
-	private delegate VkResult AcquireNextImage2KHRDelegate_0(VkDevice device, VkAcquireNextImageInfoKHR* acquireInfo, out uint imageIndex);
-	private static AcquireNextImage2KHRDelegate_0 AcquireNextImage2KHR_0;
-	public static VkResult AcquireNextImage2KHR(VkDevice device, ref VkAcquireNextImageInfoKHR acquireInfo, out uint imageIndex) => AcquireNextImage2KHR_1(device, ref acquireInfo, out imageIndex);
-	private delegate VkResult AcquireNextImage2KHRDelegate_1(VkDevice device, ref VkAcquireNextImageInfoKHR acquireInfo, out uint imageIndex);
-	private static AcquireNextImage2KHRDelegate_1 AcquireNextImage2KHR_1;
-	private static IntPtr AcquireNextImage2KHRPointer;
 	[Obsolete("Use TrimCommandPool")]
 	public static void TrimCommandPoolKHR(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags) => TrimCommandPoolKHR_0(device, commandPool, flags);
 	private delegate void TrimCommandPoolKHRDelegate_0(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags);
@@ -2039,10 +2017,6 @@ public static unsafe class VK
 	private delegate void UpdateDescriptorSetWithTemplateKHRDelegate_0(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* data);
 	private static UpdateDescriptorSetWithTemplateKHRDelegate_0 UpdateDescriptorSetWithTemplateKHR_0;
 	private static IntPtr UpdateDescriptorSetWithTemplateKHRPointer;
-	public static void CommandPushDescriptorSetWithTemplateKHR(VkCommandBuffer commandBuffer, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkPipelineLayout layout, uint set, void* data) => CommandPushDescriptorSetWithTemplateKHR_0(commandBuffer, descriptorUpdateTemplate, layout, set, data);
-	private delegate void CommandPushDescriptorSetWithTemplateKHRDelegate_0(VkCommandBuffer commandBuffer, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkPipelineLayout layout, uint set, void* data);
-	private static CommandPushDescriptorSetWithTemplateKHRDelegate_0 CommandPushDescriptorSetWithTemplateKHR_0;
-	private static IntPtr CommandPushDescriptorSetWithTemplateKHRPointer;
 	public static void CommandProcessCommandsNVX(VkCommandBuffer commandBuffer, VkCmdProcessCommandsInfoNVX* processCommandsInfo) => CommandProcessCommandsNVX_0(commandBuffer, processCommandsInfo);
 	private delegate void CommandProcessCommandsNVXDelegate_0(VkCommandBuffer commandBuffer, VkCmdProcessCommandsInfoNVX* processCommandsInfo);
 	private static CommandProcessCommandsNVXDelegate_0 CommandProcessCommandsNVX_0;
@@ -2882,13 +2856,6 @@ public static unsafe class VK
 	private delegate VkResult ReleaseFullScreenExclusiveModeEXTDelegate_0(VkDevice device, VkSwapchainKHR swapchain);
 	private static ReleaseFullScreenExclusiveModeEXTDelegate_0 ReleaseFullScreenExclusiveModeEXT_0;
 	private static IntPtr ReleaseFullScreenExclusiveModeEXTPointer;
-	public static VkResult GetDeviceGroupSurfacePresentModes2EXT(VkDevice device, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkDeviceGroupPresentModeFlagsKHR modes) => GetDeviceGroupSurfacePresentModes2EXT_0(device, surfaceInfo, out modes);
-	private delegate VkResult GetDeviceGroupSurfacePresentModes2EXTDelegate_0(VkDevice device, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkDeviceGroupPresentModeFlagsKHR modes);
-	private static GetDeviceGroupSurfacePresentModes2EXTDelegate_0 GetDeviceGroupSurfacePresentModes2EXT_0;
-	public static VkResult GetDeviceGroupSurfacePresentModes2EXT(VkDevice device, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, out VkDeviceGroupPresentModeFlagsKHR modes) => GetDeviceGroupSurfacePresentModes2EXT_1(device, ref surfaceInfo, out modes);
-	private delegate VkResult GetDeviceGroupSurfacePresentModes2EXTDelegate_1(VkDevice device, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, out VkDeviceGroupPresentModeFlagsKHR modes);
-	private static GetDeviceGroupSurfacePresentModes2EXTDelegate_1 GetDeviceGroupSurfacePresentModes2EXT_1;
-	private static IntPtr GetDeviceGroupSurfacePresentModes2EXTPointer;
 	public static VkResult GetDeviceGroupSurfacePresentModes2EXT(VkDevice device, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkDeviceGroupPresentModeFlagsKHR modes) => GetDeviceGroupSurfacePresentModes2EXT_0(device, surfaceInfo, out modes);
 	private delegate VkResult GetDeviceGroupSurfacePresentModes2EXTDelegate_0(VkDevice device, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkDeviceGroupPresentModeFlagsKHR modes);
 	private static GetDeviceGroupSurfacePresentModes2EXTDelegate_0 GetDeviceGroupSurfacePresentModes2EXT_0;
@@ -4284,28 +4251,6 @@ public static unsafe class VK
 		{
 			CommandDispatchBaseKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandDispatchBaseKHRDelegate_0>(CommandDispatchBaseKHRPointer);
 		}
-		GetDeviceGroupPresentCapabilitiesKHRPointer = GetInstanceProcedureAddress(instance, "GetDeviceGroupPresentCapabilitiesKHR");
-		if (GetDeviceGroupPresentCapabilitiesKHRPointer != IntPtr.Zero)
-		{
-			GetDeviceGroupPresentCapabilitiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupPresentCapabilitiesKHRDelegate_0>(GetDeviceGroupPresentCapabilitiesKHRPointer);
-		}
-		GetDeviceGroupSurfacePresentModesKHRPointer = GetInstanceProcedureAddress(instance, "GetDeviceGroupSurfacePresentModesKHR");
-		if (GetDeviceGroupSurfacePresentModesKHRPointer != IntPtr.Zero)
-		{
-			GetDeviceGroupSurfacePresentModesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupSurfacePresentModesKHRDelegate_0>(GetDeviceGroupSurfacePresentModesKHRPointer);
-		}
-		GetPhysicalDevicePresentRectanglesKHRPointer = GetInstanceProcedureAddress(instance, "GetPhysicalDevicePresentRectanglesKHR");
-		if (GetPhysicalDevicePresentRectanglesKHRPointer != IntPtr.Zero)
-		{
-			GetPhysicalDevicePresentRectanglesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePresentRectanglesKHRDelegate_0>(GetPhysicalDevicePresentRectanglesKHRPointer);
-			GetPhysicalDevicePresentRectanglesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDevicePresentRectanglesKHRDelegate_1>(GetPhysicalDevicePresentRectanglesKHRPointer);
-		}
-		AcquireNextImage2KHRPointer = GetInstanceProcedureAddress(instance, "AcquireNextImage2KHR");
-		if (AcquireNextImage2KHRPointer != IntPtr.Zero)
-		{
-			AcquireNextImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<AcquireNextImage2KHRDelegate_0>(AcquireNextImage2KHRPointer);
-			AcquireNextImage2KHR_1 = Marshal.GetDelegateForFunctionPointer<AcquireNextImage2KHRDelegate_1>(AcquireNextImage2KHRPointer);
-		}
 		TrimCommandPoolKHRPointer = GetInstanceProcedureAddress(instance, "TrimCommandPool");
 		if (TrimCommandPoolKHRPointer != IntPtr.Zero)
 		{
@@ -4414,11 +4359,6 @@ public static unsafe class VK
 		if (UpdateDescriptorSetWithTemplateKHRPointer != IntPtr.Zero)
 		{
 			UpdateDescriptorSetWithTemplateKHR_0 = Marshal.GetDelegateForFunctionPointer<UpdateDescriptorSetWithTemplateKHRDelegate_0>(UpdateDescriptorSetWithTemplateKHRPointer);
-		}
-		CommandPushDescriptorSetWithTemplateKHRPointer = GetInstanceProcedureAddress(instance, "CommandPushDescriptorSetWithTemplateKHR");
-		if (CommandPushDescriptorSetWithTemplateKHRPointer != IntPtr.Zero)
-		{
-			CommandPushDescriptorSetWithTemplateKHR_0 = Marshal.GetDelegateForFunctionPointer<CommandPushDescriptorSetWithTemplateKHRDelegate_0>(CommandPushDescriptorSetWithTemplateKHRPointer);
 		}
 		CommandProcessCommandsNVXPointer = GetInstanceProcedureAddress(instance, "CommandProcessCommandsNVX");
 		if (CommandProcessCommandsNVXPointer != IntPtr.Zero)
@@ -5117,12 +5057,6 @@ public static unsafe class VK
 		if (ReleaseFullScreenExclusiveModeEXTPointer != IntPtr.Zero)
 		{
 			ReleaseFullScreenExclusiveModeEXT_0 = Marshal.GetDelegateForFunctionPointer<ReleaseFullScreenExclusiveModeEXTDelegate_0>(ReleaseFullScreenExclusiveModeEXTPointer);
-		}
-		GetDeviceGroupSurfacePresentModes2EXTPointer = GetInstanceProcedureAddress(instance, "GetDeviceGroupSurfacePresentModes2EXT");
-		if (GetDeviceGroupSurfacePresentModes2EXTPointer != IntPtr.Zero)
-		{
-			GetDeviceGroupSurfacePresentModes2EXT_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupSurfacePresentModes2EXTDelegate_0>(GetDeviceGroupSurfacePresentModes2EXTPointer);
-			GetDeviceGroupSurfacePresentModes2EXT_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceGroupSurfacePresentModes2EXTDelegate_1>(GetDeviceGroupSurfacePresentModes2EXTPointer);
 		}
 		GetDeviceGroupSurfacePresentModes2EXTPointer = GetInstanceProcedureAddress(instance, "GetDeviceGroupSurfacePresentModes2EXT");
 		if (GetDeviceGroupSurfacePresentModes2EXTPointer != IntPtr.Zero)

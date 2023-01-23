@@ -163,6 +163,9 @@ internal class FeatureInfo
     /// <param name="name">The name of the function to add to the feature from the specification.</param>
     private void AddFunctionByName(string name)
     {
+        if (Functions.Any(functionInfo => functionInfo.Name == name))
+            return;
+
         // most types (especially in V1.0) expect generators to implicitly load types that are used in a function return or parameters instead of the registry explicitly listing them
         var functionInfo = Specification.Functions.Single(functionInfo => functionInfo.Name == name);
 
