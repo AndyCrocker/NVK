@@ -10,4 +10,4 @@ public unsafe delegate void PFN_vkVoidFunction();
 public unsafe delegate VkBool32 PFN_vkDebugReportCallbackEXT(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong object, nuint location, int messageCode, byte* pLayerPrefix, byte* pMessage, void* pUserData);
 public unsafe delegate VkBool32 PFN_vkDebugUtilsMessengerCallbackEXT(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageTypes, VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData);
 public unsafe delegate void PFN_vkDeviceMemoryReportCallbackEXT(VkDeviceMemoryReportCallbackDataEXT* pCallbackData, void* pUserData);
-public unsafe delegate PFN_vkVoidFunction PFN_vkGetInstanceProcAddrLUNARG(VkInstance instance, byte* pName);
+public unsafe delegate IntPtr PFN_vkGetInstanceProcAddrLUNARG(VkInstance instance, byte* pName);

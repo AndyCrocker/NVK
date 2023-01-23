@@ -6,5 +6,4 @@ public unsafe delegate void* PFN_vkReallocationFunction(void* pUserData, void* p
 public unsafe delegate void PFN_vkFreeFunction(void* pUserData, void* pMemory);
 public unsafe delegate void PFN_vkInternalAllocationNotification(void* pUserData, nuint size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope);
 public unsafe delegate void PFN_vkInternalFreeNotification(void* pUserData, nuint size, VkInternalAllocationType allocationType, VkSystemAllocationScope allocationScope);
-public unsafe delegate void PFN_vkVoidFunction();
 public unsafe delegate VkBool32 PFN_vkDebugReportCallbackEXT(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong object, nuint location, int messageCode, byte* pLayerPrefix, byte* pMessage, void* pUserData);

@@ -48,7 +48,8 @@ internal class TypeInfo
 
         // misc Vulkan
         ["VkRemoteAddressNV"] = "IntPtr",
-        ["VkSampleMask"] = "uint"
+        ["VkSampleMask"] = "uint",
+        ["PFN_vkVoidFunction"] = "IntPtr"
     };
 
 
@@ -61,6 +62,9 @@ internal class TypeInfo
     /// <summary>The pointer indirection of the type.</summary>
     public int PointerIndirection { get; }
 
+    /// <summary>Whether the type is an array.</summary>
+    public bool IsArray { get; }
+
 
     /*********
     ** Constructors
@@ -68,10 +72,12 @@ internal class TypeInfo
     /// <summary>Constructs an instance.</summary>
     /// <param name="name">The name of the type.</param>
     /// <param name="pointerIndirection">The pointer indirection of the type.</param>
-    public TypeInfo(string name, int pointerIndirection = 0)
+    /// <param name="isArray">Whether the type is an array.</param>
+    public TypeInfo(string name, int pointerIndirection = 0, bool isArray = false)
     {
         Name = CalculateDisplayName(name);
         PointerIndirection = pointerIndirection;
+        IsArray = isArray;
     }
 
 
@@ -80,7 +86,7 @@ internal class TypeInfo
     *********/
     /// <summary>Gets a string that represents the type.</summary>
     /// <returns>A string that represents the type.</returns>
-    public override string? ToString() => $"{Name}{new('*', PointerIndirection)}";
+    public override string? ToString() => $"{Name}{new('*', PointerIndirection)}{(IsArray ? "[]" : "")}";
 
 
     /*********

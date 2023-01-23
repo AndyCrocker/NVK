@@ -128,7 +128,7 @@ internal static class CodeGenerator
                 constantInfo.Write(writer);
 
             foreach (var functionInfo in Specification.Functions)
-                functionInfo.Write(writer, Specification);
+                functionInfo.Write(writer);
 
             writer.WriteLine("private static readonly OSVulkanLibraryBase VulkanLibrary;");
             writer.WriteLine("static VK()");
