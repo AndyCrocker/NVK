@@ -31,7 +31,7 @@ internal class ExtensionEnumFieldInfo
     public ExtensionEnumFieldInfo(int? extensionNumber, string enumName, XElement enumFieldElement)
     {
         ExtensionNumber = extensionNumber;
-        EnumName = enumName;
+        EnumName = TypeInfo.CalculateDisplayName(enumName);
         EnumFieldElement = enumFieldElement;
 
         Name = enumFieldElement.Attribute("name")!.Value;

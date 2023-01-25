@@ -49,9 +49,13 @@ internal class VulkanSpecification
 
         // enums are declared and defined in different places, first parse the definitions then copy over all the declarations, taking into account duplicating definitions for aliased enums
         var enumDefinitions = enumsElements.WithoutAttribute("name", "API Constants")
-            .Select(enumsElement => new EnumInfo(enumsElement)).ToList();
+            .Select(enumsElement => new EnumInfo(enumsElement, true)).ToList();
         Enums = typeElements.WithAttribute("category", "enum", "bitmask")
-            .Select(enumElement => new EnumInfo(enumElement, enumDefinitions)).ToList();
+            .Select(enumElement => new EnumInfo(enumElement, false)).ToList();
+        foreach (var enumInfo in Enums) // Fields couldn't be populated at parsing time as they reference other declarations which may not have been parsed yet
+            enumInfo.PopulateFields(Enums, enumDefinitions);
+        // remove all "_FlagBits" enums, all relevant data was moved over from them to the "_Flags" enums and type conversion has already been set up
+        Enums.RemoveAll(enumInfo => Enums.Any(ei => (enumInfo.Alias ?? enumInfo.Name) == ei.Requires));
 
         Handles = typeElements.WithAttribute("category", "handle")
             .Select(handleElement => new HandleInfo(handleElement)).ToList();
@@ -62,6 +66,8 @@ internal class VulkanSpecification
         Delegates = typeElements.WithAttribute("category", "funcpointer")
             .Select(delegateElement => new DelegateInfo(delegateElement)).ToList();
 
+        Functions = commandElements.Select(commandElement => new FunctionInfo(commandElement, this)).ToList();
+
         var supportedPlatforms = new[] { "win32", "macos", "xlib", "xcb", "wayland", "android" };
         var disallowedExtensions = new[] { "VK_KHR_mir_surface" }; // https://github.com/KhronosGroup/Vulkan-Docs/issues/814
         var allExtensions = extensionElements
@@ -69,8 +75,6 @@ internal class VulkanSpecification
         var supportedExtensions = allExtensions
             .Where(extensionInfo => extensionInfo.Supported != "disabled" && !disallowedExtensions.Contains(extensionInfo.Name))
             .Where(extensionInfo => extensionInfo.Platform == null || supportedPlatforms.Contains(extensionInfo.Platform)).ToList();
-
-        Functions = commandElements.Select(commandElement => new FunctionInfo(commandElement, this)).ToList();
 
         Feature = new FeatureInfo(featureElements, supportedExtensions, this);
     }

@@ -509,7 +509,7 @@ public unsafe struct VkImageCreateInfo
 	public VkExtent3D extent;
 	public uint mipLevels;
 	public uint arrayLayers;
-	public VkSampleCountFlagBits samples;
+	public VkSampleCountFlags samples;
 	public VkImageTiling tiling;
 	public VkImageUsageFlags usage;
 	public VkSharingMode sharingMode;
@@ -594,7 +594,7 @@ public unsafe struct VkPipelineShaderStageCreateInfo
 	public VkStructureType sType;
 	public void* pNext;
 	public VkPipelineShaderStageCreateFlags flags;
-	public VkShaderStageFlagBits stage;
+	public VkShaderStageFlags stage;
 	public VkShaderModule module;
 	public byte* pName;
 	public VkSpecializationInfo* pSpecializationInfo;
@@ -705,7 +705,7 @@ public unsafe struct VkPipelineMultisampleStateCreateInfo
 	public VkStructureType sType;
 	public void* pNext;
 	public VkPipelineMultisampleStateCreateFlags flags;
-	public VkSampleCountFlagBits rasterizationSamples;
+	public VkSampleCountFlags rasterizationSamples;
 	public VkBool32 sampleShadingEnable;
 	public float minSampleShading;
 	public uint* pSampleMask;
@@ -917,7 +917,7 @@ public unsafe struct VkAttachmentDescription
 {
 	public VkAttachmentDescriptionFlags flags;
 	public VkFormat format;
-	public VkSampleCountFlagBits samples;
+	public VkSampleCountFlags samples;
 	public VkAttachmentLoadOp loadOp;
 	public VkAttachmentStoreOp storeOp;
 	public VkAttachmentLoadOp stencilLoadOp;
@@ -1379,7 +1379,7 @@ public unsafe struct VkPhysicalDeviceSparseImageFormatInfo2
 	public void* pNext;
 	public VkFormat format;
 	public VkImageType type;
-	public VkSampleCountFlagBits samples;
+	public VkSampleCountFlags samples;
 	public VkImageUsageFlags usage;
 	public VkImageTiling tiling;
 }
@@ -1510,13 +1510,13 @@ public unsafe struct VkBindImagePlaneMemoryInfo
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkImageAspectFlagBits planeAspect;
+	public VkImageAspectFlags planeAspect;
 }
 public unsafe struct VkImagePlaneMemoryRequirementsInfo
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkImageAspectFlagBits planeAspect;
+	public VkImageAspectFlags planeAspect;
 }
 public unsafe struct VkPhysicalDeviceSamplerYcbcrConversionFeatures
 {
@@ -1558,7 +1558,7 @@ public unsafe struct VkPhysicalDeviceExternalBufferInfo
 	public void* pNext;
 	public VkBufferCreateFlags flags;
 	public VkBufferUsageFlags usage;
-	public VkExternalMemoryHandleTypeFlagBits handleType;
+	public VkExternalMemoryHandleTypeFlags handleType;
 }
 public unsafe struct VkExternalBufferProperties
 {
@@ -1576,7 +1576,7 @@ public unsafe struct VkPhysicalDeviceExternalImageFormatInfo
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkExternalMemoryHandleTypeFlagBits handleType;
+	public VkExternalMemoryHandleTypeFlags handleType;
 }
 public unsafe struct VkExternalImageFormatProperties
 {
@@ -1616,7 +1616,7 @@ public unsafe struct VkPhysicalDeviceExternalFenceInfo
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkExternalFenceHandleTypeFlagBits handleType;
+	public VkExternalFenceHandleTypeFlags handleType;
 }
 public unsafe struct VkExternalFenceProperties
 {
@@ -1642,7 +1642,7 @@ public unsafe struct VkPhysicalDeviceExternalSemaphoreInfo
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkExternalSemaphoreHandleTypeFlagBits handleType;
+	public VkExternalSemaphoreHandleTypeFlags handleType;
 }
 public unsafe struct VkExternalSemaphoreProperties
 {
@@ -1687,7 +1687,7 @@ public unsafe struct VkSurfaceCapabilitiesKHR
 	public VkExtent2D maxImageExtent;
 	public uint maxImageArrayLayers;
 	public VkSurfaceTransformFlagsKHR supportedTransforms;
-	public VkSurfaceTransformFlagBitsKHR currentTransform;
+	public VkSurfaceTransformFlagsKHR currentTransform;
 	public VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
 	public VkImageUsageFlags supportedUsageFlags;
 }
@@ -1711,8 +1711,8 @@ public unsafe struct VkSwapchainCreateInfoKHR
 	public VkSharingMode imageSharingMode;
 	public uint queueFamilyIndexCount;
 	public uint* pQueueFamilyIndices;
-	public VkSurfaceTransformFlagBitsKHR preTransform;
-	public VkCompositeAlphaFlagBitsKHR compositeAlpha;
+	public VkSurfaceTransformFlagsKHR preTransform;
+	public VkCompositeAlphaFlagsKHR compositeAlpha;
 	public VkPresentModeKHR presentMode;
 	public VkBool32 clipped;
 	public VkSwapchainKHR oldSwapchain;
@@ -1764,7 +1764,7 @@ public unsafe struct VkDeviceGroupPresentInfoKHR
 	public void* pNext;
 	public uint swapchainCount;
 	public uint* pDeviceMasks;
-	public VkDeviceGroupPresentModeFlagBitsKHR mode;
+	public VkDeviceGroupPresentModeFlagsKHR mode;
 }
 public unsafe struct VkDeviceGroupSwapchainCreateInfoKHR
 {
@@ -1824,9 +1824,9 @@ public unsafe struct VkDisplaySurfaceCreateInfoKHR
 	public VkDisplayModeKHR displayMode;
 	public uint planeIndex;
 	public uint planeStackIndex;
-	public VkSurfaceTransformFlagBitsKHR transform;
+	public VkSurfaceTransformFlagsKHR transform;
 	public float globalAlpha;
-	public VkDisplayPlaneAlphaFlagBitsKHR alphaMode;
+	public VkDisplayPlaneAlphaFlagsKHR alphaMode;
 	public VkExtent2D imageExtent;
 }
 public unsafe struct VkDisplayPresentInfoKHR
@@ -2142,7 +2142,7 @@ public unsafe struct VkPhysicalDeviceSparseImageFormatInfo2KHR
 	public void* pNext;
 	public VkFormat format;
 	public VkImageType type;
-	public VkSampleCountFlagBits samples;
+	public VkSampleCountFlags samples;
 	public VkImageUsageFlags usage;
 	public VkImageTiling tiling;
 }
@@ -2293,7 +2293,7 @@ public unsafe struct VkPhysicalDeviceExternalImageFormatInfoKHR
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkExternalMemoryHandleTypeFlagBits handleType;
+	public VkExternalMemoryHandleTypeFlags handleType;
 }
 [Obsolete("Use VkExternalImageFormatProperties")]
 public unsafe struct VkExternalImageFormatPropertiesKHR
@@ -2309,7 +2309,7 @@ public unsafe struct VkPhysicalDeviceExternalBufferInfoKHR
 	public void* pNext;
 	public VkBufferCreateFlags flags;
 	public VkBufferUsageFlags usage;
-	public VkExternalMemoryHandleTypeFlagBits handleType;
+	public VkExternalMemoryHandleTypeFlags handleType;
 }
 [Obsolete("Use VkExternalBufferProperties")]
 public unsafe struct VkExternalBufferPropertiesKHR
@@ -2355,7 +2355,7 @@ public unsafe struct VkMemoryGetWin32HandleInfoKHR
 	public VkStructureType sType;
 	public void* pNext;
 	public VkDeviceMemory memory;
-	public VkExternalMemoryHandleTypeFlagBits handleType;
+	public VkExternalMemoryHandleTypeFlags handleType;
 }
 public unsafe struct VkMemoryWin32HandlePropertiesKHR
 {
@@ -2367,7 +2367,7 @@ public unsafe struct VkImportMemoryWin32HandleInfoKHR
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkExternalMemoryHandleTypeFlagBits handleType;
+	public VkExternalMemoryHandleTypeFlags handleType;
 	public IntPtr handle;
 	public IntPtr name;
 }
@@ -2384,7 +2384,7 @@ public unsafe struct VkMemoryGetFdInfoKHR
 	public VkStructureType sType;
 	public void* pNext;
 	public VkDeviceMemory memory;
-	public VkExternalMemoryHandleTypeFlagBits handleType;
+	public VkExternalMemoryHandleTypeFlags handleType;
 }
 public unsafe struct VkMemoryFdPropertiesKHR
 {
@@ -2396,7 +2396,7 @@ public unsafe struct VkImportMemoryFdInfoKHR
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkExternalMemoryHandleTypeFlagBits handleType;
+	public VkExternalMemoryHandleTypeFlags handleType;
 	public int fd;
 }
 public unsafe struct VkWin32KeyedMutexAcquireReleaseInfoKHR
@@ -2416,7 +2416,7 @@ public unsafe struct VkPhysicalDeviceExternalSemaphoreInfoKHR
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkExternalSemaphoreHandleTypeFlagBits handleType;
+	public VkExternalSemaphoreHandleTypeFlags handleType;
 }
 [Obsolete("Use VkExternalSemaphoreProperties")]
 public unsafe struct VkExternalSemaphorePropertiesKHR
@@ -2440,7 +2440,7 @@ public unsafe struct VkImportSemaphoreWin32HandleInfoKHR
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public VkSemaphoreImportFlags flags;
-	public VkExternalSemaphoreHandleTypeFlagBits handleType;
+	public VkExternalSemaphoreHandleTypeFlags handleType;
 	public IntPtr handle;
 	public IntPtr name;
 }
@@ -2449,7 +2449,7 @@ public unsafe struct VkSemaphoreGetWin32HandleInfoKHR
 	public VkStructureType sType;
 	public void* pNext;
 	public VkSemaphore semaphore;
-	public VkExternalSemaphoreHandleTypeFlagBits handleType;
+	public VkExternalSemaphoreHandleTypeFlags handleType;
 }
 public unsafe struct VkExportSemaphoreWin32HandleInfoKHR
 {
@@ -2474,7 +2474,7 @@ public unsafe struct VkImportSemaphoreFdInfoKHR
 	public void* pNext;
 	public VkSemaphore semaphore;
 	public VkSemaphoreImportFlags flags;
-	public VkExternalSemaphoreHandleTypeFlagBits handleType;
+	public VkExternalSemaphoreHandleTypeFlags handleType;
 	public int fd;
 }
 public unsafe struct VkSemaphoreGetFdInfoKHR
@@ -2482,7 +2482,7 @@ public unsafe struct VkSemaphoreGetFdInfoKHR
 	public VkStructureType sType;
 	public void* pNext;
 	public VkSemaphore semaphore;
-	public VkExternalSemaphoreHandleTypeFlagBits handleType;
+	public VkExternalSemaphoreHandleTypeFlags handleType;
 }
 public unsafe struct VkPhysicalDevicePushDescriptorPropertiesKHR
 {
@@ -2715,7 +2715,7 @@ public unsafe struct VkSurfaceCapabilities2EXT
 	public VkExtent2D maxImageExtent;
 	public uint maxImageArrayLayers;
 	public VkSurfaceTransformFlagsKHR supportedTransforms;
-	public VkSurfaceTransformFlagBitsKHR currentTransform;
+	public VkSurfaceTransformFlagsKHR currentTransform;
 	public VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
 	public VkImageUsageFlags supportedUsageFlags;
 	public VkSurfaceCounterFlagsEXT supportedSurfaceCounters;
@@ -2909,7 +2909,7 @@ public unsafe struct VkAttachmentDescription2KHR
 	public void* pNext;
 	public VkAttachmentDescriptionFlags flags;
 	public VkFormat format;
-	public VkSampleCountFlagBits samples;
+	public VkSampleCountFlags samples;
 	public VkAttachmentLoadOp loadOp;
 	public VkAttachmentStoreOp storeOp;
 	public VkAttachmentLoadOp stencilLoadOp;
@@ -2976,7 +2976,7 @@ public unsafe struct VkPhysicalDeviceExternalFenceInfoKHR
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkExternalFenceHandleTypeFlagBits handleType;
+	public VkExternalFenceHandleTypeFlags handleType;
 }
 [Obsolete("Use VkExternalFenceProperties")]
 public unsafe struct VkExternalFencePropertiesKHR
@@ -3000,7 +3000,7 @@ public unsafe struct VkImportFenceWin32HandleInfoKHR
 	public void* pNext;
 	public VkFence fence;
 	public VkFenceImportFlags flags;
-	public VkExternalFenceHandleTypeFlagBits handleType;
+	public VkExternalFenceHandleTypeFlags handleType;
 	public IntPtr handle;
 	public IntPtr name;
 }
@@ -3009,7 +3009,7 @@ public unsafe struct VkFenceGetWin32HandleInfoKHR
 	public VkStructureType sType;
 	public void* pNext;
 	public VkFence fence;
-	public VkExternalFenceHandleTypeFlagBits handleType;
+	public VkExternalFenceHandleTypeFlags handleType;
 }
 public unsafe struct VkExportFenceWin32HandleInfoKHR
 {
@@ -3025,7 +3025,7 @@ public unsafe struct VkImportFenceFdInfoKHR
 	public void* pNext;
 	public VkFence fence;
 	public VkFenceImportFlags flags;
-	public VkExternalFenceHandleTypeFlagBits handleType;
+	public VkExternalFenceHandleTypeFlags handleType;
 	public int fd;
 }
 public unsafe struct VkFenceGetFdInfoKHR
@@ -3033,7 +3033,7 @@ public unsafe struct VkFenceGetFdInfoKHR
 	public VkStructureType sType;
 	public void* pNext;
 	public VkFence fence;
-	public VkExternalFenceHandleTypeFlagBits handleType;
+	public VkExternalFenceHandleTypeFlags handleType;
 }
 public unsafe struct VkPerformanceCounterKHR
 {
@@ -3368,7 +3368,7 @@ public unsafe struct VkSampleLocationsInfoEXT
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkSampleCountFlagBits sampleLocationsPerPixel;
+	public VkSampleCountFlags sampleLocationsPerPixel;
 	public VkExtent2D sampleLocationGridSize;
 	public uint sampleLocationsCount;
 	public VkSampleLocationEXT* pSampleLocations;
@@ -3537,14 +3537,14 @@ public unsafe struct VkBindImagePlaneMemoryInfoKHR
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkImageAspectFlagBits planeAspect;
+	public VkImageAspectFlags planeAspect;
 }
 [Obsolete("Use VkImagePlaneMemoryRequirementsInfo")]
 public unsafe struct VkImagePlaneMemoryRequirementsInfoKHR
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkImageAspectFlagBits planeAspect;
+	public VkImageAspectFlags planeAspect;
 }
 [Obsolete("Use VkPhysicalDeviceSamplerYcbcrConversionFeatures")]
 public unsafe struct VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR
@@ -3943,7 +3943,7 @@ public unsafe struct VkImportMemoryHostPointerInfoEXT
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkExternalMemoryHandleTypeFlagBits handleType;
+	public VkExternalMemoryHandleTypeFlags handleType;
 	public void* pHostPointer;
 }
 public unsafe struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT
@@ -4083,8 +4083,8 @@ public unsafe struct VkSubpassDescriptionDepthStencilResolveKHR
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkResolveModeFlagBitsKHR depthResolveMode;
-	public VkResolveModeFlagBitsKHR stencilResolveMode;
+	public VkResolveModeFlagsKHR depthResolveMode;
+	public VkResolveModeFlagsKHR stencilResolveMode;
 	public VkAttachmentReference2KHR* pDepthStencilResolveAttachment;
 }
 public unsafe struct VkPhysicalDeviceDepthStencilResolvePropertiesKHR
@@ -4162,7 +4162,7 @@ public unsafe struct VkCheckpointDataNV
 {
 	public VkStructureType sType;
 	public void* pNext;
-	public VkPipelineStageFlagBits stage;
+	public VkPipelineStageFlags stage;
 	public void* pCheckpointMarker;
 }
 public unsafe struct VkQueueFamilyCheckpointPropertiesNV
@@ -4536,7 +4536,7 @@ public unsafe struct VkFramebufferMixedSamplesCombinationNV
 	public VkStructureType sType;
 	public void* pNext;
 	public VkCoverageReductionModeNV coverageReductionMode;
-	public VkSampleCountFlagBits rasterizationSamples;
+	public VkSampleCountFlags rasterizationSamples;
 	public VkSampleCountFlags depthStencilSamples;
 	public VkSampleCountFlags colorSamples;
 }

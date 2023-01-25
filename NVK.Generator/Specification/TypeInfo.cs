@@ -88,14 +88,15 @@ internal class TypeInfo
     /// <returns>A string that represents the type.</returns>
     public override string? ToString() => $"{Name}{new('*', PointerIndirection)}{(IsArray ? "[]" : "")}";
 
+    /// <summary>Registers a custom type conversion.</summary>
+    /// <param name="oldTypeName">The name of the type to convert.</param>
+    /// <param name="newTypeName">The name of the type it will be converted to.</param>
+    public static void RegisterTypeConversion(string oldTypeName, string newTypeName) => TypeConverter[oldTypeName] = newTypeName;
 
-    /*********
-    ** Private Methods
-    *********/
     /// <summary>Calculates the display name of a type name.</summary>
     /// <param name="name">The name to calculate the display name of.</param>
     /// <returns>The display name for a type called <paramref name="name"/>.</returns>
-    private static string CalculateDisplayName(string name)
+    public static string CalculateDisplayName(string name)
     {
         if (TypeConverter.TryGetValue(name, out var convertedName))
             name = convertedName;

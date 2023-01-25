@@ -66,6 +66,9 @@ internal class EnumFieldInfo
     /// <param name="writer">The writer to write the enum to.</param>
     public void Write(CsWriter writer)
     {
+        if (Alias != null)
+            writer.WriteLine($"[Obsolete(\"Use {Alias}\")]");
+
         string value;
         if (Alias != null)
             value = Alias;

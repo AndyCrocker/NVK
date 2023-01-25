@@ -12,89 +12,90 @@ internal class EnumInfo
     /// <summary>The name of the enum that this enum is an alias of.</summary>
     public string? Alias { get; }
 
+    /// <summary>The name of the enum that this enum requires to complete its definition.</summary>
+    public string? Requires { get; }
+
     /// <summary>The type of the enum.</summary>
-    public EnumType Type { get; }
+    public EnumType Type { get; private set; }
 
     /// <summary>The bitwidth of the enum.</summary>
-    public int BitWidth { get; }
+    public int BitWidth { get; private set; }
 
     /// <summary>The fields of the enum.</summary>
-    public List<EnumFieldInfo> Fields { get; }
+    public List<EnumFieldInfo> Fields { get; private set; }
 
 
     /*********
     ** Constructors
     *********/
     /// <summary>Constructs an instance.</summary>
-    /// <param name="element">The &lt;enums&gt; element to parse the enum from.</param>
-    public EnumInfo(XElement element)
+    /// <param name="element">The &lt;enums&gt; element to parse the enum definition from, or the &lt;type&gt; element to parse the enum declaration from.</param>
+    /// <param name="isDefinition">Whether the element passed if a definition.</param>
+    public EnumInfo(XElement element, bool isDefinition)
     {
-        Name = element.Attribute("name")!.Value;
-        Type = Enum.Parse<EnumType>(element.Attribute("type")!.Value, true);
-        BitWidth = int.Parse(element.Attribute("bitwidth")?.Value ?? "32");
-        Fields = element.Elements("enum")
-            .Select(enumFieldElement => new EnumFieldInfo(this, enumFieldElement)).ToList();
-    }
-
-    /// <summary>Constructs an instance.</summary>
-    /// <param name="element">The &lt;type&gt; element to parse the enum from.</param>
-    /// <param name="enumDefinitions">The enum definitions to copy over data from.</param>
-    public EnumInfo(XElement element, List<EnumInfo> enumDefinitions)
-    {
-        Fields = new();
-
-        // bitmasks are declared as a typedef, while enums aren't, an couple examples or a bitmask are:
-        // <type requires="[bitsName]" category="bitmask">typedef <type>[ignored]</type> <name>[name]</name>;</type>
-        // <type                       category="bitmask" name="[name]" alias="[aliasName]"/>
-        if (element.HasAttribute("category", "bitmask"))
+        if (isDefinition)
         {
-            Type = EnumType.Bitmask;
-
-            Alias = element.Attribute("alias")?.Value;
-            if (Alias != null)
-            {
-                Name = element.Attribute("name")!.Value;
-                return;
-            }
-
-            Name = element.Element("name")!.Value;
-
-            // if a bitmask doesn't have a 'requires' attribute and isn't an alias, it doesn't have any definition or extensions extending it
-            if (!element.HasAttribute("requires"))
-            {
-                BitWidth = 32;
-                return;
-            }
+            Name = element.Attribute("name")!.Value;
+            Type = Enum.Parse<EnumType>(element.Attribute("type")!.Value, true);
+            BitWidth = int.Parse(element.Attribute("bitwidth")?.Value ?? "32");
+            Fields = element.Elements("enum")
+                .Select(enumFieldElement => new EnumFieldInfo(this, enumFieldElement)).ToList();
         }
         else
         {
-            Name = element.Attribute("name")!.Value;
             Alias = element.Attribute("alias")?.Value;
-        }
+            Name = element.Attribute("name")?.Value ?? element.Element("name")!.Value;
+            Type = element.HasAttribute("category", "bitmask") ? EnumType.Bitmask : EnumType.Enum;
+            Requires = element.Attribute("requires")?.Value ?? element.Attribute("bitvalues")?.Value;
+            Fields = new();
 
-        // if a definition hasn't been provided, the enum is the _Bits enum for a bitmask without any values, just use default values
-        var enumDefinition = enumDefinitions.SingleOrDefault(enumDefinition => enumDefinition.Name == (Alias ?? Name));
-        if (enumDefinition == null)
-        {
-            BitWidth = 32;
-            return;
+            if (Requires != null)
+                TypeInfo.RegisterTypeConversion(Requires, Name);
         }
-
-        Type = enumDefinition.Type;
-        BitWidth = enumDefinition.BitWidth;
-        Fields = enumDefinition.Fields;
     }
 
 
     /*********
     ** Public Methods
     *********/
+    /// <summary>Populates fields for a declaration that couldn't be populated during parsing.</summary>
+    /// <param name="enumDeclarations">The enum declarations (&lt;type&gt;) to copy over data from.</param>
+    /// <param name="enumDefinitions">The enum definitions (&lt;enums&gt;) to copy over data from.</param>
+    public void PopulateFields(List<EnumInfo> enumDeclarations, List<EnumInfo> enumDefinitions)
+    {
+        // some enums and be aliases or enums that have a requires, keep going until we get down to the one with the field definitions
+        var enumInfo = this;
+        while (enumInfo?.Requires != null || enumInfo?.Alias != null)
+            if (enumInfo.Requires != null)
+                enumInfo = enumDefinitions.SingleOrDefault(enumDefinition => enumDefinition.Name == enumInfo.Requires);
+            else if (enumInfo.Alias != null)
+                enumInfo = enumDeclarations.SingleOrDefault(enumDeclaration => enumDeclaration.Name == enumInfo.Alias);
+
+        if (enumInfo == this)
+            enumInfo = enumDefinitions.SingleOrDefault(enumDefinition => enumDefinition.Name == Name);
+
+        // if no enum was found, the enum is the declaration of an enum without any fields
+        if (enumInfo == null)
+        {
+            BitWidth = 32;
+            Fields = new();
+            return;
+        }
+
+        Type = enumInfo.Type;
+        BitWidth = enumInfo.BitWidth;
+        Fields = enumInfo.Fields;
+    }
+
     /// <summary>Writes the enum to a C# writer.</summary>
     /// <param name="writer">The writer to write the enum to.</param>
     public void Write(CsWriter writer)
     {
+        if (Alias != null)
+            writer.WriteLine($"[Obsolete(\"Use {Alias}\")]");
+
         if (Type == EnumType.Bitmask)
-            writer.WriteLine($"[Flags]");
+            writer.WriteLine("[Flags]");
 
         writer.WriteLine($"public enum {Name}{(BitWidth == 64 ? " : long" : "")}");
         writer.WriteScope(() =>
