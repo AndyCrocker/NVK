@@ -23,6 +23,12 @@ internal class EnumFieldInfo
     /// <remarks>This is only used if the enum has a type of <see cref="EnumType.Bitmask"/>.</remarks>
     public int? BitPosition { get; }
 
+    /// <summary>The display string for <see cref="Name"/>.</summary>
+    private string DisplayName => CalculateDisplayName(ParentEnum.Name, Name)!;
+
+    /// <summary>The display string for <see cref="Alias"/>.</summary>
+    private string? DisplayAliasName => CalculateDisplayName(ParentEnum.Name, Alias);
+
 
     /*********
     ** Constructors
@@ -42,7 +48,16 @@ internal class EnumFieldInfo
 
         Value = element.Attribute("value")?.Value;
         if (Value != null)
+        {
+            // this is to fix the schema voilations in Vulkan 1.0, for a more thorough explanation, see FeatureInfo.ctor
+            if (ParentEnum.Fields?.Any(fieldInfo => fieldInfo.Name == Value) ?? false)
+            {
+                Alias = Value;
+                Value = null;
+            }
+
             return;
+        }
 
         if (element.HasAttribute("bitpos"))
         {
@@ -67,16 +82,47 @@ internal class EnumFieldInfo
     public void Write(CsWriter writer)
     {
         if (Alias != null)
-            writer.WriteLine($"[Obsolete(\"Use {Alias}\")]");
+            writer.WriteLine($"[Obsolete(\"Use {TypeInfo.CalculateDisplayName(ParentEnum.Name)}.{DisplayAliasName}\")]");
 
         string value;
         if (Alias != null)
-            value = Alias;
+            value = DisplayAliasName!;
         else if (BitPosition != null)
             value = $"1 << {BitPosition}";
         else
             value = Value!;
 
-        writer.WriteLine($"{Name} = {value},");
+        writer.WriteLine($"{DisplayName} = {value},");
+    }
+
+    /// <summary>Calculates the display name of an enum field name.</summary>
+    /// <param name="enumName">The name of the enum that contains the field to calculate the display name for.</param>
+    /// <param name="fieldName">The name to calculate the display name of.</param>
+    /// <returns>The display name for an enum field called <paramref name="name"/> in an enum called <paramref name="enumName"/>.</returns>
+    public static string? CalculateDisplayName(string enumName, string? fieldName)
+    {
+        if (fieldName == null)
+            return null;
+
+        // remove the enum name from the field name
+        var splitEnumName = enumName.SplitOnUpper().ToList();
+        var splitFieldName = fieldName.Split('_').ToList();
+
+        for (int i = 0; i < MathF.Min(splitEnumName.Count, splitFieldName.Count); i++)
+            if (splitEnumName[i].ToLower() == splitFieldName[i].ToLower())
+            {
+                splitEnumName.RemoveAt(i);
+                splitFieldName.RemoveAt(i--);
+            }
+
+        // bitfield enums have an unwanted 'BIT' in their field names
+        splitFieldName.Remove("BIT");
+
+        // reconstruct the name and ensure it doesn't start with a digit (as that's not a valid C# identifier)
+        var newEnumFieldName = string.Join("", splitFieldName.Select(fieldNameSection => fieldNameSection.ToLower().FirstToUpper()));//.Select(splitName => CapitaliseEnumFieldNameSection(enumName, splitName)));
+        if (char.IsDigit(newEnumFieldName[0]))
+            newEnumFieldName = $"_{newEnumFieldName}";
+
+        return newEnumFieldName.ResolveAbbreviations();
     }
 }

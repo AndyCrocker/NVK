@@ -79,7 +79,9 @@ internal class FeatureInfo
             var enumFieldInfo = new EnumFieldInfo(enumInfo, enumField.EnumFieldElement, enumField.ExtensionNumber);
 
             // enum fields can be added multiple times if they are specified in different extensions, so just make sure to only add it once
-            if (enumInfo.Fields.Any(fieldInfo => fieldInfo.Name == enumFieldInfo.Name))
+            // also, some enum fields are aliased to fix incorrect formatting or missing "_BIT" (which is removed in the display name), these result in identical display
+            // names so we'll just ignore these enum fields
+            if (enumInfo.Fields.Any(fieldInfo => EnumFieldInfo.CalculateDisplayName(enumInfo.Name, fieldInfo.Name) == EnumFieldInfo.CalculateDisplayName(enumInfo.Name, enumFieldInfo.Name)))
                 continue;
 
             enumInfo.Fields.Add(enumFieldInfo);

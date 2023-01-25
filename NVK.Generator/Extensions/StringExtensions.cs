@@ -6,6 +6,11 @@ internal static class StringExtensions
     /*********
     ** Public Methods
     *********/
+    /// <summary>Splits a string on every uppercase character.</summary>
+    /// <param name="value">The string to split.</param>
+    /// <returns>An array whose elements contain the substrings from this instance that start with an uppercase.</returns>
+    public static string[] SplitOnUpper(this string value) => Regex.Split(value, @"(?<!^)(?=[A-Z])"); // https://stackoverflow.com/a/4489031
+
     /// <summary>Converts the first character to lowercase.</summary>
     /// <param name="value">The string whose first character should be converted to lowercase.</param>
     /// <returns>A string with its first character as lowercase.</returns>

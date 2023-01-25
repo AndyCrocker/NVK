@@ -40,6 +40,9 @@ internal class EnumInfo
             BitWidth = int.Parse(element.Attribute("bitwidth")?.Value ?? "32");
             Fields = element.Elements("enum")
                 .Select(enumFieldElement => new EnumFieldInfo(this, enumFieldElement)).ToList();
+            // some enum fields are aliased to fix incorrect formatting or missing "_BIT" (which is removed in the display name), these result in identical display
+            // names so we'll just ignore these enum fields
+            Fields.RemoveAll(fieldInfo => EnumFieldInfo.CalculateDisplayName(Name, fieldInfo.Name) == EnumFieldInfo.CalculateDisplayName(Name, fieldInfo.Alias));
         }
         else
         {
