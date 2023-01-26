@@ -23,9 +23,9 @@ internal class FunctionParameterInfo
     /// <param name="element">The &lt;param&gt; element to parse the function parameter from.</param>
     public FunctionParameterInfo(XElement element)
     {
-        var name = element.Element("name")!.Value;
         Type = new TypeInfo(element.Element("type")!.Value, element.Value.Count(character => character == '*'));
 
+        var name = element.Element("name")!.Value;
         Name = CalculateDisplayName(name, Type.PointerIndirection);
     }
 

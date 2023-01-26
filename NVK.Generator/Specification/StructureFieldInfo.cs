@@ -32,9 +32,11 @@ internal class StructureFieldInfo
     public StructureFieldInfo(StructureInfo parentStructure, XElement element)
     {
         ParentStructure = parentStructure;
-        Name = element.Element("name")!.Value;
         Type = new(element.Element("type")!.Value, element.Value.Count(character => character == '*'));
         Values = element.Attribute("values")?.Value.Split(',') ?? Array.Empty<string>();
+
+        var name = element.Element("name")!.Value;
+        Name = CalculateDisplayName(name, Type.PointerIndirection);
 
         // remove the comment element as it can sometimes contains "[]" which falsely implies an array
         element.Element("comment")?.Remove();
@@ -95,5 +97,27 @@ internal class StructureFieldInfo
 
         for (int i = 0; i < arrayLengthNumerical; i++)
             writer.WriteLine($"public {Type} {Name}_{i};");
+    }
+
+    /// <summary>Calculates the display name of a parameter name.</summary>
+    /// <param name="name">The name to calculate the display name of.</param>
+    /// <param name="pointerIndirection">The pointer indirection of the parameter.</param>
+    /// <returns>The display name for a parameter called <paramref name="name"/>.</returns>
+    public static string CalculateDisplayName(string name, int pointerIndirection)
+    {
+        if (name == "sType")
+            return "SType";
+
+        for (int i = 0; i < pointerIndirection; i++)
+            if (name.StartsWith('p'))
+                name = name[1..];
+
+        name = name.Replace("pfn", "");
+
+        // a couple edge cases where two fields are only differentiated by the level of pointer indirection (and therefore the prefixed 'p's that we've just removed)
+        if ((name == "Geometries" || name == "UsageCounts") && pointerIndirection == 2)
+            name += "2";
+
+        return name.ResolveAbbreviations().FirstToUpper();
     }
 }
