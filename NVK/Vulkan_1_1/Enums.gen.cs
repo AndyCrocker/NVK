@@ -38,7 +38,7 @@ public enum VkResult
 	ErrorOutOfPoolMemoryKhr = ErrorOutOfPoolMemory,
 	[Obsolete("Use VkResult.ErrorInvalidExternalHandle")]
 	ErrorInvalidExternalHandleKhr = ErrorInvalidExternalHandle,
-	ErrorInvalidDrmFormatModifierPlaneLayoutExt = -1000158000,
+	ErrorInvalidDRMFormatModifierPlaneLayoutExt = -1000158000,
 	ErrorFragmentationExt = -1000161000,
 	ErrorNotPermittedExt = -1000174001,
 	[Obsolete("Use VkResult.ErrorInvalidOpaqueCaptureAddressKhr")]
@@ -140,12 +140,12 @@ public enum VkStructureType
 	PhysicalDeviceProtectedMemoryFeatures = 1000145001,
 	PhysicalDeviceProtectedMemoryProperties = 1000145002,
 	DeviceQueueInfo2 = 1000145003,
-	SamplerYcbcrConversionCreateInfo = 1000156000,
-	SamplerYcbcrConversionInfo = 1000156001,
+	SamplerYCBCRConversionCreateInfo = 1000156000,
+	SamplerYCBCRConversionInfo = 1000156001,
 	BindImagePlaneMemoryInfo = 1000156002,
 	ImagePlaneMemoryRequirementsInfo = 1000156003,
-	PhysicalDeviceSamplerYcbcrConversionFeatures = 1000156004,
-	SamplerYcbcrConversionImageFormatProperties = 1000156005,
+	PhysicalDeviceSamplerYCBCRConversionFeatures = 1000156004,
+	SamplerYCBCRConversionImageFormatProperties = 1000156005,
 	DescriptorUpdateTemplateCreateInfo = 1000085000,
 	PhysicalDeviceExternalImageFormatInfo = 1000071000,
 	ExternalImageFormatProperties = 1000071001,
@@ -242,9 +242,9 @@ public enum VkStructureType
 	[Obsolete("Use VkStructureType.BindImageMemoryDeviceGroupInfo")]
 	BindImageMemoryDeviceGroupInfoKhr = BindImageMemoryDeviceGroupInfo,
 	ValidationFlagsExt = 1000061000,
-	PhysicalDeviceTextureCompressionAstcHdrFeaturesExt = 1000066000,
-	ImageViewAstcDecodeModeExt = 1000067000,
-	PhysicalDeviceAstcDecodeFeaturesExt = 1000067001,
+	PhysicalDeviceTextureCompressionASTCHDRFeaturesExt = 1000066000,
+	ImageViewASTCDecodeModeExt = 1000067000,
+	PhysicalDeviceASTCDecodeFeaturesExt = 1000067001,
 	[Obsolete("Use VkStructureType.PhysicalDeviceGroupProperties")]
 	PhysicalDeviceGroupPropertiesKhr = PhysicalDeviceGroupProperties,
 	[Obsolete("Use VkStructureType.DeviceGroupDeviceCreateInfo")]
@@ -281,7 +281,7 @@ public enum VkStructureType
 	ExportSemaphoreCreateInfoKhr = ExportSemaphoreCreateInfo,
 	ImportSemaphoreWin32HandleInfoKhr = 1000078000,
 	ExportSemaphoreWin32HandleInfoKhr = 1000078001,
-	D3d12FenceSubmitInfoKhr = 1000078002,
+	D3D12FenceSubmitInfoKhr = 1000078002,
 	SemaphoreGetWin32HandleInfoKhr = 1000078003,
 	ImportSemaphoreFileDescriptorInfoKhr = 1000079000,
 	SemaphoreGetFileDescriptorInfoKhr = 1000079001,
@@ -318,7 +318,7 @@ public enum VkStructureType
 	PipelineRasterizationConservativeStateCreateInfoExt = 1000101001,
 	PhysicalDeviceDepthClipEnableFeaturesExt = 1000102000,
 	PipelineRasterizationDepthClipStateCreateInfoExt = 1000102001,
-	HdrMetadataExt = 1000105000,
+	HDRMetadataExt = 1000105000,
 	PhysicalDeviceImagelessFramebufferFeaturesKhr = 1000108000,
 	FramebufferAttachmentsCreateInfoKhr = 1000108001,
 	FramebufferAttachmentImageInfoKhr = 1000108002,
@@ -412,30 +412,30 @@ public enum VkStructureType
 	PipelineColorBlendAdvancedStateCreateInfoExt = 1000148002,
 	PipelineCoverageToColorStateCreateInfoNv = 1000149000,
 	PipelineCoverageModulationStateCreateInfoNv = 1000152000,
-	PhysicalDeviceShaderSmBuiltinsFeaturesNv = 1000154000,
-	PhysicalDeviceShaderSmBuiltinsPropertiesNv = 1000154001,
-	[Obsolete("Use VkStructureType.SamplerYcbcrConversionCreateInfo")]
-	SamplerYcbcrConversionCreateInfoKhr = SamplerYcbcrConversionCreateInfo,
-	[Obsolete("Use VkStructureType.SamplerYcbcrConversionInfo")]
-	SamplerYcbcrConversionInfoKhr = SamplerYcbcrConversionInfo,
+	PhysicalDeviceShaderSMBuiltinsFeaturesNv = 1000154000,
+	PhysicalDeviceShaderSMBuiltinsPropertiesNv = 1000154001,
+	[Obsolete("Use VkStructureType.SamplerYCBCRConversionCreateInfo")]
+	SamplerYCBCRConversionCreateInfoKhr = SamplerYCBCRConversionCreateInfo,
+	[Obsolete("Use VkStructureType.SamplerYCBCRConversionInfo")]
+	SamplerYCBCRConversionInfoKhr = SamplerYCBCRConversionInfo,
 	[Obsolete("Use VkStructureType.BindImagePlaneMemoryInfo")]
 	BindImagePlaneMemoryInfoKhr = BindImagePlaneMemoryInfo,
 	[Obsolete("Use VkStructureType.ImagePlaneMemoryRequirementsInfo")]
 	ImagePlaneMemoryRequirementsInfoKhr = ImagePlaneMemoryRequirementsInfo,
-	[Obsolete("Use VkStructureType.PhysicalDeviceSamplerYcbcrConversionFeatures")]
-	PhysicalDeviceSamplerYcbcrConversionFeaturesKhr = PhysicalDeviceSamplerYcbcrConversionFeatures,
-	[Obsolete("Use VkStructureType.SamplerYcbcrConversionImageFormatProperties")]
-	SamplerYcbcrConversionImageFormatPropertiesKhr = SamplerYcbcrConversionImageFormatProperties,
+	[Obsolete("Use VkStructureType.PhysicalDeviceSamplerYCBCRConversionFeatures")]
+	PhysicalDeviceSamplerYCBCRConversionFeaturesKhr = PhysicalDeviceSamplerYCBCRConversionFeatures,
+	[Obsolete("Use VkStructureType.SamplerYCBCRConversionImageFormatProperties")]
+	SamplerYCBCRConversionImageFormatPropertiesKhr = SamplerYCBCRConversionImageFormatProperties,
 	[Obsolete("Use VkStructureType.BindBufferMemoryInfo")]
 	BindBufferMemoryInfoKhr = BindBufferMemoryInfo,
 	[Obsolete("Use VkStructureType.BindImageMemoryInfo")]
 	BindImageMemoryInfoKhr = BindImageMemoryInfo,
-	DrmFormatModifierPropertiesListExt = 1000158000,
-	DrmFormatModifierPropertiesExt = 1000158001,
-	PhysicalDeviceImageDrmFormatModifierInfoExt = 1000158002,
-	ImageDrmFormatModifierListCreateInfoExt = 1000158003,
-	ImageDrmFormatModifierExplicitCreateInfoExt = 1000158004,
-	ImageDrmFormatModifierPropertiesExt = 1000158005,
+	DRMFormatModifierPropertiesListExt = 1000158000,
+	DRMFormatModifierPropertiesExt = 1000158001,
+	PhysicalDeviceImageDRMFormatModifierInfoExt = 1000158002,
+	ImageDRMFormatModifierListCreateInfoExt = 1000158003,
+	ImageDRMFormatModifierExplicitCreateInfoExt = 1000158004,
+	ImageDRMFormatModifierPropertiesExt = 1000158005,
 	ValidationCacheCreateInfoExt = 1000160000,
 	ShaderModuleValidationCacheCreateInfoExt = 1000160001,
 	DescriptorSetLayoutBindingFlagsCreateInfoExt = 1000161000,
@@ -451,7 +451,7 @@ public enum VkStructureType
 	AccelerationStructureCreateInfoNv = 1000165001,
 	GeometryNv = 1000165003,
 	GeometryTrianglesNv = 1000165004,
-	GeometryAabbNv = 1000165005,
+	GeometryAABBNv = 1000165005,
 	BindAccelerationStructureMemoryInfoNv = 1000165006,
 	WriteDescriptorSetAccelerationStructureNv = 1000165007,
 	AccelerationStructureMemoryRequirementsInfoNv = 1000165008,
@@ -503,15 +503,15 @@ public enum VkStructureType
 	SemaphoreSignalInfoKhr = 1000207005,
 	PhysicalDeviceShaderIntegerFunctions2FeaturesIntel = 1000209000,
 	QueryPoolCreateInfoIntel = 1000210000,
-	InitializePerformanceApiInfoIntel = 1000210001,
+	InitializePerformanceAPIInfoIntel = 1000210001,
 	PerformanceMarkerInfoIntel = 1000210002,
 	PerformanceStreamMarkerInfoIntel = 1000210003,
 	PerformanceOverrideInfoIntel = 1000210004,
 	PerformanceConfigurationAcquireInfoIntel = 1000210005,
 	PhysicalDeviceVulkanMemoryModelFeaturesKhr = 1000211000,
-	PhysicalDevicePciBusInfoPropertiesExt = 1000212000,
-	DisplayNativeHdrSurfaceCapabilitiesAmd = 1000213000,
-	SwapchainDisplayNativeHdrCreateInfoAmd = 1000213001,
+	PhysicalDevicePCIBusInfoPropertiesExt = 1000212000,
+	DisplayNativeHDRSurfaceCapabilitiesAmd = 1000213000,
+	SwapchainDisplayNativeHDRCreateInfoAmd = 1000213001,
 	PhysicalDeviceFragmentDensityMapFeaturesExt = 1000218000,
 	PhysicalDeviceFragmentDensityMapPropertiesExt = 1000218001,
 	RenderPassFragmentDensityMapCreateInfoExt = 1000218002,
@@ -545,7 +545,7 @@ public enum VkStructureType
 	PipelineCoverageReductionStateCreateInfoNv = 1000250001,
 	FramebufferMixedSamplesCombinationNv = 1000250002,
 	PhysicalDeviceFragmentShaderInterlockFeaturesExt = 1000251000,
-	PhysicalDeviceYcbcrImageArraysFeaturesExt = 1000252000,
+	PhysicalDeviceYCBCRImageArraysFeaturesExt = 1000252000,
 	PhysicalDeviceUniformBufferStandardLayoutFeaturesKhr = 1000253000,
 	SurfaceFullScreenExclusiveInfoExt = 1000255000,
 	SurfaceCapabilitiesFullScreenExclusiveExt = 1000255002,
@@ -560,7 +560,7 @@ public enum VkStructureType
 	PipelineRasterizationLineStateCreateInfoExt = 1000259001,
 	PhysicalDeviceLineRasterizationPropertiesExt = 1000259002,
 	PhysicalDeviceHostQueryResetFeaturesExt = 1000261000,
-	PhysicalDeviceIndexTypeUint8FeaturesExt = 1000265000,
+	PhysicalDeviceIndexTypeUInt8FeaturesExt = 1000265000,
 	PhysicalDevicePipelineExecutablePropertiesFeaturesKhr = 1000269000,
 	PipelineInfoKhr = 1000269001,
 	PipelineExecutablePropertiesKhr = 1000269002,
@@ -578,314 +578,314 @@ public enum VkInstanceCreateFlags
 public enum VkFormat
 {
 	Undefined = 0,
-	R4g4UnormPack8 = 1,
-	R4g4b4a4UnormPack16 = 2,
-	B4g4r4a4UnormPack16 = 3,
-	R5g6b5UnormPack16 = 4,
-	B5g6r5UnormPack16 = 5,
-	R5g5b5a1UnormPack16 = 6,
-	B5g5r5a1UnormPack16 = 7,
-	A1r5g5b5UnormPack16 = 8,
-	R8Unorm = 9,
-	R8Snorm = 10,
-	R8Uscaled = 11,
-	R8Sscaled = 12,
-	R8Uint = 13,
-	R8Sint = 14,
-	R8Srgb = 15,
-	R8g8Unorm = 16,
-	R8g8Snorm = 17,
-	R8g8Uscaled = 18,
-	R8g8Sscaled = 19,
-	R8g8Uint = 20,
-	R8g8Sint = 21,
-	R8g8Srgb = 22,
-	R8g8b8Unorm = 23,
-	R8g8b8Snorm = 24,
-	R8g8b8Uscaled = 25,
-	R8g8b8Sscaled = 26,
-	R8g8b8Uint = 27,
-	R8g8b8Sint = 28,
-	R8g8b8Srgb = 29,
-	B8g8r8Unorm = 30,
-	B8g8r8Snorm = 31,
-	B8g8r8Uscaled = 32,
-	B8g8r8Sscaled = 33,
-	B8g8r8Uint = 34,
-	B8g8r8Sint = 35,
-	B8g8r8Srgb = 36,
-	R8g8b8a8Unorm = 37,
-	R8g8b8a8Snorm = 38,
-	R8g8b8a8Uscaled = 39,
-	R8g8b8a8Sscaled = 40,
-	R8g8b8a8Uint = 41,
-	R8g8b8a8Sint = 42,
-	R8g8b8a8Srgb = 43,
-	B8g8r8a8Unorm = 44,
-	B8g8r8a8Snorm = 45,
-	B8g8r8a8Uscaled = 46,
-	B8g8r8a8Sscaled = 47,
-	B8g8r8a8Uint = 48,
-	B8g8r8a8Sint = 49,
-	B8g8r8a8Srgb = 50,
-	A8b8g8r8UnormPack32 = 51,
-	A8b8g8r8SnormPack32 = 52,
-	A8b8g8r8UscaledPack32 = 53,
-	A8b8g8r8SscaledPack32 = 54,
-	A8b8g8r8UintPack32 = 55,
-	A8b8g8r8SintPack32 = 56,
-	A8b8g8r8SrgbPack32 = 57,
-	A2r10g10b10UnormPack32 = 58,
-	A2r10g10b10SnormPack32 = 59,
-	A2r10g10b10UscaledPack32 = 60,
-	A2r10g10b10SscaledPack32 = 61,
-	A2r10g10b10UintPack32 = 62,
-	A2r10g10b10SintPack32 = 63,
-	A2b10g10r10UnormPack32 = 64,
-	A2b10g10r10SnormPack32 = 65,
-	A2b10g10r10UscaledPack32 = 66,
-	A2b10g10r10SscaledPack32 = 67,
-	A2b10g10r10UintPack32 = 68,
-	A2b10g10r10SintPack32 = 69,
-	R16Unorm = 70,
-	R16Snorm = 71,
-	R16Uscaled = 72,
-	R16Sscaled = 73,
-	R16Uint = 74,
-	R16Sint = 75,
-	R16Sfloat = 76,
-	R16g16Unorm = 77,
-	R16g16Snorm = 78,
-	R16g16Uscaled = 79,
-	R16g16Sscaled = 80,
-	R16g16Uint = 81,
-	R16g16Sint = 82,
-	R16g16Sfloat = 83,
-	R16g16b16Unorm = 84,
-	R16g16b16Snorm = 85,
-	R16g16b16Uscaled = 86,
-	R16g16b16Sscaled = 87,
-	R16g16b16Uint = 88,
-	R16g16b16Sint = 89,
-	R16g16b16Sfloat = 90,
-	R16g16b16a16Unorm = 91,
-	R16g16b16a16Snorm = 92,
-	R16g16b16a16Uscaled = 93,
-	R16g16b16a16Sscaled = 94,
-	R16g16b16a16Uint = 95,
-	R16g16b16a16Sint = 96,
-	R16g16b16a16Sfloat = 97,
-	R32Uint = 98,
-	R32Sint = 99,
-	R32Sfloat = 100,
-	R32g32Uint = 101,
-	R32g32Sint = 102,
-	R32g32Sfloat = 103,
-	R32g32b32Uint = 104,
-	R32g32b32Sint = 105,
-	R32g32b32Sfloat = 106,
-	R32g32b32a32Uint = 107,
-	R32g32b32a32Sint = 108,
-	R32g32b32a32Sfloat = 109,
-	R64Uint = 110,
-	R64Sint = 111,
-	R64Sfloat = 112,
-	R64g64Uint = 113,
-	R64g64Sint = 114,
-	R64g64Sfloat = 115,
-	R64g64b64Uint = 116,
-	R64g64b64Sint = 117,
-	R64g64b64Sfloat = 118,
-	R64g64b64a64Uint = 119,
-	R64g64b64a64Sint = 120,
-	R64g64b64a64Sfloat = 121,
-	B10g11r11UfloatPack32 = 122,
-	E5b9g9r9UfloatPack32 = 123,
-	D16Unorm = 124,
-	X8D24UnormPack32 = 125,
-	D32Sfloat = 126,
-	S8Uint = 127,
-	D16UnormS8Uint = 128,
-	D24UnormS8Uint = 129,
-	D32SfloatS8Uint = 130,
-	Bc1RgbUnormBlock = 131,
-	Bc1RgbSrgbBlock = 132,
-	Bc1RgbaUnormBlock = 133,
-	Bc1RgbaSrgbBlock = 134,
-	Bc2UnormBlock = 135,
-	Bc2SrgbBlock = 136,
-	Bc3UnormBlock = 137,
-	Bc3SrgbBlock = 138,
-	Bc4UnormBlock = 139,
-	Bc4SnormBlock = 140,
-	Bc5UnormBlock = 141,
-	Bc5SnormBlock = 142,
-	Bc6hUfloatBlock = 143,
-	Bc6hSfloatBlock = 144,
-	Bc7UnormBlock = 145,
-	Bc7SrgbBlock = 146,
-	Etc2R8g8b8UnormBlock = 147,
-	Etc2R8g8b8SrgbBlock = 148,
-	Etc2R8g8b8a1UnormBlock = 149,
-	Etc2R8g8b8a1SrgbBlock = 150,
-	Etc2R8g8b8a8UnormBlock = 151,
-	Etc2R8g8b8a8SrgbBlock = 152,
-	EacR11UnormBlock = 153,
-	EacR11SnormBlock = 154,
-	EacR11g11UnormBlock = 155,
-	EacR11g11SnormBlock = 156,
-	Astc4x4UnormBlock = 157,
-	Astc4x4SrgbBlock = 158,
-	Astc5x4UnormBlock = 159,
-	Astc5x4SrgbBlock = 160,
-	Astc5x5UnormBlock = 161,
-	Astc5x5SrgbBlock = 162,
-	Astc6x5UnormBlock = 163,
-	Astc6x5SrgbBlock = 164,
-	Astc6x6UnormBlock = 165,
-	Astc6x6SrgbBlock = 166,
-	Astc8x5UnormBlock = 167,
-	Astc8x5SrgbBlock = 168,
-	Astc8x6UnormBlock = 169,
-	Astc8x6SrgbBlock = 170,
-	Astc8x8UnormBlock = 171,
-	Astc8x8SrgbBlock = 172,
-	Astc10x5UnormBlock = 173,
-	Astc10x5SrgbBlock = 174,
-	Astc10x6UnormBlock = 175,
-	Astc10x6SrgbBlock = 176,
-	Astc10x8UnormBlock = 177,
-	Astc10x8SrgbBlock = 178,
-	Astc10x10UnormBlock = 179,
-	Astc10x10SrgbBlock = 180,
-	Astc12x10UnormBlock = 181,
-	Astc12x10SrgbBlock = 182,
-	Astc12x12UnormBlock = 183,
-	Astc12x12SrgbBlock = 184,
-	G8b8g8r8422Unorm = 1000156000,
-	B8g8r8g8422Unorm = 1000156001,
-	G8B8R83plane420Unorm = 1000156002,
-	G8B8r82plane420Unorm = 1000156003,
-	G8B8R83plane422Unorm = 1000156004,
-	G8B8r82plane422Unorm = 1000156005,
-	G8B8R83plane444Unorm = 1000156006,
-	R10x6UnormPack16 = 1000156007,
-	R10x6g10x6Unorm2pack16 = 1000156008,
-	R10x6g10x6b10x6a10x6Unorm4pack16 = 1000156009,
-	G10x6b10x6g10x6r10x6422Unorm4pack16 = 1000156010,
-	B10x6g10x6r10x6g10x6422Unorm4pack16 = 1000156011,
-	G10x6B10x6R10x63plane420Unorm3pack16 = 1000156012,
-	G10x6B10x6r10x62plane420Unorm3pack16 = 1000156013,
-	G10x6B10x6R10x63plane422Unorm3pack16 = 1000156014,
-	G10x6B10x6r10x62plane422Unorm3pack16 = 1000156015,
-	G10x6B10x6R10x63plane444Unorm3pack16 = 1000156016,
-	R12x4UnormPack16 = 1000156017,
-	R12x4g12x4Unorm2pack16 = 1000156018,
-	R12x4g12x4b12x4a12x4Unorm4pack16 = 1000156019,
-	G12x4b12x4g12x4r12x4422Unorm4pack16 = 1000156020,
-	B12x4g12x4r12x4g12x4422Unorm4pack16 = 1000156021,
-	G12x4B12x4R12x43plane420Unorm3pack16 = 1000156022,
-	G12x4B12x4r12x42plane420Unorm3pack16 = 1000156023,
-	G12x4B12x4R12x43plane422Unorm3pack16 = 1000156024,
-	G12x4B12x4r12x42plane422Unorm3pack16 = 1000156025,
-	G12x4B12x4R12x43plane444Unorm3pack16 = 1000156026,
-	G16b16g16r16422Unorm = 1000156027,
-	B16g16r16g16422Unorm = 1000156028,
-	G16B16R163plane420Unorm = 1000156029,
-	G16B16r162plane420Unorm = 1000156030,
-	G16B16R163plane422Unorm = 1000156031,
-	G16B16r162plane422Unorm = 1000156032,
-	G16B16R163plane444Unorm = 1000156033,
-	Pvrtc12bppUnormBlockImg = 1000054000,
-	Pvrtc14bppUnormBlockImg = 1000054001,
-	Pvrtc22bppUnormBlockImg = 1000054002,
-	Pvrtc24bppUnormBlockImg = 1000054003,
-	Pvrtc12bppSrgbBlockImg = 1000054004,
-	Pvrtc14bppSrgbBlockImg = 1000054005,
-	Pvrtc22bppSrgbBlockImg = 1000054006,
-	Pvrtc24bppSrgbBlockImg = 1000054007,
-	Astc4x4SfloatBlockExt = 1000066000,
-	Astc5x4SfloatBlockExt = 1000066001,
-	Astc5x5SfloatBlockExt = 1000066002,
-	Astc6x5SfloatBlockExt = 1000066003,
-	Astc6x6SfloatBlockExt = 1000066004,
-	Astc8x5SfloatBlockExt = 1000066005,
-	Astc8x6SfloatBlockExt = 1000066006,
-	Astc8x8SfloatBlockExt = 1000066007,
-	Astc10x5SfloatBlockExt = 1000066008,
-	Astc10x6SfloatBlockExt = 1000066009,
-	Astc10x8SfloatBlockExt = 1000066010,
-	Astc10x10SfloatBlockExt = 1000066011,
-	Astc12x10SfloatBlockExt = 1000066012,
-	Astc12x12SfloatBlockExt = 1000066013,
-	[Obsolete("Use VkFormat.G8b8g8r8422Unorm")]
-	G8b8g8r8422UnormKhr = G8b8g8r8422Unorm,
-	[Obsolete("Use VkFormat.B8g8r8g8422Unorm")]
-	B8g8r8g8422UnormKhr = B8g8r8g8422Unorm,
-	[Obsolete("Use VkFormat.G8B8R83plane420Unorm")]
-	G8B8R83plane420UnormKhr = G8B8R83plane420Unorm,
-	[Obsolete("Use VkFormat.G8B8r82plane420Unorm")]
-	G8B8r82plane420UnormKhr = G8B8r82plane420Unorm,
-	[Obsolete("Use VkFormat.G8B8R83plane422Unorm")]
-	G8B8R83plane422UnormKhr = G8B8R83plane422Unorm,
-	[Obsolete("Use VkFormat.G8B8r82plane422Unorm")]
-	G8B8r82plane422UnormKhr = G8B8r82plane422Unorm,
-	[Obsolete("Use VkFormat.G8B8R83plane444Unorm")]
-	G8B8R83plane444UnormKhr = G8B8R83plane444Unorm,
-	[Obsolete("Use VkFormat.R10x6UnormPack16")]
-	R10x6UnormPack16Khr = R10x6UnormPack16,
-	[Obsolete("Use VkFormat.R10x6g10x6Unorm2pack16")]
-	R10x6g10x6Unorm2pack16Khr = R10x6g10x6Unorm2pack16,
-	[Obsolete("Use VkFormat.R10x6g10x6b10x6a10x6Unorm4pack16")]
-	R10x6g10x6b10x6a10x6Unorm4pack16Khr = R10x6g10x6b10x6a10x6Unorm4pack16,
-	[Obsolete("Use VkFormat.G10x6b10x6g10x6r10x6422Unorm4pack16")]
-	G10x6b10x6g10x6r10x6422Unorm4pack16Khr = G10x6b10x6g10x6r10x6422Unorm4pack16,
-	[Obsolete("Use VkFormat.B10x6g10x6r10x6g10x6422Unorm4pack16")]
-	B10x6g10x6r10x6g10x6422Unorm4pack16Khr = B10x6g10x6r10x6g10x6422Unorm4pack16,
-	[Obsolete("Use VkFormat.G10x6B10x6R10x63plane420Unorm3pack16")]
-	G10x6B10x6R10x63plane420Unorm3pack16Khr = G10x6B10x6R10x63plane420Unorm3pack16,
-	[Obsolete("Use VkFormat.G10x6B10x6r10x62plane420Unorm3pack16")]
-	G10x6B10x6r10x62plane420Unorm3pack16Khr = G10x6B10x6r10x62plane420Unorm3pack16,
-	[Obsolete("Use VkFormat.G10x6B10x6R10x63plane422Unorm3pack16")]
-	G10x6B10x6R10x63plane422Unorm3pack16Khr = G10x6B10x6R10x63plane422Unorm3pack16,
-	[Obsolete("Use VkFormat.G10x6B10x6r10x62plane422Unorm3pack16")]
-	G10x6B10x6r10x62plane422Unorm3pack16Khr = G10x6B10x6r10x62plane422Unorm3pack16,
-	[Obsolete("Use VkFormat.G10x6B10x6R10x63plane444Unorm3pack16")]
-	G10x6B10x6R10x63plane444Unorm3pack16Khr = G10x6B10x6R10x63plane444Unorm3pack16,
-	[Obsolete("Use VkFormat.R12x4UnormPack16")]
-	R12x4UnormPack16Khr = R12x4UnormPack16,
-	[Obsolete("Use VkFormat.R12x4g12x4Unorm2pack16")]
-	R12x4g12x4Unorm2pack16Khr = R12x4g12x4Unorm2pack16,
-	[Obsolete("Use VkFormat.R12x4g12x4b12x4a12x4Unorm4pack16")]
-	R12x4g12x4b12x4a12x4Unorm4pack16Khr = R12x4g12x4b12x4a12x4Unorm4pack16,
-	[Obsolete("Use VkFormat.G12x4b12x4g12x4r12x4422Unorm4pack16")]
-	G12x4b12x4g12x4r12x4422Unorm4pack16Khr = G12x4b12x4g12x4r12x4422Unorm4pack16,
-	[Obsolete("Use VkFormat.B12x4g12x4r12x4g12x4422Unorm4pack16")]
-	B12x4g12x4r12x4g12x4422Unorm4pack16Khr = B12x4g12x4r12x4g12x4422Unorm4pack16,
-	[Obsolete("Use VkFormat.G12x4B12x4R12x43plane420Unorm3pack16")]
-	G12x4B12x4R12x43plane420Unorm3pack16Khr = G12x4B12x4R12x43plane420Unorm3pack16,
-	[Obsolete("Use VkFormat.G12x4B12x4r12x42plane420Unorm3pack16")]
-	G12x4B12x4r12x42plane420Unorm3pack16Khr = G12x4B12x4r12x42plane420Unorm3pack16,
-	[Obsolete("Use VkFormat.G12x4B12x4R12x43plane422Unorm3pack16")]
-	G12x4B12x4R12x43plane422Unorm3pack16Khr = G12x4B12x4R12x43plane422Unorm3pack16,
-	[Obsolete("Use VkFormat.G12x4B12x4r12x42plane422Unorm3pack16")]
-	G12x4B12x4r12x42plane422Unorm3pack16Khr = G12x4B12x4r12x42plane422Unorm3pack16,
-	[Obsolete("Use VkFormat.G12x4B12x4R12x43plane444Unorm3pack16")]
-	G12x4B12x4R12x43plane444Unorm3pack16Khr = G12x4B12x4R12x43plane444Unorm3pack16,
-	[Obsolete("Use VkFormat.G16b16g16r16422Unorm")]
-	G16b16g16r16422UnormKhr = G16b16g16r16422Unorm,
-	[Obsolete("Use VkFormat.B16g16r16g16422Unorm")]
-	B16g16r16g16422UnormKhr = B16g16r16g16422Unorm,
-	[Obsolete("Use VkFormat.G16B16R163plane420Unorm")]
-	G16B16R163plane420UnormKhr = G16B16R163plane420Unorm,
-	[Obsolete("Use VkFormat.G16B16r162plane420Unorm")]
-	G16B16r162plane420UnormKhr = G16B16r162plane420Unorm,
-	[Obsolete("Use VkFormat.G16B16R163plane422Unorm")]
-	G16B16R163plane422UnormKhr = G16B16R163plane422Unorm,
-	[Obsolete("Use VkFormat.G16B16r162plane422Unorm")]
-	G16B16r162plane422UnormKhr = G16B16r162plane422Unorm,
-	[Obsolete("Use VkFormat.G16B16R163plane444Unorm")]
-	G16B16R163plane444UnormKhr = G16B16R163plane444Unorm,
+	R4G4UNormPack8 = 1,
+	R4G4B4A4UNormPack16 = 2,
+	B4G4R4A4UNormPack16 = 3,
+	R5G6B5UNormPack16 = 4,
+	B5G6R5UNormPack16 = 5,
+	R5G5B5A1UNormPack16 = 6,
+	B5G5R5A1UNormPack16 = 7,
+	A1R5G5B5UNormPack16 = 8,
+	R8UNorm = 9,
+	R8SNorm = 10,
+	R8UScaled = 11,
+	R8SScaled = 12,
+	R8UInt = 13,
+	R8SInt = 14,
+	R8SRGB = 15,
+	R8G8UNorm = 16,
+	R8G8SNorm = 17,
+	R8G8UScaled = 18,
+	R8G8SScaled = 19,
+	R8G8UInt = 20,
+	R8G8SInt = 21,
+	R8G8SRGB = 22,
+	R8G8B8UNorm = 23,
+	R8G8B8SNorm = 24,
+	R8G8B8UScaled = 25,
+	R8G8B8SScaled = 26,
+	R8G8B8UInt = 27,
+	R8G8B8SInt = 28,
+	R8G8B8SRGB = 29,
+	B8G8R8UNorm = 30,
+	B8G8R8SNorm = 31,
+	B8G8R8UScaled = 32,
+	B8G8R8SScaled = 33,
+	B8G8R8UInt = 34,
+	B8G8R8SInt = 35,
+	B8G8R8SRGB = 36,
+	R8G8B8A8UNorm = 37,
+	R8G8B8A8SNorm = 38,
+	R8G8B8A8UScaled = 39,
+	R8G8B8A8SScaled = 40,
+	R8G8B8A8UInt = 41,
+	R8G8B8A8SInt = 42,
+	R8G8B8A8SRGB = 43,
+	B8G8R8A8UNorm = 44,
+	B8G8R8A8SNorm = 45,
+	B8G8R8A8UScaled = 46,
+	B8G8R8A8SScaled = 47,
+	B8G8R8A8UInt = 48,
+	B8G8R8A8SInt = 49,
+	B8G8R8A8SRGB = 50,
+	A8B8G8R8UNormPack32 = 51,
+	A8B8G8R8SNormPack32 = 52,
+	A8B8G8R8UScaledPack32 = 53,
+	A8B8G8R8SScaledPack32 = 54,
+	A8B8G8R8UIntPack32 = 55,
+	A8B8G8R8SIntPack32 = 56,
+	A8B8G8R8SRGBPack32 = 57,
+	A2R10G10B10UNormPack32 = 58,
+	A2R10G10B10SNormPack32 = 59,
+	A2R10G10B10UScaledPack32 = 60,
+	A2R10G10B10SScaledPack32 = 61,
+	A2R10G10B10UIntPack32 = 62,
+	A2R10G10B10SIntPack32 = 63,
+	A2B10G10R10UNormPack32 = 64,
+	A2B10G10R10SNormPack32 = 65,
+	A2B10G10R10UScaledPack32 = 66,
+	A2B10G10R10SScaledPack32 = 67,
+	A2B10G10R10UIntPack32 = 68,
+	A2B10G10R10SIntPack32 = 69,
+	R16UNorm = 70,
+	R16SNorm = 71,
+	R16UScaled = 72,
+	R16SScaled = 73,
+	R16UInt = 74,
+	R16SInt = 75,
+	R16SFloat = 76,
+	R16G16UNorm = 77,
+	R16G16SNorm = 78,
+	R16G16UScaled = 79,
+	R16G16SScaled = 80,
+	R16G16UInt = 81,
+	R16G16SInt = 82,
+	R16G16SFloat = 83,
+	R16G16B16UNorm = 84,
+	R16G16B16SNorm = 85,
+	R16G16B16UScaled = 86,
+	R16G16B16SScaled = 87,
+	R16G16B16UInt = 88,
+	R16G16B16SInt = 89,
+	R16G16B16SFloat = 90,
+	R16G16B16A16UNorm = 91,
+	R16G16B16A16SNorm = 92,
+	R16G16B16A16UScaled = 93,
+	R16G16B16A16SScaled = 94,
+	R16G16B16A16UInt = 95,
+	R16G16B16A16SInt = 96,
+	R16G16B16A16SFloat = 97,
+	R32UInt = 98,
+	R32SInt = 99,
+	R32SFloat = 100,
+	R32G32UInt = 101,
+	R32G32SInt = 102,
+	R32G32SFloat = 103,
+	R32G32B32UInt = 104,
+	R32G32B32SInt = 105,
+	R32G32B32SFloat = 106,
+	R32G32B32A32UInt = 107,
+	R32G32B32A32SInt = 108,
+	R32G32B32A32SFloat = 109,
+	R64UInt = 110,
+	R64SInt = 111,
+	R64SFloat = 112,
+	R64G64UInt = 113,
+	R64G64SInt = 114,
+	R64G64SFloat = 115,
+	R64G64B64UInt = 116,
+	R64G64B64SInt = 117,
+	R64G64B64SFloat = 118,
+	R64G64B64A64UInt = 119,
+	R64G64B64A64SInt = 120,
+	R64G64B64A64SFloat = 121,
+	B10G11R11UFloatPack32 = 122,
+	E5B9G9R9UFloatPack32 = 123,
+	D16UNorm = 124,
+	X8D24UNormPack32 = 125,
+	D32SFloat = 126,
+	S8UInt = 127,
+	D16UNormS8UInt = 128,
+	D24UNormS8UInt = 129,
+	D32SFloatS8UInt = 130,
+	BC1RGBUNormBlock = 131,
+	BC1RGBSRGBBlock = 132,
+	BC1RGBAUNormBlock = 133,
+	BC1RGBASRGBBlock = 134,
+	BC2UNormBlock = 135,
+	BC2SRGBBlock = 136,
+	BC3UNormBlock = 137,
+	BC3SRGBBlock = 138,
+	BC4UNormBlock = 139,
+	BC4SNormBlock = 140,
+	BC5UNormBlock = 141,
+	BC5SNormBlock = 142,
+	BC6HUFloatBlock = 143,
+	BC6HSFloatBlock = 144,
+	BC7UNormBlock = 145,
+	BC7SRGBBlock = 146,
+	ETC2R8G8B8UNormBlock = 147,
+	ETC2R8G8B8SRGBBlock = 148,
+	ETC2R8G8B8A1UNormBlock = 149,
+	ETC2R8G8B8A1SRGBBlock = 150,
+	ETC2R8G8B8A8UNormBlock = 151,
+	ETC2R8G8B8A8SRGBBlock = 152,
+	EACR11UNormBlock = 153,
+	EACR11SNormBlock = 154,
+	EACR11G11UNormBlock = 155,
+	EACR11G11SNormBlock = 156,
+	ASTC4x4UNormBlock = 157,
+	ASTC4x4SRGBBlock = 158,
+	ASTC5x4UNormBlock = 159,
+	ASTC5x4SRGBBlock = 160,
+	ASTC5x5UNormBlock = 161,
+	ASTC5x5SRGBBlock = 162,
+	ASTC6x5UNormBlock = 163,
+	ASTC6x5SRGBBlock = 164,
+	ASTC6x6UNormBlock = 165,
+	ASTC6x6SRGBBlock = 166,
+	ASTC8x5UNormBlock = 167,
+	ASTC8x5SRGBBlock = 168,
+	ASTC8x6UNormBlock = 169,
+	ASTC8x6SRGBBlock = 170,
+	ASTC8x8UNormBlock = 171,
+	ASTC8x8SRGBBlock = 172,
+	ASTC10x5UNormBlock = 173,
+	ASTC10x5SRGBBlock = 174,
+	ASTC10x6UNormBlock = 175,
+	ASTC10x6SRGBBlock = 176,
+	ASTC10x8UNormBlock = 177,
+	ASTC10x8SRGBBlock = 178,
+	ASTC10x10UNormBlock = 179,
+	ASTC10x10SRGBBlock = 180,
+	ASTC12x10UNormBlock = 181,
+	ASTC12x10SRGBBlock = 182,
+	ASTC12x12UNormBlock = 183,
+	ASTC12x12SRGBBlock = 184,
+	G8B8G8R8422UNorm = 1000156000,
+	B8G8R8G8422UNorm = 1000156001,
+	G8B8R83Plane420UNorm = 1000156002,
+	G8B8R82Plane420UNorm = 1000156003,
+	G8B8R83Plane422UNorm = 1000156004,
+	G8B8R82Plane422UNorm = 1000156005,
+	G8B8R83Plane444UNorm = 1000156006,
+	R10X6UNormPack16 = 1000156007,
+	R10X6G10X6UNorm2Pack16 = 1000156008,
+	R10X6G10X6B10X6A10X6UNorm4Pack16 = 1000156009,
+	G10X6B10X6G10X6R10X6422UNorm4Pack16 = 1000156010,
+	B10X6G10X6R10X6G10X6422UNorm4Pack16 = 1000156011,
+	G10X6B10X6R10X63Plane420UNorm3Pack16 = 1000156012,
+	G10X6B10X6R10X62Plane420UNorm3Pack16 = 1000156013,
+	G10X6B10X6R10X63Plane422UNorm3Pack16 = 1000156014,
+	G10X6B10X6R10X62Plane422UNorm3Pack16 = 1000156015,
+	G10X6B10X6R10X63Plane444UNorm3Pack16 = 1000156016,
+	R12X4UNormPack16 = 1000156017,
+	R12X4G12X4UNorm2Pack16 = 1000156018,
+	R12X4G12X4B12X4A12X4UNorm4Pack16 = 1000156019,
+	G12X4B12X4G12X4R12X4422UNorm4Pack16 = 1000156020,
+	B12X4G12X4R12X4G12X4422UNorm4Pack16 = 1000156021,
+	G12X4B12X4R12X43Plane420UNorm3Pack16 = 1000156022,
+	G12X4B12X4R12X42Plane420UNorm3Pack16 = 1000156023,
+	G12X4B12X4R12X43Plane422UNorm3Pack16 = 1000156024,
+	G12X4B12X4R12X42Plane422UNorm3Pack16 = 1000156025,
+	G12X4B12X4R12X43Plane444UNorm3Pack16 = 1000156026,
+	G16B16G16R16422UNorm = 1000156027,
+	B16G16R16G16422UNorm = 1000156028,
+	G16B16R163Plane420UNorm = 1000156029,
+	G16B16R162Plane420UNorm = 1000156030,
+	G16B16R163Plane422UNorm = 1000156031,
+	G16B16R162Plane422UNorm = 1000156032,
+	G16B16R163Plane444UNorm = 1000156033,
+	PVRTC12BPPUNormBlockImg = 1000054000,
+	PVRTC14BPPUNormBlockImg = 1000054001,
+	PVRTC22BPPUNormBlockImg = 1000054002,
+	PVRTC24BPPUNormBlockImg = 1000054003,
+	PVRTC12BPPSRGBBlockImg = 1000054004,
+	PVRTC14BPPSRGBBlockImg = 1000054005,
+	PVRTC22BPPSRGBBlockImg = 1000054006,
+	PVRTC24BPPSRGBBlockImg = 1000054007,
+	ASTC4x4SFloatBlockExt = 1000066000,
+	ASTC5x4SFloatBlockExt = 1000066001,
+	ASTC5x5SFloatBlockExt = 1000066002,
+	ASTC6x5SFloatBlockExt = 1000066003,
+	ASTC6x6SFloatBlockExt = 1000066004,
+	ASTC8x5SFloatBlockExt = 1000066005,
+	ASTC8x6SFloatBlockExt = 1000066006,
+	ASTC8x8SFloatBlockExt = 1000066007,
+	ASTC10x5SFloatBlockExt = 1000066008,
+	ASTC10x6SFloatBlockExt = 1000066009,
+	ASTC10x8SFloatBlockExt = 1000066010,
+	ASTC10x10SFloatBlockExt = 1000066011,
+	ASTC12x10SFloatBlockExt = 1000066012,
+	ASTC12x12SFloatBlockExt = 1000066013,
+	[Obsolete("Use VkFormat.G8B8G8R8422UNorm")]
+	G8B8G8R8422UNormKhr = G8B8G8R8422UNorm,
+	[Obsolete("Use VkFormat.B8G8R8G8422UNorm")]
+	B8G8R8G8422UNormKhr = B8G8R8G8422UNorm,
+	[Obsolete("Use VkFormat.G8B8R83Plane420UNorm")]
+	G8B8R83Plane420UNormKhr = G8B8R83Plane420UNorm,
+	[Obsolete("Use VkFormat.G8B8R82Plane420UNorm")]
+	G8B8R82Plane420UNormKhr = G8B8R82Plane420UNorm,
+	[Obsolete("Use VkFormat.G8B8R83Plane422UNorm")]
+	G8B8R83Plane422UNormKhr = G8B8R83Plane422UNorm,
+	[Obsolete("Use VkFormat.G8B8R82Plane422UNorm")]
+	G8B8R82Plane422UNormKhr = G8B8R82Plane422UNorm,
+	[Obsolete("Use VkFormat.G8B8R83Plane444UNorm")]
+	G8B8R83Plane444UNormKhr = G8B8R83Plane444UNorm,
+	[Obsolete("Use VkFormat.R10X6UNormPack16")]
+	R10X6UNormPack16Khr = R10X6UNormPack16,
+	[Obsolete("Use VkFormat.R10X6G10X6UNorm2Pack16")]
+	R10X6G10X6UNorm2Pack16Khr = R10X6G10X6UNorm2Pack16,
+	[Obsolete("Use VkFormat.R10X6G10X6B10X6A10X6UNorm4Pack16")]
+	R10X6G10X6B10X6A10X6UNorm4Pack16Khr = R10X6G10X6B10X6A10X6UNorm4Pack16,
+	[Obsolete("Use VkFormat.G10X6B10X6G10X6R10X6422UNorm4Pack16")]
+	G10X6B10X6G10X6R10X6422UNorm4Pack16Khr = G10X6B10X6G10X6R10X6422UNorm4Pack16,
+	[Obsolete("Use VkFormat.B10X6G10X6R10X6G10X6422UNorm4Pack16")]
+	B10X6G10X6R10X6G10X6422UNorm4Pack16Khr = B10X6G10X6R10X6G10X6422UNorm4Pack16,
+	[Obsolete("Use VkFormat.G10X6B10X6R10X63Plane420UNorm3Pack16")]
+	G10X6B10X6R10X63Plane420UNorm3Pack16Khr = G10X6B10X6R10X63Plane420UNorm3Pack16,
+	[Obsolete("Use VkFormat.G10X6B10X6R10X62Plane420UNorm3Pack16")]
+	G10X6B10X6R10X62Plane420UNorm3Pack16Khr = G10X6B10X6R10X62Plane420UNorm3Pack16,
+	[Obsolete("Use VkFormat.G10X6B10X6R10X63Plane422UNorm3Pack16")]
+	G10X6B10X6R10X63Plane422UNorm3Pack16Khr = G10X6B10X6R10X63Plane422UNorm3Pack16,
+	[Obsolete("Use VkFormat.G10X6B10X6R10X62Plane422UNorm3Pack16")]
+	G10X6B10X6R10X62Plane422UNorm3Pack16Khr = G10X6B10X6R10X62Plane422UNorm3Pack16,
+	[Obsolete("Use VkFormat.G10X6B10X6R10X63Plane444UNorm3Pack16")]
+	G10X6B10X6R10X63Plane444UNorm3Pack16Khr = G10X6B10X6R10X63Plane444UNorm3Pack16,
+	[Obsolete("Use VkFormat.R12X4UNormPack16")]
+	R12X4UNormPack16Khr = R12X4UNormPack16,
+	[Obsolete("Use VkFormat.R12X4G12X4UNorm2Pack16")]
+	R12X4G12X4UNorm2Pack16Khr = R12X4G12X4UNorm2Pack16,
+	[Obsolete("Use VkFormat.R12X4G12X4B12X4A12X4UNorm4Pack16")]
+	R12X4G12X4B12X4A12X4UNorm4Pack16Khr = R12X4G12X4B12X4A12X4UNorm4Pack16,
+	[Obsolete("Use VkFormat.G12X4B12X4G12X4R12X4422UNorm4Pack16")]
+	G12X4B12X4G12X4R12X4422UNorm4Pack16Khr = G12X4B12X4G12X4R12X4422UNorm4Pack16,
+	[Obsolete("Use VkFormat.B12X4G12X4R12X4G12X4422UNorm4Pack16")]
+	B12X4G12X4R12X4G12X4422UNorm4Pack16Khr = B12X4G12X4R12X4G12X4422UNorm4Pack16,
+	[Obsolete("Use VkFormat.G12X4B12X4R12X43Plane420UNorm3Pack16")]
+	G12X4B12X4R12X43Plane420UNorm3Pack16Khr = G12X4B12X4R12X43Plane420UNorm3Pack16,
+	[Obsolete("Use VkFormat.G12X4B12X4R12X42Plane420UNorm3Pack16")]
+	G12X4B12X4R12X42Plane420UNorm3Pack16Khr = G12X4B12X4R12X42Plane420UNorm3Pack16,
+	[Obsolete("Use VkFormat.G12X4B12X4R12X43Plane422UNorm3Pack16")]
+	G12X4B12X4R12X43Plane422UNorm3Pack16Khr = G12X4B12X4R12X43Plane422UNorm3Pack16,
+	[Obsolete("Use VkFormat.G12X4B12X4R12X42Plane422UNorm3Pack16")]
+	G12X4B12X4R12X42Plane422UNorm3Pack16Khr = G12X4B12X4R12X42Plane422UNorm3Pack16,
+	[Obsolete("Use VkFormat.G12X4B12X4R12X43Plane444UNorm3Pack16")]
+	G12X4B12X4R12X43Plane444UNorm3Pack16Khr = G12X4B12X4R12X43Plane444UNorm3Pack16,
+	[Obsolete("Use VkFormat.G16B16G16R16422UNorm")]
+	G16B16G16R16422UNormKhr = G16B16G16R16422UNorm,
+	[Obsolete("Use VkFormat.B16G16R16G16422UNorm")]
+	B16G16R16G16422UNormKhr = B16G16R16G16422UNorm,
+	[Obsolete("Use VkFormat.G16B16R163Plane420UNorm")]
+	G16B16R163Plane420UNormKhr = G16B16R163Plane420UNorm,
+	[Obsolete("Use VkFormat.G16B16R162Plane420UNorm")]
+	G16B16R162Plane420UNormKhr = G16B16R162Plane420UNorm,
+	[Obsolete("Use VkFormat.G16B16R163Plane422UNorm")]
+	G16B16R163Plane422UNormKhr = G16B16R163Plane422UNorm,
+	[Obsolete("Use VkFormat.G16B16R162Plane422UNorm")]
+	G16B16R162Plane422UNormKhr = G16B16R162Plane422UNorm,
+	[Obsolete("Use VkFormat.G16B16R163Plane444UNorm")]
+	G16B16R163Plane444UNormKhr = G16B16R163Plane444UNorm,
 }
 [Flags]
 public enum VkFormatFeatureFlags
@@ -906,10 +906,10 @@ public enum VkFormatFeatureFlags
 	TransferSource = 1 << 14,
 	TransferDestination = 1 << 15,
 	MidpointChromaSamples = 1 << 17,
-	SampledImageYcbcrConversionLinearFilter = 1 << 18,
-	SampledImageYcbcrConversionSeparateReconstructionFilter = 1 << 19,
-	SampledImageYcbcrConversionChromaReconstructionExplicit = 1 << 20,
-	SampledImageYcbcrConversionChromaReconstructionExplicitForceable = 1 << 21,
+	SampledImageYCBCRConversionLinearFilter = 1 << 18,
+	SampledImageYCBCRConversionSeparateReconstructionFilter = 1 << 19,
+	SampledImageYCBCRConversionChromaReconstructionExplicit = 1 << 20,
+	SampledImageYCBCRConversionChromaReconstructionExplicitForceable = 1 << 21,
 	Disjoint = 1 << 22,
 	CositedChromaSamples = 1 << 23,
 	SampledImageFilterCubicImg = 1 << 13,
@@ -920,14 +920,14 @@ public enum VkFormatFeatureFlags
 	SampledImageFilterMinmaxExt = 1 << 16,
 	[Obsolete("Use VkFormatFeatureFlags.MidpointChromaSamples")]
 	MidpointChromaSamplesKhr = MidpointChromaSamples,
-	[Obsolete("Use VkFormatFeatureFlags.SampledImageYcbcrConversionLinearFilter")]
-	SampledImageYcbcrConversionLinearFilterKhr = SampledImageYcbcrConversionLinearFilter,
-	[Obsolete("Use VkFormatFeatureFlags.SampledImageYcbcrConversionSeparateReconstructionFilter")]
-	SampledImageYcbcrConversionSeparateReconstructionFilterKhr = SampledImageYcbcrConversionSeparateReconstructionFilter,
-	[Obsolete("Use VkFormatFeatureFlags.SampledImageYcbcrConversionChromaReconstructionExplicit")]
-	SampledImageYcbcrConversionChromaReconstructionExplicitKhr = SampledImageYcbcrConversionChromaReconstructionExplicit,
-	[Obsolete("Use VkFormatFeatureFlags.SampledImageYcbcrConversionChromaReconstructionExplicitForceable")]
-	SampledImageYcbcrConversionChromaReconstructionExplicitForceableKhr = SampledImageYcbcrConversionChromaReconstructionExplicitForceable,
+	[Obsolete("Use VkFormatFeatureFlags.SampledImageYCBCRConversionLinearFilter")]
+	SampledImageYCBCRConversionLinearFilterKhr = SampledImageYCBCRConversionLinearFilter,
+	[Obsolete("Use VkFormatFeatureFlags.SampledImageYCBCRConversionSeparateReconstructionFilter")]
+	SampledImageYCBCRConversionSeparateReconstructionFilterKhr = SampledImageYCBCRConversionSeparateReconstructionFilter,
+	[Obsolete("Use VkFormatFeatureFlags.SampledImageYCBCRConversionChromaReconstructionExplicit")]
+	SampledImageYCBCRConversionChromaReconstructionExplicitKhr = SampledImageYCBCRConversionChromaReconstructionExplicit,
+	[Obsolete("Use VkFormatFeatureFlags.SampledImageYCBCRConversionChromaReconstructionExplicitForceable")]
+	SampledImageYCBCRConversionChromaReconstructionExplicitForceableKhr = SampledImageYCBCRConversionChromaReconstructionExplicitForceable,
 	[Obsolete("Use VkFormatFeatureFlags.Disjoint")]
 	DisjointKhr = Disjoint,
 	[Obsolete("Use VkFormatFeatureFlags.CositedChromaSamples")]
@@ -938,15 +938,15 @@ public enum VkFormatFeatureFlags
 }
 public enum VkImageType
 {
-	_1d = 0,
-	_2d = 1,
-	_3d = 2,
+	_1D = 0,
+	_2D = 1,
+	_3D = 2,
 }
 public enum VkImageTiling
 {
 	Optimal = 0,
 	Linear = 1,
-	DrmFormatModifierExt = 1000158000,
+	DRMFormatModifierExt = 1000158000,
 }
 [Flags]
 public enum VkImageUsageFlags
@@ -972,7 +972,7 @@ public enum VkImageCreateFlags
 	CubeCompatible = 1 << 4,
 	Alias = 1 << 10,
 	SplitInstanceBindRegions = 1 << 6,
-	_2dArrayCompatible = 1 << 5,
+	_2DArrayCompatible = 1 << 5,
 	BlockTexelViewCompatible = 1 << 7,
 	ExtendedUsage = 1 << 8,
 	Protected = 1 << 11,
@@ -980,8 +980,8 @@ public enum VkImageCreateFlags
 	CornerSampledNv = 1 << 13,
 	[Obsolete("Use VkImageCreateFlags.SplitInstanceBindRegions")]
 	SplitInstanceBindRegionsKhr = SplitInstanceBindRegions,
-	[Obsolete("Use VkImageCreateFlags._2dArrayCompatible")]
-	_2dArrayCompatibleKhr = _2dArrayCompatible,
+	[Obsolete("Use VkImageCreateFlags._2DArrayCompatible")]
+	_2DArrayCompatibleKhr = _2DArrayCompatible,
 	[Obsolete("Use VkImageCreateFlags.BlockTexelViewCompatible")]
 	BlockTexelViewCompatibleKhr = BlockTexelViewCompatible,
 	[Obsolete("Use VkImageCreateFlags.ExtendedUsage")]
@@ -1007,10 +1007,10 @@ public enum VkSampleCountFlags
 public enum VkPhysicalDeviceType
 {
 	Other = 0,
-	IntegratedGpu = 1,
-	DiscreteGpu = 2,
-	VirtualGpu = 3,
-	Cpu = 4,
+	IntegratedGPU = 1,
+	DiscreteGPU = 2,
+	VirtualGPU = 3,
+	CPU = 4,
 }
 [Flags]
 public enum VkQueueFlags
@@ -1240,12 +1240,12 @@ public enum VkImageViewCreateFlags
 }
 public enum VkImageViewType
 {
-	_1d = 0,
-	_2d = 1,
-	_3d = 2,
+	_1D = 0,
+	_2D = 1,
+	_3D = 2,
 	Cube = 3,
-	_1dArray = 4,
-	_2dArray = 5,
+	_1DArray = 4,
+	_2DArray = 5,
 	CubeArray = 6,
 }
 public enum VkComponentSwizzle
@@ -1473,17 +1473,17 @@ public enum VkBlendOp
 	DifferenceExt = 1000148021,
 	ExclusionExt = 1000148022,
 	InvertExt = 1000148023,
-	InvertRgbExt = 1000148024,
+	InvertRGBExt = 1000148024,
 	LineardodgeExt = 1000148025,
 	LinearburnExt = 1000148026,
 	VividlightExt = 1000148027,
 	LinearlightExt = 1000148028,
 	PinlightExt = 1000148029,
 	HardmixExt = 1000148030,
-	HslHueExt = 1000148031,
-	HslSaturationExt = 1000148032,
-	HslColorExt = 1000148033,
-	HslLuminosityExt = 1000148034,
+	HSLHueExt = 1000148031,
+	HSLSaturationExt = 1000148032,
+	HSLColorExt = 1000148033,
+	HSLLuminosityExt = 1000148034,
 	PlusExt = 1000148035,
 	PlusClampedExt = 1000148036,
 	PlusClampedAlphaExt = 1000148037,
@@ -1724,10 +1724,10 @@ public enum VkStencilFaceFlags
 }
 public enum VkIndexType
 {
-	Uint16 = 0,
-	Uint32 = 1,
+	UInt16 = 0,
+	UInt32 = 1,
 	NoneNv = 1000165000,
-	Uint8Ext = 1000265000,
+	UInt8Ext = 1000265000,
 }
 public enum VkSubpassContents
 {
@@ -1762,7 +1762,7 @@ public enum VkObjectType
 	DescriptorSet = 23,
 	Framebuffer = 24,
 	CommandPool = 25,
-	SamplerYcbcrConversion = 1000156000,
+	SamplerYCBCRConversion = 1000156000,
 	DescriptorUpdateTemplate = 1000085000,
 	SurfaceKhr = 1000000000,
 	SwapchainKhr = 1000001000,
@@ -1774,8 +1774,8 @@ public enum VkObjectType
 	ObjectTableNvx = 1000086000,
 	IndirectCommandsLayoutNvx = 1000086001,
 	DebugUtilsMessengerExt = 1000128000,
-	[Obsolete("Use VkObjectType.SamplerYcbcrConversion")]
-	SamplerYcbcrConversionKhr = SamplerYcbcrConversion,
+	[Obsolete("Use VkObjectType.SamplerYCBCRConversion")]
+	SamplerYCBCRConversionKhr = SamplerYCBCRConversion,
 	ValidationCacheExt = 1000160000,
 	AccelerationStructureNv = 1000165000,
 	PerformanceConfigurationIntel = 1000210000,
@@ -1848,30 +1848,30 @@ public enum VkTessellationDomainOrigin
 }
 public enum VkSamplerYcbcrModelConversion
 {
-	RgbIdentity = 0,
-	YcbcrIdentity = 1,
-	Ycbcr709 = 2,
-	Ycbcr601 = 3,
-	Ycbcr2020 = 4,
-	[Obsolete("Use VkSamplerYcbcrModelConversion.RgbIdentity")]
-	RgbIdentityKhr = RgbIdentity,
-	[Obsolete("Use VkSamplerYcbcrModelConversion.YcbcrIdentity")]
-	YcbcrIdentityKhr = YcbcrIdentity,
-	[Obsolete("Use VkSamplerYcbcrModelConversion.Ycbcr709")]
-	Ycbcr709Khr = Ycbcr709,
-	[Obsolete("Use VkSamplerYcbcrModelConversion.Ycbcr601")]
-	Ycbcr601Khr = Ycbcr601,
-	[Obsolete("Use VkSamplerYcbcrModelConversion.Ycbcr2020")]
-	Ycbcr2020Khr = Ycbcr2020,
+	RGBIdentity = 0,
+	YCBCRIdentity = 1,
+	YCBCR709 = 2,
+	YCBCR601 = 3,
+	YCBCR2020 = 4,
+	[Obsolete("Use VkSamplerYcbcrModelConversion.RGBIdentity")]
+	RGBIdentityKhr = RGBIdentity,
+	[Obsolete("Use VkSamplerYcbcrModelConversion.YCBCRIdentity")]
+	YCBCRIdentityKhr = YCBCRIdentity,
+	[Obsolete("Use VkSamplerYcbcrModelConversion.YCBCR709")]
+	YCBCR709Khr = YCBCR709,
+	[Obsolete("Use VkSamplerYcbcrModelConversion.YCBCR601")]
+	YCBCR601Khr = YCBCR601,
+	[Obsolete("Use VkSamplerYcbcrModelConversion.YCBCR2020")]
+	YCBCR2020Khr = YCBCR2020,
 }
 public enum VkSamplerYcbcrRange
 {
-	ItuFull = 0,
-	ItuNarrow = 1,
-	[Obsolete("Use VkSamplerYcbcrRange.ItuFull")]
-	ItuFullKhr = ItuFull,
-	[Obsolete("Use VkSamplerYcbcrRange.ItuNarrow")]
-	ItuNarrowKhr = ItuNarrow,
+	ITUFull = 0,
+	ITUNarrow = 1,
+	[Obsolete("Use VkSamplerYcbcrRange.ITUFull")]
+	ITUFullKhr = ITUFull,
+	[Obsolete("Use VkSamplerYcbcrRange.ITUNarrow")]
+	ITUNarrowKhr = ITUNarrow,
 }
 public enum VkChromaLocation
 {
@@ -1899,24 +1899,24 @@ public enum VkExternalMemoryHandleTypeFlags
 	OpaqueFileDescriptor = 1 << 0,
 	OpaqueWin32 = 1 << 1,
 	OpaqueWin32Kmt = 1 << 2,
-	D3d11Texture = 1 << 3,
-	D3d11TextureKmt = 1 << 4,
-	D3d12Heap = 1 << 5,
-	D3d12Resource = 1 << 6,
+	D3D11Texture = 1 << 3,
+	D3D11TextureKmt = 1 << 4,
+	D3D12Heap = 1 << 5,
+	D3D12Resource = 1 << 6,
 	[Obsolete("Use VkExternalMemoryHandleTypeFlags.OpaqueFileDescriptor")]
 	OpaqueFileDescriptorKhr = OpaqueFileDescriptor,
 	[Obsolete("Use VkExternalMemoryHandleTypeFlags.OpaqueWin32")]
 	OpaqueWin32Khr = OpaqueWin32,
 	[Obsolete("Use VkExternalMemoryHandleTypeFlags.OpaqueWin32Kmt")]
 	OpaqueWin32KmtKhr = OpaqueWin32Kmt,
-	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3d11Texture")]
-	D3d11TextureKhr = D3d11Texture,
-	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3d11TextureKmt")]
-	D3d11TextureKmtKhr = D3d11TextureKmt,
-	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3d12Heap")]
-	D3d12HeapKhr = D3d12Heap,
-	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3d12Resource")]
-	D3d12ResourceKhr = D3d12Resource,
+	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3D11Texture")]
+	D3D11TextureKhr = D3D11Texture,
+	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3D11TextureKmt")]
+	D3D11TextureKmtKhr = D3D11TextureKmt,
+	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3D12Heap")]
+	D3D12HeapKhr = D3D12Heap,
+	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3D12Resource")]
+	D3D12ResourceKhr = D3D12Resource,
 	DmaBufExt = 1 << 9,
 	AndroidHardwareBufferAndroid = 1 << 10,
 	HostAllocationExt = 1 << 7,
@@ -1981,7 +1981,7 @@ public enum VkExternalSemaphoreHandleTypeFlags
 	OpaqueFileDescriptor = 1 << 0,
 	OpaqueWin32 = 1 << 1,
 	OpaqueWin32Kmt = 1 << 2,
-	D3d12Fence = 1 << 3,
+	D3D12Fence = 1 << 3,
 	SyncFileDescriptor = 1 << 4,
 	[Obsolete("Use VkExternalSemaphoreHandleTypeFlags.OpaqueFileDescriptor")]
 	OpaqueFileDescriptorKhr = OpaqueFileDescriptor,
@@ -1989,8 +1989,8 @@ public enum VkExternalSemaphoreHandleTypeFlags
 	OpaqueWin32Khr = OpaqueWin32,
 	[Obsolete("Use VkExternalSemaphoreHandleTypeFlags.OpaqueWin32Kmt")]
 	OpaqueWin32KmtKhr = OpaqueWin32Kmt,
-	[Obsolete("Use VkExternalSemaphoreHandleTypeFlags.D3d12Fence")]
-	D3d12FenceKhr = D3d12Fence,
+	[Obsolete("Use VkExternalSemaphoreHandleTypeFlags.D3D12Fence")]
+	D3D12FenceKhr = D3D12Fence,
 	[Obsolete("Use VkExternalSemaphoreHandleTypeFlags.SyncFileDescriptor")]
 	SyncFileDescriptorKhr = SyncFileDescriptor,
 }
@@ -2027,25 +2027,25 @@ public enum VkCompositeAlphaFlagsKHR
 }
 public enum VkColorSpaceKHR
 {
-	SrgbNonlinearKhr = 0,
-	[Obsolete("Use VkColorSpaceKHR.SrgbNonlinearKhr")]
-	ColorspaceSrgbNonlinearKhr = SrgbNonlinearKhr,
+	SRGBNonlinearKhr = 0,
+	[Obsolete("Use VkColorSpaceKHR.SRGBNonlinearKhr")]
+	ColorspaceSRGBNonlinearKhr = SRGBNonlinearKhr,
 	DisplayP3NonlinearExt = 1000104001,
-	ExtendedSrgbLinearExt = 1000104002,
+	ExtendedSRGBLinearExt = 1000104002,
 	DisplayP3LinearExt = 1000104003,
-	DciP3NonlinearExt = 1000104004,
-	Bt709LinearExt = 1000104005,
-	Bt709NonlinearExt = 1000104006,
-	Bt2020LinearExt = 1000104007,
-	Hdr10St2084Ext = 1000104008,
-	DolbyvisionExt = 1000104009,
-	Hdr10HlgExt = 1000104010,
-	AdobergbLinearExt = 1000104011,
-	AdobergbNonlinearExt = 1000104012,
+	DCIP3NonlinearExt = 1000104004,
+	BT709LinearExt = 1000104005,
+	BT709NonlinearExt = 1000104006,
+	BT2020LinearExt = 1000104007,
+	HDR10ST2084Ext = 1000104008,
+	DolbyVisionExt = 1000104009,
+	HDR10HLGExt = 1000104010,
+	AdobeRGBLinearExt = 1000104011,
+	AdobeRGBNonlinearExt = 1000104012,
 	PassThroughExt = 1000104013,
-	ExtendedSrgbNonlinearExt = 1000104014,
+	ExtendedSRGBNonlinearExt = 1000104014,
 	[Obsolete("Use VkColorSpaceKHR.DisplayP3LinearExt")]
-	DciP3LinearExt = DisplayP3LinearExt,
+	DCIP3LinearExt = DisplayP3LinearExt,
 	DisplayNativeAmd = 1000213000,
 }
 public enum VkPresentModeKHR
@@ -2157,12 +2157,12 @@ public enum VkDebugReportObjectTypeEXT
 	ValidationCacheExtExt = 33,
 	[Obsolete("Use VkDebugReportObjectTypeEXT.ValidationCacheExtExt")]
 	ValidationCacheExt = ValidationCacheExtExt,
-	SamplerYcbcrConversionExt = 1000011000,
+	SamplerYCBCRConversionExt = 1000011000,
 	DescriptorUpdateTemplateExt = 1000011000,
 	[Obsolete("Use VkDebugReportObjectTypeEXT.DescriptorUpdateTemplateExt")]
 	DescriptorUpdateTemplateKhrExt = DescriptorUpdateTemplateExt,
-	[Obsolete("Use VkDebugReportObjectTypeEXT.SamplerYcbcrConversionExt")]
-	SamplerYcbcrConversionKhrExt = SamplerYcbcrConversionExt,
+	[Obsolete("Use VkDebugReportObjectTypeEXT.SamplerYCBCRConversionExt")]
+	SamplerYCBCRConversionKhrExt = SamplerYCBCRConversionExt,
 	AccelerationStructureNvExt = 1000165000,
 }
 public enum VkRasterizationOrderAMD
@@ -2185,8 +2185,8 @@ public enum VkExternalMemoryHandleTypeFlagsNV
 {
 	OpaqueWin32Nv = 1 << 0,
 	OpaqueWin32KmtNv = 1 << 1,
-	D3d11ImageNv = 1 << 2,
-	D3d11ImageKmtNv = 1 << 3,
+	D3D11ImageNv = 1 << 2,
+	D3D11ImageKmtNv = 1 << 3,
 }
 [Flags]
 public enum VkExternalMemoryFeatureFlagsNV
@@ -2239,24 +2239,24 @@ public enum VkExternalMemoryHandleTypeFlagsKHR
 	OpaqueFileDescriptor = 1 << 0,
 	OpaqueWin32 = 1 << 1,
 	OpaqueWin32Kmt = 1 << 2,
-	D3d11Texture = 1 << 3,
-	D3d11TextureKmt = 1 << 4,
-	D3d12Heap = 1 << 5,
-	D3d12Resource = 1 << 6,
+	D3D11Texture = 1 << 3,
+	D3D11TextureKmt = 1 << 4,
+	D3D12Heap = 1 << 5,
+	D3D12Resource = 1 << 6,
 	[Obsolete("Use VkExternalMemoryHandleTypeFlags.OpaqueFileDescriptor")]
 	OpaqueFileDescriptorKhr = OpaqueFileDescriptor,
 	[Obsolete("Use VkExternalMemoryHandleTypeFlags.OpaqueWin32")]
 	OpaqueWin32Khr = OpaqueWin32,
 	[Obsolete("Use VkExternalMemoryHandleTypeFlags.OpaqueWin32Kmt")]
 	OpaqueWin32KmtKhr = OpaqueWin32Kmt,
-	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3d11Texture")]
-	D3d11TextureKhr = D3d11Texture,
-	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3d11TextureKmt")]
-	D3d11TextureKmtKhr = D3d11TextureKmt,
-	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3d12Heap")]
-	D3d12HeapKhr = D3d12Heap,
-	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3d12Resource")]
-	D3d12ResourceKhr = D3d12Resource,
+	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3D11Texture")]
+	D3D11TextureKhr = D3D11Texture,
+	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3D11TextureKmt")]
+	D3D11TextureKmtKhr = D3D11TextureKmt,
+	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3D12Heap")]
+	D3D12HeapKhr = D3D12Heap,
+	[Obsolete("Use VkExternalMemoryHandleTypeFlags.D3D12Resource")]
+	D3D12ResourceKhr = D3D12Resource,
 	DmaBufExt = 1 << 9,
 	AndroidHardwareBufferAndroid = 1 << 10,
 	HostAllocationExt = 1 << 7,
@@ -2283,7 +2283,7 @@ public enum VkExternalSemaphoreHandleTypeFlagsKHR
 	OpaqueFileDescriptor = 1 << 0,
 	OpaqueWin32 = 1 << 1,
 	OpaqueWin32Kmt = 1 << 2,
-	D3d12Fence = 1 << 3,
+	D3D12Fence = 1 << 3,
 	SyncFileDescriptor = 1 << 4,
 	[Obsolete("Use VkExternalSemaphoreHandleTypeFlags.OpaqueFileDescriptor")]
 	OpaqueFileDescriptorKhr = OpaqueFileDescriptor,
@@ -2291,8 +2291,8 @@ public enum VkExternalSemaphoreHandleTypeFlagsKHR
 	OpaqueWin32Khr = OpaqueWin32,
 	[Obsolete("Use VkExternalSemaphoreHandleTypeFlags.OpaqueWin32Kmt")]
 	OpaqueWin32KmtKhr = OpaqueWin32Kmt,
-	[Obsolete("Use VkExternalSemaphoreHandleTypeFlags.D3d12Fence")]
-	D3d12FenceKhr = D3d12Fence,
+	[Obsolete("Use VkExternalSemaphoreHandleTypeFlags.D3D12Fence")]
+	D3D12FenceKhr = D3D12Fence,
 	[Obsolete("Use VkExternalSemaphoreHandleTypeFlags.SyncFileDescriptor")]
 	SyncFileDescriptorKhr = SyncFileDescriptor,
 }
@@ -2369,7 +2369,7 @@ public enum VkObjectEntryUsageFlagsNVX
 [Flags]
 public enum VkSurfaceCounterFlagsEXT
 {
-	VblankExt = 1 << 0,
+	VBlankExt = 1 << 0,
 }
 public enum VkDisplayPowerStateEXT
 {
@@ -2483,8 +2483,8 @@ public enum VkPerformanceCounterStorageKHR
 {
 	Int32Khr = 0,
 	Int64Khr = 1,
-	Uint32Khr = 2,
-	Uint64Khr = 3,
+	UInt32Khr = 2,
+	UInt64Khr = 3,
 	Float32Khr = 4,
 	Float64Khr = 5,
 }
@@ -2568,38 +2568,38 @@ public enum VkPipelineCoverageModulationStateCreateFlagsNV
 public enum VkCoverageModulationModeNV
 {
 	NoneNv = 0,
-	RgbNv = 1,
+	RGBNv = 1,
 	AlphaNv = 2,
-	RgbaNv = 3,
+	RGBANv = 3,
 }
 [Obsolete("Use VkSamplerYcbcrModelConversion")]
 public enum VkSamplerYcbcrModelConversionKHR
 {
-	RgbIdentity = 0,
-	YcbcrIdentity = 1,
-	Ycbcr709 = 2,
-	Ycbcr601 = 3,
-	Ycbcr2020 = 4,
-	[Obsolete("Use VkSamplerYcbcrModelConversion.RgbIdentity")]
-	RgbIdentityKhr = RgbIdentity,
-	[Obsolete("Use VkSamplerYcbcrModelConversion.YcbcrIdentity")]
-	YcbcrIdentityKhr = YcbcrIdentity,
-	[Obsolete("Use VkSamplerYcbcrModelConversion.Ycbcr709")]
-	Ycbcr709Khr = Ycbcr709,
-	[Obsolete("Use VkSamplerYcbcrModelConversion.Ycbcr601")]
-	Ycbcr601Khr = Ycbcr601,
-	[Obsolete("Use VkSamplerYcbcrModelConversion.Ycbcr2020")]
-	Ycbcr2020Khr = Ycbcr2020,
+	RGBIdentity = 0,
+	YCBCRIdentity = 1,
+	YCBCR709 = 2,
+	YCBCR601 = 3,
+	YCBCR2020 = 4,
+	[Obsolete("Use VkSamplerYcbcrModelConversion.RGBIdentity")]
+	RGBIdentityKhr = RGBIdentity,
+	[Obsolete("Use VkSamplerYcbcrModelConversion.YCBCRIdentity")]
+	YCBCRIdentityKhr = YCBCRIdentity,
+	[Obsolete("Use VkSamplerYcbcrModelConversion.YCBCR709")]
+	YCBCR709Khr = YCBCR709,
+	[Obsolete("Use VkSamplerYcbcrModelConversion.YCBCR601")]
+	YCBCR601Khr = YCBCR601,
+	[Obsolete("Use VkSamplerYcbcrModelConversion.YCBCR2020")]
+	YCBCR2020Khr = YCBCR2020,
 }
 [Obsolete("Use VkSamplerYcbcrRange")]
 public enum VkSamplerYcbcrRangeKHR
 {
-	ItuFull = 0,
-	ItuNarrow = 1,
-	[Obsolete("Use VkSamplerYcbcrRange.ItuFull")]
-	ItuFullKhr = ItuFull,
-	[Obsolete("Use VkSamplerYcbcrRange.ItuNarrow")]
-	ItuNarrowKhr = ItuNarrow,
+	ITUFull = 0,
+	ITUNarrow = 1,
+	[Obsolete("Use VkSamplerYcbcrRange.ITUFull")]
+	ITUFullKhr = ITUFull,
+	[Obsolete("Use VkSamplerYcbcrRange.ITUNarrow")]
+	ITUNarrowKhr = ITUNarrow,
 }
 [Obsolete("Use VkChromaLocation")]
 public enum VkChromaLocationKHR
@@ -2666,7 +2666,7 @@ public enum VkBuildAccelerationStructureFlagsNV
 public enum VkGeometryTypeNV
 {
 	TrianglesNv = 0,
-	AabbsNv = 1,
+	AABBsNv = 1,
 }
 [Flags]
 public enum VkGeometryFlagsNV
@@ -2773,7 +2773,7 @@ public enum VkSemaphoreTypeKHR
 public enum VkPerformanceOverrideTypeINTEL
 {
 	NullHardwareIntel = 0,
-	FlushGpuCachesIntel = 1,
+	FlushGPUCachesIntel = 1,
 }
 public enum VkPerformanceConfigurationTypeINTEL
 {
@@ -2781,13 +2781,13 @@ public enum VkPerformanceConfigurationTypeINTEL
 }
 public enum VkPerformanceParameterTypeINTEL
 {
-	HwCountersSupportedIntel = 0,
+	HWCountersSupportedIntel = 0,
 	StreamMarkerValidBitsIntel = 1,
 }
 public enum VkPerformanceValueTypeINTEL
 {
-	Uint32Intel = 0,
-	Uint64Intel = 1,
+	UInt32Intel = 0,
+	UInt64Intel = 1,
 	FloatIntel = 2,
 	BoolIntel = 3,
 	StringIntel = 4,
@@ -2813,8 +2813,8 @@ public enum VkToolPurposeFlagsEXT
 }
 public enum VkValidationFeatureEnableEXT
 {
-	GpuAssistedExt = 0,
-	GpuAssistedReserveBindingSlotExt = 1,
+	GPUAssistedExt = 0,
+	GPUAssistedReserveBindingSlotExt = 1,
 	BestPracticesExt = 2,
 }
 public enum VkValidationFeatureDisableEXT
@@ -2822,7 +2822,7 @@ public enum VkValidationFeatureDisableEXT
 	AllExt = 0,
 	ShadersExt = 1,
 	ThreadSafetyExt = 2,
-	ApiParametersExt = 3,
+	APIParametersExt = 3,
 	ObjectLifetimesExt = 4,
 	CoreChecksExt = 5,
 	UniqueHandlesExt = 6,
@@ -2832,14 +2832,14 @@ public enum VkComponentTypeNV
 	Float16Nv = 0,
 	Float32Nv = 1,
 	Float64Nv = 2,
-	Sint8Nv = 3,
-	Sint16Nv = 4,
-	Sint32Nv = 5,
-	Sint64Nv = 6,
-	Uint8Nv = 7,
-	Uint16Nv = 8,
-	Uint32Nv = 9,
-	Uint64Nv = 10,
+	SInt8Nv = 3,
+	SInt16Nv = 4,
+	SInt32Nv = 5,
+	SInt64Nv = 6,
+	UInt8Nv = 7,
+	UInt16Nv = 8,
+	UInt32Nv = 9,
+	UInt64Nv = 10,
 }
 public enum VkScopeNV
 {
@@ -2879,6 +2879,6 @@ public enum VkPipelineExecutableStatisticFormatKHR
 {
 	Bool32Khr = 0,
 	Int64Khr = 1,
-	Uint64Khr = 2,
+	UInt64Khr = 2,
 	Float64Khr = 3,
 }

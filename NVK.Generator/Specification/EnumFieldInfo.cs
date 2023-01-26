@@ -64,7 +64,7 @@ internal class EnumFieldInfo
             BitPosition = int.Parse(element.Attribute("bitpos")!.Value);
             return;
         }
-            
+
         // if the enum value isn't an alias, has a hardcoded value, or has a bit position, then it's value needs to be calculated from its extension, offset, and direction
         extensionNumber ??= int.Parse(element.Attribute("extnumber")!.Value);
         var offset = int.Parse(element.Attribute("offset")!.Value);
@@ -119,10 +119,111 @@ internal class EnumFieldInfo
         splitFieldName.Remove("BIT");
 
         // reconstruct the name and ensure it doesn't start with a digit (as that's not a valid C# identifier)
-        var newEnumFieldName = string.Join("", splitFieldName.Select(fieldNameSection => fieldNameSection.ToLower().FirstToUpper()));//.Select(splitName => CapitaliseEnumFieldNameSection(enumName, splitName)));
+        var newEnumFieldName = string.Join("", splitFieldName.Select(CapitaliseEnumFieldNameSection));
         if (char.IsDigit(newEnumFieldName[0]))
             newEnumFieldName = $"_{newEnumFieldName}";
 
         return newEnumFieldName.ResolveAbbreviations();
+    }
+
+
+    /*********
+    ** Private Methods
+    *********/
+    /// <summary>Capitalises a section of an enum field name.</summary>
+    /// <param name="enumFieldNameSection">The enum field name section to capitalise.</param>
+    /// <returns>The correctly capitalised <paramref name="enumFieldNameSection"/>.</returns>
+    private static string CapitaliseEnumFieldNameSection(string enumFieldNameSection)
+    {
+        enumFieldNameSection = enumFieldNameSection.ToLower();
+
+        // check if section is a compression format
+        var compressionFormats = new[] { "bc", "etc", "eac", "astc", "pvrtc" };
+        if (compressionFormats.Any(enumFieldNameSection.StartsWith))
+            return enumFieldNameSection.ToUpper();
+
+        if (enumFieldNameSection.EndsWith("bpc"))
+            return enumFieldNameSection.ToUpper();
+        if (enumFieldNameSection.EndsWith("bpp"))
+            return enumFieldNameSection.ToUpper();
+
+        // check if the section is the format channel definitions (e.g. R8G8B8A8)
+        var channelCharacters = new[] { 'r', 'g', 'b', 'a', 'e' };
+        if (enumFieldNameSection.Length > 1 && channelCharacters.Contains(enumFieldNameSection[0]) && char.IsDigit(enumFieldNameSection[1]))
+            return enumFieldNameSection.ToUpper();
+
+        // check if the section is a numbered pack section (e.g. 4PACK16)
+        if (enumFieldNameSection.Length > 1 && char.IsDigit(enumFieldNameSection[0]) && enumFieldNameSection[1] == 'p')
+        {
+            // capitalise the 'p', not the number
+            var charArray = enumFieldNameSection.ToCharArray();
+            charArray[1] = char.ToUpper(charArray[1]);
+            return new string(charArray);
+        }
+
+        // check if the section has a special static capitalisation
+        var specialCapitalisationCases = new Dictionary<string, string>()
+        {
+            ["ycbcr"] = "YCBCR",
+            ["srgb"] = "SRGB",
+            ["uint"] = "UInt",
+            ["sint"] = "SInt",
+            ["unorm"] = "UNorm",
+            ["snorm"] = "SNorm",
+            ["ufloat"] = "UFloat",
+            ["sfloat"] = "SFloat",
+            ["uscaled"] = "UScaled",
+            ["sscaled"] = "SScaled",
+            ["rgb"] = "RGB",
+            ["rgba"] = "RGBA",
+            ["hsl"] = "HSL",
+
+            ["uint8"] = "UInt8",
+            ["uint16"] = "UInt16",
+            ["uint32"] = "UInt32",
+            ["uint64"] = "UInt64",
+            ["sint8"] = "SInt8",
+            ["sint16"] = "SInt16",
+            ["sint32"] = "SInt32",
+            ["sint64"] = "SInt64",
+
+            ["vblank"] = "VBlank",
+
+            ["cpu"] = "CPU",
+            ["gpu"] = "GPU",
+
+            ["d3d11"] = "D3D11",
+            ["d3d12"] = "D3D12",
+
+            ["gdeflate"] = "GDeflate",
+
+            ["sm"] = "SM",
+            ["hw"] = "HW",
+            ["api"] = "API",
+            ["itu"] = "ITU",
+            ["1d"] = "1D",
+            ["2d"] = "2D",
+            ["3d"] = "3D",
+            ["drm"] = "DRM",
+            ["aabb"] = "AABB",
+            ["aabbs"] = "AABBs",
+            ["dpb"] = "DPB",
+            ["pci"] = "PCI",
+            ["rdma"] = "RDMA",
+
+            ["dci"] = "DCI",
+            ["hdr"] = "HDR",
+            ["hdr10"] = "HDR10",
+            ["st2084"] = "ST2084",
+            ["hlg"] = "HLG",
+            ["bt709"] = "BT709",
+            ["bt2020"] = "BT2020",
+            ["adobergb"] = "AdobeRGB",
+            ["dolbyvision"] = "DolbyVision"
+        };
+        if (specialCapitalisationCases.TryGetValue(enumFieldNameSection, out var value))
+            return value;
+
+        return enumFieldNameSection.FirstToUpper();
     }
 }
