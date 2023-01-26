@@ -131,7 +131,7 @@ internal class EnumFieldInfo
         if (char.IsDigit(newEnumFieldName[0]))
             newEnumFieldName = $"_{newEnumFieldName}";
 
-        return newEnumFieldName.ResolveAbbreviations();
+        return newEnumFieldName.ResolveAbbreviations().CapitaliseSuffixedVendorTags();
     }
 
 

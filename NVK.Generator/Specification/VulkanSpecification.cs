@@ -27,6 +27,9 @@ internal class VulkanSpecification
     /// <summary>The feature of the specification.</summary>
     public FeatureInfo Feature { get; }
 
+    /// <summary>The vendor tags of the specification.</summary>
+    public static List<string> VendorTags { get; private set; } = new();
+
 
     /*********
     ** Constructors
@@ -38,11 +41,15 @@ internal class VulkanSpecification
         var specificationDocument = XDocument.Load(registryUrl);
 
         var registryElement = specificationDocument.Element("registry")!;
+        var tagElements = registryElement.Elements("tags").Elements("tag");
         var typeElements = registryElement.Elements("types").Elements("type");
         var enumsElements = registryElement.Elements("enums");
         var commandElements = registryElement.Elements("commands").Elements("command");
         var extensionElements = registryElement.Element("extensions")!.Elements("extension");
         var featureElements = registryElement.Elements("feature");
+
+        VendorTags = tagElements
+            .Select(tagElement => tagElement.Attribute("name")!.Value).ToList();
 
         Constants = enumsElements.WithAttribute("name", "API Constants").Elements("enum")
             .Select(constantElement => new ConstantInfo(constantElement)).ToList();

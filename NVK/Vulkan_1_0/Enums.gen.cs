@@ -25,16 +25,16 @@ public enum VkResult
 	ErrorTooManyObjects = -10,
 	ErrorFormatNotSupported = -11,
 	ErrorFragmentedPool = -12,
-	ErrorSurfaceLostKhr = -1000000000,
-	ErrorNativeWindowInUseKhr = -1000000001,
-	SuboptimalKhr = 1000001003,
-	ErrorOutOfDateKhr = -1000001004,
-	ErrorIncompatibleDisplayKhr = -1000003001,
-	ErrorValidationFailedExt = -1000011001,
-	ErrorInvalidShaderNv = -1000012000,
-	ErrorOutOfPoolMemoryKhr = -1000069000,
-	ErrorInvalidExternalHandleKhr = -1000072003,
-	ErrorNotPermittedExt = -1000174001,
+	ErrorSurfaceLostKHR = -1000000000,
+	ErrorNativeWindowInUseKHR = -1000000001,
+	SuboptimalKHR = 1000001003,
+	ErrorOutOfDateKHR = -1000001004,
+	ErrorIncompatibleDisplayKHR = -1000003001,
+	ErrorValidationFailedEXT = -1000011001,
+	ErrorInvalidShaderNV = -1000012000,
+	ErrorOutOfPoolMemoryKHR = -1000069000,
+	ErrorInvalidExternalHandleKHR = -1000072003,
+	ErrorNotPermittedEXT = -1000174001,
 }
 public enum VkStructureType
 {
@@ -87,163 +87,163 @@ public enum VkStructureType
 	MemoryBarrier = 46,
 	LoaderInstanceCreateInfo = 47,
 	LoaderDeviceCreateInfo = 48,
-	SwapchainCreateInfoKhr = 1000001000,
-	PresentInfoKhr = 1000001001,
-	DisplayModeCreateInfoKhr = 1000002000,
-	DisplaySurfaceCreateInfoKhr = 1000002001,
-	DisplayPresentInfoKhr = 1000003000,
-	XlibSurfaceCreateInfoKhr = 1000004000,
-	XcbSurfaceCreateInfoKhr = 1000005000,
-	WaylandSurfaceCreateInfoKhr = 1000006000,
-	AndroidSurfaceCreateInfoKhr = 1000008000,
-	Win32SurfaceCreateInfoKhr = 1000009000,
-	DebugReportCallbackCreateInfoExt = 1000011000,
-	[Obsolete("Use VkStructureType.DebugReportCallbackCreateInfoExt")]
-	DebugReportCreateInfoExt = DebugReportCallbackCreateInfoExt,
-	PipelineRasterizationStateRasterizationOrderAmd = 1000018000,
-	DebugMarkerObjectNameInfoExt = 1000022000,
-	DebugMarkerObjectTagInfoExt = 1000022001,
-	DebugMarkerMarkerInfoExt = 1000022002,
-	DedicatedAllocationImageCreateInfoNv = 1000026000,
-	DedicatedAllocationBufferCreateInfoNv = 1000026001,
-	DedicatedAllocationMemoryAllocateInfoNv = 1000026002,
-	TextureLodGatherFormatPropertiesAmd = 1000041000,
-	RenderPassMultiviewCreateInfoKhx = 1000053000,
-	PhysicalDeviceMultiviewFeaturesKhx = 1000053001,
-	PhysicalDeviceMultiviewPropertiesKhx = 1000053002,
-	ExternalMemoryImageCreateInfoNv = 1000056000,
-	ExportMemoryAllocateInfoNv = 1000056001,
-	ImportMemoryWin32HandleInfoNv = 1000057000,
-	ExportMemoryWin32HandleInfoNv = 1000057001,
-	Win32KeyedMutexAcquireReleaseInfoNv = 1000058000,
-	PhysicalDeviceFeatures2Khr = 1000059000,
-	PhysicalDeviceProperties2Khr = 1000059001,
-	FormatProperties2Khr = 1000059002,
-	ImageFormatProperties2Khr = 1000059003,
-	PhysicalDeviceImageFormatInfo2Khr = 1000059004,
-	QueueFamilyProperties2Khr = 1000059005,
-	PhysicalDeviceMemoryProperties2Khr = 1000059006,
-	SparseImageFormatProperties2Khr = 1000059007,
-	PhysicalDeviceSparseImageFormatInfo2Khr = 1000059008,
-	MemoryAllocateFlagsInfoKhx = 1000060000,
-	DeviceGroupRenderPassBeginInfoKhx = 1000060003,
-	DeviceGroupCommandBufferBeginInfoKhx = 1000060004,
-	DeviceGroupSubmitInfoKhx = 1000060005,
-	DeviceGroupBindSparseInfoKhx = 1000060006,
-	AcquireNextImageInfoKhx = 1000060010,
-	BindBufferMemoryDeviceGroupInfoKhx = 1000060013,
-	BindImageMemoryDeviceGroupInfoKhx = 1000060014,
-	DeviceGroupPresentCapabilitiesKhx = 1000060007,
-	ImageSwapchainCreateInfoKhx = 1000060008,
-	BindImageMemorySwapchainInfoKhx = 1000060009,
-	DeviceGroupPresentInfoKhx = 1000060011,
-	DeviceGroupSwapchainCreateInfoKhx = 1000060012,
-	ValidationFlagsExt = 1000061000,
-	ViSurfaceCreateInfoNn = 1000062000,
-	PhysicalDeviceGroupPropertiesKhx = 1000070000,
-	DeviceGroupDeviceCreateInfoKhx = 1000070001,
-	PhysicalDeviceExternalImageFormatInfoKhr = 1000071000,
-	ExternalImageFormatPropertiesKhr = 1000071001,
-	PhysicalDeviceExternalBufferInfoKhr = 1000071002,
-	ExternalBufferPropertiesKhr = 1000071003,
-	PhysicalDeviceIdPropertiesKhr = 1000071004,
-	ExternalMemoryBufferCreateInfoKhr = 1000072000,
-	ExternalMemoryImageCreateInfoKhr = 1000072001,
-	ExportMemoryAllocateInfoKhr = 1000072002,
-	ImportMemoryWin32HandleInfoKhr = 1000073000,
-	ExportMemoryWin32HandleInfoKhr = 1000073001,
-	MemoryWin32HandlePropertiesKhr = 1000073002,
-	MemoryGetWin32HandleInfoKhr = 1000073003,
-	ImportMemoryFileDescriptorInfoKhr = 1000074000,
-	MemoryFileDescriptorPropertiesKhr = 1000074001,
-	MemoryGetFileDescriptorInfoKhr = 1000074002,
-	Win32KeyedMutexAcquireReleaseInfoKhr = 1000075000,
-	PhysicalDeviceExternalSemaphoreInfoKhr = 1000076000,
-	ExternalSemaphorePropertiesKhr = 1000076001,
-	ExportSemaphoreCreateInfoKhr = 1000077000,
-	ImportSemaphoreWin32HandleInfoKhr = 1000078000,
-	ExportSemaphoreWin32HandleInfoKhr = 1000078001,
-	D3D12FenceSubmitInfoKhr = 1000078002,
-	SemaphoreGetWin32HandleInfoKhr = 1000078003,
-	ImportSemaphoreFileDescriptorInfoKhr = 1000079000,
-	SemaphoreGetFileDescriptorInfoKhr = 1000079001,
-	PhysicalDevicePushDescriptorPropertiesKhr = 1000080000,
-	PhysicalDevice16bitStorageFeaturesKhr = 1000083000,
-	PresentRegionsKhr = 1000084000,
-	DescriptorUpdateTemplateCreateInfoKhr = 1000085000,
-	ObjectTableCreateInfoNvx = 1000086000,
-	IndirectCommandsLayoutCreateInfoNvx = 1000086001,
-	CommandProcessCommandsInfoNvx = 1000086002,
-	CommandReserveSpaceForCommandsInfoNvx = 1000086003,
-	DeviceGeneratedCommandsLimitsNvx = 1000086004,
-	DeviceGeneratedCommandsFeaturesNvx = 1000086005,
-	PipelineViewportWScalingStateCreateInfoNv = 1000087000,
-	SurfaceCapabilities2Ext = 1000090000,
-	DisplayPowerInfoExt = 1000091000,
-	DeviceEventInfoExt = 1000091001,
-	DisplayEventInfoExt = 1000091002,
-	SwapchainCounterCreateInfoExt = 1000091003,
-	PresentTimesInfoGoogle = 1000092000,
-	PhysicalDeviceMultiviewPerViewAttributesPropertiesNvx = 1000097000,
-	PipelineViewportSwizzleStateCreateInfoNv = 1000098000,
-	PhysicalDeviceDiscardRectanglePropertiesExt = 1000099000,
-	PipelineDiscardRectangleStateCreateInfoExt = 1000099001,
-	PhysicalDeviceConservativeRasterizationPropertiesExt = 1000101000,
-	PipelineRasterizationConservativeStateCreateInfoExt = 1000101001,
-	HDRMetadataExt = 1000105000,
-	SharedPresentSurfaceCapabilitiesKhr = 1000111000,
-	PhysicalDeviceExternalFenceInfoKhr = 1000112000,
-	ExternalFencePropertiesKhr = 1000112001,
-	ExportFenceCreateInfoKhr = 1000113000,
-	ImportFenceWin32HandleInfoKhr = 1000114000,
-	ExportFenceWin32HandleInfoKhr = 1000114001,
-	FenceGetWin32HandleInfoKhr = 1000114002,
-	ImportFenceFileDescriptorInfoKhr = 1000115000,
-	FenceGetFileDescriptorInfoKhr = 1000115001,
-	PhysicalDevicePointClippingPropertiesKhr = 1000117000,
-	RenderPassInputAttachmentAspectCreateInfoKhr = 1000117001,
-	ImageViewUsageCreateInfoKhr = 1000117002,
-	PipelineTessellationDomainOriginStateCreateInfoKhr = 1000117003,
-	PhysicalDeviceSurfaceInfo2Khr = 1000119000,
-	SurfaceCapabilities2Khr = 1000119001,
-	SurfaceFormat2Khr = 1000119002,
-	PhysicalDeviceVariablePointerFeaturesKhr = 1000120000,
-	IosSurfaceCreateInfoMvk = 1000122000,
-	MacosSurfaceCreateInfoMvk = 1000123000,
-	MemoryDedicatedRequirementsKhr = 1000127000,
-	MemoryDedicatedAllocateInfoKhr = 1000127001,
-	PhysicalDeviceSamplerFilterMinmaxPropertiesExt = 1000130000,
-	SamplerReductionModeCreateInfoExt = 1000130001,
-	SampleLocationsInfoExt = 1000143000,
-	RenderPassSampleLocationsBeginInfoExt = 1000143001,
-	PipelineSampleLocationsStateCreateInfoExt = 1000143002,
-	PhysicalDeviceSampleLocationsPropertiesExt = 1000143003,
-	MultisamplePropertiesExt = 1000143004,
-	BufferMemoryRequirementsInfo2Khr = 1000146000,
-	ImageMemoryRequirementsInfo2Khr = 1000146001,
-	ImageSparseMemoryRequirementsInfo2Khr = 1000146002,
-	MemoryRequirements2Khr = 1000146003,
-	SparseImageMemoryRequirements2Khr = 1000146004,
-	ImageFormatListCreateInfoKhr = 1000147000,
-	PhysicalDeviceBlendOperationAdvancedFeaturesExt = 1000148000,
-	PhysicalDeviceBlendOperationAdvancedPropertiesExt = 1000148001,
-	PipelineColorBlendAdvancedStateCreateInfoExt = 1000148002,
-	PipelineCoverageToColorStateCreateInfoNv = 1000149000,
-	PipelineCoverageModulationStateCreateInfoNv = 1000152000,
-	SamplerYCBCRConversionCreateInfoKhr = 1000156000,
-	SamplerYCBCRConversionInfoKhr = 1000156001,
-	BindImagePlaneMemoryInfoKhr = 1000156002,
-	ImagePlaneMemoryRequirementsInfoKhr = 1000156003,
-	PhysicalDeviceSamplerYCBCRConversionFeaturesKhr = 1000156004,
-	SamplerYCBCRConversionImageFormatPropertiesKhr = 1000156005,
-	BindBufferMemoryInfoKhr = 1000157000,
-	BindImageMemoryInfoKhr = 1000157001,
-	ValidationCacheCreateInfoExt = 1000160000,
-	ShaderModuleValidationCacheCreateInfoExt = 1000160001,
-	DeviceQueueGlobalPriorityCreateInfoExt = 1000174000,
-	ImportMemoryHostPointerInfoExt = 1000178000,
-	MemoryHostPointerPropertiesExt = 1000178001,
-	PhysicalDeviceExternalMemoryHostPropertiesExt = 1000178002,
+	SwapchainCreateInfoKHR = 1000001000,
+	PresentInfoKHR = 1000001001,
+	DisplayModeCreateInfoKHR = 1000002000,
+	DisplaySurfaceCreateInfoKHR = 1000002001,
+	DisplayPresentInfoKHR = 1000003000,
+	XlibSurfaceCreateInfoKHR = 1000004000,
+	XcbSurfaceCreateInfoKHR = 1000005000,
+	WaylandSurfaceCreateInfoKHR = 1000006000,
+	AndroidSurfaceCreateInfoKHR = 1000008000,
+	Win32SurfaceCreateInfoKHR = 1000009000,
+	DebugReportCallbackCreateInfoEXT = 1000011000,
+	[Obsolete("Use VkStructureType.DebugReportCallbackCreateInfoEXT")]
+	DebugReportCreateInfoEXT = DebugReportCallbackCreateInfoEXT,
+	PipelineRasterizationStateRasterizationOrderAMD = 1000018000,
+	DebugMarkerObjectNameInfoEXT = 1000022000,
+	DebugMarkerObjectTagInfoEXT = 1000022001,
+	DebugMarkerMarkerInfoEXT = 1000022002,
+	DedicatedAllocationImageCreateInfoNV = 1000026000,
+	DedicatedAllocationBufferCreateInfoNV = 1000026001,
+	DedicatedAllocationMemoryAllocateInfoNV = 1000026002,
+	TextureLodGatherFormatPropertiesAMD = 1000041000,
+	RenderPassMultiviewCreateInfoKHX = 1000053000,
+	PhysicalDeviceMultiviewFeaturesKHX = 1000053001,
+	PhysicalDeviceMultiviewPropertiesKHX = 1000053002,
+	ExternalMemoryImageCreateInfoNV = 1000056000,
+	ExportMemoryAllocateInfoNV = 1000056001,
+	ImportMemoryWin32HandleInfoNV = 1000057000,
+	ExportMemoryWin32HandleInfoNV = 1000057001,
+	Win32KeyedMutexAcquireReleaseInfoNV = 1000058000,
+	PhysicalDeviceFeatures2KHR = 1000059000,
+	PhysicalDeviceProperties2KHR = 1000059001,
+	FormatProperties2KHR = 1000059002,
+	ImageFormatProperties2KHR = 1000059003,
+	PhysicalDeviceImageFormatInfo2KHR = 1000059004,
+	QueueFamilyProperties2KHR = 1000059005,
+	PhysicalDeviceMemoryProperties2KHR = 1000059006,
+	SparseImageFormatProperties2KHR = 1000059007,
+	PhysicalDeviceSparseImageFormatInfo2KHR = 1000059008,
+	MemoryAllocateFlagsInfoKHX = 1000060000,
+	DeviceGroupRenderPassBeginInfoKHX = 1000060003,
+	DeviceGroupCommandBufferBeginInfoKHX = 1000060004,
+	DeviceGroupSubmitInfoKHX = 1000060005,
+	DeviceGroupBindSparseInfoKHX = 1000060006,
+	AcquireNextImageInfoKHX = 1000060010,
+	BindBufferMemoryDeviceGroupInfoKHX = 1000060013,
+	BindImageMemoryDeviceGroupInfoKHX = 1000060014,
+	DeviceGroupPresentCapabilitiesKHX = 1000060007,
+	ImageSwapchainCreateInfoKHX = 1000060008,
+	BindImageMemorySwapchainInfoKHX = 1000060009,
+	DeviceGroupPresentInfoKHX = 1000060011,
+	DeviceGroupSwapchainCreateInfoKHX = 1000060012,
+	ValidationFlagsEXT = 1000061000,
+	ViSurfaceCreateInfoNN = 1000062000,
+	PhysicalDeviceGroupPropertiesKHX = 1000070000,
+	DeviceGroupDeviceCreateInfoKHX = 1000070001,
+	PhysicalDeviceExternalImageFormatInfoKHR = 1000071000,
+	ExternalImageFormatPropertiesKHR = 1000071001,
+	PhysicalDeviceExternalBufferInfoKHR = 1000071002,
+	ExternalBufferPropertiesKHR = 1000071003,
+	PhysicalDeviceIdPropertiesKHR = 1000071004,
+	ExternalMemoryBufferCreateInfoKHR = 1000072000,
+	ExternalMemoryImageCreateInfoKHR = 1000072001,
+	ExportMemoryAllocateInfoKHR = 1000072002,
+	ImportMemoryWin32HandleInfoKHR = 1000073000,
+	ExportMemoryWin32HandleInfoKHR = 1000073001,
+	MemoryWin32HandlePropertiesKHR = 1000073002,
+	MemoryGetWin32HandleInfoKHR = 1000073003,
+	ImportMemoryFileDescriptorInfoKHR = 1000074000,
+	MemoryFileDescriptorPropertiesKHR = 1000074001,
+	MemoryGetFileDescriptorInfoKHR = 1000074002,
+	Win32KeyedMutexAcquireReleaseInfoKHR = 1000075000,
+	PhysicalDeviceExternalSemaphoreInfoKHR = 1000076000,
+	ExternalSemaphorePropertiesKHR = 1000076001,
+	ExportSemaphoreCreateInfoKHR = 1000077000,
+	ImportSemaphoreWin32HandleInfoKHR = 1000078000,
+	ExportSemaphoreWin32HandleInfoKHR = 1000078001,
+	D3D12FenceSubmitInfoKHR = 1000078002,
+	SemaphoreGetWin32HandleInfoKHR = 1000078003,
+	ImportSemaphoreFileDescriptorInfoKHR = 1000079000,
+	SemaphoreGetFileDescriptorInfoKHR = 1000079001,
+	PhysicalDevicePushDescriptorPropertiesKHR = 1000080000,
+	PhysicalDevice16bitStorageFeaturesKHR = 1000083000,
+	PresentRegionsKHR = 1000084000,
+	DescriptorUpdateTemplateCreateInfoKHR = 1000085000,
+	ObjectTableCreateInfoNVX = 1000086000,
+	IndirectCommandsLayoutCreateInfoNVX = 1000086001,
+	CommandProcessCommandsInfoNVX = 1000086002,
+	CommandReserveSpaceForCommandsInfoNVX = 1000086003,
+	DeviceGeneratedCommandsLimitsNVX = 1000086004,
+	DeviceGeneratedCommandsFeaturesNVX = 1000086005,
+	PipelineViewportWScalingStateCreateInfoNV = 1000087000,
+	SurfaceCapabilities2EXT = 1000090000,
+	DisplayPowerInfoEXT = 1000091000,
+	DeviceEventInfoEXT = 1000091001,
+	DisplayEventInfoEXT = 1000091002,
+	SwapchainCounterCreateInfoEXT = 1000091003,
+	PresentTimesInfoGOOGLE = 1000092000,
+	PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX = 1000097000,
+	PipelineViewportSwizzleStateCreateInfoNV = 1000098000,
+	PhysicalDeviceDiscardRectanglePropertiesEXT = 1000099000,
+	PipelineDiscardRectangleStateCreateInfoEXT = 1000099001,
+	PhysicalDeviceConservativeRasterizationPropertiesEXT = 1000101000,
+	PipelineRasterizationConservativeStateCreateInfoEXT = 1000101001,
+	HDRMetadataEXT = 1000105000,
+	SharedPresentSurfaceCapabilitiesKHR = 1000111000,
+	PhysicalDeviceExternalFenceInfoKHR = 1000112000,
+	ExternalFencePropertiesKHR = 1000112001,
+	ExportFenceCreateInfoKHR = 1000113000,
+	ImportFenceWin32HandleInfoKHR = 1000114000,
+	ExportFenceWin32HandleInfoKHR = 1000114001,
+	FenceGetWin32HandleInfoKHR = 1000114002,
+	ImportFenceFileDescriptorInfoKHR = 1000115000,
+	FenceGetFileDescriptorInfoKHR = 1000115001,
+	PhysicalDevicePointClippingPropertiesKHR = 1000117000,
+	RenderPassInputAttachmentAspectCreateInfoKHR = 1000117001,
+	ImageViewUsageCreateInfoKHR = 1000117002,
+	PipelineTessellationDomainOriginStateCreateInfoKHR = 1000117003,
+	PhysicalDeviceSurfaceInfo2KHR = 1000119000,
+	SurfaceCapabilities2KHR = 1000119001,
+	SurfaceFormat2KHR = 1000119002,
+	PhysicalDeviceVariablePointerFeaturesKHR = 1000120000,
+	IosSurfaceCreateInfoMVK = 1000122000,
+	MacosSurfaceCreateInfoMVK = 1000123000,
+	MemoryDedicatedRequirementsKHR = 1000127000,
+	MemoryDedicatedAllocateInfoKHR = 1000127001,
+	PhysicalDeviceSamplerFilterMinmaxPropertiesEXT = 1000130000,
+	SamplerReductionModeCreateInfoEXT = 1000130001,
+	SampleLocationsInfoEXT = 1000143000,
+	RenderPassSampleLocationsBeginInfoEXT = 1000143001,
+	PipelineSampleLocationsStateCreateInfoEXT = 1000143002,
+	PhysicalDeviceSampleLocationsPropertiesEXT = 1000143003,
+	MultisamplePropertiesEXT = 1000143004,
+	BufferMemoryRequirementsInfo2KHR = 1000146000,
+	ImageMemoryRequirementsInfo2KHR = 1000146001,
+	ImageSparseMemoryRequirementsInfo2KHR = 1000146002,
+	MemoryRequirements2KHR = 1000146003,
+	SparseImageMemoryRequirements2KHR = 1000146004,
+	ImageFormatListCreateInfoKHR = 1000147000,
+	PhysicalDeviceBlendOperationAdvancedFeaturesEXT = 1000148000,
+	PhysicalDeviceBlendOperationAdvancedPropertiesEXT = 1000148001,
+	PipelineColorBlendAdvancedStateCreateInfoEXT = 1000148002,
+	PipelineCoverageToColorStateCreateInfoNV = 1000149000,
+	PipelineCoverageModulationStateCreateInfoNV = 1000152000,
+	SamplerYCBCRConversionCreateInfoKHR = 1000156000,
+	SamplerYCBCRConversionInfoKHR = 1000156001,
+	BindImagePlaneMemoryInfoKHR = 1000156002,
+	ImagePlaneMemoryRequirementsInfoKHR = 1000156003,
+	PhysicalDeviceSamplerYCBCRConversionFeaturesKHR = 1000156004,
+	SamplerYCBCRConversionImageFormatPropertiesKHR = 1000156005,
+	BindBufferMemoryInfoKHR = 1000157000,
+	BindImageMemoryInfoKHR = 1000157001,
+	ValidationCacheCreateInfoEXT = 1000160000,
+	ShaderModuleValidationCacheCreateInfoEXT = 1000160001,
+	DeviceQueueGlobalPriorityCreateInfoEXT = 1000174000,
+	ImportMemoryHostPointerInfoEXT = 1000178000,
+	MemoryHostPointerPropertiesEXT = 1000178001,
+	PhysicalDeviceExternalMemoryHostPropertiesEXT = 1000178002,
 }
 [Flags]
 public enum VkInstanceCreateFlags
@@ -436,48 +436,48 @@ public enum VkFormat
 	ASTC12x10SRGBBlock = 182,
 	ASTC12x12UNormBlock = 183,
 	ASTC12x12SRGBBlock = 184,
-	PVRTC12BPPUNormBlockImg = 1000054000,
-	PVRTC14BPPUNormBlockImg = 1000054001,
-	PVRTC22BPPUNormBlockImg = 1000054002,
-	PVRTC24BPPUNormBlockImg = 1000054003,
-	PVRTC12BPPSRGBBlockImg = 1000054004,
-	PVRTC14BPPSRGBBlockImg = 1000054005,
-	PVRTC22BPPSRGBBlockImg = 1000054006,
-	PVRTC24BPPSRGBBlockImg = 1000054007,
-	G8B8G8R8422UNormKhr = 1000156000,
-	B8G8R8G8422UNormKhr = 1000156001,
-	G8B8R83Plane420UNormKhr = 1000156002,
-	G8B8R82Plane420UNormKhr = 1000156003,
-	G8B8R83Plane422UNormKhr = 1000156004,
-	G8B8R82Plane422UNormKhr = 1000156005,
-	G8B8R83Plane444UNormKhr = 1000156006,
-	R10X6UNormPack16Khr = 1000156007,
-	R10X6G10X6UNorm2Pack16Khr = 1000156008,
-	R10X6G10X6B10X6A10X6UNorm4Pack16Khr = 1000156009,
-	G10X6B10X6G10X6R10X6422UNorm4Pack16Khr = 1000156010,
-	B10X6G10X6R10X6G10X6422UNorm4Pack16Khr = 1000156011,
-	G10X6B10X6R10X63Plane420UNorm3Pack16Khr = 1000156012,
-	G10X6B10X6R10X62Plane420UNorm3Pack16Khr = 1000156013,
-	G10X6B10X6R10X63Plane422UNorm3Pack16Khr = 1000156014,
-	G10X6B10X6R10X62Plane422UNorm3Pack16Khr = 1000156015,
-	G10X6B10X6R10X63Plane444UNorm3Pack16Khr = 1000156016,
-	R12X4UNormPack16Khr = 1000156017,
-	R12X4G12X4UNorm2Pack16Khr = 1000156018,
-	R12X4G12X4B12X4A12X4UNorm4Pack16Khr = 1000156019,
-	G12X4B12X4G12X4R12X4422UNorm4Pack16Khr = 1000156020,
-	B12X4G12X4R12X4G12X4422UNorm4Pack16Khr = 1000156021,
-	G12X4B12X4R12X43Plane420UNorm3Pack16Khr = 1000156022,
-	G12X4B12X4R12X42Plane420UNorm3Pack16Khr = 1000156023,
-	G12X4B12X4R12X43Plane422UNorm3Pack16Khr = 1000156024,
-	G12X4B12X4R12X42Plane422UNorm3Pack16Khr = 1000156025,
-	G12X4B12X4R12X43Plane444UNorm3Pack16Khr = 1000156026,
-	G16B16G16R16422UNormKhr = 1000156027,
-	B16G16R16G16422UNormKhr = 1000156028,
-	G16B16R163Plane420UNormKhr = 1000156029,
-	G16B16R162Plane420UNormKhr = 1000156030,
-	G16B16R163Plane422UNormKhr = 1000156031,
-	G16B16R162Plane422UNormKhr = 1000156032,
-	G16B16R163Plane444UNormKhr = 1000156033,
+	PVRTC12BPPUNormBlockIMG = 1000054000,
+	PVRTC14BPPUNormBlockIMG = 1000054001,
+	PVRTC22BPPUNormBlockIMG = 1000054002,
+	PVRTC24BPPUNormBlockIMG = 1000054003,
+	PVRTC12BPPSRGBBlockIMG = 1000054004,
+	PVRTC14BPPSRGBBlockIMG = 1000054005,
+	PVRTC22BPPSRGBBlockIMG = 1000054006,
+	PVRTC24BPPSRGBBlockIMG = 1000054007,
+	G8B8G8R8422UNormKHR = 1000156000,
+	B8G8R8G8422UNormKHR = 1000156001,
+	G8B8R83Plane420UNormKHR = 1000156002,
+	G8B8R82Plane420UNormKHR = 1000156003,
+	G8B8R83Plane422UNormKHR = 1000156004,
+	G8B8R82Plane422UNormKHR = 1000156005,
+	G8B8R83Plane444UNormKHR = 1000156006,
+	R10X6UNormPack16KHR = 1000156007,
+	R10X6G10X6UNorm2Pack16KHR = 1000156008,
+	R10X6G10X6B10X6A10X6UNorm4Pack16KHR = 1000156009,
+	G10X6B10X6G10X6R10X6422UNorm4Pack16KHR = 1000156010,
+	B10X6G10X6R10X6G10X6422UNorm4Pack16KHR = 1000156011,
+	G10X6B10X6R10X63Plane420UNorm3Pack16KHR = 1000156012,
+	G10X6B10X6R10X62Plane420UNorm3Pack16KHR = 1000156013,
+	G10X6B10X6R10X63Plane422UNorm3Pack16KHR = 1000156014,
+	G10X6B10X6R10X62Plane422UNorm3Pack16KHR = 1000156015,
+	G10X6B10X6R10X63Plane444UNorm3Pack16KHR = 1000156016,
+	R12X4UNormPack16KHR = 1000156017,
+	R12X4G12X4UNorm2Pack16KHR = 1000156018,
+	R12X4G12X4B12X4A12X4UNorm4Pack16KHR = 1000156019,
+	G12X4B12X4G12X4R12X4422UNorm4Pack16KHR = 1000156020,
+	B12X4G12X4R12X4G12X4422UNorm4Pack16KHR = 1000156021,
+	G12X4B12X4R12X43Plane420UNorm3Pack16KHR = 1000156022,
+	G12X4B12X4R12X42Plane420UNorm3Pack16KHR = 1000156023,
+	G12X4B12X4R12X43Plane422UNorm3Pack16KHR = 1000156024,
+	G12X4B12X4R12X42Plane422UNorm3Pack16KHR = 1000156025,
+	G12X4B12X4R12X43Plane444UNorm3Pack16KHR = 1000156026,
+	G16B16G16R16422UNormKHR = 1000156027,
+	B16G16R16G16422UNormKHR = 1000156028,
+	G16B16R163Plane420UNormKHR = 1000156029,
+	G16B16R162Plane420UNormKHR = 1000156030,
+	G16B16R163Plane422UNormKHR = 1000156031,
+	G16B16R162Plane422UNormKHR = 1000156032,
+	G16B16R163Plane444UNormKHR = 1000156033,
 }
 [Flags]
 public enum VkFormatFeatureFlags
@@ -495,17 +495,17 @@ public enum VkFormatFeatureFlags
 	BlitSource = 1 << 10,
 	BlitDestination = 1 << 11,
 	SampledImageFilterLinear = 1 << 12,
-	SampledImageFilterCubicImg = 1 << 13,
-	TransferSourceKhr = 1 << 14,
-	TransferDestinationKhr = 1 << 15,
-	SampledImageFilterMinmaxExt = 1 << 16,
-	MidpointChromaSamplesKhr = 1 << 17,
-	SampledImageYCBCRConversionLinearFilterKhr = 1 << 18,
-	SampledImageYCBCRConversionSeparateReconstructionFilterKhr = 1 << 19,
-	SampledImageYCBCRConversionChromaReconstructionExplicitKhr = 1 << 20,
-	SampledImageYCBCRConversionChromaReconstructionExplicitForceableKhr = 1 << 21,
-	DisjointKhr = 1 << 22,
-	CositedChromaSamplesKhr = 1 << 23,
+	SampledImageFilterCubicIMG = 1 << 13,
+	TransferSourceKHR = 1 << 14,
+	TransferDestinationKHR = 1 << 15,
+	SampledImageFilterMinmaxEXT = 1 << 16,
+	MidpointChromaSamplesKHR = 1 << 17,
+	SampledImageYCBCRConversionLinearFilterKHR = 1 << 18,
+	SampledImageYCBCRConversionSeparateReconstructionFilterKHR = 1 << 19,
+	SampledImageYCBCRConversionChromaReconstructionExplicitKHR = 1 << 20,
+	SampledImageYCBCRConversionChromaReconstructionExplicitForceableKHR = 1 << 21,
+	DisjointKHR = 1 << 22,
+	CositedChromaSamplesKHR = 1 << 23,
 }
 public enum VkImageType
 {
@@ -538,13 +538,13 @@ public enum VkImageCreateFlags
 	SparseAliased = 1 << 2,
 	MutableFormat = 1 << 3,
 	CubeCompatible = 1 << 4,
-	BindSfrKhx = 1 << 6,
-	_2DArrayCompatibleKhr = 1 << 5,
-	BlockTexelViewCompatibleKhr = 1 << 7,
-	ExtendedUsageKhr = 1 << 8,
-	SampleLocationsCompatibleDepthExt = 1 << 12,
-	DisjointKhr = 1 << 9,
-	AliasKhr = 1 << 10,
+	BindSfrKHX = 1 << 6,
+	_2DArrayCompatibleKHR = 1 << 5,
+	BlockTexelViewCompatibleKHR = 1 << 7,
+	ExtendedUsageKHR = 1 << 8,
+	SampleLocationsCompatibleDepthEXT = 1 << 12,
+	DisjointKHR = 1 << 9,
+	AliasKHR = 1 << 10,
 }
 [Flags]
 public enum VkSampleCountFlags
@@ -586,7 +586,7 @@ public enum VkMemoryPropertyFlags
 public enum VkMemoryHeapFlags
 {
 	DeviceLocal = 1 << 0,
-	MultiInstanceKhx = 1 << 1,
+	MultiInstanceKHX = 1 << 1,
 }
 [Flags]
 public enum VkDeviceCreateFlags
@@ -616,7 +616,7 @@ public enum VkPipelineStageFlags
 	Host = 1 << 14,
 	AllGraphics = 1 << 15,
 	AllCommands = 1 << 16,
-	CommandProcessNvx = 1 << 17,
+	CommandProcessNVX = 1 << 17,
 }
 [Flags]
 public enum VkMemoryMapFlags
@@ -629,9 +629,9 @@ public enum VkImageAspectFlags
 	Depth = 1 << 1,
 	Stencil = 1 << 2,
 	Metadata = 1 << 3,
-	Plane0Khr = 1 << 4,
-	Plane1Khr = 1 << 5,
-	Plane2Khr = 1 << 6,
+	Plane0KHR = 1 << 4,
+	Plane1KHR = 1 << 5,
+	Plane2KHR = 1 << 6,
 }
 [Flags]
 public enum VkSparseImageFormatFlags
@@ -731,10 +731,10 @@ public enum VkImageLayout
 	TransferSourceOptimal = 6,
 	TransferDestinationOptimal = 7,
 	Preinitialized = 8,
-	PresentSourceKhr = 1000001002,
-	SharedPresentKhr = 1000111000,
-	DepthReadOnlyStencilAttachmentOptimalKhr = 1000117000,
-	DepthAttachmentStencilReadOnlyOptimalKhr = 1000117001,
+	PresentSourceKHR = 1000001002,
+	SharedPresentKHR = 1000111000,
+	DepthReadOnlyStencilAttachmentOptimalKHR = 1000117000,
+	DepthAttachmentStencilReadOnlyOptimalKHR = 1000117001,
 }
 [Flags]
 public enum VkImageViewCreateFlags
@@ -774,8 +774,8 @@ public enum VkPipelineCreateFlags
 	DisableOptimization = 1 << 0,
 	AllowDerivatives = 1 << 1,
 	Derivative = 1 << 2,
-	ViewIndexFromDeviceIndexKhx = 1 << 3,
-	DispatchBaseKhx = 1 << 4,
+	ViewIndexFromDeviceIndexKHX = 1 << 3,
+	DispatchBaseKHX = 1 << 4,
 }
 [Flags]
 public enum VkPipelineShaderStageCreateFlags
@@ -837,7 +837,7 @@ public enum VkPolygonMode
 	Fill = 0,
 	Line = 1,
 	Point = 2,
-	FillRectangleNv = 1000153000,
+	FillRectangleNV = 1000153000,
 }
 [Flags]
 public enum VkCullModeFlags
@@ -934,52 +934,52 @@ public enum VkBlendOp
 	ReverseSubtract = 2,
 	Min = 3,
 	Max = 4,
-	ZeroExt = 1000148000,
-	SourceExt = 1000148001,
-	DestinationExt = 1000148002,
-	SourceOverExt = 1000148003,
-	DestinationOverExt = 1000148004,
-	SourceInExt = 1000148005,
-	DestinationInExt = 1000148006,
-	SourceOutExt = 1000148007,
-	DestinationOutExt = 1000148008,
-	SourceAtopExt = 1000148009,
-	DestinationAtopExt = 1000148010,
-	XorExt = 1000148011,
-	MultiplyExt = 1000148012,
-	ScreenExt = 1000148013,
-	OverlayExt = 1000148014,
-	DarkenExt = 1000148015,
-	LightenExt = 1000148016,
-	ColordodgeExt = 1000148017,
-	ColorburnExt = 1000148018,
-	HardlightExt = 1000148019,
-	SoftlightExt = 1000148020,
-	DifferenceExt = 1000148021,
-	ExclusionExt = 1000148022,
-	InvertExt = 1000148023,
-	InvertRGBExt = 1000148024,
-	LineardodgeExt = 1000148025,
-	LinearburnExt = 1000148026,
-	VividlightExt = 1000148027,
-	LinearlightExt = 1000148028,
-	PinlightExt = 1000148029,
-	HardmixExt = 1000148030,
-	HSLHueExt = 1000148031,
-	HSLSaturationExt = 1000148032,
-	HSLColorExt = 1000148033,
-	HSLLuminosityExt = 1000148034,
-	PlusExt = 1000148035,
-	PlusClampedExt = 1000148036,
-	PlusClampedAlphaExt = 1000148037,
-	PlusDarkerExt = 1000148038,
-	MinusExt = 1000148039,
-	MinusClampedExt = 1000148040,
-	ContrastExt = 1000148041,
-	InvertOvgExt = 1000148042,
-	RedExt = 1000148043,
-	GreenExt = 1000148044,
-	BlueExt = 1000148045,
+	ZeroEXT = 1000148000,
+	SourceEXT = 1000148001,
+	DestinationEXT = 1000148002,
+	SourceOverEXT = 1000148003,
+	DestinationOverEXT = 1000148004,
+	SourceInEXT = 1000148005,
+	DestinationInEXT = 1000148006,
+	SourceOutEXT = 1000148007,
+	DestinationOutEXT = 1000148008,
+	SourceAtopEXT = 1000148009,
+	DestinationAtopEXT = 1000148010,
+	XorEXT = 1000148011,
+	MultiplyEXT = 1000148012,
+	ScreenEXT = 1000148013,
+	OverlayEXT = 1000148014,
+	DarkenEXT = 1000148015,
+	LightenEXT = 1000148016,
+	ColordodgeEXT = 1000148017,
+	ColorburnEXT = 1000148018,
+	HardlightEXT = 1000148019,
+	SoftlightEXT = 1000148020,
+	DifferenceEXT = 1000148021,
+	ExclusionEXT = 1000148022,
+	InvertEXT = 1000148023,
+	InvertRGBEXT = 1000148024,
+	LineardodgeEXT = 1000148025,
+	LinearburnEXT = 1000148026,
+	VividlightEXT = 1000148027,
+	LinearlightEXT = 1000148028,
+	PinlightEXT = 1000148029,
+	HardmixEXT = 1000148030,
+	HSLHueEXT = 1000148031,
+	HSLSaturationEXT = 1000148032,
+	HSLColorEXT = 1000148033,
+	HSLLuminosityEXT = 1000148034,
+	PlusEXT = 1000148035,
+	PlusClampedEXT = 1000148036,
+	PlusClampedAlphaEXT = 1000148037,
+	PlusDarkerEXT = 1000148038,
+	MinusEXT = 1000148039,
+	MinusClampedEXT = 1000148040,
+	ContrastEXT = 1000148041,
+	InvertOvgEXT = 1000148042,
+	RedEXT = 1000148043,
+	GreenEXT = 1000148044,
+	BlueEXT = 1000148045,
 }
 [Flags]
 public enum VkColorComponentFlags
@@ -1004,9 +1004,9 @@ public enum VkDynamicState
 	StencilCompareMask = 6,
 	StencilWriteMask = 7,
 	StencilReference = 8,
-	ViewportWScalingNv = 1000087000,
-	DiscardRectangleExt = 1000099000,
-	SampleLocationsExt = 1000143000,
+	ViewportWScalingNV = 1000087000,
+	DiscardRectangleEXT = 1000099000,
+	SampleLocationsEXT = 1000143000,
 }
 [Flags]
 public enum VkPipelineLayoutCreateFlags
@@ -1020,7 +1020,7 @@ public enum VkFilter
 {
 	Nearest = 0,
 	Linear = 1,
-	CubicImg = 1000015000,
+	CubicIMG = 1000015000,
 }
 public enum VkSamplerMipmapMode
 {
@@ -1047,7 +1047,7 @@ public enum VkBorderColor
 [Flags]
 public enum VkDescriptorSetLayoutCreateFlags
 {
-	PushDescriptorKhr = 1 << 0,
+	PushDescriptorKHR = 1 << 0,
 }
 public enum VkDescriptorType
 {
@@ -1099,8 +1099,8 @@ public enum VkAttachmentStoreOp
 [Flags]
 public enum VkSubpassDescriptionFlags
 {
-	PerViewAttributesNvx = 1 << 0,
-	PerViewPositionXOnlyNvx = 1 << 1,
+	PerViewAttributesNVX = 1 << 0,
+	PerViewPositionXOnlyNVX = 1 << 1,
 }
 public enum VkPipelineBindPoint
 {
@@ -1127,16 +1127,16 @@ public enum VkAccessFlags
 	HostWrite = 1 << 14,
 	MemoryRead = 1 << 15,
 	MemoryWrite = 1 << 16,
-	CommandProcessReadNvx = 1 << 17,
-	CommandProcessWriteNvx = 1 << 18,
-	ColorAttachmentReadNoncoherentExt = 1 << 19,
+	CommandProcessReadNVX = 1 << 17,
+	CommandProcessWriteNVX = 1 << 18,
+	ColorAttachmentReadNoncoherentEXT = 1 << 19,
 }
 [Flags]
 public enum VkDependencyFlags
 {
 	ByRegion = 1 << 0,
-	ViewLocalKhx = 1 << 1,
-	DeviceGroupKhx = 1 << 2,
+	ViewLocalKHX = 1 << 1,
+	DeviceGroupKHX = 1 << 2,
 }
 [Flags]
 public enum VkCommandPoolCreateFlags
@@ -1216,71 +1216,71 @@ public enum VkObjectType
 	DescriptorSet = 23,
 	Framebuffer = 24,
 	CommandPool = 25,
-	SurfaceKhr = 1000000000,
-	SwapchainKhr = 1000001000,
-	DisplayKhr = 1000002000,
-	DisplayModeKhr = 1000002001,
-	DebugReportCallbackExt = 1000011000,
-	DescriptorUpdateTemplateKhr = 1000085000,
-	ObjectTableNvx = 1000086000,
-	IndirectCommandsLayoutNvx = 1000086001,
-	SamplerYCBCRConversionKhr = 1000156000,
-	ValidationCacheExt = 1000160000,
+	SurfaceKHR = 1000000000,
+	SwapchainKHR = 1000001000,
+	DisplayKHR = 1000002000,
+	DisplayModeKHR = 1000002001,
+	DebugReportCallbackEXT = 1000011000,
+	DescriptorUpdateTemplateKHR = 1000085000,
+	ObjectTableNVX = 1000086000,
+	IndirectCommandsLayoutNVX = 1000086001,
+	SamplerYCBCRConversionKHR = 1000156000,
+	ValidationCacheEXT = 1000160000,
 }
 [Flags]
 public enum VkSurfaceTransformFlagsKHR
 {
-	IdentityKhr = 1 << 0,
-	Rotate90Khr = 1 << 1,
-	Rotate180Khr = 1 << 2,
-	Rotate270Khr = 1 << 3,
-	HorizontalMirrorKhr = 1 << 4,
-	HorizontalMirrorRotate90Khr = 1 << 5,
-	HorizontalMirrorRotate180Khr = 1 << 6,
-	HorizontalMirrorRotate270Khr = 1 << 7,
-	InheritKhr = 1 << 8,
+	IdentityKHR = 1 << 0,
+	Rotate90KHR = 1 << 1,
+	Rotate180KHR = 1 << 2,
+	Rotate270KHR = 1 << 3,
+	HorizontalMirrorKHR = 1 << 4,
+	HorizontalMirrorRotate90KHR = 1 << 5,
+	HorizontalMirrorRotate180KHR = 1 << 6,
+	HorizontalMirrorRotate270KHR = 1 << 7,
+	InheritKHR = 1 << 8,
 }
 [Flags]
 public enum VkCompositeAlphaFlagsKHR
 {
-	OpaqueKhr = 1 << 0,
-	PreMultipliedKhr = 1 << 1,
-	PostMultipliedKhr = 1 << 2,
-	InheritKhr = 1 << 3,
+	OpaqueKHR = 1 << 0,
+	PreMultipliedKHR = 1 << 1,
+	PostMultipliedKHR = 1 << 2,
+	InheritKHR = 1 << 3,
 }
 public enum VkColorSpaceKHR
 {
-	SRGBNonlinearKhr = 0,
-	[Obsolete("Use VkColorSpaceKHR.SRGBNonlinearKhr")]
-	ColorspaceSRGBNonlinearKhr = SRGBNonlinearKhr,
-	DisplayP3NonlinearExt = 1000104001,
-	ExtendedSRGBLinearExt = 1000104002,
-	DCIP3LinearExt = 1000104003,
-	DCIP3NonlinearExt = 1000104004,
-	BT709LinearExt = 1000104005,
-	BT709NonlinearExt = 1000104006,
-	BT2020LinearExt = 1000104007,
-	HDR10ST2084Ext = 1000104008,
-	DolbyVisionExt = 1000104009,
-	HDR10HLGExt = 1000104010,
-	AdobeRGBLinearExt = 1000104011,
-	AdobeRGBNonlinearExt = 1000104012,
-	PassThroughExt = 1000104013,
-	ExtendedSRGBNonlinearExt = 1000104014,
+	SRGBNonlinearKHR = 0,
+	[Obsolete("Use VkColorSpaceKHR.SRGBNonlinearKHR")]
+	ColorspaceSRGBNonlinearKHR = SRGBNonlinearKHR,
+	DisplayP3NonlinearEXT = 1000104001,
+	ExtendedSRGBLinearEXT = 1000104002,
+	DCIP3LinearEXT = 1000104003,
+	DCIP3NonlinearEXT = 1000104004,
+	BT709LinearEXT = 1000104005,
+	BT709NonlinearEXT = 1000104006,
+	BT2020LinearEXT = 1000104007,
+	HDR10ST2084EXT = 1000104008,
+	DolbyVisionEXT = 1000104009,
+	HDR10HLGEXT = 1000104010,
+	AdobeRGBLinearEXT = 1000104011,
+	AdobeRGBNonlinearEXT = 1000104012,
+	PassThroughEXT = 1000104013,
+	ExtendedSRGBNonlinearEXT = 1000104014,
 }
 public enum VkPresentModeKHR
 {
-	ImmediateKhr = 0,
-	MailboxKhr = 1,
-	FifoKhr = 2,
-	FifoRelaxedKhr = 3,
-	SharedDemandRefreshKhr = 1000111000,
-	SharedContinuousRefreshKhr = 1000111001,
+	ImmediateKHR = 0,
+	MailboxKHR = 1,
+	FifoKHR = 2,
+	FifoRelaxedKHR = 3,
+	SharedDemandRefreshKHR = 1000111000,
+	SharedContinuousRefreshKHR = 1000111001,
 }
 [Flags]
 public enum VkSwapchainCreateFlagsKHR
 {
-	BindSfrKhx = 1 << 0,
+	BindSfrKHX = 1 << 0,
 }
 [Flags]
 public enum VkDisplayModeCreateFlagsKHR
@@ -1289,10 +1289,10 @@ public enum VkDisplayModeCreateFlagsKHR
 [Flags]
 public enum VkDisplayPlaneAlphaFlagsKHR
 {
-	OpaqueKhr = 1 << 0,
-	GlobalKhr = 1 << 1,
-	PerPixelKhr = 1 << 2,
-	PerPixelPremultipliedKhr = 1 << 3,
+	OpaqueKHR = 1 << 0,
+	GlobalKHR = 1 << 1,
+	PerPixelKHR = 1 << 2,
+	PerPixelPremultipliedKHR = 1 << 3,
 }
 [Flags]
 public enum VkDisplaySurfaceCreateFlagsKHR
@@ -1321,106 +1321,106 @@ public enum VkWin32SurfaceCreateFlagsKHR
 [Flags]
 public enum VkDebugReportFlagsEXT
 {
-	InformationExt = 1 << 0,
-	WarningExt = 1 << 1,
-	PerformanceWarningExt = 1 << 2,
-	ErrorExt = 1 << 3,
-	DebugExt = 1 << 4,
+	InformationEXT = 1 << 0,
+	WarningEXT = 1 << 1,
+	PerformanceWarningEXT = 1 << 2,
+	ErrorEXT = 1 << 3,
+	DebugEXT = 1 << 4,
 }
 public enum VkDebugReportObjectTypeEXT
 {
-	UnknownExt = 0,
-	InstanceExt = 1,
-	PhysicalDeviceExt = 2,
-	DeviceExt = 3,
-	QueueExt = 4,
-	SemaphoreExt = 5,
-	CommandBufferExt = 6,
-	FenceExt = 7,
-	DeviceMemoryExt = 8,
-	BufferExt = 9,
-	ImageExt = 10,
-	EventExt = 11,
-	QueryPoolExt = 12,
-	BufferViewExt = 13,
-	ImageViewExt = 14,
-	ShaderModuleExt = 15,
-	PipelineCacheExt = 16,
-	PipelineLayoutExt = 17,
-	RenderPassExt = 18,
-	PipelineExt = 19,
-	DescriptorSetLayoutExt = 20,
-	SamplerExt = 21,
-	DescriptorPoolExt = 22,
-	DescriptorSetExt = 23,
-	FramebufferExt = 24,
-	CommandPoolExt = 25,
-	SurfaceKhrExt = 26,
-	SwapchainKhrExt = 27,
-	DebugReportCallbackExtExt = 28,
-	DisplayKhrExt = 29,
-	DisplayModeKhrExt = 30,
-	ObjectTableNvxExt = 31,
-	IndirectCommandsLayoutNvxExt = 32,
-	ValidationCacheExtExt = 33,
-	[Obsolete("Use VkDebugReportObjectTypeEXT.DebugReportCallbackExtExt")]
-	DebugReportExt = DebugReportCallbackExtExt,
-	DescriptorUpdateTemplateKhrExt = 1000085000,
-	SamplerYCBCRConversionKhrExt = 1000156000,
-	[Obsolete("Use VkDebugReportObjectTypeEXT.ValidationCacheExtExt")]
-	ValidationCacheExt = ValidationCacheExtExt,
+	UnknownEXT = 0,
+	InstanceEXT = 1,
+	PhysicalDeviceEXT = 2,
+	DeviceEXT = 3,
+	QueueEXT = 4,
+	SemaphoreEXT = 5,
+	CommandBufferEXT = 6,
+	FenceEXT = 7,
+	DeviceMemoryEXT = 8,
+	BufferEXT = 9,
+	ImageEXT = 10,
+	EventEXT = 11,
+	QueryPoolEXT = 12,
+	BufferViewEXT = 13,
+	ImageViewEXT = 14,
+	ShaderModuleEXT = 15,
+	PipelineCacheEXT = 16,
+	PipelineLayoutEXT = 17,
+	RenderPassEXT = 18,
+	PipelineEXT = 19,
+	DescriptorSetLayoutEXT = 20,
+	SamplerEXT = 21,
+	DescriptorPoolEXT = 22,
+	DescriptorSetEXT = 23,
+	FramebufferEXT = 24,
+	CommandPoolEXT = 25,
+	SurfaceKHREXT = 26,
+	SwapchainKHREXT = 27,
+	DebugReportCallbackEXTEXT = 28,
+	DisplayKHREXT = 29,
+	DisplayModeKHREXT = 30,
+	ObjectTableNVXEXT = 31,
+	IndirectCommandsLayoutNVXEXT = 32,
+	ValidationCacheEXTEXT = 33,
+	[Obsolete("Use VkDebugReportObjectTypeEXT.DebugReportCallbackEXTEXT")]
+	DebugReportEXT = DebugReportCallbackEXTEXT,
+	DescriptorUpdateTemplateKHREXT = 1000085000,
+	SamplerYCBCRConversionKHREXT = 1000156000,
+	[Obsolete("Use VkDebugReportObjectTypeEXT.ValidationCacheEXTEXT")]
+	ValidationCacheEXT = ValidationCacheEXTEXT,
 }
 public enum VkRasterizationOrderAMD
 {
-	StrictAmd = 0,
-	RelaxedAmd = 1,
+	StrictAMD = 0,
+	RelaxedAMD = 1,
 }
 public enum VkShaderInfoTypeAMD
 {
-	StatisticsAmd = 0,
-	BinaryAmd = 1,
-	DisassemblyAmd = 2,
+	StatisticsAMD = 0,
+	BinaryAMD = 1,
+	DisassemblyAMD = 2,
 }
 [Flags]
 public enum VkExternalMemoryHandleTypeFlagsNV
 {
-	OpaqueWin32Nv = 1 << 0,
-	OpaqueWin32KmtNv = 1 << 1,
-	D3D11ImageNv = 1 << 2,
-	D3D11ImageKmtNv = 1 << 3,
+	OpaqueWin32NV = 1 << 0,
+	OpaqueWin32KmtNV = 1 << 1,
+	D3D11ImageNV = 1 << 2,
+	D3D11ImageKmtNV = 1 << 3,
 }
 [Flags]
 public enum VkExternalMemoryFeatureFlagsNV
 {
-	DedicatedOnlyNv = 1 << 0,
-	ExportableNv = 1 << 1,
-	ImportableNv = 1 << 2,
+	DedicatedOnlyNV = 1 << 0,
+	ExportableNV = 1 << 1,
+	ImportableNV = 1 << 2,
 }
 [Flags]
 public enum VkPeerMemoryFeatureFlagsKHX
 {
-	CopySourceKhx = 1 << 0,
-	CopyDestinationKhx = 1 << 1,
-	GenericSourceKhx = 1 << 2,
-	GenericDestinationKhx = 1 << 3,
+	CopySourceKHX = 1 << 0,
+	CopyDestinationKHX = 1 << 1,
+	GenericSourceKHX = 1 << 2,
+	GenericDestinationKHX = 1 << 3,
 }
 [Flags]
 public enum VkMemoryAllocateFlagsKHX
 {
-	DeviceMaskKhx = 1 << 0,
+	DeviceMaskKHX = 1 << 0,
 }
 [Flags]
 public enum VkDeviceGroupPresentModeFlagsKHX
 {
-	LocalKhx = 1 << 0,
-	RemoteKhx = 1 << 1,
-	SumKhx = 1 << 2,
-	LocalMultiDeviceKhx = 1 << 3,
+	LocalKHX = 1 << 0,
+	RemoteKHX = 1 << 1,
+	SumKHX = 1 << 2,
+	LocalMultiDeviceKHX = 1 << 3,
 }
 public enum VkValidationCheckEXT
 {
-	AllExt = 0,
-	ShadersExt = 1,
+	AllEXT = 0,
+	ShadersEXT = 1,
 }
 [Flags]
 public enum VkViSurfaceCreateFlagsNN
@@ -1433,43 +1433,43 @@ public enum VkCommandPoolTrimFlagsKHR
 [Flags]
 public enum VkExternalMemoryHandleTypeFlagsKHR
 {
-	OpaqueFileDescriptorKhr = 1 << 0,
-	OpaqueWin32Khr = 1 << 1,
-	OpaqueWin32KmtKhr = 1 << 2,
-	D3D11TextureKhr = 1 << 3,
-	D3D11TextureKmtKhr = 1 << 4,
-	D3D12HeapKhr = 1 << 5,
-	D3D12ResourceKhr = 1 << 6,
-	DmaBufExt = 1 << 9,
-	HostAllocationExt = 1 << 7,
-	HostMappedForeignMemoryExt = 1 << 8,
+	OpaqueFileDescriptorKHR = 1 << 0,
+	OpaqueWin32KHR = 1 << 1,
+	OpaqueWin32KmtKHR = 1 << 2,
+	D3D11TextureKHR = 1 << 3,
+	D3D11TextureKmtKHR = 1 << 4,
+	D3D12HeapKHR = 1 << 5,
+	D3D12ResourceKHR = 1 << 6,
+	DmaBufEXT = 1 << 9,
+	HostAllocationEXT = 1 << 7,
+	HostMappedForeignMemoryEXT = 1 << 8,
 }
 [Flags]
 public enum VkExternalMemoryFeatureFlagsKHR
 {
-	DedicatedOnlyKhr = 1 << 0,
-	ExportableKhr = 1 << 1,
-	ImportableKhr = 1 << 2,
+	DedicatedOnlyKHR = 1 << 0,
+	ExportableKHR = 1 << 1,
+	ImportableKHR = 1 << 2,
 }
 [Flags]
 public enum VkExternalSemaphoreHandleTypeFlagsKHR
 {
-	OpaqueFileDescriptorKhr = 1 << 0,
-	OpaqueWin32Khr = 1 << 1,
-	OpaqueWin32KmtKhr = 1 << 2,
-	D3D12FenceKhr = 1 << 3,
-	SyncFileDescriptorKhr = 1 << 4,
+	OpaqueFileDescriptorKHR = 1 << 0,
+	OpaqueWin32KHR = 1 << 1,
+	OpaqueWin32KmtKHR = 1 << 2,
+	D3D12FenceKHR = 1 << 3,
+	SyncFileDescriptorKHR = 1 << 4,
 }
 [Flags]
 public enum VkExternalSemaphoreFeatureFlagsKHR
 {
-	ExportableKhr = 1 << 0,
-	ImportableKhr = 1 << 1,
+	ExportableKHR = 1 << 0,
+	ImportableKHR = 1 << 1,
 }
 [Flags]
 public enum VkSemaphoreImportFlagsKHR
 {
-	TemporaryKhr = 1 << 0,
+	TemporaryKHR = 1 << 0,
 }
 [Flags]
 public enum VkDescriptorUpdateTemplateCreateFlagsKHR
@@ -1477,71 +1477,71 @@ public enum VkDescriptorUpdateTemplateCreateFlagsKHR
 }
 public enum VkDescriptorUpdateTemplateTypeKHR
 {
-	DescriptorSetKhr = 0,
-	PushDescriptorsKhr = 1,
+	DescriptorSetKHR = 0,
+	PushDescriptorsKHR = 1,
 }
 public enum VkIndirectCommandsTokenTypeNVX
 {
-	PipelineNvx = 0,
-	DescriptorSetNvx = 1,
-	IndexBufferNvx = 2,
-	VertexBufferNvx = 3,
-	PushConstantNvx = 4,
-	DrawIndexedNvx = 5,
-	DrawNvx = 6,
-	DispatchNvx = 7,
+	PipelineNVX = 0,
+	DescriptorSetNVX = 1,
+	IndexBufferNVX = 2,
+	VertexBufferNVX = 3,
+	PushConstantNVX = 4,
+	DrawIndexedNVX = 5,
+	DrawNVX = 6,
+	DispatchNVX = 7,
 }
 [Flags]
 public enum VkIndirectCommandsLayoutUsageFlagsNVX
 {
-	UnorderedSequencesNvx = 1 << 0,
-	SparseSequencesNvx = 1 << 1,
-	EmptyExecutionsNvx = 1 << 2,
-	IndexedSequencesNvx = 1 << 3,
+	UnorderedSequencesNVX = 1 << 0,
+	SparseSequencesNVX = 1 << 1,
+	EmptyExecutionsNVX = 1 << 2,
+	IndexedSequencesNVX = 1 << 3,
 }
 public enum VkObjectEntryTypeNVX
 {
-	DescriptorSetNvx = 0,
-	PipelineNvx = 1,
-	IndexBufferNvx = 2,
-	VertexBufferNvx = 3,
-	PushConstantNvx = 4,
+	DescriptorSetNVX = 0,
+	PipelineNVX = 1,
+	IndexBufferNVX = 2,
+	VertexBufferNVX = 3,
+	PushConstantNVX = 4,
 }
 [Flags]
 public enum VkObjectEntryUsageFlagsNVX
 {
-	GraphicsNvx = 1 << 0,
-	ComputeNvx = 1 << 1,
+	GraphicsNVX = 1 << 0,
+	ComputeNVX = 1 << 1,
 }
 [Flags]
 public enum VkSurfaceCounterFlagsEXT
 {
-	VBlankExt = 1 << 0,
+	VBlankEXT = 1 << 0,
 }
 public enum VkDisplayPowerStateEXT
 {
-	OffExt = 0,
-	SuspendExt = 1,
-	OnExt = 2,
+	OffEXT = 0,
+	SuspendEXT = 1,
+	OnEXT = 2,
 }
 public enum VkDeviceEventTypeEXT
 {
-	DisplayHotplugExt = 0,
+	DisplayHotplugEXT = 0,
 }
 public enum VkDisplayEventTypeEXT
 {
-	FirstPixelOutExt = 0,
+	FirstPixelOutEXT = 0,
 }
 public enum VkViewportCoordinateSwizzleNV
 {
-	PositiveXNv = 0,
-	NegativeXNv = 1,
-	PositiveYNv = 2,
-	NegativeYNv = 3,
-	PositiveZNv = 4,
-	NegativeZNv = 5,
-	PositiveWNv = 6,
-	NegativeWNv = 7,
+	PositiveXNV = 0,
+	NegativeXNV = 1,
+	PositiveYNV = 2,
+	NegativeYNV = 3,
+	PositiveZNV = 4,
+	NegativeZNV = 5,
+	PositiveWNV = 6,
+	NegativeWNV = 7,
 }
 [Flags]
 public enum VkPipelineViewportSwizzleStateCreateFlagsNV
@@ -1553,8 +1553,8 @@ public enum VkPipelineDiscardRectangleStateCreateFlagsEXT
 }
 public enum VkDiscardRectangleModeEXT
 {
-	InclusiveExt = 0,
-	ExclusiveExt = 1,
+	InclusiveEXT = 0,
+	ExclusiveEXT = 1,
 }
 [Flags]
 public enum VkPipelineRasterizationConservativeStateCreateFlagsEXT
@@ -1562,38 +1562,38 @@ public enum VkPipelineRasterizationConservativeStateCreateFlagsEXT
 }
 public enum VkConservativeRasterizationModeEXT
 {
-	DisabledExt = 0,
-	OverestimateExt = 1,
-	UnderestimateExt = 2,
+	DisabledEXT = 0,
+	OverestimateEXT = 1,
+	UnderestimateEXT = 2,
 }
 [Flags]
 public enum VkExternalFenceHandleTypeFlagsKHR
 {
-	OpaqueFileDescriptorKhr = 1 << 0,
-	OpaqueWin32Khr = 1 << 1,
-	OpaqueWin32KmtKhr = 1 << 2,
-	SyncFileDescriptorKhr = 1 << 3,
+	OpaqueFileDescriptorKHR = 1 << 0,
+	OpaqueWin32KHR = 1 << 1,
+	OpaqueWin32KmtKHR = 1 << 2,
+	SyncFileDescriptorKHR = 1 << 3,
 }
 [Flags]
 public enum VkExternalFenceFeatureFlagsKHR
 {
-	ExportableKhr = 1 << 0,
-	ImportableKhr = 1 << 1,
+	ExportableKHR = 1 << 0,
+	ImportableKHR = 1 << 1,
 }
 [Flags]
 public enum VkFenceImportFlagsKHR
 {
-	TemporaryKhr = 1 << 0,
+	TemporaryKHR = 1 << 0,
 }
 public enum VkPointClippingBehaviorKHR
 {
-	AllClipPlanesKhr = 0,
-	UserClipPlanesOnlyKhr = 1,
+	AllClipPlanesKHR = 0,
+	UserClipPlanesOnlyKHR = 1,
 }
 public enum VkTessellationDomainOriginKHR
 {
-	UpperLeftKhr = 0,
-	LowerLeftKhr = 1,
+	UpperLeftKHR = 0,
+	LowerLeftKHR = 1,
 }
 [Flags]
 public enum VkIOSSurfaceCreateFlagsMVK
@@ -1605,15 +1605,15 @@ public enum VkMacOSSurfaceCreateFlagsMVK
 }
 public enum VkSamplerReductionModeEXT
 {
-	WeightedAverageExt = 0,
-	MinExt = 1,
-	MaxExt = 2,
+	WeightedAverageEXT = 0,
+	MinEXT = 1,
+	MaxEXT = 2,
 }
 public enum VkBlendOverlapEXT
 {
-	UncorrelatedExt = 0,
-	DisjointExt = 1,
-	ConjointExt = 2,
+	UncorrelatedEXT = 0,
+	DisjointEXT = 1,
+	ConjointEXT = 2,
 }
 [Flags]
 public enum VkPipelineCoverageToColorStateCreateFlagsNV
@@ -1625,28 +1625,28 @@ public enum VkPipelineCoverageModulationStateCreateFlagsNV
 }
 public enum VkCoverageModulationModeNV
 {
-	NoneNv = 0,
-	RGBNv = 1,
-	AlphaNv = 2,
-	RGBANv = 3,
+	NoneNV = 0,
+	RGBNV = 1,
+	AlphaNV = 2,
+	RGBANV = 3,
 }
 public enum VkSamplerYcbcrModelConversionKHR
 {
-	RGBIdentityKhr = 0,
-	YCBCRIdentityKhr = 1,
-	YCBCR709Khr = 2,
-	YCBCR601Khr = 3,
-	YCBCR2020Khr = 4,
+	RGBIdentityKHR = 0,
+	YCBCRIdentityKHR = 1,
+	YCBCR709KHR = 2,
+	YCBCR601KHR = 3,
+	YCBCR2020KHR = 4,
 }
 public enum VkSamplerYcbcrRangeKHR
 {
-	ITUFullKhr = 0,
-	ITUNarrowKhr = 1,
+	ITUFullKHR = 0,
+	ITUNarrowKHR = 1,
 }
 public enum VkChromaLocationKHR
 {
-	CositedEvenKhr = 0,
-	MidpointKhr = 1,
+	CositedEvenKHR = 0,
+	MidpointKHR = 1,
 }
 [Flags]
 public enum VkValidationCacheCreateFlagsEXT
@@ -1654,12 +1654,12 @@ public enum VkValidationCacheCreateFlagsEXT
 }
 public enum VkValidationCacheHeaderVersionEXT
 {
-	OneExt = 1,
+	OneEXT = 1,
 }
 public enum VkQueueGlobalPriorityEXT
 {
-	LowExt = 128,
-	MediumExt = 256,
-	HighExt = 512,
-	RealtimeExt = 1024,
+	LowEXT = 128,
+	MediumEXT = 256,
+	HighEXT = 512,
+	RealtimeEXT = 1024,
 }

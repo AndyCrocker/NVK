@@ -72,4 +72,29 @@ internal static class StringExtensions
 
         return value;
     }
+
+    /// <summary>Capitalises the vendor tags at the end of a string.</summary>
+    /// <param name="value">The string to capitalise the vendor tags at the end of.</param>
+    /// <returns>A string that has any suffixed vendor tags capitalised.</returns>
+    public static string CapitaliseSuffixedVendorTags(this string value)
+    {
+        var suffix = "";
+        while (true)
+        {
+            var vendorTagRemoved = false;
+
+            foreach (var vendorTag in VulkanSpecification.VendorTags)
+                if (value.EndsWith(vendorTag, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    suffix = vendorTag.ToUpper() + suffix;
+                    value = value[..^vendorTag.Length];
+                    vendorTagRemoved = true;
+                }
+
+            if (!vendorTagRemoved)
+                break;
+        }
+
+        return value + suffix;
+    }
 }
