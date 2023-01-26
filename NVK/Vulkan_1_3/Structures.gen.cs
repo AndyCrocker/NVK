@@ -8713,3 +8713,9 @@ public unsafe struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM
 	public uint shaderCoreCount;
 	public uint shaderWarpsPerCore;
 }
+public unsafe struct VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT
+{
+	public VkStructureType sType;
+	public void* pNext;
+	public VkBool32 pipelineLibraryGroupHandles;
+}

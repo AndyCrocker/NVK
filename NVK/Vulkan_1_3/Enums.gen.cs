@@ -1096,6 +1096,7 @@ public enum VkStructureType
 	MutableDescriptorTypeCreateInfoEXT = 1000494002,
 	PhysicalDeviceShaderCoreBuiltinsFeaturesARM = 1000497000,
 	PhysicalDeviceShaderCoreBuiltinsPropertiesARM = 1000497001,
+	PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT = 1000498000,
 }
 public enum VkPipelineCacheHeaderVersion
 {

@@ -637,6 +637,8 @@ public static unsafe class VK
 	public const string ExtMutableDescriptorTypeExtensionName = "VK_EXT_mutable_descriptor_type";
 	public const uint ArmShaderCoreBuiltinsSpecVersion = 2;
 	public const string ArmShaderCoreBuiltinsExtensionName = "VK_ARM_shader_core_builtins";
+	public const uint ExtPipelineLibraryGroupHandlesSpecVersion = 1;
+	public const string ExtPipelineLibraryGroupHandlesExtensionName = "VK_EXT_pipeline_library_group_handles";
 	public static VkResult CreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance) => CreateInstance_0(createInfo, allocator, out instance);
 	private delegate VkResult CreateInstanceDelegate_0(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance);
 	private static CreateInstanceDelegate_0 CreateInstance_0;
