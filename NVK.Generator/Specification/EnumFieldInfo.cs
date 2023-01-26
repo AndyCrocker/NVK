@@ -104,6 +104,11 @@ internal class EnumFieldInfo
         if (fieldName == null)
             return null;
 
+        // some structs end in a number (e.g. VkPipelineStageFlags2), these need to be manually removed from the beginning of the field name
+        var lastDigit = '\0';
+        if (char.IsDigit(enumName.Last()))
+            lastDigit = enumName.Last();
+
         // remove the enum name from the field name
         var splitEnumName = enumName.SplitOnUpper().ToList();
         var splitFieldName = fieldName.Split('_').ToList();
@@ -117,6 +122,9 @@ internal class EnumFieldInfo
 
         // bitfield enums have an unwanted 'BIT' in their field names
         splitFieldName.Remove("BIT");
+
+        if (splitFieldName.First() == lastDigit.ToString())
+            splitFieldName.RemoveAt(0);
 
         // reconstruct the name and ensure it doesn't start with a digit (as that's not a valid C# identifier)
         var newEnumFieldName = string.Join("", splitFieldName.Select(CapitaliseEnumFieldNameSection));

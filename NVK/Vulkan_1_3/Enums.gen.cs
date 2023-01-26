@@ -3084,204 +3084,204 @@ public enum VkPrivateDataSlotCreateFlags
 [Flags]
 public enum VkPipelineStageFlags2 : long
 {
-	_2None = 0,
-	[Obsolete("Use VkPipelineStageFlags2._2None")]
-	_2NoneKhr = _2None,
-	_2TopOfPipe = 1 << 0,
-	[Obsolete("Use VkPipelineStageFlags2._2TopOfPipe")]
-	_2TopOfPipeKhr = _2TopOfPipe,
-	_2DrawIndirect = 1 << 1,
-	[Obsolete("Use VkPipelineStageFlags2._2DrawIndirect")]
-	_2DrawIndirectKhr = _2DrawIndirect,
-	_2VertexInput = 1 << 2,
-	[Obsolete("Use VkPipelineStageFlags2._2VertexInput")]
-	_2VertexInputKhr = _2VertexInput,
-	_2VertexShader = 1 << 3,
-	[Obsolete("Use VkPipelineStageFlags2._2VertexShader")]
-	_2VertexShaderKhr = _2VertexShader,
-	_2TessellationControlShader = 1 << 4,
-	[Obsolete("Use VkPipelineStageFlags2._2TessellationControlShader")]
-	_2TessellationControlShaderKhr = _2TessellationControlShader,
-	_2TessellationEvaluationShader = 1 << 5,
-	[Obsolete("Use VkPipelineStageFlags2._2TessellationEvaluationShader")]
-	_2TessellationEvaluationShaderKhr = _2TessellationEvaluationShader,
-	_2GeometryShader = 1 << 6,
-	[Obsolete("Use VkPipelineStageFlags2._2GeometryShader")]
-	_2GeometryShaderKhr = _2GeometryShader,
-	_2FragmentShader = 1 << 7,
-	[Obsolete("Use VkPipelineStageFlags2._2FragmentShader")]
-	_2FragmentShaderKhr = _2FragmentShader,
-	_2EarlyFragmentTests = 1 << 8,
-	[Obsolete("Use VkPipelineStageFlags2._2EarlyFragmentTests")]
-	_2EarlyFragmentTestsKhr = _2EarlyFragmentTests,
-	_2LateFragmentTests = 1 << 9,
-	[Obsolete("Use VkPipelineStageFlags2._2LateFragmentTests")]
-	_2LateFragmentTestsKhr = _2LateFragmentTests,
-	_2ColorAttachmentOutput = 1 << 10,
-	[Obsolete("Use VkPipelineStageFlags2._2ColorAttachmentOutput")]
-	_2ColorAttachmentOutputKhr = _2ColorAttachmentOutput,
-	_2ComputeShader = 1 << 11,
-	[Obsolete("Use VkPipelineStageFlags2._2ComputeShader")]
-	_2ComputeShaderKhr = _2ComputeShader,
-	_2AllTransfer = 1 << 12,
-	[Obsolete("Use VkPipelineStageFlags2._2AllTransfer")]
-	_2AllTransferKhr = _2AllTransfer,
-	[Obsolete("Use VkPipelineStageFlags2._2AllTransferKhr")]
-	_2Transfer = _2AllTransferKhr,
-	[Obsolete("Use VkPipelineStageFlags2._2AllTransfer")]
-	_2TransferKhr = _2AllTransfer,
-	_2BottomOfPipe = 1 << 13,
-	[Obsolete("Use VkPipelineStageFlags2._2BottomOfPipe")]
-	_2BottomOfPipeKhr = _2BottomOfPipe,
-	_2Host = 1 << 14,
-	[Obsolete("Use VkPipelineStageFlags2._2Host")]
-	_2HostKhr = _2Host,
-	_2AllGraphics = 1 << 15,
-	[Obsolete("Use VkPipelineStageFlags2._2AllGraphics")]
-	_2AllGraphicsKhr = _2AllGraphics,
-	_2AllCommands = 1 << 16,
-	[Obsolete("Use VkPipelineStageFlags2._2AllCommands")]
-	_2AllCommandsKhr = _2AllCommands,
-	_2Copy = 1 << 32,
-	[Obsolete("Use VkPipelineStageFlags2._2Copy")]
-	_2CopyKhr = _2Copy,
-	_2Resolve = 1 << 33,
-	[Obsolete("Use VkPipelineStageFlags2._2Resolve")]
-	_2ResolveKhr = _2Resolve,
-	_2Blit = 1 << 34,
-	[Obsolete("Use VkPipelineStageFlags2._2Blit")]
-	_2BlitKhr = _2Blit,
-	_2Clear = 1 << 35,
-	[Obsolete("Use VkPipelineStageFlags2._2Clear")]
-	_2ClearKhr = _2Clear,
-	_2IndexInput = 1 << 36,
-	[Obsolete("Use VkPipelineStageFlags2._2IndexInput")]
-	_2IndexInputKhr = _2IndexInput,
-	_2VertexAttributeInput = 1 << 37,
-	[Obsolete("Use VkPipelineStageFlags2._2VertexAttributeInput")]
-	_2VertexAttributeInputKhr = _2VertexAttributeInput,
-	_2PreRasterizationShaders = 1 << 38,
-	[Obsolete("Use VkPipelineStageFlags2._2PreRasterizationShaders")]
-	_2PreRasterizationShadersKhr = _2PreRasterizationShaders,
-	_2VideoDecodeKhr = 1 << 26,
-	_2TransformFeedbackExt = 1 << 24,
-	_2ConditionalRenderingExt = 1 << 18,
-	_2CommandPreprocessNv = 1 << 17,
-	_2FragmentShadingRateAttachmentKhr = 1 << 22,
-	[Obsolete("Use VkPipelineStageFlags2._2FragmentShadingRateAttachmentKhr")]
-	_2ShadingRateImageNv = _2FragmentShadingRateAttachmentKhr,
-	_2AccelerationStructureBuildKhr = 1 << 25,
-	_2RayTracingShaderKhr = 1 << 21,
-	[Obsolete("Use VkPipelineStageFlags2._2RayTracingShaderKhr")]
-	_2RayTracingShaderNv = _2RayTracingShaderKhr,
-	[Obsolete("Use VkPipelineStageFlags2._2AccelerationStructureBuildKhr")]
-	_2AccelerationStructureBuildNv = _2AccelerationStructureBuildKhr,
-	_2FragmentDensityProcessExt = 1 << 23,
-	[Obsolete("Use VkPipelineStageFlags2._2TaskShaderExt")]
-	_2TaskShaderNv = _2TaskShaderExt,
-	[Obsolete("Use VkPipelineStageFlags2._2MeshShaderExt")]
-	_2MeshShaderNv = _2MeshShaderExt,
-	_2TaskShaderExt = 1 << 19,
-	_2MeshShaderExt = 1 << 20,
-	_2SubpassShadingHuawei = 1 << 39,
-	_2InvocationMaskHuawei = 1 << 40,
-	_2AccelerationStructureCopyKhr = 1 << 28,
-	_2MicromapBuildExt = 1 << 30,
-	_2ClusterCullingShaderHuawei = 1 << 41,
-	_2OpticalFlowNv = 1 << 29,
+	None = 0,
+	[Obsolete("Use VkPipelineStageFlags2.None")]
+	NoneKhr = None,
+	TopOfPipe = 1 << 0,
+	[Obsolete("Use VkPipelineStageFlags2.TopOfPipe")]
+	TopOfPipeKhr = TopOfPipe,
+	DrawIndirect = 1 << 1,
+	[Obsolete("Use VkPipelineStageFlags2.DrawIndirect")]
+	DrawIndirectKhr = DrawIndirect,
+	VertexInput = 1 << 2,
+	[Obsolete("Use VkPipelineStageFlags2.VertexInput")]
+	VertexInputKhr = VertexInput,
+	VertexShader = 1 << 3,
+	[Obsolete("Use VkPipelineStageFlags2.VertexShader")]
+	VertexShaderKhr = VertexShader,
+	TessellationControlShader = 1 << 4,
+	[Obsolete("Use VkPipelineStageFlags2.TessellationControlShader")]
+	TessellationControlShaderKhr = TessellationControlShader,
+	TessellationEvaluationShader = 1 << 5,
+	[Obsolete("Use VkPipelineStageFlags2.TessellationEvaluationShader")]
+	TessellationEvaluationShaderKhr = TessellationEvaluationShader,
+	GeometryShader = 1 << 6,
+	[Obsolete("Use VkPipelineStageFlags2.GeometryShader")]
+	GeometryShaderKhr = GeometryShader,
+	FragmentShader = 1 << 7,
+	[Obsolete("Use VkPipelineStageFlags2.FragmentShader")]
+	FragmentShaderKhr = FragmentShader,
+	EarlyFragmentTests = 1 << 8,
+	[Obsolete("Use VkPipelineStageFlags2.EarlyFragmentTests")]
+	EarlyFragmentTestsKhr = EarlyFragmentTests,
+	LateFragmentTests = 1 << 9,
+	[Obsolete("Use VkPipelineStageFlags2.LateFragmentTests")]
+	LateFragmentTestsKhr = LateFragmentTests,
+	ColorAttachmentOutput = 1 << 10,
+	[Obsolete("Use VkPipelineStageFlags2.ColorAttachmentOutput")]
+	ColorAttachmentOutputKhr = ColorAttachmentOutput,
+	ComputeShader = 1 << 11,
+	[Obsolete("Use VkPipelineStageFlags2.ComputeShader")]
+	ComputeShaderKhr = ComputeShader,
+	AllTransfer = 1 << 12,
+	[Obsolete("Use VkPipelineStageFlags2.AllTransfer")]
+	AllTransferKhr = AllTransfer,
+	[Obsolete("Use VkPipelineStageFlags2.AllTransferKhr")]
+	Transfer = AllTransferKhr,
+	[Obsolete("Use VkPipelineStageFlags2.AllTransfer")]
+	TransferKhr = AllTransfer,
+	BottomOfPipe = 1 << 13,
+	[Obsolete("Use VkPipelineStageFlags2.BottomOfPipe")]
+	BottomOfPipeKhr = BottomOfPipe,
+	Host = 1 << 14,
+	[Obsolete("Use VkPipelineStageFlags2.Host")]
+	HostKhr = Host,
+	AllGraphics = 1 << 15,
+	[Obsolete("Use VkPipelineStageFlags2.AllGraphics")]
+	AllGraphicsKhr = AllGraphics,
+	AllCommands = 1 << 16,
+	[Obsolete("Use VkPipelineStageFlags2.AllCommands")]
+	AllCommandsKhr = AllCommands,
+	Copy = 1 << 32,
+	[Obsolete("Use VkPipelineStageFlags2.Copy")]
+	CopyKhr = Copy,
+	Resolve = 1 << 33,
+	[Obsolete("Use VkPipelineStageFlags2.Resolve")]
+	ResolveKhr = Resolve,
+	Blit = 1 << 34,
+	[Obsolete("Use VkPipelineStageFlags2.Blit")]
+	BlitKhr = Blit,
+	Clear = 1 << 35,
+	[Obsolete("Use VkPipelineStageFlags2.Clear")]
+	ClearKhr = Clear,
+	IndexInput = 1 << 36,
+	[Obsolete("Use VkPipelineStageFlags2.IndexInput")]
+	IndexInputKhr = IndexInput,
+	VertexAttributeInput = 1 << 37,
+	[Obsolete("Use VkPipelineStageFlags2.VertexAttributeInput")]
+	VertexAttributeInputKhr = VertexAttributeInput,
+	PreRasterizationShaders = 1 << 38,
+	[Obsolete("Use VkPipelineStageFlags2.PreRasterizationShaders")]
+	PreRasterizationShadersKhr = PreRasterizationShaders,
+	VideoDecodeKhr = 1 << 26,
+	TransformFeedbackExt = 1 << 24,
+	ConditionalRenderingExt = 1 << 18,
+	CommandPreprocessNv = 1 << 17,
+	FragmentShadingRateAttachmentKhr = 1 << 22,
+	[Obsolete("Use VkPipelineStageFlags2.FragmentShadingRateAttachmentKhr")]
+	ShadingRateImageNv = FragmentShadingRateAttachmentKhr,
+	AccelerationStructureBuildKhr = 1 << 25,
+	RayTracingShaderKhr = 1 << 21,
+	[Obsolete("Use VkPipelineStageFlags2.RayTracingShaderKhr")]
+	RayTracingShaderNv = RayTracingShaderKhr,
+	[Obsolete("Use VkPipelineStageFlags2.AccelerationStructureBuildKhr")]
+	AccelerationStructureBuildNv = AccelerationStructureBuildKhr,
+	FragmentDensityProcessExt = 1 << 23,
+	[Obsolete("Use VkPipelineStageFlags2.TaskShaderExt")]
+	TaskShaderNv = TaskShaderExt,
+	[Obsolete("Use VkPipelineStageFlags2.MeshShaderExt")]
+	MeshShaderNv = MeshShaderExt,
+	TaskShaderExt = 1 << 19,
+	MeshShaderExt = 1 << 20,
+	SubpassShadingHuawei = 1 << 39,
+	InvocationMaskHuawei = 1 << 40,
+	AccelerationStructureCopyKhr = 1 << 28,
+	MicromapBuildExt = 1 << 30,
+	ClusterCullingShaderHuawei = 1 << 41,
+	OpticalFlowNv = 1 << 29,
 }
 [Flags]
 public enum VkAccessFlags2 : long
 {
-	_2None = 0,
-	[Obsolete("Use VkAccessFlags2._2None")]
-	_2NoneKhr = _2None,
-	_2IndirectCommandRead = 1 << 0,
-	[Obsolete("Use VkAccessFlags2._2IndirectCommandRead")]
-	_2IndirectCommandReadKhr = _2IndirectCommandRead,
-	_2IndexRead = 1 << 1,
-	[Obsolete("Use VkAccessFlags2._2IndexRead")]
-	_2IndexReadKhr = _2IndexRead,
-	_2VertexAttributeRead = 1 << 2,
-	[Obsolete("Use VkAccessFlags2._2VertexAttributeRead")]
-	_2VertexAttributeReadKhr = _2VertexAttributeRead,
-	_2UniformRead = 1 << 3,
-	[Obsolete("Use VkAccessFlags2._2UniformRead")]
-	_2UniformReadKhr = _2UniformRead,
-	_2InputAttachmentRead = 1 << 4,
-	[Obsolete("Use VkAccessFlags2._2InputAttachmentRead")]
-	_2InputAttachmentReadKhr = _2InputAttachmentRead,
-	_2ShaderRead = 1 << 5,
-	[Obsolete("Use VkAccessFlags2._2ShaderRead")]
-	_2ShaderReadKhr = _2ShaderRead,
-	_2ShaderWrite = 1 << 6,
-	[Obsolete("Use VkAccessFlags2._2ShaderWrite")]
-	_2ShaderWriteKhr = _2ShaderWrite,
-	_2ColorAttachmentRead = 1 << 7,
-	[Obsolete("Use VkAccessFlags2._2ColorAttachmentRead")]
-	_2ColorAttachmentReadKhr = _2ColorAttachmentRead,
-	_2ColorAttachmentWrite = 1 << 8,
-	[Obsolete("Use VkAccessFlags2._2ColorAttachmentWrite")]
-	_2ColorAttachmentWriteKhr = _2ColorAttachmentWrite,
-	_2DepthStencilAttachmentRead = 1 << 9,
-	[Obsolete("Use VkAccessFlags2._2DepthStencilAttachmentRead")]
-	_2DepthStencilAttachmentReadKhr = _2DepthStencilAttachmentRead,
-	_2DepthStencilAttachmentWrite = 1 << 10,
-	[Obsolete("Use VkAccessFlags2._2DepthStencilAttachmentWrite")]
-	_2DepthStencilAttachmentWriteKhr = _2DepthStencilAttachmentWrite,
-	_2TransferRead = 1 << 11,
-	[Obsolete("Use VkAccessFlags2._2TransferRead")]
-	_2TransferReadKhr = _2TransferRead,
-	_2TransferWrite = 1 << 12,
-	[Obsolete("Use VkAccessFlags2._2TransferWrite")]
-	_2TransferWriteKhr = _2TransferWrite,
-	_2HostRead = 1 << 13,
-	[Obsolete("Use VkAccessFlags2._2HostRead")]
-	_2HostReadKhr = _2HostRead,
-	_2HostWrite = 1 << 14,
-	[Obsolete("Use VkAccessFlags2._2HostWrite")]
-	_2HostWriteKhr = _2HostWrite,
-	_2MemoryRead = 1 << 15,
-	[Obsolete("Use VkAccessFlags2._2MemoryRead")]
-	_2MemoryReadKhr = _2MemoryRead,
-	_2MemoryWrite = 1 << 16,
-	[Obsolete("Use VkAccessFlags2._2MemoryWrite")]
-	_2MemoryWriteKhr = _2MemoryWrite,
-	_2ShaderSampledRead = 1 << 32,
-	[Obsolete("Use VkAccessFlags2._2ShaderSampledRead")]
-	_2ShaderSampledReadKhr = _2ShaderSampledRead,
-	_2ShaderStorageRead = 1 << 33,
-	[Obsolete("Use VkAccessFlags2._2ShaderStorageRead")]
-	_2ShaderStorageReadKhr = _2ShaderStorageRead,
-	_2ShaderStorageWrite = 1 << 34,
-	[Obsolete("Use VkAccessFlags2._2ShaderStorageWrite")]
-	_2ShaderStorageWriteKhr = _2ShaderStorageWrite,
-	_2VideoDecodeReadKhr = 1 << 35,
-	_2VideoDecodeWriteKhr = 1 << 36,
-	_2TransformFeedbackWriteExt = 1 << 25,
-	_2TransformFeedbackCounterReadExt = 1 << 26,
-	_2TransformFeedbackCounterWriteExt = 1 << 27,
-	_2ConditionalRenderingReadExt = 1 << 20,
-	_2CommandPreprocessReadNv = 1 << 17,
-	_2CommandPreprocessWriteNv = 1 << 18,
-	_2FragmentShadingRateAttachmentReadKhr = 1 << 23,
-	[Obsolete("Use VkAccessFlags2._2FragmentShadingRateAttachmentReadKhr")]
-	_2ShadingRateImageReadNv = _2FragmentShadingRateAttachmentReadKhr,
-	_2AccelerationStructureReadKhr = 1 << 21,
-	_2AccelerationStructureWriteKhr = 1 << 22,
-	[Obsolete("Use VkAccessFlags2._2AccelerationStructureReadKhr")]
-	_2AccelerationStructureReadNv = _2AccelerationStructureReadKhr,
-	[Obsolete("Use VkAccessFlags2._2AccelerationStructureWriteKhr")]
-	_2AccelerationStructureWriteNv = _2AccelerationStructureWriteKhr,
-	_2FragmentDensityMapReadExt = 1 << 24,
-	_2ColorAttachmentReadNoncoherentExt = 1 << 19,
-	_2DescriptorBufferReadExt = 1 << 41,
-	_2InvocationMaskReadHuawei = 1 << 39,
-	_2ShaderBindingTableReadKhr = 1 << 40,
-	_2MicromapReadExt = 1 << 44,
-	_2MicromapWriteExt = 1 << 45,
-	_2OpticalFlowReadNv = 1 << 42,
-	_2OpticalFlowWriteNv = 1 << 43,
+	None = 0,
+	[Obsolete("Use VkAccessFlags2.None")]
+	NoneKhr = None,
+	IndirectCommandRead = 1 << 0,
+	[Obsolete("Use VkAccessFlags2.IndirectCommandRead")]
+	IndirectCommandReadKhr = IndirectCommandRead,
+	IndexRead = 1 << 1,
+	[Obsolete("Use VkAccessFlags2.IndexRead")]
+	IndexReadKhr = IndexRead,
+	VertexAttributeRead = 1 << 2,
+	[Obsolete("Use VkAccessFlags2.VertexAttributeRead")]
+	VertexAttributeReadKhr = VertexAttributeRead,
+	UniformRead = 1 << 3,
+	[Obsolete("Use VkAccessFlags2.UniformRead")]
+	UniformReadKhr = UniformRead,
+	InputAttachmentRead = 1 << 4,
+	[Obsolete("Use VkAccessFlags2.InputAttachmentRead")]
+	InputAttachmentReadKhr = InputAttachmentRead,
+	ShaderRead = 1 << 5,
+	[Obsolete("Use VkAccessFlags2.ShaderRead")]
+	ShaderReadKhr = ShaderRead,
+	ShaderWrite = 1 << 6,
+	[Obsolete("Use VkAccessFlags2.ShaderWrite")]
+	ShaderWriteKhr = ShaderWrite,
+	ColorAttachmentRead = 1 << 7,
+	[Obsolete("Use VkAccessFlags2.ColorAttachmentRead")]
+	ColorAttachmentReadKhr = ColorAttachmentRead,
+	ColorAttachmentWrite = 1 << 8,
+	[Obsolete("Use VkAccessFlags2.ColorAttachmentWrite")]
+	ColorAttachmentWriteKhr = ColorAttachmentWrite,
+	DepthStencilAttachmentRead = 1 << 9,
+	[Obsolete("Use VkAccessFlags2.DepthStencilAttachmentRead")]
+	DepthStencilAttachmentReadKhr = DepthStencilAttachmentRead,
+	DepthStencilAttachmentWrite = 1 << 10,
+	[Obsolete("Use VkAccessFlags2.DepthStencilAttachmentWrite")]
+	DepthStencilAttachmentWriteKhr = DepthStencilAttachmentWrite,
+	TransferRead = 1 << 11,
+	[Obsolete("Use VkAccessFlags2.TransferRead")]
+	TransferReadKhr = TransferRead,
+	TransferWrite = 1 << 12,
+	[Obsolete("Use VkAccessFlags2.TransferWrite")]
+	TransferWriteKhr = TransferWrite,
+	HostRead = 1 << 13,
+	[Obsolete("Use VkAccessFlags2.HostRead")]
+	HostReadKhr = HostRead,
+	HostWrite = 1 << 14,
+	[Obsolete("Use VkAccessFlags2.HostWrite")]
+	HostWriteKhr = HostWrite,
+	MemoryRead = 1 << 15,
+	[Obsolete("Use VkAccessFlags2.MemoryRead")]
+	MemoryReadKhr = MemoryRead,
+	MemoryWrite = 1 << 16,
+	[Obsolete("Use VkAccessFlags2.MemoryWrite")]
+	MemoryWriteKhr = MemoryWrite,
+	ShaderSampledRead = 1 << 32,
+	[Obsolete("Use VkAccessFlags2.ShaderSampledRead")]
+	ShaderSampledReadKhr = ShaderSampledRead,
+	ShaderStorageRead = 1 << 33,
+	[Obsolete("Use VkAccessFlags2.ShaderStorageRead")]
+	ShaderStorageReadKhr = ShaderStorageRead,
+	ShaderStorageWrite = 1 << 34,
+	[Obsolete("Use VkAccessFlags2.ShaderStorageWrite")]
+	ShaderStorageWriteKhr = ShaderStorageWrite,
+	VideoDecodeReadKhr = 1 << 35,
+	VideoDecodeWriteKhr = 1 << 36,
+	TransformFeedbackWriteExt = 1 << 25,
+	TransformFeedbackCounterReadExt = 1 << 26,
+	TransformFeedbackCounterWriteExt = 1 << 27,
+	ConditionalRenderingReadExt = 1 << 20,
+	CommandPreprocessReadNv = 1 << 17,
+	CommandPreprocessWriteNv = 1 << 18,
+	FragmentShadingRateAttachmentReadKhr = 1 << 23,
+	[Obsolete("Use VkAccessFlags2.FragmentShadingRateAttachmentReadKhr")]
+	ShadingRateImageReadNv = FragmentShadingRateAttachmentReadKhr,
+	AccelerationStructureReadKhr = 1 << 21,
+	AccelerationStructureWriteKhr = 1 << 22,
+	[Obsolete("Use VkAccessFlags2.AccelerationStructureReadKhr")]
+	AccelerationStructureReadNv = AccelerationStructureReadKhr,
+	[Obsolete("Use VkAccessFlags2.AccelerationStructureWriteKhr")]
+	AccelerationStructureWriteNv = AccelerationStructureWriteKhr,
+	FragmentDensityMapReadExt = 1 << 24,
+	ColorAttachmentReadNoncoherentExt = 1 << 19,
+	DescriptorBufferReadExt = 1 << 41,
+	InvocationMaskReadHuawei = 1 << 39,
+	ShaderBindingTableReadKhr = 1 << 40,
+	MicromapReadExt = 1 << 44,
+	MicromapWriteExt = 1 << 45,
+	OpticalFlowReadNv = 1 << 42,
+	OpticalFlowWriteNv = 1 << 43,
 }
 [Flags]
 public enum VkSubmitFlags
@@ -3307,100 +3307,100 @@ public enum VkRenderingFlags
 [Flags]
 public enum VkFormatFeatureFlags2 : long
 {
-	_2SampledImage = 1 << 0,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImage")]
-	_2SampledImageKhr = _2SampledImage,
-	_2StorageImage = 1 << 1,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageImage")]
-	_2StorageImageKhr = _2StorageImage,
-	_2StorageImageAtomic = 1 << 2,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageImageAtomic")]
-	_2StorageImageAtomicKhr = _2StorageImageAtomic,
-	_2UniformTexelBuffer = 1 << 3,
-	[Obsolete("Use VkFormatFeatureFlags2._2UniformTexelBuffer")]
-	_2UniformTexelBufferKhr = _2UniformTexelBuffer,
-	_2StorageTexelBuffer = 1 << 4,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageTexelBuffer")]
-	_2StorageTexelBufferKhr = _2StorageTexelBuffer,
-	_2StorageTexelBufferAtomic = 1 << 5,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageTexelBufferAtomic")]
-	_2StorageTexelBufferAtomicKhr = _2StorageTexelBufferAtomic,
-	_2VertexBuffer = 1 << 6,
-	[Obsolete("Use VkFormatFeatureFlags2._2VertexBuffer")]
-	_2VertexBufferKhr = _2VertexBuffer,
-	_2ColorAttachment = 1 << 7,
-	[Obsolete("Use VkFormatFeatureFlags2._2ColorAttachment")]
-	_2ColorAttachmentKhr = _2ColorAttachment,
-	_2ColorAttachmentBlend = 1 << 8,
-	[Obsolete("Use VkFormatFeatureFlags2._2ColorAttachmentBlend")]
-	_2ColorAttachmentBlendKhr = _2ColorAttachmentBlend,
-	_2DepthStencilAttachment = 1 << 9,
-	[Obsolete("Use VkFormatFeatureFlags2._2DepthStencilAttachment")]
-	_2DepthStencilAttachmentKhr = _2DepthStencilAttachment,
-	_2BlitSource = 1 << 10,
-	[Obsolete("Use VkFormatFeatureFlags2._2BlitSource")]
-	_2BlitSourceKhr = _2BlitSource,
-	_2BlitDestination = 1 << 11,
-	[Obsolete("Use VkFormatFeatureFlags2._2BlitDestination")]
-	_2BlitDestinationKhr = _2BlitDestination,
-	_2SampledImageFilterLinear = 1 << 12,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageFilterLinear")]
-	_2SampledImageFilterLinearKhr = _2SampledImageFilterLinear,
-	_2SampledImageFilterCubic = 1 << 13,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageFilterCubic")]
-	_2SampledImageFilterCubicExt = _2SampledImageFilterCubic,
-	_2TransferSource = 1 << 14,
-	[Obsolete("Use VkFormatFeatureFlags2._2TransferSource")]
-	_2TransferSourceKhr = _2TransferSource,
-	_2TransferDestination = 1 << 15,
-	[Obsolete("Use VkFormatFeatureFlags2._2TransferDestination")]
-	_2TransferDestinationKhr = _2TransferDestination,
-	_2SampledImageFilterMinmax = 1 << 16,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageFilterMinmax")]
-	_2SampledImageFilterMinmaxKhr = _2SampledImageFilterMinmax,
-	_2MidpointChromaSamples = 1 << 17,
-	[Obsolete("Use VkFormatFeatureFlags2._2MidpointChromaSamples")]
-	_2MidpointChromaSamplesKhr = _2MidpointChromaSamples,
-	_2SampledImageYCBCRConversionLinearFilter = 1 << 18,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageYCBCRConversionLinearFilter")]
-	_2SampledImageYCBCRConversionLinearFilterKhr = _2SampledImageYCBCRConversionLinearFilter,
-	_2SampledImageYCBCRConversionSeparateReconstructionFilter = 1 << 19,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageYCBCRConversionSeparateReconstructionFilter")]
-	_2SampledImageYCBCRConversionSeparateReconstructionFilterKhr = _2SampledImageYCBCRConversionSeparateReconstructionFilter,
-	_2SampledImageYCBCRConversionChromaReconstructionExplicit = 1 << 20,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageYCBCRConversionChromaReconstructionExplicit")]
-	_2SampledImageYCBCRConversionChromaReconstructionExplicitKhr = _2SampledImageYCBCRConversionChromaReconstructionExplicit,
-	_2SampledImageYCBCRConversionChromaReconstructionExplicitForceable = 1 << 21,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageYCBCRConversionChromaReconstructionExplicitForceable")]
-	_2SampledImageYCBCRConversionChromaReconstructionExplicitForceableKhr = _2SampledImageYCBCRConversionChromaReconstructionExplicitForceable,
-	_2Disjoint = 1 << 22,
-	[Obsolete("Use VkFormatFeatureFlags2._2Disjoint")]
-	_2DisjointKhr = _2Disjoint,
-	_2CositedChromaSamples = 1 << 23,
-	[Obsolete("Use VkFormatFeatureFlags2._2CositedChromaSamples")]
-	_2CositedChromaSamplesKhr = _2CositedChromaSamples,
-	_2StorageReadWithoutFormat = 1 << 31,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageReadWithoutFormat")]
-	_2StorageReadWithoutFormatKhr = _2StorageReadWithoutFormat,
-	_2StorageWriteWithoutFormat = 1 << 32,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageWriteWithoutFormat")]
-	_2StorageWriteWithoutFormatKhr = _2StorageWriteWithoutFormat,
-	_2SampledImageDepthComparison = 1 << 33,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageDepthComparison")]
-	_2SampledImageDepthComparisonKhr = _2SampledImageDepthComparison,
-	_2VideoDecodeOutputKhr = 1 << 25,
-	_2VideoDecodeDPBKhr = 1 << 26,
-	_2AccelerationStructureVertexBufferKhr = 1 << 29,
-	_2FragmentDensityMapExt = 1 << 24,
-	_2FragmentShadingRateAttachmentKhr = 1 << 30,
-	_2LinearColorAttachmentNv = 1 << 38,
-	_2WeightImageQcom = 1 << 34,
-	_2WeightSampledImageQcom = 1 << 35,
-	_2BlockMatchingQcom = 1 << 36,
-	_2BoxFilterSampledQcom = 1 << 37,
-	_2OpticalFlowImageNv = 1 << 40,
-	_2OpticalFlowVectorNv = 1 << 41,
-	_2OpticalFlowCostNv = 1 << 42,
+	SampledImage = 1 << 0,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImage")]
+	SampledImageKhr = SampledImage,
+	StorageImage = 1 << 1,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageImage")]
+	StorageImageKhr = StorageImage,
+	StorageImageAtomic = 1 << 2,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageImageAtomic")]
+	StorageImageAtomicKhr = StorageImageAtomic,
+	UniformTexelBuffer = 1 << 3,
+	[Obsolete("Use VkFormatFeatureFlags2.UniformTexelBuffer")]
+	UniformTexelBufferKhr = UniformTexelBuffer,
+	StorageTexelBuffer = 1 << 4,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageTexelBuffer")]
+	StorageTexelBufferKhr = StorageTexelBuffer,
+	StorageTexelBufferAtomic = 1 << 5,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageTexelBufferAtomic")]
+	StorageTexelBufferAtomicKhr = StorageTexelBufferAtomic,
+	VertexBuffer = 1 << 6,
+	[Obsolete("Use VkFormatFeatureFlags2.VertexBuffer")]
+	VertexBufferKhr = VertexBuffer,
+	ColorAttachment = 1 << 7,
+	[Obsolete("Use VkFormatFeatureFlags2.ColorAttachment")]
+	ColorAttachmentKhr = ColorAttachment,
+	ColorAttachmentBlend = 1 << 8,
+	[Obsolete("Use VkFormatFeatureFlags2.ColorAttachmentBlend")]
+	ColorAttachmentBlendKhr = ColorAttachmentBlend,
+	DepthStencilAttachment = 1 << 9,
+	[Obsolete("Use VkFormatFeatureFlags2.DepthStencilAttachment")]
+	DepthStencilAttachmentKhr = DepthStencilAttachment,
+	BlitSource = 1 << 10,
+	[Obsolete("Use VkFormatFeatureFlags2.BlitSource")]
+	BlitSourceKhr = BlitSource,
+	BlitDestination = 1 << 11,
+	[Obsolete("Use VkFormatFeatureFlags2.BlitDestination")]
+	BlitDestinationKhr = BlitDestination,
+	SampledImageFilterLinear = 1 << 12,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageFilterLinear")]
+	SampledImageFilterLinearKhr = SampledImageFilterLinear,
+	SampledImageFilterCubic = 1 << 13,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageFilterCubic")]
+	SampledImageFilterCubicExt = SampledImageFilterCubic,
+	TransferSource = 1 << 14,
+	[Obsolete("Use VkFormatFeatureFlags2.TransferSource")]
+	TransferSourceKhr = TransferSource,
+	TransferDestination = 1 << 15,
+	[Obsolete("Use VkFormatFeatureFlags2.TransferDestination")]
+	TransferDestinationKhr = TransferDestination,
+	SampledImageFilterMinmax = 1 << 16,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageFilterMinmax")]
+	SampledImageFilterMinmaxKhr = SampledImageFilterMinmax,
+	MidpointChromaSamples = 1 << 17,
+	[Obsolete("Use VkFormatFeatureFlags2.MidpointChromaSamples")]
+	MidpointChromaSamplesKhr = MidpointChromaSamples,
+	SampledImageYCBCRConversionLinearFilter = 1 << 18,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageYCBCRConversionLinearFilter")]
+	SampledImageYCBCRConversionLinearFilterKhr = SampledImageYCBCRConversionLinearFilter,
+	SampledImageYCBCRConversionSeparateReconstructionFilter = 1 << 19,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageYCBCRConversionSeparateReconstructionFilter")]
+	SampledImageYCBCRConversionSeparateReconstructionFilterKhr = SampledImageYCBCRConversionSeparateReconstructionFilter,
+	SampledImageYCBCRConversionChromaReconstructionExplicit = 1 << 20,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageYCBCRConversionChromaReconstructionExplicit")]
+	SampledImageYCBCRConversionChromaReconstructionExplicitKhr = SampledImageYCBCRConversionChromaReconstructionExplicit,
+	SampledImageYCBCRConversionChromaReconstructionExplicitForceable = 1 << 21,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageYCBCRConversionChromaReconstructionExplicitForceable")]
+	SampledImageYCBCRConversionChromaReconstructionExplicitForceableKhr = SampledImageYCBCRConversionChromaReconstructionExplicitForceable,
+	Disjoint = 1 << 22,
+	[Obsolete("Use VkFormatFeatureFlags2.Disjoint")]
+	DisjointKhr = Disjoint,
+	CositedChromaSamples = 1 << 23,
+	[Obsolete("Use VkFormatFeatureFlags2.CositedChromaSamples")]
+	CositedChromaSamplesKhr = CositedChromaSamples,
+	StorageReadWithoutFormat = 1 << 31,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageReadWithoutFormat")]
+	StorageReadWithoutFormatKhr = StorageReadWithoutFormat,
+	StorageWriteWithoutFormat = 1 << 32,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageWriteWithoutFormat")]
+	StorageWriteWithoutFormatKhr = StorageWriteWithoutFormat,
+	SampledImageDepthComparison = 1 << 33,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageDepthComparison")]
+	SampledImageDepthComparisonKhr = SampledImageDepthComparison,
+	VideoDecodeOutputKhr = 1 << 25,
+	VideoDecodeDPBKhr = 1 << 26,
+	AccelerationStructureVertexBufferKhr = 1 << 29,
+	FragmentDensityMapExt = 1 << 24,
+	FragmentShadingRateAttachmentKhr = 1 << 30,
+	LinearColorAttachmentNv = 1 << 38,
+	WeightImageQcom = 1 << 34,
+	WeightSampledImageQcom = 1 << 35,
+	BlockMatchingQcom = 1 << 36,
+	BoxFilterSampledQcom = 1 << 37,
+	OpticalFlowImageNv = 1 << 40,
+	OpticalFlowVectorNv = 1 << 41,
+	OpticalFlowCostNv = 1 << 42,
 }
 [Flags]
 public enum VkSurfaceTransformFlagsKHR
@@ -4765,205 +4765,205 @@ public enum VkDeviceDiagnosticsConfigFlagsNV
 [Flags]
 public enum VkPipelineStageFlags2KHR : long
 {
-	_2None = 0,
-	[Obsolete("Use VkPipelineStageFlags2._2None")]
-	_2NoneKhr = _2None,
-	_2TopOfPipe = 1 << 0,
-	[Obsolete("Use VkPipelineStageFlags2._2TopOfPipe")]
-	_2TopOfPipeKhr = _2TopOfPipe,
-	_2DrawIndirect = 1 << 1,
-	[Obsolete("Use VkPipelineStageFlags2._2DrawIndirect")]
-	_2DrawIndirectKhr = _2DrawIndirect,
-	_2VertexInput = 1 << 2,
-	[Obsolete("Use VkPipelineStageFlags2._2VertexInput")]
-	_2VertexInputKhr = _2VertexInput,
-	_2VertexShader = 1 << 3,
-	[Obsolete("Use VkPipelineStageFlags2._2VertexShader")]
-	_2VertexShaderKhr = _2VertexShader,
-	_2TessellationControlShader = 1 << 4,
-	[Obsolete("Use VkPipelineStageFlags2._2TessellationControlShader")]
-	_2TessellationControlShaderKhr = _2TessellationControlShader,
-	_2TessellationEvaluationShader = 1 << 5,
-	[Obsolete("Use VkPipelineStageFlags2._2TessellationEvaluationShader")]
-	_2TessellationEvaluationShaderKhr = _2TessellationEvaluationShader,
-	_2GeometryShader = 1 << 6,
-	[Obsolete("Use VkPipelineStageFlags2._2GeometryShader")]
-	_2GeometryShaderKhr = _2GeometryShader,
-	_2FragmentShader = 1 << 7,
-	[Obsolete("Use VkPipelineStageFlags2._2FragmentShader")]
-	_2FragmentShaderKhr = _2FragmentShader,
-	_2EarlyFragmentTests = 1 << 8,
-	[Obsolete("Use VkPipelineStageFlags2._2EarlyFragmentTests")]
-	_2EarlyFragmentTestsKhr = _2EarlyFragmentTests,
-	_2LateFragmentTests = 1 << 9,
-	[Obsolete("Use VkPipelineStageFlags2._2LateFragmentTests")]
-	_2LateFragmentTestsKhr = _2LateFragmentTests,
-	_2ColorAttachmentOutput = 1 << 10,
-	[Obsolete("Use VkPipelineStageFlags2._2ColorAttachmentOutput")]
-	_2ColorAttachmentOutputKhr = _2ColorAttachmentOutput,
-	_2ComputeShader = 1 << 11,
-	[Obsolete("Use VkPipelineStageFlags2._2ComputeShader")]
-	_2ComputeShaderKhr = _2ComputeShader,
-	_2AllTransfer = 1 << 12,
-	[Obsolete("Use VkPipelineStageFlags2._2AllTransfer")]
-	_2AllTransferKhr = _2AllTransfer,
-	[Obsolete("Use VkPipelineStageFlags2._2AllTransferKhr")]
-	_2Transfer = _2AllTransferKhr,
-	[Obsolete("Use VkPipelineStageFlags2._2AllTransfer")]
-	_2TransferKhr = _2AllTransfer,
-	_2BottomOfPipe = 1 << 13,
-	[Obsolete("Use VkPipelineStageFlags2._2BottomOfPipe")]
-	_2BottomOfPipeKhr = _2BottomOfPipe,
-	_2Host = 1 << 14,
-	[Obsolete("Use VkPipelineStageFlags2._2Host")]
-	_2HostKhr = _2Host,
-	_2AllGraphics = 1 << 15,
-	[Obsolete("Use VkPipelineStageFlags2._2AllGraphics")]
-	_2AllGraphicsKhr = _2AllGraphics,
-	_2AllCommands = 1 << 16,
-	[Obsolete("Use VkPipelineStageFlags2._2AllCommands")]
-	_2AllCommandsKhr = _2AllCommands,
-	_2Copy = 1 << 32,
-	[Obsolete("Use VkPipelineStageFlags2._2Copy")]
-	_2CopyKhr = _2Copy,
-	_2Resolve = 1 << 33,
-	[Obsolete("Use VkPipelineStageFlags2._2Resolve")]
-	_2ResolveKhr = _2Resolve,
-	_2Blit = 1 << 34,
-	[Obsolete("Use VkPipelineStageFlags2._2Blit")]
-	_2BlitKhr = _2Blit,
-	_2Clear = 1 << 35,
-	[Obsolete("Use VkPipelineStageFlags2._2Clear")]
-	_2ClearKhr = _2Clear,
-	_2IndexInput = 1 << 36,
-	[Obsolete("Use VkPipelineStageFlags2._2IndexInput")]
-	_2IndexInputKhr = _2IndexInput,
-	_2VertexAttributeInput = 1 << 37,
-	[Obsolete("Use VkPipelineStageFlags2._2VertexAttributeInput")]
-	_2VertexAttributeInputKhr = _2VertexAttributeInput,
-	_2PreRasterizationShaders = 1 << 38,
-	[Obsolete("Use VkPipelineStageFlags2._2PreRasterizationShaders")]
-	_2PreRasterizationShadersKhr = _2PreRasterizationShaders,
-	_2VideoDecodeKhr = 1 << 26,
-	_2TransformFeedbackExt = 1 << 24,
-	_2ConditionalRenderingExt = 1 << 18,
-	_2CommandPreprocessNv = 1 << 17,
-	_2FragmentShadingRateAttachmentKhr = 1 << 22,
-	[Obsolete("Use VkPipelineStageFlags2._2FragmentShadingRateAttachmentKhr")]
-	_2ShadingRateImageNv = _2FragmentShadingRateAttachmentKhr,
-	_2AccelerationStructureBuildKhr = 1 << 25,
-	_2RayTracingShaderKhr = 1 << 21,
-	[Obsolete("Use VkPipelineStageFlags2._2RayTracingShaderKhr")]
-	_2RayTracingShaderNv = _2RayTracingShaderKhr,
-	[Obsolete("Use VkPipelineStageFlags2._2AccelerationStructureBuildKhr")]
-	_2AccelerationStructureBuildNv = _2AccelerationStructureBuildKhr,
-	_2FragmentDensityProcessExt = 1 << 23,
-	[Obsolete("Use VkPipelineStageFlags2._2TaskShaderExt")]
-	_2TaskShaderNv = _2TaskShaderExt,
-	[Obsolete("Use VkPipelineStageFlags2._2MeshShaderExt")]
-	_2MeshShaderNv = _2MeshShaderExt,
-	_2TaskShaderExt = 1 << 19,
-	_2MeshShaderExt = 1 << 20,
-	_2SubpassShadingHuawei = 1 << 39,
-	_2InvocationMaskHuawei = 1 << 40,
-	_2AccelerationStructureCopyKhr = 1 << 28,
-	_2MicromapBuildExt = 1 << 30,
-	_2ClusterCullingShaderHuawei = 1 << 41,
-	_2OpticalFlowNv = 1 << 29,
+	None = 0,
+	[Obsolete("Use VkPipelineStageFlags2.None")]
+	NoneKhr = None,
+	TopOfPipe = 1 << 0,
+	[Obsolete("Use VkPipelineStageFlags2.TopOfPipe")]
+	TopOfPipeKhr = TopOfPipe,
+	DrawIndirect = 1 << 1,
+	[Obsolete("Use VkPipelineStageFlags2.DrawIndirect")]
+	DrawIndirectKhr = DrawIndirect,
+	VertexInput = 1 << 2,
+	[Obsolete("Use VkPipelineStageFlags2.VertexInput")]
+	VertexInputKhr = VertexInput,
+	VertexShader = 1 << 3,
+	[Obsolete("Use VkPipelineStageFlags2.VertexShader")]
+	VertexShaderKhr = VertexShader,
+	TessellationControlShader = 1 << 4,
+	[Obsolete("Use VkPipelineStageFlags2.TessellationControlShader")]
+	TessellationControlShaderKhr = TessellationControlShader,
+	TessellationEvaluationShader = 1 << 5,
+	[Obsolete("Use VkPipelineStageFlags2.TessellationEvaluationShader")]
+	TessellationEvaluationShaderKhr = TessellationEvaluationShader,
+	GeometryShader = 1 << 6,
+	[Obsolete("Use VkPipelineStageFlags2.GeometryShader")]
+	GeometryShaderKhr = GeometryShader,
+	FragmentShader = 1 << 7,
+	[Obsolete("Use VkPipelineStageFlags2.FragmentShader")]
+	FragmentShaderKhr = FragmentShader,
+	EarlyFragmentTests = 1 << 8,
+	[Obsolete("Use VkPipelineStageFlags2.EarlyFragmentTests")]
+	EarlyFragmentTestsKhr = EarlyFragmentTests,
+	LateFragmentTests = 1 << 9,
+	[Obsolete("Use VkPipelineStageFlags2.LateFragmentTests")]
+	LateFragmentTestsKhr = LateFragmentTests,
+	ColorAttachmentOutput = 1 << 10,
+	[Obsolete("Use VkPipelineStageFlags2.ColorAttachmentOutput")]
+	ColorAttachmentOutputKhr = ColorAttachmentOutput,
+	ComputeShader = 1 << 11,
+	[Obsolete("Use VkPipelineStageFlags2.ComputeShader")]
+	ComputeShaderKhr = ComputeShader,
+	AllTransfer = 1 << 12,
+	[Obsolete("Use VkPipelineStageFlags2.AllTransfer")]
+	AllTransferKhr = AllTransfer,
+	[Obsolete("Use VkPipelineStageFlags2.AllTransferKhr")]
+	Transfer = AllTransferKhr,
+	[Obsolete("Use VkPipelineStageFlags2.AllTransfer")]
+	TransferKhr = AllTransfer,
+	BottomOfPipe = 1 << 13,
+	[Obsolete("Use VkPipelineStageFlags2.BottomOfPipe")]
+	BottomOfPipeKhr = BottomOfPipe,
+	Host = 1 << 14,
+	[Obsolete("Use VkPipelineStageFlags2.Host")]
+	HostKhr = Host,
+	AllGraphics = 1 << 15,
+	[Obsolete("Use VkPipelineStageFlags2.AllGraphics")]
+	AllGraphicsKhr = AllGraphics,
+	AllCommands = 1 << 16,
+	[Obsolete("Use VkPipelineStageFlags2.AllCommands")]
+	AllCommandsKhr = AllCommands,
+	Copy = 1 << 32,
+	[Obsolete("Use VkPipelineStageFlags2.Copy")]
+	CopyKhr = Copy,
+	Resolve = 1 << 33,
+	[Obsolete("Use VkPipelineStageFlags2.Resolve")]
+	ResolveKhr = Resolve,
+	Blit = 1 << 34,
+	[Obsolete("Use VkPipelineStageFlags2.Blit")]
+	BlitKhr = Blit,
+	Clear = 1 << 35,
+	[Obsolete("Use VkPipelineStageFlags2.Clear")]
+	ClearKhr = Clear,
+	IndexInput = 1 << 36,
+	[Obsolete("Use VkPipelineStageFlags2.IndexInput")]
+	IndexInputKhr = IndexInput,
+	VertexAttributeInput = 1 << 37,
+	[Obsolete("Use VkPipelineStageFlags2.VertexAttributeInput")]
+	VertexAttributeInputKhr = VertexAttributeInput,
+	PreRasterizationShaders = 1 << 38,
+	[Obsolete("Use VkPipelineStageFlags2.PreRasterizationShaders")]
+	PreRasterizationShadersKhr = PreRasterizationShaders,
+	VideoDecodeKhr = 1 << 26,
+	TransformFeedbackExt = 1 << 24,
+	ConditionalRenderingExt = 1 << 18,
+	CommandPreprocessNv = 1 << 17,
+	FragmentShadingRateAttachmentKhr = 1 << 22,
+	[Obsolete("Use VkPipelineStageFlags2.FragmentShadingRateAttachmentKhr")]
+	ShadingRateImageNv = FragmentShadingRateAttachmentKhr,
+	AccelerationStructureBuildKhr = 1 << 25,
+	RayTracingShaderKhr = 1 << 21,
+	[Obsolete("Use VkPipelineStageFlags2.RayTracingShaderKhr")]
+	RayTracingShaderNv = RayTracingShaderKhr,
+	[Obsolete("Use VkPipelineStageFlags2.AccelerationStructureBuildKhr")]
+	AccelerationStructureBuildNv = AccelerationStructureBuildKhr,
+	FragmentDensityProcessExt = 1 << 23,
+	[Obsolete("Use VkPipelineStageFlags2.TaskShaderExt")]
+	TaskShaderNv = TaskShaderExt,
+	[Obsolete("Use VkPipelineStageFlags2.MeshShaderExt")]
+	MeshShaderNv = MeshShaderExt,
+	TaskShaderExt = 1 << 19,
+	MeshShaderExt = 1 << 20,
+	SubpassShadingHuawei = 1 << 39,
+	InvocationMaskHuawei = 1 << 40,
+	AccelerationStructureCopyKhr = 1 << 28,
+	MicromapBuildExt = 1 << 30,
+	ClusterCullingShaderHuawei = 1 << 41,
+	OpticalFlowNv = 1 << 29,
 }
 [Obsolete("Use VkAccessFlags2")]
 [Flags]
 public enum VkAccessFlags2KHR : long
 {
-	_2None = 0,
-	[Obsolete("Use VkAccessFlags2._2None")]
-	_2NoneKhr = _2None,
-	_2IndirectCommandRead = 1 << 0,
-	[Obsolete("Use VkAccessFlags2._2IndirectCommandRead")]
-	_2IndirectCommandReadKhr = _2IndirectCommandRead,
-	_2IndexRead = 1 << 1,
-	[Obsolete("Use VkAccessFlags2._2IndexRead")]
-	_2IndexReadKhr = _2IndexRead,
-	_2VertexAttributeRead = 1 << 2,
-	[Obsolete("Use VkAccessFlags2._2VertexAttributeRead")]
-	_2VertexAttributeReadKhr = _2VertexAttributeRead,
-	_2UniformRead = 1 << 3,
-	[Obsolete("Use VkAccessFlags2._2UniformRead")]
-	_2UniformReadKhr = _2UniformRead,
-	_2InputAttachmentRead = 1 << 4,
-	[Obsolete("Use VkAccessFlags2._2InputAttachmentRead")]
-	_2InputAttachmentReadKhr = _2InputAttachmentRead,
-	_2ShaderRead = 1 << 5,
-	[Obsolete("Use VkAccessFlags2._2ShaderRead")]
-	_2ShaderReadKhr = _2ShaderRead,
-	_2ShaderWrite = 1 << 6,
-	[Obsolete("Use VkAccessFlags2._2ShaderWrite")]
-	_2ShaderWriteKhr = _2ShaderWrite,
-	_2ColorAttachmentRead = 1 << 7,
-	[Obsolete("Use VkAccessFlags2._2ColorAttachmentRead")]
-	_2ColorAttachmentReadKhr = _2ColorAttachmentRead,
-	_2ColorAttachmentWrite = 1 << 8,
-	[Obsolete("Use VkAccessFlags2._2ColorAttachmentWrite")]
-	_2ColorAttachmentWriteKhr = _2ColorAttachmentWrite,
-	_2DepthStencilAttachmentRead = 1 << 9,
-	[Obsolete("Use VkAccessFlags2._2DepthStencilAttachmentRead")]
-	_2DepthStencilAttachmentReadKhr = _2DepthStencilAttachmentRead,
-	_2DepthStencilAttachmentWrite = 1 << 10,
-	[Obsolete("Use VkAccessFlags2._2DepthStencilAttachmentWrite")]
-	_2DepthStencilAttachmentWriteKhr = _2DepthStencilAttachmentWrite,
-	_2TransferRead = 1 << 11,
-	[Obsolete("Use VkAccessFlags2._2TransferRead")]
-	_2TransferReadKhr = _2TransferRead,
-	_2TransferWrite = 1 << 12,
-	[Obsolete("Use VkAccessFlags2._2TransferWrite")]
-	_2TransferWriteKhr = _2TransferWrite,
-	_2HostRead = 1 << 13,
-	[Obsolete("Use VkAccessFlags2._2HostRead")]
-	_2HostReadKhr = _2HostRead,
-	_2HostWrite = 1 << 14,
-	[Obsolete("Use VkAccessFlags2._2HostWrite")]
-	_2HostWriteKhr = _2HostWrite,
-	_2MemoryRead = 1 << 15,
-	[Obsolete("Use VkAccessFlags2._2MemoryRead")]
-	_2MemoryReadKhr = _2MemoryRead,
-	_2MemoryWrite = 1 << 16,
-	[Obsolete("Use VkAccessFlags2._2MemoryWrite")]
-	_2MemoryWriteKhr = _2MemoryWrite,
-	_2ShaderSampledRead = 1 << 32,
-	[Obsolete("Use VkAccessFlags2._2ShaderSampledRead")]
-	_2ShaderSampledReadKhr = _2ShaderSampledRead,
-	_2ShaderStorageRead = 1 << 33,
-	[Obsolete("Use VkAccessFlags2._2ShaderStorageRead")]
-	_2ShaderStorageReadKhr = _2ShaderStorageRead,
-	_2ShaderStorageWrite = 1 << 34,
-	[Obsolete("Use VkAccessFlags2._2ShaderStorageWrite")]
-	_2ShaderStorageWriteKhr = _2ShaderStorageWrite,
-	_2VideoDecodeReadKhr = 1 << 35,
-	_2VideoDecodeWriteKhr = 1 << 36,
-	_2TransformFeedbackWriteExt = 1 << 25,
-	_2TransformFeedbackCounterReadExt = 1 << 26,
-	_2TransformFeedbackCounterWriteExt = 1 << 27,
-	_2ConditionalRenderingReadExt = 1 << 20,
-	_2CommandPreprocessReadNv = 1 << 17,
-	_2CommandPreprocessWriteNv = 1 << 18,
-	_2FragmentShadingRateAttachmentReadKhr = 1 << 23,
-	[Obsolete("Use VkAccessFlags2._2FragmentShadingRateAttachmentReadKhr")]
-	_2ShadingRateImageReadNv = _2FragmentShadingRateAttachmentReadKhr,
-	_2AccelerationStructureReadKhr = 1 << 21,
-	_2AccelerationStructureWriteKhr = 1 << 22,
-	[Obsolete("Use VkAccessFlags2._2AccelerationStructureReadKhr")]
-	_2AccelerationStructureReadNv = _2AccelerationStructureReadKhr,
-	[Obsolete("Use VkAccessFlags2._2AccelerationStructureWriteKhr")]
-	_2AccelerationStructureWriteNv = _2AccelerationStructureWriteKhr,
-	_2FragmentDensityMapReadExt = 1 << 24,
-	_2ColorAttachmentReadNoncoherentExt = 1 << 19,
-	_2DescriptorBufferReadExt = 1 << 41,
-	_2InvocationMaskReadHuawei = 1 << 39,
-	_2ShaderBindingTableReadKhr = 1 << 40,
-	_2MicromapReadExt = 1 << 44,
-	_2MicromapWriteExt = 1 << 45,
-	_2OpticalFlowReadNv = 1 << 42,
-	_2OpticalFlowWriteNv = 1 << 43,
+	None = 0,
+	[Obsolete("Use VkAccessFlags2.None")]
+	NoneKhr = None,
+	IndirectCommandRead = 1 << 0,
+	[Obsolete("Use VkAccessFlags2.IndirectCommandRead")]
+	IndirectCommandReadKhr = IndirectCommandRead,
+	IndexRead = 1 << 1,
+	[Obsolete("Use VkAccessFlags2.IndexRead")]
+	IndexReadKhr = IndexRead,
+	VertexAttributeRead = 1 << 2,
+	[Obsolete("Use VkAccessFlags2.VertexAttributeRead")]
+	VertexAttributeReadKhr = VertexAttributeRead,
+	UniformRead = 1 << 3,
+	[Obsolete("Use VkAccessFlags2.UniformRead")]
+	UniformReadKhr = UniformRead,
+	InputAttachmentRead = 1 << 4,
+	[Obsolete("Use VkAccessFlags2.InputAttachmentRead")]
+	InputAttachmentReadKhr = InputAttachmentRead,
+	ShaderRead = 1 << 5,
+	[Obsolete("Use VkAccessFlags2.ShaderRead")]
+	ShaderReadKhr = ShaderRead,
+	ShaderWrite = 1 << 6,
+	[Obsolete("Use VkAccessFlags2.ShaderWrite")]
+	ShaderWriteKhr = ShaderWrite,
+	ColorAttachmentRead = 1 << 7,
+	[Obsolete("Use VkAccessFlags2.ColorAttachmentRead")]
+	ColorAttachmentReadKhr = ColorAttachmentRead,
+	ColorAttachmentWrite = 1 << 8,
+	[Obsolete("Use VkAccessFlags2.ColorAttachmentWrite")]
+	ColorAttachmentWriteKhr = ColorAttachmentWrite,
+	DepthStencilAttachmentRead = 1 << 9,
+	[Obsolete("Use VkAccessFlags2.DepthStencilAttachmentRead")]
+	DepthStencilAttachmentReadKhr = DepthStencilAttachmentRead,
+	DepthStencilAttachmentWrite = 1 << 10,
+	[Obsolete("Use VkAccessFlags2.DepthStencilAttachmentWrite")]
+	DepthStencilAttachmentWriteKhr = DepthStencilAttachmentWrite,
+	TransferRead = 1 << 11,
+	[Obsolete("Use VkAccessFlags2.TransferRead")]
+	TransferReadKhr = TransferRead,
+	TransferWrite = 1 << 12,
+	[Obsolete("Use VkAccessFlags2.TransferWrite")]
+	TransferWriteKhr = TransferWrite,
+	HostRead = 1 << 13,
+	[Obsolete("Use VkAccessFlags2.HostRead")]
+	HostReadKhr = HostRead,
+	HostWrite = 1 << 14,
+	[Obsolete("Use VkAccessFlags2.HostWrite")]
+	HostWriteKhr = HostWrite,
+	MemoryRead = 1 << 15,
+	[Obsolete("Use VkAccessFlags2.MemoryRead")]
+	MemoryReadKhr = MemoryRead,
+	MemoryWrite = 1 << 16,
+	[Obsolete("Use VkAccessFlags2.MemoryWrite")]
+	MemoryWriteKhr = MemoryWrite,
+	ShaderSampledRead = 1 << 32,
+	[Obsolete("Use VkAccessFlags2.ShaderSampledRead")]
+	ShaderSampledReadKhr = ShaderSampledRead,
+	ShaderStorageRead = 1 << 33,
+	[Obsolete("Use VkAccessFlags2.ShaderStorageRead")]
+	ShaderStorageReadKhr = ShaderStorageRead,
+	ShaderStorageWrite = 1 << 34,
+	[Obsolete("Use VkAccessFlags2.ShaderStorageWrite")]
+	ShaderStorageWriteKhr = ShaderStorageWrite,
+	VideoDecodeReadKhr = 1 << 35,
+	VideoDecodeWriteKhr = 1 << 36,
+	TransformFeedbackWriteExt = 1 << 25,
+	TransformFeedbackCounterReadExt = 1 << 26,
+	TransformFeedbackCounterWriteExt = 1 << 27,
+	ConditionalRenderingReadExt = 1 << 20,
+	CommandPreprocessReadNv = 1 << 17,
+	CommandPreprocessWriteNv = 1 << 18,
+	FragmentShadingRateAttachmentReadKhr = 1 << 23,
+	[Obsolete("Use VkAccessFlags2.FragmentShadingRateAttachmentReadKhr")]
+	ShadingRateImageReadNv = FragmentShadingRateAttachmentReadKhr,
+	AccelerationStructureReadKhr = 1 << 21,
+	AccelerationStructureWriteKhr = 1 << 22,
+	[Obsolete("Use VkAccessFlags2.AccelerationStructureReadKhr")]
+	AccelerationStructureReadNv = AccelerationStructureReadKhr,
+	[Obsolete("Use VkAccessFlags2.AccelerationStructureWriteKhr")]
+	AccelerationStructureWriteNv = AccelerationStructureWriteKhr,
+	FragmentDensityMapReadExt = 1 << 24,
+	ColorAttachmentReadNoncoherentExt = 1 << 19,
+	DescriptorBufferReadExt = 1 << 41,
+	InvocationMaskReadHuawei = 1 << 39,
+	ShaderBindingTableReadKhr = 1 << 40,
+	MicromapReadExt = 1 << 44,
+	MicromapWriteExt = 1 << 45,
+	OpticalFlowReadNv = 1 << 42,
+	OpticalFlowWriteNv = 1 << 43,
 }
 [Obsolete("Use VkSubmitFlags")]
 [Flags]
@@ -5080,100 +5080,100 @@ public enum VkDeviceAddressBindingTypeEXT
 [Flags]
 public enum VkFormatFeatureFlags2KHR : long
 {
-	_2SampledImage = 1 << 0,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImage")]
-	_2SampledImageKhr = _2SampledImage,
-	_2StorageImage = 1 << 1,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageImage")]
-	_2StorageImageKhr = _2StorageImage,
-	_2StorageImageAtomic = 1 << 2,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageImageAtomic")]
-	_2StorageImageAtomicKhr = _2StorageImageAtomic,
-	_2UniformTexelBuffer = 1 << 3,
-	[Obsolete("Use VkFormatFeatureFlags2._2UniformTexelBuffer")]
-	_2UniformTexelBufferKhr = _2UniformTexelBuffer,
-	_2StorageTexelBuffer = 1 << 4,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageTexelBuffer")]
-	_2StorageTexelBufferKhr = _2StorageTexelBuffer,
-	_2StorageTexelBufferAtomic = 1 << 5,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageTexelBufferAtomic")]
-	_2StorageTexelBufferAtomicKhr = _2StorageTexelBufferAtomic,
-	_2VertexBuffer = 1 << 6,
-	[Obsolete("Use VkFormatFeatureFlags2._2VertexBuffer")]
-	_2VertexBufferKhr = _2VertexBuffer,
-	_2ColorAttachment = 1 << 7,
-	[Obsolete("Use VkFormatFeatureFlags2._2ColorAttachment")]
-	_2ColorAttachmentKhr = _2ColorAttachment,
-	_2ColorAttachmentBlend = 1 << 8,
-	[Obsolete("Use VkFormatFeatureFlags2._2ColorAttachmentBlend")]
-	_2ColorAttachmentBlendKhr = _2ColorAttachmentBlend,
-	_2DepthStencilAttachment = 1 << 9,
-	[Obsolete("Use VkFormatFeatureFlags2._2DepthStencilAttachment")]
-	_2DepthStencilAttachmentKhr = _2DepthStencilAttachment,
-	_2BlitSource = 1 << 10,
-	[Obsolete("Use VkFormatFeatureFlags2._2BlitSource")]
-	_2BlitSourceKhr = _2BlitSource,
-	_2BlitDestination = 1 << 11,
-	[Obsolete("Use VkFormatFeatureFlags2._2BlitDestination")]
-	_2BlitDestinationKhr = _2BlitDestination,
-	_2SampledImageFilterLinear = 1 << 12,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageFilterLinear")]
-	_2SampledImageFilterLinearKhr = _2SampledImageFilterLinear,
-	_2SampledImageFilterCubic = 1 << 13,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageFilterCubic")]
-	_2SampledImageFilterCubicExt = _2SampledImageFilterCubic,
-	_2TransferSource = 1 << 14,
-	[Obsolete("Use VkFormatFeatureFlags2._2TransferSource")]
-	_2TransferSourceKhr = _2TransferSource,
-	_2TransferDestination = 1 << 15,
-	[Obsolete("Use VkFormatFeatureFlags2._2TransferDestination")]
-	_2TransferDestinationKhr = _2TransferDestination,
-	_2SampledImageFilterMinmax = 1 << 16,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageFilterMinmax")]
-	_2SampledImageFilterMinmaxKhr = _2SampledImageFilterMinmax,
-	_2MidpointChromaSamples = 1 << 17,
-	[Obsolete("Use VkFormatFeatureFlags2._2MidpointChromaSamples")]
-	_2MidpointChromaSamplesKhr = _2MidpointChromaSamples,
-	_2SampledImageYCBCRConversionLinearFilter = 1 << 18,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageYCBCRConversionLinearFilter")]
-	_2SampledImageYCBCRConversionLinearFilterKhr = _2SampledImageYCBCRConversionLinearFilter,
-	_2SampledImageYCBCRConversionSeparateReconstructionFilter = 1 << 19,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageYCBCRConversionSeparateReconstructionFilter")]
-	_2SampledImageYCBCRConversionSeparateReconstructionFilterKhr = _2SampledImageYCBCRConversionSeparateReconstructionFilter,
-	_2SampledImageYCBCRConversionChromaReconstructionExplicit = 1 << 20,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageYCBCRConversionChromaReconstructionExplicit")]
-	_2SampledImageYCBCRConversionChromaReconstructionExplicitKhr = _2SampledImageYCBCRConversionChromaReconstructionExplicit,
-	_2SampledImageYCBCRConversionChromaReconstructionExplicitForceable = 1 << 21,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageYCBCRConversionChromaReconstructionExplicitForceable")]
-	_2SampledImageYCBCRConversionChromaReconstructionExplicitForceableKhr = _2SampledImageYCBCRConversionChromaReconstructionExplicitForceable,
-	_2Disjoint = 1 << 22,
-	[Obsolete("Use VkFormatFeatureFlags2._2Disjoint")]
-	_2DisjointKhr = _2Disjoint,
-	_2CositedChromaSamples = 1 << 23,
-	[Obsolete("Use VkFormatFeatureFlags2._2CositedChromaSamples")]
-	_2CositedChromaSamplesKhr = _2CositedChromaSamples,
-	_2StorageReadWithoutFormat = 1 << 31,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageReadWithoutFormat")]
-	_2StorageReadWithoutFormatKhr = _2StorageReadWithoutFormat,
-	_2StorageWriteWithoutFormat = 1 << 32,
-	[Obsolete("Use VkFormatFeatureFlags2._2StorageWriteWithoutFormat")]
-	_2StorageWriteWithoutFormatKhr = _2StorageWriteWithoutFormat,
-	_2SampledImageDepthComparison = 1 << 33,
-	[Obsolete("Use VkFormatFeatureFlags2._2SampledImageDepthComparison")]
-	_2SampledImageDepthComparisonKhr = _2SampledImageDepthComparison,
-	_2VideoDecodeOutputKhr = 1 << 25,
-	_2VideoDecodeDPBKhr = 1 << 26,
-	_2AccelerationStructureVertexBufferKhr = 1 << 29,
-	_2FragmentDensityMapExt = 1 << 24,
-	_2FragmentShadingRateAttachmentKhr = 1 << 30,
-	_2LinearColorAttachmentNv = 1 << 38,
-	_2WeightImageQcom = 1 << 34,
-	_2WeightSampledImageQcom = 1 << 35,
-	_2BlockMatchingQcom = 1 << 36,
-	_2BoxFilterSampledQcom = 1 << 37,
-	_2OpticalFlowImageNv = 1 << 40,
-	_2OpticalFlowVectorNv = 1 << 41,
-	_2OpticalFlowCostNv = 1 << 42,
+	SampledImage = 1 << 0,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImage")]
+	SampledImageKhr = SampledImage,
+	StorageImage = 1 << 1,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageImage")]
+	StorageImageKhr = StorageImage,
+	StorageImageAtomic = 1 << 2,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageImageAtomic")]
+	StorageImageAtomicKhr = StorageImageAtomic,
+	UniformTexelBuffer = 1 << 3,
+	[Obsolete("Use VkFormatFeatureFlags2.UniformTexelBuffer")]
+	UniformTexelBufferKhr = UniformTexelBuffer,
+	StorageTexelBuffer = 1 << 4,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageTexelBuffer")]
+	StorageTexelBufferKhr = StorageTexelBuffer,
+	StorageTexelBufferAtomic = 1 << 5,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageTexelBufferAtomic")]
+	StorageTexelBufferAtomicKhr = StorageTexelBufferAtomic,
+	VertexBuffer = 1 << 6,
+	[Obsolete("Use VkFormatFeatureFlags2.VertexBuffer")]
+	VertexBufferKhr = VertexBuffer,
+	ColorAttachment = 1 << 7,
+	[Obsolete("Use VkFormatFeatureFlags2.ColorAttachment")]
+	ColorAttachmentKhr = ColorAttachment,
+	ColorAttachmentBlend = 1 << 8,
+	[Obsolete("Use VkFormatFeatureFlags2.ColorAttachmentBlend")]
+	ColorAttachmentBlendKhr = ColorAttachmentBlend,
+	DepthStencilAttachment = 1 << 9,
+	[Obsolete("Use VkFormatFeatureFlags2.DepthStencilAttachment")]
+	DepthStencilAttachmentKhr = DepthStencilAttachment,
+	BlitSource = 1 << 10,
+	[Obsolete("Use VkFormatFeatureFlags2.BlitSource")]
+	BlitSourceKhr = BlitSource,
+	BlitDestination = 1 << 11,
+	[Obsolete("Use VkFormatFeatureFlags2.BlitDestination")]
+	BlitDestinationKhr = BlitDestination,
+	SampledImageFilterLinear = 1 << 12,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageFilterLinear")]
+	SampledImageFilterLinearKhr = SampledImageFilterLinear,
+	SampledImageFilterCubic = 1 << 13,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageFilterCubic")]
+	SampledImageFilterCubicExt = SampledImageFilterCubic,
+	TransferSource = 1 << 14,
+	[Obsolete("Use VkFormatFeatureFlags2.TransferSource")]
+	TransferSourceKhr = TransferSource,
+	TransferDestination = 1 << 15,
+	[Obsolete("Use VkFormatFeatureFlags2.TransferDestination")]
+	TransferDestinationKhr = TransferDestination,
+	SampledImageFilterMinmax = 1 << 16,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageFilterMinmax")]
+	SampledImageFilterMinmaxKhr = SampledImageFilterMinmax,
+	MidpointChromaSamples = 1 << 17,
+	[Obsolete("Use VkFormatFeatureFlags2.MidpointChromaSamples")]
+	MidpointChromaSamplesKhr = MidpointChromaSamples,
+	SampledImageYCBCRConversionLinearFilter = 1 << 18,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageYCBCRConversionLinearFilter")]
+	SampledImageYCBCRConversionLinearFilterKhr = SampledImageYCBCRConversionLinearFilter,
+	SampledImageYCBCRConversionSeparateReconstructionFilter = 1 << 19,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageYCBCRConversionSeparateReconstructionFilter")]
+	SampledImageYCBCRConversionSeparateReconstructionFilterKhr = SampledImageYCBCRConversionSeparateReconstructionFilter,
+	SampledImageYCBCRConversionChromaReconstructionExplicit = 1 << 20,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageYCBCRConversionChromaReconstructionExplicit")]
+	SampledImageYCBCRConversionChromaReconstructionExplicitKhr = SampledImageYCBCRConversionChromaReconstructionExplicit,
+	SampledImageYCBCRConversionChromaReconstructionExplicitForceable = 1 << 21,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageYCBCRConversionChromaReconstructionExplicitForceable")]
+	SampledImageYCBCRConversionChromaReconstructionExplicitForceableKhr = SampledImageYCBCRConversionChromaReconstructionExplicitForceable,
+	Disjoint = 1 << 22,
+	[Obsolete("Use VkFormatFeatureFlags2.Disjoint")]
+	DisjointKhr = Disjoint,
+	CositedChromaSamples = 1 << 23,
+	[Obsolete("Use VkFormatFeatureFlags2.CositedChromaSamples")]
+	CositedChromaSamplesKhr = CositedChromaSamples,
+	StorageReadWithoutFormat = 1 << 31,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageReadWithoutFormat")]
+	StorageReadWithoutFormatKhr = StorageReadWithoutFormat,
+	StorageWriteWithoutFormat = 1 << 32,
+	[Obsolete("Use VkFormatFeatureFlags2.StorageWriteWithoutFormat")]
+	StorageWriteWithoutFormatKhr = StorageWriteWithoutFormat,
+	SampledImageDepthComparison = 1 << 33,
+	[Obsolete("Use VkFormatFeatureFlags2.SampledImageDepthComparison")]
+	SampledImageDepthComparisonKhr = SampledImageDepthComparison,
+	VideoDecodeOutputKhr = 1 << 25,
+	VideoDecodeDPBKhr = 1 << 26,
+	AccelerationStructureVertexBufferKhr = 1 << 29,
+	FragmentDensityMapExt = 1 << 24,
+	FragmentShadingRateAttachmentKhr = 1 << 30,
+	LinearColorAttachmentNv = 1 << 38,
+	WeightImageQcom = 1 << 34,
+	WeightSampledImageQcom = 1 << 35,
+	BlockMatchingQcom = 1 << 36,
+	BoxFilterSampledQcom = 1 << 37,
+	OpticalFlowImageNv = 1 << 40,
+	OpticalFlowVectorNv = 1 << 41,
+	OpticalFlowCostNv = 1 << 42,
 }
 [Flags]
 public enum VkMicromapCreateFlagsEXT
