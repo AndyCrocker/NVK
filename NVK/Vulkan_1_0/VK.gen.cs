@@ -288,12 +288,12 @@ public static unsafe class VK
 	private delegate void GetPhysicalDeviceMemoryPropertiesDelegate_0(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceMemoryProperties memoryProperties);
 	private static GetPhysicalDeviceMemoryPropertiesDelegate_0 GetPhysicalDeviceMemoryProperties_0;
 	private static IntPtr GetPhysicalDeviceMemoryPropertiesPointer;
-	public static IntPtr GetInstanceProcedureAddress(VkInstance instance, string name) => GetInstanceProcedureAddress_0(instance, name);
-	private delegate IntPtr GetInstanceProcedureAddressDelegate_0(VkInstance instance, string name);
+	public static delegate*<void> GetInstanceProcedureAddress(VkInstance instance, string name) => GetInstanceProcedureAddress_0(instance, name);
+	private delegate delegate*<void> GetInstanceProcedureAddressDelegate_0(VkInstance instance, string name);
 	private static GetInstanceProcedureAddressDelegate_0 GetInstanceProcedureAddress_0;
 	private static IntPtr GetInstanceProcedureAddressPointer;
-	public static IntPtr GetDeviceProcedureAddress(VkDevice device, string name) => GetDeviceProcedureAddress_0(device, name);
-	private delegate IntPtr GetDeviceProcedureAddressDelegate_0(VkDevice device, string name);
+	public static delegate*<void> GetDeviceProcedureAddress(VkDevice device, string name) => GetDeviceProcedureAddress_0(device, name);
+	private delegate delegate*<void> GetDeviceProcedureAddressDelegate_0(VkDevice device, string name);
 	private static GetDeviceProcedureAddressDelegate_0 GetDeviceProcedureAddress_0;
 	private static IntPtr GetDeviceProcedureAddressPointer;
 	public static VkResult CreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device) => CreateDevice_0(physicalDevice, createInfo, allocator, out device);

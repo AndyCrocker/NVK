@@ -18,9 +18,6 @@ internal class VulkanSpecification
     /// <summary>The structures in the specification.</summary>
     public List<StructureInfo> Structures { get; }
 
-    /// <summary>The delegates in the specification.</summary>
-    public List<DelegateInfo> Delegates { get; }
-
     /// <summary>The functions in the specification.</summary>
     public List<FunctionInfo> Functions { get; }
 
@@ -29,6 +26,9 @@ internal class VulkanSpecification
 
     /// <summary>The vendor tags of the specification.</summary>
     public static List<string> VendorTags { get; private set; } = new();
+
+    /// <summary>The function pointers in the specification.</summary>
+    public static List<FunctionPointerInfo> FunctionPointers { get; private set; } = new();
 
 
     /*********
@@ -51,6 +51,10 @@ internal class VulkanSpecification
         VendorTags = tagElements
             .Select(tagElement => tagElement.Attribute("name")!.Value).ToList();
 
+        FunctionPointers = typeElements.WithAttribute("category", "funcpointer")
+            .Select(functionPointerElement => new FunctionPointerInfo(functionPointerElement)).ToList();
+
+
         Constants = enumsElements.WithAttribute("name", "API Constants").Elements("enum")
             .Select(constantElement => new ConstantInfo(constantElement)).ToList();
 
@@ -69,9 +73,6 @@ internal class VulkanSpecification
 
         Structures = typeElements.WithAttribute("category", "struct", "union")
             .Select(structureElement => new StructureInfo(structureElement)).ToList();
-
-        Delegates = typeElements.WithAttribute("category", "funcpointer")
-            .Select(delegateElement => new DelegateInfo(delegateElement)).ToList();
 
         Functions = commandElements.Select(commandElement => new FunctionInfo(commandElement, this)).ToList();
 

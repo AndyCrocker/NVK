@@ -25,9 +25,6 @@ internal class FeatureInfo
     /// <summary>The structures in the feature.</summary>
     public List<StructureInfo> Structures { get; } = new();
 
-    /// <summary>The delegate in the feature.</summary>
-    public List<DelegateInfo> Delegates { get; } = new();
-
     /// <summary>The functions in the feature.</summary>
     public List<FunctionInfo> Functions { get; } = new();
 
@@ -149,14 +146,6 @@ internal class FeatureInfo
                     AddConstantByName(constantInfo.Name);
             }
 
-            return;
-        }
-
-        var delegateInfo = Specification.Delegates.SingleOrDefault(delegateInfo => delegateInfo.DisplayName == name);
-        if (delegateInfo != null)
-        {
-            if (!Delegates.Any(delegateInfo => delegateInfo.DisplayName == name)) // types may potentially get duplicated as some specs list required types explicitly while others don't
-                Delegates.Add(delegateInfo);
             return;
         }
     }

@@ -25,11 +25,11 @@ public unsafe struct VkApplicationInfo
 public unsafe struct VkAllocationCallbacks
 {
 	public void* pUserData;
-	public AllocationFunctionDelegate pfnAllocation;
-	public ReallocationFunctionDelegate pfnReallocation;
-	public FreeFunctionDelegate pfnFree;
-	public InternalAllocationNotificationDelegate pfnInternalAllocation;
-	public InternalFreeNotificationDelegate pfnInternalFree;
+	public delegate*<void*, nuint, nuint, VkSystemAllocationScope, void*> pfnAllocation;
+	public delegate*<void*, void*, nuint, nuint, VkSystemAllocationScope, void*> pfnReallocation;
+	public delegate*<void*, void*, void> pfnFree;
+	public delegate*<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
+	public delegate*<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
 }
 public unsafe struct VkPhysicalDeviceFeatures
 {
@@ -1290,7 +1290,7 @@ public unsafe struct VkDebugReportCallbackCreateInfoEXT
 	public VkStructureType sType;
 	public void* pNext;
 	public VkDebugReportFlagsEXT flags;
-	public DebugReportCallbackEXTDelegate pfnCallback;
+	public delegate*<VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void*, VkBool32> pfnCallback;
 	public void* pUserData;
 }
 public unsafe struct VkPipelineRasterizationStateRasterizationOrderAMD

@@ -57,7 +57,6 @@ internal static class CodeGenerator
         GeneratedToCopyFiles();
         GenerateStructuresFile();
         GenerateHandlesFile();
-        GenerateDelegatesFile();
         GenerateEnumsFile();
         GenerateVkFile();
     }
@@ -96,15 +95,6 @@ internal static class CodeGenerator
 
         foreach (var handleInfo in Specification.Handles)
             handleInfo.Write(writer);
-    }
-
-    /// <summary>Generates the file containing the delegates to <see cref="OutputPath"/>.</summary>
-    private static void GenerateDelegatesFile()
-    {
-        using var writer = CreateFileWriter("Delegates.gen.cs");
-
-        foreach (var delegateInfo in Specification.Delegates)
-            delegateInfo.Write(writer);
     }
 
     /// <summary>Generates the file containing the enums to <see cref="OutputPath"/>.</summary>

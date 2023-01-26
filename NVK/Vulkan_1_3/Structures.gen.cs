@@ -131,11 +131,11 @@ public unsafe struct VkApplicationInfo
 public unsafe struct VkAllocationCallbacks
 {
 	public void* pUserData;
-	public AllocationFunctionDelegate pfnAllocation;
-	public ReallocationFunctionDelegate pfnReallocation;
-	public FreeFunctionDelegate pfnFree;
-	public InternalAllocationNotificationDelegate pfnInternalAllocation;
-	public InternalFreeNotificationDelegate pfnInternalFree;
+	public delegate*<void*, nuint, nuint, VkSystemAllocationScope, void*> pfnAllocation;
+	public delegate*<void*, void*, nuint, nuint, VkSystemAllocationScope, void*> pfnReallocation;
+	public delegate*<void*, void*, void> pfnFree;
+	public delegate*<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
+	public delegate*<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
 }
 public unsafe struct VkPhysicalDeviceFeatures
 {
@@ -2972,7 +2972,7 @@ public unsafe struct VkDebugReportCallbackCreateInfoEXT
 	public VkStructureType sType;
 	public void* pNext;
 	public VkDebugReportFlagsEXT flags;
-	public DebugReportCallbackEXTDelegate pfnCallback;
+	public delegate*<VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, ulong, nuint, int, byte*, byte*, void*, VkBool32> pfnCallback;
 	public void* pUserData;
 }
 public unsafe struct VkPipelineRasterizationStateRasterizationOrderAMD
@@ -4621,7 +4621,7 @@ public unsafe struct VkDebugUtilsMessengerCreateInfoEXT
 	public VkDebugUtilsMessengerCreateFlagsEXT flags;
 	public VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
 	public VkDebugUtilsMessageTypeFlagsEXT messageType;
-	public DebugUtilsMessengerCallbackEXTDelegate pfnUserCallback;
+	public delegate*<VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void*, VkBool32> pfnUserCallback;
 	public void* pUserData;
 }
 public unsafe struct VkDebugUtilsMessengerCallbackDataEXT
@@ -6972,7 +6972,7 @@ public unsafe struct VkDeviceDeviceMemoryReportCreateInfoEXT
 	public VkStructureType sType;
 	public void* pNext;
 	public VkDeviceMemoryReportFlagsEXT flags;
-	public DeviceMemoryReportCallbackEXTDelegate pfnUserCallback;
+	public delegate*<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback;
 	public void* pUserData;
 }
 public unsafe struct VkDeviceMemoryReportCallbackDataEXT
@@ -8516,7 +8516,7 @@ public unsafe struct VkDirectDriverLoadingInfoLUNARG
 	public VkStructureType sType;
 	public void* pNext;
 	public VkDirectDriverLoadingFlagsLUNARG flags;
-	public GetInstanceProcedureAddressLUNARGDelegate pfnGetInstanceProcAddr;
+	public delegate*<VkInstance, byte*, delegate*<void>> pfnGetInstanceProcAddr;
 }
 public unsafe struct VkDirectDriverLoadingListLUNARG
 {

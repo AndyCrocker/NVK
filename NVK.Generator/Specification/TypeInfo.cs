@@ -48,8 +48,7 @@ internal class TypeInfo
 
         // misc Vulkan
         ["VkRemoteAddressNV"] = "IntPtr",
-        ["VkSampleMask"] = "uint",
-        ["PFN_vkVoidFunction"] = "IntPtr"
+        ["VkSampleMask"] = "uint"
     };
 
 
@@ -102,7 +101,7 @@ internal class TypeInfo
             name = convertedName;
 
         if (name.StartsWith("PFN_vk"))
-            return DelegateInfo.CalculateDisplayName(name);
+            return FunctionPointerInfo.CalculateDisplayName(name);
 
         return name;
     }

@@ -1,7 +1,7 @@
 ﻿namespace NVK.Generator.Specification;
 
-/// <summary>Represents a parsed delegate parameter.</summary>
-internal class DelegateParameterInfo
+/// <summary>Represents a parsed function pointer parameter.</summary>
+internal class FunctionPointerParameterInfo
 {
     /*********
     ** Properties
@@ -19,7 +19,7 @@ internal class DelegateParameterInfo
     /// <summary>Constructs an instance.</summary>
     /// <param name="name">The name of the parameter.</param>
     /// <param name="type">The type of the parameter.</param>
-    public DelegateParameterInfo(string name, TypeInfo type)
+    public FunctionPointerParameterInfo(string name, TypeInfo type)
     {
         Name = name;
         Type = type;
