@@ -120,7 +120,7 @@ internal class FunctionInfo
     public void WriteRequiredFunction(CsWriter writer)
     {
         var functionPointerName = DisplayName.FirstToLower();
-        writer.WriteLine($"var {functionPointerName} = VulkanLibrary.GetFunctionPointer(\"{DisplayName}\");");
+        writer.WriteLine($"var {functionPointerName} = VulkanLibrary.GetFunctionPointer(\"{Name}\");");
 
         var overloads = GenerateAllOverloads();
         for (int i = 0; i < overloads.Count; i++)
@@ -132,7 +132,7 @@ internal class FunctionInfo
     public void WriteInstanceFunction(CsWriter writer)
     {
         var functionPointerName = DisplayName.FirstToLower();
-        writer.WriteLine($"var {functionPointerName} = GetInstanceProcedureAddress(instance, \"{AliasDisplayName ?? DisplayName}\");");
+        writer.WriteLine($"var {functionPointerName} = GetInstanceProcedureAddress(instance, \"{Alias ?? Name}\");");
 
         var overloads = GenerateAllOverloads();
         for (int i = 0; i < overloads.Count; i++)
