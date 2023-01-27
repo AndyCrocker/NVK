@@ -40,14 +40,6 @@ internal class FunctionInfo
     /// <summary>The display string for <see cref="Alias"/>.</summary>
     private string? AliasDisplayName => CalculateDisplayName(Alias);
 
-    /// <summary>The display name of each delegate for the function.</summary>
-    /// <remarks>Delegate in this case refers to the internal delegate for P/Invoke, not Vulkan delegates.</remarks>
-    private string DelegateDisplayName => $"{DisplayName}Delegate";
-
-    /// <summary>The display name of the function pointer for the function.</summary>
-    /// <remarks>Function pointer in this case refers to the internal function pointer for P/Invoke, not Vulkan delegates.</remarks>
-    private string PointerDisplayName => $"{DisplayName}Pointer";
-
 
     /*********
     ** Constructors
@@ -112,47 +104,39 @@ internal class FunctionInfo
         {
             var overload = overloads[i];
 
-            var parametersString = string.Join(", ", overload.Parameters.Select(parameterInfo => $"{parameterInfo.Modifier.GetAttribute<ParameterModifierAttribute>()?.Value}{parameterInfo.Type} {parameterInfo.Name}"));
-            var calledParametersString = string.Join(", ", overload.Parameters.Select(parameterInfo =>
-                {
-                    var modifierAttribute = parameterInfo.Modifier.GetAttribute<ParameterModifierAttribute>();
-                    return $"{(modifierAttribute?.IsRequiredForCalling ?? false ? modifierAttribute.Value : "")}{parameterInfo.Name}";
-                }));
+            var parametersString = CalculateParameterString(overload, true, true, true, true, false);
+            var calledParametersString = CalculateParameterString(overload, false, true, false, true, false);
 
             if (Alias != null)
                 writer.WriteLine($"[Obsolete(\"Use {AliasDisplayName}\")]");
 
             writer.WriteLine($"public static {ReturnType} {DisplayName}({parametersString}) => {DisplayName}_{i}({calledParametersString});");
-            writer.WriteLine($"private delegate {ReturnType} {DelegateDisplayName}_{i}({parametersString});");
-            writer.WriteLine($"private static {DelegateDisplayName}_{i} {DisplayName}_{i};");
+            writer.WriteLine($"private static {CalculateDelegateSignature(overload)} {DisplayName}_{i};");
         }
-
-        writer.WriteLine($"private static IntPtr {PointerDisplayName};");
     }
 
     /// <summary>Writes the function pointer and delegates being assigned as a required function to a C# writer.</summary>
     /// <param name="writer">The writer to write the assignment to.</param>
     public void WriteRequiredFunction(CsWriter writer)
     {
-        writer.WriteLine($"{PointerDisplayName} = VulkanLibrary.GetFunctionPointer(\"{DisplayName}\");");
+        var functionPointerName = DisplayName.FirstToLower();
+        writer.WriteLine($"var {functionPointerName} = VulkanLibrary.GetFunctionPointer(\"{DisplayName}\");");
 
         var overloads = GenerateAllOverloads();
         for (int i = 0; i < overloads.Count; i++)
-            writer.WriteLine($"{DisplayName}_{i} = Marshal.GetDelegateForFunctionPointer<{DelegateDisplayName}_{i}>({PointerDisplayName});");
+            writer.WriteLine($"{DisplayName}_{i} = ({CalculateDelegateSignature(overloads[i])}){functionPointerName};");
     }
 
     /// <summary>Writes the function pointer and delegates being assigned as an instance function to a C# writer.</summary>
     /// <param name="writer">The writer to write the assignment to.</param>
     public void WriteInstanceFunction(CsWriter writer)
     {
-        writer.WriteLine($"{PointerDisplayName} = GetInstanceProcedureAddress(instance, \"{AliasDisplayName ?? DisplayName}\");");
-        writer.WriteLine($"if ({PointerDisplayName} != IntPtr.Zero)");
-        writer.WriteScope(() =>
-        {
-            var overloads = GenerateAllOverloads();
-            for (int i = 0; i < overloads.Count; i++)
-                writer.WriteLine($"{DisplayName}_{i} = Marshal.GetDelegateForFunctionPointer<{DelegateDisplayName}_{i}>({PointerDisplayName});");
-        });
+        var functionPointerName = DisplayName.FirstToLower();
+        writer.WriteLine($"var {functionPointerName} = GetInstanceProcedureAddress(instance, \"{AliasDisplayName ?? DisplayName}\");");
+
+        var overloads = GenerateAllOverloads();
+        for (int i = 0; i < overloads.Count; i++)
+            writer.WriteLine($"{DisplayName}_{i} = ({CalculateDelegateSignature(overloads[i])}){functionPointerName};");
     }
 
     /// <summary>Calculates the display name of a function name.</summary>
@@ -173,6 +157,47 @@ internal class FunctionInfo
     /*********
     ** Private Methods
     *********/
+    /// <summary>Calculates a comma separated parameter list.</summary>
+    /// <param name="functionInfo">The function to use for calculating the parameter list.</param>
+    /// <param name="includeNonCalledModifiers">Whether modifier values should be included when <see cref="ParameterModifierAttribute.IsRequiredForCalling"/> is <see langword="false"/>.</param>
+    /// <param name="includeCalledModifiers">Whether modifier values should be included when <see cref="ParameterModifierAttribute.IsRequiredForCalling"/> is <see langword="true"/>.</param>
+    /// <param name="includeType">Whether the parameter types should be included in the parameter list.</param>
+    /// <param name="includeNames">Whether the parameter names should be included in the parameter list.</param>
+    /// <param name="includeReturnType">Whether the return type should be included on the end of the parameter list.</param>
+    /// <returns>The calculated comma separated parameter list.</returns>
+    private static string CalculateParameterString(FunctionInfo functionInfo, bool includeNonCalledModifiers, bool includeCalledModifiers, bool includeType, bool includeNames, bool includeReturnType)
+    {
+        var parameterStrings = functionInfo.Parameters.Select(parameterInfo =>
+        {
+            var parameter = "";
+
+            var modifier = parameterInfo.Modifier.GetAttribute<ParameterModifierAttribute>();
+            if (modifier != null)
+                if ((includeNonCalledModifiers && !modifier.IsRequiredForCalling) ||
+                    (includeCalledModifiers && modifier.IsRequiredForCalling))
+                    parameter = modifier.Value;
+
+            if (includeType)
+                parameter += $" {parameterInfo.Type}";
+
+            if (includeNames)
+                parameter += $" {parameterInfo.Name}";
+
+            return parameter.Trim();
+        }).ToList();
+
+        if (includeReturnType)
+            parameterStrings.Add(functionInfo.ReturnType.ToString()!);
+
+        return string.Join(", ", parameterStrings);
+    }
+
+    /// <summary>Calculates the delegate signature.</summary>
+    /// <param name="functionInfo">The function to create the signature of.</param>
+    /// <returns>The delegate signature of the function.</returns>
+    private static string CalculateDelegateSignature(FunctionInfo functionInfo) =>
+        $"delegate* unmanaged[Cdecl]<{CalculateParameterString(functionInfo, false, true, true, false, true)}>";
+
     /// <summary>Generates all overloads for the function.</summary>
     /// <returns>All the overloads that the function can have.</returns>
     private List<FunctionInfo> GenerateAllOverloads()

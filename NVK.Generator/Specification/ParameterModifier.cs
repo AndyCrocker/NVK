@@ -7,14 +7,14 @@ internal enum ParameterModifier
     None,
 
     /// <summary>The 'ref' modifier.</summary>
-    [ParameterModifier("ref ", true)]
+    [ParameterModifier("ref", true)]
     Ref,
 
     /// <summary>The 'out' modifier.</summary>
-    [ParameterModifier("out ", true)]
+    [ParameterModifier("out", true)]
     Out,
 
     /// <summary>Explicit InAttribute & OutAttribute.</summary>
-    [ParameterModifier("[In, Out] ", false)]
+    [ParameterModifier("[In, Out]", false)]
     InOut,
 }
