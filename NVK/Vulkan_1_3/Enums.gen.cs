@@ -3596,7 +3596,7 @@ public enum StdVideoDecodeH264PictureInfoFlags
 {
 	FieldPic = 1 << 0,
 	IsIntra = 1 << 1,
-	Idrpic = 1 << 2,
+	IdrPic = 1 << 2,
 	BottomField = 1 << 3,
 	IsReference = 1 << 4,
 	ComplementaryFieldPair = 1 << 5,
@@ -3856,9 +3856,9 @@ public enum StdVideoH265PpsFlags
 [Flags]
 public enum StdVideoDecodeH265PictureInfoFlags
 {
-	Irappic = 1 << 0,
-	Idrpic = 1 << 1,
-	Isreference = 1 << 2,
+	IrapPic = 1 << 0,
+	IdrPic = 1 << 1,
+	IsReference = 1 << 2,
 	ShortTermRefPicSetSps = 1 << 3,
 }
 [Flags]
@@ -3897,7 +3897,7 @@ public enum StdVideoEncodeH265ReferenceModificationFlags
 public enum StdVideoEncodeH265PictureInfoFlags
 {
 	IsReference = 1 << 0,
-	Irappic = 1 << 1,
+	IrapPic = 1 << 1,
 	LongTerm = 1 << 2,
 	Discardable = 1 << 3,
 	CrossLayerBla = 1 << 4,

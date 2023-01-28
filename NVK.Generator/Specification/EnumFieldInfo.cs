@@ -123,7 +123,10 @@ internal class EnumFieldInfo
 
         // remove the enum name from the field name
         var splitEnumName = enumName.SplitOnUpper().ToList();
+
         var splitFieldName = fieldName.Split('_').ToList();
+        if (splitFieldName.Count == 1) // enum field names are pretty inconsistent, sometimes they are snake case, other times pascal case
+            splitFieldName = fieldName.SplitOnUpper().ToList();
 
         for (int i = 0; i < MathF.Min(splitEnumName.Count, splitFieldName.Count); i++)
             if (splitEnumName[i].ToLower() == splitFieldName[i].ToLower())
