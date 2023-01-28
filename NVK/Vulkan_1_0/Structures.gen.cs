@@ -54,7 +54,7 @@ public unsafe struct VkPhysicalDeviceFeatures
 	public VkBool32 MultiViewport;
 	public VkBool32 SamplerAnisotropy;
 	public VkBool32 TextureCompressionETC2;
-	public VkBool32 TextureCompressionASTC_LDR;
+	public VkBool32 TextureCompressionASTCLDR;
 	public VkBool32 TextureCompressionBC;
 	public VkBool32 OcclusionQueryPrecise;
 	public VkBool32 PipelineStatisticsQuery;

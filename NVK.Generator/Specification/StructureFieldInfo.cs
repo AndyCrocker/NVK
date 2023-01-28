@@ -128,6 +128,9 @@ internal class StructureFieldInfo
         if ((name == "Geometries" || name == "UsageCounts") && pointerIndirection == 2)
             name += "2";
 
+        var splitName = name.Split('_');
+        name = string.Join("", splitName.Select(nameSegment => nameSegment.FirstToUpper()));
+
         return name.ResolveAbbreviations().FirstToUpper();
     }
 }
