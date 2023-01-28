@@ -72,7 +72,7 @@ internal class StructureFieldInfo
             if (ArrayLength.Contains("]["))
             {
                 arrayLengthNumerical = ArrayLength.Split("][")
-                    .Select(int.Parse)
+                    .Select(CalculateNumericalArrayLength)
                     .Aggregate(1, (x, y) => x * y);
                 arrayLengthDisplay = arrayLengthNumerical.ToString();
             }
@@ -80,9 +80,8 @@ internal class StructureFieldInfo
             // if it's not a numerical literal or an array of arrays, then the value is a vulkan constant
             else
             {
-                var constantInfo = specification.Constants.Single(constantInfo => constantInfo.Name == ArrayLength);
-                arrayLengthNumerical = int.Parse(constantInfo.Value!); // need to keep track of the numerical value incase it's an invalid type (for a fixed array) so we need to convert the array to fields
-                arrayLengthDisplay = $"(int)VK.{ConstantInfo.CalculateDisplayName(constantInfo.Name)}";
+                arrayLengthNumerical = CalculateNumericalArrayLength(ArrayLength); // need to keep track of the numerical value incase it's an invalid type (for a fixed array) so we need to convert the array to fields
+                arrayLengthDisplay = $"(int)VK.{ConstantInfo.CalculateDisplayName(ArrayLength)}";
             }
         }
         arrayLengthDisplay ??= arrayLengthNumerical.ToString();
@@ -97,6 +96,17 @@ internal class StructureFieldInfo
 
         for (int i = 0; i < arrayLengthNumerical; i++)
             writer.WriteLine($"public {Type} {Name}_{i};");
+
+        // Calculates the numerical value or a string defined in ArrayLength
+        // This can either be a number or a constant name
+        int CalculateNumericalArrayLength(string value)
+        {
+            if (int.TryParse(value, out var number))
+                return number;
+
+            var constantInfo = specification.Constants.Single(constantInfo => constantInfo.Name == value);
+            return int.Parse(constantInfo.Value!);
+        }
     }
 
     /// <summary>Calculates the display name of a parameter name.</summary>

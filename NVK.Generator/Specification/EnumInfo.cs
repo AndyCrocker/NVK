@@ -29,6 +29,36 @@ internal class EnumInfo
     ** Constructors
     *********/
     /// <summary>Constructs an instance.</summary>
+    /// <param name="element">The &lt;type&gt; element (with "struct" category) to parse the enum definition from.</param>
+    /// <remarks>This is to be used one when parsing relevant struct definitions as bitmasks when they use the ": [num]" C syntax on each field.</remarks>
+    public EnumInfo(XElement element)
+    {
+        Name = element.Attribute("name")!.Value;
+        Type = EnumType.Bitmask;
+        Fields = new();
+
+        var bitOffset = 0;
+        foreach (var memberElement in element.Elements("member"))
+        {
+            // some fields are more than one bit, in these cases we'll just make multiple flags suffixed with the bit offset of each one
+            // TODO: perhaps at some point make extension methods that will automatically stitch these together to a single number
+
+            // due to some fields having more than one bit width, we can't rely on EnumFieldInfo parsing them elegantly (due to the afformentioned note of creating
+            // multiple bit fields on struct fields with more than one bit width) so we'll just parsing them here
+            var name = memberElement.Element("name")!.Value;
+            var bitWidth = int.Parse(memberElement.Value.Split(':')[1]);
+            if (bitWidth == 1)
+            {
+                Fields.Add(new(this, name, bitOffset++));
+                continue;
+            }
+
+            for (int i = 0; i < bitWidth; i++)
+                Fields.Add(new(this, $"{name}_{i}", bitOffset++));
+        }
+    }
+
+    /// <summary>Constructs an instance.</summary>
     /// <param name="element">The &lt;enums&gt; element to parse the enum definition from, or the &lt;type&gt; element to parse the enum declaration from.</param>
     /// <param name="isDefinition">Whether the element passed if a definition.</param>
     public EnumInfo(XElement element, bool isDefinition)
@@ -81,7 +111,7 @@ internal class EnumInfo
         if (enumInfo == null)
         {
             BitWidth = 32;
-            Fields = new();
+            Fields ??= new(); // fields may already be populated if they were specified in video.xml and we are parsing vk.xml (which would mean enumInfo is null)
             return;
         }
 

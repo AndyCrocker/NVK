@@ -35,6 +35,18 @@ internal class EnumFieldInfo
     *********/
     /// <summary>Constructs an instance.</summary>
     /// <param name="parentEnum">The enum that this field belongs to.</param>
+    /// <param name="name">The name of the enum field.</param>
+    /// <param name="bitPosition">The bit position of the value.</param>
+    /// <remarks>This is to be used one when parsing relevant struct definitions as bitmasks when they use the ": [num]" C syntax on each field.</remarks>
+    public EnumFieldInfo(EnumInfo parentEnum, string name, int bitPosition)
+    {
+        ParentEnum = parentEnum;
+        Name = name;
+        BitPosition = bitPosition;
+    }
+
+    /// <summary>Constructs an instance.</summary>
+    /// <param name="parentEnum">The enum that this field belongs to.</param>
     /// <param name="element">The &lt;enum&gt; element to parse the enum field from.</param>
     /// <param name="extensionNumber">The number of the extension that defines this enum field, if it was defined by an extension.</param>
     public EnumFieldInfo(EnumInfo parentEnum, XElement element, int? extensionNumber = null)

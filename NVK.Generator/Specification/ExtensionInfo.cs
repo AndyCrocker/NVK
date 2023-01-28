@@ -31,7 +31,7 @@ internal class ExtensionInfo
         Platform = element.Attribute("platform")?.Value;
         Supported = element.Attribute("supported")!.Value;
 
-        var number = int.Parse(element.Attribute("number")!.Value);
+        int.TryParse(element.Attribute("number")?.Value, out var number);
         RequireInfos = element.Elements("require")
             .Select(requireElement => new RequireInfo(requireElement, specification, number)).ToList();
     }

@@ -10,6 +10,7 @@ internal class TypeInfo
     private static readonly Dictionary<string, string> TypeConverter = new()
     {
         ["char"] = "byte",
+        ["int8_t"] = "sbyte",
         ["uint8_t"] = "byte",
         ["uint16_t"] = "ushort",
         ["uint32_t"] = "uint",

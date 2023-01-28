@@ -3403,6 +3403,511 @@ public enum VkFormatFeatureFlags2 : long
 	OpticalFlowVectorNV = 1 << 41,
 	OpticalFlowCostNV = 1 << 42,
 }
+public enum StdVideoH264ChromaFormatIdc
+{
+	Monochrome = 0,
+	_420 = 1,
+	_422 = 2,
+	_444 = 3,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264ProfileIdc
+{
+	Baseline = 66,
+	Main = 77,
+	High = 100,
+	High444Predictive = 244,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264LevelIdc
+{
+	_10 = 0,
+	_11 = 1,
+	_12 = 2,
+	_13 = 3,
+	_20 = 4,
+	_21 = 5,
+	_22 = 6,
+	_30 = 7,
+	_31 = 8,
+	_32 = 9,
+	_40 = 10,
+	_41 = 11,
+	_42 = 12,
+	_50 = 13,
+	_51 = 14,
+	_52 = 15,
+	_60 = 16,
+	_61 = 17,
+	_62 = 18,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264PocType
+{
+	_0 = 0,
+	_1 = 1,
+	_2 = 2,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264AspectRatioIdc
+{
+	Unspecified = 0,
+	Square = 1,
+	_1211 = 2,
+	_1011 = 3,
+	_1611 = 4,
+	_4033 = 5,
+	_2411 = 6,
+	_2011 = 7,
+	_3211 = 8,
+	_8033 = 9,
+	_1811 = 10,
+	_1511 = 11,
+	_6433 = 12,
+	_16099 = 13,
+	_43 = 14,
+	_32 = 15,
+	_21 = 16,
+	ExtendedSar = 255,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264WeightedBipredIdc
+{
+	Default = 0,
+	Explicit = 1,
+	Implicit = 2,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264ModificationOfPicNumsIdc
+{
+	ShortTermSubtract = 0,
+	ShortTermAdd = 1,
+	LongTerm = 2,
+	End = 3,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264MemMgmtControlOp
+{
+	End = 0,
+	UnmarkShortTerm = 1,
+	UnmarkLongTerm = 2,
+	MarkLongTerm = 3,
+	SetMaxLongTermIndex = 4,
+	UnmarkAll = 5,
+	MarkCurrentAsLongTerm = 6,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264CabacInitIdc
+{
+	_0 = 0,
+	_1 = 1,
+	_2 = 2,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264DisableDeblockingFilterIdc
+{
+	Disabled = 0,
+	Enabled = 1,
+	Partial = 2,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264SliceType
+{
+	P = 0,
+	B = 1,
+	I = 2,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264PictureType
+{
+	P = 0,
+	B = 1,
+	I = 2,
+	Idr = 5,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH264NonVclNaluType
+{
+	Sps = 0,
+	Pps = 1,
+	Aud = 2,
+	Prefix = 3,
+	EndOfSequence = 4,
+	EndOfStream = 5,
+	Precoded = 6,
+	Invalid = 0x7FFFFFFF,
+}
+[Flags]
+public enum StdVideoH264SpsVuiFlags
+{
+	AspectRatioInfoPresentFlag = 1 << 0,
+	OverscanInfoPresentFlag = 1 << 1,
+	OverscanAppropriateFlag = 1 << 2,
+	VideoSignalTypePresentFlag = 1 << 3,
+	VideoFullRangeFlag = 1 << 4,
+	ColorDescriptionPresentFlag = 1 << 5,
+	ChromaLocInfoPresentFlag = 1 << 6,
+	TimingInfoPresentFlag = 1 << 7,
+	FixedFrameRateFlag = 1 << 8,
+	BitstreamRestrictionFlag = 1 << 9,
+	NalHrdParametersPresentFlag = 1 << 10,
+	VclHrdParametersPresentFlag = 1 << 11,
+}
+[Flags]
+public enum StdVideoH264SpsFlags
+{
+	ConstraintSet0Flag = 1 << 0,
+	ConstraintSet1Flag = 1 << 1,
+	ConstraintSet2Flag = 1 << 2,
+	ConstraintSet3Flag = 1 << 3,
+	ConstraintSet4Flag = 1 << 4,
+	ConstraintSet5Flag = 1 << 5,
+	Direct8x8InferenceFlag = 1 << 6,
+	MbAdaptiveFrameFieldFlag = 1 << 7,
+	FrameMbsOnlyFlag = 1 << 8,
+	DeltaPicOrderAlwaysZeroFlag = 1 << 9,
+	SeparateColourPlaneFlag = 1 << 10,
+	GapsInFrameNumValueAllowedFlag = 1 << 11,
+	QpprimeYZeroTransformBypassFlag = 1 << 12,
+	FrameCroppingFlag = 1 << 13,
+	SeqScalingMatrixPresentFlag = 1 << 14,
+	VuiParametersPresentFlag = 1 << 15,
+}
+[Flags]
+public enum StdVideoH264PpsFlags
+{
+	Transform8x8ModeFlag = 1 << 0,
+	RedundantPicCntPresentFlag = 1 << 1,
+	ConstrainedIntraPredFlag = 1 << 2,
+	DeblockingFilterControlPresentFlag = 1 << 3,
+	WeightedPredFlag = 1 << 4,
+	BottomFieldPicOrderInFramePresentFlag = 1 << 5,
+	EntropyCodingModeFlag = 1 << 6,
+	PicScalingMatrixPresentFlag = 1 << 7,
+}
+public enum StdVideoDecodeH264FieldOrderCount
+{
+	Top = 0,
+	Bottom = 1,
+	Invalid = 0x7FFFFFFF,
+}
+[Flags]
+public enum StdVideoDecodeH264PictureInfoFlags
+{
+	FieldPicFlag = 1 << 0,
+	IsIntra = 1 << 1,
+	Idrpicflag = 1 << 2,
+	BottomFieldFlag = 1 << 3,
+	IsReference = 1 << 4,
+	ComplementaryFieldPair = 1 << 5,
+}
+[Flags]
+public enum StdVideoDecodeH264ReferenceInfoFlags
+{
+	TopFieldFlag = 1 << 0,
+	BottomFieldFlag = 1 << 1,
+	UsedForLongTerm = 1 << 2,
+	IsNonExisting = 1 << 3,
+}
+[Flags]
+public enum StdVideoEncodeH264SliceHeaderFlags
+{
+	DirectSpatialMvPredFlag = 1 << 0,
+	NumRefIdxActiveOverrideFlag = 1 << 1,
+	NoOutputOfPriorPicsFlag = 1 << 2,
+	AdaptiveRefPicMarkingModeFlag = 1 << 3,
+	NoPriorReferencesAvailableFlag = 1 << 4,
+}
+[Flags]
+public enum StdVideoEncodeH264PictureInfoFlags
+{
+	IdrFlag = 1 << 0,
+	IsReferenceFlag = 1 << 1,
+	UsedForLongTermReference = 1 << 2,
+}
+[Flags]
+public enum StdVideoEncodeH264ReferenceInfoFlags
+{
+	UsedForLongTerm = 1 << 0,
+}
+[Flags]
+public enum StdVideoEncodeH264RefMgmtFlags
+{
+	RefPicListModificationL0Flag = 1 << 0,
+	RefPicListModificationL1Flag = 1 << 1,
+}
+public enum StdVideoH265ChromaFormatIdc
+{
+	Monochrome = 0,
+	_420 = 1,
+	_422 = 2,
+	_444 = 3,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH265ProfileIdc
+{
+	Main = 1,
+	Main10 = 2,
+	MainStillPicture = 3,
+	FormatRangeExtensions = 4,
+	SccExtensions = 9,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH265LevelIdc
+{
+	_10 = 0,
+	_20 = 1,
+	_21 = 2,
+	_30 = 3,
+	_31 = 4,
+	_40 = 5,
+	_41 = 6,
+	_50 = 7,
+	_51 = 8,
+	_52 = 9,
+	_60 = 10,
+	_61 = 11,
+	_62 = 12,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH265SliceType
+{
+	B = 0,
+	P = 1,
+	I = 2,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH265PictureType
+{
+	P = 0,
+	B = 1,
+	I = 2,
+	Idr = 3,
+	Invalid = 0x7FFFFFFF,
+}
+public enum StdVideoH265AspectRatioIdc
+{
+	Unspecified = 0,
+	Square = 1,
+	_1211 = 2,
+	_1011 = 3,
+	_1611 = 4,
+	_4033 = 5,
+	_2411 = 6,
+	_2011 = 7,
+	_3211 = 8,
+	_8033 = 9,
+	_1811 = 10,
+	_1511 = 11,
+	_6433 = 12,
+	_16099 = 13,
+	_43 = 14,
+	_32 = 15,
+	_21 = 16,
+	ExtendedSar = 255,
+	Invalid = 0x7FFFFFFF,
+}
+[Flags]
+public enum StdVideoH265HrdFlags
+{
+	NalHrdParametersPresentFlag = 1 << 0,
+	VclHrdParametersPresentFlag = 1 << 1,
+	SubPicHrdParamsPresentFlag = 1 << 2,
+	SubPicCpbParamsInPicTimingSeiFlag = 1 << 3,
+	FixedPicRateGeneralFlag0 = 1 << 4,
+	FixedPicRateGeneralFlag1 = 1 << 5,
+	FixedPicRateGeneralFlag2 = 1 << 6,
+	FixedPicRateGeneralFlag3 = 1 << 7,
+	FixedPicRateGeneralFlag4 = 1 << 8,
+	FixedPicRateGeneralFlag5 = 1 << 9,
+	FixedPicRateGeneralFlag6 = 1 << 10,
+	FixedPicRateGeneralFlag7 = 1 << 11,
+	FixedPicRateWithinCvsFlag0 = 1 << 12,
+	FixedPicRateWithinCvsFlag1 = 1 << 13,
+	FixedPicRateWithinCvsFlag2 = 1 << 14,
+	FixedPicRateWithinCvsFlag3 = 1 << 15,
+	FixedPicRateWithinCvsFlag4 = 1 << 16,
+	FixedPicRateWithinCvsFlag5 = 1 << 17,
+	FixedPicRateWithinCvsFlag6 = 1 << 18,
+	FixedPicRateWithinCvsFlag7 = 1 << 19,
+	LowDelayHrdFlag0 = 1 << 20,
+	LowDelayHrdFlag1 = 1 << 21,
+	LowDelayHrdFlag2 = 1 << 22,
+	LowDelayHrdFlag3 = 1 << 23,
+	LowDelayHrdFlag4 = 1 << 24,
+	LowDelayHrdFlag5 = 1 << 25,
+	LowDelayHrdFlag6 = 1 << 26,
+	LowDelayHrdFlag7 = 1 << 27,
+}
+[Flags]
+public enum StdVideoH265VpsFlags
+{
+	VpsTemporalIdNestingFlag = 1 << 0,
+	VpsSubLayerOrderingInfoPresentFlag = 1 << 1,
+	VpsTimingInfoPresentFlag = 1 << 2,
+	VpsPocProportionalToTimingFlag = 1 << 3,
+}
+[Flags]
+public enum StdVideoH265ProfileTierLevelFlags
+{
+	GeneralTierFlag = 1 << 0,
+	GeneralProgressiveSourceFlag = 1 << 1,
+	GeneralInterlacedSourceFlag = 1 << 2,
+	GeneralNonPackedConstraintFlag = 1 << 3,
+	GeneralFrameOnlyConstraintFlag = 1 << 4,
+}
+[Flags]
+public enum StdVideoH265SpsVuiFlags
+{
+	AspectRatioInfoPresentFlag = 1 << 0,
+	OverscanInfoPresentFlag = 1 << 1,
+	OverscanAppropriateFlag = 1 << 2,
+	VideoSignalTypePresentFlag = 1 << 3,
+	VideoFullRangeFlag = 1 << 4,
+	ColourDescriptionPresentFlag = 1 << 5,
+	ChromaLocInfoPresentFlag = 1 << 6,
+	NeutralChromaIndicationFlag = 1 << 7,
+	FieldSeqFlag = 1 << 8,
+	FrameFieldInfoPresentFlag = 1 << 9,
+	DefaultDisplayWindowFlag = 1 << 10,
+	VuiTimingInfoPresentFlag = 1 << 11,
+	VuiPocProportionalToTimingFlag = 1 << 12,
+	VuiHrdParametersPresentFlag = 1 << 13,
+	BitstreamRestrictionFlag = 1 << 14,
+	TilesFixedStructureFlag = 1 << 15,
+	MotionVectorsOverPicBoundariesFlag = 1 << 16,
+	RestrictedRefPicListsFlag = 1 << 17,
+}
+[Flags]
+public enum StdVideoH265SpsFlags
+{
+	SpsTemporalIdNestingFlag = 1 << 0,
+	SeparateColourPlaneFlag = 1 << 1,
+	ConformanceWindowFlag = 1 << 2,
+	SpsSubLayerOrderingInfoPresentFlag = 1 << 3,
+	ScalingListEnabledFlag = 1 << 4,
+	SpsScalingListDataPresentFlag = 1 << 5,
+	AmpEnabledFlag = 1 << 6,
+	SampleAdaptiveOffsetEnabledFlag = 1 << 7,
+	PcmEnabledFlag = 1 << 8,
+	PcmLoopFilterDisabledFlag = 1 << 9,
+	LongTermRefPicsPresentFlag = 1 << 10,
+	SpsTemporalMvpEnabledFlag = 1 << 11,
+	StrongIntraSmoothingEnabledFlag = 1 << 12,
+	VuiParametersPresentFlag = 1 << 13,
+	SpsExtensionPresentFlag = 1 << 14,
+	SpsRangeExtensionFlag = 1 << 15,
+	TransformSkipRotationEnabledFlag = 1 << 16,
+	TransformSkipContextEnabledFlag = 1 << 17,
+	ImplicitRdpcmEnabledFlag = 1 << 18,
+	ExplicitRdpcmEnabledFlag = 1 << 19,
+	ExtendedPrecisionProcessingFlag = 1 << 20,
+	IntraSmoothingDisabledFlag = 1 << 21,
+	HighPrecisionOffsetsEnabledFlag = 1 << 22,
+	PersistentRiceAdaptationEnabledFlag = 1 << 23,
+	CabacBypassAlignmentEnabledFlag = 1 << 24,
+	SpsSccExtensionFlag = 1 << 25,
+	SpsCurrPicRefEnabledFlag = 1 << 26,
+	PaletteModeEnabledFlag = 1 << 27,
+	SpsPalettePredictorInitializersPresentFlag = 1 << 28,
+	IntraBoundaryFilteringDisabledFlag = 1 << 29,
+}
+[Flags]
+public enum StdVideoH265ShortTermRefPicSetFlags
+{
+	InterRefPicSetPredictionFlag = 1 << 0,
+	DeltaRpsSign = 1 << 1,
+}
+[Flags]
+public enum StdVideoH265PpsFlags
+{
+	DependentSliceSegmentsEnabledFlag = 1 << 0,
+	OutputFlagPresentFlag = 1 << 1,
+	SignDataHidingEnabledFlag = 1 << 2,
+	CabacInitPresentFlag = 1 << 3,
+	ConstrainedIntraPredFlag = 1 << 4,
+	TransformSkipEnabledFlag = 1 << 5,
+	CuQpDeltaEnabledFlag = 1 << 6,
+	PpsSliceChromaQpOffsetsPresentFlag = 1 << 7,
+	WeightedPredFlag = 1 << 8,
+	WeightedBipredFlag = 1 << 9,
+	TransquantBypassEnabledFlag = 1 << 10,
+	TilesEnabledFlag = 1 << 11,
+	EntropyCodingSyncEnabledFlag = 1 << 12,
+	UniformSpacingFlag = 1 << 13,
+	LoopFilterAcrossTilesEnabledFlag = 1 << 14,
+	PpsLoopFilterAcrossSlicesEnabledFlag = 1 << 15,
+	DeblockingFilterControlPresentFlag = 1 << 16,
+	DeblockingFilterOverrideEnabledFlag = 1 << 17,
+	PpsDeblockingFilterDisabledFlag = 1 << 18,
+	PpsScalingListDataPresentFlag = 1 << 19,
+	ListsModificationPresentFlag = 1 << 20,
+	SliceSegmentHeaderExtensionPresentFlag = 1 << 21,
+	PpsExtensionPresentFlag = 1 << 22,
+	CrossComponentPredictionEnabledFlag = 1 << 23,
+	ChromaQpOffsetListEnabledFlag = 1 << 24,
+	PpsCurrPicRefEnabledFlag = 1 << 25,
+	ResidualAdaptiveColourTransformEnabledFlag = 1 << 26,
+	PpsSliceActQpOffsetsPresentFlag = 1 << 27,
+	PpsPalettePredictorInitializersPresentFlag = 1 << 28,
+	MonochromePaletteFlag = 1 << 29,
+	PpsRangeExtensionFlag = 1 << 30,
+}
+[Flags]
+public enum StdVideoDecodeH265PictureInfoFlags
+{
+	Irappicflag = 1 << 0,
+	Idrpicflag = 1 << 1,
+	Isreference = 1 << 2,
+	ShortTermRefPicSetSpsFlag = 1 << 3,
+}
+[Flags]
+public enum StdVideoDecodeH265ReferenceInfoFlags
+{
+	UsedForLongTerm = 1 << 0,
+	UnusedForReference = 1 << 1,
+}
+[Flags]
+public enum StdVideoEncodeH265SliceSegmentHeaderFlags
+{
+	FirstSliceSegmentInPicFlag = 1 << 0,
+	NoOutputOfPriorPicsFlag = 1 << 1,
+	DependentSliceSegmentFlag = 1 << 2,
+	PicOutputFlag = 1 << 3,
+	ShortTermRefPicSetSpsFlag = 1 << 4,
+	SliceTemporalMvpEnableFlag = 1 << 5,
+	SliceSaoLumaFlag = 1 << 6,
+	SliceSaoChromaFlag = 1 << 7,
+	NumRefIdxActiveOverrideFlag = 1 << 8,
+	MvdL1ZeroFlag = 1 << 9,
+	CabacInitFlag = 1 << 10,
+	CuChromaQpOffsetEnabledFlag = 1 << 11,
+	DeblockingFilterOverrideFlag = 1 << 12,
+	SliceDeblockingFilterDisabledFlag = 1 << 13,
+	CollocatedFromL0Flag = 1 << 14,
+	SliceLoopFilterAcrossSlicesEnabledFlag = 1 << 15,
+}
+[Flags]
+public enum StdVideoEncodeH265ReferenceModificationFlags
+{
+	RefPicListModificationFlagL0 = 1 << 0,
+	RefPicListModificationFlagL1 = 1 << 1,
+}
+[Flags]
+public enum StdVideoEncodeH265PictureInfoFlags
+{
+	IsReferenceFlag = 1 << 0,
+	Irappicflag = 1 << 1,
+	LongTermFlag = 1 << 2,
+	DiscardableFlag = 1 << 3,
+	CrossLayerBlaFlag = 1 << 4,
+}
+[Flags]
+public enum StdVideoEncodeH265ReferenceInfoFlags
+{
+	UsedForLongTerm = 1 << 0,
+	UnusedForReference = 1 << 1,
+}
 [Flags]
 public enum VkSurfaceTransformFlagsKHR
 {

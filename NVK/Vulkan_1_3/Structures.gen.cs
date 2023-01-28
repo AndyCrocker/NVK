@@ -2769,6 +2769,475 @@ public unsafe struct VkPhysicalDeviceMaintenance4Properties
 	public void* Next;
 	public VkDeviceSize MaxBufferSize;
 }
+public unsafe struct StdVideoH264HrdParameters
+{
+	public byte Cpb_cnt_minus1;
+	public byte Bit_rate_scale;
+	public byte Cpb_size_scale;
+	public byte Reserved1;
+	public fixed uint Bit_rate_value_minus1[(int)VK.VideoH264CpbCntListSize];
+	public fixed uint Cpb_size_value_minus1[(int)VK.VideoH264CpbCntListSize];
+	public fixed byte Cbr_flag[(int)VK.VideoH264CpbCntListSize];
+	public uint Initial_cpb_removal_delay_length_minus1;
+	public uint Cpb_removal_delay_length_minus1;
+	public uint Dpb_output_delay_length_minus1;
+	public uint Time_offset_length;
+}
+public unsafe struct StdVideoH264SequenceParameterSetVui
+{
+	public StdVideoH264SpsVuiFlags Flags;
+	public StdVideoH264AspectRatioIdc Aspect_ratio_idc;
+	public ushort Sar_width;
+	public ushort Sar_height;
+	public byte Video_format;
+	public byte Colour_primaries;
+	public byte Transfer_characteristics;
+	public byte Matrix_coefficients;
+	public uint Num_units_in_tick;
+	public uint Time_scale;
+	public byte Max_num_reorder_frames;
+	public byte Max_dec_frame_buffering;
+	public byte Chroma_sample_loc_type_top_field;
+	public byte Chroma_sample_loc_type_bottom_field;
+	public uint Reserved1;
+	public StdVideoH264HrdParameters* HrdParameters;
+}
+public unsafe struct StdVideoH264ScalingLists
+{
+	public ushort Scaling_list_present_mask;
+	public ushort Use_default_scaling_matrix_mask;
+	public fixed byte ScalingList4x4[96];
+	public fixed byte ScalingList8x8[384];
+}
+public unsafe struct StdVideoH264SequenceParameterSet
+{
+	public StdVideoH264SpsFlags Flags;
+	public StdVideoH264ProfileIdc Profile_idc;
+	public StdVideoH264LevelIdc Level_idc;
+	public StdVideoH264ChromaFormatIdc Chroma_format_idc;
+	public byte Seq_parameter_set_id;
+	public byte Bit_depth_luma_minus8;
+	public byte Bit_depth_chroma_minus8;
+	public byte Log2_max_frame_num_minus4;
+	public StdVideoH264PocType Pic_order_cnt_type;
+	public int Offset_for_non_ref_pic;
+	public int Offset_for_top_to_bottom_field;
+	public byte Log2_max_pic_order_cnt_lsb_minus4;
+	public byte Num_ref_frames_in_pic_order_cnt_cycle;
+	public byte Max_num_ref_frames;
+	public byte Reserved1;
+	public uint Pic_width_in_mbs_minus1;
+	public uint Pic_height_in_map_units_minus1;
+	public uint Frame_crop_left_offset;
+	public uint Frame_crop_right_offset;
+	public uint Frame_crop_top_offset;
+	public uint Frame_crop_bottom_offset;
+	public uint Reserved2;
+	public int* OffsetForRefFrame;
+	public StdVideoH264ScalingLists* ScalingLists;
+	public StdVideoH264SequenceParameterSetVui* SequenceParameterSetVui;
+}
+public unsafe struct StdVideoH264PictureParameterSet
+{
+	public StdVideoH264PpsFlags Flags;
+	public byte Seq_parameter_set_id;
+	public byte Pic_parameter_set_id;
+	public byte Num_ref_idx_l0_default_active_minus1;
+	public byte Num_ref_idx_l1_default_active_minus1;
+	public StdVideoH264WeightedBipredIdc Weighted_bipred_idc;
+	public sbyte Pic_init_qp_minus26;
+	public sbyte Pic_init_qs_minus26;
+	public sbyte Chroma_qp_index_offset;
+	public sbyte Second_chroma_qp_index_offset;
+	public StdVideoH264ScalingLists* ScalingLists;
+}
+public unsafe struct StdVideoDecodeH264PictureInfo
+{
+	public StdVideoDecodeH264PictureInfoFlags Flags;
+	public byte Seq_parameter_set_id;
+	public byte Pic_parameter_set_id;
+	public byte Reserved1;
+	public byte Reserved2;
+	public ushort Frame_num;
+	public ushort Idr_pic_id;
+	public fixed int PicOrderCnt[(int)VK.VideoDecodeH264FieldOrderCountListSize];
+}
+public unsafe struct StdVideoDecodeH264ReferenceInfo
+{
+	public StdVideoDecodeH264ReferenceInfoFlags Flags;
+	public ushort FrameNum;
+	public ushort Reserved;
+	public fixed int PicOrderCnt[(int)VK.VideoDecodeH264FieldOrderCountListSize];
+}
+public unsafe struct StdVideoEncodeH264WeightTableFlags
+{
+	public uint Luma_weight_l0_flag;
+	public uint Chroma_weight_l0_flag;
+	public uint Luma_weight_l1_flag;
+	public uint Chroma_weight_l1_flag;
+}
+public unsafe struct StdVideoEncodeH264WeightTable
+{
+	public StdVideoEncodeH264WeightTableFlags Flags;
+	public byte Luma_log2_weight_denom;
+	public byte Chroma_log2_weight_denom;
+	public fixed sbyte Luma_weight_l0[(int)VK.VideoH264MaxNumListRef];
+	public fixed sbyte Luma_offset_l0[(int)VK.VideoH264MaxNumListRef];
+	public fixed sbyte Chroma_weight_l0[64];
+	public fixed sbyte Chroma_offset_l0[64];
+	public fixed sbyte Luma_weight_l1[(int)VK.VideoH264MaxNumListRef];
+	public fixed sbyte Luma_offset_l1[(int)VK.VideoH264MaxNumListRef];
+	public fixed sbyte Chroma_weight_l1[64];
+	public fixed sbyte Chroma_offset_l1[64];
+}
+public unsafe struct StdVideoEncodeH264RefListModEntry
+{
+	public StdVideoH264ModificationOfPicNumsIdc Modification_of_pic_nums_idc;
+	public ushort Abs_diff_pic_num_minus1;
+	public ushort Long_term_pic_num;
+}
+public unsafe struct StdVideoEncodeH264RefPicMarkingEntry
+{
+	public StdVideoH264MemMgmtControlOp Operation;
+	public ushort Difference_of_pic_nums_minus1;
+	public ushort Long_term_pic_num;
+	public ushort Long_term_frame_idx;
+	public ushort Max_long_term_frame_idx_plus1;
+}
+public unsafe struct StdVideoEncodeH264RefMemMgmtCtrlOperations
+{
+	public StdVideoEncodeH264RefMgmtFlags Flags;
+	public byte RefList0ModOpCount;
+	public StdVideoEncodeH264RefListModEntry* RefList0ModOperations;
+	public byte RefList1ModOpCount;
+	public StdVideoEncodeH264RefListModEntry* RefList1ModOperations;
+	public byte RefPicMarkingOpCount;
+	public StdVideoEncodeH264RefPicMarkingEntry* RefPicMarkingOperations;
+}
+public unsafe struct StdVideoEncodeH264PictureInfo
+{
+	public StdVideoEncodeH264PictureInfoFlags Flags;
+	public byte Seq_parameter_set_id;
+	public byte Pic_parameter_set_id;
+	public StdVideoH264PictureType PictureType;
+	public uint Frame_num;
+	public int PicOrderCnt;
+}
+public unsafe struct StdVideoEncodeH264ReferenceInfo
+{
+	public StdVideoEncodeH264ReferenceInfoFlags Flags;
+	public uint FrameNum;
+	public int PicOrderCnt;
+	public ushort Long_term_pic_num;
+	public ushort Long_term_frame_idx;
+}
+public unsafe struct StdVideoEncodeH264SliceHeader
+{
+	public StdVideoEncodeH264SliceHeaderFlags Flags;
+	public uint First_mb_in_slice;
+	public StdVideoH264SliceType Slice_type;
+	public ushort Idr_pic_id;
+	public byte Num_ref_idx_l0_active_minus1;
+	public byte Num_ref_idx_l1_active_minus1;
+	public StdVideoH264CabacInitIdc Cabac_init_idc;
+	public StdVideoH264DisableDeblockingFilterIdc Disable_deblocking_filter_idc;
+	public sbyte Slice_alpha_c0_offset_div2;
+	public sbyte Slice_beta_offset_div2;
+	public StdVideoEncodeH264WeightTable* WeightTable;
+}
+public unsafe struct StdVideoH265DecPicBufMgr
+{
+	public fixed uint Max_latency_increase_plus1[(int)VK.VideoH265SublayersListSize];
+	public fixed byte Max_dec_pic_buffering_minus1[(int)VK.VideoH265SublayersListSize];
+	public fixed byte Max_num_reorder_pics[(int)VK.VideoH265SublayersListSize];
+}
+public unsafe struct StdVideoH265SubLayerHrdParameters
+{
+	public fixed uint Bit_rate_value_minus1[(int)VK.VideoH265CpbCntListSize];
+	public fixed uint Cpb_size_value_minus1[(int)VK.VideoH265CpbCntListSize];
+	public fixed uint Cpb_size_du_value_minus1[(int)VK.VideoH265CpbCntListSize];
+	public fixed uint Bit_rate_du_value_minus1[(int)VK.VideoH265CpbCntListSize];
+	public uint Cbr_flag;
+}
+public unsafe struct StdVideoH265HrdParameters
+{
+	public StdVideoH265HrdFlags Flags;
+	public byte Tick_divisor_minus2;
+	public byte Du_cpb_removal_delay_increment_length_minus1;
+	public byte Dpb_output_delay_du_length_minus1;
+	public byte Bit_rate_scale;
+	public byte Cpb_size_scale;
+	public byte Cpb_size_du_scale;
+	public byte Initial_cpb_removal_delay_length_minus1;
+	public byte Au_cpb_removal_delay_length_minus1;
+	public byte Dpb_output_delay_length_minus1;
+	public fixed byte Cpb_cnt_minus1[(int)VK.VideoH265SublayersListSize];
+	public fixed ushort Elemental_duration_in_tc_minus1[(int)VK.VideoH265SublayersListSize];
+	public fixed ushort Reserved[3];
+	public StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersNal;
+	public StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersVcl;
+}
+public unsafe struct StdVideoH265VideoParameterSet
+{
+	public StdVideoH265VpsFlags Flags;
+	public byte Vps_video_parameter_set_id;
+	public byte Vps_max_sub_layers_minus1;
+	public byte Reserved1;
+	public byte Reserved2;
+	public uint Vps_num_units_in_tick;
+	public uint Vps_time_scale;
+	public uint Vps_num_ticks_poc_diff_one_minus1;
+	public uint Reserved3;
+	public StdVideoH265DecPicBufMgr* DecPicBufMgr;
+	public StdVideoH265HrdParameters* HrdParameters;
+	public StdVideoH265ProfileTierLevel* ProfileTierLevel;
+}
+public unsafe struct StdVideoH265ProfileTierLevel
+{
+	public StdVideoH265ProfileTierLevelFlags Flags;
+	public StdVideoH265ProfileIdc General_profile_idc;
+	public StdVideoH265LevelIdc General_level_idc;
+}
+public unsafe struct StdVideoH265ScalingLists
+{
+	public fixed byte ScalingList4x4[96];
+	public fixed byte ScalingList8x8[384];
+	public fixed byte ScalingList16x16[384];
+	public fixed byte ScalingList32x32[128];
+	public fixed byte ScalingListDCCoef16x16[(int)VK.VideoH265ScalingList16x16NumLists];
+	public fixed byte ScalingListDCCoef32x32[(int)VK.VideoH265ScalingList32x32NumLists];
+}
+public unsafe struct StdVideoH265SequenceParameterSetVui
+{
+	public StdVideoH265SpsVuiFlags Flags;
+	public StdVideoH265AspectRatioIdc Aspect_ratio_idc;
+	public ushort Sar_width;
+	public ushort Sar_height;
+	public byte Video_format;
+	public byte Colour_primaries;
+	public byte Transfer_characteristics;
+	public byte Matrix_coeffs;
+	public byte Chroma_sample_loc_type_top_field;
+	public byte Chroma_sample_loc_type_bottom_field;
+	public byte Reserved1;
+	public byte Reserved2;
+	public ushort Def_disp_win_left_offset;
+	public ushort Def_disp_win_right_offset;
+	public ushort Def_disp_win_top_offset;
+	public ushort Def_disp_win_bottom_offset;
+	public uint Vui_num_units_in_tick;
+	public uint Vui_time_scale;
+	public uint Vui_num_ticks_poc_diff_one_minus1;
+	public ushort Min_spatial_segmentation_idc;
+	public ushort Reserved3;
+	public byte Max_bytes_per_pic_denom;
+	public byte Max_bits_per_min_cu_denom;
+	public byte Log2_max_mv_length_horizontal;
+	public byte Log2_max_mv_length_vertical;
+	public StdVideoH265HrdParameters* HrdParameters;
+}
+public unsafe struct StdVideoH265PredictorPaletteEntries
+{
+	public fixed ushort PredictorPaletteEntries[384];
+}
+public unsafe struct StdVideoH265SequenceParameterSet
+{
+	public StdVideoH265SpsFlags Flags;
+	public StdVideoH265ChromaFormatIdc Chroma_format_idc;
+	public uint Pic_width_in_luma_samples;
+	public uint Pic_height_in_luma_samples;
+	public byte Sps_video_parameter_set_id;
+	public byte Sps_max_sub_layers_minus1;
+	public byte Sps_seq_parameter_set_id;
+	public byte Bit_depth_luma_minus8;
+	public byte Bit_depth_chroma_minus8;
+	public byte Log2_max_pic_order_cnt_lsb_minus4;
+	public byte Log2_min_luma_coding_block_size_minus3;
+	public byte Log2_diff_max_min_luma_coding_block_size;
+	public byte Log2_min_luma_transform_block_size_minus2;
+	public byte Log2_diff_max_min_luma_transform_block_size;
+	public byte Max_transform_hierarchy_depth_inter;
+	public byte Max_transform_hierarchy_depth_intra;
+	public byte Num_short_term_ref_pic_sets;
+	public byte Num_long_term_ref_pics_sps;
+	public byte Pcm_sample_bit_depth_luma_minus1;
+	public byte Pcm_sample_bit_depth_chroma_minus1;
+	public byte Log2_min_pcm_luma_coding_block_size_minus3;
+	public byte Log2_diff_max_min_pcm_luma_coding_block_size;
+	public byte Reserved1;
+	public byte Reserved2;
+	public byte Palette_max_size;
+	public byte Delta_palette_max_predictor_size;
+	public byte Motion_vector_resolution_control_idc;
+	public byte Sps_num_palette_predictor_initializers_minus1;
+	public uint Conf_win_left_offset;
+	public uint Conf_win_right_offset;
+	public uint Conf_win_top_offset;
+	public uint Conf_win_bottom_offset;
+	public StdVideoH265ProfileTierLevel* ProfileTierLevel;
+	public StdVideoH265DecPicBufMgr* DecPicBufMgr;
+	public StdVideoH265ScalingLists* ScalingLists;
+	public StdVideoH265ShortTermRefPicSet* ShortTermRefPicSet;
+	public StdVideoH265LongTermRefPicsSps* LongTermRefPicsSps;
+	public StdVideoH265SequenceParameterSetVui* SequenceParameterSetVui;
+	public StdVideoH265PredictorPaletteEntries* PredictorPaletteEntries;
+}
+public unsafe struct StdVideoH265ShortTermRefPicSet
+{
+	public StdVideoH265ShortTermRefPicSetFlags Flags;
+	public uint Delta_idx_minus1;
+	public ushort Use_delta_flag;
+	public ushort Abs_delta_rps_minus1;
+	public ushort Used_by_curr_pic_flag;
+	public ushort Used_by_curr_pic_s0_flag;
+	public ushort Used_by_curr_pic_s1_flag;
+	public ushort Reserved1;
+	public byte Reserved2;
+	public byte Reserved3;
+	public byte Num_negative_pics;
+	public byte Num_positive_pics;
+	public fixed ushort Delta_poc_s0_minus1[(int)VK.VideoH265MaxDpbSize];
+	public fixed ushort Delta_poc_s1_minus1[(int)VK.VideoH265MaxDpbSize];
+}
+public unsafe struct StdVideoH265LongTermRefPicsSps
+{
+	public uint Used_by_curr_pic_lt_sps_flag;
+	public fixed uint Lt_ref_pic_poc_lsb_sps[(int)VK.VideoH265MaxLongTermRefPicsSps];
+}
+public unsafe struct StdVideoH265PictureParameterSet
+{
+	public StdVideoH265PpsFlags Flags;
+	public byte Pps_pic_parameter_set_id;
+	public byte Pps_seq_parameter_set_id;
+	public byte Sps_video_parameter_set_id;
+	public byte Num_extra_slice_header_bits;
+	public byte Num_ref_idx_l0_default_active_minus1;
+	public byte Num_ref_idx_l1_default_active_minus1;
+	public sbyte Init_qp_minus26;
+	public byte Diff_cu_qp_delta_depth;
+	public sbyte Pps_cb_qp_offset;
+	public sbyte Pps_cr_qp_offset;
+	public sbyte Pps_beta_offset_div2;
+	public sbyte Pps_tc_offset_div2;
+	public byte Log2_parallel_merge_level_minus2;
+	public byte Log2_max_transform_skip_block_size_minus2;
+	public byte Diff_cu_chroma_qp_offset_depth;
+	public byte Chroma_qp_offset_list_len_minus1;
+	public fixed sbyte Cb_qp_offset_list[(int)VK.VideoH265ChromaQpOffsetListSize];
+	public fixed sbyte Cr_qp_offset_list[(int)VK.VideoH265ChromaQpOffsetListSize];
+	public byte Log2_sao_offset_scale_luma;
+	public byte Log2_sao_offset_scale_chroma;
+	public sbyte Pps_act_y_qp_offset_plus5;
+	public sbyte Pps_act_cb_qp_offset_plus5;
+	public sbyte Pps_act_cr_qp_offset_plus3;
+	public byte Pps_num_palette_predictor_initializers;
+	public byte Luma_bit_depth_entry_minus8;
+	public byte Chroma_bit_depth_entry_minus8;
+	public byte Num_tile_columns_minus1;
+	public byte Num_tile_rows_minus1;
+	public byte Reserved1;
+	public byte Reserved2;
+	public fixed ushort Column_width_minus1[(int)VK.VideoH265ChromaQpOffsetTileColsListSize];
+	public fixed ushort Row_height_minus1[(int)VK.VideoH265ChromaQpOffsetTileRowsListSize];
+	public uint Reserved3;
+	public StdVideoH265ScalingLists* ScalingLists;
+	public StdVideoH265PredictorPaletteEntries* PredictorPaletteEntries;
+}
+public unsafe struct StdVideoDecodeH265PictureInfo
+{
+	public StdVideoDecodeH265PictureInfoFlags Flags;
+	public byte Sps_video_parameter_set_id;
+	public byte Pps_seq_parameter_set_id;
+	public byte Pps_pic_parameter_set_id;
+	public byte NumDeltaPocsOfRefRpsIdx;
+	public int PicOrderCntVal;
+	public ushort NumBitsForSTRefPicSetInSlice;
+	public ushort Reserved;
+	public fixed byte RefPicSetStCurrBefore[(int)VK.VideoDecodeH265RefPicSetListSize];
+	public fixed byte RefPicSetStCurrAfter[(int)VK.VideoDecodeH265RefPicSetListSize];
+	public fixed byte RefPicSetLtCurr[(int)VK.VideoDecodeH265RefPicSetListSize];
+}
+public unsafe struct StdVideoDecodeH265ReferenceInfo
+{
+	public StdVideoDecodeH265ReferenceInfoFlags Flags;
+	public int PicOrderCntVal;
+}
+public unsafe struct StdVideoEncodeH265WeightTableFlags
+{
+	public ushort Luma_weight_l0_flag;
+	public ushort Chroma_weight_l0_flag;
+	public ushort Luma_weight_l1_flag;
+	public ushort Chroma_weight_l1_flag;
+}
+public unsafe struct StdVideoEncodeH265WeightTable
+{
+	public StdVideoEncodeH265WeightTableFlags Flags;
+	public byte Luma_log2_weight_denom;
+	public sbyte Delta_chroma_log2_weight_denom;
+	public fixed sbyte Delta_luma_weight_l0[(int)VK.VideoH265MaxNumListRef];
+	public fixed sbyte Luma_offset_l0[(int)VK.VideoH265MaxNumListRef];
+	public fixed sbyte Delta_chroma_weight_l0[30];
+	public fixed sbyte Delta_chroma_offset_l0[30];
+	public fixed sbyte Delta_luma_weight_l1[(int)VK.VideoH265MaxNumListRef];
+	public fixed sbyte Luma_offset_l1[(int)VK.VideoH265MaxNumListRef];
+	public fixed sbyte Delta_chroma_weight_l1[30];
+	public fixed sbyte Delta_chroma_offset_l1[30];
+}
+public unsafe struct StdVideoEncodeH265SliceSegmentHeader
+{
+	public StdVideoEncodeH265SliceSegmentHeaderFlags Flags;
+	public StdVideoH265SliceType Slice_type;
+	public uint Slice_segment_address;
+	public byte Short_term_ref_pic_set_idx;
+	public byte Collocated_ref_idx;
+	public byte Num_ref_idx_l0_active_minus1;
+	public byte Num_ref_idx_l1_active_minus1;
+	public byte MaxNumMergeCand;
+	public sbyte Slice_cb_qp_offset;
+	public sbyte Slice_cr_qp_offset;
+	public sbyte Slice_beta_offset_div2;
+	public sbyte Slice_tc_offset_div2;
+	public sbyte Slice_act_y_qp_offset;
+	public sbyte Slice_act_cb_qp_offset;
+	public sbyte Slice_act_cr_qp_offset;
+	public StdVideoH265ShortTermRefPicSet* ShortTermRefPicSet;
+	public StdVideoEncodeH265SliceSegmentLongTermRefPics* LongTermRefPics;
+	public StdVideoEncodeH265WeightTable* WeightTable;
+}
+public unsafe struct StdVideoEncodeH265SliceSegmentLongTermRefPics
+{
+	public byte Num_long_term_sps;
+	public byte Num_long_term_pics;
+	public fixed byte Lt_idx_sps[(int)VK.VideoH265MaxLongTermRefPicsSps];
+	public fixed byte Poc_lsb_lt[(int)VK.VideoH265MaxLongTermPics];
+	public ushort Used_by_curr_pic_lt_flag;
+	public fixed byte Delta_poc_msb_present_flag[(int)VK.VideoH265MaxDeltaPoc];
+	public fixed byte Delta_poc_msb_cycle_lt[(int)VK.VideoH265MaxDeltaPoc];
+}
+public unsafe struct StdVideoEncodeH265ReferenceModifications
+{
+	public StdVideoEncodeH265ReferenceModificationFlags Flags;
+	public byte ReferenceList0ModificationsCount;
+	public byte* ReferenceList0Modifications;
+	public byte ReferenceList1ModificationsCount;
+	public byte* ReferenceList1Modifications;
+}
+public unsafe struct StdVideoEncodeH265PictureInfo
+{
+	public StdVideoEncodeH265PictureInfoFlags Flags;
+	public StdVideoH265PictureType PictureType;
+	public byte Sps_video_parameter_set_id;
+	public byte Pps_seq_parameter_set_id;
+	public byte Pps_pic_parameter_set_id;
+	public int PicOrderCntVal;
+	public byte TemporalId;
+}
+public unsafe struct StdVideoEncodeH265ReferenceInfo
+{
+	public StdVideoEncodeH265ReferenceInfoFlags Flags;
+	public int PicOrderCntVal;
+	public byte TemporalId;
+}
 public unsafe struct VkSurfaceCapabilitiesKHR
 {
 	public uint MinImageCount;
