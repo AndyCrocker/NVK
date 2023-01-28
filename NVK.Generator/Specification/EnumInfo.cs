@@ -46,6 +46,12 @@ internal class EnumInfo
             // due to some fields having more than one bit width, we can't rely on EnumFieldInfo parsing them elegantly (due to the afformentioned note of creating
             // multiple bit fields on struct fields with more than one bit width) so we'll just parsing them here
             var name = memberElement.Element("name")!.Value;
+            if (name.Contains("flag", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var flagIndex = name.LastIndexOf("flag", StringComparison.InvariantCultureIgnoreCase);
+                name = name.Remove(flagIndex, 4);
+            }
+
             var bitWidth = int.Parse(memberElement.Value.Split(':')[1]);
             if (bitWidth == 1)
             {
@@ -54,7 +60,7 @@ internal class EnumInfo
             }
 
             for (int i = 0; i < bitWidth; i++)
-                Fields.Add(new(this, $"{name}_{i}", bitOffset++));
+                Fields.Add(new(this, $"{name}{i}", bitOffset++));
         }
     }
 
