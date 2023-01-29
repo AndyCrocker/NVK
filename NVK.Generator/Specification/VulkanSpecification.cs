@@ -108,11 +108,12 @@ internal class VulkanSpecification
         VendorTags = tagElements
             .Select(tagElement => tagElement.Attribute("name")!.Value).ToList();
 
+        ParseEnums(typeElements.WithAttribute("category", "enum", "bitmask"), enumsElements.WithoutAttribute("name", "API Constants"));
+
         // can't use linq here as some function pointers use earlier defined ones so they need to be available in FunctionPointers
         foreach (var functionPointerElement in typeElements.WithAttribute("category", "funcpointer"))
             FunctionPointers.Add(new(functionPointerElement));
 
-        ParseEnums(typeElements.WithAttribute("category", "enum", "bitmask"), enumsElements.WithoutAttribute("name", "API Constants"));
         ParseStructures(typeElements.WithAttribute("category", "struct", "union"));
 
         Constants.AddRange(enumsElements.WithAttribute("name", "API Constants").Elements("enum")

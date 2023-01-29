@@ -3259,7 +3259,7 @@ public unsafe struct VkDebugUtilsMessengerCreateInfoEXT
 	public VkDebugUtilsMessengerCreateFlagsEXT Flags;
 	public VkDebugUtilsMessageSeverityFlagsEXT MessageSeverity;
 	public VkDebugUtilsMessageTypeFlagsEXT MessageType;
-	public delegate*<VkDebugUtilsMessageSeverityFlagBitsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void*, VkBool32> UserCallback;
+	public delegate*<VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void*, VkBool32> UserCallback;
 	public void* UserData;
 }
 public unsafe struct VkDebugUtilsMessengerCallbackDataEXT
