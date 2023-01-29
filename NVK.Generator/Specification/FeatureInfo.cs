@@ -148,6 +148,11 @@ internal class FeatureInfo
 
             return;
         }
+
+        var functionPointerInfo = VulkanSpecification.FunctionPointers.FirstOrDefault(functionPointerInfo => FunctionPointerInfo.CalculateDisplayName(functionPointerInfo.Name) == name);
+        if (functionPointerInfo != null)
+            foreach (var parameterInfo in functionPointerInfo.Parameters)
+                AddTypeByName(parameterInfo.Type.Name);
     }
 
     /// <summary>Adds a function from the specification to the feature with a specified name.</summary>

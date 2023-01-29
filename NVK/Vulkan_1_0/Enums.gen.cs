@@ -249,6 +249,18 @@ public enum VkStructureType
 public enum VkInstanceCreateFlags
 {
 }
+public enum VkSystemAllocationScope
+{
+	Command = 0,
+	Object = 1,
+	Cache = 2,
+	Device = 3,
+	Instance = 4,
+}
+public enum VkInternalAllocationType
+{
+	Executable = 0,
+}
 public enum VkFormat
 {
 	Undefined = 0,
