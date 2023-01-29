@@ -13,7 +13,7 @@ internal class ConstantInfo
     public string? Alias { get; }
 
     /// <summary>The value of the constant.</summary>
-    public string? Value { get; }
+    public string? Value { get; set; }
 
     /// <summary>The type of the constant.</summary>
     public ConstantType Type { get; }

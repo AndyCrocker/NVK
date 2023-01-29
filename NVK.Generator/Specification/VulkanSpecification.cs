@@ -76,6 +76,20 @@ internal class VulkanSpecification
         ParseEnums(typeElements.WithAttribute("category", "enum"), enumsElements);
         ParseStructures(typeElements.WithAttribute("category", "struct"));
         ParseExtensions(extensionElements);
+
+        // some extension constants defined in video.xml use defines to set the value, currently all these cases are api versions,
+        // in these cases we'll just parse the name and create the version to set the constant values
+        foreach (var constantInfo in Extensions.SelectMany(extension => extension.RequireInfos).SelectMany(requireInfo => requireInfo.Constants))
+        {
+            if (constantInfo.Value == null)
+                continue;
+
+            if (constantInfo.Value.StartsWith("VK_STD_VULKAN_VIDEO_CODEC_"))
+            {
+                var versionNumbers = constantInfo.Value.Split('_')[^3..];
+                constantInfo.Value = ((uint)new VkVersion(0, uint.Parse(versionNumbers[0]), uint.Parse(versionNumbers[1]), uint.Parse(versionNumbers[2]))).ToString();
+            }
+        }
     }
 
     /// <summary>Parses the vk.xml file.</summary>

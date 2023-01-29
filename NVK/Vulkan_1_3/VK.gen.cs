@@ -30,10 +30,10 @@ public static unsafe class VK
 	public const uint VideoH264ScalingList8x8NumElements = 64;
 	public const uint VideoH264MaxNumListRef = 32;
 	public const uint VideoH264MaxChromaPlanes = 2;
-	public const uint StdVulkanVideoCodecH264DecodeSpecVersion = VK_STD_VULKAN_VIDEO_CODEC_H264_DECODE_API_VERSION_1_0_0;
+	public const uint StdVulkanVideoCodecH264DecodeSpecVersion = 4194304;
 	public const string StdVulkanVideoCodecH264DecodeExtensionName = "VK_STD_vulkan_video_codec_h264_decode";
 	public const uint VideoDecodeH264FieldOrderCountListSize = 2;
-	public const uint StdVulkanVideoCodecH264EncodeSpecVersion = VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_0_9_8;
+	public const uint StdVulkanVideoCodecH264EncodeSpecVersion = 36872;
 	public const string StdVulkanVideoCodecH264EncodeExtensionName = "VK_STD_vulkan_video_codec_h264_encode";
 	public const uint VideoH265CpbCntListSize = 32;
 	public const uint VideoH265SublayersListSize = 7;
@@ -57,10 +57,10 @@ public static unsafe class VK
 	public const uint VideoH265MaxLongTermRefPicsSps = 32;
 	public const uint VideoH265MaxLongTermPics = 16;
 	public const uint VideoH265MaxDeltaPoc = 48;
-	public const uint StdVulkanVideoCodecH265DecodeSpecVersion = VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_1_0_0;
+	public const uint StdVulkanVideoCodecH265DecodeSpecVersion = 4194304;
 	public const string StdVulkanVideoCodecH265DecodeExtensionName = "VK_STD_vulkan_video_codec_h265_decode";
 	public const uint VideoDecodeH265RefPicSetListSize = 8;
-	public const uint StdVulkanVideoCodecH265EncodeSpecVersion = VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_0_9_9;
+	public const uint StdVulkanVideoCodecH265EncodeSpecVersion = 36873;
 	public const string StdVulkanVideoCodecH265EncodeExtensionName = "VK_STD_vulkan_video_codec_h265_encode";
 	public const uint KhrSurfaceSpecVersion = 25;
 	public const string KhrSurfaceExtensionName = "VK_KHR_surface";
