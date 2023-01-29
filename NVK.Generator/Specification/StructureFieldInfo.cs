@@ -46,6 +46,21 @@ internal class StructureFieldInfo
             ArrayLength = match.Value[1..^1];
     }
 
+    /// <summary>Constructs an instance.</summary>
+    /// <param name="parentStructure">The structure that this field belongs to.</param>
+    /// <param name="name">The name of the field.</param>
+    /// <param name="type">The type of the field.</param>
+    /// <param name="values">List of enumeration values that are valid for the structure type.</param>
+    /// <param name="arrayLength">The value specified in the fixed-length array.</param>
+    public StructureFieldInfo(StructureInfo parentStructure, string name, TypeInfo type, string[] values, string? arrayLength)
+    {
+        ParentStructure = parentStructure;
+        Name = name;
+        Type = type;
+        Values = values;
+        ArrayLength = arrayLength;
+    }
+
 
     /*********
     ** Public Methods

@@ -1,6 +1,7 @@
 // This file was generated, don't manually edit
 namespace Vulkan_1_0;
 
+#pragma warning disable CS0618 // Type or member is obsolete
 public static unsafe class VK
 {
 	public const float LodClampNone = 1000F;

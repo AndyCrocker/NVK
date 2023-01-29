@@ -123,6 +123,8 @@ internal class VulkanSpecification
             .Select(handleElement => new HandleInfo(handleElement)));
 
         Functions.AddRange(commandElements.Select(commandElement => new FunctionInfo(commandElement, this)));
+        foreach (var functionInfo in Functions)
+            functionInfo.PopulateParameters();
 
         ParseExtensions(extensionElements);
 
@@ -142,7 +144,7 @@ internal class VulkanSpecification
 
         foreach (var enumInfo in Enums) // Fields couldn't be populated at parsing time as they reference other declarations which may not have been parsed yet
             enumInfo.PopulateFields(Enums, enumDefinitions);
-        
+
         // remove all "_FlagBits" enums, all relevant data was moved over from them to the "_Flags" enums and type conversion has already been set up
         Enums.RemoveAll(enumInfo => Enums.Any(ei => (enumInfo.Alias ?? enumInfo.Name) == ei.Requires));
     }

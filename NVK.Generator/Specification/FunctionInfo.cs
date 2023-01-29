@@ -32,7 +32,7 @@ internal class FunctionInfo
     public TypeInfo ReturnType { get; }
 
     /// <summary>The parameters of the function.</summary>
-    public List<FunctionParameterInfo> Parameters { get; } = new();
+    public List<FunctionParameterInfo> Parameters { get; private set; } = new();
 
     /// <summary>The display string for <see cref="Name"/>.</summary>
     private string DisplayName => CalculateDisplayName(Name)!;
@@ -95,6 +95,28 @@ internal class FunctionInfo
     /*********
     ** Public Methods
     *********/
+    /// <summary>Populates the parameters of the function.</summary>
+    public void PopulateParameters()
+    {
+        if (Alias == null)
+            return;
+
+        var parameters = Specification.Functions.Single(functionInfo => functionInfo.Name == Alias).Parameters;
+
+        // aliased functions may have parameters that are also aliased types, so we just need to check each parameter type and replace it with a type that
+        // aliases that type, if one exists
+        foreach (var parameterInfo in parameters)
+        {
+            var typeName =
+                Specification.Structures.FirstOrDefault(sInfo => sInfo.Alias == parameterInfo.Type.Name)?.Name ??
+                Specification.Enums.FirstOrDefault(eInfo => eInfo.Alias == parameterInfo.Type.Name)?.Name ??
+                Specification.Handles.FirstOrDefault(hInfo => hInfo.Alias == parameterInfo.Type.Name)?.Name ??
+                parameterInfo.Type.Name;
+
+            Parameters.Add(new(parameterInfo.Name, new(typeName, parameterInfo.Type.PointerIndirection), ParameterModifier.None));
+        }
+    }
+
     /// <summary>Writes the function to a C# writer.</summary>
     /// <param name="writer">The writer to write the function to.</param>
     public void Write(CsWriter writer)
@@ -202,14 +224,10 @@ internal class FunctionInfo
     /// <returns>All the overloads that the function can have.</returns>
     private List<FunctionInfo> GenerateAllOverloads()
     {
-        var parameters = Parameters;
-        if (Alias != null)
-            parameters = Specification.Functions.Single(functionInfo => functionInfo.Name == Alias).Parameters;
-
         // get all the version each parameter can be
         var parameterVariations = new List<List<FunctionParameterInfo>>();
-        for (int i = 0; i < parameters.Count; i++)
-            parameterVariations.Add(GetParameterVariations(parameters[i], parameters));
+        for (int i = 0; i < Parameters.Count; i++)
+            parameterVariations.Add(GetParameterVariations(Parameters[i]));
 
         // get all parameter variations
         var parameterCombinations = GetParameterCombinations(parameterVariations);
@@ -219,7 +237,7 @@ internal class FunctionInfo
     /// <summary>Generates all varieties of a parameter.</summary>
     /// <param name="parameterInfo">The parameter to generate the variations of.</param>
     /// <returns>The variations that <paramref name="parameterInfo"/> can have, including <paramref name="parameterInfo"/> itself.</returns>
-    private List<FunctionParameterInfo> GetParameterVariations(FunctionParameterInfo parameterInfo, List<FunctionParameterInfo> parameterInfos)
+    private List<FunctionParameterInfo> GetParameterVariations(FunctionParameterInfo parameterInfo)
     {
         // ensure parameter can have multiple variations
         if (parameterInfo.Type.PointerIndirection == 0 || parameterInfo.Type.Name == "void")
@@ -229,12 +247,12 @@ internal class FunctionInfo
         if (parameterInfo.Name.EndsWith("Infos"))
             return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, isArray: true), ParameterModifier.None) };
 
-        var parameterIndex = parameterInfos.IndexOf(parameterInfo);
-        var previousParameter = parameterIndex >= 1 ? parameterInfos[parameterIndex - 1] : null;
+        var parameterIndex = Parameters.IndexOf(parameterInfo);
+        var previousParameter = parameterIndex >= 1 ? Parameters[parameterIndex - 1] : null;
         if ((DisplayName.StartsWith("Enumerate")                                                            // enumerate methods
                 || (DisplayName.StartsWith("Allocate") && DisplayName.EndsWith("s"))                        // certain allocate methods
                 || (DisplayName.StartsWith("Get") && (previousParameter?.Name.EndsWith("Count") ?? false))) // and certain get methods should all have a marshalled array
-            && parameterInfos.Last() == parameterInfo)                                                          // on the last parameter
+            && Parameters.Last() == parameterInfo)                                                          // on the last parameter
             return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name, isArray: true), ParameterModifier.InOut) };
 
         // check if parameter is a byte pointer (meaning it's actually a string)
@@ -246,7 +264,7 @@ internal class FunctionInfo
                 || DisplayName.StartsWith("Create")            // create methods
                 || DisplayName.StartsWith("Get")               // get methods
                 || DisplayName.StartsWith("AcquireNextImage")) // and 'AcquireNextImage(2)KHR' should all have outs
-            && parameterInfos.Last() == parameterInfo)             // on the last parameter
+            && Parameters.Last() == parameterInfo)             // on the last parameter
             return new() { new FunctionParameterInfo(parameterInfo.Name, new TypeInfo(parameterInfo.Type.Name), ParameterModifier.Out) };
 
         // check parameter pairs for converting pointers to arrays, an example of a pair we are are looking for is: 'uint submitCount, VkSubmitInfo* submits', in this case 'submits' should be an array

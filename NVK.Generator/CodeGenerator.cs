@@ -111,6 +111,7 @@ internal static class CodeGenerator
     {
         using var writer = CreateFileWriter("VK.gen.cs");
 
+        writer.WriteLine("#pragma warning disable CS0618 // Type or member is obsolete");
         writer.WriteLine("public static unsafe class VK");
         writer.WriteScope(() =>
         {

@@ -2785,13 +2785,6 @@ public unsafe struct VkFormatProperties2KHR
 	public void* Next;
 	public VkFormatProperties FormatProperties;
 }
-[Obsolete("Use VkImageFormatProperties2")]
-public unsafe struct VkImageFormatProperties2KHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkImageFormatProperties ImageFormatProperties;
-}
 [Obsolete("Use VkPhysicalDeviceImageFormatInfo2")]
 public unsafe struct VkPhysicalDeviceImageFormatInfo2KHR
 {
@@ -2802,6 +2795,13 @@ public unsafe struct VkPhysicalDeviceImageFormatInfo2KHR
 	public VkImageTiling Tiling;
 	public VkImageUsageFlags Usage;
 	public VkImageCreateFlags Flags;
+}
+[Obsolete("Use VkImageFormatProperties2")]
+public unsafe struct VkImageFormatProperties2KHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkImageFormatProperties ImageFormatProperties;
 }
 [Obsolete("Use VkQueueFamilyProperties2")]
 public unsafe struct VkQueueFamilyProperties2KHR
@@ -2817,13 +2817,6 @@ public unsafe struct VkPhysicalDeviceMemoryProperties2KHR
 	public void* Next;
 	public VkPhysicalDeviceMemoryProperties MemoryProperties;
 }
-[Obsolete("Use VkSparseImageFormatProperties2")]
-public unsafe struct VkSparseImageFormatProperties2KHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkSparseImageFormatProperties Properties;
-}
 [Obsolete("Use VkPhysicalDeviceSparseImageFormatInfo2")]
 public unsafe struct VkPhysicalDeviceSparseImageFormatInfo2KHR
 {
@@ -2834,6 +2827,13 @@ public unsafe struct VkPhysicalDeviceSparseImageFormatInfo2KHR
 	public VkSampleCountFlags Samples;
 	public VkImageUsageFlags Usage;
 	public VkImageTiling Tiling;
+}
+[Obsolete("Use VkSparseImageFormatProperties2")]
+public unsafe struct VkSparseImageFormatProperties2KHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkSparseImageFormatProperties Properties;
 }
 [Obsolete("Use VkMemoryAllocateFlagsInfo")]
 public unsafe struct VkMemoryAllocateFlagsInfoKHR
@@ -2970,6 +2970,22 @@ public unsafe struct VkDeviceGroupDeviceCreateInfoKHR
 	public uint PhysicalDeviceCount;
 	public VkPhysicalDevice* PhysicalDevices;
 }
+[Obsolete("Use VkPhysicalDeviceExternalBufferInfo")]
+public unsafe struct VkPhysicalDeviceExternalBufferInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBufferCreateFlags Flags;
+	public VkBufferUsageFlags Usage;
+	public VkExternalMemoryHandleTypeFlags HandleType;
+}
+[Obsolete("Use VkExternalBufferProperties")]
+public unsafe struct VkExternalBufferPropertiesKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkExternalMemoryProperties ExternalMemoryProperties;
+}
 [Obsolete("Use VkExternalMemoryProperties")]
 public unsafe struct VkExternalMemoryPropertiesKHR
 {
@@ -2986,22 +3002,6 @@ public unsafe struct VkPhysicalDeviceExternalImageFormatInfoKHR
 }
 [Obsolete("Use VkExternalImageFormatProperties")]
 public unsafe struct VkExternalImageFormatPropertiesKHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkExternalMemoryProperties ExternalMemoryProperties;
-}
-[Obsolete("Use VkPhysicalDeviceExternalBufferInfo")]
-public unsafe struct VkPhysicalDeviceExternalBufferInfoKHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkBufferCreateFlags Flags;
-	public VkBufferUsageFlags Usage;
-	public VkExternalMemoryHandleTypeFlags HandleType;
-}
-[Obsolete("Use VkExternalBufferProperties")]
-public unsafe struct VkExternalBufferPropertiesKHR
 {
 	public VkStructureType SType;
 	public void* Next;
@@ -3244,16 +3244,6 @@ public unsafe struct VkRectLayerKHR
 	public VkExtent2D Extent;
 	public uint Layer;
 }
-[Obsolete("Use VkDescriptorUpdateTemplateEntry")]
-public unsafe struct VkDescriptorUpdateTemplateEntryKHR
-{
-	public uint DestinationBinding;
-	public uint DestinationArrayElement;
-	public uint DescriptorCount;
-	public VkDescriptorType DescriptorType;
-	public nuint Offset;
-	public nuint Stride;
-}
 [Obsolete("Use VkDescriptorUpdateTemplateCreateInfo")]
 public unsafe struct VkDescriptorUpdateTemplateCreateInfoKHR
 {
@@ -3267,6 +3257,16 @@ public unsafe struct VkDescriptorUpdateTemplateCreateInfoKHR
 	public VkPipelineBindPoint PipelineBindPoint;
 	public VkPipelineLayout PipelineLayout;
 	public uint Set;
+}
+[Obsolete("Use VkDescriptorUpdateTemplateEntry")]
+public unsafe struct VkDescriptorUpdateTemplateEntryKHR
+{
+	public uint DestinationBinding;
+	public uint DestinationArrayElement;
+	public uint DescriptorCount;
+	public VkDescriptorType DescriptorType;
+	public nuint Offset;
+	public nuint Stride;
 }
 public unsafe struct VkViewportWScalingNV
 {
@@ -3485,6 +3485,19 @@ public unsafe struct VkRenderPassCreateInfo2KHR
 	public uint CorrelatedViewMaskCount;
 	public uint* CorrelatedViewMasks;
 }
+[Obsolete("Use VkSubpassBeginInfo")]
+public unsafe struct VkSubpassBeginInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkSubpassContents Contents;
+}
+[Obsolete("Use VkSubpassEndInfo")]
+public unsafe struct VkSubpassEndInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+}
 [Obsolete("Use VkAttachmentDescription2")]
 public unsafe struct VkAttachmentDescription2KHR
 {
@@ -3539,19 +3552,6 @@ public unsafe struct VkSubpassDependency2KHR
 	public VkAccessFlags DestinationAccessMask;
 	public VkDependencyFlags DependencyFlags;
 	public int ViewOffset;
-}
-[Obsolete("Use VkSubpassBeginInfo")]
-public unsafe struct VkSubpassBeginInfoKHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkSubpassContents Contents;
-}
-[Obsolete("Use VkSubpassEndInfo")]
-public unsafe struct VkSubpassEndInfoKHR
-{
-	public VkStructureType SType;
-	public void* Next;
 }
 public unsafe struct VkSharedPresentSurfaceCapabilitiesKHR
 {
@@ -4023,22 +4023,8 @@ public unsafe struct VkPhysicalDeviceSampleLocationsPropertiesEXT
 	public uint SampleLocationSubPixelBits;
 	public VkBool32 VariableSampleLocations;
 }
-[Obsolete("Use VkBufferMemoryRequirementsInfo2")]
-public unsafe struct VkBufferMemoryRequirementsInfo2KHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkBuffer Buffer;
-}
 [Obsolete("Use VkImageMemoryRequirementsInfo2")]
 public unsafe struct VkImageMemoryRequirementsInfo2KHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkImage Image;
-}
-[Obsolete("Use VkImageSparseMemoryRequirementsInfo2")]
-public unsafe struct VkImageSparseMemoryRequirementsInfo2KHR
 {
 	public VkStructureType SType;
 	public void* Next;
@@ -4050,6 +4036,20 @@ public unsafe struct VkMemoryRequirements2KHR
 	public VkStructureType SType;
 	public void* Next;
 	public VkMemoryRequirements MemoryRequirements;
+}
+[Obsolete("Use VkBufferMemoryRequirementsInfo2")]
+public unsafe struct VkBufferMemoryRequirementsInfo2KHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBuffer Buffer;
+}
+[Obsolete("Use VkImageSparseMemoryRequirementsInfo2")]
+public unsafe struct VkImageSparseMemoryRequirementsInfo2KHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkImage Image;
 }
 [Obsolete("Use VkSparseImageMemoryRequirements2")]
 public unsafe struct VkSparseImageMemoryRequirements2KHR
@@ -4810,6 +4810,13 @@ public unsafe struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV
 	public void* Next;
 	public VkBool32 RepresentativeFragmentTestEnable;
 }
+[Obsolete("Use VkDescriptorSetLayoutSupport")]
+public unsafe struct VkDescriptorSetLayoutSupportKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 Supported;
+}
 [Obsolete("Use VkPhysicalDeviceMaintenance3Properties")]
 public unsafe struct VkPhysicalDeviceMaintenance3PropertiesKHR
 {
@@ -4817,13 +4824,6 @@ public unsafe struct VkPhysicalDeviceMaintenance3PropertiesKHR
 	public void* Next;
 	public uint MaxPerSetDescriptors;
 	public VkDeviceSize MaxMemoryAllocationSize;
-}
-[Obsolete("Use VkDescriptorSetLayoutSupport")]
-public unsafe struct VkDescriptorSetLayoutSupportKHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkBool32 Supported;
 }
 public unsafe struct VkPhysicalDeviceImageViewImageFormatInfoEXT
 {
@@ -5104,6 +5104,24 @@ public unsafe struct VkQueueFamilyCheckpointPropertiesNV
 	public void* Next;
 	public VkPipelineStageFlags CheckpointExecutionStageMask;
 }
+[Obsolete("Use VkSemaphoreWaitInfo")]
+public unsafe struct VkSemaphoreWaitInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkSemaphoreWaitFlags Flags;
+	public uint SemaphoreCount;
+	public VkSemaphore* Semaphores;
+	public ulong* Values;
+}
+[Obsolete("Use VkSemaphoreSignalInfo")]
+public unsafe struct VkSemaphoreSignalInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkSemaphore Semaphore;
+	public ulong Value;
+}
 [Obsolete("Use VkPhysicalDeviceTimelineSemaphoreFeatures")]
 public unsafe struct VkPhysicalDeviceTimelineSemaphoreFeaturesKHR
 {
@@ -5135,24 +5153,6 @@ public unsafe struct VkTimelineSemaphoreSubmitInfoKHR
 	public ulong* WaitSemaphoreValues;
 	public uint SignalSemaphoreValueCount;
 	public ulong* SignalSemaphoreValues;
-}
-[Obsolete("Use VkSemaphoreWaitInfo")]
-public unsafe struct VkSemaphoreWaitInfoKHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkSemaphoreWaitFlags Flags;
-	public uint SemaphoreCount;
-	public VkSemaphore* Semaphores;
-	public ulong* Values;
-}
-[Obsolete("Use VkSemaphoreSignalInfo")]
-public unsafe struct VkSemaphoreSignalInfoKHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkSemaphore Semaphore;
-	public ulong Value;
 }
 public unsafe struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL
 {
@@ -5466,6 +5466,13 @@ public unsafe struct VkAttachmentDescriptionStencilLayoutKHR
 	public VkImageLayout StencilInitialLayout;
 	public VkImageLayout StencilFinalLayout;
 }
+[Obsolete("Use VkBufferDeviceAddressInfo")]
+public unsafe struct VkBufferDeviceAddressInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBuffer Buffer;
+}
 [Obsolete("Use VkPhysicalDeviceBufferDeviceAddressFeaturesEXT")]
 public unsafe struct VkPhysicalDeviceBufferAddressFeaturesEXT
 {
@@ -5641,6 +5648,13 @@ public unsafe struct VkHeadlessSurfaceCreateInfoEXT
 	public void* Next;
 	public VkHeadlessSurfaceCreateFlagsEXT Flags;
 }
+[Obsolete("Use VkDeviceMemoryOpaqueCaptureAddressInfo")]
+public unsafe struct VkDeviceMemoryOpaqueCaptureAddressInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkDeviceMemory Memory;
+}
 [Obsolete("Use VkPhysicalDeviceBufferDeviceAddressFeatures")]
 public unsafe struct VkPhysicalDeviceBufferDeviceAddressFeaturesKHR
 {
@@ -5649,13 +5663,6 @@ public unsafe struct VkPhysicalDeviceBufferDeviceAddressFeaturesKHR
 	public VkBool32 BufferDeviceAddress;
 	public VkBool32 BufferDeviceAddressCaptureReplay;
 	public VkBool32 BufferDeviceAddressMultiDevice;
-}
-[Obsolete("Use VkBufferDeviceAddressInfo")]
-public unsafe struct VkBufferDeviceAddressInfoKHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkBuffer Buffer;
 }
 [Obsolete("Use VkBufferOpaqueCaptureAddressCreateInfo")]
 public unsafe struct VkBufferOpaqueCaptureAddressCreateInfoKHR
@@ -5670,13 +5677,6 @@ public unsafe struct VkMemoryOpaqueCaptureAddressAllocateInfoKHR
 	public VkStructureType SType;
 	public void* Next;
 	public ulong OpaqueCaptureAddress;
-}
-[Obsolete("Use VkDeviceMemoryOpaqueCaptureAddressInfo")]
-public unsafe struct VkDeviceMemoryOpaqueCaptureAddressInfoKHR
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkDeviceMemory Memory;
 }
 public unsafe struct VkPhysicalDeviceLineRasterizationFeaturesEXT
 {
