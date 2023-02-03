@@ -133,7 +133,8 @@ internal class FunctionInfo
                 writer.WriteLine($"[Obsolete(\"Use {AliasDisplayName}\")]");
 
             writer.WriteLine($"public static {ReturnType} {DisplayName}({parametersString}) => {DisplayName}_{i}({calledParametersString});");
-            writer.WriteLine($"private static {CalculateDelegateSignature(overload)} {DisplayName}_{i};");
+            writer.WriteLine($"private delegate {ReturnType} {DisplayName}Delegate_{i}({parametersString});");
+            writer.WriteLine($"private static {DisplayName}Delegate_{i} {DisplayName}_{i};");
         }
     }
 
@@ -146,7 +147,7 @@ internal class FunctionInfo
 
         var overloads = GenerateAllOverloads();
         for (int i = 0; i < overloads.Count; i++)
-            writer.WriteLine($"{DisplayName}_{i} = ({CalculateDelegateSignature(overloads[i])}){functionPointerName};");
+            writer.WriteLine($"{DisplayName}_{i} = Marshal.GetDelegateForFunctionPointer<{DisplayName}Delegate_{i}>({functionPointerName});");
     }
 
     /// <summary>Writes the function pointer and delegates being assigned as an instance function to a C# writer.</summary>
@@ -154,11 +155,17 @@ internal class FunctionInfo
     public void WriteInstanceFunction(CsWriter writer)
     {
         var functionPointerName = DisplayName.FirstToLower();
-        writer.WriteLine($"var {functionPointerName} = GetInstanceProcedureAddress(instance, \"{Alias ?? Name}\");");
+        writer.WriteLine($"var {functionPointerName} = (nint)GetInstanceProcedureAddress(instance, \"{Alias ?? Name}\");");
 
         var overloads = GenerateAllOverloads();
-        for (int i = 0; i < overloads.Count; i++)
-            writer.WriteLine($"{DisplayName}_{i} = ({CalculateDelegateSignature(overloads[i])}){functionPointerName};");
+        {
+            writer.WriteLine($"if ({functionPointerName} != nint.Zero)");
+            writer.WriteScope(() =>
+            {
+                for (int i = 0; i < overloads.Count; i++)
+                    writer.WriteLine($"{DisplayName}_{i} = Marshal.GetDelegateForFunctionPointer<{DisplayName}Delegate_{i}>({functionPointerName});");
+            });
+        }
     }
 
     /// <summary>Calculates the display name of a function name.</summary>
@@ -213,12 +220,6 @@ internal class FunctionInfo
 
         return string.Join(", ", parameterStrings);
     }
-
-    /// <summary>Calculates the delegate signature.</summary>
-    /// <param name="functionInfo">The function to create the signature of.</param>
-    /// <returns>The delegate signature of the function.</returns>
-    private static string CalculateDelegateSignature(FunctionInfo functionInfo) =>
-        $"delegate* unmanaged[Cdecl]<{CalculateParameterString(functionInfo, false, true, true, false, true)}>";
 
     /// <summary>Generates all overloads for the function.</summary>
     /// <returns>All the overloads that the function can have.</returns>
