@@ -15,7 +15,7 @@ internal class WindowsVulkanLibrary : OSVulkanLibraryBase
     ** Protected Methods
     *********/
     /// <inheritdoc/>
-    protected override IntPtr LoadLibrary() => Kernel32.LoadLibrary("vulkan-1.dll");
+    protected override IntPtr LoadLibrary() => Kernel32.LoadLibraryA("vulkan-1.dll");
 
     /// <inheritdoc/>
     protected override void FreeLibrary() => Kernel32.FreeLibrary(Handle);
