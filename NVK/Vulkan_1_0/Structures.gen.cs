@@ -108,6 +108,13 @@ public unsafe struct VkExtent3D
 	public uint Width;
 	public uint Height;
 	public uint Depth;
+	public static VkExtent3D Zero => new();
+	public VkExtent3D(uint width, uint height, uint depth)
+	{
+		Width = width;
+		Height = height;
+		Depth = depth;
+	}
 }
 public unsafe struct VkPhysicalDeviceProperties
 {
@@ -444,12 +451,25 @@ public unsafe struct VkImageSubresource
 	public VkImageAspectFlags AspectMask;
 	public uint MipLevel;
 	public uint ArrayLayer;
+	public VkImageSubresource(VkImageAspectFlags aspectMask, uint mipLevel, uint arrayLayer)
+	{
+		AspectMask = aspectMask;
+		MipLevel = mipLevel;
+		ArrayLayer = arrayLayer;
+	}
 }
 public unsafe struct VkOffset3D
 {
 	public int X;
 	public int Y;
 	public int Z;
+	public static VkOffset3D Zero => new();
+	public VkOffset3D(int x, int y, int z)
+	{
+		X = x;
+		Y = y;
+		Z = z;
+	}
 }
 public unsafe struct VkFenceCreateInfo
 {
@@ -542,6 +562,14 @@ public unsafe struct VkComponentMapping
 	public VkComponentSwizzle G;
 	public VkComponentSwizzle B;
 	public VkComponentSwizzle A;
+	public static VkComponentMapping Identity => new(VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity);
+	public VkComponentMapping(VkComponentSwizzle r, VkComponentSwizzle g, VkComponentSwizzle b, VkComponentSwizzle a)
+	{
+		R = r;
+		G = g;
+		B = b;
+		A = a;
+	}
 }
 public unsafe struct VkImageSubresourceRange
 {
@@ -550,6 +578,14 @@ public unsafe struct VkImageSubresourceRange
 	public uint LevelCount;
 	public uint BaseArrayLayer;
 	public uint LayerCount;
+	public VkImageSubresourceRange(VkImageAspectFlags aspectMask, uint baseMipLevel, uint levelCount, uint baseArrayLayer, uint layerCount)
+	{
+		AspectMask = aspectMask;
+		BaseMipLevel = baseMipLevel;
+		LevelCount = levelCount;
+		BaseArrayLayer = baseArrayLayer;
+		LayerCount = layerCount;
+	}
 }
 public unsafe struct VkShaderModuleCreateInfo
 {
@@ -673,16 +709,33 @@ public unsafe struct VkRect2D
 {
 	public VkOffset2D Offset;
 	public VkExtent2D Extent;
+	public VkRect2D(VkOffset2D offset, VkExtent2D extent)
+	{
+		Offset = offset;
+		Extent = extent;
+	}
 }
 public unsafe struct VkOffset2D
 {
 	public int X;
 	public int Y;
+	public static VkOffset2D Zero => new();
+	public VkOffset2D(int x, int y)
+	{
+		X = x;
+		Y = y;
+	}
 }
 public unsafe struct VkExtent2D
 {
 	public uint Width;
 	public uint Height;
+	public static VkExtent2D Zero => new();
+	public VkExtent2D(uint width, uint height)
+	{
+		Width = width;
+		Height = height;
+	}
 }
 public unsafe struct VkPipelineRasterizationStateCreateInfo
 {
@@ -1006,6 +1059,13 @@ public unsafe struct VkImageSubresourceLayers
 	public uint MipLevel;
 	public uint BaseArrayLayer;
 	public uint LayerCount;
+	public VkImageSubresourceLayers(VkImageAspectFlags aspectMask, uint mipLevel, uint baseArrayLayer, uint layerCount)
+	{
+		AspectMask = aspectMask;
+		MipLevel = mipLevel;
+		BaseArrayLayer = baseArrayLayer;
+		LayerCount = layerCount;
+	}
 }
 public unsafe struct VkImageBlit
 {
@@ -1034,11 +1094,37 @@ public unsafe struct VkClearColorValue
 	public fixed int Int32[4];
 	[FieldOffset(0)]
 	public fixed uint Uint32[4];
+	public VkClearColorValue(float r, float g, float b, float a)
+	{
+		Float32[0] = r;
+		Float32[1] = g;
+		Float32[2] = b;
+		Float32[3] = a;
+	}
+	public VkClearColorValue(int r, int g, int b, int a)
+	{
+		Int32[0] = r;
+		Int32[1] = g;
+		Int32[2] = b;
+		Int32[3] = a;
+	}
+	public VkClearColorValue(uint r, uint g, uint b, uint a)
+	{
+		Uint32[0] = r;
+		Uint32[1] = g;
+		Uint32[2] = b;
+		Uint32[3] = a;
+	}
 }
 public unsafe struct VkClearDepthStencilValue
 {
 	public float Depth;
 	public uint Stencil;
+	public VkClearDepthStencilValue(float depth, uint stencil)
+	{
+		Depth = depth;
+		Stencil = stencil;
+	}
 }
 public unsafe struct VkClearAttachment
 {
@@ -1053,6 +1139,8 @@ public unsafe struct VkClearValue
 	public VkClearColorValue Color;
 	[FieldOffset(0)]
 	public VkClearDepthStencilValue DepthStencil;
+	public static implicit operator VkClearValue(VkClearColorValue colour) => new() { Color = colour };
+	public static implicit operator VkClearValue(VkClearDepthStencilValue depthStencil) => new() { DepthStencil = depthStencil };
 }
 public unsafe struct VkClearRect
 {

@@ -69,6 +69,54 @@ internal class StructureInfo
         {
             foreach (var fieldInfo in fieldInfos)
                 fieldInfo.Write(writer, specification);
+
+            var structuresWithConstructors = new[] { "VkOffset2D", "VkOffset3D", "VkExtent2D", "VkExtent3D", "VkRect2D", "VkComponentMapping", "VkImageSubresource", "VkImageSubresourceLayers", "VkImageSubresourceRange", "VkClearDepthStencilValue", "VkClearColorValue" };
+
+            if (Name.StartsWith("VkOffset") || Name.StartsWith("VkExtent"))
+                writer.WriteLine($"public static {Name} Zero => new();");
+            else if (Name == "VkComponentMapping")
+                writer.WriteLine("public static VkComponentMapping Identity => new(VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity, VkComponentSwizzle.Identity);");
+
+            // constructors
+            if (structuresWithConstructors.Contains(Name))
+            {
+                // special constructors
+                if (Name == "VkClearColorValue")
+                {
+                    var parameterTypes = new[] { "float", "int", "uint" };
+                    foreach (var parameterType in parameterTypes)
+                    {
+                        writer.WriteLine($"public VkClearColorValue({parameterType} r, {parameterType} g, {parameterType} b, {parameterType} a)");
+                        writer.WriteScope(() =>
+                        {
+                            var fieldName = parameterType.FirstToUpper() + "32";
+                            writer.WriteLine($"{fieldName}[0] = r;");
+                            writer.WriteLine($"{fieldName}[1] = g;");
+                            writer.WriteLine($"{fieldName}[2] = b;");
+                            writer.WriteLine($"{fieldName}[3] = a;");
+                        });
+                    }
+                }
+
+                // auto generated constructor
+                else
+                {
+                    var parametersString = string.Join(", ", Fields.Select(fieldInfo => $"{fieldInfo.Type} {fieldInfo.Name.FirstToLower()}"));
+                    writer.WriteLine($"public {Name}({parametersString})");
+                    writer.WriteScope(() =>
+                    {
+                        foreach (var fieldInfo in Fields)
+                            writer.WriteLine($"{fieldInfo.Name} = {fieldInfo.Name.FirstToLower()};");
+                    });
+                }
+            }
+
+            // operators
+            if (Name == "VkClearValue")
+            {
+                writer.WriteLine("public static implicit operator VkClearValue(VkClearColorValue colour) => new() { Color = colour };");
+                writer.WriteLine("public static implicit operator VkClearValue(VkClearDepthStencilValue depthStencil) => new() { DepthStencil = depthStencil };");
+            }
         });
     }
 }
