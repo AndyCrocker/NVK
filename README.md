@@ -2,7 +2,8 @@
 
 ### Usage
 NVK exposes all major Vulkan versions through namespaces, for example: `using Vulkan_1_0;`<br />
-All structures, handles, enums, constants, and functions are stored in the namespace.
+All structures, handles, enums, constants, and functions are stored in the namespace.<br />
+Non core Vulkan apis are ignored (Vulkan SC, for example)
 
 #### Naming
 - Structures and Handles are named exactly the same as defined in Vulkan.<br />
@@ -75,6 +76,14 @@ public static VkResult CreateInstance(VkInstanceCreateInfo* createInfo, VkAlloca
 public static VkResult CreateInstance(VkInstanceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance) {}
 public static VkResult CreateInstance(ref VkInstanceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkInstance instance) {}
 public static VkResult CreateInstance(ref VkInstanceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance) {}
+```
+Functions that return a `VkResult` also have overloads that returns `true` if the result is `VkResult.Success` and has an `out` parameter of the result.
+For example:
+```cs
+public static bool CreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance, out VkResult result) {}
+public static bool CreateInstance(VkInstanceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance, out VkResult result) {}
+public static bool CreateInstance(ref VkInstanceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkInstance instance, out VkResult result) {}
+public static bool CreateInstance(ref VkInstanceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance, out VkResult result) {}
 ```
 
 ### Updating
