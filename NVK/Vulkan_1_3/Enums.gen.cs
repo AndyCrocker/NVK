@@ -64,6 +64,7 @@ public enum VkResult
 	[Obsolete("Use VkResult.PipelineCompileRequired")]
 	ErrorPipelineCompileRequiredEXT = PipelineCompileRequired,
 	ErrorCompressionExhaustedEXT = -1000338000,
+	ErrorIncompatibleShaderBinaryEXT = 1000482000,
 }
 public enum VkStructureType
 {
@@ -526,6 +527,7 @@ public enum VkStructureType
 	AcquireProfilingLockInfoKHR = 1000116004,
 	PerformanceCounterKHR = 1000116005,
 	PerformanceCounterDescriptionKHR = 1000116006,
+	PerformanceQueryReservationInfoKHR = 1000116007,
 	[Obsolete("Use VkStructureType.PhysicalDevicePointClippingProperties")]
 	PhysicalDevicePointClippingPropertiesKHR = PhysicalDevicePointClippingProperties,
 	[Obsolete("Use VkStructureType.RenderPassInputAttachmentAspectCreateInfo")]
@@ -836,6 +838,18 @@ public enum VkStructureType
 	PipelineExecutableInfoKHR = 1000269003,
 	PipelineExecutableStatisticKHR = 1000269004,
 	PipelineExecutableInternalRepresentationKHR = 1000269005,
+	PhysicalDeviceHostImageCopyFeaturesEXT = 1000270000,
+	PhysicalDeviceHostImageCopyPropertiesEXT = 1000270001,
+	MemoryToImageCopyEXT = 1000270002,
+	ImageToMemoryCopyEXT = 1000270003,
+	CopyImageToMemoryInfoEXT = 1000270004,
+	CopyMemoryToImageInfoEXT = 1000270005,
+	HostImageLayoutTransitionInfoEXT = 1000270006,
+	CopyImageToImageInfoEXT = 1000270007,
+	SubresourceHostMemcpySizeEXT = 1000270008,
+	HostImageCopyDevicePerformanceQueryEXT = 1000270009,
+	MemoryMapInfoKHR = 1000271000,
+	MemoryUnmapInfoKHR = 1000271001,
 	PhysicalDeviceShaderAtomicFloat2FeaturesEXT = 1000273000,
 	SurfacePresentModeEXT = 1000274000,
 	SurfacePresentScalingCapabilitiesEXT = 1000274001,
@@ -867,6 +881,9 @@ public enum VkStructureType
 	PhysicalDeviceTexelBufferAlignmentPropertiesEXT = PhysicalDeviceTexelBufferAlignmentProperties,
 	CommandBufferInheritanceRenderPassTransformInfoQCOM = 1000282000,
 	RenderPassTransformBeginInfoQCOM = 1000282001,
+	PhysicalDeviceDepthBiasControlFeaturesEXT = 1000283000,
+	DepthBiasInfoEXT = 1000283001,
+	DepthBiasRepresentationInfoEXT = 1000283002,
 	PhysicalDeviceDeviceMemoryReportFeaturesEXT = 1000284000,
 	DeviceDeviceMemoryReportCreateInfoEXT = 1000284001,
 	DeviceMemoryReportCallbackDataEXT = 1000284002,
@@ -891,6 +908,7 @@ public enum VkStructureType
 	PhysicalDevicePipelineCreationCacheControlFeaturesEXT = PhysicalDevicePipelineCreationCacheControlFeatures,
 	PhysicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
 	DeviceDiagnosticsConfigCreateInfoNV = 1000300001,
+	QueryLowLatencySupportNV = 1000310000,
 	[Obsolete("Use VkStructureType.MemoryBarrier2")]
 	MemoryBarrier2KHR = MemoryBarrier2,
 	[Obsolete("Use VkStructureType.BufferMemoryBarrier2")]
@@ -970,8 +988,10 @@ public enum VkStructureType
 	ImageResolve2KHR = ImageResolve2,
 	PhysicalDeviceImageCompressionControlFeaturesEXT = 1000338000,
 	ImageCompressionControlEXT = 1000338001,
-	SubresourceLayout2EXT = 1000338002,
-	ImageSubresource2EXT = 1000338003,
+	[Obsolete("Use VkStructureType.SubresourceLayout2KHR")]
+	SubresourceLayout2EXT = SubresourceLayout2KHR,
+	[Obsolete("Use VkStructureType.ImageSubresource2KHR")]
+	ImageSubresource2EXT = ImageSubresource2KHR,
 	ImageCompressionPropertiesEXT = 1000338004,
 	PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT = 1000339000,
 	PhysicalDevice4444FormatsFeaturesEXT = 1000340000,
@@ -1023,6 +1043,8 @@ public enum VkStructureType
 	PhysicalDeviceMultiDrawFeaturesEXT = 1000392000,
 	PhysicalDeviceMultiDrawPropertiesEXT = 1000392001,
 	PhysicalDeviceImage2DViewOf3DFeaturesEXT = 1000393000,
+	PhysicalDeviceShaderTileImageFeaturesEXT = 1000395000,
+	PhysicalDeviceShaderTileImagePropertiesEXT = 1000395001,
 	MicromapBuildInfoEXT = 1000396000,
 	MicromapVersionInfoEXT = 1000396001,
 	CopyMicromapInfoEXT = 1000396002,
@@ -1046,6 +1068,9 @@ public enum VkStructureType
 	DeviceBufferMemoryRequirementsKHR = DeviceBufferMemoryRequirements,
 	[Obsolete("Use VkStructureType.DeviceImageMemoryRequirements")]
 	DeviceImageMemoryRequirementsKHR = DeviceImageMemoryRequirements,
+	PhysicalDeviceShaderCorePropertiesARM = 1000415000,
+	PhysicalDeviceImageSlicedViewOf3DFeaturesEXT = 1000418000,
+	ImageViewSlicedCreateInfoEXT = 1000418001,
 	PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE = 1000420000,
 	DescriptorSetBindingReferenceVALVE = 1000420001,
 	DescriptorSetLayoutHostMappingInfoVALVE = 1000420002,
@@ -1058,11 +1083,15 @@ public enum VkStructureType
 	PhysicalDeviceCopyMemoryIndirectPropertiesNV = 1000426001,
 	PhysicalDeviceMemoryDecompressionFeaturesNV = 1000427000,
 	PhysicalDeviceMemoryDecompressionPropertiesNV = 1000427001,
+	PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV = 1000428000,
+	ComputePipelineIndirectBufferInfoNV = 1000428001,
+	PipelineIndirectDeviceAddressInfoNV = 1000428002,
 	PhysicalDeviceLinearColorAttachmentFeaturesNV = 1000430000,
 	PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT = 1000437000,
 	PhysicalDeviceImageProcessingFeaturesQCOM = 1000440000,
 	PhysicalDeviceImageProcessingPropertiesQCOM = 1000440001,
 	ImageViewSampleWeightCreateInfoQCOM = 1000440002,
+	ExternalMemoryAcquireUnmodifiedEXT = 1000453000,
 	PhysicalDeviceExtendedDynamicState3FeaturesEXT = 1000455000,
 	PhysicalDeviceExtendedDynamicState3PropertiesEXT = 1000455001,
 	PhysicalDeviceSubpassMergeFeedbackFeaturesEXT = 1000458000,
@@ -1085,6 +1114,20 @@ public enum VkStructureType
 	OpticalFlowSessionCreatePrivateDataInfoNV = 1000464010,
 	PhysicalDeviceLegacyDitheringFeaturesEXT = 1000465000,
 	PhysicalDevicePipelineProtectedAccessFeaturesEXT = 1000466000,
+	PhysicalDeviceMaintenance5FeaturesKHR = 1000470000,
+	PhysicalDeviceMaintenance5PropertiesKHR = 1000470001,
+	RenderingAreaInfoKHR = 1000470003,
+	DeviceImageSubresourceInfoKHR = 1000470004,
+	SubresourceLayout2KHR = 1000470002,
+	ImageSubresource2KHR = 1000470003,
+	PipelineCreateFlags2CreateInfoKHR = 1000470005,
+	BufferUsageFlags2CreateInfoKHR = 1000470006,
+	PhysicalDeviceRayTracingPositionFetchFeaturesKHR = 1000481000,
+	PhysicalDeviceShaderObjectFeaturesEXT = 1000482000,
+	PhysicalDeviceShaderObjectPropertiesEXT = 1000482001,
+	ShaderCreateInfoEXT = 1000482002,
+	[Obsolete("Use VkStructureType.PipelineShaderStageRequiredSubgroupSizeCreateInfo")]
+	ShaderRequiredSubgroupSizeCreateInfoEXT = PipelineShaderStageRequiredSubgroupSizeCreateInfo,
 	PhysicalDeviceTilePropertiesFeaturesQCOM = 1000484000,
 	TilePropertiesQCOM = 1000484001,
 	PhysicalDeviceAmigoProfilingFeaturesSEC = 1000485000,
@@ -1097,6 +1140,23 @@ public enum VkStructureType
 	PhysicalDeviceShaderCoreBuiltinsFeaturesARM = 1000497000,
 	PhysicalDeviceShaderCoreBuiltinsPropertiesARM = 1000497001,
 	PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT = 1000498000,
+	PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT = 1000499000,
+	PhysicalDeviceCooperativeMatrixFeaturesKHR = 1000506000,
+	CooperativeMatrixPropertiesKHR = 1000506001,
+	PhysicalDeviceCooperativeMatrixPropertiesKHR = 1000506002,
+	PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM = 1000510000,
+	MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM = 1000510001,
+	PhysicalDeviceImageProcessing2FeaturesQCOM = 1000518000,
+	PhysicalDeviceImageProcessing2PropertiesQCOM = 1000518001,
+	SamplerBlockMatchWindowCreateInfoQCOM = 1000518002,
+	SamplerCubicWeightsCreateInfoQCOM = 1000519000,
+	PhysicalDeviceCubicWeightsFeaturesQCOM = 1000519001,
+	BlitImageCubicWeightsInfoQCOM = 1000519002,
+	PhysicalDeviceYCBCRDegammaFeaturesQCOM = 1000520000,
+	SamplerYCBCRConversionYCBCRDegammaCreateInfoQCOM = 1000520001,
+	PhysicalDeviceCubicClampFeaturesQCOM = 1000521000,
+	PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT = 1000524000,
+	PhysicalDeviceDescriptorPoolOverallocationFeaturesNV = 1000546000,
 }
 public enum VkPipelineCacheHeaderVersion
 {
@@ -1268,6 +1328,7 @@ public enum VkObjectType
 	PrivateDataSlotEXT = PrivateDataSlot,
 	MicromapEXT = 1000396000,
 	OpticalFlowSessionNV = 1000464000,
+	ShaderEXT = 1000482000,
 }
 public enum VkVendorId
 {
@@ -1277,6 +1338,7 @@ public enum VkVendorId
 	Codeplay = 0x10004,
 	MESA = 0x10005,
 	Pocl = 0x10006,
+	Mobileye = 0x10007,
 }
 [Flags]
 public enum VkInstanceCreateFlags
@@ -1653,6 +1715,8 @@ public enum VkFormat
 	[Obsolete("Use VkFormat.A4B4G4R4UNormPack16")]
 	A4B4G4R4UNormPack16EXT = A4B4G4R4UNormPack16,
 	R16G16S105NV = 1000464000,
+	A1B5G5R5UNormPack16KHR = 1000470000,
+	A8UNormKHR = 1000470001,
 }
 [Flags]
 public enum VkFormatFeatureFlags
@@ -1739,6 +1803,7 @@ public enum VkImageUsageFlags
 	ShadingRateImageNV = FragmentShadingRateAttachmentKHR,
 	FragmentDensityMapEXT = 1 << 9,
 	FragmentShadingRateAttachmentKHR = 1 << 8,
+	HostTransferEXT = 1 << 22,
 	AttachmentFeedbackLoopEXT = 1 << 19,
 	InvocationMaskHUAWEI = 1 << 18,
 	SampleWeightQCOM = 1 << 20,
@@ -2389,10 +2454,13 @@ public enum VkDynamicState
 	PrimitiveRestartEnable = 1000377004,
 	ViewportWScalingNV = 1000087000,
 	DiscardRectangleEXT = 1000099000,
+	DiscardRectangleEnableEXT = 1000099001,
+	DiscardRectangleModeEXT = 1000099002,
 	SampleLocationsEXT = 1000143000,
 	RayTracingPipelineStackSizeKHR = 1000347000,
 	ViewportShadingRatePaletteNV = 1000164004,
 	ViewportCoarseSampleOrderNV = 1000164006,
+	ExclusiveScissorEnableNV = 1000205000,
 	ExclusiveScissorNV = 1000205001,
 	FragmentShadingRateKHR = 1000226000,
 	LineStippleEXT = 1000259000,
@@ -2461,6 +2529,7 @@ public enum VkDynamicState
 	ShadingRateImageEnableNV = 1000455030,
 	RepresentativeFragmentTestEnableNV = 1000455031,
 	CoverageReductionModeNV = 1000455032,
+	AttachmentFeedbackLoopEnableEXT = 1000524000,
 }
 [Flags]
 public enum VkPipelineLayoutCreateFlags
@@ -2521,6 +2590,7 @@ public enum VkDescriptorSetLayoutCreateFlags
 	EmbeddedImmutableSamplersEXT = 1 << 5,
 	[Obsolete("Use VkDescriptorSetLayoutCreateFlags.HostOnlyPoolEXT")]
 	HostOnlyPoolVALVE = HostOnlyPoolEXT,
+	IndirectBindableNV = 1 << 7,
 	HostOnlyPoolEXT = 1 << 2,
 }
 public enum VkDescriptorType
@@ -2557,6 +2627,8 @@ public enum VkDescriptorPoolCreateFlags
 	[Obsolete("Use VkDescriptorPoolCreateFlags.HostOnlyEXT")]
 	HostOnlyVALVE = HostOnlyEXT,
 	HostOnlyEXT = 1 << 2,
+	AllowOverallocationSetsNV = 1 << 3,
+	AllowOverallocationPoolsNV = 1 << 4,
 }
 [Flags]
 public enum VkDescriptorPoolResetFlags
@@ -3027,6 +3099,7 @@ public enum VkSamplerReductionMode
 	MinEXT = Min,
 	[Obsolete("Use VkSamplerReductionMode.Max")]
 	MaxEXT = Max,
+	WeightedAverageRangeclampQCOM = 1000521000,
 }
 [Flags]
 public enum VkSemaphoreWaitFlags
@@ -3184,7 +3257,9 @@ public enum VkPipelineStageFlags2 : long
 	MeshShaderNV = MeshShaderEXT,
 	TaskShaderEXT = 1 << 19,
 	MeshShaderEXT = 1 << 20,
-	SubpassShadingHUAWEI = 1 << 39,
+	SubpassShaderHUAWEI = 1 << 39,
+	[Obsolete("Use VkPipelineStageFlags2.SubpassShaderHUAWEI")]
+	SubpassShadingHUAWEI = SubpassShaderHUAWEI,
 	InvocationMaskHUAWEI = 1 << 40,
 	AccelerationStructureCopyKHR = 1 << 28,
 	MicromapBuildEXT = 1 << 30,
@@ -3394,6 +3469,7 @@ public enum VkFormatFeatureFlags2 : long
 	AccelerationStructureVertexBufferKHR = 1 << 29,
 	FragmentDensityMapEXT = 1 << 24,
 	FragmentShadingRateAttachmentKHR = 1 << 30,
+	HostImageTransferEXT = 1 << 46,
 	LinearColorAttachmentNV = 1 << 38,
 	WeightImageQCOM = 1 << 34,
 	WeightSampledImageQCOM = 1 << 35,
@@ -3614,27 +3690,144 @@ public enum StdVideoEncodeH264SliceHeaderFlags
 {
 	DirectSpatialMvPred = 1 << 0,
 	NumRefIdxActiveOverride = 1 << 1,
-	NoOutputOfPriorPics = 1 << 2,
-	AdaptiveRefPicMarkingMode = 1 << 3,
-	NoPriorReferencesAvailable = 1 << 4,
+	Reserved0 = 1 << 2,
+	Reserved1 = 1 << 3,
+	Reserved2 = 1 << 4,
+	Reserved3 = 1 << 5,
+	Reserved4 = 1 << 6,
+	Reserved5 = 1 << 7,
+	Reserved6 = 1 << 8,
+	Reserved7 = 1 << 9,
+	Reserved8 = 1 << 10,
+	Reserved9 = 1 << 11,
+	Reserved10 = 1 << 12,
+	Reserved11 = 1 << 13,
+	Reserved12 = 1 << 14,
+	Reserved13 = 1 << 15,
+	Reserved14 = 1 << 16,
+	Reserved15 = 1 << 17,
+	Reserved16 = 1 << 18,
+	Reserved17 = 1 << 19,
+	Reserved18 = 1 << 20,
+	Reserved19 = 1 << 21,
+	Reserved20 = 1 << 22,
+	Reserved21 = 1 << 23,
+	Reserved22 = 1 << 24,
+	Reserved23 = 1 << 25,
+	Reserved24 = 1 << 26,
+	Reserved25 = 1 << 27,
+	Reserved26 = 1 << 28,
+	Reserved27 = 1 << 29,
+	Reserved28 = 1 << 30,
+	Reserved29 = 1 << 31,
 }
 [Flags]
 public enum StdVideoEncodeH264PictureInfoFlags
 {
-	Idr = 1 << 0,
+	IdrPic = 1 << 0,
 	IsReference = 1 << 1,
-	UsedForLongTermReference = 1 << 2,
+	NoOutputOfPriorPics = 1 << 2,
+	LongTermReference = 1 << 3,
+	AdaptiveRefPicMarkingMode = 1 << 4,
+	Reserved0 = 1 << 5,
+	Reserved1 = 1 << 6,
+	Reserved2 = 1 << 7,
+	Reserved3 = 1 << 8,
+	Reserved4 = 1 << 9,
+	Reserved5 = 1 << 10,
+	Reserved6 = 1 << 11,
+	Reserved7 = 1 << 12,
+	Reserved8 = 1 << 13,
+	Reserved9 = 1 << 14,
+	Reserved10 = 1 << 15,
+	Reserved11 = 1 << 16,
+	Reserved12 = 1 << 17,
+	Reserved13 = 1 << 18,
+	Reserved14 = 1 << 19,
+	Reserved15 = 1 << 20,
+	Reserved16 = 1 << 21,
+	Reserved17 = 1 << 22,
+	Reserved18 = 1 << 23,
+	Reserved19 = 1 << 24,
+	Reserved20 = 1 << 25,
+	Reserved21 = 1 << 26,
+	Reserved22 = 1 << 27,
+	Reserved23 = 1 << 28,
+	Reserved24 = 1 << 29,
+	Reserved25 = 1 << 30,
+	Reserved26 = 1 << 31,
 }
 [Flags]
 public enum StdVideoEncodeH264ReferenceInfoFlags
 {
 	UsedForLongTerm = 1 << 0,
+	Reserved0 = 1 << 1,
+	Reserved1 = 1 << 2,
+	Reserved2 = 1 << 3,
+	Reserved3 = 1 << 4,
+	Reserved4 = 1 << 5,
+	Reserved5 = 1 << 6,
+	Reserved6 = 1 << 7,
+	Reserved7 = 1 << 8,
+	Reserved8 = 1 << 9,
+	Reserved9 = 1 << 10,
+	Reserved10 = 1 << 11,
+	Reserved11 = 1 << 12,
+	Reserved12 = 1 << 13,
+	Reserved13 = 1 << 14,
+	Reserved14 = 1 << 15,
+	Reserved15 = 1 << 16,
+	Reserved16 = 1 << 17,
+	Reserved17 = 1 << 18,
+	Reserved18 = 1 << 19,
+	Reserved19 = 1 << 20,
+	Reserved20 = 1 << 21,
+	Reserved21 = 1 << 22,
+	Reserved22 = 1 << 23,
+	Reserved23 = 1 << 24,
+	Reserved24 = 1 << 25,
+	Reserved25 = 1 << 26,
+	Reserved26 = 1 << 27,
+	Reserved27 = 1 << 28,
+	Reserved28 = 1 << 29,
+	Reserved29 = 1 << 30,
+	Reserved30 = 1 << 31,
 }
 [Flags]
-public enum StdVideoEncodeH264RefMgmtFlags
+public enum StdVideoEncodeH264ReferenceListsInfoFlags
 {
 	RefPicListModificationL0 = 1 << 0,
 	RefPicListModificationL1 = 1 << 1,
+	Reserved0 = 1 << 2,
+	Reserved1 = 1 << 3,
+	Reserved2 = 1 << 4,
+	Reserved3 = 1 << 5,
+	Reserved4 = 1 << 6,
+	Reserved5 = 1 << 7,
+	Reserved6 = 1 << 8,
+	Reserved7 = 1 << 9,
+	Reserved8 = 1 << 10,
+	Reserved9 = 1 << 11,
+	Reserved10 = 1 << 12,
+	Reserved11 = 1 << 13,
+	Reserved12 = 1 << 14,
+	Reserved13 = 1 << 15,
+	Reserved14 = 1 << 16,
+	Reserved15 = 1 << 17,
+	Reserved16 = 1 << 18,
+	Reserved17 = 1 << 19,
+	Reserved18 = 1 << 20,
+	Reserved19 = 1 << 21,
+	Reserved20 = 1 << 22,
+	Reserved21 = 1 << 23,
+	Reserved22 = 1 << 24,
+	Reserved23 = 1 << 25,
+	Reserved24 = 1 << 26,
+	Reserved25 = 1 << 27,
+	Reserved26 = 1 << 28,
+	Reserved27 = 1 << 29,
+	Reserved28 = 1 << 30,
+	Reserved29 = 1 << 31,
 }
 public enum StdVideoH265ChromaFormatIdc
 {
@@ -3871,42 +4064,145 @@ public enum StdVideoDecodeH265ReferenceInfoFlags
 public enum StdVideoEncodeH265SliceSegmentHeaderFlags
 {
 	FirstSliceSegmentInPic = 1 << 0,
-	NoOutputOfPriorPics = 1 << 1,
-	DependentSliceSegment = 1 << 2,
-	PicOutput = 1 << 3,
-	ShortTermRefPicSetSps = 1 << 4,
-	SliceTemporalMvpEnable = 1 << 5,
-	SliceSaoLuma = 1 << 6,
-	SliceSaoChroma = 1 << 7,
-	NumRefIdxActiveOverride = 1 << 8,
-	MvdL1Zero = 1 << 9,
-	CabacInit = 1 << 10,
-	CuChromaQpOffsetEnabled = 1 << 11,
-	DeblockingFilterOverride = 1 << 12,
-	SliceDeblockingFilterDisabled = 1 << 13,
-	CollocatedFromL0 = 1 << 14,
-	SliceLoopFilterAcrossSlicesEnabled = 1 << 15,
+	DependentSliceSegment = 1 << 1,
+	SliceSaoLuma = 1 << 2,
+	SliceSaoChroma = 1 << 3,
+	NumRefIdxActiveOverride = 1 << 4,
+	MvdL1Zero = 1 << 5,
+	CabacInit = 1 << 6,
+	CuChromaQpOffsetEnabled = 1 << 7,
+	DeblockingFilterOverride = 1 << 8,
+	SliceDeblockingFilterDisabled = 1 << 9,
+	CollocatedFromL0 = 1 << 10,
+	SliceLoopFilterAcrossSlicesEnabled = 1 << 11,
+	Reserved0 = 1 << 12,
+	Reserved1 = 1 << 13,
+	Reserved2 = 1 << 14,
+	Reserved3 = 1 << 15,
+	Reserved4 = 1 << 16,
+	Reserved5 = 1 << 17,
+	Reserved6 = 1 << 18,
+	Reserved7 = 1 << 19,
+	Reserved8 = 1 << 20,
+	Reserved9 = 1 << 21,
+	Reserved10 = 1 << 22,
+	Reserved11 = 1 << 23,
+	Reserved12 = 1 << 24,
+	Reserved13 = 1 << 25,
+	Reserved14 = 1 << 26,
+	Reserved15 = 1 << 27,
+	Reserved16 = 1 << 28,
+	Reserved17 = 1 << 29,
+	Reserved18 = 1 << 30,
+	Reserved19 = 1 << 31,
 }
 [Flags]
-public enum StdVideoEncodeH265ReferenceModificationFlags
+public enum StdVideoEncodeH265ReferenceListsInfoFlags
 {
 	RefPicListModificationL0 = 1 << 0,
 	RefPicListModificationL1 = 1 << 1,
+	Reserved0 = 1 << 2,
+	Reserved1 = 1 << 3,
+	Reserved2 = 1 << 4,
+	Reserved3 = 1 << 5,
+	Reserved4 = 1 << 6,
+	Reserved5 = 1 << 7,
+	Reserved6 = 1 << 8,
+	Reserved7 = 1 << 9,
+	Reserved8 = 1 << 10,
+	Reserved9 = 1 << 11,
+	Reserved10 = 1 << 12,
+	Reserved11 = 1 << 13,
+	Reserved12 = 1 << 14,
+	Reserved13 = 1 << 15,
+	Reserved14 = 1 << 16,
+	Reserved15 = 1 << 17,
+	Reserved16 = 1 << 18,
+	Reserved17 = 1 << 19,
+	Reserved18 = 1 << 20,
+	Reserved19 = 1 << 21,
+	Reserved20 = 1 << 22,
+	Reserved21 = 1 << 23,
+	Reserved22 = 1 << 24,
+	Reserved23 = 1 << 25,
+	Reserved24 = 1 << 26,
+	Reserved25 = 1 << 27,
+	Reserved26 = 1 << 28,
+	Reserved27 = 1 << 29,
+	Reserved28 = 1 << 30,
+	Reserved29 = 1 << 31,
 }
 [Flags]
 public enum StdVideoEncodeH265PictureInfoFlags
 {
 	IsReference = 1 << 0,
 	IrapPic = 1 << 1,
-	LongTerm = 1 << 2,
+	UsedForLongTermReference = 1 << 2,
 	Discardable = 1 << 3,
 	CrossLayerBla = 1 << 4,
+	PicOutput = 1 << 5,
+	NoOutputOfPriorPics = 1 << 6,
+	ShortTermRefPicSetSps = 1 << 7,
+	SliceTemporalMvpEnabled = 1 << 8,
+	Reserved0 = 1 << 9,
+	Reserved1 = 1 << 10,
+	Reserved2 = 1 << 11,
+	Reserved3 = 1 << 12,
+	Reserved4 = 1 << 13,
+	Reserved5 = 1 << 14,
+	Reserved6 = 1 << 15,
+	Reserved7 = 1 << 16,
+	Reserved8 = 1 << 17,
+	Reserved9 = 1 << 18,
+	Reserved10 = 1 << 19,
+	Reserved11 = 1 << 20,
+	Reserved12 = 1 << 21,
+	Reserved13 = 1 << 22,
+	Reserved14 = 1 << 23,
+	Reserved15 = 1 << 24,
+	Reserved16 = 1 << 25,
+	Reserved17 = 1 << 26,
+	Reserved18 = 1 << 27,
+	Reserved19 = 1 << 28,
+	Reserved20 = 1 << 29,
+	Reserved21 = 1 << 30,
+	Reserved22 = 1 << 31,
 }
 [Flags]
 public enum StdVideoEncodeH265ReferenceInfoFlags
 {
 	UsedForLongTerm = 1 << 0,
 	UnusedForReference = 1 << 1,
+	Reserved0 = 1 << 2,
+	Reserved1 = 1 << 3,
+	Reserved2 = 1 << 4,
+	Reserved3 = 1 << 5,
+	Reserved4 = 1 << 6,
+	Reserved5 = 1 << 7,
+	Reserved6 = 1 << 8,
+	Reserved7 = 1 << 9,
+	Reserved8 = 1 << 10,
+	Reserved9 = 1 << 11,
+	Reserved10 = 1 << 12,
+	Reserved11 = 1 << 13,
+	Reserved12 = 1 << 14,
+	Reserved13 = 1 << 15,
+	Reserved14 = 1 << 16,
+	Reserved15 = 1 << 17,
+	Reserved16 = 1 << 18,
+	Reserved17 = 1 << 19,
+	Reserved18 = 1 << 20,
+	Reserved19 = 1 << 21,
+	Reserved20 = 1 << 22,
+	Reserved21 = 1 << 23,
+	Reserved22 = 1 << 24,
+	Reserved23 = 1 << 25,
+	Reserved24 = 1 << 26,
+	Reserved25 = 1 << 27,
+	Reserved26 = 1 << 28,
+	Reserved27 = 1 << 29,
+	Reserved28 = 1 << 30,
+	Reserved29 = 1 << 31,
 }
 [Flags]
 public enum VkSurfaceTransformFlagsKHR
@@ -4392,14 +4688,14 @@ public enum VkViewportCoordinateSwizzleNV
 public enum VkPipelineViewportSwizzleStateCreateFlagsNV
 {
 }
-[Flags]
-public enum VkPipelineDiscardRectangleStateCreateFlagsEXT
-{
-}
 public enum VkDiscardRectangleModeEXT
 {
 	InclusiveEXT = 0,
 	ExclusiveEXT = 1,
+}
+[Flags]
+public enum VkPipelineDiscardRectangleStateCreateFlagsEXT
+{
 }
 [Flags]
 public enum VkPipelineRasterizationConservativeStateCreateFlagsEXT
@@ -4556,6 +4852,7 @@ public enum VkSamplerReductionModeEXT
 	MinEXT = Min,
 	[Obsolete("Use VkSamplerReductionMode.Max")]
 	MaxEXT = Max,
+	WeightedAverageRangeclampQCOM = 1000521000,
 }
 public enum VkBlendOverlapEXT
 {
@@ -4606,6 +4903,7 @@ public enum VkBuildAccelerationStructureFlagsKHR
 	AllowOpacityMicromapUpdateEXT = 1 << 6,
 	AllowDisableOpacityMicromapsEXT = 1 << 7,
 	AllowOpacityMicromapDataUpdateEXT = 1 << 8,
+	AllowDataAccessKHR = 1 << 11,
 }
 public enum VkBuildAccelerationStructureModeKHR
 {
@@ -4824,6 +5122,7 @@ public enum VkBuildAccelerationStructureFlagsNV
 	AllowOpacityMicromapUpdateEXT = 1 << 6,
 	AllowDisableOpacityMicromapsEXT = 1 << 7,
 	AllowOpacityMicromapDataUpdateEXT = 1 << 8,
+	AllowDataAccessKHR = 1 << 11,
 }
 public enum VkAccelerationStructureMemoryRequirementsTypeNV
 {
@@ -5144,26 +5443,58 @@ public enum VkValidationFeatureDisableEXT
 	UniqueHandlesEXT = 6,
 	ShaderValidationCacheEXT = 7,
 }
+[Obsolete("Use VkComponentTypeKHR")]
 public enum VkComponentTypeNV
 {
-	Float16NV = 0,
-	Float32NV = 1,
-	Float64NV = 2,
-	SInt8NV = 3,
-	SInt16NV = 4,
-	SInt32NV = 5,
-	SInt64NV = 6,
-	UInt8NV = 7,
-	UInt16NV = 8,
-	UInt32NV = 9,
-	UInt64NV = 10,
+	Float16KHR = 0,
+	Float32KHR = 1,
+	Float64KHR = 2,
+	SInt8KHR = 3,
+	SInt16KHR = 4,
+	SInt32KHR = 5,
+	SInt64KHR = 6,
+	UInt8KHR = 7,
+	UInt16KHR = 8,
+	UInt32KHR = 9,
+	UInt64KHR = 10,
+	[Obsolete("Use VkComponentTypeKHR.Float16KHR")]
+	Float16NV = Float16KHR,
+	[Obsolete("Use VkComponentTypeKHR.Float32KHR")]
+	Float32NV = Float32KHR,
+	[Obsolete("Use VkComponentTypeKHR.Float64KHR")]
+	Float64NV = Float64KHR,
+	[Obsolete("Use VkComponentTypeKHR.SInt8KHR")]
+	SInt8NV = SInt8KHR,
+	[Obsolete("Use VkComponentTypeKHR.SInt16KHR")]
+	SInt16NV = SInt16KHR,
+	[Obsolete("Use VkComponentTypeKHR.SInt32KHR")]
+	SInt32NV = SInt32KHR,
+	[Obsolete("Use VkComponentTypeKHR.SInt64KHR")]
+	SInt64NV = SInt64KHR,
+	[Obsolete("Use VkComponentTypeKHR.UInt8KHR")]
+	UInt8NV = UInt8KHR,
+	[Obsolete("Use VkComponentTypeKHR.UInt16KHR")]
+	UInt16NV = UInt16KHR,
+	[Obsolete("Use VkComponentTypeKHR.UInt32KHR")]
+	UInt32NV = UInt32KHR,
+	[Obsolete("Use VkComponentTypeKHR.UInt64KHR")]
+	UInt64NV = UInt64KHR,
 }
+[Obsolete("Use VkScopeKHR")]
 public enum VkScopeNV
 {
-	DeviceNV = 1,
-	WorkgroupNV = 2,
-	SubgroupNV = 3,
-	QueueFamilyNV = 5,
+	DeviceKHR = 1,
+	WorkgroupKHR = 2,
+	SubgroupKHR = 3,
+	QueueFamilyKHR = 5,
+	[Obsolete("Use VkScopeKHR.DeviceKHR")]
+	DeviceNV = DeviceKHR,
+	[Obsolete("Use VkScopeKHR.WorkgroupKHR")]
+	WorkgroupNV = WorkgroupKHR,
+	[Obsolete("Use VkScopeKHR.SubgroupKHR")]
+	SubgroupNV = SubgroupKHR,
+	[Obsolete("Use VkScopeKHR.QueueFamilyKHR")]
+	QueueFamilyNV = QueueFamilyKHR,
 }
 public enum VkCoverageReductionModeNV
 {
@@ -5205,6 +5536,15 @@ public enum VkPipelineExecutableStatisticFormatKHR
 	Float64KHR = 3,
 }
 [Flags]
+public enum VkHostImageCopyFlagsEXT
+{
+	MemcpyEXT = 1 << 0,
+}
+[Flags]
+public enum VkMemoryUnmapFlagsKHR
+{
+}
+[Flags]
 public enum VkPresentScalingFlagsEXT
 {
 	OneToOneEXT = 1 << 0,
@@ -5236,11 +5576,19 @@ public enum VkIndirectCommandsTokenTypeNV
 	DrawNV = 6,
 	DrawTasksNV = 7,
 	DrawMeshTasksNV = 1000328000,
+	PipelineNV = 1000428003,
+	DispatchNV = 1000428004,
 }
 [Flags]
 public enum VkIndirectStateFlagsNV
 {
 	FrontfaceNV = 1 << 0,
+}
+public enum VkDepthBiasRepresentationEXT
+{
+	LeastRepresentableValueFormatEXT = 0,
+	LeastRepresentableValueForceUNormEXT = 1,
+	FloatEXT = 2,
 }
 [Flags]
 public enum VkDeviceMemoryReportFlagsEXT
@@ -5370,7 +5718,9 @@ public enum VkPipelineStageFlags2KHR : long
 	MeshShaderNV = MeshShaderEXT,
 	TaskShaderEXT = 1 << 19,
 	MeshShaderEXT = 1 << 20,
-	SubpassShadingHUAWEI = 1 << 39,
+	SubpassShaderHUAWEI = 1 << 39,
+	[Obsolete("Use VkPipelineStageFlags2.SubpassShaderHUAWEI")]
+	SubpassShadingHUAWEI = SubpassShaderHUAWEI,
 	InvocationMaskHUAWEI = 1 << 40,
 	AccelerationStructureCopyKHR = 1 << 28,
 	MicromapBuildEXT = 1 << 30,
@@ -5672,6 +6022,7 @@ public enum VkFormatFeatureFlags2KHR : long
 	AccelerationStructureVertexBufferKHR = 1 << 29,
 	FragmentDensityMapEXT = 1 << 24,
 	FragmentShadingRateAttachmentKHR = 1 << 30,
+	HostImageTransferEXT = 1 << 46,
 	LinearColorAttachmentNV = 1 << 38,
 	WeightImageQCOM = 1 << 34,
 	WeightSampledImageQCOM = 1 << 35,
@@ -5803,8 +6154,153 @@ public enum VkOpticalFlowExecuteFlagsNV
 {
 	DisableTemporalHintsNV = 1 << 0,
 }
+[Flags]
+public enum VkPipelineCreateFlags2KHR : long
+{
+	_2DisableOptimizationKHR = 1 << 0,
+	_2AllowDerivativesKHR = 1 << 1,
+	_2DerivativeKHR = 1 << 2,
+	_2ViewIndexFromDeviceIndexKHR = 1 << 3,
+	_2DispatchBaseKHR = 1 << 4,
+	_2DeferCompileNV = 1 << 5,
+	_2CaptureStatisticsKHR = 1 << 6,
+	_2CaptureInternalRepresentationsKHR = 1 << 7,
+	_2FailOnPipelineCompileRequiredKHR = 1 << 8,
+	_2EarlyReturnOnFailureKHR = 1 << 9,
+	_2LinkTimeOptimizationEXT = 1 << 10,
+	_2RetainLinkTimeOptimizationInfoEXT = 1 << 23,
+	_2LibraryKHR = 1 << 11,
+	_2RayTracingSkipTrianglesKHR = 1 << 12,
+	_2RayTracingSkipAABBsKHR = 1 << 13,
+	_2RayTracingNoNullAnyHitShadersKHR = 1 << 14,
+	_2RayTracingNoNullClosestHitShadersKHR = 1 << 15,
+	_2RayTracingNoNullMissShadersKHR = 1 << 16,
+	_2RayTracingNoNullIntersectionShadersKHR = 1 << 17,
+	_2RayTracingShaderGroupHandleCaptureReplayKHR = 1 << 19,
+	_2IndirectBindableNV = 1 << 18,
+	_2RayTracingAllowMotionNV = 1 << 20,
+	_2RenderingFragmentShadingRateAttachmentKHR = 1 << 21,
+	_2RenderingFragmentDensityMapAttachmentEXT = 1 << 22,
+	_2RayTracingOpacityMicromapEXT = 1 << 24,
+	_2ColorAttachmentFeedbackLoopEXT = 1 << 25,
+	_2DepthStencilAttachmentFeedbackLoopEXT = 1 << 26,
+	_2NoProtectedAccessEXT = 1 << 27,
+	_2ProtectedAccessOnlyEXT = 1 << 30,
+	_2RayTracingDisplacementMicromapNV = 1 << 28,
+	_2DescriptorBufferEXT = 1 << 29,
+}
+[Flags]
+public enum VkBufferUsageFlags2KHR : long
+{
+	_2TransferSourceKHR = 1 << 0,
+	_2TransferDestinationKHR = 1 << 1,
+	_2UniformTexelBufferKHR = 1 << 2,
+	_2StorageTexelBufferKHR = 1 << 3,
+	_2UniformBufferKHR = 1 << 4,
+	_2StorageBufferKHR = 1 << 5,
+	_2IndexBufferKHR = 1 << 6,
+	_2VertexBufferKHR = 1 << 7,
+	_2IndirectBufferKHR = 1 << 8,
+	_2ConditionalRenderingEXT = 1 << 9,
+	_2ShaderBindingTableKHR = 1 << 10,
+	[Obsolete("Use VkBufferUsageFlags2KHR._2ShaderBindingTableKHR")]
+	_2RayTracingNV = _2ShaderBindingTableKHR,
+	_2TransformFeedbackBufferEXT = 1 << 11,
+	_2TransformFeedbackCounterBufferEXT = 1 << 12,
+	_2VideoDecodeSourceKHR = 1 << 13,
+	_2VideoDecodeDestinationKHR = 1 << 14,
+	_2VideoEncodeDestinationKHR = 1 << 15,
+	_2VideoEncodeSourceKHR = 1 << 16,
+	_2ShaderDeviceAddressKHR = 1 << 17,
+	_2AccelerationStructureBuildInputReadOnlyKHR = 1 << 19,
+	_2AccelerationStructureStorageKHR = 1 << 20,
+	_2SamplerDescriptorBufferEXT = 1 << 21,
+	_2ResourceDescriptorBufferEXT = 1 << 22,
+	_2PushDescriptorsDescriptorBufferEXT = 1 << 26,
+	_2MicromapBuildInputReadOnlyEXT = 1 << 23,
+	_2MicromapStorageEXT = 1 << 24,
+}
+[Flags]
+public enum VkShaderCreateFlagsEXT
+{
+	LinkStageEXT = 1 << 0,
+	AllowVaryingSubgroupSizeEXT = 1 << 1,
+	RequireFullSubgroupsEXT = 1 << 2,
+	NoTaskShaderEXT = 1 << 3,
+	DispatchBaseEXT = 1 << 4,
+	FragmentShadingRateAttachmentEXT = 1 << 5,
+	FragmentDensityMapAttachmentEXT = 1 << 6,
+}
+public enum VkShaderCodeTypeEXT
+{
+	BinaryEXT = 0,
+	SpirvEXT = 1,
+}
 public enum VkRayTracingInvocationReorderModeNV
 {
 	NoneNV = 0,
 	ReorderNV = 1,
+}
+public enum VkComponentTypeKHR
+{
+	Float16KHR = 0,
+	Float32KHR = 1,
+	Float64KHR = 2,
+	SInt8KHR = 3,
+	SInt16KHR = 4,
+	SInt32KHR = 5,
+	SInt64KHR = 6,
+	UInt8KHR = 7,
+	UInt16KHR = 8,
+	UInt32KHR = 9,
+	UInt64KHR = 10,
+	[Obsolete("Use VkComponentTypeKHR.Float16KHR")]
+	Float16NV = Float16KHR,
+	[Obsolete("Use VkComponentTypeKHR.Float32KHR")]
+	Float32NV = Float32KHR,
+	[Obsolete("Use VkComponentTypeKHR.Float64KHR")]
+	Float64NV = Float64KHR,
+	[Obsolete("Use VkComponentTypeKHR.SInt8KHR")]
+	SInt8NV = SInt8KHR,
+	[Obsolete("Use VkComponentTypeKHR.SInt16KHR")]
+	SInt16NV = SInt16KHR,
+	[Obsolete("Use VkComponentTypeKHR.SInt32KHR")]
+	SInt32NV = SInt32KHR,
+	[Obsolete("Use VkComponentTypeKHR.SInt64KHR")]
+	SInt64NV = SInt64KHR,
+	[Obsolete("Use VkComponentTypeKHR.UInt8KHR")]
+	UInt8NV = UInt8KHR,
+	[Obsolete("Use VkComponentTypeKHR.UInt16KHR")]
+	UInt16NV = UInt16KHR,
+	[Obsolete("Use VkComponentTypeKHR.UInt32KHR")]
+	UInt32NV = UInt32KHR,
+	[Obsolete("Use VkComponentTypeKHR.UInt64KHR")]
+	UInt64NV = UInt64KHR,
+}
+public enum VkScopeKHR
+{
+	DeviceKHR = 1,
+	WorkgroupKHR = 2,
+	SubgroupKHR = 3,
+	QueueFamilyKHR = 5,
+	[Obsolete("Use VkScopeKHR.DeviceKHR")]
+	DeviceNV = DeviceKHR,
+	[Obsolete("Use VkScopeKHR.WorkgroupKHR")]
+	WorkgroupNV = WorkgroupKHR,
+	[Obsolete("Use VkScopeKHR.SubgroupKHR")]
+	SubgroupNV = SubgroupKHR,
+	[Obsolete("Use VkScopeKHR.QueueFamilyKHR")]
+	QueueFamilyNV = QueueFamilyKHR,
+}
+public enum VkBlockMatchWindowCompareModeQCOM
+{
+	MinQCOM = 0,
+	MaxQCOM = 1,
+}
+public enum VkCubicFilterWeightsQCOM
+{
+	CatmullRomQCOM = 0,
+	ZeroTangentCardinalQCOM = 1,
+	BSplineQCOM = 2,
+	MitchellNetravaliQCOM = 3,
 }

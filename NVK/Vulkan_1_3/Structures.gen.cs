@@ -2986,20 +2986,25 @@ public unsafe struct StdVideoEncodeH264RefListModEntry
 }
 public unsafe struct StdVideoEncodeH264RefPicMarkingEntry
 {
-	public StdVideoH264MemMgmtControlOp Operation;
+	public StdVideoH264MemMgmtControlOp MemoryManagementControlOperation;
 	public ushort DifferenceOfPicNumsMinus1;
 	public ushort LongTermPicNum;
 	public ushort LongTermFrameIdx;
 	public ushort MaxLongTermFrameIdxPlus1;
 }
-public unsafe struct StdVideoEncodeH264RefMemMgmtCtrlOperations
+public unsafe struct StdVideoEncodeH264ReferenceListsInfo
 {
-	public StdVideoEncodeH264RefMgmtFlags Flags;
+	public StdVideoEncodeH264ReferenceListsInfoFlags Flags;
+	public byte NumRefIdxL0ActiveMinus1;
+	public byte NumRefIdxL1ActiveMinus1;
+	public fixed byte RefPicList0[(int)VK.VideoH264MaxNumListRef];
+	public fixed byte RefPicList1[(int)VK.VideoH264MaxNumListRef];
 	public byte RefList0ModOpCount;
-	public StdVideoEncodeH264RefListModEntry* RefList0ModOperations;
 	public byte RefList1ModOpCount;
-	public StdVideoEncodeH264RefListModEntry* RefList1ModOperations;
 	public byte RefPicMarkingOpCount;
+	public fixed byte Reserved1[7];
+	public StdVideoEncodeH264RefListModEntry* RefList0ModOperations;
+	public StdVideoEncodeH264RefListModEntry* RefList1ModOperations;
 	public StdVideoEncodeH264RefPicMarkingEntry* RefPicMarkingOperations;
 }
 public unsafe struct StdVideoEncodeH264PictureInfo
@@ -3007,30 +3012,35 @@ public unsafe struct StdVideoEncodeH264PictureInfo
 	public StdVideoEncodeH264PictureInfoFlags Flags;
 	public byte SeqParameterSetId;
 	public byte PicParameterSetId;
-	public StdVideoH264PictureType PictureType;
+	public ushort IdrPicId;
+	public StdVideoH264PictureType PrimaryPicType;
 	public uint FrameNum;
 	public int PicOrderCnt;
+	public byte TemporalId;
+	public fixed byte Reserved1[3];
+	public StdVideoEncodeH264ReferenceListsInfo* RefLists;
 }
 public unsafe struct StdVideoEncodeH264ReferenceInfo
 {
 	public StdVideoEncodeH264ReferenceInfoFlags Flags;
+	public StdVideoH264PictureType PrimaryPicType;
 	public uint FrameNum;
 	public int PicOrderCnt;
 	public ushort LongTermPicNum;
 	public ushort LongTermFrameIdx;
+	public byte TemporalId;
 }
 public unsafe struct StdVideoEncodeH264SliceHeader
 {
 	public StdVideoEncodeH264SliceHeaderFlags Flags;
 	public uint FirstMbInSlice;
 	public StdVideoH264SliceType SliceType;
-	public ushort IdrPicId;
-	public byte NumRefIdxL0ActiveMinus1;
-	public byte NumRefIdxL1ActiveMinus1;
-	public StdVideoH264CabacInitIdc CabacInitIdc;
-	public StdVideoH264DisableDeblockingFilterIdc DisableDeblockingFilterIdc;
 	public sbyte SliceAlphaC0OffsetDiv2;
 	public sbyte SliceBetaOffsetDiv2;
+	public sbyte SliceQpDelta;
+	public byte Reserved1;
+	public StdVideoH264CabacInitIdc CabacInitIdc;
+	public StdVideoH264DisableDeblockingFilterIdc DisableDeblockingFilterIdc;
 	public StdVideoEncodeH264WeightTable* WeightTable;
 }
 public unsafe struct StdVideoH265DecPicBufMgr
@@ -3065,6 +3075,12 @@ public unsafe struct StdVideoH265HrdParameters
 	public StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersNal;
 	public StdVideoH265SubLayerHrdParameters* SubLayerHrdParametersVcl;
 }
+public unsafe struct StdVideoH265ProfileTierLevel
+{
+	public StdVideoH265ProfileTierLevelFlags Flags;
+	public StdVideoH265ProfileIdc GeneralProfileIdc;
+	public StdVideoH265LevelIdc GeneralLevelIdc;
+}
 public unsafe struct StdVideoH265VideoParameterSet
 {
 	public StdVideoH265VpsFlags Flags;
@@ -3079,12 +3095,6 @@ public unsafe struct StdVideoH265VideoParameterSet
 	public StdVideoH265DecPicBufMgr* DecPicBufMgr;
 	public StdVideoH265HrdParameters* HrdParameters;
 	public StdVideoH265ProfileTierLevel* ProfileTierLevel;
-}
-public unsafe struct StdVideoH265ProfileTierLevel
-{
-	public StdVideoH265ProfileTierLevelFlags Flags;
-	public StdVideoH265ProfileIdc GeneralProfileIdc;
-	public StdVideoH265LevelIdc GeneralLevelIdc;
 }
 public unsafe struct StdVideoH265ScalingLists
 {
@@ -3128,6 +3138,28 @@ public unsafe struct StdVideoH265PredictorPaletteEntries
 {
 	public fixed ushort PredictorPaletteEntries[384];
 }
+public unsafe struct StdVideoH265ShortTermRefPicSet
+{
+	public StdVideoH265ShortTermRefPicSetFlags Flags;
+	public uint DeltaIdxMinus1;
+	public ushort UseDeltaFlag;
+	public ushort AbsDeltaRpsMinus1;
+	public ushort UsedByCurrPicFlag;
+	public ushort UsedByCurrPicS0Flag;
+	public ushort UsedByCurrPicS1Flag;
+	public ushort Reserved1;
+	public byte Reserved2;
+	public byte Reserved3;
+	public byte NumNegativePics;
+	public byte NumPositivePics;
+	public fixed ushort DeltaPocS0Minus1[(int)VK.VideoH265MaxDpbSize];
+	public fixed ushort DeltaPocS1Minus1[(int)VK.VideoH265MaxDpbSize];
+}
+public unsafe struct StdVideoH265LongTermRefPicsSps
+{
+	public uint UsedByCurrPicLtSpsFlag;
+	public fixed uint LtRefPicPocLsbSps[(int)VK.VideoH265MaxLongTermRefPicsSps];
+}
 public unsafe struct StdVideoH265SequenceParameterSet
 {
 	public StdVideoH265SpsFlags Flags;
@@ -3169,28 +3201,6 @@ public unsafe struct StdVideoH265SequenceParameterSet
 	public StdVideoH265LongTermRefPicsSps* LongTermRefPicsSps;
 	public StdVideoH265SequenceParameterSetVui* SequenceParameterSetVui;
 	public StdVideoH265PredictorPaletteEntries* PredictorPaletteEntries;
-}
-public unsafe struct StdVideoH265ShortTermRefPicSet
-{
-	public StdVideoH265ShortTermRefPicSetFlags Flags;
-	public uint DeltaIdxMinus1;
-	public ushort UseDeltaFlag;
-	public ushort AbsDeltaRpsMinus1;
-	public ushort UsedByCurrPicFlag;
-	public ushort UsedByCurrPicS0Flag;
-	public ushort UsedByCurrPicS1Flag;
-	public ushort Reserved1;
-	public byte Reserved2;
-	public byte Reserved3;
-	public byte NumNegativePics;
-	public byte NumPositivePics;
-	public fixed ushort DeltaPocS0Minus1[(int)VK.VideoH265MaxDpbSize];
-	public fixed ushort DeltaPocS1Minus1[(int)VK.VideoH265MaxDpbSize];
-}
-public unsafe struct StdVideoH265LongTermRefPicsSps
-{
-	public uint UsedByCurrPicLtSpsFlag;
-	public fixed uint LtRefPicPocLsbSps[(int)VK.VideoH265MaxLongTermRefPicsSps];
 }
 public unsafe struct StdVideoH265PictureParameterSet
 {
@@ -3276,10 +3286,7 @@ public unsafe struct StdVideoEncodeH265SliceSegmentHeader
 	public StdVideoEncodeH265SliceSegmentHeaderFlags Flags;
 	public StdVideoH265SliceType SliceType;
 	public uint SliceSegmentAddress;
-	public byte ShortTermRefPicSetIdx;
 	public byte CollocatedRefIdx;
-	public byte NumRefIdxL0ActiveMinus1;
-	public byte NumRefIdxL1ActiveMinus1;
 	public byte MaxNumMergeCand;
 	public sbyte SliceCbQpOffset;
 	public sbyte SliceCrQpOffset;
@@ -3288,11 +3295,21 @@ public unsafe struct StdVideoEncodeH265SliceSegmentHeader
 	public sbyte SliceActYQpOffset;
 	public sbyte SliceActCbQpOffset;
 	public sbyte SliceActCrQpOffset;
-	public StdVideoH265ShortTermRefPicSet* ShortTermRefPicSet;
-	public StdVideoEncodeH265SliceSegmentLongTermRefPics* LongTermRefPics;
+	public sbyte SliceQpDelta;
+	public ushort Reserved1;
 	public StdVideoEncodeH265WeightTable* WeightTable;
 }
-public unsafe struct StdVideoEncodeH265SliceSegmentLongTermRefPics
+public unsafe struct StdVideoEncodeH265ReferenceListsInfo
+{
+	public StdVideoEncodeH265ReferenceListsInfoFlags Flags;
+	public byte NumRefIdxL0ActiveMinus1;
+	public byte NumRefIdxL1ActiveMinus1;
+	public fixed byte RefPicList0[(int)VK.VideoH265MaxNumListRef];
+	public fixed byte RefPicList1[(int)VK.VideoH265MaxNumListRef];
+	public fixed byte ListEntryL0[(int)VK.VideoH265MaxNumListRef];
+	public fixed byte ListEntryL1[(int)VK.VideoH265MaxNumListRef];
+}
+public unsafe struct StdVideoEncodeH265LongTermRefPics
 {
 	public byte NumLongTermSps;
 	public byte NumLongTermPics;
@@ -3302,27 +3319,25 @@ public unsafe struct StdVideoEncodeH265SliceSegmentLongTermRefPics
 	public fixed byte DeltaPocMsbPresentFlag[(int)VK.VideoH265MaxDeltaPoc];
 	public fixed byte DeltaPocMsbCycleLt[(int)VK.VideoH265MaxDeltaPoc];
 }
-public unsafe struct StdVideoEncodeH265ReferenceModifications
-{
-	public StdVideoEncodeH265ReferenceModificationFlags Flags;
-	public byte ReferenceList0ModificationsCount;
-	public byte* ReferenceList0Modifications;
-	public byte ReferenceList1ModificationsCount;
-	public byte* ReferenceList1Modifications;
-}
 public unsafe struct StdVideoEncodeH265PictureInfo
 {
 	public StdVideoEncodeH265PictureInfoFlags Flags;
-	public StdVideoH265PictureType PictureType;
+	public StdVideoH265PictureType PicType;
 	public byte SpsVideoParameterSetId;
 	public byte PpsSeqParameterSetId;
 	public byte PpsPicParameterSetId;
+	public byte ShortTermRefPicSetIdx;
 	public int PicOrderCntVal;
 	public byte TemporalId;
+	public fixed byte Reserved1[7];
+	public StdVideoEncodeH265ReferenceListsInfo* RefLists;
+	public StdVideoH265ShortTermRefPicSet* ShortTermRefPicSet;
+	public StdVideoEncodeH265LongTermRefPics* LongTermRefPics;
 }
 public unsafe struct StdVideoEncodeH265ReferenceInfo
 {
 	public StdVideoEncodeH265ReferenceInfoFlags Flags;
+	public StdVideoH265PictureType PicType;
 	public int PicOrderCntVal;
 	public byte TemporalId;
 }
@@ -5021,6 +5036,12 @@ public unsafe struct VkPerformanceQuerySubmitInfoKHR
 	public VkStructureType SType;
 	public void* Next;
 	public uint CounterPassIndex;
+}
+public unsafe struct VkPerformanceQueryReservationInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public uint MaxPerformanceQueriesPerPool;
 }
 [Obsolete("Use VkPhysicalDevicePointClippingProperties")]
 public unsafe struct VkPhysicalDevicePointClippingPropertiesKHR
@@ -7223,6 +7244,129 @@ public unsafe struct VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR
 	public void* Next;
 	public VkBool32 PipelineExecutableInfo;
 }
+public unsafe struct VkCopyMemoryToImageInfoEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkHostImageCopyFlagsEXT Flags;
+	public VkImage DestinationImage;
+	public VkImageLayout DestinationImageLayout;
+	public uint RegionCount;
+	public VkMemoryToImageCopyEXT* Regions;
+}
+public unsafe struct VkMemoryToImageCopyEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public void* HostPointer;
+	public uint MemoryRowLength;
+	public uint MemoryImageHeight;
+	public VkImageSubresourceLayers ImageSubresource;
+	public VkOffset3D ImageOffset;
+	public VkExtent3D ImageExtent;
+}
+public unsafe struct VkCopyImageToMemoryInfoEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkHostImageCopyFlagsEXT Flags;
+	public VkImage SourceImage;
+	public VkImageLayout SourceImageLayout;
+	public uint RegionCount;
+	public VkImageToMemoryCopyEXT* Regions;
+}
+public unsafe struct VkImageToMemoryCopyEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public void* HostPointer;
+	public uint MemoryRowLength;
+	public uint MemoryImageHeight;
+	public VkImageSubresourceLayers ImageSubresource;
+	public VkOffset3D ImageOffset;
+	public VkExtent3D ImageExtent;
+}
+public unsafe struct VkCopyImageToImageInfoEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkHostImageCopyFlagsEXT Flags;
+	public VkImage SourceImage;
+	public VkImageLayout SourceImageLayout;
+	public VkImage DestinationImage;
+	public VkImageLayout DestinationImageLayout;
+	public uint RegionCount;
+	public VkImageCopy2* Regions;
+}
+public unsafe struct VkHostImageLayoutTransitionInfoEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkImage Image;
+	public VkImageLayout OldLayout;
+	public VkImageLayout NewLayout;
+	public VkImageSubresourceRange SubresourceRange;
+}
+[Obsolete("Use VkImageSubresource2KHR")]
+public unsafe struct VkImageSubresource2EXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkImageSubresource ImageSubresource;
+}
+[Obsolete("Use VkSubresourceLayout2KHR")]
+public unsafe struct VkSubresourceLayout2EXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkSubresourceLayout SubresourceLayout;
+}
+public unsafe struct VkPhysicalDeviceHostImageCopyFeaturesEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 HostImageCopy;
+}
+public unsafe struct VkPhysicalDeviceHostImageCopyPropertiesEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public uint CopySourceLayoutCount;
+	public VkImageLayout* CopySourceLayouts;
+	public uint CopyDestinationLayoutCount;
+	public VkImageLayout* CopyDestinationLayouts;
+	public fixed byte OptimalTilingLayoutUUID[(int)VK.UuidSize];
+	public VkBool32 IdenticalMemoryTypeRequirements;
+}
+public unsafe struct VkSubresourceHostMemcpySizeEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkDeviceSize Size;
+}
+public unsafe struct VkHostImageCopyDevicePerformanceQueryEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 OptimalDeviceAccess;
+	public VkBool32 IdenticalMemoryLayout;
+}
+public unsafe struct VkMemoryMapInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkMemoryMapFlags Flags;
+	public VkDeviceMemory Memory;
+	public VkDeviceSize Offset;
+	public VkDeviceSize Size;
+}
+public unsafe struct VkMemoryUnmapInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkMemoryUnmapFlagsKHR Flags;
+	public VkDeviceMemory Memory;
+}
 public unsafe struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT
 {
 	public VkStructureType SType;
@@ -7518,6 +7662,30 @@ public unsafe struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM
 	public VkSurfaceTransformFlagsKHR Transform;
 	public VkRect2D RenderArea;
 }
+public unsafe struct VkDepthBiasInfoEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public float DepthBiasConstantFactor;
+	public float DepthBiasClamp;
+	public float DepthBiasSlopeFactor;
+}
+public unsafe struct VkPhysicalDeviceDepthBiasControlFeaturesEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 DepthBiasControl;
+	public VkBool32 LeastRepresentableValueForceUnormRepresentation;
+	public VkBool32 FloatRepresentation;
+	public VkBool32 DepthBiasExact;
+}
+public unsafe struct VkDepthBiasRepresentationInfoEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkDepthBiasRepresentationEXT DepthBiasRepresentation;
+	public VkBool32 DepthBiasExact;
+}
 public unsafe struct VkPhysicalDeviceDeviceMemoryReportFeaturesEXT
 {
 	public VkStructureType SType;
@@ -7649,6 +7817,12 @@ public unsafe struct VkDeviceDiagnosticsConfigCreateInfoNV
 	public VkStructureType SType;
 	public void* Next;
 	public VkDeviceDiagnosticsConfigFlagsNV Flags;
+}
+public unsafe struct VkQueryLowLatencySupportNV
+{
+	public VkStructureType SType;
+	public void* Next;
+	public void* QueriedLowLatencyData;
 }
 [Obsolete("Use VkDependencyInfo")]
 public unsafe struct VkDependencyInfoKHR
@@ -8261,18 +8435,6 @@ public unsafe struct VkImageResolve2KHR
 	public VkOffset3D DestinationOffset;
 	public VkExtent3D Extent;
 }
-public unsafe struct VkImageSubresource2EXT
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkImageSubresource ImageSubresource;
-}
-public unsafe struct VkSubresourceLayout2EXT
-{
-	public VkStructureType SType;
-	public void* Next;
-	public VkSubresourceLayout SubresourceLayout;
-}
 public unsafe struct VkPhysicalDeviceImageCompressionControlFeaturesEXT
 {
 	public VkStructureType SType;
@@ -8354,6 +8516,8 @@ public unsafe struct VkDeviceFaultVendorBinaryHeaderVersionOneEXT
 	public uint ApplicationNameOffset;
 	public uint ApplicationVersion;
 	public uint EngineNameOffset;
+	public uint EngineVersion;
+	public uint ApiVersion;
 }
 [Obsolete("Use VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT")]
 public unsafe struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM
@@ -8670,6 +8834,22 @@ public unsafe struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT
 	public VkBool32 Image2DViewOf3D;
 	public VkBool32 Sampler2DViewOf3D;
 }
+public unsafe struct VkPhysicalDeviceShaderTileImageFeaturesEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 ShaderTileImageColorReadAccess;
+	public VkBool32 ShaderTileImageDepthReadAccess;
+	public VkBool32 ShaderTileImageStencilReadAccess;
+}
+public unsafe struct VkPhysicalDeviceShaderTileImagePropertiesEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 ShaderTileImageCoherentReadAccelerated;
+	public VkBool32 ShaderTileImageReadSampleFromPixelRateInvocation;
+	public VkBool32 ShaderTileImageReadFromHelperInvocation;
+}
 public unsafe struct VkMicromapCreateInfoEXT
 {
 	public VkStructureType SType;
@@ -8789,6 +8969,7 @@ public unsafe struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI
 	public fixed uint MaxWorkGroupCount[3];
 	public fixed uint MaxWorkGroupSize[3];
 	public uint MaxOutputClusterCount;
+	public VkDeviceSize IndirectBufferOffsetAlignment;
 }
 public unsafe struct VkPhysicalDeviceBorderColorSwizzleFeaturesEXT
 {
@@ -8838,6 +9019,27 @@ public unsafe struct VkPhysicalDeviceMaintenance4PropertiesKHR
 	public VkStructureType SType;
 	public void* Next;
 	public VkDeviceSize MaxBufferSize;
+}
+public unsafe struct VkPhysicalDeviceShaderCorePropertiesARM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public uint PixelRate;
+	public uint TexelRate;
+	public uint FmaRate;
+}
+public unsafe struct VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 ImageSlicedViewOf3D;
+}
+public unsafe struct VkImageViewSlicedCreateInfoEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public uint SliceOffset;
+	public uint SliceCount;
 }
 public unsafe struct VkDescriptorSetBindingReferenceVALVE
 {
@@ -8938,6 +9140,33 @@ public unsafe struct VkPhysicalDeviceMemoryDecompressionPropertiesNV
 	public VkMemoryDecompressionMethodFlagsNV DecompressionMethods;
 	public ulong MaxDecompressionIndirectCount;
 }
+public unsafe struct VkPipelineIndirectDeviceAddressInfoNV
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkPipelineBindPoint PipelineBindPoint;
+	public VkPipeline Pipeline;
+}
+public unsafe struct VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 DeviceGeneratedCompute;
+	public VkBool32 DeviceGeneratedComputePipelines;
+	public VkBool32 DeviceGeneratedComputeCaptureReplay;
+}
+public unsafe struct VkComputePipelineIndirectBufferInfoNV
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkDeviceAddress DeviceAddress;
+	public VkDeviceSize Size;
+	public VkDeviceAddress PipelineDeviceAddressCaptureReplay;
+}
+public unsafe struct VkBindPipelineIndirectCommandNV
+{
+	public VkDeviceAddress PipelineAddress;
+}
 public unsafe struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV
 {
 	public VkStructureType SType;
@@ -8974,6 +9203,12 @@ public unsafe struct VkPhysicalDeviceImageProcessingPropertiesQCOM
 	public VkExtent2D MaxWeightFilterDimension;
 	public VkExtent2D MaxBlockMatchRegion;
 	public VkExtent2D MaxBoxFilterBlockSize;
+}
+public unsafe struct VkExternalMemoryAcquireUnmodifiedEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 AcquireUnmodifiedMemory;
 }
 public unsafe struct VkColorBlendEquationEXT
 {
@@ -9193,6 +9428,107 @@ public unsafe struct VkPhysicalDevicePipelineProtectedAccessFeaturesEXT
 	public void* Next;
 	public VkBool32 PipelineProtectedAccess;
 }
+public unsafe struct VkRenderingAreaInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public uint ViewMask;
+	public uint ColorAttachmentCount;
+	public VkFormat* ColorAttachmentFormats;
+	public VkFormat DepthAttachmentFormat;
+	public VkFormat StencilAttachmentFormat;
+}
+public unsafe struct VkDeviceImageSubresourceInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkImageCreateInfo* CreateInfo;
+	public VkImageSubresource2KHR* Subresource;
+}
+public unsafe struct VkImageSubresource2KHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkImageSubresource ImageSubresource;
+}
+public unsafe struct VkSubresourceLayout2KHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkSubresourceLayout SubresourceLayout;
+}
+public unsafe struct VkPhysicalDeviceMaintenance5FeaturesKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 Maintenance5;
+}
+public unsafe struct VkPhysicalDeviceMaintenance5PropertiesKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 EarlyFragmentMultisampleCoverageAfterSampleCounting;
+	public VkBool32 EarlyFragmentSampleMaskTestBeforeSampleCounting;
+	public VkBool32 DepthStencilSwizzleOneSupport;
+	public VkBool32 PolygonModePointSize;
+	public VkBool32 NonStrictSinglePixelWideLinesUseParallelogram;
+	public VkBool32 NonStrictWideLinesUseParallelogram;
+}
+public unsafe struct VkPipelineCreateFlags2CreateInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkPipelineCreateFlags2KHR Flags;
+}
+public unsafe struct VkBufferUsageFlags2CreateInfoKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBufferUsageFlags2KHR Usage;
+}
+public unsafe struct VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 RayTracingPositionFetch;
+}
+public unsafe struct VkShaderCreateInfoEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkShaderCreateFlagsEXT Flags;
+	public VkShaderStageFlags Stage;
+	public VkShaderStageFlags NextStage;
+	public VkShaderCodeTypeEXT CodeType;
+	public nuint CodeSize;
+	public void* Code;
+	public byte* Name;
+	public uint SetLayoutCount;
+	public VkDescriptorSetLayout* SetLayouts;
+	public uint PushConstantRangeCount;
+	public VkPushConstantRange* PushConstantRanges;
+	public VkSpecializationInfo* SpecializationInfo;
+}
+public unsafe struct VkPhysicalDeviceShaderObjectFeaturesEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 ShaderObject;
+}
+public unsafe struct VkPhysicalDeviceShaderObjectPropertiesEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public fixed byte ShaderBinaryUUID[(int)VK.UuidSize];
+	public uint ShaderBinaryVersion;
+}
+[Obsolete("Use VkPipelineShaderStageRequiredSubgroupSizeCreateInfo")]
+public unsafe struct VkShaderRequiredSubgroupSizeCreateInfoEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public uint RequiredSubgroupSize;
+}
 public unsafe struct VkTilePropertiesQCOM
 {
 	public VkStructureType SType;
@@ -9275,4 +9611,118 @@ public unsafe struct VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT
 	public VkStructureType SType;
 	public void* Next;
 	public VkBool32 PipelineLibraryGroupHandles;
+}
+public unsafe struct VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 DynamicRenderingUnusedAttachments;
+}
+public unsafe struct VkCooperativeMatrixPropertiesKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public uint MSize;
+	public uint NSize;
+	public uint KSize;
+	public VkComponentTypeKHR AType;
+	public VkComponentTypeKHR BType;
+	public VkComponentTypeKHR CType;
+	public VkComponentTypeKHR ResultType;
+	public VkBool32 SaturatingAccumulation;
+	public VkScopeKHR Scope;
+}
+public unsafe struct VkPhysicalDeviceCooperativeMatrixFeaturesKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 CooperativeMatrix;
+	public VkBool32 CooperativeMatrixRobustBufferAccess;
+}
+public unsafe struct VkPhysicalDeviceCooperativeMatrixPropertiesKHR
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkShaderStageFlags CooperativeMatrixSupportedStages;
+}
+public unsafe struct VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 MultiviewPerViewRenderAreas;
+}
+public unsafe struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public uint PerViewRenderAreaCount;
+	public VkRect2D* PerViewRenderAreas;
+}
+public unsafe struct VkPhysicalDeviceImageProcessing2FeaturesQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 TextureBlockMatch2;
+}
+public unsafe struct VkPhysicalDeviceImageProcessing2PropertiesQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkExtent2D MaxBlockMatchWindow;
+}
+public unsafe struct VkSamplerBlockMatchWindowCreateInfoQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkExtent2D WindowExtent;
+	public VkBlockMatchWindowCompareModeQCOM WindowCompareMode;
+}
+public unsafe struct VkPhysicalDeviceCubicWeightsFeaturesQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 SelectableCubicWeights;
+}
+public unsafe struct VkSamplerCubicWeightsCreateInfoQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkCubicFilterWeightsQCOM CubicWeights;
+}
+public unsafe struct VkBlitImageCubicWeightsInfoQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkCubicFilterWeightsQCOM CubicWeights;
+}
+public unsafe struct VkPhysicalDeviceYcbcrDegammaFeaturesQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 YcbcrDegamma;
+}
+public unsafe struct VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 EnableYDegamma;
+	public VkBool32 EnableCbCrDegamma;
+}
+public unsafe struct VkPhysicalDeviceCubicClampFeaturesQCOM
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 CubicRangeClamp;
+}
+public unsafe struct VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 AttachmentFeedbackLoopDynamicState;
+}
+public unsafe struct VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV
+{
+	public VkStructureType SType;
+	public void* Next;
+	public VkBool32 DescriptorPoolOverallocation;
 }

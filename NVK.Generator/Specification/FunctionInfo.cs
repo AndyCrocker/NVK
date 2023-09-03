@@ -73,6 +73,7 @@ internal class FunctionInfo
         Name = protoElement.Element("name")!.Value;
         ReturnType = new(protoElement.Element("type")!.Value);
         Parameters = element.Elements("param")
+            .WhereVulkanInApi()
             .Select(parameterElement => new FunctionParameterInfo(parameterElement)).ToList();
     }
 

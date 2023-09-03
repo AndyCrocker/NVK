@@ -42,6 +42,7 @@ internal class StructureInfo
         StructExtends = element.Attribute("structextends")?.Value.Split(',') ?? Array.Empty<string>();
         AllowDuplicate = element.HasAttribute("allowduplicate", "true");
         Fields = element.Elements("member")
+            .WhereVulkanInApi()
             .Select(structFieldElement => new StructureFieldInfo(this, structFieldElement)).ToList();
     }
 

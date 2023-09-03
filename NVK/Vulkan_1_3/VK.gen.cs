@@ -31,10 +31,11 @@ public static unsafe class VK
 	public const uint VideoH264ScalingList8x8NumElements = 64;
 	public const uint VideoH264MaxNumListRef = 32;
 	public const uint VideoH264MaxChromaPlanes = 2;
+	public const float VideoH264NoReferencePicture = 0xFF;
 	public const uint StdVulkanVideoCodecH264DecodeSpecVersion = 4194304;
 	public const string StdVulkanVideoCodecH264DecodeExtensionName = "VK_STD_vulkan_video_codec_h264_decode";
 	public const uint VideoDecodeH264FieldOrderCountListSize = 2;
-	public const uint StdVulkanVideoCodecH264EncodeSpecVersion = 36872;
+	public const uint StdVulkanVideoCodecH264EncodeSpecVersion = 36875;
 	public const string StdVulkanVideoCodecH264EncodeExtensionName = "VK_STD_vulkan_video_codec_h264_encode";
 	public const uint VideoH265CpbCntListSize = 32;
 	public const uint VideoH265SublayersListSize = 7;
@@ -58,10 +59,11 @@ public static unsafe class VK
 	public const uint VideoH265MaxLongTermRefPicsSps = 32;
 	public const uint VideoH265MaxLongTermPics = 16;
 	public const uint VideoH265MaxDeltaPoc = 48;
+	public const float VideoH265NoReferencePicture = 0xFF;
 	public const uint StdVulkanVideoCodecH265DecodeSpecVersion = 4194304;
 	public const string StdVulkanVideoCodecH265DecodeExtensionName = "VK_STD_vulkan_video_codec_h265_decode";
 	public const uint VideoDecodeH265RefPicSetListSize = 8;
-	public const uint StdVulkanVideoCodecH265EncodeSpecVersion = 36873;
+	public const uint StdVulkanVideoCodecH265EncodeSpecVersion = 36876;
 	public const string StdVulkanVideoCodecH265EncodeExtensionName = "VK_STD_vulkan_video_codec_h265_encode";
 	public const uint KhrSurfaceSpecVersion = 25;
 	public const string KhrSurfaceExtensionName = "VK_KHR_surface";
@@ -223,7 +225,7 @@ public static unsafe class VK
 	public const string NvxMultiviewPerViewAttributesExtensionName = "VK_NVX_multiview_per_view_attributes";
 	public const uint NvViewportSwizzleSpecVersion = 1;
 	public const string NvViewportSwizzleExtensionName = "VK_NV_viewport_swizzle";
-	public const uint ExtDiscardRectanglesSpecVersion = 1;
+	public const uint ExtDiscardRectanglesSpecVersion = 2;
 	public const string ExtDiscardRectanglesExtensionName = "VK_EXT_discard_rectangles";
 	public const uint ExtConservativeRasterizationSpecVersion = 1;
 	public const string ExtConservativeRasterizationExtensionName = "VK_EXT_conservative_rasterization";
@@ -392,7 +394,7 @@ public static unsafe class VK
 	public const string NvFragmentShaderBarycentricExtensionName = "VK_NV_fragment_shader_barycentric";
 	public const uint NvShaderImageFootprintSpecVersion = 2;
 	public const string NvShaderImageFootprintExtensionName = "VK_NV_shader_image_footprint";
-	public const uint NvScissorExclusiveSpecVersion = 1;
+	public const uint NvScissorExclusiveSpecVersion = 2;
 	public const string NvScissorExclusiveExtensionName = "VK_NV_scissor_exclusive";
 	public const uint NvDeviceDiagnosticCheckpointsSpecVersion = 2;
 	public const string NvDeviceDiagnosticCheckpointsExtensionName = "VK_NV_device_diagnostic_checkpoints";
@@ -482,6 +484,10 @@ public static unsafe class VK
 	public const string KhrDeferredHostOperationsExtensionName = "VK_KHR_deferred_host_operations";
 	public const uint KhrPipelineExecutablePropertiesSpecVersion = 1;
 	public const string KhrPipelineExecutablePropertiesExtensionName = "VK_KHR_pipeline_executable_properties";
+	public const uint ExtHostImageCopySpecVersion = 1;
+	public const string ExtHostImageCopyExtensionName = "VK_EXT_host_image_copy";
+	public const uint KhrMapMemory2SpecVersion = 1;
+	public const string KhrMapMemory2ExtensionName = "VK_KHR_map_memory2";
 	public const uint ExtShaderAtomicFloat2SpecVersion = 1;
 	public const string ExtShaderAtomicFloat2ExtensionName = "VK_EXT_shader_atomic_float2";
 	public const uint ExtSurfaceMaintenance1SpecVersion = 1;
@@ -500,6 +506,8 @@ public static unsafe class VK
 	public const string ExtTexelBufferAlignmentExtensionName = "VK_EXT_texel_buffer_alignment";
 	public const uint QcomRenderPassTransformSpecVersion = 3;
 	public const string QcomRenderPassTransformExtensionName = "VK_QCOM_render_pass_transform";
+	public const uint ExtDepthBiasControlSpecVersion = 1;
+	public const string ExtDepthBiasControlExtensionName = "VK_EXT_depth_bias_control";
 	public const uint ExtDeviceMemoryReportSpecVersion = 2;
 	public const string ExtDeviceMemoryReportExtensionName = "VK_EXT_device_memory_report";
 	public const uint ExtAcquireDrmDisplaySpecVersion = 1;
@@ -526,6 +534,8 @@ public static unsafe class VK
 	public const string NvDeviceDiagnosticsConfigExtensionName = "VK_NV_device_diagnostics_config";
 	public const uint QcomRenderPassStoreOpsSpecVersion = 2;
 	public const string QcomRenderPassStoreOpsExtensionName = "VK_QCOM_render_pass_store_ops";
+	public const uint NvLowLatencySpecVersion = 1;
+	public const string NvLowLatencyExtensionName = "VK_NV_low_latency";
 	public const uint KhrSynchronization2SpecVersion = 1;
 	public const string KhrSynchronization2ExtensionName = "VK_KHR_synchronization2";
 	public const uint ExtDescriptorBufferSpecVersion = 1;
@@ -564,7 +574,7 @@ public static unsafe class VK
 	public const string ExtAttachmentFeedbackLoopLayoutExtensionName = "VK_EXT_attachment_feedback_loop_layout";
 	public const uint Ext4444FormatsSpecVersion = 1;
 	public const string Ext4444FormatsExtensionName = "VK_EXT_4444_formats";
-	public const uint ExtDeviceFaultSpecVersion = 1;
+	public const uint ExtDeviceFaultSpecVersion = 2;
 	public const string ExtDeviceFaultExtensionName = "VK_EXT_device_fault";
 	public const uint ArmRasterizationOrderAttachmentAccessSpecVersion = 1;
 	public const string ArmRasterizationOrderAttachmentAccessExtensionName = "VK_ARM_rasterization_order_attachment_access";
@@ -586,7 +596,7 @@ public static unsafe class VK
 	public const string ExtPrimitiveTopologyListRestartExtensionName = "VK_EXT_primitive_topology_list_restart";
 	public const uint KhrFormatFeatureFlags2SpecVersion = 2;
 	public const string KhrFormatFeatureFlags2ExtensionName = "VK_KHR_format_feature_flags2";
-	public const uint HuaweiSubpassShadingSpecVersion = 2;
+	public const uint HuaweiSubpassShadingSpecVersion = 3;
 	public const string HuaweiSubpassShadingExtensionName = "VK_HUAWEI_subpass_shading";
 	public const uint HuaweiInvocationMaskSpecVersion = 1;
 	public const string HuaweiInvocationMaskExtensionName = "VK_HUAWEI_invocation_mask";
@@ -616,11 +626,13 @@ public static unsafe class VK
 	public const string ExtImage2dViewOf3dExtensionName = "VK_EXT_image_2d_view_of_3d";
 	public const uint KhrPortabilityEnumerationSpecVersion = 1;
 	public const string KhrPortabilityEnumerationExtensionName = "VK_KHR_portability_enumeration";
+	public const uint ExtShaderTileImageSpecVersion = 1;
+	public const string ExtShaderTileImageExtensionName = "VK_EXT_shader_tile_image";
 	public const uint ExtOpacityMicromapSpecVersion = 2;
 	public const string ExtOpacityMicromapExtensionName = "VK_EXT_opacity_micromap";
 	public const uint ExtLoadStoreOpNoneSpecVersion = 1;
 	public const string ExtLoadStoreOpNoneExtensionName = "VK_EXT_load_store_op_none";
-	public const uint HuaweiClusterCullingShaderSpecVersion = 1;
+	public const uint HuaweiClusterCullingShaderSpecVersion = 2;
 	public const string HuaweiClusterCullingShaderExtensionName = "VK_HUAWEI_cluster_culling_shader";
 	public const uint ExtBorderColorSwizzleSpecVersion = 1;
 	public const string ExtBorderColorSwizzleExtensionName = "VK_EXT_border_color_swizzle";
@@ -628,6 +640,11 @@ public static unsafe class VK
 	public const string ExtPageableDeviceLocalMemoryExtensionName = "VK_EXT_pageable_device_local_memory";
 	public const uint KhrMaintenance4SpecVersion = 2;
 	public const string KhrMaintenance4ExtensionName = "VK_KHR_maintenance4";
+	public const uint ArmShaderCorePropertiesSpecVersion = 1;
+	public const string ArmShaderCorePropertiesExtensionName = "VK_ARM_shader_core_properties";
+	public const uint Remaining3dSlicesExt = ~0U;
+	public const uint ExtImageSlicedViewOf3dSpecVersion = 1;
+	public const string ExtImageSlicedViewOf3dExtensionName = "VK_EXT_image_sliced_view_of_3d";
 	public const uint ValveDescriptorSetHostMappingSpecVersion = 1;
 	public const string ValveDescriptorSetHostMappingExtensionName = "VK_VALVE_descriptor_set_host_mapping";
 	public const uint ExtDepthClampZeroOneSpecVersion = 1;
@@ -640,6 +657,8 @@ public static unsafe class VK
 	public const string NvCopyMemoryIndirectExtensionName = "VK_NV_copy_memory_indirect";
 	public const uint NvMemoryDecompressionSpecVersion = 1;
 	public const string NvMemoryDecompressionExtensionName = "VK_NV_memory_decompression";
+	public const uint NvDeviceGeneratedCommandsComputeSpecVersion = 2;
+	public const string NvDeviceGeneratedCommandsComputeExtensionName = "VK_NV_device_generated_commands_compute";
 	public const uint NvLinearColorAttachmentSpecVersion = 1;
 	public const string NvLinearColorAttachmentExtensionName = "VK_NV_linear_color_attachment";
 	public const uint GoogleSurfacelessQuerySpecVersion = 2;
@@ -648,6 +667,8 @@ public static unsafe class VK
 	public const string ExtImageCompressionControlSwapchainExtensionName = "VK_EXT_image_compression_control_swapchain";
 	public const uint QcomImageProcessingSpecVersion = 1;
 	public const string QcomImageProcessingExtensionName = "VK_QCOM_image_processing";
+	public const uint ExtExternalMemoryAcquireUnmodifiedSpecVersion = 1;
+	public const string ExtExternalMemoryAcquireUnmodifiedExtensionName = "VK_EXT_external_memory_acquire_unmodified";
 	public const uint ExtExtendedDynamicState3SpecVersion = 2;
 	public const string ExtExtendedDynamicState3ExtensionName = "VK_EXT_extended_dynamic_state3";
 	public const uint ExtSubpassMergeFeedbackSpecVersion = 2;
@@ -665,6 +686,12 @@ public static unsafe class VK
 	public const string ExtLegacyDitheringExtensionName = "VK_EXT_legacy_dithering";
 	public const uint ExtPipelineProtectedAccessSpecVersion = 1;
 	public const string ExtPipelineProtectedAccessExtensionName = "VK_EXT_pipeline_protected_access";
+	public const uint KhrMaintenance5SpecVersion = 1;
+	public const string KhrMaintenance5ExtensionName = "VK_KHR_maintenance5";
+	public const uint KhrRayTracingPositionFetchSpecVersion = 1;
+	public const string KhrRayTracingPositionFetchExtensionName = "VK_KHR_ray_tracing_position_fetch";
+	public const uint ExtShaderObjectSpecVersion = 1;
+	public const string ExtShaderObjectExtensionName = "VK_EXT_shader_object";
 	public const uint QcomTilePropertiesSpecVersion = 1;
 	public const string QcomTilePropertiesExtensionName = "VK_QCOM_tile_properties";
 	public const uint SecAmigoProfilingSpecVersion = 1;
@@ -679,6 +706,24 @@ public static unsafe class VK
 	public const string ArmShaderCoreBuiltinsExtensionName = "VK_ARM_shader_core_builtins";
 	public const uint ExtPipelineLibraryGroupHandlesSpecVersion = 1;
 	public const string ExtPipelineLibraryGroupHandlesExtensionName = "VK_EXT_pipeline_library_group_handles";
+	public const uint ExtDynamicRenderingUnusedAttachmentsSpecVersion = 1;
+	public const string ExtDynamicRenderingUnusedAttachmentsExtensionName = "VK_EXT_dynamic_rendering_unused_attachments";
+	public const uint KhrCooperativeMatrixSpecVersion = 2;
+	public const string KhrCooperativeMatrixExtensionName = "VK_KHR_cooperative_matrix";
+	public const uint QcomMultiviewPerViewRenderAreasSpecVersion = 1;
+	public const string QcomMultiviewPerViewRenderAreasExtensionName = "VK_QCOM_multiview_per_view_render_areas";
+	public const uint QcomImageProcessing2SpecVersion = 1;
+	public const string QcomImageProcessing2ExtensionName = "VK_QCOM_image_processing2";
+	public const uint QcomFilterCubicWeightsSpecVersion = 1;
+	public const string QcomFilterCubicWeightsExtensionName = "VK_QCOM_filter_cubic_weights";
+	public const uint QcomYcbcrDegammaSpecVersion = 1;
+	public const string QcomYcbcrDegammaExtensionName = "VK_QCOM_ycbcr_degamma";
+	public const uint QcomFilterCubicClampSpecVersion = 1;
+	public const string QcomFilterCubicClampExtensionName = "VK_QCOM_filter_cubic_clamp";
+	public const uint ExtAttachmentFeedbackLoopDynamicStateSpecVersion = 1;
+	public const string ExtAttachmentFeedbackLoopDynamicStateExtensionName = "VK_EXT_attachment_feedback_loop_dynamic_state";
+	public const uint NvDescriptorPoolOverallocationSpecVersion = 1;
+	public const string NvDescriptorPoolOverallocationExtensionName = "VK_NV_descriptor_pool_overallocation";
 	public static VkResult CreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance) => CreateInstance_0(createInfo, allocator, out instance);
 	private delegate VkResult CreateInstanceDelegate_0(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance);
 	private static CreateInstanceDelegate_0 CreateInstance_0;
@@ -2567,6 +2612,12 @@ public static unsafe class VK
 	public static void CommandSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D[] discardRectangles) => CommandSetDiscardRectangleEXT_0(commandBuffer, firstDiscardRectangle, discardRectangleCount, discardRectangles);
 	private delegate void CommandSetDiscardRectangleEXTDelegate_0(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D[] discardRectangles);
 	private static CommandSetDiscardRectangleEXTDelegate_0 CommandSetDiscardRectangleEXT_0;
+	public static void CommandSetDiscardRectangleEnableEXT(VkCommandBuffer commandBuffer, VkBool32 discardRectangleEnable) => CommandSetDiscardRectangleEnableEXT_0(commandBuffer, discardRectangleEnable);
+	private delegate void CommandSetDiscardRectangleEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkBool32 discardRectangleEnable);
+	private static CommandSetDiscardRectangleEnableEXTDelegate_0 CommandSetDiscardRectangleEnableEXT_0;
+	public static void CommandSetDiscardRectangleModeEXT(VkCommandBuffer commandBuffer, VkDiscardRectangleModeEXT discardRectangleMode) => CommandSetDiscardRectangleModeEXT_0(commandBuffer, discardRectangleMode);
+	private delegate void CommandSetDiscardRectangleModeEXTDelegate_0(VkCommandBuffer commandBuffer, VkDiscardRectangleModeEXT discardRectangleMode);
+	private static CommandSetDiscardRectangleModeEXTDelegate_0 CommandSetDiscardRectangleModeEXT_0;
 	public static void SetHdrMetadataEXT(VkDevice device, uint swapchainCount, VkSwapchainKHR[] swapchains, VkHdrMetadataEXT* metadata) => SetHdrMetadataEXT_0(device, swapchainCount, swapchains, metadata);
 	private delegate void SetHdrMetadataEXTDelegate_0(VkDevice device, uint swapchainCount, VkSwapchainKHR[] swapchains, VkHdrMetadataEXT* metadata);
 	private static SetHdrMetadataEXTDelegate_0 SetHdrMetadataEXT_0;
@@ -3255,6 +3306,12 @@ public static unsafe class VK
 	public static void CommandDrawMeshTasksIndirectCountNV(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride) => CommandDrawMeshTasksIndirectCountNV_0(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
 	private delegate void CommandDrawMeshTasksIndirectCountNVDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
 	private static CommandDrawMeshTasksIndirectCountNVDelegate_0 CommandDrawMeshTasksIndirectCountNV_0;
+	public static void CommandSetExclusiveScissorEnableNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkBool32* exclusiveScissorEnables) => CommandSetExclusiveScissorEnableNV_0(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, exclusiveScissorEnables);
+	private delegate void CommandSetExclusiveScissorEnableNVDelegate_0(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkBool32* exclusiveScissorEnables);
+	private static CommandSetExclusiveScissorEnableNVDelegate_0 CommandSetExclusiveScissorEnableNV_0;
+	public static void CommandSetExclusiveScissorEnableNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, ref VkBool32 exclusiveScissorEnables) => CommandSetExclusiveScissorEnableNV_1(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, ref exclusiveScissorEnables);
+	private delegate void CommandSetExclusiveScissorEnableNVDelegate_1(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, ref VkBool32 exclusiveScissorEnables);
+	private static CommandSetExclusiveScissorEnableNVDelegate_1 CommandSetExclusiveScissorEnableNV_1;
 	public static void CommandSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D[] exclusiveScissors) => CommandSetExclusiveScissorNV_0(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, exclusiveScissors);
 	private delegate void CommandSetExclusiveScissorNVDelegate_0(VkCommandBuffer commandBuffer, uint firstExclusiveScissor, uint exclusiveScissorCount, VkRect2D[] exclusiveScissors);
 	private static CommandSetExclusiveScissorNVDelegate_0 CommandSetExclusiveScissorNV_0;
@@ -3597,6 +3654,47 @@ public static unsafe class VK
 	public static VkResult GetPipelineExecutableInternalRepresentationsKHR(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations) => GetPipelineExecutableInternalRepresentationsKHR_3(device, ref executableInfo, ref internalRepresentationCount, internalRepresentations);
 	private delegate VkResult GetPipelineExecutableInternalRepresentationsKHRDelegate_3(VkDevice device, ref VkPipelineExecutableInfoKHR executableInfo, ref uint internalRepresentationCount, [In, Out] VkPipelineExecutableInternalRepresentationKHR[] internalRepresentations);
 	private static GetPipelineExecutableInternalRepresentationsKHRDelegate_3 GetPipelineExecutableInternalRepresentationsKHR_3;
+	public static VkResult CopyMemoryToImageEXT(VkDevice device, VkCopyMemoryToImageInfoEXT* copyMemoryToImageInfo) => CopyMemoryToImageEXT_0(device, copyMemoryToImageInfo);
+	private delegate VkResult CopyMemoryToImageEXTDelegate_0(VkDevice device, VkCopyMemoryToImageInfoEXT* copyMemoryToImageInfo);
+	private static CopyMemoryToImageEXTDelegate_0 CopyMemoryToImageEXT_0;
+	public static VkResult CopyMemoryToImageEXT(VkDevice device, ref VkCopyMemoryToImageInfoEXT copyMemoryToImageInfo) => CopyMemoryToImageEXT_1(device, ref copyMemoryToImageInfo);
+	private delegate VkResult CopyMemoryToImageEXTDelegate_1(VkDevice device, ref VkCopyMemoryToImageInfoEXT copyMemoryToImageInfo);
+	private static CopyMemoryToImageEXTDelegate_1 CopyMemoryToImageEXT_1;
+	public static VkResult CopyImageToMemoryEXT(VkDevice device, VkCopyImageToMemoryInfoEXT* copyImageToMemoryInfo) => CopyImageToMemoryEXT_0(device, copyImageToMemoryInfo);
+	private delegate VkResult CopyImageToMemoryEXTDelegate_0(VkDevice device, VkCopyImageToMemoryInfoEXT* copyImageToMemoryInfo);
+	private static CopyImageToMemoryEXTDelegate_0 CopyImageToMemoryEXT_0;
+	public static VkResult CopyImageToMemoryEXT(VkDevice device, ref VkCopyImageToMemoryInfoEXT copyImageToMemoryInfo) => CopyImageToMemoryEXT_1(device, ref copyImageToMemoryInfo);
+	private delegate VkResult CopyImageToMemoryEXTDelegate_1(VkDevice device, ref VkCopyImageToMemoryInfoEXT copyImageToMemoryInfo);
+	private static CopyImageToMemoryEXTDelegate_1 CopyImageToMemoryEXT_1;
+	public static VkResult CopyImageToImageEXT(VkDevice device, VkCopyImageToImageInfoEXT* copyImageToImageInfo) => CopyImageToImageEXT_0(device, copyImageToImageInfo);
+	private delegate VkResult CopyImageToImageEXTDelegate_0(VkDevice device, VkCopyImageToImageInfoEXT* copyImageToImageInfo);
+	private static CopyImageToImageEXTDelegate_0 CopyImageToImageEXT_0;
+	public static VkResult CopyImageToImageEXT(VkDevice device, ref VkCopyImageToImageInfoEXT copyImageToImageInfo) => CopyImageToImageEXT_1(device, ref copyImageToImageInfo);
+	private delegate VkResult CopyImageToImageEXTDelegate_1(VkDevice device, ref VkCopyImageToImageInfoEXT copyImageToImageInfo);
+	private static CopyImageToImageEXTDelegate_1 CopyImageToImageEXT_1;
+	public static VkResult TransitionImageLayoutEXT(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfoEXT[] transitions) => TransitionImageLayoutEXT_0(device, transitionCount, transitions);
+	private delegate VkResult TransitionImageLayoutEXTDelegate_0(VkDevice device, uint transitionCount, VkHostImageLayoutTransitionInfoEXT[] transitions);
+	private static TransitionImageLayoutEXTDelegate_0 TransitionImageLayoutEXT_0;
+	[Obsolete("Use GetImageSubresourceLayout2KHR")]
+	public static void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2EXT* subresource, out VkSubresourceLayout2EXT layout) => GetImageSubresourceLayout2EXT_0(device, image, subresource, out layout);
+	private delegate void GetImageSubresourceLayout2EXTDelegate_0(VkDevice device, VkImage image, VkImageSubresource2EXT* subresource, out VkSubresourceLayout2EXT layout);
+	private static GetImageSubresourceLayout2EXTDelegate_0 GetImageSubresourceLayout2EXT_0;
+	[Obsolete("Use GetImageSubresourceLayout2KHR")]
+	public static void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, ref VkImageSubresource2EXT subresource, out VkSubresourceLayout2EXT layout) => GetImageSubresourceLayout2EXT_1(device, image, ref subresource, out layout);
+	private delegate void GetImageSubresourceLayout2EXTDelegate_1(VkDevice device, VkImage image, ref VkImageSubresource2EXT subresource, out VkSubresourceLayout2EXT layout);
+	private static GetImageSubresourceLayout2EXTDelegate_1 GetImageSubresourceLayout2EXT_1;
+	public static VkResult MapMemory2KHR(VkDevice device, VkMemoryMapInfoKHR* memoryMapInfo, void** data) => MapMemory2KHR_0(device, memoryMapInfo, data);
+	private delegate VkResult MapMemory2KHRDelegate_0(VkDevice device, VkMemoryMapInfoKHR* memoryMapInfo, void** data);
+	private static MapMemory2KHRDelegate_0 MapMemory2KHR_0;
+	public static VkResult MapMemory2KHR(VkDevice device, ref VkMemoryMapInfoKHR memoryMapInfo, void** data) => MapMemory2KHR_1(device, ref memoryMapInfo, data);
+	private delegate VkResult MapMemory2KHRDelegate_1(VkDevice device, ref VkMemoryMapInfoKHR memoryMapInfo, void** data);
+	private static MapMemory2KHRDelegate_1 MapMemory2KHR_1;
+	public static VkResult UnmapMemory2KHR(VkDevice device, VkMemoryUnmapInfoKHR* memoryUnmapInfo) => UnmapMemory2KHR_0(device, memoryUnmapInfo);
+	private delegate VkResult UnmapMemory2KHRDelegate_0(VkDevice device, VkMemoryUnmapInfoKHR* memoryUnmapInfo);
+	private static UnmapMemory2KHRDelegate_0 UnmapMemory2KHR_0;
+	public static VkResult UnmapMemory2KHR(VkDevice device, ref VkMemoryUnmapInfoKHR memoryUnmapInfo) => UnmapMemory2KHR_1(device, ref memoryUnmapInfo);
+	private delegate VkResult UnmapMemory2KHRDelegate_1(VkDevice device, ref VkMemoryUnmapInfoKHR memoryUnmapInfo);
+	private static UnmapMemory2KHRDelegate_1 UnmapMemory2KHR_1;
 	public static VkResult ReleaseSwapchainImagesEXT(VkDevice device, VkReleaseSwapchainImagesInfoEXT* releaseInfo) => ReleaseSwapchainImagesEXT_0(device, releaseInfo);
 	private delegate VkResult ReleaseSwapchainImagesEXTDelegate_0(VkDevice device, VkReleaseSwapchainImagesInfoEXT* releaseInfo);
 	private static ReleaseSwapchainImagesEXTDelegate_0 ReleaseSwapchainImagesEXT_0;
@@ -3642,6 +3740,12 @@ public static unsafe class VK
 	public static void DestroyIndirectCommandsLayoutNV(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, ref VkAllocationCallbacks allocator) => DestroyIndirectCommandsLayoutNV_1(device, indirectCommandsLayout, ref allocator);
 	private delegate void DestroyIndirectCommandsLayoutNVDelegate_1(VkDevice device, VkIndirectCommandsLayoutNV indirectCommandsLayout, ref VkAllocationCallbacks allocator);
 	private static DestroyIndirectCommandsLayoutNVDelegate_1 DestroyIndirectCommandsLayoutNV_1;
+	public static void CommandSetDepthBias2EXT(VkCommandBuffer commandBuffer, VkDepthBiasInfoEXT* depthBiasInfo) => CommandSetDepthBias2EXT_0(commandBuffer, depthBiasInfo);
+	private delegate void CommandSetDepthBias2EXTDelegate_0(VkCommandBuffer commandBuffer, VkDepthBiasInfoEXT* depthBiasInfo);
+	private static CommandSetDepthBias2EXTDelegate_0 CommandSetDepthBias2EXT_0;
+	public static void CommandSetDepthBias2EXT(VkCommandBuffer commandBuffer, ref VkDepthBiasInfoEXT depthBiasInfo) => CommandSetDepthBias2EXT_1(commandBuffer, ref depthBiasInfo);
+	private delegate void CommandSetDepthBias2EXTDelegate_1(VkCommandBuffer commandBuffer, ref VkDepthBiasInfoEXT depthBiasInfo);
+	private static CommandSetDepthBias2EXTDelegate_1 CommandSetDepthBias2EXT_1;
 	public static VkResult AcquireDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFileDescriptor, VkDisplayKHR display) => AcquireDrmDisplayEXT_0(physicalDevice, drmFileDescriptor, display);
 	private delegate VkResult AcquireDrmDisplayEXTDelegate_0(VkPhysicalDevice physicalDevice, int drmFileDescriptor, VkDisplayKHR display);
 	private static AcquireDrmDisplayEXTDelegate_0 AcquireDrmDisplayEXT_0;
@@ -3841,12 +3945,6 @@ public static unsafe class VK
 	public static void CommandResolveImage2KHR(VkCommandBuffer commandBuffer, ref VkResolveImageInfo2KHR resolveImageInfo) => CommandResolveImage2KHR_1(commandBuffer, ref resolveImageInfo);
 	private delegate void CommandResolveImage2KHRDelegate_1(VkCommandBuffer commandBuffer, ref VkResolveImageInfo2KHR resolveImageInfo);
 	private static CommandResolveImage2KHRDelegate_1 CommandResolveImage2KHR_1;
-	public static void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, VkImageSubresource2EXT* subresource, out VkSubresourceLayout2EXT layout) => GetImageSubresourceLayout2EXT_0(device, image, subresource, out layout);
-	private delegate void GetImageSubresourceLayout2EXTDelegate_0(VkDevice device, VkImage image, VkImageSubresource2EXT* subresource, out VkSubresourceLayout2EXT layout);
-	private static GetImageSubresourceLayout2EXTDelegate_0 GetImageSubresourceLayout2EXT_0;
-	public static void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, ref VkImageSubresource2EXT subresource, out VkSubresourceLayout2EXT layout) => GetImageSubresourceLayout2EXT_1(device, image, ref subresource, out layout);
-	private delegate void GetImageSubresourceLayout2EXTDelegate_1(VkDevice device, VkImage image, ref VkImageSubresource2EXT subresource, out VkSubresourceLayout2EXT layout);
-	private static GetImageSubresourceLayout2EXTDelegate_1 GetImageSubresourceLayout2EXT_1;
 	public static VkResult GetDeviceFaultInfoEXT(VkDevice device, VkDeviceFaultCountsEXT* faultCounts, out VkDeviceFaultInfoEXT faultInfo) => GetDeviceFaultInfoEXT_0(device, faultCounts, out faultInfo);
 	private delegate VkResult GetDeviceFaultInfoEXTDelegate_0(VkDevice device, VkDeviceFaultCountsEXT* faultCounts, out VkDeviceFaultInfoEXT faultInfo);
 	private static GetDeviceFaultInfoEXTDelegate_0 GetDeviceFaultInfoEXT_0;
@@ -4074,6 +4172,18 @@ public static unsafe class VK
 	public static void CommandDecompressMemoryIndirectCountNV(VkCommandBuffer commandBuffer, VkDeviceAddress indirectCommandsAddress, VkDeviceAddress indirectCommandsCountAddress, uint stride) => CommandDecompressMemoryIndirectCountNV_0(commandBuffer, indirectCommandsAddress, indirectCommandsCountAddress, stride);
 	private delegate void CommandDecompressMemoryIndirectCountNVDelegate_0(VkCommandBuffer commandBuffer, VkDeviceAddress indirectCommandsAddress, VkDeviceAddress indirectCommandsCountAddress, uint stride);
 	private static CommandDecompressMemoryIndirectCountNVDelegate_0 CommandDecompressMemoryIndirectCountNV_0;
+	public static void GetPipelineIndirectMemoryRequirementsNV(VkDevice device, VkComputePipelineCreateInfo* createInfo, out VkMemoryRequirements2 memoryRequirements) => GetPipelineIndirectMemoryRequirementsNV_0(device, createInfo, out memoryRequirements);
+	private delegate void GetPipelineIndirectMemoryRequirementsNVDelegate_0(VkDevice device, VkComputePipelineCreateInfo* createInfo, out VkMemoryRequirements2 memoryRequirements);
+	private static GetPipelineIndirectMemoryRequirementsNVDelegate_0 GetPipelineIndirectMemoryRequirementsNV_0;
+	public static void GetPipelineIndirectMemoryRequirementsNV(VkDevice device, ref VkComputePipelineCreateInfo createInfo, out VkMemoryRequirements2 memoryRequirements) => GetPipelineIndirectMemoryRequirementsNV_1(device, ref createInfo, out memoryRequirements);
+	private delegate void GetPipelineIndirectMemoryRequirementsNVDelegate_1(VkDevice device, ref VkComputePipelineCreateInfo createInfo, out VkMemoryRequirements2 memoryRequirements);
+	private static GetPipelineIndirectMemoryRequirementsNVDelegate_1 GetPipelineIndirectMemoryRequirementsNV_1;
+	public static void CommandUpdatePipelineIndirectBufferNV(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline) => CommandUpdatePipelineIndirectBufferNV_0(commandBuffer, pipelineBindPoint, pipeline);
+	private delegate void CommandUpdatePipelineIndirectBufferNVDelegate_0(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline);
+	private static CommandUpdatePipelineIndirectBufferNVDelegate_0 CommandUpdatePipelineIndirectBufferNV_0;
+	public static VkDeviceAddress GetPipelineIndirectDeviceAddressNV(VkDevice device, out VkPipelineIndirectDeviceAddressInfoNV info) => GetPipelineIndirectDeviceAddressNV_0(device, out info);
+	private delegate VkDeviceAddress GetPipelineIndirectDeviceAddressNVDelegate_0(VkDevice device, out VkPipelineIndirectDeviceAddressInfoNV info);
+	private static GetPipelineIndirectDeviceAddressNVDelegate_0 GetPipelineIndirectDeviceAddressNV_0;
 	public static void CommandSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin) => CommandSetTessellationDomainOriginEXT_0(commandBuffer, domainOrigin);
 	private delegate void CommandSetTessellationDomainOriginEXTDelegate_0(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin);
 	private static CommandSetTessellationDomainOriginEXTDelegate_0 CommandSetTessellationDomainOriginEXT_0;
@@ -4236,6 +4346,51 @@ public static unsafe class VK
 	public static void CommandOpticalFlowExecuteNV(VkCommandBuffer commandBuffer, VkOpticalFlowSessionNV session, ref VkOpticalFlowExecuteInfoNV executeInfo) => CommandOpticalFlowExecuteNV_1(commandBuffer, session, ref executeInfo);
 	private delegate void CommandOpticalFlowExecuteNVDelegate_1(VkCommandBuffer commandBuffer, VkOpticalFlowSessionNV session, ref VkOpticalFlowExecuteInfoNV executeInfo);
 	private static CommandOpticalFlowExecuteNVDelegate_1 CommandOpticalFlowExecuteNV_1;
+	public static void CommandBindIndexBuffer2KHR(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkDeviceSize size, VkIndexType indexType) => CommandBindIndexBuffer2KHR_0(commandBuffer, buffer, offset, size, indexType);
+	private delegate void CommandBindIndexBuffer2KHRDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkDeviceSize size, VkIndexType indexType);
+	private static CommandBindIndexBuffer2KHRDelegate_0 CommandBindIndexBuffer2KHR_0;
+	public static void GetRenderingAreaGranularityKHR(VkDevice device, VkRenderingAreaInfoKHR* renderingAreaInfo, out VkExtent2D granularity) => GetRenderingAreaGranularityKHR_0(device, renderingAreaInfo, out granularity);
+	private delegate void GetRenderingAreaGranularityKHRDelegate_0(VkDevice device, VkRenderingAreaInfoKHR* renderingAreaInfo, out VkExtent2D granularity);
+	private static GetRenderingAreaGranularityKHRDelegate_0 GetRenderingAreaGranularityKHR_0;
+	public static void GetRenderingAreaGranularityKHR(VkDevice device, ref VkRenderingAreaInfoKHR renderingAreaInfo, out VkExtent2D granularity) => GetRenderingAreaGranularityKHR_1(device, ref renderingAreaInfo, out granularity);
+	private delegate void GetRenderingAreaGranularityKHRDelegate_1(VkDevice device, ref VkRenderingAreaInfoKHR renderingAreaInfo, out VkExtent2D granularity);
+	private static GetRenderingAreaGranularityKHRDelegate_1 GetRenderingAreaGranularityKHR_1;
+	public static void GetDeviceImageSubresourceLayoutKHR(VkDevice device, VkDeviceImageSubresourceInfoKHR* info, out VkSubresourceLayout2KHR layout) => GetDeviceImageSubresourceLayoutKHR_0(device, info, out layout);
+	private delegate void GetDeviceImageSubresourceLayoutKHRDelegate_0(VkDevice device, VkDeviceImageSubresourceInfoKHR* info, out VkSubresourceLayout2KHR layout);
+	private static GetDeviceImageSubresourceLayoutKHRDelegate_0 GetDeviceImageSubresourceLayoutKHR_0;
+	public static void GetDeviceImageSubresourceLayoutKHR(VkDevice device, ref VkDeviceImageSubresourceInfoKHR info, out VkSubresourceLayout2KHR layout) => GetDeviceImageSubresourceLayoutKHR_1(device, ref info, out layout);
+	private delegate void GetDeviceImageSubresourceLayoutKHRDelegate_1(VkDevice device, ref VkDeviceImageSubresourceInfoKHR info, out VkSubresourceLayout2KHR layout);
+	private static GetDeviceImageSubresourceLayoutKHRDelegate_1 GetDeviceImageSubresourceLayoutKHR_1;
+	public static void GetImageSubresourceLayout2KHR(VkDevice device, VkImage image, VkImageSubresource2KHR* subresource, out VkSubresourceLayout2KHR layout) => GetImageSubresourceLayout2KHR_0(device, image, subresource, out layout);
+	private delegate void GetImageSubresourceLayout2KHRDelegate_0(VkDevice device, VkImage image, VkImageSubresource2KHR* subresource, out VkSubresourceLayout2KHR layout);
+	private static GetImageSubresourceLayout2KHRDelegate_0 GetImageSubresourceLayout2KHR_0;
+	public static void GetImageSubresourceLayout2KHR(VkDevice device, VkImage image, ref VkImageSubresource2KHR subresource, out VkSubresourceLayout2KHR layout) => GetImageSubresourceLayout2KHR_1(device, image, ref subresource, out layout);
+	private delegate void GetImageSubresourceLayout2KHRDelegate_1(VkDevice device, VkImage image, ref VkImageSubresource2KHR subresource, out VkSubresourceLayout2KHR layout);
+	private static GetImageSubresourceLayout2KHRDelegate_1 GetImageSubresourceLayout2KHR_1;
+	public static VkResult CreateShadersEXT(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT[] createInfos, VkAllocationCallbacks* allocator, out VkShaderEXT shaders) => CreateShadersEXT_0(device, createInfoCount, createInfos, allocator, out shaders);
+	private delegate VkResult CreateShadersEXTDelegate_0(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT[] createInfos, VkAllocationCallbacks* allocator, out VkShaderEXT shaders);
+	private static CreateShadersEXTDelegate_0 CreateShadersEXT_0;
+	public static VkResult CreateShadersEXT(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT[] createInfos, ref VkAllocationCallbacks allocator, out VkShaderEXT shaders) => CreateShadersEXT_1(device, createInfoCount, createInfos, ref allocator, out shaders);
+	private delegate VkResult CreateShadersEXTDelegate_1(VkDevice device, uint createInfoCount, VkShaderCreateInfoEXT[] createInfos, ref VkAllocationCallbacks allocator, out VkShaderEXT shaders);
+	private static CreateShadersEXTDelegate_1 CreateShadersEXT_1;
+	public static void DestroyShaderEXT(VkDevice device, VkShaderEXT shader, VkAllocationCallbacks* allocator) => DestroyShaderEXT_0(device, shader, allocator);
+	private delegate void DestroyShaderEXTDelegate_0(VkDevice device, VkShaderEXT shader, VkAllocationCallbacks* allocator);
+	private static DestroyShaderEXTDelegate_0 DestroyShaderEXT_0;
+	public static void DestroyShaderEXT(VkDevice device, VkShaderEXT shader, ref VkAllocationCallbacks allocator) => DestroyShaderEXT_1(device, shader, ref allocator);
+	private delegate void DestroyShaderEXTDelegate_1(VkDevice device, VkShaderEXT shader, ref VkAllocationCallbacks allocator);
+	private static DestroyShaderEXTDelegate_1 DestroyShaderEXT_1;
+	public static VkResult GetShaderBinaryDataEXT(VkDevice device, VkShaderEXT shader, nuint* dataSize, void* data) => GetShaderBinaryDataEXT_0(device, shader, dataSize, data);
+	private delegate VkResult GetShaderBinaryDataEXTDelegate_0(VkDevice device, VkShaderEXT shader, nuint* dataSize, void* data);
+	private static GetShaderBinaryDataEXTDelegate_0 GetShaderBinaryDataEXT_0;
+	public static VkResult GetShaderBinaryDataEXT(VkDevice device, VkShaderEXT shader, ref nuint dataSize, void* data) => GetShaderBinaryDataEXT_1(device, shader, ref dataSize, data);
+	private delegate VkResult GetShaderBinaryDataEXTDelegate_1(VkDevice device, VkShaderEXT shader, ref nuint dataSize, void* data);
+	private static GetShaderBinaryDataEXTDelegate_1 GetShaderBinaryDataEXT_1;
+	public static void CommandBindShadersEXT(VkCommandBuffer commandBuffer, uint stageCount, VkShaderStageFlags[] stages, VkShaderEXT* shaders) => CommandBindShadersEXT_0(commandBuffer, stageCount, stages, shaders);
+	private delegate void CommandBindShadersEXTDelegate_0(VkCommandBuffer commandBuffer, uint stageCount, VkShaderStageFlags[] stages, VkShaderEXT* shaders);
+	private static CommandBindShadersEXTDelegate_0 CommandBindShadersEXT_0;
+	public static void CommandBindShadersEXT(VkCommandBuffer commandBuffer, uint stageCount, VkShaderStageFlags[] stages, ref VkShaderEXT shaders) => CommandBindShadersEXT_1(commandBuffer, stageCount, stages, ref shaders);
+	private delegate void CommandBindShadersEXTDelegate_1(VkCommandBuffer commandBuffer, uint stageCount, VkShaderStageFlags[] stages, ref VkShaderEXT shaders);
+	private static CommandBindShadersEXTDelegate_1 CommandBindShadersEXT_1;
 	public static VkResult GetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, uint* propertiesCount, [In, Out] VkTilePropertiesQCOM[] properties) => GetFramebufferTilePropertiesQCOM_0(device, framebuffer, propertiesCount, properties);
 	private delegate VkResult GetFramebufferTilePropertiesQCOMDelegate_0(VkDevice device, VkFramebuffer framebuffer, uint* propertiesCount, [In, Out] VkTilePropertiesQCOM[] properties);
 	private static GetFramebufferTilePropertiesQCOMDelegate_0 GetFramebufferTilePropertiesQCOM_0;
@@ -4248,6 +4403,15 @@ public static unsafe class VK
 	public static VkResult GetDynamicRenderingTilePropertiesQCOM(VkDevice device, ref VkRenderingInfo renderingInfo, out VkTilePropertiesQCOM properties) => GetDynamicRenderingTilePropertiesQCOM_1(device, ref renderingInfo, out properties);
 	private delegate VkResult GetDynamicRenderingTilePropertiesQCOMDelegate_1(VkDevice device, ref VkRenderingInfo renderingInfo, out VkTilePropertiesQCOM properties);
 	private static GetDynamicRenderingTilePropertiesQCOMDelegate_1 GetDynamicRenderingTilePropertiesQCOM_1;
+	public static VkResult GetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkCooperativeMatrixPropertiesKHR[] properties) => GetPhysicalDeviceCooperativeMatrixPropertiesKHR_0(physicalDevice, propertyCount, properties);
+	private delegate VkResult GetPhysicalDeviceCooperativeMatrixPropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkCooperativeMatrixPropertiesKHR[] properties);
+	private static GetPhysicalDeviceCooperativeMatrixPropertiesKHRDelegate_0 GetPhysicalDeviceCooperativeMatrixPropertiesKHR_0;
+	public static VkResult GetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkCooperativeMatrixPropertiesKHR[] properties) => GetPhysicalDeviceCooperativeMatrixPropertiesKHR_1(physicalDevice, ref propertyCount, properties);
+	private delegate VkResult GetPhysicalDeviceCooperativeMatrixPropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkCooperativeMatrixPropertiesKHR[] properties);
+	private static GetPhysicalDeviceCooperativeMatrixPropertiesKHRDelegate_1 GetPhysicalDeviceCooperativeMatrixPropertiesKHR_1;
+	public static void CommandSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask) => CommandSetAttachmentFeedbackLoopEnableEXT_0(commandBuffer, aspectMask);
+	private delegate void CommandSetAttachmentFeedbackLoopEnableEXTDelegate_0(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask);
+	private static CommandSetAttachmentFeedbackLoopEnableEXTDelegate_0 CommandSetAttachmentFeedbackLoopEnableEXT_0;
 	private static readonly OSVulkanLibraryBase VulkanLibrary;
 	static VK()
 	{
@@ -6169,6 +6333,16 @@ public static unsafe class VK
 		{
 			CommandSetDiscardRectangleEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDiscardRectangleEXTDelegate_0>(commandSetDiscardRectangleEXT);
 		}
+		var commandSetDiscardRectangleEnableEXT = (nint)GetInstanceProcedureAddress(instance, "vkCmdSetDiscardRectangleEnableEXT");
+		if (commandSetDiscardRectangleEnableEXT != nint.Zero)
+		{
+			CommandSetDiscardRectangleEnableEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDiscardRectangleEnableEXTDelegate_0>(commandSetDiscardRectangleEnableEXT);
+		}
+		var commandSetDiscardRectangleModeEXT = (nint)GetInstanceProcedureAddress(instance, "vkCmdSetDiscardRectangleModeEXT");
+		if (commandSetDiscardRectangleModeEXT != nint.Zero)
+		{
+			CommandSetDiscardRectangleModeEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDiscardRectangleModeEXTDelegate_0>(commandSetDiscardRectangleModeEXT);
+		}
 		var setHdrMetadataEXT = (nint)GetInstanceProcedureAddress(instance, "vkSetHdrMetadataEXT");
 		if (setHdrMetadataEXT != nint.Zero)
 		{
@@ -6774,6 +6948,12 @@ public static unsafe class VK
 		{
 			CommandDrawMeshTasksIndirectCountNV_0 = Marshal.GetDelegateForFunctionPointer<CommandDrawMeshTasksIndirectCountNVDelegate_0>(commandDrawMeshTasksIndirectCountNV);
 		}
+		var commandSetExclusiveScissorEnableNV = (nint)GetInstanceProcedureAddress(instance, "vkCmdSetExclusiveScissorEnableNV");
+		if (commandSetExclusiveScissorEnableNV != nint.Zero)
+		{
+			CommandSetExclusiveScissorEnableNV_0 = Marshal.GetDelegateForFunctionPointer<CommandSetExclusiveScissorEnableNVDelegate_0>(commandSetExclusiveScissorEnableNV);
+			CommandSetExclusiveScissorEnableNV_1 = Marshal.GetDelegateForFunctionPointer<CommandSetExclusiveScissorEnableNVDelegate_1>(commandSetExclusiveScissorEnableNV);
+		}
 		var commandSetExclusiveScissorNV = (nint)GetInstanceProcedureAddress(instance, "vkCmdSetExclusiveScissorNV");
 		if (commandSetExclusiveScissorNV != nint.Zero)
 		{
@@ -7087,6 +7267,47 @@ public static unsafe class VK
 			GetPipelineExecutableInternalRepresentationsKHR_2 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_2>(getPipelineExecutableInternalRepresentationsKHR);
 			GetPipelineExecutableInternalRepresentationsKHR_3 = Marshal.GetDelegateForFunctionPointer<GetPipelineExecutableInternalRepresentationsKHRDelegate_3>(getPipelineExecutableInternalRepresentationsKHR);
 		}
+		var copyMemoryToImageEXT = (nint)GetInstanceProcedureAddress(instance, "vkCopyMemoryToImageEXT");
+		if (copyMemoryToImageEXT != nint.Zero)
+		{
+			CopyMemoryToImageEXT_0 = Marshal.GetDelegateForFunctionPointer<CopyMemoryToImageEXTDelegate_0>(copyMemoryToImageEXT);
+			CopyMemoryToImageEXT_1 = Marshal.GetDelegateForFunctionPointer<CopyMemoryToImageEXTDelegate_1>(copyMemoryToImageEXT);
+		}
+		var copyImageToMemoryEXT = (nint)GetInstanceProcedureAddress(instance, "vkCopyImageToMemoryEXT");
+		if (copyImageToMemoryEXT != nint.Zero)
+		{
+			CopyImageToMemoryEXT_0 = Marshal.GetDelegateForFunctionPointer<CopyImageToMemoryEXTDelegate_0>(copyImageToMemoryEXT);
+			CopyImageToMemoryEXT_1 = Marshal.GetDelegateForFunctionPointer<CopyImageToMemoryEXTDelegate_1>(copyImageToMemoryEXT);
+		}
+		var copyImageToImageEXT = (nint)GetInstanceProcedureAddress(instance, "vkCopyImageToImageEXT");
+		if (copyImageToImageEXT != nint.Zero)
+		{
+			CopyImageToImageEXT_0 = Marshal.GetDelegateForFunctionPointer<CopyImageToImageEXTDelegate_0>(copyImageToImageEXT);
+			CopyImageToImageEXT_1 = Marshal.GetDelegateForFunctionPointer<CopyImageToImageEXTDelegate_1>(copyImageToImageEXT);
+		}
+		var transitionImageLayoutEXT = (nint)GetInstanceProcedureAddress(instance, "vkTransitionImageLayoutEXT");
+		if (transitionImageLayoutEXT != nint.Zero)
+		{
+			TransitionImageLayoutEXT_0 = Marshal.GetDelegateForFunctionPointer<TransitionImageLayoutEXTDelegate_0>(transitionImageLayoutEXT);
+		}
+		var getImageSubresourceLayout2EXT = (nint)GetInstanceProcedureAddress(instance, "vkGetImageSubresourceLayout2KHR");
+		if (getImageSubresourceLayout2EXT != nint.Zero)
+		{
+			GetImageSubresourceLayout2EXT_0 = Marshal.GetDelegateForFunctionPointer<GetImageSubresourceLayout2EXTDelegate_0>(getImageSubresourceLayout2EXT);
+			GetImageSubresourceLayout2EXT_1 = Marshal.GetDelegateForFunctionPointer<GetImageSubresourceLayout2EXTDelegate_1>(getImageSubresourceLayout2EXT);
+		}
+		var mapMemory2KHR = (nint)GetInstanceProcedureAddress(instance, "vkMapMemory2KHR");
+		if (mapMemory2KHR != nint.Zero)
+		{
+			MapMemory2KHR_0 = Marshal.GetDelegateForFunctionPointer<MapMemory2KHRDelegate_0>(mapMemory2KHR);
+			MapMemory2KHR_1 = Marshal.GetDelegateForFunctionPointer<MapMemory2KHRDelegate_1>(mapMemory2KHR);
+		}
+		var unmapMemory2KHR = (nint)GetInstanceProcedureAddress(instance, "vkUnmapMemory2KHR");
+		if (unmapMemory2KHR != nint.Zero)
+		{
+			UnmapMemory2KHR_0 = Marshal.GetDelegateForFunctionPointer<UnmapMemory2KHRDelegate_0>(unmapMemory2KHR);
+			UnmapMemory2KHR_1 = Marshal.GetDelegateForFunctionPointer<UnmapMemory2KHRDelegate_1>(unmapMemory2KHR);
+		}
 		var releaseSwapchainImagesEXT = (nint)GetInstanceProcedureAddress(instance, "vkReleaseSwapchainImagesEXT");
 		if (releaseSwapchainImagesEXT != nint.Zero)
 		{
@@ -7129,6 +7350,12 @@ public static unsafe class VK
 		{
 			DestroyIndirectCommandsLayoutNV_0 = Marshal.GetDelegateForFunctionPointer<DestroyIndirectCommandsLayoutNVDelegate_0>(destroyIndirectCommandsLayoutNV);
 			DestroyIndirectCommandsLayoutNV_1 = Marshal.GetDelegateForFunctionPointer<DestroyIndirectCommandsLayoutNVDelegate_1>(destroyIndirectCommandsLayoutNV);
+		}
+		var commandSetDepthBias2EXT = (nint)GetInstanceProcedureAddress(instance, "vkCmdSetDepthBias2EXT");
+		if (commandSetDepthBias2EXT != nint.Zero)
+		{
+			CommandSetDepthBias2EXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthBias2EXTDelegate_0>(commandSetDepthBias2EXT);
+			CommandSetDepthBias2EXT_1 = Marshal.GetDelegateForFunctionPointer<CommandSetDepthBias2EXTDelegate_1>(commandSetDepthBias2EXT);
 		}
 		var acquireDrmDisplayEXT = (nint)GetInstanceProcedureAddress(instance, "vkAcquireDrmDisplayEXT");
 		if (acquireDrmDisplayEXT != nint.Zero)
@@ -7326,12 +7553,6 @@ public static unsafe class VK
 		{
 			CommandResolveImage2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandResolveImage2KHRDelegate_0>(commandResolveImage2KHR);
 			CommandResolveImage2KHR_1 = Marshal.GetDelegateForFunctionPointer<CommandResolveImage2KHRDelegate_1>(commandResolveImage2KHR);
-		}
-		var getImageSubresourceLayout2EXT = (nint)GetInstanceProcedureAddress(instance, "vkGetImageSubresourceLayout2EXT");
-		if (getImageSubresourceLayout2EXT != nint.Zero)
-		{
-			GetImageSubresourceLayout2EXT_0 = Marshal.GetDelegateForFunctionPointer<GetImageSubresourceLayout2EXTDelegate_0>(getImageSubresourceLayout2EXT);
-			GetImageSubresourceLayout2EXT_1 = Marshal.GetDelegateForFunctionPointer<GetImageSubresourceLayout2EXTDelegate_1>(getImageSubresourceLayout2EXT);
 		}
 		var getDeviceFaultInfoEXT = (nint)GetInstanceProcedureAddress(instance, "vkGetDeviceFaultInfoEXT");
 		if (getDeviceFaultInfoEXT != nint.Zero)
@@ -7581,6 +7802,22 @@ public static unsafe class VK
 		{
 			CommandDecompressMemoryIndirectCountNV_0 = Marshal.GetDelegateForFunctionPointer<CommandDecompressMemoryIndirectCountNVDelegate_0>(commandDecompressMemoryIndirectCountNV);
 		}
+		var getPipelineIndirectMemoryRequirementsNV = (nint)GetInstanceProcedureAddress(instance, "vkGetPipelineIndirectMemoryRequirementsNV");
+		if (getPipelineIndirectMemoryRequirementsNV != nint.Zero)
+		{
+			GetPipelineIndirectMemoryRequirementsNV_0 = Marshal.GetDelegateForFunctionPointer<GetPipelineIndirectMemoryRequirementsNVDelegate_0>(getPipelineIndirectMemoryRequirementsNV);
+			GetPipelineIndirectMemoryRequirementsNV_1 = Marshal.GetDelegateForFunctionPointer<GetPipelineIndirectMemoryRequirementsNVDelegate_1>(getPipelineIndirectMemoryRequirementsNV);
+		}
+		var commandUpdatePipelineIndirectBufferNV = (nint)GetInstanceProcedureAddress(instance, "vkCmdUpdatePipelineIndirectBufferNV");
+		if (commandUpdatePipelineIndirectBufferNV != nint.Zero)
+		{
+			CommandUpdatePipelineIndirectBufferNV_0 = Marshal.GetDelegateForFunctionPointer<CommandUpdatePipelineIndirectBufferNVDelegate_0>(commandUpdatePipelineIndirectBufferNV);
+		}
+		var getPipelineIndirectDeviceAddressNV = (nint)GetInstanceProcedureAddress(instance, "vkGetPipelineIndirectDeviceAddressNV");
+		if (getPipelineIndirectDeviceAddressNV != nint.Zero)
+		{
+			GetPipelineIndirectDeviceAddressNV_0 = Marshal.GetDelegateForFunctionPointer<GetPipelineIndirectDeviceAddressNVDelegate_0>(getPipelineIndirectDeviceAddressNV);
+		}
 		var commandSetTessellationDomainOriginEXT = (nint)GetInstanceProcedureAddress(instance, "vkCmdSetTessellationDomainOriginEXT");
 		if (commandSetTessellationDomainOriginEXT != nint.Zero)
 		{
@@ -7787,6 +8024,53 @@ public static unsafe class VK
 			CommandOpticalFlowExecuteNV_0 = Marshal.GetDelegateForFunctionPointer<CommandOpticalFlowExecuteNVDelegate_0>(commandOpticalFlowExecuteNV);
 			CommandOpticalFlowExecuteNV_1 = Marshal.GetDelegateForFunctionPointer<CommandOpticalFlowExecuteNVDelegate_1>(commandOpticalFlowExecuteNV);
 		}
+		var commandBindIndexBuffer2KHR = (nint)GetInstanceProcedureAddress(instance, "vkCmdBindIndexBuffer2KHR");
+		if (commandBindIndexBuffer2KHR != nint.Zero)
+		{
+			CommandBindIndexBuffer2KHR_0 = Marshal.GetDelegateForFunctionPointer<CommandBindIndexBuffer2KHRDelegate_0>(commandBindIndexBuffer2KHR);
+		}
+		var getRenderingAreaGranularityKHR = (nint)GetInstanceProcedureAddress(instance, "vkGetRenderingAreaGranularityKHR");
+		if (getRenderingAreaGranularityKHR != nint.Zero)
+		{
+			GetRenderingAreaGranularityKHR_0 = Marshal.GetDelegateForFunctionPointer<GetRenderingAreaGranularityKHRDelegate_0>(getRenderingAreaGranularityKHR);
+			GetRenderingAreaGranularityKHR_1 = Marshal.GetDelegateForFunctionPointer<GetRenderingAreaGranularityKHRDelegate_1>(getRenderingAreaGranularityKHR);
+		}
+		var getDeviceImageSubresourceLayoutKHR = (nint)GetInstanceProcedureAddress(instance, "vkGetDeviceImageSubresourceLayoutKHR");
+		if (getDeviceImageSubresourceLayoutKHR != nint.Zero)
+		{
+			GetDeviceImageSubresourceLayoutKHR_0 = Marshal.GetDelegateForFunctionPointer<GetDeviceImageSubresourceLayoutKHRDelegate_0>(getDeviceImageSubresourceLayoutKHR);
+			GetDeviceImageSubresourceLayoutKHR_1 = Marshal.GetDelegateForFunctionPointer<GetDeviceImageSubresourceLayoutKHRDelegate_1>(getDeviceImageSubresourceLayoutKHR);
+		}
+		var getImageSubresourceLayout2KHR = (nint)GetInstanceProcedureAddress(instance, "vkGetImageSubresourceLayout2KHR");
+		if (getImageSubresourceLayout2KHR != nint.Zero)
+		{
+			GetImageSubresourceLayout2KHR_0 = Marshal.GetDelegateForFunctionPointer<GetImageSubresourceLayout2KHRDelegate_0>(getImageSubresourceLayout2KHR);
+			GetImageSubresourceLayout2KHR_1 = Marshal.GetDelegateForFunctionPointer<GetImageSubresourceLayout2KHRDelegate_1>(getImageSubresourceLayout2KHR);
+		}
+		var createShadersEXT = (nint)GetInstanceProcedureAddress(instance, "vkCreateShadersEXT");
+		if (createShadersEXT != nint.Zero)
+		{
+			CreateShadersEXT_0 = Marshal.GetDelegateForFunctionPointer<CreateShadersEXTDelegate_0>(createShadersEXT);
+			CreateShadersEXT_1 = Marshal.GetDelegateForFunctionPointer<CreateShadersEXTDelegate_1>(createShadersEXT);
+		}
+		var destroyShaderEXT = (nint)GetInstanceProcedureAddress(instance, "vkDestroyShaderEXT");
+		if (destroyShaderEXT != nint.Zero)
+		{
+			DestroyShaderEXT_0 = Marshal.GetDelegateForFunctionPointer<DestroyShaderEXTDelegate_0>(destroyShaderEXT);
+			DestroyShaderEXT_1 = Marshal.GetDelegateForFunctionPointer<DestroyShaderEXTDelegate_1>(destroyShaderEXT);
+		}
+		var getShaderBinaryDataEXT = (nint)GetInstanceProcedureAddress(instance, "vkGetShaderBinaryDataEXT");
+		if (getShaderBinaryDataEXT != nint.Zero)
+		{
+			GetShaderBinaryDataEXT_0 = Marshal.GetDelegateForFunctionPointer<GetShaderBinaryDataEXTDelegate_0>(getShaderBinaryDataEXT);
+			GetShaderBinaryDataEXT_1 = Marshal.GetDelegateForFunctionPointer<GetShaderBinaryDataEXTDelegate_1>(getShaderBinaryDataEXT);
+		}
+		var commandBindShadersEXT = (nint)GetInstanceProcedureAddress(instance, "vkCmdBindShadersEXT");
+		if (commandBindShadersEXT != nint.Zero)
+		{
+			CommandBindShadersEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandBindShadersEXTDelegate_0>(commandBindShadersEXT);
+			CommandBindShadersEXT_1 = Marshal.GetDelegateForFunctionPointer<CommandBindShadersEXTDelegate_1>(commandBindShadersEXT);
+		}
 		var getFramebufferTilePropertiesQCOM = (nint)GetInstanceProcedureAddress(instance, "vkGetFramebufferTilePropertiesQCOM");
 		if (getFramebufferTilePropertiesQCOM != nint.Zero)
 		{
@@ -7798,6 +8082,17 @@ public static unsafe class VK
 		{
 			GetDynamicRenderingTilePropertiesQCOM_0 = Marshal.GetDelegateForFunctionPointer<GetDynamicRenderingTilePropertiesQCOMDelegate_0>(getDynamicRenderingTilePropertiesQCOM);
 			GetDynamicRenderingTilePropertiesQCOM_1 = Marshal.GetDelegateForFunctionPointer<GetDynamicRenderingTilePropertiesQCOMDelegate_1>(getDynamicRenderingTilePropertiesQCOM);
+		}
+		var getPhysicalDeviceCooperativeMatrixPropertiesKHR = (nint)GetInstanceProcedureAddress(instance, "vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR");
+		if (getPhysicalDeviceCooperativeMatrixPropertiesKHR != nint.Zero)
+		{
+			GetPhysicalDeviceCooperativeMatrixPropertiesKHR_0 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCooperativeMatrixPropertiesKHRDelegate_0>(getPhysicalDeviceCooperativeMatrixPropertiesKHR);
+			GetPhysicalDeviceCooperativeMatrixPropertiesKHR_1 = Marshal.GetDelegateForFunctionPointer<GetPhysicalDeviceCooperativeMatrixPropertiesKHRDelegate_1>(getPhysicalDeviceCooperativeMatrixPropertiesKHR);
+		}
+		var commandSetAttachmentFeedbackLoopEnableEXT = (nint)GetInstanceProcedureAddress(instance, "vkCmdSetAttachmentFeedbackLoopEnableEXT");
+		if (commandSetAttachmentFeedbackLoopEnableEXT != nint.Zero)
+		{
+			CommandSetAttachmentFeedbackLoopEnableEXT_0 = Marshal.GetDelegateForFunctionPointer<CommandSetAttachmentFeedbackLoopEnableEXTDelegate_0>(commandSetAttachmentFeedbackLoopEnableEXT);
 		}
 	}
 }

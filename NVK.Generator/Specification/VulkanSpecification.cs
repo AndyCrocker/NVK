@@ -101,14 +101,14 @@ internal class VulkanSpecification
         var tagElements = registryElement.Elements("tags").Elements("tag");
         var typeElements = registryElement.Elements("types").Elements("type");
         var enumsElements = registryElement.Elements("enums");
-        var commandElements = registryElement.Elements("commands").Elements("command");
-        var extensionElements = registryElement.Element("extensions")!.Elements("extension");
-        var featureElements = registryElement.Elements("feature");
+        var commandElements = registryElement.Elements("commands").Elements("command").WhereVulkanInApi();
+        var extensionElements = registryElement.Element("extensions")!.Elements("extension").WhereVulkanInSupported();
+        var featureElements = registryElement.Elements("feature").WhereVulkanInApi();
 
         VendorTags = tagElements
             .Select(tagElement => tagElement.Attribute("name")!.Value).ToList();
 
-        ParseEnums(typeElements.WithAttribute("category", "enum", "bitmask"), enumsElements.WithoutAttribute("name", "API Constants"));
+        ParseEnums(typeElements.WithAttribute("category", "enum", "bitmask").WhereVulkanInApi(), enumsElements.WithoutAttribute("name", "API Constants"));
 
         // can't use linq here as some function pointers use earlier defined ones so they need to be available in FunctionPointers
         foreach (var functionPointerElement in typeElements.WithAttribute("category", "funcpointer"))

@@ -886,3 +886,21 @@ public readonly struct VkOpticalFlowSessionNV
 	public static bool operator ==(ulong left, VkOpticalFlowSessionNV right) => left == right.Handle;
 	public static bool operator !=(ulong left, VkOpticalFlowSessionNV right) => left != right.Handle;
 }
+public readonly struct VkShaderEXT
+{
+	public readonly ulong Handle;
+	public bool IsNull => Handle == 0;
+	public static VkShaderEXT Null => new(0);
+	public VkShaderEXT(ulong handle)
+	{
+		Handle = handle;
+	}
+	public override bool Equals(object obj) => obj is VkShaderEXT handle && this == handle;
+	public override int GetHashCode() => Handle.GetHashCode();
+	public static bool operator ==(VkShaderEXT left, VkShaderEXT right) => left.Handle == right.Handle;
+	public static bool operator !=(VkShaderEXT left, VkShaderEXT right) => left.Handle != right.Handle;
+	public static bool operator ==(VkShaderEXT left, ulong right) => left.Handle == right;
+	public static bool operator !=(VkShaderEXT left, ulong right) => left.Handle != right;
+	public static bool operator ==(ulong left, VkShaderEXT right) => left == right.Handle;
+	public static bool operator !=(ulong left, VkShaderEXT right) => left != right.Handle;
+}
