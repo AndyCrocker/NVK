@@ -236,15 +236,35 @@ public static unsafe class VK
 	public const uint AmdBufferMarkerSpecVersion = 1;
 	public const string AmdBufferMarkerExtensionName = "VK_AMD_buffer_marker";
 	public static VkResult CreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance) => CreateInstance_0(createInfo, allocator, out instance);
+	public static bool CreateInstance(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance, out VkResult result)
+	{
+		result = CreateInstance_0(createInfo, allocator, out instance);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateInstanceDelegate_0(VkInstanceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkInstance instance);
 	private static CreateInstanceDelegate_0 CreateInstance_0;
 	public static VkResult CreateInstance(VkInstanceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance) => CreateInstance_1(createInfo, ref allocator, out instance);
+	public static bool CreateInstance(VkInstanceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance, out VkResult result)
+	{
+		result = CreateInstance_1(createInfo, ref allocator, out instance);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateInstanceDelegate_1(VkInstanceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance);
 	private static CreateInstanceDelegate_1 CreateInstance_1;
 	public static VkResult CreateInstance(ref VkInstanceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkInstance instance) => CreateInstance_2(ref createInfo, allocator, out instance);
+	public static bool CreateInstance(ref VkInstanceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkInstance instance, out VkResult result)
+	{
+		result = CreateInstance_2(ref createInfo, allocator, out instance);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateInstanceDelegate_2(ref VkInstanceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkInstance instance);
 	private static CreateInstanceDelegate_2 CreateInstance_2;
 	public static VkResult CreateInstance(ref VkInstanceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance) => CreateInstance_3(ref createInfo, ref allocator, out instance);
+	public static bool CreateInstance(ref VkInstanceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance, out VkResult result)
+	{
+		result = CreateInstance_3(ref createInfo, ref allocator, out instance);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateInstanceDelegate_3(ref VkInstanceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkInstance instance);
 	private static CreateInstanceDelegate_3 CreateInstance_3;
 	public static void DestroyInstance(VkInstance instance, VkAllocationCallbacks* allocator) => DestroyInstance_0(instance, allocator);
@@ -254,9 +274,19 @@ public static unsafe class VK
 	private delegate void DestroyInstanceDelegate_1(VkInstance instance, ref VkAllocationCallbacks allocator);
 	private static DestroyInstanceDelegate_1 DestroyInstance_1;
 	public static VkResult EnumeratePhysicalDevices(VkInstance instance, uint* physicalDeviceCount, [In, Out] VkPhysicalDevice[] physicalDevices) => EnumeratePhysicalDevices_0(instance, physicalDeviceCount, physicalDevices);
+	public static bool EnumeratePhysicalDevices(VkInstance instance, uint* physicalDeviceCount, [In, Out] VkPhysicalDevice[] physicalDevices, out VkResult result)
+	{
+		result = EnumeratePhysicalDevices_0(instance, physicalDeviceCount, physicalDevices);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumeratePhysicalDevicesDelegate_0(VkInstance instance, uint* physicalDeviceCount, [In, Out] VkPhysicalDevice[] physicalDevices);
 	private static EnumeratePhysicalDevicesDelegate_0 EnumeratePhysicalDevices_0;
 	public static VkResult EnumeratePhysicalDevices(VkInstance instance, ref uint physicalDeviceCount, [In, Out] VkPhysicalDevice[] physicalDevices) => EnumeratePhysicalDevices_1(instance, ref physicalDeviceCount, physicalDevices);
+	public static bool EnumeratePhysicalDevices(VkInstance instance, ref uint physicalDeviceCount, [In, Out] VkPhysicalDevice[] physicalDevices, out VkResult result)
+	{
+		result = EnumeratePhysicalDevices_1(instance, ref physicalDeviceCount, physicalDevices);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumeratePhysicalDevicesDelegate_1(VkInstance instance, ref uint physicalDeviceCount, [In, Out] VkPhysicalDevice[] physicalDevices);
 	private static EnumeratePhysicalDevicesDelegate_1 EnumeratePhysicalDevices_1;
 	public static void GetPhysicalDeviceFeatures(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceFeatures features) => GetPhysicalDeviceFeatures_0(physicalDevice, out features);
@@ -266,6 +296,11 @@ public static unsafe class VK
 	private delegate void GetPhysicalDeviceFormatPropertiesDelegate_0(VkPhysicalDevice physicalDevice, VkFormat format, out VkFormatProperties formatProperties);
 	private static GetPhysicalDeviceFormatPropertiesDelegate_0 GetPhysicalDeviceFormatProperties_0;
 	public static VkResult GetPhysicalDeviceImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, out VkImageFormatProperties imageFormatProperties) => GetPhysicalDeviceImageFormatProperties_0(physicalDevice, format, type, tiling, usage, flags, out imageFormatProperties);
+	public static bool GetPhysicalDeviceImageFormatProperties(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, out VkImageFormatProperties imageFormatProperties, out VkResult result)
+	{
+		result = GetPhysicalDeviceImageFormatProperties_0(physicalDevice, format, type, tiling, usage, flags, out imageFormatProperties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceImageFormatPropertiesDelegate_0(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, out VkImageFormatProperties imageFormatProperties);
 	private static GetPhysicalDeviceImageFormatPropertiesDelegate_0 GetPhysicalDeviceImageFormatProperties_0;
 	public static void GetPhysicalDeviceProperties(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceProperties properties) => GetPhysicalDeviceProperties_0(physicalDevice, out properties);
@@ -287,15 +322,35 @@ public static unsafe class VK
 	private delegate delegate*<void> GetDeviceProcedureAddressDelegate_0(VkDevice device, string name);
 	private static GetDeviceProcedureAddressDelegate_0 GetDeviceProcedureAddress_0;
 	public static VkResult CreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device) => CreateDevice_0(physicalDevice, createInfo, allocator, out device);
+	public static bool CreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device, out VkResult result)
+	{
+		result = CreateDevice_0(physicalDevice, createInfo, allocator, out device);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDeviceDelegate_0(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDevice device);
 	private static CreateDeviceDelegate_0 CreateDevice_0;
 	public static VkResult CreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDevice device) => CreateDevice_1(physicalDevice, createInfo, ref allocator, out device);
+	public static bool CreateDevice(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDevice device, out VkResult result)
+	{
+		result = CreateDevice_1(physicalDevice, createInfo, ref allocator, out device);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDeviceDelegate_1(VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDevice device);
 	private static CreateDeviceDelegate_1 CreateDevice_1;
 	public static VkResult CreateDevice(VkPhysicalDevice physicalDevice, ref VkDeviceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDevice device) => CreateDevice_2(physicalDevice, ref createInfo, allocator, out device);
+	public static bool CreateDevice(VkPhysicalDevice physicalDevice, ref VkDeviceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDevice device, out VkResult result)
+	{
+		result = CreateDevice_2(physicalDevice, ref createInfo, allocator, out device);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDeviceDelegate_2(VkPhysicalDevice physicalDevice, ref VkDeviceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDevice device);
 	private static CreateDeviceDelegate_2 CreateDevice_2;
 	public static VkResult CreateDevice(VkPhysicalDevice physicalDevice, ref VkDeviceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDevice device) => CreateDevice_3(physicalDevice, ref createInfo, ref allocator, out device);
+	public static bool CreateDevice(VkPhysicalDevice physicalDevice, ref VkDeviceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDevice device, out VkResult result)
+	{
+		result = CreateDevice_3(physicalDevice, ref createInfo, ref allocator, out device);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDeviceDelegate_3(VkPhysicalDevice physicalDevice, ref VkDeviceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDevice device);
 	private static CreateDeviceDelegate_3 CreateDevice_3;
 	public static void DestroyDevice(VkDevice device, VkAllocationCallbacks* allocator) => DestroyDevice_0(device, allocator);
@@ -305,51 +360,126 @@ public static unsafe class VK
 	private delegate void DestroyDeviceDelegate_1(VkDevice device, ref VkAllocationCallbacks allocator);
 	private static DestroyDeviceDelegate_1 DestroyDevice_1;
 	public static VkResult EnumerateInstanceExtensionProperties(string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateInstanceExtensionProperties_0(layerName, propertyCount, properties);
+	public static bool EnumerateInstanceExtensionProperties(string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties, out VkResult result)
+	{
+		result = EnumerateInstanceExtensionProperties_0(layerName, propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumerateInstanceExtensionPropertiesDelegate_0(string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties);
 	private static EnumerateInstanceExtensionPropertiesDelegate_0 EnumerateInstanceExtensionProperties_0;
 	public static VkResult EnumerateInstanceExtensionProperties(string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateInstanceExtensionProperties_1(layerName, ref propertyCount, properties);
+	public static bool EnumerateInstanceExtensionProperties(string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties, out VkResult result)
+	{
+		result = EnumerateInstanceExtensionProperties_1(layerName, ref propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumerateInstanceExtensionPropertiesDelegate_1(string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties);
 	private static EnumerateInstanceExtensionPropertiesDelegate_1 EnumerateInstanceExtensionProperties_1;
 	public static VkResult EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateDeviceExtensionProperties_0(physicalDevice, layerName, propertyCount, properties);
+	public static bool EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties, out VkResult result)
+	{
+		result = EnumerateDeviceExtensionProperties_0(physicalDevice, layerName, propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumerateDeviceExtensionPropertiesDelegate_0(VkPhysicalDevice physicalDevice, string layerName, uint* propertyCount, [In, Out] VkExtensionProperties[] properties);
 	private static EnumerateDeviceExtensionPropertiesDelegate_0 EnumerateDeviceExtensionProperties_0;
 	public static VkResult EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties) => EnumerateDeviceExtensionProperties_1(physicalDevice, layerName, ref propertyCount, properties);
+	public static bool EnumerateDeviceExtensionProperties(VkPhysicalDevice physicalDevice, string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties, out VkResult result)
+	{
+		result = EnumerateDeviceExtensionProperties_1(physicalDevice, layerName, ref propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumerateDeviceExtensionPropertiesDelegate_1(VkPhysicalDevice physicalDevice, string layerName, ref uint propertyCount, [In, Out] VkExtensionProperties[] properties);
 	private static EnumerateDeviceExtensionPropertiesDelegate_1 EnumerateDeviceExtensionProperties_1;
 	public static VkResult EnumerateInstanceLayerProperties(uint* propertyCount, [In, Out] VkLayerProperties[] properties) => EnumerateInstanceLayerProperties_0(propertyCount, properties);
+	public static bool EnumerateInstanceLayerProperties(uint* propertyCount, [In, Out] VkLayerProperties[] properties, out VkResult result)
+	{
+		result = EnumerateInstanceLayerProperties_0(propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumerateInstanceLayerPropertiesDelegate_0(uint* propertyCount, [In, Out] VkLayerProperties[] properties);
 	private static EnumerateInstanceLayerPropertiesDelegate_0 EnumerateInstanceLayerProperties_0;
 	public static VkResult EnumerateInstanceLayerProperties(ref uint propertyCount, [In, Out] VkLayerProperties[] properties) => EnumerateInstanceLayerProperties_1(ref propertyCount, properties);
+	public static bool EnumerateInstanceLayerProperties(ref uint propertyCount, [In, Out] VkLayerProperties[] properties, out VkResult result)
+	{
+		result = EnumerateInstanceLayerProperties_1(ref propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumerateInstanceLayerPropertiesDelegate_1(ref uint propertyCount, [In, Out] VkLayerProperties[] properties);
 	private static EnumerateInstanceLayerPropertiesDelegate_1 EnumerateInstanceLayerProperties_1;
 	public static VkResult EnumerateDeviceLayerProperties(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkLayerProperties[] properties) => EnumerateDeviceLayerProperties_0(physicalDevice, propertyCount, properties);
+	public static bool EnumerateDeviceLayerProperties(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkLayerProperties[] properties, out VkResult result)
+	{
+		result = EnumerateDeviceLayerProperties_0(physicalDevice, propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumerateDeviceLayerPropertiesDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkLayerProperties[] properties);
 	private static EnumerateDeviceLayerPropertiesDelegate_0 EnumerateDeviceLayerProperties_0;
 	public static VkResult EnumerateDeviceLayerProperties(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkLayerProperties[] properties) => EnumerateDeviceLayerProperties_1(physicalDevice, ref propertyCount, properties);
+	public static bool EnumerateDeviceLayerProperties(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkLayerProperties[] properties, out VkResult result)
+	{
+		result = EnumerateDeviceLayerProperties_1(physicalDevice, ref propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumerateDeviceLayerPropertiesDelegate_1(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkLayerProperties[] properties);
 	private static EnumerateDeviceLayerPropertiesDelegate_1 EnumerateDeviceLayerProperties_1;
 	public static void GetDeviceQueue(VkDevice device, uint queueFamilyIndex, uint queueIndex, out VkQueue queue) => GetDeviceQueue_0(device, queueFamilyIndex, queueIndex, out queue);
 	private delegate void GetDeviceQueueDelegate_0(VkDevice device, uint queueFamilyIndex, uint queueIndex, out VkQueue queue);
 	private static GetDeviceQueueDelegate_0 GetDeviceQueue_0;
 	public static VkResult QueueSubmit(VkQueue queue, uint submitCount, VkSubmitInfo[] submits, VkFence fence) => QueueSubmit_0(queue, submitCount, submits, fence);
+	public static bool QueueSubmit(VkQueue queue, uint submitCount, VkSubmitInfo[] submits, VkFence fence, out VkResult result)
+	{
+		result = QueueSubmit_0(queue, submitCount, submits, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult QueueSubmitDelegate_0(VkQueue queue, uint submitCount, VkSubmitInfo[] submits, VkFence fence);
 	private static QueueSubmitDelegate_0 QueueSubmit_0;
 	public static VkResult QueueWaitIdle(VkQueue queue) => QueueWaitIdle_0(queue);
+	public static bool QueueWaitIdle(VkQueue queue, out VkResult result)
+	{
+		result = QueueWaitIdle_0(queue);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult QueueWaitIdleDelegate_0(VkQueue queue);
 	private static QueueWaitIdleDelegate_0 QueueWaitIdle_0;
 	public static VkResult DeviceWaitIdle(VkDevice device) => DeviceWaitIdle_0(device);
+	public static bool DeviceWaitIdle(VkDevice device, out VkResult result)
+	{
+		result = DeviceWaitIdle_0(device);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult DeviceWaitIdleDelegate_0(VkDevice device);
 	private static DeviceWaitIdleDelegate_0 DeviceWaitIdle_0;
 	public static VkResult AllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, out VkDeviceMemory memory) => AllocateMemory_0(device, allocateInfo, allocator, out memory);
+	public static bool AllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, out VkDeviceMemory memory, out VkResult result)
+	{
+		result = AllocateMemory_0(device, allocateInfo, allocator, out memory);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AllocateMemoryDelegate_0(VkDevice device, VkMemoryAllocateInfo* allocateInfo, VkAllocationCallbacks* allocator, out VkDeviceMemory memory);
 	private static AllocateMemoryDelegate_0 AllocateMemory_0;
 	public static VkResult AllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, ref VkAllocationCallbacks allocator, out VkDeviceMemory memory) => AllocateMemory_1(device, allocateInfo, ref allocator, out memory);
+	public static bool AllocateMemory(VkDevice device, VkMemoryAllocateInfo* allocateInfo, ref VkAllocationCallbacks allocator, out VkDeviceMemory memory, out VkResult result)
+	{
+		result = AllocateMemory_1(device, allocateInfo, ref allocator, out memory);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AllocateMemoryDelegate_1(VkDevice device, VkMemoryAllocateInfo* allocateInfo, ref VkAllocationCallbacks allocator, out VkDeviceMemory memory);
 	private static AllocateMemoryDelegate_1 AllocateMemory_1;
 	public static VkResult AllocateMemory(VkDevice device, ref VkMemoryAllocateInfo allocateInfo, VkAllocationCallbacks* allocator, out VkDeviceMemory memory) => AllocateMemory_2(device, ref allocateInfo, allocator, out memory);
+	public static bool AllocateMemory(VkDevice device, ref VkMemoryAllocateInfo allocateInfo, VkAllocationCallbacks* allocator, out VkDeviceMemory memory, out VkResult result)
+	{
+		result = AllocateMemory_2(device, ref allocateInfo, allocator, out memory);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AllocateMemoryDelegate_2(VkDevice device, ref VkMemoryAllocateInfo allocateInfo, VkAllocationCallbacks* allocator, out VkDeviceMemory memory);
 	private static AllocateMemoryDelegate_2 AllocateMemory_2;
 	public static VkResult AllocateMemory(VkDevice device, ref VkMemoryAllocateInfo allocateInfo, ref VkAllocationCallbacks allocator, out VkDeviceMemory memory) => AllocateMemory_3(device, ref allocateInfo, ref allocator, out memory);
+	public static bool AllocateMemory(VkDevice device, ref VkMemoryAllocateInfo allocateInfo, ref VkAllocationCallbacks allocator, out VkDeviceMemory memory, out VkResult result)
+	{
+		result = AllocateMemory_3(device, ref allocateInfo, ref allocator, out memory);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AllocateMemoryDelegate_3(VkDevice device, ref VkMemoryAllocateInfo allocateInfo, ref VkAllocationCallbacks allocator, out VkDeviceMemory memory);
 	private static AllocateMemoryDelegate_3 AllocateMemory_3;
 	public static void FreeMemory(VkDevice device, VkDeviceMemory memory, VkAllocationCallbacks* allocator) => FreeMemory_0(device, memory, allocator);
@@ -359,24 +489,49 @@ public static unsafe class VK
 	private delegate void FreeMemoryDelegate_1(VkDevice device, VkDeviceMemory memory, ref VkAllocationCallbacks allocator);
 	private static FreeMemoryDelegate_1 FreeMemory_1;
 	public static VkResult MapMemory(VkDevice device, VkDeviceMemory memory, VkDeviceSize offset, VkDeviceSize size, VkMemoryMapFlags flags, void** data) => MapMemory_0(device, memory, offset, size, flags, data);
+	public static bool MapMemory(VkDevice device, VkDeviceMemory memory, VkDeviceSize offset, VkDeviceSize size, VkMemoryMapFlags flags, void** data, out VkResult result)
+	{
+		result = MapMemory_0(device, memory, offset, size, flags, data);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult MapMemoryDelegate_0(VkDevice device, VkDeviceMemory memory, VkDeviceSize offset, VkDeviceSize size, VkMemoryMapFlags flags, void** data);
 	private static MapMemoryDelegate_0 MapMemory_0;
 	public static void UnmapMemory(VkDevice device, VkDeviceMemory memory) => UnmapMemory_0(device, memory);
 	private delegate void UnmapMemoryDelegate_0(VkDevice device, VkDeviceMemory memory);
 	private static UnmapMemoryDelegate_0 UnmapMemory_0;
 	public static VkResult FlushMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange[] memoryRanges) => FlushMappedMemoryRanges_0(device, memoryRangeCount, memoryRanges);
+	public static bool FlushMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange[] memoryRanges, out VkResult result)
+	{
+		result = FlushMappedMemoryRanges_0(device, memoryRangeCount, memoryRanges);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult FlushMappedMemoryRangesDelegate_0(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange[] memoryRanges);
 	private static FlushMappedMemoryRangesDelegate_0 FlushMappedMemoryRanges_0;
 	public static VkResult InvalidateMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange[] memoryRanges) => InvalidateMappedMemoryRanges_0(device, memoryRangeCount, memoryRanges);
+	public static bool InvalidateMappedMemoryRanges(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange[] memoryRanges, out VkResult result)
+	{
+		result = InvalidateMappedMemoryRanges_0(device, memoryRangeCount, memoryRanges);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult InvalidateMappedMemoryRangesDelegate_0(VkDevice device, uint memoryRangeCount, VkMappedMemoryRange[] memoryRanges);
 	private static InvalidateMappedMemoryRangesDelegate_0 InvalidateMappedMemoryRanges_0;
 	public static void GetDeviceMemoryCommitment(VkDevice device, VkDeviceMemory memory, out VkDeviceSize committedMemoryInBytes) => GetDeviceMemoryCommitment_0(device, memory, out committedMemoryInBytes);
 	private delegate void GetDeviceMemoryCommitmentDelegate_0(VkDevice device, VkDeviceMemory memory, out VkDeviceSize committedMemoryInBytes);
 	private static GetDeviceMemoryCommitmentDelegate_0 GetDeviceMemoryCommitment_0;
 	public static VkResult BindBufferMemory(VkDevice device, VkBuffer buffer, VkDeviceMemory memory, VkDeviceSize memoryOffset) => BindBufferMemory_0(device, buffer, memory, memoryOffset);
+	public static bool BindBufferMemory(VkDevice device, VkBuffer buffer, VkDeviceMemory memory, VkDeviceSize memoryOffset, out VkResult result)
+	{
+		result = BindBufferMemory_0(device, buffer, memory, memoryOffset);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult BindBufferMemoryDelegate_0(VkDevice device, VkBuffer buffer, VkDeviceMemory memory, VkDeviceSize memoryOffset);
 	private static BindBufferMemoryDelegate_0 BindBufferMemory_0;
 	public static VkResult BindImageMemory(VkDevice device, VkImage image, VkDeviceMemory memory, VkDeviceSize memoryOffset) => BindImageMemory_0(device, image, memory, memoryOffset);
+	public static bool BindImageMemory(VkDevice device, VkImage image, VkDeviceMemory memory, VkDeviceSize memoryOffset, out VkResult result)
+	{
+		result = BindImageMemory_0(device, image, memory, memoryOffset);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult BindImageMemoryDelegate_0(VkDevice device, VkImage image, VkDeviceMemory memory, VkDeviceSize memoryOffset);
 	private static BindImageMemoryDelegate_0 BindImageMemory_0;
 	public static void GetBufferMemoryRequirements(VkDevice device, VkBuffer buffer, out VkMemoryRequirements memoryRequirements) => GetBufferMemoryRequirements_0(device, buffer, out memoryRequirements);
@@ -398,21 +553,51 @@ public static unsafe class VK
 	private delegate void GetPhysicalDeviceSparseImageFormatPropertiesDelegate_1(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlags samples, VkImageUsageFlags usage, VkImageTiling tiling, ref uint propertyCount, [In, Out] VkSparseImageFormatProperties[] properties);
 	private static GetPhysicalDeviceSparseImageFormatPropertiesDelegate_1 GetPhysicalDeviceSparseImageFormatProperties_1;
 	public static VkResult QueueBindSparse(VkQueue queue, uint bindInfoCount, VkBindSparseInfo* bindInfo, VkFence fence) => QueueBindSparse_0(queue, bindInfoCount, bindInfo, fence);
+	public static bool QueueBindSparse(VkQueue queue, uint bindInfoCount, VkBindSparseInfo* bindInfo, VkFence fence, out VkResult result)
+	{
+		result = QueueBindSparse_0(queue, bindInfoCount, bindInfo, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult QueueBindSparseDelegate_0(VkQueue queue, uint bindInfoCount, VkBindSparseInfo* bindInfo, VkFence fence);
 	private static QueueBindSparseDelegate_0 QueueBindSparse_0;
 	public static VkResult QueueBindSparse(VkQueue queue, uint bindInfoCount, ref VkBindSparseInfo bindInfo, VkFence fence) => QueueBindSparse_1(queue, bindInfoCount, ref bindInfo, fence);
+	public static bool QueueBindSparse(VkQueue queue, uint bindInfoCount, ref VkBindSparseInfo bindInfo, VkFence fence, out VkResult result)
+	{
+		result = QueueBindSparse_1(queue, bindInfoCount, ref bindInfo, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult QueueBindSparseDelegate_1(VkQueue queue, uint bindInfoCount, ref VkBindSparseInfo bindInfo, VkFence fence);
 	private static QueueBindSparseDelegate_1 QueueBindSparse_1;
 	public static VkResult CreateFence(VkDevice device, VkFenceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFence fence) => CreateFence_0(device, createInfo, allocator, out fence);
+	public static bool CreateFence(VkDevice device, VkFenceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFence fence, out VkResult result)
+	{
+		result = CreateFence_0(device, createInfo, allocator, out fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateFenceDelegate_0(VkDevice device, VkFenceCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFence fence);
 	private static CreateFenceDelegate_0 CreateFence_0;
 	public static VkResult CreateFence(VkDevice device, VkFenceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkFence fence) => CreateFence_1(device, createInfo, ref allocator, out fence);
+	public static bool CreateFence(VkDevice device, VkFenceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkFence fence, out VkResult result)
+	{
+		result = CreateFence_1(device, createInfo, ref allocator, out fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateFenceDelegate_1(VkDevice device, VkFenceCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkFence fence);
 	private static CreateFenceDelegate_1 CreateFence_1;
 	public static VkResult CreateFence(VkDevice device, ref VkFenceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkFence fence) => CreateFence_2(device, ref createInfo, allocator, out fence);
+	public static bool CreateFence(VkDevice device, ref VkFenceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkFence fence, out VkResult result)
+	{
+		result = CreateFence_2(device, ref createInfo, allocator, out fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateFenceDelegate_2(VkDevice device, ref VkFenceCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkFence fence);
 	private static CreateFenceDelegate_2 CreateFence_2;
 	public static VkResult CreateFence(VkDevice device, ref VkFenceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkFence fence) => CreateFence_3(device, ref createInfo, ref allocator, out fence);
+	public static bool CreateFence(VkDevice device, ref VkFenceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkFence fence, out VkResult result)
+	{
+		result = CreateFence_3(device, ref createInfo, ref allocator, out fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateFenceDelegate_3(VkDevice device, ref VkFenceCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkFence fence);
 	private static CreateFenceDelegate_3 CreateFence_3;
 	public static void DestroyFence(VkDevice device, VkFence fence, VkAllocationCallbacks* allocator) => DestroyFence_0(device, fence, allocator);
@@ -422,24 +607,59 @@ public static unsafe class VK
 	private delegate void DestroyFenceDelegate_1(VkDevice device, VkFence fence, ref VkAllocationCallbacks allocator);
 	private static DestroyFenceDelegate_1 DestroyFence_1;
 	public static VkResult ResetFences(VkDevice device, uint fenceCount, VkFence[] fences) => ResetFences_0(device, fenceCount, fences);
+	public static bool ResetFences(VkDevice device, uint fenceCount, VkFence[] fences, out VkResult result)
+	{
+		result = ResetFences_0(device, fenceCount, fences);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ResetFencesDelegate_0(VkDevice device, uint fenceCount, VkFence[] fences);
 	private static ResetFencesDelegate_0 ResetFences_0;
 	public static VkResult GetFenceStatus(VkDevice device, VkFence fence) => GetFenceStatus_0(device, fence);
+	public static bool GetFenceStatus(VkDevice device, VkFence fence, out VkResult result)
+	{
+		result = GetFenceStatus_0(device, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetFenceStatusDelegate_0(VkDevice device, VkFence fence);
 	private static GetFenceStatusDelegate_0 GetFenceStatus_0;
 	public static VkResult WaitForFences(VkDevice device, uint fenceCount, VkFence[] fences, VkBool32 waitAll, ulong timeout) => WaitForFences_0(device, fenceCount, fences, waitAll, timeout);
+	public static bool WaitForFences(VkDevice device, uint fenceCount, VkFence[] fences, VkBool32 waitAll, ulong timeout, out VkResult result)
+	{
+		result = WaitForFences_0(device, fenceCount, fences, waitAll, timeout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult WaitForFencesDelegate_0(VkDevice device, uint fenceCount, VkFence[] fences, VkBool32 waitAll, ulong timeout);
 	private static WaitForFencesDelegate_0 WaitForFences_0;
 	public static VkResult CreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore) => CreateSemaphore_0(device, createInfo, allocator, out semaphore);
+	public static bool CreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore, out VkResult result)
+	{
+		result = CreateSemaphore_0(device, createInfo, allocator, out semaphore);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSemaphoreDelegate_0(VkDevice device, VkSemaphoreCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore);
 	private static CreateSemaphoreDelegate_0 CreateSemaphore_0;
 	public static VkResult CreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkSemaphore semaphore) => CreateSemaphore_1(device, createInfo, ref allocator, out semaphore);
+	public static bool CreateSemaphore(VkDevice device, VkSemaphoreCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkSemaphore semaphore, out VkResult result)
+	{
+		result = CreateSemaphore_1(device, createInfo, ref allocator, out semaphore);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSemaphoreDelegate_1(VkDevice device, VkSemaphoreCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkSemaphore semaphore);
 	private static CreateSemaphoreDelegate_1 CreateSemaphore_1;
 	public static VkResult CreateSemaphore(VkDevice device, ref VkSemaphoreCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore) => CreateSemaphore_2(device, ref createInfo, allocator, out semaphore);
+	public static bool CreateSemaphore(VkDevice device, ref VkSemaphoreCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore, out VkResult result)
+	{
+		result = CreateSemaphore_2(device, ref createInfo, allocator, out semaphore);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSemaphoreDelegate_2(VkDevice device, ref VkSemaphoreCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSemaphore semaphore);
 	private static CreateSemaphoreDelegate_2 CreateSemaphore_2;
 	public static VkResult CreateSemaphore(VkDevice device, ref VkSemaphoreCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkSemaphore semaphore) => CreateSemaphore_3(device, ref createInfo, ref allocator, out semaphore);
+	public static bool CreateSemaphore(VkDevice device, ref VkSemaphoreCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkSemaphore semaphore, out VkResult result)
+	{
+		result = CreateSemaphore_3(device, ref createInfo, ref allocator, out semaphore);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSemaphoreDelegate_3(VkDevice device, ref VkSemaphoreCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkSemaphore semaphore);
 	private static CreateSemaphoreDelegate_3 CreateSemaphore_3;
 	public static void DestroySemaphore(VkDevice device, VkSemaphore semaphore, VkAllocationCallbacks* allocator) => DestroySemaphore_0(device, semaphore, allocator);
@@ -449,15 +669,35 @@ public static unsafe class VK
 	private delegate void DestroySemaphoreDelegate_1(VkDevice device, VkSemaphore semaphore, ref VkAllocationCallbacks allocator);
 	private static DestroySemaphoreDelegate_1 DestroySemaphore_1;
 	public static VkResult CreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkEvent @event) => CreateEvent_0(device, createInfo, allocator, out @event);
+	public static bool CreateEvent(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkEvent @event, out VkResult result)
+	{
+		result = CreateEvent_0(device, createInfo, allocator, out @event);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateEventDelegate_0(VkDevice device, VkEventCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkEvent @event);
 	private static CreateEventDelegate_0 CreateEvent_0;
 	public static VkResult CreateEvent(VkDevice device, VkEventCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkEvent @event) => CreateEvent_1(device, createInfo, ref allocator, out @event);
+	public static bool CreateEvent(VkDevice device, VkEventCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkEvent @event, out VkResult result)
+	{
+		result = CreateEvent_1(device, createInfo, ref allocator, out @event);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateEventDelegate_1(VkDevice device, VkEventCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkEvent @event);
 	private static CreateEventDelegate_1 CreateEvent_1;
 	public static VkResult CreateEvent(VkDevice device, ref VkEventCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkEvent @event) => CreateEvent_2(device, ref createInfo, allocator, out @event);
+	public static bool CreateEvent(VkDevice device, ref VkEventCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkEvent @event, out VkResult result)
+	{
+		result = CreateEvent_2(device, ref createInfo, allocator, out @event);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateEventDelegate_2(VkDevice device, ref VkEventCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkEvent @event);
 	private static CreateEventDelegate_2 CreateEvent_2;
 	public static VkResult CreateEvent(VkDevice device, ref VkEventCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkEvent @event) => CreateEvent_3(device, ref createInfo, ref allocator, out @event);
+	public static bool CreateEvent(VkDevice device, ref VkEventCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkEvent @event, out VkResult result)
+	{
+		result = CreateEvent_3(device, ref createInfo, ref allocator, out @event);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateEventDelegate_3(VkDevice device, ref VkEventCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkEvent @event);
 	private static CreateEventDelegate_3 CreateEvent_3;
 	public static void DestroyEvent(VkDevice device, VkEvent @event, VkAllocationCallbacks* allocator) => DestroyEvent_0(device, @event, allocator);
@@ -467,24 +707,59 @@ public static unsafe class VK
 	private delegate void DestroyEventDelegate_1(VkDevice device, VkEvent @event, ref VkAllocationCallbacks allocator);
 	private static DestroyEventDelegate_1 DestroyEvent_1;
 	public static VkResult GetEventStatus(VkDevice device, VkEvent @event) => GetEventStatus_0(device, @event);
+	public static bool GetEventStatus(VkDevice device, VkEvent @event, out VkResult result)
+	{
+		result = GetEventStatus_0(device, @event);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetEventStatusDelegate_0(VkDevice device, VkEvent @event);
 	private static GetEventStatusDelegate_0 GetEventStatus_0;
 	public static VkResult SetEvent(VkDevice device, VkEvent @event) => SetEvent_0(device, @event);
+	public static bool SetEvent(VkDevice device, VkEvent @event, out VkResult result)
+	{
+		result = SetEvent_0(device, @event);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult SetEventDelegate_0(VkDevice device, VkEvent @event);
 	private static SetEventDelegate_0 SetEvent_0;
 	public static VkResult ResetEvent(VkDevice device, VkEvent @event) => ResetEvent_0(device, @event);
+	public static bool ResetEvent(VkDevice device, VkEvent @event, out VkResult result)
+	{
+		result = ResetEvent_0(device, @event);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ResetEventDelegate_0(VkDevice device, VkEvent @event);
 	private static ResetEventDelegate_0 ResetEvent_0;
 	public static VkResult CreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkQueryPool queryPool) => CreateQueryPool_0(device, createInfo, allocator, out queryPool);
+	public static bool CreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkQueryPool queryPool, out VkResult result)
+	{
+		result = CreateQueryPool_0(device, createInfo, allocator, out queryPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateQueryPoolDelegate_0(VkDevice device, VkQueryPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkQueryPool queryPool);
 	private static CreateQueryPoolDelegate_0 CreateQueryPool_0;
 	public static VkResult CreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkQueryPool queryPool) => CreateQueryPool_1(device, createInfo, ref allocator, out queryPool);
+	public static bool CreateQueryPool(VkDevice device, VkQueryPoolCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkQueryPool queryPool, out VkResult result)
+	{
+		result = CreateQueryPool_1(device, createInfo, ref allocator, out queryPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateQueryPoolDelegate_1(VkDevice device, VkQueryPoolCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkQueryPool queryPool);
 	private static CreateQueryPoolDelegate_1 CreateQueryPool_1;
 	public static VkResult CreateQueryPool(VkDevice device, ref VkQueryPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkQueryPool queryPool) => CreateQueryPool_2(device, ref createInfo, allocator, out queryPool);
+	public static bool CreateQueryPool(VkDevice device, ref VkQueryPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkQueryPool queryPool, out VkResult result)
+	{
+		result = CreateQueryPool_2(device, ref createInfo, allocator, out queryPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateQueryPoolDelegate_2(VkDevice device, ref VkQueryPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkQueryPool queryPool);
 	private static CreateQueryPoolDelegate_2 CreateQueryPool_2;
 	public static VkResult CreateQueryPool(VkDevice device, ref VkQueryPoolCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkQueryPool queryPool) => CreateQueryPool_3(device, ref createInfo, ref allocator, out queryPool);
+	public static bool CreateQueryPool(VkDevice device, ref VkQueryPoolCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkQueryPool queryPool, out VkResult result)
+	{
+		result = CreateQueryPool_3(device, ref createInfo, ref allocator, out queryPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateQueryPoolDelegate_3(VkDevice device, ref VkQueryPoolCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkQueryPool queryPool);
 	private static CreateQueryPoolDelegate_3 CreateQueryPool_3;
 	public static void DestroyQueryPool(VkDevice device, VkQueryPool queryPool, VkAllocationCallbacks* allocator) => DestroyQueryPool_0(device, queryPool, allocator);
@@ -494,18 +769,43 @@ public static unsafe class VK
 	private delegate void DestroyQueryPoolDelegate_1(VkDevice device, VkQueryPool queryPool, ref VkAllocationCallbacks allocator);
 	private static DestroyQueryPoolDelegate_1 DestroyQueryPool_1;
 	public static VkResult GetQueryPoolResults(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount, nuint dataSize, void* data, VkDeviceSize stride, VkQueryResultFlags flags) => GetQueryPoolResults_0(device, queryPool, firstQuery, queryCount, dataSize, data, stride, flags);
+	public static bool GetQueryPoolResults(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount, nuint dataSize, void* data, VkDeviceSize stride, VkQueryResultFlags flags, out VkResult result)
+	{
+		result = GetQueryPoolResults_0(device, queryPool, firstQuery, queryCount, dataSize, data, stride, flags);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetQueryPoolResultsDelegate_0(VkDevice device, VkQueryPool queryPool, uint firstQuery, uint queryCount, nuint dataSize, void* data, VkDeviceSize stride, VkQueryResultFlags flags);
 	private static GetQueryPoolResultsDelegate_0 GetQueryPoolResults_0;
 	public static VkResult CreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBuffer buffer) => CreateBuffer_0(device, createInfo, allocator, out buffer);
+	public static bool CreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBuffer buffer, out VkResult result)
+	{
+		result = CreateBuffer_0(device, createInfo, allocator, out buffer);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateBufferDelegate_0(VkDevice device, VkBufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBuffer buffer);
 	private static CreateBufferDelegate_0 CreateBuffer_0;
 	public static VkResult CreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkBuffer buffer) => CreateBuffer_1(device, createInfo, ref allocator, out buffer);
+	public static bool CreateBuffer(VkDevice device, VkBufferCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkBuffer buffer, out VkResult result)
+	{
+		result = CreateBuffer_1(device, createInfo, ref allocator, out buffer);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateBufferDelegate_1(VkDevice device, VkBufferCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkBuffer buffer);
 	private static CreateBufferDelegate_1 CreateBuffer_1;
 	public static VkResult CreateBuffer(VkDevice device, ref VkBufferCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkBuffer buffer) => CreateBuffer_2(device, ref createInfo, allocator, out buffer);
+	public static bool CreateBuffer(VkDevice device, ref VkBufferCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkBuffer buffer, out VkResult result)
+	{
+		result = CreateBuffer_2(device, ref createInfo, allocator, out buffer);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateBufferDelegate_2(VkDevice device, ref VkBufferCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkBuffer buffer);
 	private static CreateBufferDelegate_2 CreateBuffer_2;
 	public static VkResult CreateBuffer(VkDevice device, ref VkBufferCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkBuffer buffer) => CreateBuffer_3(device, ref createInfo, ref allocator, out buffer);
+	public static bool CreateBuffer(VkDevice device, ref VkBufferCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkBuffer buffer, out VkResult result)
+	{
+		result = CreateBuffer_3(device, ref createInfo, ref allocator, out buffer);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateBufferDelegate_3(VkDevice device, ref VkBufferCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkBuffer buffer);
 	private static CreateBufferDelegate_3 CreateBuffer_3;
 	public static void DestroyBuffer(VkDevice device, VkBuffer buffer, VkAllocationCallbacks* allocator) => DestroyBuffer_0(device, buffer, allocator);
@@ -515,15 +815,35 @@ public static unsafe class VK
 	private delegate void DestroyBufferDelegate_1(VkDevice device, VkBuffer buffer, ref VkAllocationCallbacks allocator);
 	private static DestroyBufferDelegate_1 DestroyBuffer_1;
 	public static VkResult CreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBufferView view) => CreateBufferView_0(device, createInfo, allocator, out view);
+	public static bool CreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBufferView view, out VkResult result)
+	{
+		result = CreateBufferView_0(device, createInfo, allocator, out view);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateBufferViewDelegate_0(VkDevice device, VkBufferViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkBufferView view);
 	private static CreateBufferViewDelegate_0 CreateBufferView_0;
 	public static VkResult CreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkBufferView view) => CreateBufferView_1(device, createInfo, ref allocator, out view);
+	public static bool CreateBufferView(VkDevice device, VkBufferViewCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkBufferView view, out VkResult result)
+	{
+		result = CreateBufferView_1(device, createInfo, ref allocator, out view);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateBufferViewDelegate_1(VkDevice device, VkBufferViewCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkBufferView view);
 	private static CreateBufferViewDelegate_1 CreateBufferView_1;
 	public static VkResult CreateBufferView(VkDevice device, ref VkBufferViewCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkBufferView view) => CreateBufferView_2(device, ref createInfo, allocator, out view);
+	public static bool CreateBufferView(VkDevice device, ref VkBufferViewCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkBufferView view, out VkResult result)
+	{
+		result = CreateBufferView_2(device, ref createInfo, allocator, out view);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateBufferViewDelegate_2(VkDevice device, ref VkBufferViewCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkBufferView view);
 	private static CreateBufferViewDelegate_2 CreateBufferView_2;
 	public static VkResult CreateBufferView(VkDevice device, ref VkBufferViewCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkBufferView view) => CreateBufferView_3(device, ref createInfo, ref allocator, out view);
+	public static bool CreateBufferView(VkDevice device, ref VkBufferViewCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkBufferView view, out VkResult result)
+	{
+		result = CreateBufferView_3(device, ref createInfo, ref allocator, out view);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateBufferViewDelegate_3(VkDevice device, ref VkBufferViewCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkBufferView view);
 	private static CreateBufferViewDelegate_3 CreateBufferView_3;
 	public static void DestroyBufferView(VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* allocator) => DestroyBufferView_0(device, bufferView, allocator);
@@ -533,15 +853,35 @@ public static unsafe class VK
 	private delegate void DestroyBufferViewDelegate_1(VkDevice device, VkBufferView bufferView, ref VkAllocationCallbacks allocator);
 	private static DestroyBufferViewDelegate_1 DestroyBufferView_1;
 	public static VkResult CreateImage(VkDevice device, VkImageCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImage image) => CreateImage_0(device, createInfo, allocator, out image);
+	public static bool CreateImage(VkDevice device, VkImageCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImage image, out VkResult result)
+	{
+		result = CreateImage_0(device, createInfo, allocator, out image);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateImageDelegate_0(VkDevice device, VkImageCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImage image);
 	private static CreateImageDelegate_0 CreateImage_0;
 	public static VkResult CreateImage(VkDevice device, VkImageCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkImage image) => CreateImage_1(device, createInfo, ref allocator, out image);
+	public static bool CreateImage(VkDevice device, VkImageCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkImage image, out VkResult result)
+	{
+		result = CreateImage_1(device, createInfo, ref allocator, out image);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateImageDelegate_1(VkDevice device, VkImageCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkImage image);
 	private static CreateImageDelegate_1 CreateImage_1;
 	public static VkResult CreateImage(VkDevice device, ref VkImageCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkImage image) => CreateImage_2(device, ref createInfo, allocator, out image);
+	public static bool CreateImage(VkDevice device, ref VkImageCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkImage image, out VkResult result)
+	{
+		result = CreateImage_2(device, ref createInfo, allocator, out image);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateImageDelegate_2(VkDevice device, ref VkImageCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkImage image);
 	private static CreateImageDelegate_2 CreateImage_2;
 	public static VkResult CreateImage(VkDevice device, ref VkImageCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkImage image) => CreateImage_3(device, ref createInfo, ref allocator, out image);
+	public static bool CreateImage(VkDevice device, ref VkImageCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkImage image, out VkResult result)
+	{
+		result = CreateImage_3(device, ref createInfo, ref allocator, out image);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateImageDelegate_3(VkDevice device, ref VkImageCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkImage image);
 	private static CreateImageDelegate_3 CreateImage_3;
 	public static void DestroyImage(VkDevice device, VkImage image, VkAllocationCallbacks* allocator) => DestroyImage_0(device, image, allocator);
@@ -557,15 +897,35 @@ public static unsafe class VK
 	private delegate void GetImageSubresourceLayoutDelegate_1(VkDevice device, VkImage image, ref VkImageSubresource subresource, out VkSubresourceLayout layout);
 	private static GetImageSubresourceLayoutDelegate_1 GetImageSubresourceLayout_1;
 	public static VkResult CreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImageView view) => CreateImageView_0(device, createInfo, allocator, out view);
+	public static bool CreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImageView view, out VkResult result)
+	{
+		result = CreateImageView_0(device, createInfo, allocator, out view);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateImageViewDelegate_0(VkDevice device, VkImageViewCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkImageView view);
 	private static CreateImageViewDelegate_0 CreateImageView_0;
 	public static VkResult CreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkImageView view) => CreateImageView_1(device, createInfo, ref allocator, out view);
+	public static bool CreateImageView(VkDevice device, VkImageViewCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkImageView view, out VkResult result)
+	{
+		result = CreateImageView_1(device, createInfo, ref allocator, out view);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateImageViewDelegate_1(VkDevice device, VkImageViewCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkImageView view);
 	private static CreateImageViewDelegate_1 CreateImageView_1;
 	public static VkResult CreateImageView(VkDevice device, ref VkImageViewCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkImageView view) => CreateImageView_2(device, ref createInfo, allocator, out view);
+	public static bool CreateImageView(VkDevice device, ref VkImageViewCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkImageView view, out VkResult result)
+	{
+		result = CreateImageView_2(device, ref createInfo, allocator, out view);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateImageViewDelegate_2(VkDevice device, ref VkImageViewCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkImageView view);
 	private static CreateImageViewDelegate_2 CreateImageView_2;
 	public static VkResult CreateImageView(VkDevice device, ref VkImageViewCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkImageView view) => CreateImageView_3(device, ref createInfo, ref allocator, out view);
+	public static bool CreateImageView(VkDevice device, ref VkImageViewCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkImageView view, out VkResult result)
+	{
+		result = CreateImageView_3(device, ref createInfo, ref allocator, out view);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateImageViewDelegate_3(VkDevice device, ref VkImageViewCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkImageView view);
 	private static CreateImageViewDelegate_3 CreateImageView_3;
 	public static void DestroyImageView(VkDevice device, VkImageView imageView, VkAllocationCallbacks* allocator) => DestroyImageView_0(device, imageView, allocator);
@@ -575,15 +935,35 @@ public static unsafe class VK
 	private delegate void DestroyImageViewDelegate_1(VkDevice device, VkImageView imageView, ref VkAllocationCallbacks allocator);
 	private static DestroyImageViewDelegate_1 DestroyImageView_1;
 	public static VkResult CreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule) => CreateShaderModule_0(device, createInfo, allocator, out shaderModule);
+	public static bool CreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule, out VkResult result)
+	{
+		result = CreateShaderModule_0(device, createInfo, allocator, out shaderModule);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateShaderModuleDelegate_0(VkDevice device, VkShaderModuleCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule);
 	private static CreateShaderModuleDelegate_0 CreateShaderModule_0;
 	public static VkResult CreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkShaderModule shaderModule) => CreateShaderModule_1(device, createInfo, ref allocator, out shaderModule);
+	public static bool CreateShaderModule(VkDevice device, VkShaderModuleCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkShaderModule shaderModule, out VkResult result)
+	{
+		result = CreateShaderModule_1(device, createInfo, ref allocator, out shaderModule);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateShaderModuleDelegate_1(VkDevice device, VkShaderModuleCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkShaderModule shaderModule);
 	private static CreateShaderModuleDelegate_1 CreateShaderModule_1;
 	public static VkResult CreateShaderModule(VkDevice device, ref VkShaderModuleCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule) => CreateShaderModule_2(device, ref createInfo, allocator, out shaderModule);
+	public static bool CreateShaderModule(VkDevice device, ref VkShaderModuleCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule, out VkResult result)
+	{
+		result = CreateShaderModule_2(device, ref createInfo, allocator, out shaderModule);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateShaderModuleDelegate_2(VkDevice device, ref VkShaderModuleCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkShaderModule shaderModule);
 	private static CreateShaderModuleDelegate_2 CreateShaderModule_2;
 	public static VkResult CreateShaderModule(VkDevice device, ref VkShaderModuleCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkShaderModule shaderModule) => CreateShaderModule_3(device, ref createInfo, ref allocator, out shaderModule);
+	public static bool CreateShaderModule(VkDevice device, ref VkShaderModuleCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkShaderModule shaderModule, out VkResult result)
+	{
+		result = CreateShaderModule_3(device, ref createInfo, ref allocator, out shaderModule);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateShaderModuleDelegate_3(VkDevice device, ref VkShaderModuleCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkShaderModule shaderModule);
 	private static CreateShaderModuleDelegate_3 CreateShaderModule_3;
 	public static void DestroyShaderModule(VkDevice device, VkShaderModule shaderModule, VkAllocationCallbacks* allocator) => DestroyShaderModule_0(device, shaderModule, allocator);
@@ -593,15 +973,35 @@ public static unsafe class VK
 	private delegate void DestroyShaderModuleDelegate_1(VkDevice device, VkShaderModule shaderModule, ref VkAllocationCallbacks allocator);
 	private static DestroyShaderModuleDelegate_1 DestroyShaderModule_1;
 	public static VkResult CreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineCache pipelineCache) => CreatePipelineCache_0(device, createInfo, allocator, out pipelineCache);
+	public static bool CreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineCache pipelineCache, out VkResult result)
+	{
+		result = CreatePipelineCache_0(device, createInfo, allocator, out pipelineCache);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreatePipelineCacheDelegate_0(VkDevice device, VkPipelineCacheCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineCache pipelineCache);
 	private static CreatePipelineCacheDelegate_0 CreatePipelineCache_0;
 	public static VkResult CreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkPipelineCache pipelineCache) => CreatePipelineCache_1(device, createInfo, ref allocator, out pipelineCache);
+	public static bool CreatePipelineCache(VkDevice device, VkPipelineCacheCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkPipelineCache pipelineCache, out VkResult result)
+	{
+		result = CreatePipelineCache_1(device, createInfo, ref allocator, out pipelineCache);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreatePipelineCacheDelegate_1(VkDevice device, VkPipelineCacheCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkPipelineCache pipelineCache);
 	private static CreatePipelineCacheDelegate_1 CreatePipelineCache_1;
 	public static VkResult CreatePipelineCache(VkDevice device, ref VkPipelineCacheCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkPipelineCache pipelineCache) => CreatePipelineCache_2(device, ref createInfo, allocator, out pipelineCache);
+	public static bool CreatePipelineCache(VkDevice device, ref VkPipelineCacheCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkPipelineCache pipelineCache, out VkResult result)
+	{
+		result = CreatePipelineCache_2(device, ref createInfo, allocator, out pipelineCache);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreatePipelineCacheDelegate_2(VkDevice device, ref VkPipelineCacheCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkPipelineCache pipelineCache);
 	private static CreatePipelineCacheDelegate_2 CreatePipelineCache_2;
 	public static VkResult CreatePipelineCache(VkDevice device, ref VkPipelineCacheCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkPipelineCache pipelineCache) => CreatePipelineCache_3(device, ref createInfo, ref allocator, out pipelineCache);
+	public static bool CreatePipelineCache(VkDevice device, ref VkPipelineCacheCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkPipelineCache pipelineCache, out VkResult result)
+	{
+		result = CreatePipelineCache_3(device, ref createInfo, ref allocator, out pipelineCache);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreatePipelineCacheDelegate_3(VkDevice device, ref VkPipelineCacheCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkPipelineCache pipelineCache);
 	private static CreatePipelineCacheDelegate_3 CreatePipelineCache_3;
 	public static void DestroyPipelineCache(VkDevice device, VkPipelineCache pipelineCache, VkAllocationCallbacks* allocator) => DestroyPipelineCache_0(device, pipelineCache, allocator);
@@ -611,24 +1011,59 @@ public static unsafe class VK
 	private delegate void DestroyPipelineCacheDelegate_1(VkDevice device, VkPipelineCache pipelineCache, ref VkAllocationCallbacks allocator);
 	private static DestroyPipelineCacheDelegate_1 DestroyPipelineCache_1;
 	public static VkResult GetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, nuint* dataSize, void* data) => GetPipelineCacheData_0(device, pipelineCache, dataSize, data);
+	public static bool GetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, nuint* dataSize, void* data, out VkResult result)
+	{
+		result = GetPipelineCacheData_0(device, pipelineCache, dataSize, data);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPipelineCacheDataDelegate_0(VkDevice device, VkPipelineCache pipelineCache, nuint* dataSize, void* data);
 	private static GetPipelineCacheDataDelegate_0 GetPipelineCacheData_0;
 	public static VkResult GetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, ref nuint dataSize, void* data) => GetPipelineCacheData_1(device, pipelineCache, ref dataSize, data);
+	public static bool GetPipelineCacheData(VkDevice device, VkPipelineCache pipelineCache, ref nuint dataSize, void* data, out VkResult result)
+	{
+		result = GetPipelineCacheData_1(device, pipelineCache, ref dataSize, data);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPipelineCacheDataDelegate_1(VkDevice device, VkPipelineCache pipelineCache, ref nuint dataSize, void* data);
 	private static GetPipelineCacheDataDelegate_1 GetPipelineCacheData_1;
 	public static VkResult MergePipelineCaches(VkDevice device, VkPipelineCache destinationCache, uint sourceCacheCount, VkPipelineCache[] sourceCaches) => MergePipelineCaches_0(device, destinationCache, sourceCacheCount, sourceCaches);
+	public static bool MergePipelineCaches(VkDevice device, VkPipelineCache destinationCache, uint sourceCacheCount, VkPipelineCache[] sourceCaches, out VkResult result)
+	{
+		result = MergePipelineCaches_0(device, destinationCache, sourceCacheCount, sourceCaches);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult MergePipelineCachesDelegate_0(VkDevice device, VkPipelineCache destinationCache, uint sourceCacheCount, VkPipelineCache[] sourceCaches);
 	private static MergePipelineCachesDelegate_0 MergePipelineCaches_0;
 	public static VkResult CreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines) => CreateGraphicsPipelines_0(device, pipelineCache, createInfoCount, createInfos, allocator, out pipelines);
+	public static bool CreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines, out VkResult result)
+	{
+		result = CreateGraphicsPipelines_0(device, pipelineCache, createInfoCount, createInfos, allocator, out pipelines);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateGraphicsPipelinesDelegate_0(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines);
 	private static CreateGraphicsPipelinesDelegate_0 CreateGraphicsPipelines_0;
 	public static VkResult CreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, ref VkAllocationCallbacks allocator, out VkPipeline pipelines) => CreateGraphicsPipelines_1(device, pipelineCache, createInfoCount, createInfos, ref allocator, out pipelines);
+	public static bool CreateGraphicsPipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, ref VkAllocationCallbacks allocator, out VkPipeline pipelines, out VkResult result)
+	{
+		result = CreateGraphicsPipelines_1(device, pipelineCache, createInfoCount, createInfos, ref allocator, out pipelines);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateGraphicsPipelinesDelegate_1(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkGraphicsPipelineCreateInfo[] createInfos, ref VkAllocationCallbacks allocator, out VkPipeline pipelines);
 	private static CreateGraphicsPipelinesDelegate_1 CreateGraphicsPipelines_1;
 	public static VkResult CreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo[] createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines) => CreateComputePipelines_0(device, pipelineCache, createInfoCount, createInfos, allocator, out pipelines);
+	public static bool CreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo[] createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines, out VkResult result)
+	{
+		result = CreateComputePipelines_0(device, pipelineCache, createInfoCount, createInfos, allocator, out pipelines);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateComputePipelinesDelegate_0(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo[] createInfos, VkAllocationCallbacks* allocator, out VkPipeline pipelines);
 	private static CreateComputePipelinesDelegate_0 CreateComputePipelines_0;
 	public static VkResult CreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo[] createInfos, ref VkAllocationCallbacks allocator, out VkPipeline pipelines) => CreateComputePipelines_1(device, pipelineCache, createInfoCount, createInfos, ref allocator, out pipelines);
+	public static bool CreateComputePipelines(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo[] createInfos, ref VkAllocationCallbacks allocator, out VkPipeline pipelines, out VkResult result)
+	{
+		result = CreateComputePipelines_1(device, pipelineCache, createInfoCount, createInfos, ref allocator, out pipelines);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateComputePipelinesDelegate_1(VkDevice device, VkPipelineCache pipelineCache, uint createInfoCount, VkComputePipelineCreateInfo[] createInfos, ref VkAllocationCallbacks allocator, out VkPipeline pipelines);
 	private static CreateComputePipelinesDelegate_1 CreateComputePipelines_1;
 	public static void DestroyPipeline(VkDevice device, VkPipeline pipeline, VkAllocationCallbacks* allocator) => DestroyPipeline_0(device, pipeline, allocator);
@@ -638,15 +1073,35 @@ public static unsafe class VK
 	private delegate void DestroyPipelineDelegate_1(VkDevice device, VkPipeline pipeline, ref VkAllocationCallbacks allocator);
 	private static DestroyPipelineDelegate_1 DestroyPipeline_1;
 	public static VkResult CreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineLayout pipelineLayout) => CreatePipelineLayout_0(device, createInfo, allocator, out pipelineLayout);
+	public static bool CreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineLayout pipelineLayout, out VkResult result)
+	{
+		result = CreatePipelineLayout_0(device, createInfo, allocator, out pipelineLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreatePipelineLayoutDelegate_0(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkPipelineLayout pipelineLayout);
 	private static CreatePipelineLayoutDelegate_0 CreatePipelineLayout_0;
 	public static VkResult CreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkPipelineLayout pipelineLayout) => CreatePipelineLayout_1(device, createInfo, ref allocator, out pipelineLayout);
+	public static bool CreatePipelineLayout(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkPipelineLayout pipelineLayout, out VkResult result)
+	{
+		result = CreatePipelineLayout_1(device, createInfo, ref allocator, out pipelineLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreatePipelineLayoutDelegate_1(VkDevice device, VkPipelineLayoutCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkPipelineLayout pipelineLayout);
 	private static CreatePipelineLayoutDelegate_1 CreatePipelineLayout_1;
 	public static VkResult CreatePipelineLayout(VkDevice device, ref VkPipelineLayoutCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkPipelineLayout pipelineLayout) => CreatePipelineLayout_2(device, ref createInfo, allocator, out pipelineLayout);
+	public static bool CreatePipelineLayout(VkDevice device, ref VkPipelineLayoutCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkPipelineLayout pipelineLayout, out VkResult result)
+	{
+		result = CreatePipelineLayout_2(device, ref createInfo, allocator, out pipelineLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreatePipelineLayoutDelegate_2(VkDevice device, ref VkPipelineLayoutCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkPipelineLayout pipelineLayout);
 	private static CreatePipelineLayoutDelegate_2 CreatePipelineLayout_2;
 	public static VkResult CreatePipelineLayout(VkDevice device, ref VkPipelineLayoutCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkPipelineLayout pipelineLayout) => CreatePipelineLayout_3(device, ref createInfo, ref allocator, out pipelineLayout);
+	public static bool CreatePipelineLayout(VkDevice device, ref VkPipelineLayoutCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkPipelineLayout pipelineLayout, out VkResult result)
+	{
+		result = CreatePipelineLayout_3(device, ref createInfo, ref allocator, out pipelineLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreatePipelineLayoutDelegate_3(VkDevice device, ref VkPipelineLayoutCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkPipelineLayout pipelineLayout);
 	private static CreatePipelineLayoutDelegate_3 CreatePipelineLayout_3;
 	public static void DestroyPipelineLayout(VkDevice device, VkPipelineLayout pipelineLayout, VkAllocationCallbacks* allocator) => DestroyPipelineLayout_0(device, pipelineLayout, allocator);
@@ -656,15 +1111,35 @@ public static unsafe class VK
 	private delegate void DestroyPipelineLayoutDelegate_1(VkDevice device, VkPipelineLayout pipelineLayout, ref VkAllocationCallbacks allocator);
 	private static DestroyPipelineLayoutDelegate_1 DestroyPipelineLayout_1;
 	public static VkResult CreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSampler sampler) => CreateSampler_0(device, createInfo, allocator, out sampler);
+	public static bool CreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSampler sampler, out VkResult result)
+	{
+		result = CreateSampler_0(device, createInfo, allocator, out sampler);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSamplerDelegate_0(VkDevice device, VkSamplerCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkSampler sampler);
 	private static CreateSamplerDelegate_0 CreateSampler_0;
 	public static VkResult CreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkSampler sampler) => CreateSampler_1(device, createInfo, ref allocator, out sampler);
+	public static bool CreateSampler(VkDevice device, VkSamplerCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkSampler sampler, out VkResult result)
+	{
+		result = CreateSampler_1(device, createInfo, ref allocator, out sampler);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSamplerDelegate_1(VkDevice device, VkSamplerCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkSampler sampler);
 	private static CreateSamplerDelegate_1 CreateSampler_1;
 	public static VkResult CreateSampler(VkDevice device, ref VkSamplerCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSampler sampler) => CreateSampler_2(device, ref createInfo, allocator, out sampler);
+	public static bool CreateSampler(VkDevice device, ref VkSamplerCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSampler sampler, out VkResult result)
+	{
+		result = CreateSampler_2(device, ref createInfo, allocator, out sampler);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSamplerDelegate_2(VkDevice device, ref VkSamplerCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkSampler sampler);
 	private static CreateSamplerDelegate_2 CreateSampler_2;
 	public static VkResult CreateSampler(VkDevice device, ref VkSamplerCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkSampler sampler) => CreateSampler_3(device, ref createInfo, ref allocator, out sampler);
+	public static bool CreateSampler(VkDevice device, ref VkSamplerCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkSampler sampler, out VkResult result)
+	{
+		result = CreateSampler_3(device, ref createInfo, ref allocator, out sampler);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSamplerDelegate_3(VkDevice device, ref VkSamplerCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkSampler sampler);
 	private static CreateSamplerDelegate_3 CreateSampler_3;
 	public static void DestroySampler(VkDevice device, VkSampler sampler, VkAllocationCallbacks* allocator) => DestroySampler_0(device, sampler, allocator);
@@ -674,15 +1149,35 @@ public static unsafe class VK
 	private delegate void DestroySamplerDelegate_1(VkDevice device, VkSampler sampler, ref VkAllocationCallbacks allocator);
 	private static DestroySamplerDelegate_1 DestroySampler_1;
 	public static VkResult CreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorSetLayout setLayout) => CreateDescriptorSetLayout_0(device, createInfo, allocator, out setLayout);
+	public static bool CreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorSetLayout setLayout, out VkResult result)
+	{
+		result = CreateDescriptorSetLayout_0(device, createInfo, allocator, out setLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorSetLayoutDelegate_0(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorSetLayout setLayout);
 	private static CreateDescriptorSetLayoutDelegate_0 CreateDescriptorSetLayout_0;
 	public static VkResult CreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorSetLayout setLayout) => CreateDescriptorSetLayout_1(device, createInfo, ref allocator, out setLayout);
+	public static bool CreateDescriptorSetLayout(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorSetLayout setLayout, out VkResult result)
+	{
+		result = CreateDescriptorSetLayout_1(device, createInfo, ref allocator, out setLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorSetLayoutDelegate_1(VkDevice device, VkDescriptorSetLayoutCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorSetLayout setLayout);
 	private static CreateDescriptorSetLayoutDelegate_1 CreateDescriptorSetLayout_1;
 	public static VkResult CreateDescriptorSetLayout(VkDevice device, ref VkDescriptorSetLayoutCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorSetLayout setLayout) => CreateDescriptorSetLayout_2(device, ref createInfo, allocator, out setLayout);
+	public static bool CreateDescriptorSetLayout(VkDevice device, ref VkDescriptorSetLayoutCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorSetLayout setLayout, out VkResult result)
+	{
+		result = CreateDescriptorSetLayout_2(device, ref createInfo, allocator, out setLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorSetLayoutDelegate_2(VkDevice device, ref VkDescriptorSetLayoutCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorSetLayout setLayout);
 	private static CreateDescriptorSetLayoutDelegate_2 CreateDescriptorSetLayout_2;
 	public static VkResult CreateDescriptorSetLayout(VkDevice device, ref VkDescriptorSetLayoutCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorSetLayout setLayout) => CreateDescriptorSetLayout_3(device, ref createInfo, ref allocator, out setLayout);
+	public static bool CreateDescriptorSetLayout(VkDevice device, ref VkDescriptorSetLayoutCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorSetLayout setLayout, out VkResult result)
+	{
+		result = CreateDescriptorSetLayout_3(device, ref createInfo, ref allocator, out setLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorSetLayoutDelegate_3(VkDevice device, ref VkDescriptorSetLayoutCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorSetLayout setLayout);
 	private static CreateDescriptorSetLayoutDelegate_3 CreateDescriptorSetLayout_3;
 	public static void DestroyDescriptorSetLayout(VkDevice device, VkDescriptorSetLayout descriptorSetLayout, VkAllocationCallbacks* allocator) => DestroyDescriptorSetLayout_0(device, descriptorSetLayout, allocator);
@@ -692,15 +1187,35 @@ public static unsafe class VK
 	private delegate void DestroyDescriptorSetLayoutDelegate_1(VkDevice device, VkDescriptorSetLayout descriptorSetLayout, ref VkAllocationCallbacks allocator);
 	private static DestroyDescriptorSetLayoutDelegate_1 DestroyDescriptorSetLayout_1;
 	public static VkResult CreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorPool descriptorPool) => CreateDescriptorPool_0(device, createInfo, allocator, out descriptorPool);
+	public static bool CreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorPool descriptorPool, out VkResult result)
+	{
+		result = CreateDescriptorPool_0(device, createInfo, allocator, out descriptorPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorPoolDelegate_0(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorPool descriptorPool);
 	private static CreateDescriptorPoolDelegate_0 CreateDescriptorPool_0;
 	public static VkResult CreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorPool descriptorPool) => CreateDescriptorPool_1(device, createInfo, ref allocator, out descriptorPool);
+	public static bool CreateDescriptorPool(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorPool descriptorPool, out VkResult result)
+	{
+		result = CreateDescriptorPool_1(device, createInfo, ref allocator, out descriptorPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorPoolDelegate_1(VkDevice device, VkDescriptorPoolCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorPool descriptorPool);
 	private static CreateDescriptorPoolDelegate_1 CreateDescriptorPool_1;
 	public static VkResult CreateDescriptorPool(VkDevice device, ref VkDescriptorPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorPool descriptorPool) => CreateDescriptorPool_2(device, ref createInfo, allocator, out descriptorPool);
+	public static bool CreateDescriptorPool(VkDevice device, ref VkDescriptorPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorPool descriptorPool, out VkResult result)
+	{
+		result = CreateDescriptorPool_2(device, ref createInfo, allocator, out descriptorPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorPoolDelegate_2(VkDevice device, ref VkDescriptorPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkDescriptorPool descriptorPool);
 	private static CreateDescriptorPoolDelegate_2 CreateDescriptorPool_2;
 	public static VkResult CreateDescriptorPool(VkDevice device, ref VkDescriptorPoolCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorPool descriptorPool) => CreateDescriptorPool_3(device, ref createInfo, ref allocator, out descriptorPool);
+	public static bool CreateDescriptorPool(VkDevice device, ref VkDescriptorPoolCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorPool descriptorPool, out VkResult result)
+	{
+		result = CreateDescriptorPool_3(device, ref createInfo, ref allocator, out descriptorPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorPoolDelegate_3(VkDevice device, ref VkDescriptorPoolCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorPool descriptorPool);
 	private static CreateDescriptorPoolDelegate_3 CreateDescriptorPool_3;
 	public static void DestroyDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* allocator) => DestroyDescriptorPool_0(device, descriptorPool, allocator);
@@ -710,30 +1225,70 @@ public static unsafe class VK
 	private delegate void DestroyDescriptorPoolDelegate_1(VkDevice device, VkDescriptorPool descriptorPool, ref VkAllocationCallbacks allocator);
 	private static DestroyDescriptorPoolDelegate_1 DestroyDescriptorPool_1;
 	public static VkResult ResetDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkDescriptorPoolResetFlags flags) => ResetDescriptorPool_0(device, descriptorPool, flags);
+	public static bool ResetDescriptorPool(VkDevice device, VkDescriptorPool descriptorPool, VkDescriptorPoolResetFlags flags, out VkResult result)
+	{
+		result = ResetDescriptorPool_0(device, descriptorPool, flags);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ResetDescriptorPoolDelegate_0(VkDevice device, VkDescriptorPool descriptorPool, VkDescriptorPoolResetFlags flags);
 	private static ResetDescriptorPoolDelegate_0 ResetDescriptorPool_0;
 	public static VkResult AllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets) => AllocateDescriptorSets_0(device, allocateInfo, descriptorSets);
+	public static bool AllocateDescriptorSets(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets, out VkResult result)
+	{
+		result = AllocateDescriptorSets_0(device, allocateInfo, descriptorSets);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AllocateDescriptorSetsDelegate_0(VkDevice device, VkDescriptorSetAllocateInfo* allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets);
 	private static AllocateDescriptorSetsDelegate_0 AllocateDescriptorSets_0;
 	public static VkResult AllocateDescriptorSets(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets) => AllocateDescriptorSets_1(device, ref allocateInfo, descriptorSets);
+	public static bool AllocateDescriptorSets(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets, out VkResult result)
+	{
+		result = AllocateDescriptorSets_1(device, ref allocateInfo, descriptorSets);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AllocateDescriptorSetsDelegate_1(VkDevice device, ref VkDescriptorSetAllocateInfo allocateInfo, [In, Out] VkDescriptorSet[] descriptorSets);
 	private static AllocateDescriptorSetsDelegate_1 AllocateDescriptorSets_1;
 	public static VkResult FreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet[] descriptorSets) => FreeDescriptorSets_0(device, descriptorPool, descriptorSetCount, descriptorSets);
+	public static bool FreeDescriptorSets(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet[] descriptorSets, out VkResult result)
+	{
+		result = FreeDescriptorSets_0(device, descriptorPool, descriptorSetCount, descriptorSets);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult FreeDescriptorSetsDelegate_0(VkDevice device, VkDescriptorPool descriptorPool, uint descriptorSetCount, VkDescriptorSet[] descriptorSets);
 	private static FreeDescriptorSetsDelegate_0 FreeDescriptorSets_0;
 	public static void UpdateDescriptorSets(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet[] descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet[] descriptorCopies) => UpdateDescriptorSets_0(device, descriptorWriteCount, descriptorWrites, descriptorCopyCount, descriptorCopies);
 	private delegate void UpdateDescriptorSetsDelegate_0(VkDevice device, uint descriptorWriteCount, VkWriteDescriptorSet[] descriptorWrites, uint descriptorCopyCount, VkCopyDescriptorSet[] descriptorCopies);
 	private static UpdateDescriptorSetsDelegate_0 UpdateDescriptorSets_0;
 	public static VkResult CreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer) => CreateFramebuffer_0(device, createInfo, allocator, out framebuffer);
+	public static bool CreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer, out VkResult result)
+	{
+		result = CreateFramebuffer_0(device, createInfo, allocator, out framebuffer);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateFramebufferDelegate_0(VkDevice device, VkFramebufferCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer);
 	private static CreateFramebufferDelegate_0 CreateFramebuffer_0;
 	public static VkResult CreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkFramebuffer framebuffer) => CreateFramebuffer_1(device, createInfo, ref allocator, out framebuffer);
+	public static bool CreateFramebuffer(VkDevice device, VkFramebufferCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkFramebuffer framebuffer, out VkResult result)
+	{
+		result = CreateFramebuffer_1(device, createInfo, ref allocator, out framebuffer);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateFramebufferDelegate_1(VkDevice device, VkFramebufferCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkFramebuffer framebuffer);
 	private static CreateFramebufferDelegate_1 CreateFramebuffer_1;
 	public static VkResult CreateFramebuffer(VkDevice device, ref VkFramebufferCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer) => CreateFramebuffer_2(device, ref createInfo, allocator, out framebuffer);
+	public static bool CreateFramebuffer(VkDevice device, ref VkFramebufferCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer, out VkResult result)
+	{
+		result = CreateFramebuffer_2(device, ref createInfo, allocator, out framebuffer);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateFramebufferDelegate_2(VkDevice device, ref VkFramebufferCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkFramebuffer framebuffer);
 	private static CreateFramebufferDelegate_2 CreateFramebuffer_2;
 	public static VkResult CreateFramebuffer(VkDevice device, ref VkFramebufferCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkFramebuffer framebuffer) => CreateFramebuffer_3(device, ref createInfo, ref allocator, out framebuffer);
+	public static bool CreateFramebuffer(VkDevice device, ref VkFramebufferCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkFramebuffer framebuffer, out VkResult result)
+	{
+		result = CreateFramebuffer_3(device, ref createInfo, ref allocator, out framebuffer);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateFramebufferDelegate_3(VkDevice device, ref VkFramebufferCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkFramebuffer framebuffer);
 	private static CreateFramebufferDelegate_3 CreateFramebuffer_3;
 	public static void DestroyFramebuffer(VkDevice device, VkFramebuffer framebuffer, VkAllocationCallbacks* allocator) => DestroyFramebuffer_0(device, framebuffer, allocator);
@@ -743,15 +1298,35 @@ public static unsafe class VK
 	private delegate void DestroyFramebufferDelegate_1(VkDevice device, VkFramebuffer framebuffer, ref VkAllocationCallbacks allocator);
 	private static DestroyFramebufferDelegate_1 DestroyFramebuffer_1;
 	public static VkResult CreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass) => CreateRenderPass_0(device, createInfo, allocator, out renderPass);
+	public static bool CreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass, out VkResult result)
+	{
+		result = CreateRenderPass_0(device, createInfo, allocator, out renderPass);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateRenderPassDelegate_0(VkDevice device, VkRenderPassCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass);
 	private static CreateRenderPassDelegate_0 CreateRenderPass_0;
 	public static VkResult CreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkRenderPass renderPass) => CreateRenderPass_1(device, createInfo, ref allocator, out renderPass);
+	public static bool CreateRenderPass(VkDevice device, VkRenderPassCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkRenderPass renderPass, out VkResult result)
+	{
+		result = CreateRenderPass_1(device, createInfo, ref allocator, out renderPass);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateRenderPassDelegate_1(VkDevice device, VkRenderPassCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkRenderPass renderPass);
 	private static CreateRenderPassDelegate_1 CreateRenderPass_1;
 	public static VkResult CreateRenderPass(VkDevice device, ref VkRenderPassCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass) => CreateRenderPass_2(device, ref createInfo, allocator, out renderPass);
+	public static bool CreateRenderPass(VkDevice device, ref VkRenderPassCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass, out VkResult result)
+	{
+		result = CreateRenderPass_2(device, ref createInfo, allocator, out renderPass);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateRenderPassDelegate_2(VkDevice device, ref VkRenderPassCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkRenderPass renderPass);
 	private static CreateRenderPassDelegate_2 CreateRenderPass_2;
 	public static VkResult CreateRenderPass(VkDevice device, ref VkRenderPassCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkRenderPass renderPass) => CreateRenderPass_3(device, ref createInfo, ref allocator, out renderPass);
+	public static bool CreateRenderPass(VkDevice device, ref VkRenderPassCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkRenderPass renderPass, out VkResult result)
+	{
+		result = CreateRenderPass_3(device, ref createInfo, ref allocator, out renderPass);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateRenderPassDelegate_3(VkDevice device, ref VkRenderPassCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkRenderPass renderPass);
 	private static CreateRenderPassDelegate_3 CreateRenderPass_3;
 	public static void DestroyRenderPass(VkDevice device, VkRenderPass renderPass, VkAllocationCallbacks* allocator) => DestroyRenderPass_0(device, renderPass, allocator);
@@ -764,15 +1339,35 @@ public static unsafe class VK
 	private delegate void GetRenderAreaGranularityDelegate_0(VkDevice device, VkRenderPass renderPass, out VkExtent2D granularity);
 	private static GetRenderAreaGranularityDelegate_0 GetRenderAreaGranularity_0;
 	public static VkResult CreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool) => CreateCommandPool_0(device, createInfo, allocator, out commandPool);
+	public static bool CreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool, out VkResult result)
+	{
+		result = CreateCommandPool_0(device, createInfo, allocator, out commandPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateCommandPoolDelegate_0(VkDevice device, VkCommandPoolCreateInfo* createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool);
 	private static CreateCommandPoolDelegate_0 CreateCommandPool_0;
 	public static VkResult CreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkCommandPool commandPool) => CreateCommandPool_1(device, createInfo, ref allocator, out commandPool);
+	public static bool CreateCommandPool(VkDevice device, VkCommandPoolCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkCommandPool commandPool, out VkResult result)
+	{
+		result = CreateCommandPool_1(device, createInfo, ref allocator, out commandPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateCommandPoolDelegate_1(VkDevice device, VkCommandPoolCreateInfo* createInfo, ref VkAllocationCallbacks allocator, out VkCommandPool commandPool);
 	private static CreateCommandPoolDelegate_1 CreateCommandPool_1;
 	public static VkResult CreateCommandPool(VkDevice device, ref VkCommandPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool) => CreateCommandPool_2(device, ref createInfo, allocator, out commandPool);
+	public static bool CreateCommandPool(VkDevice device, ref VkCommandPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool, out VkResult result)
+	{
+		result = CreateCommandPool_2(device, ref createInfo, allocator, out commandPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateCommandPoolDelegate_2(VkDevice device, ref VkCommandPoolCreateInfo createInfo, VkAllocationCallbacks* allocator, out VkCommandPool commandPool);
 	private static CreateCommandPoolDelegate_2 CreateCommandPool_2;
 	public static VkResult CreateCommandPool(VkDevice device, ref VkCommandPoolCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkCommandPool commandPool) => CreateCommandPool_3(device, ref createInfo, ref allocator, out commandPool);
+	public static bool CreateCommandPool(VkDevice device, ref VkCommandPoolCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkCommandPool commandPool, out VkResult result)
+	{
+		result = CreateCommandPool_3(device, ref createInfo, ref allocator, out commandPool);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateCommandPoolDelegate_3(VkDevice device, ref VkCommandPoolCreateInfo createInfo, ref VkAllocationCallbacks allocator, out VkCommandPool commandPool);
 	private static CreateCommandPoolDelegate_3 CreateCommandPool_3;
 	public static void DestroyCommandPool(VkDevice device, VkCommandPool commandPool, VkAllocationCallbacks* allocator) => DestroyCommandPool_0(device, commandPool, allocator);
@@ -782,27 +1377,62 @@ public static unsafe class VK
 	private delegate void DestroyCommandPoolDelegate_1(VkDevice device, VkCommandPool commandPool, ref VkAllocationCallbacks allocator);
 	private static DestroyCommandPoolDelegate_1 DestroyCommandPool_1;
 	public static VkResult ResetCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags) => ResetCommandPool_0(device, commandPool, flags);
+	public static bool ResetCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags, out VkResult result)
+	{
+		result = ResetCommandPool_0(device, commandPool, flags);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ResetCommandPoolDelegate_0(VkDevice device, VkCommandPool commandPool, VkCommandPoolResetFlags flags);
 	private static ResetCommandPoolDelegate_0 ResetCommandPool_0;
 	public static VkResult AllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers) => AllocateCommandBuffers_0(device, allocateInfo, commandBuffers);
+	public static bool AllocateCommandBuffers(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers, out VkResult result)
+	{
+		result = AllocateCommandBuffers_0(device, allocateInfo, commandBuffers);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AllocateCommandBuffersDelegate_0(VkDevice device, VkCommandBufferAllocateInfo* allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers);
 	private static AllocateCommandBuffersDelegate_0 AllocateCommandBuffers_0;
 	public static VkResult AllocateCommandBuffers(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers) => AllocateCommandBuffers_1(device, ref allocateInfo, commandBuffers);
+	public static bool AllocateCommandBuffers(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers, out VkResult result)
+	{
+		result = AllocateCommandBuffers_1(device, ref allocateInfo, commandBuffers);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AllocateCommandBuffersDelegate_1(VkDevice device, ref VkCommandBufferAllocateInfo allocateInfo, [In, Out] VkCommandBuffer[] commandBuffers);
 	private static AllocateCommandBuffersDelegate_1 AllocateCommandBuffers_1;
 	public static void FreeCommandBuffers(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer[] commandBuffers) => FreeCommandBuffers_0(device, commandPool, commandBufferCount, commandBuffers);
 	private delegate void FreeCommandBuffersDelegate_0(VkDevice device, VkCommandPool commandPool, uint commandBufferCount, VkCommandBuffer[] commandBuffers);
 	private static FreeCommandBuffersDelegate_0 FreeCommandBuffers_0;
 	public static VkResult BeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo) => BeginCommandBuffer_0(commandBuffer, beginInfo);
+	public static bool BeginCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo, out VkResult result)
+	{
+		result = BeginCommandBuffer_0(commandBuffer, beginInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult BeginCommandBufferDelegate_0(VkCommandBuffer commandBuffer, VkCommandBufferBeginInfo* beginInfo);
 	private static BeginCommandBufferDelegate_0 BeginCommandBuffer_0;
 	public static VkResult BeginCommandBuffer(VkCommandBuffer commandBuffer, ref VkCommandBufferBeginInfo beginInfo) => BeginCommandBuffer_1(commandBuffer, ref beginInfo);
+	public static bool BeginCommandBuffer(VkCommandBuffer commandBuffer, ref VkCommandBufferBeginInfo beginInfo, out VkResult result)
+	{
+		result = BeginCommandBuffer_1(commandBuffer, ref beginInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult BeginCommandBufferDelegate_1(VkCommandBuffer commandBuffer, ref VkCommandBufferBeginInfo beginInfo);
 	private static BeginCommandBufferDelegate_1 BeginCommandBuffer_1;
 	public static VkResult EndCommandBuffer(VkCommandBuffer commandBuffer) => EndCommandBuffer_0(commandBuffer);
+	public static bool EndCommandBuffer(VkCommandBuffer commandBuffer, out VkResult result)
+	{
+		result = EndCommandBuffer_0(commandBuffer);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EndCommandBufferDelegate_0(VkCommandBuffer commandBuffer);
 	private static EndCommandBufferDelegate_0 EndCommandBuffer_0;
 	public static VkResult ResetCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags) => ResetCommandBuffer_0(commandBuffer, flags);
+	public static bool ResetCommandBuffer(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags, out VkResult result)
+	{
+		result = ResetCommandBuffer_0(commandBuffer, flags);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ResetCommandBufferDelegate_0(VkCommandBuffer commandBuffer, VkCommandBufferResetFlags flags);
 	private static ResetCommandBufferDelegate_0 ResetCommandBuffer_0;
 	public static void CommandBindPipeline(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline) => CommandBindPipeline_0(commandBuffer, pipelineBindPoint, pipeline);
@@ -962,33 +1592,83 @@ public static unsafe class VK
 	private delegate void DestroySurfaceKHRDelegate_1(VkInstance instance, VkSurfaceKHR surface, ref VkAllocationCallbacks allocator);
 	private static DestroySurfaceKHRDelegate_1 DestroySurfaceKHR_1;
 	public static VkResult GetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out VkBool32 supported) => GetPhysicalDeviceSurfaceSupportKHR_0(physicalDevice, queueFamilyIndex, surface, out supported);
+	public static bool GetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out VkBool32 supported, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceSupportKHR_0(physicalDevice, queueFamilyIndex, surface, out supported);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceSupportKHRDelegate_0(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, VkSurfaceKHR surface, out VkBool32 supported);
 	private static GetPhysicalDeviceSurfaceSupportKHRDelegate_0 GetPhysicalDeviceSurfaceSupportKHR_0;
 	public static VkResult GetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, out VkSurfaceCapabilitiesKHR surfaceCapabilities) => GetPhysicalDeviceSurfaceCapabilitiesKHR_0(physicalDevice, surface, out surfaceCapabilities);
+	public static bool GetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, out VkSurfaceCapabilitiesKHR surfaceCapabilities, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceCapabilitiesKHR_0(physicalDevice, surface, out surfaceCapabilities);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceCapabilitiesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, out VkSurfaceCapabilitiesKHR surfaceCapabilities);
 	private static GetPhysicalDeviceSurfaceCapabilitiesKHRDelegate_0 GetPhysicalDeviceSurfaceCapabilitiesKHR_0;
 	public static VkResult GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, [In, Out] VkSurfaceFormatKHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormatsKHR_0(physicalDevice, surface, surfaceFormatCount, surfaceFormats);
+	public static bool GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, [In, Out] VkSurfaceFormatKHR[] surfaceFormats, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceFormatsKHR_0(physicalDevice, surface, surfaceFormatCount, surfaceFormats);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceFormatsKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* surfaceFormatCount, [In, Out] VkSurfaceFormatKHR[] surfaceFormats);
 	private static GetPhysicalDeviceSurfaceFormatsKHRDelegate_0 GetPhysicalDeviceSurfaceFormatsKHR_0;
 	public static VkResult GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormatKHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormatsKHR_1(physicalDevice, surface, ref surfaceFormatCount, surfaceFormats);
+	public static bool GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormatKHR[] surfaceFormats, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceFormatsKHR_1(physicalDevice, surface, ref surfaceFormatCount, surfaceFormats);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceFormatsKHRDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormatKHR[] surfaceFormats);
 	private static GetPhysicalDeviceSurfaceFormatsKHRDelegate_1 GetPhysicalDeviceSurfaceFormatsKHR_1;
 	public static VkResult GetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, [In, Out] VkPresentModeKHR[] presentModes) => GetPhysicalDeviceSurfacePresentModesKHR_0(physicalDevice, surface, presentModeCount, presentModes);
+	public static bool GetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, [In, Out] VkPresentModeKHR[] presentModes, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfacePresentModesKHR_0(physicalDevice, surface, presentModeCount, presentModes);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfacePresentModesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* presentModeCount, [In, Out] VkPresentModeKHR[] presentModes);
 	private static GetPhysicalDeviceSurfacePresentModesKHRDelegate_0 GetPhysicalDeviceSurfacePresentModesKHR_0;
 	public static VkResult GetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint presentModeCount, [In, Out] VkPresentModeKHR[] presentModes) => GetPhysicalDeviceSurfacePresentModesKHR_1(physicalDevice, surface, ref presentModeCount, presentModes);
+	public static bool GetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint presentModeCount, [In, Out] VkPresentModeKHR[] presentModes, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfacePresentModesKHR_1(physicalDevice, surface, ref presentModeCount, presentModes);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfacePresentModesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint presentModeCount, [In, Out] VkPresentModeKHR[] presentModes);
 	private static GetPhysicalDeviceSurfacePresentModesKHRDelegate_1 GetPhysicalDeviceSurfacePresentModesKHR_1;
 	public static VkResult CreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain) => CreateSwapchainKHR_0(device, createInfo, allocator, out swapchain);
+	public static bool CreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain, out VkResult result)
+	{
+		result = CreateSwapchainKHR_0(device, createInfo, allocator, out swapchain);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSwapchainKHRDelegate_0(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain);
 	private static CreateSwapchainKHRDelegate_0 CreateSwapchainKHR_0;
 	public static VkResult CreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchain) => CreateSwapchainKHR_1(device, createInfo, ref allocator, out swapchain);
+	public static bool CreateSwapchainKHR(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchain, out VkResult result)
+	{
+		result = CreateSwapchainKHR_1(device, createInfo, ref allocator, out swapchain);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSwapchainKHRDelegate_1(VkDevice device, VkSwapchainCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchain);
 	private static CreateSwapchainKHRDelegate_1 CreateSwapchainKHR_1;
 	public static VkResult CreateSwapchainKHR(VkDevice device, ref VkSwapchainCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain) => CreateSwapchainKHR_2(device, ref createInfo, allocator, out swapchain);
+	public static bool CreateSwapchainKHR(VkDevice device, ref VkSwapchainCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain, out VkResult result)
+	{
+		result = CreateSwapchainKHR_2(device, ref createInfo, allocator, out swapchain);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSwapchainKHRDelegate_2(VkDevice device, ref VkSwapchainCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchain);
 	private static CreateSwapchainKHRDelegate_2 CreateSwapchainKHR_2;
 	public static VkResult CreateSwapchainKHR(VkDevice device, ref VkSwapchainCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchain) => CreateSwapchainKHR_3(device, ref createInfo, ref allocator, out swapchain);
+	public static bool CreateSwapchainKHR(VkDevice device, ref VkSwapchainCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchain, out VkResult result)
+	{
+		result = CreateSwapchainKHR_3(device, ref createInfo, ref allocator, out swapchain);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSwapchainKHRDelegate_3(VkDevice device, ref VkSwapchainCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchain);
 	private static CreateSwapchainKHRDelegate_3 CreateSwapchainKHR_3;
 	public static void DestroySwapchainKHR(VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* allocator) => DestroySwapchainKHR_0(device, swapchain, allocator);
@@ -998,159 +1678,399 @@ public static unsafe class VK
 	private delegate void DestroySwapchainKHRDelegate_1(VkDevice device, VkSwapchainKHR swapchain, ref VkAllocationCallbacks allocator);
 	private static DestroySwapchainKHRDelegate_1 DestroySwapchainKHR_1;
 	public static VkResult GetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, [In, Out] VkImage[] swapchainImages) => GetSwapchainImagesKHR_0(device, swapchain, swapchainImageCount, swapchainImages);
+	public static bool GetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, [In, Out] VkImage[] swapchainImages, out VkResult result)
+	{
+		result = GetSwapchainImagesKHR_0(device, swapchain, swapchainImageCount, swapchainImages);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetSwapchainImagesKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain, uint* swapchainImageCount, [In, Out] VkImage[] swapchainImages);
 	private static GetSwapchainImagesKHRDelegate_0 GetSwapchainImagesKHR_0;
 	public static VkResult GetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, ref uint swapchainImageCount, [In, Out] VkImage[] swapchainImages) => GetSwapchainImagesKHR_1(device, swapchain, ref swapchainImageCount, swapchainImages);
+	public static bool GetSwapchainImagesKHR(VkDevice device, VkSwapchainKHR swapchain, ref uint swapchainImageCount, [In, Out] VkImage[] swapchainImages, out VkResult result)
+	{
+		result = GetSwapchainImagesKHR_1(device, swapchain, ref swapchainImageCount, swapchainImages);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetSwapchainImagesKHRDelegate_1(VkDevice device, VkSwapchainKHR swapchain, ref uint swapchainImageCount, [In, Out] VkImage[] swapchainImages);
 	private static GetSwapchainImagesKHRDelegate_1 GetSwapchainImagesKHR_1;
 	public static VkResult AcquireNextImageKHR(VkDevice device, VkSwapchainKHR swapchain, ulong timeout, VkSemaphore semaphore, VkFence fence, out uint imageIndex) => AcquireNextImageKHR_0(device, swapchain, timeout, semaphore, fence, out imageIndex);
+	public static bool AcquireNextImageKHR(VkDevice device, VkSwapchainKHR swapchain, ulong timeout, VkSemaphore semaphore, VkFence fence, out uint imageIndex, out VkResult result)
+	{
+		result = AcquireNextImageKHR_0(device, swapchain, timeout, semaphore, fence, out imageIndex);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AcquireNextImageKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain, ulong timeout, VkSemaphore semaphore, VkFence fence, out uint imageIndex);
 	private static AcquireNextImageKHRDelegate_0 AcquireNextImageKHR_0;
 	public static VkResult QueuePresentKHR(VkQueue queue, VkPresentInfoKHR* presentInfo) => QueuePresentKHR_0(queue, presentInfo);
+	public static bool QueuePresentKHR(VkQueue queue, VkPresentInfoKHR* presentInfo, out VkResult result)
+	{
+		result = QueuePresentKHR_0(queue, presentInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult QueuePresentKHRDelegate_0(VkQueue queue, VkPresentInfoKHR* presentInfo);
 	private static QueuePresentKHRDelegate_0 QueuePresentKHR_0;
 	public static VkResult QueuePresentKHR(VkQueue queue, ref VkPresentInfoKHR presentInfo) => QueuePresentKHR_1(queue, ref presentInfo);
+	public static bool QueuePresentKHR(VkQueue queue, ref VkPresentInfoKHR presentInfo, out VkResult result)
+	{
+		result = QueuePresentKHR_1(queue, ref presentInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult QueuePresentKHRDelegate_1(VkQueue queue, ref VkPresentInfoKHR presentInfo);
 	private static QueuePresentKHRDelegate_1 QueuePresentKHR_1;
 	public static VkResult GetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPropertiesKHR[] properties) => GetPhysicalDeviceDisplayPropertiesKHR_0(physicalDevice, propertyCount, properties);
+	public static bool GetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPropertiesKHR[] properties, out VkResult result)
+	{
+		result = GetPhysicalDeviceDisplayPropertiesKHR_0(physicalDevice, propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceDisplayPropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPropertiesKHR[] properties);
 	private static GetPhysicalDeviceDisplayPropertiesKHRDelegate_0 GetPhysicalDeviceDisplayPropertiesKHR_0;
 	public static VkResult GetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPropertiesKHR[] properties) => GetPhysicalDeviceDisplayPropertiesKHR_1(physicalDevice, ref propertyCount, properties);
+	public static bool GetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPropertiesKHR[] properties, out VkResult result)
+	{
+		result = GetPhysicalDeviceDisplayPropertiesKHR_1(physicalDevice, ref propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceDisplayPropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPropertiesKHR[] properties);
 	private static GetPhysicalDeviceDisplayPropertiesKHRDelegate_1 GetPhysicalDeviceDisplayPropertiesKHR_1;
 	public static VkResult GetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPlanePropertiesKHR[] properties) => GetPhysicalDeviceDisplayPlanePropertiesKHR_0(physicalDevice, propertyCount, properties);
+	public static bool GetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPlanePropertiesKHR[] properties, out VkResult result)
+	{
+		result = GetPhysicalDeviceDisplayPlanePropertiesKHR_0(physicalDevice, propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, uint* propertyCount, [In, Out] VkDisplayPlanePropertiesKHR[] properties);
 	private static GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_0 GetPhysicalDeviceDisplayPlanePropertiesKHR_0;
 	public static VkResult GetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPlanePropertiesKHR[] properties) => GetPhysicalDeviceDisplayPlanePropertiesKHR_1(physicalDevice, ref propertyCount, properties);
+	public static bool GetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPlanePropertiesKHR[] properties, out VkResult result)
+	{
+		result = GetPhysicalDeviceDisplayPlanePropertiesKHR_1(physicalDevice, ref propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref uint propertyCount, [In, Out] VkDisplayPlanePropertiesKHR[] properties);
 	private static GetPhysicalDeviceDisplayPlanePropertiesKHRDelegate_1 GetPhysicalDeviceDisplayPlanePropertiesKHR_1;
 	public static VkResult GetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, [In, Out] VkDisplayKHR[] displays) => GetDisplayPlaneSupportedDisplaysKHR_0(physicalDevice, planeIndex, displayCount, displays);
+	public static bool GetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, [In, Out] VkDisplayKHR[] displays, out VkResult result)
+	{
+		result = GetDisplayPlaneSupportedDisplaysKHR_0(physicalDevice, planeIndex, displayCount, displays);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetDisplayPlaneSupportedDisplaysKHRDelegate_0(VkPhysicalDevice physicalDevice, uint planeIndex, uint* displayCount, [In, Out] VkDisplayKHR[] displays);
 	private static GetDisplayPlaneSupportedDisplaysKHRDelegate_0 GetDisplayPlaneSupportedDisplaysKHR_0;
 	public static VkResult GetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, ref uint displayCount, [In, Out] VkDisplayKHR[] displays) => GetDisplayPlaneSupportedDisplaysKHR_1(physicalDevice, planeIndex, ref displayCount, displays);
+	public static bool GetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint planeIndex, ref uint displayCount, [In, Out] VkDisplayKHR[] displays, out VkResult result)
+	{
+		result = GetDisplayPlaneSupportedDisplaysKHR_1(physicalDevice, planeIndex, ref displayCount, displays);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetDisplayPlaneSupportedDisplaysKHRDelegate_1(VkPhysicalDevice physicalDevice, uint planeIndex, ref uint displayCount, [In, Out] VkDisplayKHR[] displays);
 	private static GetDisplayPlaneSupportedDisplaysKHRDelegate_1 GetDisplayPlaneSupportedDisplaysKHR_1;
 	public static VkResult GetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, [In, Out] VkDisplayModePropertiesKHR[] properties) => GetDisplayModePropertiesKHR_0(physicalDevice, display, propertyCount, properties);
+	public static bool GetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, [In, Out] VkDisplayModePropertiesKHR[] properties, out VkResult result)
+	{
+		result = GetDisplayModePropertiesKHR_0(physicalDevice, display, propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetDisplayModePropertiesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint* propertyCount, [In, Out] VkDisplayModePropertiesKHR[] properties);
 	private static GetDisplayModePropertiesKHRDelegate_0 GetDisplayModePropertiesKHR_0;
 	public static VkResult GetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, [In, Out] VkDisplayModePropertiesKHR[] properties) => GetDisplayModePropertiesKHR_1(physicalDevice, display, ref propertyCount, properties);
+	public static bool GetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, [In, Out] VkDisplayModePropertiesKHR[] properties, out VkResult result)
+	{
+		result = GetDisplayModePropertiesKHR_1(physicalDevice, display, ref propertyCount, properties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetDisplayModePropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref uint propertyCount, [In, Out] VkDisplayModePropertiesKHR[] properties);
 	private static GetDisplayModePropertiesKHRDelegate_1 GetDisplayModePropertiesKHR_1;
 	public static VkResult CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode) => CreateDisplayModeKHR_0(physicalDevice, display, createInfo, allocator, out mode);
+	public static bool CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode, out VkResult result)
+	{
+		result = CreateDisplayModeKHR_0(physicalDevice, display, createInfo, allocator, out mode);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDisplayModeKHRDelegate_0(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode);
 	private static CreateDisplayModeKHRDelegate_0 CreateDisplayModeKHR_0;
 	public static VkResult CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkDisplayModeKHR mode) => CreateDisplayModeKHR_1(physicalDevice, display, createInfo, ref allocator, out mode);
+	public static bool CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkDisplayModeKHR mode, out VkResult result)
+	{
+		result = CreateDisplayModeKHR_1(physicalDevice, display, createInfo, ref allocator, out mode);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDisplayModeKHRDelegate_1(VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkDisplayModeKHR mode);
 	private static CreateDisplayModeKHRDelegate_1 CreateDisplayModeKHR_1;
 	public static VkResult CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref VkDisplayModeCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode) => CreateDisplayModeKHR_2(physicalDevice, display, ref createInfo, allocator, out mode);
+	public static bool CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref VkDisplayModeCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode, out VkResult result)
+	{
+		result = CreateDisplayModeKHR_2(physicalDevice, display, ref createInfo, allocator, out mode);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDisplayModeKHRDelegate_2(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref VkDisplayModeCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkDisplayModeKHR mode);
 	private static CreateDisplayModeKHRDelegate_2 CreateDisplayModeKHR_2;
 	public static VkResult CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref VkDisplayModeCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkDisplayModeKHR mode) => CreateDisplayModeKHR_3(physicalDevice, display, ref createInfo, ref allocator, out mode);
+	public static bool CreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref VkDisplayModeCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkDisplayModeKHR mode, out VkResult result)
+	{
+		result = CreateDisplayModeKHR_3(physicalDevice, display, ref createInfo, ref allocator, out mode);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDisplayModeKHRDelegate_3(VkPhysicalDevice physicalDevice, VkDisplayKHR display, ref VkDisplayModeCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkDisplayModeKHR mode);
 	private static CreateDisplayModeKHRDelegate_3 CreateDisplayModeKHR_3;
 	public static VkResult GetDisplayPlaneCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, uint planeIndex, out VkDisplayPlaneCapabilitiesKHR capabilities) => GetDisplayPlaneCapabilitiesKHR_0(physicalDevice, mode, planeIndex, out capabilities);
+	public static bool GetDisplayPlaneCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, uint planeIndex, out VkDisplayPlaneCapabilitiesKHR capabilities, out VkResult result)
+	{
+		result = GetDisplayPlaneCapabilitiesKHR_0(physicalDevice, mode, planeIndex, out capabilities);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetDisplayPlaneCapabilitiesKHRDelegate_0(VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, uint planeIndex, out VkDisplayPlaneCapabilitiesKHR capabilities);
 	private static GetDisplayPlaneCapabilitiesKHRDelegate_0 GetDisplayPlaneCapabilitiesKHR_0;
 	public static VkResult CreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateDisplayPlaneSurfaceKHR_0(instance, createInfo, allocator, out surface);
+	public static bool CreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateDisplayPlaneSurfaceKHR_0(instance, createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDisplayPlaneSurfaceKHRDelegate_0(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateDisplayPlaneSurfaceKHRDelegate_0 CreateDisplayPlaneSurfaceKHR_0;
 	public static VkResult CreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateDisplayPlaneSurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+	public static bool CreateDisplayPlaneSurfaceKHR(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateDisplayPlaneSurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDisplayPlaneSurfaceKHRDelegate_1(VkInstance instance, VkDisplaySurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateDisplayPlaneSurfaceKHRDelegate_1 CreateDisplayPlaneSurfaceKHR_1;
 	public static VkResult CreateDisplayPlaneSurfaceKHR(VkInstance instance, ref VkDisplaySurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateDisplayPlaneSurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+	public static bool CreateDisplayPlaneSurfaceKHR(VkInstance instance, ref VkDisplaySurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateDisplayPlaneSurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDisplayPlaneSurfaceKHRDelegate_2(VkInstance instance, ref VkDisplaySurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateDisplayPlaneSurfaceKHRDelegate_2 CreateDisplayPlaneSurfaceKHR_2;
 	public static VkResult CreateDisplayPlaneSurfaceKHR(VkInstance instance, ref VkDisplaySurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateDisplayPlaneSurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+	public static bool CreateDisplayPlaneSurfaceKHR(VkInstance instance, ref VkDisplaySurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateDisplayPlaneSurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDisplayPlaneSurfaceKHRDelegate_3(VkInstance instance, ref VkDisplaySurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateDisplayPlaneSurfaceKHRDelegate_3 CreateDisplayPlaneSurfaceKHR_3;
 	public static VkResult CreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR[] createInfos, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchains) => CreateSharedSwapchainsKHR_0(device, swapchainCount, createInfos, allocator, out swapchains);
+	public static bool CreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR[] createInfos, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchains, out VkResult result)
+	{
+		result = CreateSharedSwapchainsKHR_0(device, swapchainCount, createInfos, allocator, out swapchains);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSharedSwapchainsKHRDelegate_0(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR[] createInfos, VkAllocationCallbacks* allocator, out VkSwapchainKHR swapchains);
 	private static CreateSharedSwapchainsKHRDelegate_0 CreateSharedSwapchainsKHR_0;
 	public static VkResult CreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR[] createInfos, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchains) => CreateSharedSwapchainsKHR_1(device, swapchainCount, createInfos, ref allocator, out swapchains);
+	public static bool CreateSharedSwapchainsKHR(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR[] createInfos, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchains, out VkResult result)
+	{
+		result = CreateSharedSwapchainsKHR_1(device, swapchainCount, createInfos, ref allocator, out swapchains);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSharedSwapchainsKHRDelegate_1(VkDevice device, uint swapchainCount, VkSwapchainCreateInfoKHR[] createInfos, ref VkAllocationCallbacks allocator, out VkSwapchainKHR swapchains);
 	private static CreateSharedSwapchainsKHRDelegate_1 CreateSharedSwapchainsKHR_1;
 	public static VkResult CreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateXlibSurfaceKHR_0(instance, createInfo, allocator, out surface);
+	public static bool CreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateXlibSurfaceKHR_0(instance, createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateXlibSurfaceKHRDelegate_0(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateXlibSurfaceKHRDelegate_0 CreateXlibSurfaceKHR_0;
 	public static VkResult CreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateXlibSurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+	public static bool CreateXlibSurfaceKHR(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateXlibSurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateXlibSurfaceKHRDelegate_1(VkInstance instance, VkXlibSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateXlibSurfaceKHRDelegate_1 CreateXlibSurfaceKHR_1;
 	public static VkResult CreateXlibSurfaceKHR(VkInstance instance, ref VkXlibSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateXlibSurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+	public static bool CreateXlibSurfaceKHR(VkInstance instance, ref VkXlibSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateXlibSurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateXlibSurfaceKHRDelegate_2(VkInstance instance, ref VkXlibSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateXlibSurfaceKHRDelegate_2 CreateXlibSurfaceKHR_2;
 	public static VkResult CreateXlibSurfaceKHR(VkInstance instance, ref VkXlibSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateXlibSurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+	public static bool CreateXlibSurfaceKHR(VkInstance instance, ref VkXlibSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateXlibSurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateXlibSurfaceKHRDelegate_3(VkInstance instance, ref VkXlibSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateXlibSurfaceKHRDelegate_3 CreateXlibSurfaceKHR_3;
 	public static VkBool32 GetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dpy, IntPtr visualID) => GetPhysicalDeviceXlibPresentationSupportKHR_0(physicalDevice, queueFamilyIndex, dpy, visualID);
 	private delegate VkBool32 GetPhysicalDeviceXlibPresentationSupportKHRDelegate_0(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dpy, IntPtr visualID);
 	private static GetPhysicalDeviceXlibPresentationSupportKHRDelegate_0 GetPhysicalDeviceXlibPresentationSupportKHR_0;
 	public static VkResult CreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateXcbSurfaceKHR_0(instance, createInfo, allocator, out surface);
+	public static bool CreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateXcbSurfaceKHR_0(instance, createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateXcbSurfaceKHRDelegate_0(VkInstance instance, VkXcbSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateXcbSurfaceKHRDelegate_0 CreateXcbSurfaceKHR_0;
 	public static VkResult CreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateXcbSurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+	public static bool CreateXcbSurfaceKHR(VkInstance instance, VkXcbSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateXcbSurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateXcbSurfaceKHRDelegate_1(VkInstance instance, VkXcbSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateXcbSurfaceKHRDelegate_1 CreateXcbSurfaceKHR_1;
 	public static VkResult CreateXcbSurfaceKHR(VkInstance instance, ref VkXcbSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateXcbSurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+	public static bool CreateXcbSurfaceKHR(VkInstance instance, ref VkXcbSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateXcbSurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateXcbSurfaceKHRDelegate_2(VkInstance instance, ref VkXcbSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateXcbSurfaceKHRDelegate_2 CreateXcbSurfaceKHR_2;
 	public static VkResult CreateXcbSurfaceKHR(VkInstance instance, ref VkXcbSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateXcbSurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+	public static bool CreateXcbSurfaceKHR(VkInstance instance, ref VkXcbSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateXcbSurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateXcbSurfaceKHRDelegate_3(VkInstance instance, ref VkXcbSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateXcbSurfaceKHRDelegate_3 CreateXcbSurfaceKHR_3;
 	public static VkBool32 GetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* connection, IntPtr visual_id) => GetPhysicalDeviceXcbPresentationSupportKHR_0(physicalDevice, queueFamilyIndex, connection, visual_id);
 	private delegate VkBool32 GetPhysicalDeviceXcbPresentationSupportKHRDelegate_0(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* connection, IntPtr visual_id);
 	private static GetPhysicalDeviceXcbPresentationSupportKHRDelegate_0 GetPhysicalDeviceXcbPresentationSupportKHR_0;
 	public static VkResult CreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateWaylandSurfaceKHR_0(instance, createInfo, allocator, out surface);
+	public static bool CreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateWaylandSurfaceKHR_0(instance, createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateWaylandSurfaceKHRDelegate_0(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateWaylandSurfaceKHRDelegate_0 CreateWaylandSurfaceKHR_0;
 	public static VkResult CreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateWaylandSurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+	public static bool CreateWaylandSurfaceKHR(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateWaylandSurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateWaylandSurfaceKHRDelegate_1(VkInstance instance, VkWaylandSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateWaylandSurfaceKHRDelegate_1 CreateWaylandSurfaceKHR_1;
 	public static VkResult CreateWaylandSurfaceKHR(VkInstance instance, ref VkWaylandSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateWaylandSurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+	public static bool CreateWaylandSurfaceKHR(VkInstance instance, ref VkWaylandSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateWaylandSurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateWaylandSurfaceKHRDelegate_2(VkInstance instance, ref VkWaylandSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateWaylandSurfaceKHRDelegate_2 CreateWaylandSurfaceKHR_2;
 	public static VkResult CreateWaylandSurfaceKHR(VkInstance instance, ref VkWaylandSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateWaylandSurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+	public static bool CreateWaylandSurfaceKHR(VkInstance instance, ref VkWaylandSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateWaylandSurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateWaylandSurfaceKHRDelegate_3(VkInstance instance, ref VkWaylandSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateWaylandSurfaceKHRDelegate_3 CreateWaylandSurfaceKHR_3;
 	public static VkBool32 GetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* display) => GetPhysicalDeviceWaylandPresentationSupportKHR_0(physicalDevice, queueFamilyIndex, display);
 	private delegate VkBool32 GetPhysicalDeviceWaylandPresentationSupportKHRDelegate_0(VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* display);
 	private static GetPhysicalDeviceWaylandPresentationSupportKHRDelegate_0 GetPhysicalDeviceWaylandPresentationSupportKHR_0;
 	public static VkResult CreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateAndroidSurfaceKHR_0(instance, createInfo, allocator, out surface);
+	public static bool CreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateAndroidSurfaceKHR_0(instance, createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateAndroidSurfaceKHRDelegate_0(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateAndroidSurfaceKHRDelegate_0 CreateAndroidSurfaceKHR_0;
 	public static VkResult CreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateAndroidSurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+	public static bool CreateAndroidSurfaceKHR(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateAndroidSurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateAndroidSurfaceKHRDelegate_1(VkInstance instance, VkAndroidSurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateAndroidSurfaceKHRDelegate_1 CreateAndroidSurfaceKHR_1;
 	public static VkResult CreateAndroidSurfaceKHR(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateAndroidSurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+	public static bool CreateAndroidSurfaceKHR(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateAndroidSurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateAndroidSurfaceKHRDelegate_2(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateAndroidSurfaceKHRDelegate_2 CreateAndroidSurfaceKHR_2;
 	public static VkResult CreateAndroidSurfaceKHR(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateAndroidSurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+	public static bool CreateAndroidSurfaceKHR(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateAndroidSurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateAndroidSurfaceKHRDelegate_3(VkInstance instance, ref VkAndroidSurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateAndroidSurfaceKHRDelegate_3 CreateAndroidSurfaceKHR_3;
 	public static VkResult CreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateWin32SurfaceKHR_0(instance, createInfo, allocator, out surface);
+	public static bool CreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateWin32SurfaceKHR_0(instance, createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateWin32SurfaceKHRDelegate_0(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateWin32SurfaceKHRDelegate_0 CreateWin32SurfaceKHR_0;
 	public static VkResult CreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateWin32SurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+	public static bool CreateWin32SurfaceKHR(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateWin32SurfaceKHR_1(instance, createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateWin32SurfaceKHRDelegate_1(VkInstance instance, VkWin32SurfaceCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateWin32SurfaceKHRDelegate_1 CreateWin32SurfaceKHR_1;
 	public static VkResult CreateWin32SurfaceKHR(VkInstance instance, ref VkWin32SurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateWin32SurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+	public static bool CreateWin32SurfaceKHR(VkInstance instance, ref VkWin32SurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateWin32SurfaceKHR_2(instance, ref createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateWin32SurfaceKHRDelegate_2(VkInstance instance, ref VkWin32SurfaceCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateWin32SurfaceKHRDelegate_2 CreateWin32SurfaceKHR_2;
 	public static VkResult CreateWin32SurfaceKHR(VkInstance instance, ref VkWin32SurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateWin32SurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+	public static bool CreateWin32SurfaceKHR(VkInstance instance, ref VkWin32SurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateWin32SurfaceKHR_3(instance, ref createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateWin32SurfaceKHRDelegate_3(VkInstance instance, ref VkWin32SurfaceCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateWin32SurfaceKHRDelegate_3 CreateWin32SurfaceKHR_3;
 	public static VkBool32 GetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, uint queueFamilyIndex) => GetPhysicalDeviceWin32PresentationSupportKHR_0(physicalDevice, queueFamilyIndex);
 	private delegate VkBool32 GetPhysicalDeviceWin32PresentationSupportKHRDelegate_0(VkPhysicalDevice physicalDevice, uint queueFamilyIndex);
 	private static GetPhysicalDeviceWin32PresentationSupportKHRDelegate_0 GetPhysicalDeviceWin32PresentationSupportKHR_0;
 	public static VkResult CreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkDebugReportCallbackEXT callback) => CreateDebugReportCallbackEXT_0(instance, createInfo, allocator, out callback);
+	public static bool CreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkDebugReportCallbackEXT callback, out VkResult result)
+	{
+		result = CreateDebugReportCallbackEXT_0(instance, createInfo, allocator, out callback);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDebugReportCallbackEXTDelegate_0(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkDebugReportCallbackEXT callback);
 	private static CreateDebugReportCallbackEXTDelegate_0 CreateDebugReportCallbackEXT_0;
 	public static VkResult CreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, ref VkAllocationCallbacks allocator, out VkDebugReportCallbackEXT callback) => CreateDebugReportCallbackEXT_1(instance, createInfo, ref allocator, out callback);
+	public static bool CreateDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, ref VkAllocationCallbacks allocator, out VkDebugReportCallbackEXT callback, out VkResult result)
+	{
+		result = CreateDebugReportCallbackEXT_1(instance, createInfo, ref allocator, out callback);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDebugReportCallbackEXTDelegate_1(VkInstance instance, VkDebugReportCallbackCreateInfoEXT* createInfo, ref VkAllocationCallbacks allocator, out VkDebugReportCallbackEXT callback);
 	private static CreateDebugReportCallbackEXTDelegate_1 CreateDebugReportCallbackEXT_1;
 	public static VkResult CreateDebugReportCallbackEXT(VkInstance instance, ref VkDebugReportCallbackCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkDebugReportCallbackEXT callback) => CreateDebugReportCallbackEXT_2(instance, ref createInfo, allocator, out callback);
+	public static bool CreateDebugReportCallbackEXT(VkInstance instance, ref VkDebugReportCallbackCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkDebugReportCallbackEXT callback, out VkResult result)
+	{
+		result = CreateDebugReportCallbackEXT_2(instance, ref createInfo, allocator, out callback);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDebugReportCallbackEXTDelegate_2(VkInstance instance, ref VkDebugReportCallbackCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkDebugReportCallbackEXT callback);
 	private static CreateDebugReportCallbackEXTDelegate_2 CreateDebugReportCallbackEXT_2;
 	public static VkResult CreateDebugReportCallbackEXT(VkInstance instance, ref VkDebugReportCallbackCreateInfoEXT createInfo, ref VkAllocationCallbacks allocator, out VkDebugReportCallbackEXT callback) => CreateDebugReportCallbackEXT_3(instance, ref createInfo, ref allocator, out callback);
+	public static bool CreateDebugReportCallbackEXT(VkInstance instance, ref VkDebugReportCallbackCreateInfoEXT createInfo, ref VkAllocationCallbacks allocator, out VkDebugReportCallbackEXT callback, out VkResult result)
+	{
+		result = CreateDebugReportCallbackEXT_3(instance, ref createInfo, ref allocator, out callback);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDebugReportCallbackEXTDelegate_3(VkInstance instance, ref VkDebugReportCallbackCreateInfoEXT createInfo, ref VkAllocationCallbacks allocator, out VkDebugReportCallbackEXT callback);
 	private static CreateDebugReportCallbackEXTDelegate_3 CreateDebugReportCallbackEXT_3;
 	public static void DestroyDebugReportCallbackEXT(VkInstance instance, VkDebugReportCallbackEXT callback, VkAllocationCallbacks* allocator) => DestroyDebugReportCallbackEXT_0(instance, callback, allocator);
@@ -1163,15 +2083,35 @@ public static unsafe class VK
 	private delegate void DebugReportMessageEXTDelegate_0(VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, ulong @object, nuint location, int messageCode, string layerPrefix, string message);
 	private static DebugReportMessageEXTDelegate_0 DebugReportMessageEXT_0;
 	public static VkResult DebugMarkerSetObjectTagEXT(VkDevice device, VkDebugMarkerObjectTagInfoEXT* tagInfo) => DebugMarkerSetObjectTagEXT_0(device, tagInfo);
+	public static bool DebugMarkerSetObjectTagEXT(VkDevice device, VkDebugMarkerObjectTagInfoEXT* tagInfo, out VkResult result)
+	{
+		result = DebugMarkerSetObjectTagEXT_0(device, tagInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult DebugMarkerSetObjectTagEXTDelegate_0(VkDevice device, VkDebugMarkerObjectTagInfoEXT* tagInfo);
 	private static DebugMarkerSetObjectTagEXTDelegate_0 DebugMarkerSetObjectTagEXT_0;
 	public static VkResult DebugMarkerSetObjectTagEXT(VkDevice device, ref VkDebugMarkerObjectTagInfoEXT tagInfo) => DebugMarkerSetObjectTagEXT_1(device, ref tagInfo);
+	public static bool DebugMarkerSetObjectTagEXT(VkDevice device, ref VkDebugMarkerObjectTagInfoEXT tagInfo, out VkResult result)
+	{
+		result = DebugMarkerSetObjectTagEXT_1(device, ref tagInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult DebugMarkerSetObjectTagEXTDelegate_1(VkDevice device, ref VkDebugMarkerObjectTagInfoEXT tagInfo);
 	private static DebugMarkerSetObjectTagEXTDelegate_1 DebugMarkerSetObjectTagEXT_1;
 	public static VkResult DebugMarkerSetObjectNameEXT(VkDevice device, VkDebugMarkerObjectNameInfoEXT* nameInfo) => DebugMarkerSetObjectNameEXT_0(device, nameInfo);
+	public static bool DebugMarkerSetObjectNameEXT(VkDevice device, VkDebugMarkerObjectNameInfoEXT* nameInfo, out VkResult result)
+	{
+		result = DebugMarkerSetObjectNameEXT_0(device, nameInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult DebugMarkerSetObjectNameEXTDelegate_0(VkDevice device, VkDebugMarkerObjectNameInfoEXT* nameInfo);
 	private static DebugMarkerSetObjectNameEXTDelegate_0 DebugMarkerSetObjectNameEXT_0;
 	public static VkResult DebugMarkerSetObjectNameEXT(VkDevice device, ref VkDebugMarkerObjectNameInfoEXT nameInfo) => DebugMarkerSetObjectNameEXT_1(device, ref nameInfo);
+	public static bool DebugMarkerSetObjectNameEXT(VkDevice device, ref VkDebugMarkerObjectNameInfoEXT nameInfo, out VkResult result)
+	{
+		result = DebugMarkerSetObjectNameEXT_1(device, ref nameInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult DebugMarkerSetObjectNameEXTDelegate_1(VkDevice device, ref VkDebugMarkerObjectNameInfoEXT nameInfo);
 	private static DebugMarkerSetObjectNameEXTDelegate_1 DebugMarkerSetObjectNameEXT_1;
 	public static void CommandDebugMarkerBeginEXT(VkCommandBuffer commandBuffer, VkDebugMarkerMarkerInfoEXT* markerInfo) => CommandDebugMarkerBeginEXT_0(commandBuffer, markerInfo);
@@ -1196,15 +2136,35 @@ public static unsafe class VK
 	private delegate void CommandDrawIndexedIndirectCountAMDDelegate_0(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint maxDrawCount, uint stride);
 	private static CommandDrawIndexedIndirectCountAMDDelegate_0 CommandDrawIndexedIndirectCountAMD_0;
 	public static VkResult GetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info) => GetShaderInfoAMD_0(device, pipeline, shaderStage, infoType, infoSize, info);
+	public static bool GetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info, out VkResult result)
+	{
+		result = GetShaderInfoAMD_0(device, pipeline, shaderStage, infoType, infoSize, info);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetShaderInfoAMDDelegate_0(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, nuint* infoSize, void* info);
 	private static GetShaderInfoAMDDelegate_0 GetShaderInfoAMD_0;
 	public static VkResult GetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, ref nuint infoSize, void* info) => GetShaderInfoAMD_1(device, pipeline, shaderStage, infoType, ref infoSize, info);
+	public static bool GetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, ref nuint infoSize, void* info, out VkResult result)
+	{
+		result = GetShaderInfoAMD_1(device, pipeline, shaderStage, infoType, ref infoSize, info);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetShaderInfoAMDDelegate_1(VkDevice device, VkPipeline pipeline, VkShaderStageFlags shaderStage, VkShaderInfoTypeAMD infoType, ref nuint infoSize, void* info);
 	private static GetShaderInfoAMDDelegate_1 GetShaderInfoAMD_1;
 	public static VkResult GetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkExternalMemoryHandleTypeFlagsNV externalHandleType, out VkExternalImageFormatPropertiesNV externalImageFormatProperties) => GetPhysicalDeviceExternalImageFormatPropertiesNV_0(physicalDevice, format, type, tiling, usage, flags, externalHandleType, out externalImageFormatProperties);
+	public static bool GetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkExternalMemoryHandleTypeFlagsNV externalHandleType, out VkExternalImageFormatPropertiesNV externalImageFormatProperties, out VkResult result)
+	{
+		result = GetPhysicalDeviceExternalImageFormatPropertiesNV_0(physicalDevice, format, type, tiling, usage, flags, externalHandleType, out externalImageFormatProperties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceExternalImageFormatPropertiesNVDelegate_0(VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkExternalMemoryHandleTypeFlagsNV externalHandleType, out VkExternalImageFormatPropertiesNV externalImageFormatProperties);
 	private static GetPhysicalDeviceExternalImageFormatPropertiesNVDelegate_0 GetPhysicalDeviceExternalImageFormatPropertiesNV_0;
 	public static VkResult GetMemoryWin32HandleNV(VkDevice device, VkDeviceMemory memory, VkExternalMemoryHandleTypeFlagsNV handleType, out IntPtr handle) => GetMemoryWin32HandleNV_0(device, memory, handleType, out handle);
+	public static bool GetMemoryWin32HandleNV(VkDevice device, VkDeviceMemory memory, VkExternalMemoryHandleTypeFlagsNV handleType, out IntPtr handle, out VkResult result)
+	{
+		result = GetMemoryWin32HandleNV_0(device, memory, handleType, out handle);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetMemoryWin32HandleNVDelegate_0(VkDevice device, VkDeviceMemory memory, VkExternalMemoryHandleTypeFlagsNV handleType, out IntPtr handle);
 	private static GetMemoryWin32HandleNVDelegate_0 GetMemoryWin32HandleNV_0;
 	public static void GetPhysicalDeviceFeatures2KHR(VkPhysicalDevice physicalDevice, out VkPhysicalDeviceFeatures2KHR features) => GetPhysicalDeviceFeatures2KHR_0(physicalDevice, out features);
@@ -1217,9 +2177,19 @@ public static unsafe class VK
 	private delegate void GetPhysicalDeviceFormatProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkFormat format, out VkFormatProperties2KHR formatProperties);
 	private static GetPhysicalDeviceFormatProperties2KHRDelegate_0 GetPhysicalDeviceFormatProperties2KHR_0;
 	public static VkResult GetPhysicalDeviceImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2KHR* imageFormatInfo, out VkImageFormatProperties2KHR imageFormatProperties) => GetPhysicalDeviceImageFormatProperties2KHR_0(physicalDevice, imageFormatInfo, out imageFormatProperties);
+	public static bool GetPhysicalDeviceImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2KHR* imageFormatInfo, out VkImageFormatProperties2KHR imageFormatProperties, out VkResult result)
+	{
+		result = GetPhysicalDeviceImageFormatProperties2KHR_0(physicalDevice, imageFormatInfo, out imageFormatProperties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceImageFormatProperties2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2KHR* imageFormatInfo, out VkImageFormatProperties2KHR imageFormatProperties);
 	private static GetPhysicalDeviceImageFormatProperties2KHRDelegate_0 GetPhysicalDeviceImageFormatProperties2KHR_0;
 	public static VkResult GetPhysicalDeviceImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceImageFormatInfo2KHR imageFormatInfo, out VkImageFormatProperties2KHR imageFormatProperties) => GetPhysicalDeviceImageFormatProperties2KHR_1(physicalDevice, ref imageFormatInfo, out imageFormatProperties);
+	public static bool GetPhysicalDeviceImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceImageFormatInfo2KHR imageFormatInfo, out VkImageFormatProperties2KHR imageFormatProperties, out VkResult result)
+	{
+		result = GetPhysicalDeviceImageFormatProperties2KHR_1(physicalDevice, ref imageFormatInfo, out imageFormatProperties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceImageFormatProperties2KHRDelegate_1(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceImageFormatInfo2KHR imageFormatInfo, out VkImageFormatProperties2KHR imageFormatProperties);
 	private static GetPhysicalDeviceImageFormatProperties2KHRDelegate_1 GetPhysicalDeviceImageFormatProperties2KHR_1;
 	public static void GetPhysicalDeviceQueueFamilyProperties2KHR(VkPhysicalDevice physicalDevice, uint* queueFamilyPropertyCount, [In, Out] VkQueueFamilyProperties2KHR[] queueFamilyProperties) => GetPhysicalDeviceQueueFamilyProperties2KHR_0(physicalDevice, queueFamilyPropertyCount, queueFamilyProperties);
@@ -1253,42 +2223,102 @@ public static unsafe class VK
 	private delegate void CommandDispatchBaseKHXDelegate_0(VkCommandBuffer commandBuffer, uint baseGroupX, uint baseGroupY, uint baseGroupZ, uint groupCountX, uint groupCountY, uint groupCountZ);
 	private static CommandDispatchBaseKHXDelegate_0 CommandDispatchBaseKHX_0;
 	public static VkResult GetDeviceGroupPresentCapabilitiesKHX(VkDevice device, out VkDeviceGroupPresentCapabilitiesKHX deviceGroupPresentCapabilities) => GetDeviceGroupPresentCapabilitiesKHX_0(device, out deviceGroupPresentCapabilities);
+	public static bool GetDeviceGroupPresentCapabilitiesKHX(VkDevice device, out VkDeviceGroupPresentCapabilitiesKHX deviceGroupPresentCapabilities, out VkResult result)
+	{
+		result = GetDeviceGroupPresentCapabilitiesKHX_0(device, out deviceGroupPresentCapabilities);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetDeviceGroupPresentCapabilitiesKHXDelegate_0(VkDevice device, out VkDeviceGroupPresentCapabilitiesKHX deviceGroupPresentCapabilities);
 	private static GetDeviceGroupPresentCapabilitiesKHXDelegate_0 GetDeviceGroupPresentCapabilitiesKHX_0;
 	public static VkResult GetDeviceGroupSurfacePresentModesKHX(VkDevice device, VkSurfaceKHR surface, out VkDeviceGroupPresentModeFlagsKHX modes) => GetDeviceGroupSurfacePresentModesKHX_0(device, surface, out modes);
+	public static bool GetDeviceGroupSurfacePresentModesKHX(VkDevice device, VkSurfaceKHR surface, out VkDeviceGroupPresentModeFlagsKHX modes, out VkResult result)
+	{
+		result = GetDeviceGroupSurfacePresentModesKHX_0(device, surface, out modes);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetDeviceGroupSurfacePresentModesKHXDelegate_0(VkDevice device, VkSurfaceKHR surface, out VkDeviceGroupPresentModeFlagsKHX modes);
 	private static GetDeviceGroupSurfacePresentModesKHXDelegate_0 GetDeviceGroupSurfacePresentModesKHX_0;
 	public static VkResult GetPhysicalDevicePresentRectanglesKHX(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, [In, Out] VkRect2D[] rects) => GetPhysicalDevicePresentRectanglesKHX_0(physicalDevice, surface, rectCount, rects);
+	public static bool GetPhysicalDevicePresentRectanglesKHX(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, [In, Out] VkRect2D[] rects, out VkResult result)
+	{
+		result = GetPhysicalDevicePresentRectanglesKHX_0(physicalDevice, surface, rectCount, rects);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDevicePresentRectanglesKHXDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint* rectCount, [In, Out] VkRect2D[] rects);
 	private static GetPhysicalDevicePresentRectanglesKHXDelegate_0 GetPhysicalDevicePresentRectanglesKHX_0;
 	public static VkResult GetPhysicalDevicePresentRectanglesKHX(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, [In, Out] VkRect2D[] rects) => GetPhysicalDevicePresentRectanglesKHX_1(physicalDevice, surface, ref rectCount, rects);
+	public static bool GetPhysicalDevicePresentRectanglesKHX(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, [In, Out] VkRect2D[] rects, out VkResult result)
+	{
+		result = GetPhysicalDevicePresentRectanglesKHX_1(physicalDevice, surface, ref rectCount, rects);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDevicePresentRectanglesKHXDelegate_1(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, ref uint rectCount, [In, Out] VkRect2D[] rects);
 	private static GetPhysicalDevicePresentRectanglesKHXDelegate_1 GetPhysicalDevicePresentRectanglesKHX_1;
 	public static VkResult AcquireNextImage2KHX(VkDevice device, VkAcquireNextImageInfoKHX* acquireInfo, out uint imageIndex) => AcquireNextImage2KHX_0(device, acquireInfo, out imageIndex);
+	public static bool AcquireNextImage2KHX(VkDevice device, VkAcquireNextImageInfoKHX* acquireInfo, out uint imageIndex, out VkResult result)
+	{
+		result = AcquireNextImage2KHX_0(device, acquireInfo, out imageIndex);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AcquireNextImage2KHXDelegate_0(VkDevice device, VkAcquireNextImageInfoKHX* acquireInfo, out uint imageIndex);
 	private static AcquireNextImage2KHXDelegate_0 AcquireNextImage2KHX_0;
 	public static VkResult AcquireNextImage2KHX(VkDevice device, ref VkAcquireNextImageInfoKHX acquireInfo, out uint imageIndex) => AcquireNextImage2KHX_1(device, ref acquireInfo, out imageIndex);
+	public static bool AcquireNextImage2KHX(VkDevice device, ref VkAcquireNextImageInfoKHX acquireInfo, out uint imageIndex, out VkResult result)
+	{
+		result = AcquireNextImage2KHX_1(device, ref acquireInfo, out imageIndex);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AcquireNextImage2KHXDelegate_1(VkDevice device, ref VkAcquireNextImageInfoKHX acquireInfo, out uint imageIndex);
 	private static AcquireNextImage2KHXDelegate_1 AcquireNextImage2KHX_1;
 	public static VkResult CreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateViSurfaceNN_0(instance, createInfo, allocator, out surface);
+	public static bool CreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateViSurfaceNN_0(instance, createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateViSurfaceNNDelegate_0(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateViSurfaceNNDelegate_0 CreateViSurfaceNN_0;
 	public static VkResult CreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateViSurfaceNN_1(instance, createInfo, ref allocator, out surface);
+	public static bool CreateViSurfaceNN(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateViSurfaceNN_1(instance, createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateViSurfaceNNDelegate_1(VkInstance instance, VkViSurfaceCreateInfoNN* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateViSurfaceNNDelegate_1 CreateViSurfaceNN_1;
 	public static VkResult CreateViSurfaceNN(VkInstance instance, ref VkViSurfaceCreateInfoNN createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateViSurfaceNN_2(instance, ref createInfo, allocator, out surface);
+	public static bool CreateViSurfaceNN(VkInstance instance, ref VkViSurfaceCreateInfoNN createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateViSurfaceNN_2(instance, ref createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateViSurfaceNNDelegate_2(VkInstance instance, ref VkViSurfaceCreateInfoNN createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateViSurfaceNNDelegate_2 CreateViSurfaceNN_2;
 	public static VkResult CreateViSurfaceNN(VkInstance instance, ref VkViSurfaceCreateInfoNN createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateViSurfaceNN_3(instance, ref createInfo, ref allocator, out surface);
+	public static bool CreateViSurfaceNN(VkInstance instance, ref VkViSurfaceCreateInfoNN createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateViSurfaceNN_3(instance, ref createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateViSurfaceNNDelegate_3(VkInstance instance, ref VkViSurfaceCreateInfoNN createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateViSurfaceNNDelegate_3 CreateViSurfaceNN_3;
 	public static void TrimCommandPoolKHR(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlagsKHR flags) => TrimCommandPoolKHR_0(device, commandPool, flags);
 	private delegate void TrimCommandPoolKHRDelegate_0(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlagsKHR flags);
 	private static TrimCommandPoolKHRDelegate_0 TrimCommandPoolKHR_0;
 	public static VkResult EnumeratePhysicalDeviceGroupsKHX(VkInstance instance, uint* physicalDeviceGroupCount, [In, Out] VkPhysicalDeviceGroupPropertiesKHX[] physicalDeviceGroupProperties) => EnumeratePhysicalDeviceGroupsKHX_0(instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
+	public static bool EnumeratePhysicalDeviceGroupsKHX(VkInstance instance, uint* physicalDeviceGroupCount, [In, Out] VkPhysicalDeviceGroupPropertiesKHX[] physicalDeviceGroupProperties, out VkResult result)
+	{
+		result = EnumeratePhysicalDeviceGroupsKHX_0(instance, physicalDeviceGroupCount, physicalDeviceGroupProperties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumeratePhysicalDeviceGroupsKHXDelegate_0(VkInstance instance, uint* physicalDeviceGroupCount, [In, Out] VkPhysicalDeviceGroupPropertiesKHX[] physicalDeviceGroupProperties);
 	private static EnumeratePhysicalDeviceGroupsKHXDelegate_0 EnumeratePhysicalDeviceGroupsKHX_0;
 	public static VkResult EnumeratePhysicalDeviceGroupsKHX(VkInstance instance, ref uint physicalDeviceGroupCount, [In, Out] VkPhysicalDeviceGroupPropertiesKHX[] physicalDeviceGroupProperties) => EnumeratePhysicalDeviceGroupsKHX_1(instance, ref physicalDeviceGroupCount, physicalDeviceGroupProperties);
+	public static bool EnumeratePhysicalDeviceGroupsKHX(VkInstance instance, ref uint physicalDeviceGroupCount, [In, Out] VkPhysicalDeviceGroupPropertiesKHX[] physicalDeviceGroupProperties, out VkResult result)
+	{
+		result = EnumeratePhysicalDeviceGroupsKHX_1(instance, ref physicalDeviceGroupCount, physicalDeviceGroupProperties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult EnumeratePhysicalDeviceGroupsKHXDelegate_1(VkInstance instance, ref uint physicalDeviceGroupCount, [In, Out] VkPhysicalDeviceGroupPropertiesKHX[] physicalDeviceGroupProperties);
 	private static EnumeratePhysicalDeviceGroupsKHXDelegate_1 EnumeratePhysicalDeviceGroupsKHX_1;
 	public static void GetPhysicalDeviceExternalBufferPropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfoKHR* externalBufferInfo, out VkExternalBufferPropertiesKHR externalBufferProperties) => GetPhysicalDeviceExternalBufferPropertiesKHR_0(physicalDevice, externalBufferInfo, out externalBufferProperties);
@@ -1298,21 +2328,51 @@ public static unsafe class VK
 	private delegate void GetPhysicalDeviceExternalBufferPropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceExternalBufferInfoKHR externalBufferInfo, out VkExternalBufferPropertiesKHR externalBufferProperties);
 	private static GetPhysicalDeviceExternalBufferPropertiesKHRDelegate_1 GetPhysicalDeviceExternalBufferPropertiesKHR_1;
 	public static VkResult GetMemoryWin32HandleKHR(VkDevice device, VkMemoryGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle) => GetMemoryWin32HandleKHR_0(device, getWin32HandleInfo, out handle);
+	public static bool GetMemoryWin32HandleKHR(VkDevice device, VkMemoryGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle, out VkResult result)
+	{
+		result = GetMemoryWin32HandleKHR_0(device, getWin32HandleInfo, out handle);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetMemoryWin32HandleKHRDelegate_0(VkDevice device, VkMemoryGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle);
 	private static GetMemoryWin32HandleKHRDelegate_0 GetMemoryWin32HandleKHR_0;
 	public static VkResult GetMemoryWin32HandleKHR(VkDevice device, ref VkMemoryGetWin32HandleInfoKHR getWin32HandleInfo, out IntPtr handle) => GetMemoryWin32HandleKHR_1(device, ref getWin32HandleInfo, out handle);
+	public static bool GetMemoryWin32HandleKHR(VkDevice device, ref VkMemoryGetWin32HandleInfoKHR getWin32HandleInfo, out IntPtr handle, out VkResult result)
+	{
+		result = GetMemoryWin32HandleKHR_1(device, ref getWin32HandleInfo, out handle);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetMemoryWin32HandleKHRDelegate_1(VkDevice device, ref VkMemoryGetWin32HandleInfoKHR getWin32HandleInfo, out IntPtr handle);
 	private static GetMemoryWin32HandleKHRDelegate_1 GetMemoryWin32HandleKHR_1;
 	public static VkResult GetMemoryWin32HandlePropertiesKHR(VkDevice device, VkExternalMemoryHandleTypeFlagsKHR handleType, IntPtr handle, out VkMemoryWin32HandlePropertiesKHR memoryWin32HandleProperties) => GetMemoryWin32HandlePropertiesKHR_0(device, handleType, handle, out memoryWin32HandleProperties);
+	public static bool GetMemoryWin32HandlePropertiesKHR(VkDevice device, VkExternalMemoryHandleTypeFlagsKHR handleType, IntPtr handle, out VkMemoryWin32HandlePropertiesKHR memoryWin32HandleProperties, out VkResult result)
+	{
+		result = GetMemoryWin32HandlePropertiesKHR_0(device, handleType, handle, out memoryWin32HandleProperties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetMemoryWin32HandlePropertiesKHRDelegate_0(VkDevice device, VkExternalMemoryHandleTypeFlagsKHR handleType, IntPtr handle, out VkMemoryWin32HandlePropertiesKHR memoryWin32HandleProperties);
 	private static GetMemoryWin32HandlePropertiesKHRDelegate_0 GetMemoryWin32HandlePropertiesKHR_0;
 	public static VkResult GetMemoryFileDescriptorKHR(VkDevice device, VkMemoryGetFdInfoKHR* getFileDescriptorInfo, out int fileDescriptor) => GetMemoryFileDescriptorKHR_0(device, getFileDescriptorInfo, out fileDescriptor);
+	public static bool GetMemoryFileDescriptorKHR(VkDevice device, VkMemoryGetFdInfoKHR* getFileDescriptorInfo, out int fileDescriptor, out VkResult result)
+	{
+		result = GetMemoryFileDescriptorKHR_0(device, getFileDescriptorInfo, out fileDescriptor);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetMemoryFileDescriptorKHRDelegate_0(VkDevice device, VkMemoryGetFdInfoKHR* getFileDescriptorInfo, out int fileDescriptor);
 	private static GetMemoryFileDescriptorKHRDelegate_0 GetMemoryFileDescriptorKHR_0;
 	public static VkResult GetMemoryFileDescriptorKHR(VkDevice device, ref VkMemoryGetFdInfoKHR getFileDescriptorInfo, out int fileDescriptor) => GetMemoryFileDescriptorKHR_1(device, ref getFileDescriptorInfo, out fileDescriptor);
+	public static bool GetMemoryFileDescriptorKHR(VkDevice device, ref VkMemoryGetFdInfoKHR getFileDescriptorInfo, out int fileDescriptor, out VkResult result)
+	{
+		result = GetMemoryFileDescriptorKHR_1(device, ref getFileDescriptorInfo, out fileDescriptor);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetMemoryFileDescriptorKHRDelegate_1(VkDevice device, ref VkMemoryGetFdInfoKHR getFileDescriptorInfo, out int fileDescriptor);
 	private static GetMemoryFileDescriptorKHRDelegate_1 GetMemoryFileDescriptorKHR_1;
 	public static VkResult GetMemoryFileDescriptorPropertiesKHR(VkDevice device, VkExternalMemoryHandleTypeFlagsKHR handleType, int fileDescriptor, out VkMemoryFdPropertiesKHR memoryFileDescriptorProperties) => GetMemoryFileDescriptorPropertiesKHR_0(device, handleType, fileDescriptor, out memoryFileDescriptorProperties);
+	public static bool GetMemoryFileDescriptorPropertiesKHR(VkDevice device, VkExternalMemoryHandleTypeFlagsKHR handleType, int fileDescriptor, out VkMemoryFdPropertiesKHR memoryFileDescriptorProperties, out VkResult result)
+	{
+		result = GetMemoryFileDescriptorPropertiesKHR_0(device, handleType, fileDescriptor, out memoryFileDescriptorProperties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetMemoryFileDescriptorPropertiesKHRDelegate_0(VkDevice device, VkExternalMemoryHandleTypeFlagsKHR handleType, int fileDescriptor, out VkMemoryFdPropertiesKHR memoryFileDescriptorProperties);
 	private static GetMemoryFileDescriptorPropertiesKHRDelegate_0 GetMemoryFileDescriptorPropertiesKHR_0;
 	public static void GetPhysicalDeviceExternalSemaphorePropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfoKHR* externalSemaphoreInfo, out VkExternalSemaphorePropertiesKHR externalSemaphoreProperties) => GetPhysicalDeviceExternalSemaphorePropertiesKHR_0(physicalDevice, externalSemaphoreInfo, out externalSemaphoreProperties);
@@ -1322,42 +2382,102 @@ public static unsafe class VK
 	private delegate void GetPhysicalDeviceExternalSemaphorePropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceExternalSemaphoreInfoKHR externalSemaphoreInfo, out VkExternalSemaphorePropertiesKHR externalSemaphoreProperties);
 	private static GetPhysicalDeviceExternalSemaphorePropertiesKHRDelegate_1 GetPhysicalDeviceExternalSemaphorePropertiesKHR_1;
 	public static VkResult ImportSemaphoreWin32HandleKHR(VkDevice device, VkImportSemaphoreWin32HandleInfoKHR* importSemaphoreWin32HandleInfo) => ImportSemaphoreWin32HandleKHR_0(device, importSemaphoreWin32HandleInfo);
+	public static bool ImportSemaphoreWin32HandleKHR(VkDevice device, VkImportSemaphoreWin32HandleInfoKHR* importSemaphoreWin32HandleInfo, out VkResult result)
+	{
+		result = ImportSemaphoreWin32HandleKHR_0(device, importSemaphoreWin32HandleInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ImportSemaphoreWin32HandleKHRDelegate_0(VkDevice device, VkImportSemaphoreWin32HandleInfoKHR* importSemaphoreWin32HandleInfo);
 	private static ImportSemaphoreWin32HandleKHRDelegate_0 ImportSemaphoreWin32HandleKHR_0;
 	public static VkResult ImportSemaphoreWin32HandleKHR(VkDevice device, ref VkImportSemaphoreWin32HandleInfoKHR importSemaphoreWin32HandleInfo) => ImportSemaphoreWin32HandleKHR_1(device, ref importSemaphoreWin32HandleInfo);
+	public static bool ImportSemaphoreWin32HandleKHR(VkDevice device, ref VkImportSemaphoreWin32HandleInfoKHR importSemaphoreWin32HandleInfo, out VkResult result)
+	{
+		result = ImportSemaphoreWin32HandleKHR_1(device, ref importSemaphoreWin32HandleInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ImportSemaphoreWin32HandleKHRDelegate_1(VkDevice device, ref VkImportSemaphoreWin32HandleInfoKHR importSemaphoreWin32HandleInfo);
 	private static ImportSemaphoreWin32HandleKHRDelegate_1 ImportSemaphoreWin32HandleKHR_1;
 	public static VkResult GetSemaphoreWin32HandleKHR(VkDevice device, VkSemaphoreGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle) => GetSemaphoreWin32HandleKHR_0(device, getWin32HandleInfo, out handle);
+	public static bool GetSemaphoreWin32HandleKHR(VkDevice device, VkSemaphoreGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle, out VkResult result)
+	{
+		result = GetSemaphoreWin32HandleKHR_0(device, getWin32HandleInfo, out handle);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetSemaphoreWin32HandleKHRDelegate_0(VkDevice device, VkSemaphoreGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle);
 	private static GetSemaphoreWin32HandleKHRDelegate_0 GetSemaphoreWin32HandleKHR_0;
 	public static VkResult GetSemaphoreWin32HandleKHR(VkDevice device, ref VkSemaphoreGetWin32HandleInfoKHR getWin32HandleInfo, out IntPtr handle) => GetSemaphoreWin32HandleKHR_1(device, ref getWin32HandleInfo, out handle);
+	public static bool GetSemaphoreWin32HandleKHR(VkDevice device, ref VkSemaphoreGetWin32HandleInfoKHR getWin32HandleInfo, out IntPtr handle, out VkResult result)
+	{
+		result = GetSemaphoreWin32HandleKHR_1(device, ref getWin32HandleInfo, out handle);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetSemaphoreWin32HandleKHRDelegate_1(VkDevice device, ref VkSemaphoreGetWin32HandleInfoKHR getWin32HandleInfo, out IntPtr handle);
 	private static GetSemaphoreWin32HandleKHRDelegate_1 GetSemaphoreWin32HandleKHR_1;
 	public static VkResult ImportSemaphoreFileDescriptorKHR(VkDevice device, VkImportSemaphoreFdInfoKHR* importSemaphoreFileDescriptorInfo) => ImportSemaphoreFileDescriptorKHR_0(device, importSemaphoreFileDescriptorInfo);
+	public static bool ImportSemaphoreFileDescriptorKHR(VkDevice device, VkImportSemaphoreFdInfoKHR* importSemaphoreFileDescriptorInfo, out VkResult result)
+	{
+		result = ImportSemaphoreFileDescriptorKHR_0(device, importSemaphoreFileDescriptorInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ImportSemaphoreFileDescriptorKHRDelegate_0(VkDevice device, VkImportSemaphoreFdInfoKHR* importSemaphoreFileDescriptorInfo);
 	private static ImportSemaphoreFileDescriptorKHRDelegate_0 ImportSemaphoreFileDescriptorKHR_0;
 	public static VkResult ImportSemaphoreFileDescriptorKHR(VkDevice device, ref VkImportSemaphoreFdInfoKHR importSemaphoreFileDescriptorInfo) => ImportSemaphoreFileDescriptorKHR_1(device, ref importSemaphoreFileDescriptorInfo);
+	public static bool ImportSemaphoreFileDescriptorKHR(VkDevice device, ref VkImportSemaphoreFdInfoKHR importSemaphoreFileDescriptorInfo, out VkResult result)
+	{
+		result = ImportSemaphoreFileDescriptorKHR_1(device, ref importSemaphoreFileDescriptorInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ImportSemaphoreFileDescriptorKHRDelegate_1(VkDevice device, ref VkImportSemaphoreFdInfoKHR importSemaphoreFileDescriptorInfo);
 	private static ImportSemaphoreFileDescriptorKHRDelegate_1 ImportSemaphoreFileDescriptorKHR_1;
 	public static VkResult GetSemaphoreFileDescriptorKHR(VkDevice device, VkSemaphoreGetFdInfoKHR* getFileDescriptorInfo, out int fileDescriptor) => GetSemaphoreFileDescriptorKHR_0(device, getFileDescriptorInfo, out fileDescriptor);
+	public static bool GetSemaphoreFileDescriptorKHR(VkDevice device, VkSemaphoreGetFdInfoKHR* getFileDescriptorInfo, out int fileDescriptor, out VkResult result)
+	{
+		result = GetSemaphoreFileDescriptorKHR_0(device, getFileDescriptorInfo, out fileDescriptor);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetSemaphoreFileDescriptorKHRDelegate_0(VkDevice device, VkSemaphoreGetFdInfoKHR* getFileDescriptorInfo, out int fileDescriptor);
 	private static GetSemaphoreFileDescriptorKHRDelegate_0 GetSemaphoreFileDescriptorKHR_0;
 	public static VkResult GetSemaphoreFileDescriptorKHR(VkDevice device, ref VkSemaphoreGetFdInfoKHR getFileDescriptorInfo, out int fileDescriptor) => GetSemaphoreFileDescriptorKHR_1(device, ref getFileDescriptorInfo, out fileDescriptor);
+	public static bool GetSemaphoreFileDescriptorKHR(VkDevice device, ref VkSemaphoreGetFdInfoKHR getFileDescriptorInfo, out int fileDescriptor, out VkResult result)
+	{
+		result = GetSemaphoreFileDescriptorKHR_1(device, ref getFileDescriptorInfo, out fileDescriptor);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetSemaphoreFileDescriptorKHRDelegate_1(VkDevice device, ref VkSemaphoreGetFdInfoKHR getFileDescriptorInfo, out int fileDescriptor);
 	private static GetSemaphoreFileDescriptorKHRDelegate_1 GetSemaphoreFileDescriptorKHR_1;
 	public static void CommandPushDescriptorSetKHR(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet[] descriptorWrites) => CommandPushDescriptorSetKHR_0(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, descriptorWrites);
 	private delegate void CommandPushDescriptorSetKHRDelegate_0(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipelineLayout layout, uint set, uint descriptorWriteCount, VkWriteDescriptorSet[] descriptorWrites);
 	private static CommandPushDescriptorSetKHRDelegate_0 CommandPushDescriptorSetKHR_0;
 	public static VkResult CreateDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate) => CreateDescriptorUpdateTemplateKHR_0(device, createInfo, allocator, out descriptorUpdateTemplate);
+	public static bool CreateDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate, out VkResult result)
+	{
+		result = CreateDescriptorUpdateTemplateKHR_0(device, createInfo, allocator, out descriptorUpdateTemplate);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorUpdateTemplateKHRDelegate_0(VkDevice device, VkDescriptorUpdateTemplateCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate);
 	private static CreateDescriptorUpdateTemplateKHRDelegate_0 CreateDescriptorUpdateTemplateKHR_0;
 	public static VkResult CreateDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate) => CreateDescriptorUpdateTemplateKHR_1(device, createInfo, ref allocator, out descriptorUpdateTemplate);
+	public static bool CreateDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate, out VkResult result)
+	{
+		result = CreateDescriptorUpdateTemplateKHR_1(device, createInfo, ref allocator, out descriptorUpdateTemplate);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorUpdateTemplateKHRDelegate_1(VkDevice device, VkDescriptorUpdateTemplateCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate);
 	private static CreateDescriptorUpdateTemplateKHRDelegate_1 CreateDescriptorUpdateTemplateKHR_1;
 	public static VkResult CreateDescriptorUpdateTemplateKHR(VkDevice device, ref VkDescriptorUpdateTemplateCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate) => CreateDescriptorUpdateTemplateKHR_2(device, ref createInfo, allocator, out descriptorUpdateTemplate);
+	public static bool CreateDescriptorUpdateTemplateKHR(VkDevice device, ref VkDescriptorUpdateTemplateCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate, out VkResult result)
+	{
+		result = CreateDescriptorUpdateTemplateKHR_2(device, ref createInfo, allocator, out descriptorUpdateTemplate);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorUpdateTemplateKHRDelegate_2(VkDevice device, ref VkDescriptorUpdateTemplateCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate);
 	private static CreateDescriptorUpdateTemplateKHRDelegate_2 CreateDescriptorUpdateTemplateKHR_2;
 	public static VkResult CreateDescriptorUpdateTemplateKHR(VkDevice device, ref VkDescriptorUpdateTemplateCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate) => CreateDescriptorUpdateTemplateKHR_3(device, ref createInfo, ref allocator, out descriptorUpdateTemplate);
+	public static bool CreateDescriptorUpdateTemplateKHR(VkDevice device, ref VkDescriptorUpdateTemplateCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate, out VkResult result)
+	{
+		result = CreateDescriptorUpdateTemplateKHR_3(device, ref createInfo, ref allocator, out descriptorUpdateTemplate);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateDescriptorUpdateTemplateKHRDelegate_3(VkDevice device, ref VkDescriptorUpdateTemplateCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate);
 	private static CreateDescriptorUpdateTemplateKHRDelegate_3 CreateDescriptorUpdateTemplateKHR_3;
 	public static void DestroyDescriptorUpdateTemplateKHR(VkDevice device, VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate, VkAllocationCallbacks* allocator) => DestroyDescriptorUpdateTemplateKHR_0(device, descriptorUpdateTemplate, allocator);
@@ -1385,15 +2505,35 @@ public static unsafe class VK
 	private delegate void CommandReserveSpaceForCommandsNVXDelegate_1(VkCommandBuffer commandBuffer, ref VkCmdReserveSpaceForCommandsInfoNVX reserveSpaceInfo);
 	private static CommandReserveSpaceForCommandsNVXDelegate_1 CommandReserveSpaceForCommandsNVX_1;
 	public static VkResult CreateIndirectCommandsLayoutNVX(VkDevice device, VkIndirectCommandsLayoutCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout) => CreateIndirectCommandsLayoutNVX_0(device, createInfo, allocator, out indirectCommandsLayout);
+	public static bool CreateIndirectCommandsLayoutNVX(VkDevice device, VkIndirectCommandsLayoutCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout, out VkResult result)
+	{
+		result = CreateIndirectCommandsLayoutNVX_0(device, createInfo, allocator, out indirectCommandsLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateIndirectCommandsLayoutNVXDelegate_0(VkDevice device, VkIndirectCommandsLayoutCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout);
 	private static CreateIndirectCommandsLayoutNVXDelegate_0 CreateIndirectCommandsLayoutNVX_0;
 	public static VkResult CreateIndirectCommandsLayoutNVX(VkDevice device, VkIndirectCommandsLayoutCreateInfoNVX* createInfo, ref VkAllocationCallbacks allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout) => CreateIndirectCommandsLayoutNVX_1(device, createInfo, ref allocator, out indirectCommandsLayout);
+	public static bool CreateIndirectCommandsLayoutNVX(VkDevice device, VkIndirectCommandsLayoutCreateInfoNVX* createInfo, ref VkAllocationCallbacks allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout, out VkResult result)
+	{
+		result = CreateIndirectCommandsLayoutNVX_1(device, createInfo, ref allocator, out indirectCommandsLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateIndirectCommandsLayoutNVXDelegate_1(VkDevice device, VkIndirectCommandsLayoutCreateInfoNVX* createInfo, ref VkAllocationCallbacks allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout);
 	private static CreateIndirectCommandsLayoutNVXDelegate_1 CreateIndirectCommandsLayoutNVX_1;
 	public static VkResult CreateIndirectCommandsLayoutNVX(VkDevice device, ref VkIndirectCommandsLayoutCreateInfoNVX createInfo, VkAllocationCallbacks* allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout) => CreateIndirectCommandsLayoutNVX_2(device, ref createInfo, allocator, out indirectCommandsLayout);
+	public static bool CreateIndirectCommandsLayoutNVX(VkDevice device, ref VkIndirectCommandsLayoutCreateInfoNVX createInfo, VkAllocationCallbacks* allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout, out VkResult result)
+	{
+		result = CreateIndirectCommandsLayoutNVX_2(device, ref createInfo, allocator, out indirectCommandsLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateIndirectCommandsLayoutNVXDelegate_2(VkDevice device, ref VkIndirectCommandsLayoutCreateInfoNVX createInfo, VkAllocationCallbacks* allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout);
 	private static CreateIndirectCommandsLayoutNVXDelegate_2 CreateIndirectCommandsLayoutNVX_2;
 	public static VkResult CreateIndirectCommandsLayoutNVX(VkDevice device, ref VkIndirectCommandsLayoutCreateInfoNVX createInfo, ref VkAllocationCallbacks allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout) => CreateIndirectCommandsLayoutNVX_3(device, ref createInfo, ref allocator, out indirectCommandsLayout);
+	public static bool CreateIndirectCommandsLayoutNVX(VkDevice device, ref VkIndirectCommandsLayoutCreateInfoNVX createInfo, ref VkAllocationCallbacks allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout, out VkResult result)
+	{
+		result = CreateIndirectCommandsLayoutNVX_3(device, ref createInfo, ref allocator, out indirectCommandsLayout);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateIndirectCommandsLayoutNVXDelegate_3(VkDevice device, ref VkIndirectCommandsLayoutCreateInfoNVX createInfo, ref VkAllocationCallbacks allocator, out VkIndirectCommandsLayoutNVX indirectCommandsLayout);
 	private static CreateIndirectCommandsLayoutNVXDelegate_3 CreateIndirectCommandsLayoutNVX_3;
 	public static void DestroyIndirectCommandsLayoutNVX(VkDevice device, VkIndirectCommandsLayoutNVX indirectCommandsLayout, VkAllocationCallbacks* allocator) => DestroyIndirectCommandsLayoutNVX_0(device, indirectCommandsLayout, allocator);
@@ -1403,15 +2543,35 @@ public static unsafe class VK
 	private delegate void DestroyIndirectCommandsLayoutNVXDelegate_1(VkDevice device, VkIndirectCommandsLayoutNVX indirectCommandsLayout, ref VkAllocationCallbacks allocator);
 	private static DestroyIndirectCommandsLayoutNVXDelegate_1 DestroyIndirectCommandsLayoutNVX_1;
 	public static VkResult CreateObjectTableNVX(VkDevice device, VkObjectTableCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, out VkObjectTableNVX objectTable) => CreateObjectTableNVX_0(device, createInfo, allocator, out objectTable);
+	public static bool CreateObjectTableNVX(VkDevice device, VkObjectTableCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, out VkObjectTableNVX objectTable, out VkResult result)
+	{
+		result = CreateObjectTableNVX_0(device, createInfo, allocator, out objectTable);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateObjectTableNVXDelegate_0(VkDevice device, VkObjectTableCreateInfoNVX* createInfo, VkAllocationCallbacks* allocator, out VkObjectTableNVX objectTable);
 	private static CreateObjectTableNVXDelegate_0 CreateObjectTableNVX_0;
 	public static VkResult CreateObjectTableNVX(VkDevice device, VkObjectTableCreateInfoNVX* createInfo, ref VkAllocationCallbacks allocator, out VkObjectTableNVX objectTable) => CreateObjectTableNVX_1(device, createInfo, ref allocator, out objectTable);
+	public static bool CreateObjectTableNVX(VkDevice device, VkObjectTableCreateInfoNVX* createInfo, ref VkAllocationCallbacks allocator, out VkObjectTableNVX objectTable, out VkResult result)
+	{
+		result = CreateObjectTableNVX_1(device, createInfo, ref allocator, out objectTable);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateObjectTableNVXDelegate_1(VkDevice device, VkObjectTableCreateInfoNVX* createInfo, ref VkAllocationCallbacks allocator, out VkObjectTableNVX objectTable);
 	private static CreateObjectTableNVXDelegate_1 CreateObjectTableNVX_1;
 	public static VkResult CreateObjectTableNVX(VkDevice device, ref VkObjectTableCreateInfoNVX createInfo, VkAllocationCallbacks* allocator, out VkObjectTableNVX objectTable) => CreateObjectTableNVX_2(device, ref createInfo, allocator, out objectTable);
+	public static bool CreateObjectTableNVX(VkDevice device, ref VkObjectTableCreateInfoNVX createInfo, VkAllocationCallbacks* allocator, out VkObjectTableNVX objectTable, out VkResult result)
+	{
+		result = CreateObjectTableNVX_2(device, ref createInfo, allocator, out objectTable);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateObjectTableNVXDelegate_2(VkDevice device, ref VkObjectTableCreateInfoNVX createInfo, VkAllocationCallbacks* allocator, out VkObjectTableNVX objectTable);
 	private static CreateObjectTableNVXDelegate_2 CreateObjectTableNVX_2;
 	public static VkResult CreateObjectTableNVX(VkDevice device, ref VkObjectTableCreateInfoNVX createInfo, ref VkAllocationCallbacks allocator, out VkObjectTableNVX objectTable) => CreateObjectTableNVX_3(device, ref createInfo, ref allocator, out objectTable);
+	public static bool CreateObjectTableNVX(VkDevice device, ref VkObjectTableCreateInfoNVX createInfo, ref VkAllocationCallbacks allocator, out VkObjectTableNVX objectTable, out VkResult result)
+	{
+		result = CreateObjectTableNVX_3(device, ref createInfo, ref allocator, out objectTable);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateObjectTableNVXDelegate_3(VkDevice device, ref VkObjectTableCreateInfoNVX createInfo, ref VkAllocationCallbacks allocator, out VkObjectTableNVX objectTable);
 	private static CreateObjectTableNVXDelegate_3 CreateObjectTableNVX_3;
 	public static void DestroyObjectTableNVX(VkDevice device, VkObjectTableNVX objectTable, VkAllocationCallbacks* allocator) => DestroyObjectTableNVX_0(device, objectTable, allocator);
@@ -1421,27 +2581,67 @@ public static unsafe class VK
 	private delegate void DestroyObjectTableNVXDelegate_1(VkDevice device, VkObjectTableNVX objectTable, ref VkAllocationCallbacks allocator);
 	private static DestroyObjectTableNVXDelegate_1 DestroyObjectTableNVX_1;
 	public static VkResult RegisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectTableEntryNVX** objectTableEntries, uint* objectIndices) => RegisterObjectsNVX_0(device, objectTable, objectCount, objectTableEntries, objectIndices);
+	public static bool RegisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectTableEntryNVX** objectTableEntries, uint* objectIndices, out VkResult result)
+	{
+		result = RegisterObjectsNVX_0(device, objectTable, objectCount, objectTableEntries, objectIndices);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterObjectsNVXDelegate_0(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectTableEntryNVX** objectTableEntries, uint* objectIndices);
 	private static RegisterObjectsNVXDelegate_0 RegisterObjectsNVX_0;
 	public static VkResult RegisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectTableEntryNVX** objectTableEntries, ref uint objectIndices) => RegisterObjectsNVX_1(device, objectTable, objectCount, objectTableEntries, ref objectIndices);
+	public static bool RegisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectTableEntryNVX** objectTableEntries, ref uint objectIndices, out VkResult result)
+	{
+		result = RegisterObjectsNVX_1(device, objectTable, objectCount, objectTableEntries, ref objectIndices);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterObjectsNVXDelegate_1(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectTableEntryNVX** objectTableEntries, ref uint objectIndices);
 	private static RegisterObjectsNVXDelegate_1 RegisterObjectsNVX_1;
 	public static VkResult RegisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectTableEntryNVX objectTableEntries, uint* objectIndices) => RegisterObjectsNVX_2(device, objectTable, objectCount, ref objectTableEntries, objectIndices);
+	public static bool RegisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectTableEntryNVX objectTableEntries, uint* objectIndices, out VkResult result)
+	{
+		result = RegisterObjectsNVX_2(device, objectTable, objectCount, ref objectTableEntries, objectIndices);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterObjectsNVXDelegate_2(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectTableEntryNVX objectTableEntries, uint* objectIndices);
 	private static RegisterObjectsNVXDelegate_2 RegisterObjectsNVX_2;
 	public static VkResult RegisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectTableEntryNVX objectTableEntries, ref uint objectIndices) => RegisterObjectsNVX_3(device, objectTable, objectCount, ref objectTableEntries, ref objectIndices);
+	public static bool RegisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectTableEntryNVX objectTableEntries, ref uint objectIndices, out VkResult result)
+	{
+		result = RegisterObjectsNVX_3(device, objectTable, objectCount, ref objectTableEntries, ref objectIndices);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterObjectsNVXDelegate_3(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectTableEntryNVX objectTableEntries, ref uint objectIndices);
 	private static RegisterObjectsNVXDelegate_3 RegisterObjectsNVX_3;
 	public static VkResult UnregisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectEntryTypeNVX* objectEntryTypes, uint* objectIndices) => UnregisterObjectsNVX_0(device, objectTable, objectCount, objectEntryTypes, objectIndices);
+	public static bool UnregisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectEntryTypeNVX* objectEntryTypes, uint* objectIndices, out VkResult result)
+	{
+		result = UnregisterObjectsNVX_0(device, objectTable, objectCount, objectEntryTypes, objectIndices);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult UnregisterObjectsNVXDelegate_0(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectEntryTypeNVX* objectEntryTypes, uint* objectIndices);
 	private static UnregisterObjectsNVXDelegate_0 UnregisterObjectsNVX_0;
 	public static VkResult UnregisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectEntryTypeNVX* objectEntryTypes, ref uint objectIndices) => UnregisterObjectsNVX_1(device, objectTable, objectCount, objectEntryTypes, ref objectIndices);
+	public static bool UnregisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectEntryTypeNVX* objectEntryTypes, ref uint objectIndices, out VkResult result)
+	{
+		result = UnregisterObjectsNVX_1(device, objectTable, objectCount, objectEntryTypes, ref objectIndices);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult UnregisterObjectsNVXDelegate_1(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, VkObjectEntryTypeNVX* objectEntryTypes, ref uint objectIndices);
 	private static UnregisterObjectsNVXDelegate_1 UnregisterObjectsNVX_1;
 	public static VkResult UnregisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectEntryTypeNVX objectEntryTypes, uint* objectIndices) => UnregisterObjectsNVX_2(device, objectTable, objectCount, ref objectEntryTypes, objectIndices);
+	public static bool UnregisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectEntryTypeNVX objectEntryTypes, uint* objectIndices, out VkResult result)
+	{
+		result = UnregisterObjectsNVX_2(device, objectTable, objectCount, ref objectEntryTypes, objectIndices);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult UnregisterObjectsNVXDelegate_2(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectEntryTypeNVX objectEntryTypes, uint* objectIndices);
 	private static UnregisterObjectsNVXDelegate_2 UnregisterObjectsNVX_2;
 	public static VkResult UnregisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectEntryTypeNVX objectEntryTypes, ref uint objectIndices) => UnregisterObjectsNVX_3(device, objectTable, objectCount, ref objectEntryTypes, ref objectIndices);
+	public static bool UnregisterObjectsNVX(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectEntryTypeNVX objectEntryTypes, ref uint objectIndices, out VkResult result)
+	{
+		result = UnregisterObjectsNVX_3(device, objectTable, objectCount, ref objectEntryTypes, ref objectIndices);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult UnregisterObjectsNVXDelegate_3(VkDevice device, VkObjectTableNVX objectTable, uint objectCount, ref VkObjectEntryTypeNVX objectEntryTypes, ref uint objectIndices);
 	private static UnregisterObjectsNVXDelegate_3 UnregisterObjectsNVX_3;
 	public static void GetPhysicalDeviceGeneratedCommandsPropertiesNVX(VkPhysicalDevice physicalDevice, VkDeviceGeneratedCommandsFeaturesNVX* features, out VkDeviceGeneratedCommandsLimitsNVX limits) => GetPhysicalDeviceGeneratedCommandsPropertiesNVX_0(physicalDevice, features, out limits);
@@ -1457,81 +2657,211 @@ public static unsafe class VK
 	private delegate void CommandSetViewportWScalingNVDelegate_1(VkCommandBuffer commandBuffer, uint firstViewport, uint viewportCount, ref VkViewportWScalingNV viewportWScalings);
 	private static CommandSetViewportWScalingNVDelegate_1 CommandSetViewportWScalingNV_1;
 	public static VkResult ReleaseDisplayEXT(VkPhysicalDevice physicalDevice, VkDisplayKHR display) => ReleaseDisplayEXT_0(physicalDevice, display);
+	public static bool ReleaseDisplayEXT(VkPhysicalDevice physicalDevice, VkDisplayKHR display, out VkResult result)
+	{
+		result = ReleaseDisplayEXT_0(physicalDevice, display);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ReleaseDisplayEXTDelegate_0(VkPhysicalDevice physicalDevice, VkDisplayKHR display);
 	private static ReleaseDisplayEXTDelegate_0 ReleaseDisplayEXT_0;
 	public static VkResult AcquireXlibDisplayEXT(VkPhysicalDevice physicalDevice, void* dpy, VkDisplayKHR display) => AcquireXlibDisplayEXT_0(physicalDevice, dpy, display);
+	public static bool AcquireXlibDisplayEXT(VkPhysicalDevice physicalDevice, void* dpy, VkDisplayKHR display, out VkResult result)
+	{
+		result = AcquireXlibDisplayEXT_0(physicalDevice, dpy, display);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult AcquireXlibDisplayEXTDelegate_0(VkPhysicalDevice physicalDevice, void* dpy, VkDisplayKHR display);
 	private static AcquireXlibDisplayEXTDelegate_0 AcquireXlibDisplayEXT_0;
 	public static VkResult GetRandROutputDisplayEXT(VkPhysicalDevice physicalDevice, void* dpy, IntPtr rrOutput, out VkDisplayKHR display) => GetRandROutputDisplayEXT_0(physicalDevice, dpy, rrOutput, out display);
+	public static bool GetRandROutputDisplayEXT(VkPhysicalDevice physicalDevice, void* dpy, IntPtr rrOutput, out VkDisplayKHR display, out VkResult result)
+	{
+		result = GetRandROutputDisplayEXT_0(physicalDevice, dpy, rrOutput, out display);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetRandROutputDisplayEXTDelegate_0(VkPhysicalDevice physicalDevice, void* dpy, IntPtr rrOutput, out VkDisplayKHR display);
 	private static GetRandROutputDisplayEXTDelegate_0 GetRandROutputDisplayEXT_0;
 	public static VkResult GetPhysicalDeviceSurfaceCapabilities2EXT(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, out VkSurfaceCapabilities2EXT surfaceCapabilities) => GetPhysicalDeviceSurfaceCapabilities2EXT_0(physicalDevice, surface, out surfaceCapabilities);
+	public static bool GetPhysicalDeviceSurfaceCapabilities2EXT(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, out VkSurfaceCapabilities2EXT surfaceCapabilities, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceCapabilities2EXT_0(physicalDevice, surface, out surfaceCapabilities);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceCapabilities2EXTDelegate_0(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, out VkSurfaceCapabilities2EXT surfaceCapabilities);
 	private static GetPhysicalDeviceSurfaceCapabilities2EXTDelegate_0 GetPhysicalDeviceSurfaceCapabilities2EXT_0;
 	public static VkResult DisplayPowerControlEXT(VkDevice device, VkDisplayKHR display, VkDisplayPowerInfoEXT* displayPowerInfo) => DisplayPowerControlEXT_0(device, display, displayPowerInfo);
+	public static bool DisplayPowerControlEXT(VkDevice device, VkDisplayKHR display, VkDisplayPowerInfoEXT* displayPowerInfo, out VkResult result)
+	{
+		result = DisplayPowerControlEXT_0(device, display, displayPowerInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult DisplayPowerControlEXTDelegate_0(VkDevice device, VkDisplayKHR display, VkDisplayPowerInfoEXT* displayPowerInfo);
 	private static DisplayPowerControlEXTDelegate_0 DisplayPowerControlEXT_0;
 	public static VkResult DisplayPowerControlEXT(VkDevice device, VkDisplayKHR display, ref VkDisplayPowerInfoEXT displayPowerInfo) => DisplayPowerControlEXT_1(device, display, ref displayPowerInfo);
+	public static bool DisplayPowerControlEXT(VkDevice device, VkDisplayKHR display, ref VkDisplayPowerInfoEXT displayPowerInfo, out VkResult result)
+	{
+		result = DisplayPowerControlEXT_1(device, display, ref displayPowerInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult DisplayPowerControlEXTDelegate_1(VkDevice device, VkDisplayKHR display, ref VkDisplayPowerInfoEXT displayPowerInfo);
 	private static DisplayPowerControlEXTDelegate_1 DisplayPowerControlEXT_1;
 	public static VkResult RegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, VkAllocationCallbacks* allocator, VkFence* fence) => RegisterDeviceEventEXT_0(device, deviceEventInfo, allocator, fence);
+	public static bool RegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, VkAllocationCallbacks* allocator, VkFence* fence, out VkResult result)
+	{
+		result = RegisterDeviceEventEXT_0(device, deviceEventInfo, allocator, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDeviceEventEXTDelegate_0(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, VkAllocationCallbacks* allocator, VkFence* fence);
 	private static RegisterDeviceEventEXTDelegate_0 RegisterDeviceEventEXT_0;
 	public static VkResult RegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence) => RegisterDeviceEventEXT_1(device, deviceEventInfo, allocator, ref fence);
+	public static bool RegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence, out VkResult result)
+	{
+		result = RegisterDeviceEventEXT_1(device, deviceEventInfo, allocator, ref fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDeviceEventEXTDelegate_1(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence);
 	private static RegisterDeviceEventEXTDelegate_1 RegisterDeviceEventEXT_1;
 	public static VkResult RegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence) => RegisterDeviceEventEXT_2(device, deviceEventInfo, ref allocator, fence);
+	public static bool RegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence, out VkResult result)
+	{
+		result = RegisterDeviceEventEXT_2(device, deviceEventInfo, ref allocator, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDeviceEventEXTDelegate_2(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence);
 	private static RegisterDeviceEventEXTDelegate_2 RegisterDeviceEventEXT_2;
 	public static VkResult RegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence) => RegisterDeviceEventEXT_3(device, deviceEventInfo, ref allocator, ref fence);
+	public static bool RegisterDeviceEventEXT(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence, out VkResult result)
+	{
+		result = RegisterDeviceEventEXT_3(device, deviceEventInfo, ref allocator, ref fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDeviceEventEXTDelegate_3(VkDevice device, VkDeviceEventInfoEXT* deviceEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence);
 	private static RegisterDeviceEventEXTDelegate_3 RegisterDeviceEventEXT_3;
 	public static VkResult RegisterDeviceEventEXT(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, VkAllocationCallbacks* allocator, VkFence* fence) => RegisterDeviceEventEXT_4(device, ref deviceEventInfo, allocator, fence);
+	public static bool RegisterDeviceEventEXT(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, VkAllocationCallbacks* allocator, VkFence* fence, out VkResult result)
+	{
+		result = RegisterDeviceEventEXT_4(device, ref deviceEventInfo, allocator, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDeviceEventEXTDelegate_4(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, VkAllocationCallbacks* allocator, VkFence* fence);
 	private static RegisterDeviceEventEXTDelegate_4 RegisterDeviceEventEXT_4;
 	public static VkResult RegisterDeviceEventEXT(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence) => RegisterDeviceEventEXT_5(device, ref deviceEventInfo, allocator, ref fence);
+	public static bool RegisterDeviceEventEXT(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence, out VkResult result)
+	{
+		result = RegisterDeviceEventEXT_5(device, ref deviceEventInfo, allocator, ref fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDeviceEventEXTDelegate_5(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence);
 	private static RegisterDeviceEventEXTDelegate_5 RegisterDeviceEventEXT_5;
 	public static VkResult RegisterDeviceEventEXT(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence) => RegisterDeviceEventEXT_6(device, ref deviceEventInfo, ref allocator, fence);
+	public static bool RegisterDeviceEventEXT(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence, out VkResult result)
+	{
+		result = RegisterDeviceEventEXT_6(device, ref deviceEventInfo, ref allocator, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDeviceEventEXTDelegate_6(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence);
 	private static RegisterDeviceEventEXTDelegate_6 RegisterDeviceEventEXT_6;
 	public static VkResult RegisterDeviceEventEXT(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence) => RegisterDeviceEventEXT_7(device, ref deviceEventInfo, ref allocator, ref fence);
+	public static bool RegisterDeviceEventEXT(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence, out VkResult result)
+	{
+		result = RegisterDeviceEventEXT_7(device, ref deviceEventInfo, ref allocator, ref fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDeviceEventEXTDelegate_7(VkDevice device, ref VkDeviceEventInfoEXT deviceEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence);
 	private static RegisterDeviceEventEXTDelegate_7 RegisterDeviceEventEXT_7;
 	public static VkResult RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, VkAllocationCallbacks* allocator, VkFence* fence) => RegisterDisplayEventEXT_0(device, display, displayEventInfo, allocator, fence);
+	public static bool RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, VkAllocationCallbacks* allocator, VkFence* fence, out VkResult result)
+	{
+		result = RegisterDisplayEventEXT_0(device, display, displayEventInfo, allocator, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDisplayEventEXTDelegate_0(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, VkAllocationCallbacks* allocator, VkFence* fence);
 	private static RegisterDisplayEventEXTDelegate_0 RegisterDisplayEventEXT_0;
 	public static VkResult RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence) => RegisterDisplayEventEXT_1(device, display, displayEventInfo, allocator, ref fence);
+	public static bool RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence, out VkResult result)
+	{
+		result = RegisterDisplayEventEXT_1(device, display, displayEventInfo, allocator, ref fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDisplayEventEXTDelegate_1(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence);
 	private static RegisterDisplayEventEXTDelegate_1 RegisterDisplayEventEXT_1;
 	public static VkResult RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence) => RegisterDisplayEventEXT_2(device, display, displayEventInfo, ref allocator, fence);
+	public static bool RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence, out VkResult result)
+	{
+		result = RegisterDisplayEventEXT_2(device, display, displayEventInfo, ref allocator, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDisplayEventEXTDelegate_2(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence);
 	private static RegisterDisplayEventEXTDelegate_2 RegisterDisplayEventEXT_2;
 	public static VkResult RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence) => RegisterDisplayEventEXT_3(device, display, displayEventInfo, ref allocator, ref fence);
+	public static bool RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence, out VkResult result)
+	{
+		result = RegisterDisplayEventEXT_3(device, display, displayEventInfo, ref allocator, ref fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDisplayEventEXTDelegate_3(VkDevice device, VkDisplayKHR display, VkDisplayEventInfoEXT* displayEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence);
 	private static RegisterDisplayEventEXTDelegate_3 RegisterDisplayEventEXT_3;
 	public static VkResult RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, VkAllocationCallbacks* allocator, VkFence* fence) => RegisterDisplayEventEXT_4(device, display, ref displayEventInfo, allocator, fence);
+	public static bool RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, VkAllocationCallbacks* allocator, VkFence* fence, out VkResult result)
+	{
+		result = RegisterDisplayEventEXT_4(device, display, ref displayEventInfo, allocator, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDisplayEventEXTDelegate_4(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, VkAllocationCallbacks* allocator, VkFence* fence);
 	private static RegisterDisplayEventEXTDelegate_4 RegisterDisplayEventEXT_4;
 	public static VkResult RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence) => RegisterDisplayEventEXT_5(device, display, ref displayEventInfo, allocator, ref fence);
+	public static bool RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence, out VkResult result)
+	{
+		result = RegisterDisplayEventEXT_5(device, display, ref displayEventInfo, allocator, ref fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDisplayEventEXTDelegate_5(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, VkAllocationCallbacks* allocator, ref VkFence fence);
 	private static RegisterDisplayEventEXTDelegate_5 RegisterDisplayEventEXT_5;
 	public static VkResult RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence) => RegisterDisplayEventEXT_6(device, display, ref displayEventInfo, ref allocator, fence);
+	public static bool RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence, out VkResult result)
+	{
+		result = RegisterDisplayEventEXT_6(device, display, ref displayEventInfo, ref allocator, fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDisplayEventEXTDelegate_6(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, ref VkAllocationCallbacks allocator, VkFence* fence);
 	private static RegisterDisplayEventEXTDelegate_6 RegisterDisplayEventEXT_6;
 	public static VkResult RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence) => RegisterDisplayEventEXT_7(device, display, ref displayEventInfo, ref allocator, ref fence);
+	public static bool RegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence, out VkResult result)
+	{
+		result = RegisterDisplayEventEXT_7(device, display, ref displayEventInfo, ref allocator, ref fence);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult RegisterDisplayEventEXTDelegate_7(VkDevice device, VkDisplayKHR display, ref VkDisplayEventInfoEXT displayEventInfo, ref VkAllocationCallbacks allocator, ref VkFence fence);
 	private static RegisterDisplayEventEXTDelegate_7 RegisterDisplayEventEXT_7;
 	public static VkResult GetSwapchainCounterEXT(VkDevice device, VkSwapchainKHR swapchain, VkSurfaceCounterFlagsEXT counter, out ulong counterValue) => GetSwapchainCounterEXT_0(device, swapchain, counter, out counterValue);
+	public static bool GetSwapchainCounterEXT(VkDevice device, VkSwapchainKHR swapchain, VkSurfaceCounterFlagsEXT counter, out ulong counterValue, out VkResult result)
+	{
+		result = GetSwapchainCounterEXT_0(device, swapchain, counter, out counterValue);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetSwapchainCounterEXTDelegate_0(VkDevice device, VkSwapchainKHR swapchain, VkSurfaceCounterFlagsEXT counter, out ulong counterValue);
 	private static GetSwapchainCounterEXTDelegate_0 GetSwapchainCounterEXT_0;
 	public static VkResult GetRefreshCycleDurationGOOGLE(VkDevice device, VkSwapchainKHR swapchain, out VkRefreshCycleDurationGOOGLE displayTimingProperties) => GetRefreshCycleDurationGOOGLE_0(device, swapchain, out displayTimingProperties);
+	public static bool GetRefreshCycleDurationGOOGLE(VkDevice device, VkSwapchainKHR swapchain, out VkRefreshCycleDurationGOOGLE displayTimingProperties, out VkResult result)
+	{
+		result = GetRefreshCycleDurationGOOGLE_0(device, swapchain, out displayTimingProperties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetRefreshCycleDurationGOOGLEDelegate_0(VkDevice device, VkSwapchainKHR swapchain, out VkRefreshCycleDurationGOOGLE displayTimingProperties);
 	private static GetRefreshCycleDurationGOOGLEDelegate_0 GetRefreshCycleDurationGOOGLE_0;
 	public static VkResult GetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, [In, Out] VkPastPresentationTimingGOOGLE[] presentationTimings) => GetPastPresentationTimingGOOGLE_0(device, swapchain, presentationTimingCount, presentationTimings);
+	public static bool GetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, [In, Out] VkPastPresentationTimingGOOGLE[] presentationTimings, out VkResult result)
+	{
+		result = GetPastPresentationTimingGOOGLE_0(device, swapchain, presentationTimingCount, presentationTimings);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPastPresentationTimingGOOGLEDelegate_0(VkDevice device, VkSwapchainKHR swapchain, uint* presentationTimingCount, [In, Out] VkPastPresentationTimingGOOGLE[] presentationTimings);
 	private static GetPastPresentationTimingGOOGLEDelegate_0 GetPastPresentationTimingGOOGLE_0;
 	public static VkResult GetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, ref uint presentationTimingCount, [In, Out] VkPastPresentationTimingGOOGLE[] presentationTimings) => GetPastPresentationTimingGOOGLE_1(device, swapchain, ref presentationTimingCount, presentationTimings);
+	public static bool GetPastPresentationTimingGOOGLE(VkDevice device, VkSwapchainKHR swapchain, ref uint presentationTimingCount, [In, Out] VkPastPresentationTimingGOOGLE[] presentationTimings, out VkResult result)
+	{
+		result = GetPastPresentationTimingGOOGLE_1(device, swapchain, ref presentationTimingCount, presentationTimings);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPastPresentationTimingGOOGLEDelegate_1(VkDevice device, VkSwapchainKHR swapchain, ref uint presentationTimingCount, [In, Out] VkPastPresentationTimingGOOGLE[] presentationTimings);
 	private static GetPastPresentationTimingGOOGLEDelegate_1 GetPastPresentationTimingGOOGLE_1;
 	public static void CommandSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint firstDiscardRectangle, uint discardRectangleCount, VkRect2D[] discardRectangles) => CommandSetDiscardRectangleEXT_0(commandBuffer, firstDiscardRectangle, discardRectangleCount, discardRectangles);
@@ -1544,6 +2874,11 @@ public static unsafe class VK
 	private delegate void SetHdrMetadataEXTDelegate_1(VkDevice device, uint swapchainCount, VkSwapchainKHR[] swapchains, ref VkHdrMetadataEXT metadata);
 	private static SetHdrMetadataEXTDelegate_1 SetHdrMetadataEXT_1;
 	public static VkResult GetSwapchainStatusKHR(VkDevice device, VkSwapchainKHR swapchain) => GetSwapchainStatusKHR_0(device, swapchain);
+	public static bool GetSwapchainStatusKHR(VkDevice device, VkSwapchainKHR swapchain, out VkResult result)
+	{
+		result = GetSwapchainStatusKHR_0(device, swapchain);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetSwapchainStatusKHRDelegate_0(VkDevice device, VkSwapchainKHR swapchain);
 	private static GetSwapchainStatusKHRDelegate_0 GetSwapchainStatusKHR_0;
 	public static void GetPhysicalDeviceExternalFencePropertiesKHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfoKHR* externalFenceInfo, out VkExternalFencePropertiesKHR externalFenceProperties) => GetPhysicalDeviceExternalFencePropertiesKHR_0(physicalDevice, externalFenceInfo, out externalFenceProperties);
@@ -1553,69 +2888,179 @@ public static unsafe class VK
 	private delegate void GetPhysicalDeviceExternalFencePropertiesKHRDelegate_1(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceExternalFenceInfoKHR externalFenceInfo, out VkExternalFencePropertiesKHR externalFenceProperties);
 	private static GetPhysicalDeviceExternalFencePropertiesKHRDelegate_1 GetPhysicalDeviceExternalFencePropertiesKHR_1;
 	public static VkResult ImportFenceWin32HandleKHR(VkDevice device, VkImportFenceWin32HandleInfoKHR* importFenceWin32HandleInfo) => ImportFenceWin32HandleKHR_0(device, importFenceWin32HandleInfo);
+	public static bool ImportFenceWin32HandleKHR(VkDevice device, VkImportFenceWin32HandleInfoKHR* importFenceWin32HandleInfo, out VkResult result)
+	{
+		result = ImportFenceWin32HandleKHR_0(device, importFenceWin32HandleInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ImportFenceWin32HandleKHRDelegate_0(VkDevice device, VkImportFenceWin32HandleInfoKHR* importFenceWin32HandleInfo);
 	private static ImportFenceWin32HandleKHRDelegate_0 ImportFenceWin32HandleKHR_0;
 	public static VkResult ImportFenceWin32HandleKHR(VkDevice device, ref VkImportFenceWin32HandleInfoKHR importFenceWin32HandleInfo) => ImportFenceWin32HandleKHR_1(device, ref importFenceWin32HandleInfo);
+	public static bool ImportFenceWin32HandleKHR(VkDevice device, ref VkImportFenceWin32HandleInfoKHR importFenceWin32HandleInfo, out VkResult result)
+	{
+		result = ImportFenceWin32HandleKHR_1(device, ref importFenceWin32HandleInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ImportFenceWin32HandleKHRDelegate_1(VkDevice device, ref VkImportFenceWin32HandleInfoKHR importFenceWin32HandleInfo);
 	private static ImportFenceWin32HandleKHRDelegate_1 ImportFenceWin32HandleKHR_1;
 	public static VkResult GetFenceWin32HandleKHR(VkDevice device, VkFenceGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle) => GetFenceWin32HandleKHR_0(device, getWin32HandleInfo, out handle);
+	public static bool GetFenceWin32HandleKHR(VkDevice device, VkFenceGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle, out VkResult result)
+	{
+		result = GetFenceWin32HandleKHR_0(device, getWin32HandleInfo, out handle);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetFenceWin32HandleKHRDelegate_0(VkDevice device, VkFenceGetWin32HandleInfoKHR* getWin32HandleInfo, out IntPtr handle);
 	private static GetFenceWin32HandleKHRDelegate_0 GetFenceWin32HandleKHR_0;
 	public static VkResult GetFenceWin32HandleKHR(VkDevice device, ref VkFenceGetWin32HandleInfoKHR getWin32HandleInfo, out IntPtr handle) => GetFenceWin32HandleKHR_1(device, ref getWin32HandleInfo, out handle);
+	public static bool GetFenceWin32HandleKHR(VkDevice device, ref VkFenceGetWin32HandleInfoKHR getWin32HandleInfo, out IntPtr handle, out VkResult result)
+	{
+		result = GetFenceWin32HandleKHR_1(device, ref getWin32HandleInfo, out handle);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetFenceWin32HandleKHRDelegate_1(VkDevice device, ref VkFenceGetWin32HandleInfoKHR getWin32HandleInfo, out IntPtr handle);
 	private static GetFenceWin32HandleKHRDelegate_1 GetFenceWin32HandleKHR_1;
 	public static VkResult ImportFenceFileDescriptorKHR(VkDevice device, VkImportFenceFdInfoKHR* importFenceFileDescriptorInfo) => ImportFenceFileDescriptorKHR_0(device, importFenceFileDescriptorInfo);
+	public static bool ImportFenceFileDescriptorKHR(VkDevice device, VkImportFenceFdInfoKHR* importFenceFileDescriptorInfo, out VkResult result)
+	{
+		result = ImportFenceFileDescriptorKHR_0(device, importFenceFileDescriptorInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ImportFenceFileDescriptorKHRDelegate_0(VkDevice device, VkImportFenceFdInfoKHR* importFenceFileDescriptorInfo);
 	private static ImportFenceFileDescriptorKHRDelegate_0 ImportFenceFileDescriptorKHR_0;
 	public static VkResult ImportFenceFileDescriptorKHR(VkDevice device, ref VkImportFenceFdInfoKHR importFenceFileDescriptorInfo) => ImportFenceFileDescriptorKHR_1(device, ref importFenceFileDescriptorInfo);
+	public static bool ImportFenceFileDescriptorKHR(VkDevice device, ref VkImportFenceFdInfoKHR importFenceFileDescriptorInfo, out VkResult result)
+	{
+		result = ImportFenceFileDescriptorKHR_1(device, ref importFenceFileDescriptorInfo);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult ImportFenceFileDescriptorKHRDelegate_1(VkDevice device, ref VkImportFenceFdInfoKHR importFenceFileDescriptorInfo);
 	private static ImportFenceFileDescriptorKHRDelegate_1 ImportFenceFileDescriptorKHR_1;
 	public static VkResult GetFenceFileDescriptorKHR(VkDevice device, VkFenceGetFdInfoKHR* getFileDescriptorInfo, out int fileDescriptor) => GetFenceFileDescriptorKHR_0(device, getFileDescriptorInfo, out fileDescriptor);
+	public static bool GetFenceFileDescriptorKHR(VkDevice device, VkFenceGetFdInfoKHR* getFileDescriptorInfo, out int fileDescriptor, out VkResult result)
+	{
+		result = GetFenceFileDescriptorKHR_0(device, getFileDescriptorInfo, out fileDescriptor);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetFenceFileDescriptorKHRDelegate_0(VkDevice device, VkFenceGetFdInfoKHR* getFileDescriptorInfo, out int fileDescriptor);
 	private static GetFenceFileDescriptorKHRDelegate_0 GetFenceFileDescriptorKHR_0;
 	public static VkResult GetFenceFileDescriptorKHR(VkDevice device, ref VkFenceGetFdInfoKHR getFileDescriptorInfo, out int fileDescriptor) => GetFenceFileDescriptorKHR_1(device, ref getFileDescriptorInfo, out fileDescriptor);
+	public static bool GetFenceFileDescriptorKHR(VkDevice device, ref VkFenceGetFdInfoKHR getFileDescriptorInfo, out int fileDescriptor, out VkResult result)
+	{
+		result = GetFenceFileDescriptorKHR_1(device, ref getFileDescriptorInfo, out fileDescriptor);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetFenceFileDescriptorKHRDelegate_1(VkDevice device, ref VkFenceGetFdInfoKHR getFileDescriptorInfo, out int fileDescriptor);
 	private static GetFenceFileDescriptorKHRDelegate_1 GetFenceFileDescriptorKHR_1;
 	public static VkResult GetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkSurfaceCapabilities2KHR surfaceCapabilities) => GetPhysicalDeviceSurfaceCapabilities2KHR_0(physicalDevice, surfaceInfo, out surfaceCapabilities);
+	public static bool GetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkSurfaceCapabilities2KHR surfaceCapabilities, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceCapabilities2KHR_0(physicalDevice, surfaceInfo, out surfaceCapabilities);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceCapabilities2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, out VkSurfaceCapabilities2KHR surfaceCapabilities);
 	private static GetPhysicalDeviceSurfaceCapabilities2KHRDelegate_0 GetPhysicalDeviceSurfaceCapabilities2KHR_0;
 	public static VkResult GetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, out VkSurfaceCapabilities2KHR surfaceCapabilities) => GetPhysicalDeviceSurfaceCapabilities2KHR_1(physicalDevice, ref surfaceInfo, out surfaceCapabilities);
+	public static bool GetPhysicalDeviceSurfaceCapabilities2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, out VkSurfaceCapabilities2KHR surfaceCapabilities, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceCapabilities2KHR_1(physicalDevice, ref surfaceInfo, out surfaceCapabilities);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceCapabilities2KHRDelegate_1(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, out VkSurfaceCapabilities2KHR surfaceCapabilities);
 	private static GetPhysicalDeviceSurfaceCapabilities2KHRDelegate_1 GetPhysicalDeviceSurfaceCapabilities2KHR_1;
 	public static VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_0(physicalDevice, surfaceInfo, surfaceFormatCount, surfaceFormats);
+	public static bool GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceFormats2KHR_0(physicalDevice, surfaceInfo, surfaceFormatCount, surfaceFormats);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_0(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, uint* surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats);
 	private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_0 GetPhysicalDeviceSurfaceFormats2KHR_0;
 	public static VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_1(physicalDevice, surfaceInfo, ref surfaceFormatCount, surfaceFormats);
+	public static bool GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceFormats2KHR_1(physicalDevice, surfaceInfo, ref surfaceFormatCount, surfaceFormats);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_1(VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* surfaceInfo, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats);
 	private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_1 GetPhysicalDeviceSurfaceFormats2KHR_1;
 	public static VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_2(physicalDevice, ref surfaceInfo, surfaceFormatCount, surfaceFormats);
+	public static bool GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceFormats2KHR_2(physicalDevice, ref surfaceInfo, surfaceFormatCount, surfaceFormats);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_2(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, uint* surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats);
 	private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_2 GetPhysicalDeviceSurfaceFormats2KHR_2;
 	public static VkResult GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats) => GetPhysicalDeviceSurfaceFormats2KHR_3(physicalDevice, ref surfaceInfo, ref surfaceFormatCount, surfaceFormats);
+	public static bool GetPhysicalDeviceSurfaceFormats2KHR(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats, out VkResult result)
+	{
+		result = GetPhysicalDeviceSurfaceFormats2KHR_3(physicalDevice, ref surfaceInfo, ref surfaceFormatCount, surfaceFormats);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetPhysicalDeviceSurfaceFormats2KHRDelegate_3(VkPhysicalDevice physicalDevice, ref VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo, ref uint surfaceFormatCount, [In, Out] VkSurfaceFormat2KHR[] surfaceFormats);
 	private static GetPhysicalDeviceSurfaceFormats2KHRDelegate_3 GetPhysicalDeviceSurfaceFormats2KHR_3;
 	public static VkResult CreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateIOSSurfaceMVK_0(instance, createInfo, allocator, out surface);
+	public static bool CreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateIOSSurfaceMVK_0(instance, createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateIOSSurfaceMVKDelegate_0(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateIOSSurfaceMVKDelegate_0 CreateIOSSurfaceMVK_0;
 	public static VkResult CreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateIOSSurfaceMVK_1(instance, createInfo, ref allocator, out surface);
+	public static bool CreateIOSSurfaceMVK(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateIOSSurfaceMVK_1(instance, createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateIOSSurfaceMVKDelegate_1(VkInstance instance, VkIOSSurfaceCreateInfoMVK* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateIOSSurfaceMVKDelegate_1 CreateIOSSurfaceMVK_1;
 	public static VkResult CreateIOSSurfaceMVK(VkInstance instance, ref VkIOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateIOSSurfaceMVK_2(instance, ref createInfo, allocator, out surface);
+	public static bool CreateIOSSurfaceMVK(VkInstance instance, ref VkIOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateIOSSurfaceMVK_2(instance, ref createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateIOSSurfaceMVKDelegate_2(VkInstance instance, ref VkIOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateIOSSurfaceMVKDelegate_2 CreateIOSSurfaceMVK_2;
 	public static VkResult CreateIOSSurfaceMVK(VkInstance instance, ref VkIOSSurfaceCreateInfoMVK createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateIOSSurfaceMVK_3(instance, ref createInfo, ref allocator, out surface);
+	public static bool CreateIOSSurfaceMVK(VkInstance instance, ref VkIOSSurfaceCreateInfoMVK createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateIOSSurfaceMVK_3(instance, ref createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateIOSSurfaceMVKDelegate_3(VkInstance instance, ref VkIOSSurfaceCreateInfoMVK createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateIOSSurfaceMVKDelegate_3 CreateIOSSurfaceMVK_3;
 	public static VkResult CreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateMacOSSurfaceMVK_0(instance, createInfo, allocator, out surface);
+	public static bool CreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateMacOSSurfaceMVK_0(instance, createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateMacOSSurfaceMVKDelegate_0(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateMacOSSurfaceMVKDelegate_0 CreateMacOSSurfaceMVK_0;
 	public static VkResult CreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateMacOSSurfaceMVK_1(instance, createInfo, ref allocator, out surface);
+	public static bool CreateMacOSSurfaceMVK(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateMacOSSurfaceMVK_1(instance, createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateMacOSSurfaceMVKDelegate_1(VkInstance instance, VkMacOSSurfaceCreateInfoMVK* createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateMacOSSurfaceMVKDelegate_1 CreateMacOSSurfaceMVK_1;
 	public static VkResult CreateMacOSSurfaceMVK(VkInstance instance, ref VkMacOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface) => CreateMacOSSurfaceMVK_2(instance, ref createInfo, allocator, out surface);
+	public static bool CreateMacOSSurfaceMVK(VkInstance instance, ref VkMacOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateMacOSSurfaceMVK_2(instance, ref createInfo, allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateMacOSSurfaceMVKDelegate_2(VkInstance instance, ref VkMacOSSurfaceCreateInfoMVK createInfo, VkAllocationCallbacks* allocator, out VkSurfaceKHR surface);
 	private static CreateMacOSSurfaceMVKDelegate_2 CreateMacOSSurfaceMVK_2;
 	public static VkResult CreateMacOSSurfaceMVK(VkInstance instance, ref VkMacOSSurfaceCreateInfoMVK createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface) => CreateMacOSSurfaceMVK_3(instance, ref createInfo, ref allocator, out surface);
+	public static bool CreateMacOSSurfaceMVK(VkInstance instance, ref VkMacOSSurfaceCreateInfoMVK createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface, out VkResult result)
+	{
+		result = CreateMacOSSurfaceMVK_3(instance, ref createInfo, ref allocator, out surface);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateMacOSSurfaceMVKDelegate_3(VkInstance instance, ref VkMacOSSurfaceCreateInfoMVK createInfo, ref VkAllocationCallbacks allocator, out VkSurfaceKHR surface);
 	private static CreateMacOSSurfaceMVKDelegate_3 CreateMacOSSurfaceMVK_3;
 	public static void CommandSetSampleLocationsEXT(VkCommandBuffer commandBuffer, VkSampleLocationsInfoEXT* sampleLocationsInfo) => CommandSetSampleLocationsEXT_0(commandBuffer, sampleLocationsInfo);
@@ -1652,15 +3097,35 @@ public static unsafe class VK
 	private delegate void GetImageSparseMemoryRequirements2KHRDelegate_3(VkDevice device, ref VkImageSparseMemoryRequirementsInfo2KHR info, ref uint sparseMemoryRequirementCount, [In, Out] VkSparseImageMemoryRequirements2KHR[] sparseMemoryRequirements);
 	private static GetImageSparseMemoryRequirements2KHRDelegate_3 GetImageSparseMemoryRequirements2KHR_3;
 	public static VkResult CreateSamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion) => CreateSamplerYcbcrConversionKHR_0(device, createInfo, allocator, out ycbcrConversion);
+	public static bool CreateSamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion, out VkResult result)
+	{
+		result = CreateSamplerYcbcrConversionKHR_0(device, createInfo, allocator, out ycbcrConversion);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSamplerYcbcrConversionKHRDelegate_0(VkDevice device, VkSamplerYcbcrConversionCreateInfoKHR* createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion);
 	private static CreateSamplerYcbcrConversionKHRDelegate_0 CreateSamplerYcbcrConversionKHR_0;
 	public static VkResult CreateSamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion) => CreateSamplerYcbcrConversionKHR_1(device, createInfo, ref allocator, out ycbcrConversion);
+	public static bool CreateSamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion, out VkResult result)
+	{
+		result = CreateSamplerYcbcrConversionKHR_1(device, createInfo, ref allocator, out ycbcrConversion);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSamplerYcbcrConversionKHRDelegate_1(VkDevice device, VkSamplerYcbcrConversionCreateInfoKHR* createInfo, ref VkAllocationCallbacks allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion);
 	private static CreateSamplerYcbcrConversionKHRDelegate_1 CreateSamplerYcbcrConversionKHR_1;
 	public static VkResult CreateSamplerYcbcrConversionKHR(VkDevice device, ref VkSamplerYcbcrConversionCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion) => CreateSamplerYcbcrConversionKHR_2(device, ref createInfo, allocator, out ycbcrConversion);
+	public static bool CreateSamplerYcbcrConversionKHR(VkDevice device, ref VkSamplerYcbcrConversionCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion, out VkResult result)
+	{
+		result = CreateSamplerYcbcrConversionKHR_2(device, ref createInfo, allocator, out ycbcrConversion);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSamplerYcbcrConversionKHRDelegate_2(VkDevice device, ref VkSamplerYcbcrConversionCreateInfoKHR createInfo, VkAllocationCallbacks* allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion);
 	private static CreateSamplerYcbcrConversionKHRDelegate_2 CreateSamplerYcbcrConversionKHR_2;
 	public static VkResult CreateSamplerYcbcrConversionKHR(VkDevice device, ref VkSamplerYcbcrConversionCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion) => CreateSamplerYcbcrConversionKHR_3(device, ref createInfo, ref allocator, out ycbcrConversion);
+	public static bool CreateSamplerYcbcrConversionKHR(VkDevice device, ref VkSamplerYcbcrConversionCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion, out VkResult result)
+	{
+		result = CreateSamplerYcbcrConversionKHR_3(device, ref createInfo, ref allocator, out ycbcrConversion);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateSamplerYcbcrConversionKHRDelegate_3(VkDevice device, ref VkSamplerYcbcrConversionCreateInfoKHR createInfo, ref VkAllocationCallbacks allocator, out VkSamplerYcbcrConversionKHR ycbcrConversion);
 	private static CreateSamplerYcbcrConversionKHRDelegate_3 CreateSamplerYcbcrConversionKHR_3;
 	public static void DestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversionKHR ycbcrConversion, VkAllocationCallbacks* allocator) => DestroySamplerYcbcrConversionKHR_0(device, ycbcrConversion, allocator);
@@ -1670,21 +3135,51 @@ public static unsafe class VK
 	private delegate void DestroySamplerYcbcrConversionKHRDelegate_1(VkDevice device, VkSamplerYcbcrConversionKHR ycbcrConversion, ref VkAllocationCallbacks allocator);
 	private static DestroySamplerYcbcrConversionKHRDelegate_1 DestroySamplerYcbcrConversionKHR_1;
 	public static VkResult BindBufferMemory2KHR(VkDevice device, uint bindInfoCount, VkBindBufferMemoryInfoKHR[] bindInfos) => BindBufferMemory2KHR_0(device, bindInfoCount, bindInfos);
+	public static bool BindBufferMemory2KHR(VkDevice device, uint bindInfoCount, VkBindBufferMemoryInfoKHR[] bindInfos, out VkResult result)
+	{
+		result = BindBufferMemory2KHR_0(device, bindInfoCount, bindInfos);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult BindBufferMemory2KHRDelegate_0(VkDevice device, uint bindInfoCount, VkBindBufferMemoryInfoKHR[] bindInfos);
 	private static BindBufferMemory2KHRDelegate_0 BindBufferMemory2KHR_0;
 	public static VkResult BindImageMemory2KHR(VkDevice device, uint bindInfoCount, VkBindImageMemoryInfoKHR[] bindInfos) => BindImageMemory2KHR_0(device, bindInfoCount, bindInfos);
+	public static bool BindImageMemory2KHR(VkDevice device, uint bindInfoCount, VkBindImageMemoryInfoKHR[] bindInfos, out VkResult result)
+	{
+		result = BindImageMemory2KHR_0(device, bindInfoCount, bindInfos);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult BindImageMemory2KHRDelegate_0(VkDevice device, uint bindInfoCount, VkBindImageMemoryInfoKHR[] bindInfos);
 	private static BindImageMemory2KHRDelegate_0 BindImageMemory2KHR_0;
 	public static VkResult CreateValidationCacheEXT(VkDevice device, VkValidationCacheCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkValidationCacheEXT validationCache) => CreateValidationCacheEXT_0(device, createInfo, allocator, out validationCache);
+	public static bool CreateValidationCacheEXT(VkDevice device, VkValidationCacheCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkValidationCacheEXT validationCache, out VkResult result)
+	{
+		result = CreateValidationCacheEXT_0(device, createInfo, allocator, out validationCache);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateValidationCacheEXTDelegate_0(VkDevice device, VkValidationCacheCreateInfoEXT* createInfo, VkAllocationCallbacks* allocator, out VkValidationCacheEXT validationCache);
 	private static CreateValidationCacheEXTDelegate_0 CreateValidationCacheEXT_0;
 	public static VkResult CreateValidationCacheEXT(VkDevice device, VkValidationCacheCreateInfoEXT* createInfo, ref VkAllocationCallbacks allocator, out VkValidationCacheEXT validationCache) => CreateValidationCacheEXT_1(device, createInfo, ref allocator, out validationCache);
+	public static bool CreateValidationCacheEXT(VkDevice device, VkValidationCacheCreateInfoEXT* createInfo, ref VkAllocationCallbacks allocator, out VkValidationCacheEXT validationCache, out VkResult result)
+	{
+		result = CreateValidationCacheEXT_1(device, createInfo, ref allocator, out validationCache);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateValidationCacheEXTDelegate_1(VkDevice device, VkValidationCacheCreateInfoEXT* createInfo, ref VkAllocationCallbacks allocator, out VkValidationCacheEXT validationCache);
 	private static CreateValidationCacheEXTDelegate_1 CreateValidationCacheEXT_1;
 	public static VkResult CreateValidationCacheEXT(VkDevice device, ref VkValidationCacheCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkValidationCacheEXT validationCache) => CreateValidationCacheEXT_2(device, ref createInfo, allocator, out validationCache);
+	public static bool CreateValidationCacheEXT(VkDevice device, ref VkValidationCacheCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkValidationCacheEXT validationCache, out VkResult result)
+	{
+		result = CreateValidationCacheEXT_2(device, ref createInfo, allocator, out validationCache);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateValidationCacheEXTDelegate_2(VkDevice device, ref VkValidationCacheCreateInfoEXT createInfo, VkAllocationCallbacks* allocator, out VkValidationCacheEXT validationCache);
 	private static CreateValidationCacheEXTDelegate_2 CreateValidationCacheEXT_2;
 	public static VkResult CreateValidationCacheEXT(VkDevice device, ref VkValidationCacheCreateInfoEXT createInfo, ref VkAllocationCallbacks allocator, out VkValidationCacheEXT validationCache) => CreateValidationCacheEXT_3(device, ref createInfo, ref allocator, out validationCache);
+	public static bool CreateValidationCacheEXT(VkDevice device, ref VkValidationCacheCreateInfoEXT createInfo, ref VkAllocationCallbacks allocator, out VkValidationCacheEXT validationCache, out VkResult result)
+	{
+		result = CreateValidationCacheEXT_3(device, ref createInfo, ref allocator, out validationCache);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult CreateValidationCacheEXTDelegate_3(VkDevice device, ref VkValidationCacheCreateInfoEXT createInfo, ref VkAllocationCallbacks allocator, out VkValidationCacheEXT validationCache);
 	private static CreateValidationCacheEXTDelegate_3 CreateValidationCacheEXT_3;
 	public static void DestroyValidationCacheEXT(VkDevice device, VkValidationCacheEXT validationCache, VkAllocationCallbacks* allocator) => DestroyValidationCacheEXT_0(device, validationCache, allocator);
@@ -1694,15 +3189,35 @@ public static unsafe class VK
 	private delegate void DestroyValidationCacheEXTDelegate_1(VkDevice device, VkValidationCacheEXT validationCache, ref VkAllocationCallbacks allocator);
 	private static DestroyValidationCacheEXTDelegate_1 DestroyValidationCacheEXT_1;
 	public static VkResult MergeValidationCachesEXT(VkDevice device, VkValidationCacheEXT destinationCache, uint sourceCacheCount, VkValidationCacheEXT[] sourceCaches) => MergeValidationCachesEXT_0(device, destinationCache, sourceCacheCount, sourceCaches);
+	public static bool MergeValidationCachesEXT(VkDevice device, VkValidationCacheEXT destinationCache, uint sourceCacheCount, VkValidationCacheEXT[] sourceCaches, out VkResult result)
+	{
+		result = MergeValidationCachesEXT_0(device, destinationCache, sourceCacheCount, sourceCaches);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult MergeValidationCachesEXTDelegate_0(VkDevice device, VkValidationCacheEXT destinationCache, uint sourceCacheCount, VkValidationCacheEXT[] sourceCaches);
 	private static MergeValidationCachesEXTDelegate_0 MergeValidationCachesEXT_0;
 	public static VkResult GetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, nuint* dataSize, void* data) => GetValidationCacheDataEXT_0(device, validationCache, dataSize, data);
+	public static bool GetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, nuint* dataSize, void* data, out VkResult result)
+	{
+		result = GetValidationCacheDataEXT_0(device, validationCache, dataSize, data);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetValidationCacheDataEXTDelegate_0(VkDevice device, VkValidationCacheEXT validationCache, nuint* dataSize, void* data);
 	private static GetValidationCacheDataEXTDelegate_0 GetValidationCacheDataEXT_0;
 	public static VkResult GetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, ref nuint dataSize, void* data) => GetValidationCacheDataEXT_1(device, validationCache, ref dataSize, data);
+	public static bool GetValidationCacheDataEXT(VkDevice device, VkValidationCacheEXT validationCache, ref nuint dataSize, void* data, out VkResult result)
+	{
+		result = GetValidationCacheDataEXT_1(device, validationCache, ref dataSize, data);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetValidationCacheDataEXTDelegate_1(VkDevice device, VkValidationCacheEXT validationCache, ref nuint dataSize, void* data);
 	private static GetValidationCacheDataEXTDelegate_1 GetValidationCacheDataEXT_1;
 	public static VkResult GetMemoryHostPointerPropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlagsKHR handleType, void* hostPointer, out VkMemoryHostPointerPropertiesEXT memoryHostPointerProperties) => GetMemoryHostPointerPropertiesEXT_0(device, handleType, hostPointer, out memoryHostPointerProperties);
+	public static bool GetMemoryHostPointerPropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlagsKHR handleType, void* hostPointer, out VkMemoryHostPointerPropertiesEXT memoryHostPointerProperties, out VkResult result)
+	{
+		result = GetMemoryHostPointerPropertiesEXT_0(device, handleType, hostPointer, out memoryHostPointerProperties);
+		return result == VkResult.Success;
+	}
 	private delegate VkResult GetMemoryHostPointerPropertiesEXTDelegate_0(VkDevice device, VkExternalMemoryHandleTypeFlagsKHR handleType, void* hostPointer, out VkMemoryHostPointerPropertiesEXT memoryHostPointerProperties);
 	private static GetMemoryHostPointerPropertiesEXTDelegate_0 GetMemoryHostPointerPropertiesEXT_0;
 	public static void CommandWriteBufferMarkerAMD(VkCommandBuffer commandBuffer, VkPipelineStageFlags pipelineStage, VkBuffer destinationBuffer, VkDeviceSize destinationOffset, uint marker) => CommandWriteBufferMarkerAMD_0(commandBuffer, pipelineStage, destinationBuffer, destinationOffset, marker);

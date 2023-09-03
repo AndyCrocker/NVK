@@ -134,6 +134,20 @@ internal class FunctionInfo
                 writer.WriteLine($"[Obsolete(\"Use {AliasDisplayName}\")]");
 
             writer.WriteLine($"public static {ReturnType} {DisplayName}({parametersString}) => {DisplayName}_{i}({calledParametersString});");
+
+            if (ReturnType.Name == "VkResult")
+            {
+                if (Alias != null)
+                    writer.WriteLine($"[Obsolete(\"Use {AliasDisplayName}\")]");
+
+                writer.WriteLine($"public static bool {DisplayName}({parametersString}, out VkResult result)");
+                writer.WriteScope(() =>
+                {
+                    writer.WriteLine($"result = {DisplayName}_{i}({calledParametersString});");
+                    writer.WriteLine("return result == VkResult.Success;");
+                });
+            }
+
             writer.WriteLine($"private delegate {ReturnType} {DisplayName}Delegate_{i}({parametersString});");
             writer.WriteLine($"private static {DisplayName}Delegate_{i} {DisplayName}_{i};");
         }
